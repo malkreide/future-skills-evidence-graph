@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://future-skills-evidence-graph.org/schemas/framework_mapping.schema.json",
+  "title": "FrameworkMapping",
+  "type": "object",
+  "required": [
+    "id",
+    "skill_id",
+    "framework",
+    "framework_url",
+    "competency",
+    "mapping_strength",
+    "rationale",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^map-[a-z0-9-]+$" },
+    "skill_id": { "type": "string" },
+    "framework": { "type": "string" },
+    "framework_url": { "type": "string", "format": "uri" },
+    "competency": { "type": "string" },
+    "mapping_strength": { "type": "string", "enum": ["weak", "moderate", "strong"] },
+    "rationale": { "type": "string" },
+    "framework_group": { "type": "string" },
+    "curriculum_area": { "type": "string" },
+    "cycles": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["Zyklus 1", "Zyklus 2", "Zyklus 3"] }
+    },
+    "coverage_score": { "type": "number", "minimum": 0, "maximum": 3 },
+    "coverage_label": {
+      "type": "string",
+      "enum": ["gut abgedeckt", "teilweise", "Zukunftsluecke"]
+    },
+    "evidence_path": { "type": "string" },
+    "created_at": { "type": "string" }
+  },
+  "additionalProperties": false
+}

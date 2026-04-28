@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://future-skills-evidence-graph.org/schemas/claim.schema.json",
+  "title": "Claim",
+  "type": "object",
+  "required": [
+    "id",
+    "statement",
+    "source_ids",
+    "text_anchor",
+    "context",
+    "age_range",
+    "outcome",
+    "evidence_type",
+    "evidence_strength",
+    "supports_skill_ids",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" },
+    "statement": { "type": "string", "minLength": 8 },
+    "source_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "text_anchor": { "type": "string" },
+    "context": { "type": "string" },
+    "age_range": { "type": "string" },
+    "outcome": { "type": "string" },
+    "evidence_type": {
+      "type": "string",
+      "enum": [
+        "framework_synthesis",
+        "policy_synthesis",
+        "empirical_study",
+        "systematic_review",
+        "conceptual_review",
+        "labor_market_forecast",
+        "expert_consensus"
+      ]
+    },
+    "evidence_strength": {
+      "type": "string",
+      "enum": ["low", "moderate", "strong"]
+    },
+    "supports_skill_ids": { "type": "array", "items": { "type": "string" } },
+    "contradicts_skill_ids": { "type": "array", "items": { "type": "string" } },
+    "extraction_method": { "type": "string" },
+    "status": { "type": "string", "enum": ["candidate", "reviewed", "rejected"] },
+    "created_at": { "type": "string" },
+    "reviewed_at": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}
+

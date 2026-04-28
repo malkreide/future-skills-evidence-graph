@@ -1,0 +1,65 @@
+name: Research candidate import
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  import-candidates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Import OpenAlex candidates
+        run: >
+          python scripts/ingest_openalex.py
+          --query "AI literacy education children future skills"
+          --limit 20
+          --output data/sources/candidates-openalex.json
+          --mailto "${OPENALEX_MAILTO}"
+        env:
+          OPENALEX_MAILTO: ${{ vars.OPENALEX_MAILTO }}
+      - name: Import Crossref candidates
+        run: >
+          python scripts/ingest_crossref.py
+          --query "AI literacy education children future skills"
+          --limit 20
+          --output data/sources/candidates-crossref.json
+      - name: Import Semantic Scholar candidates
+        run: >
+          python scripts/ingest_semantic_scholar.py
+          --query "AI literacy education children future skills"
+          --limit 20
+          --output data/sources/candidates-semantic-scholar.json
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+      - name: Validate candidates
+        run: python scripts/validate_data.py
+      - name: Open candidate pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "No candidate changes."
+            exit 0
+          fi
+          branch="codex/research-candidates-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add data/sources/candidates-*.json
+          git commit -m "chore: add research source candidates"
+          git push origin "$branch"
+          gh pr create \
+            --title "chore: add research source candidates" \
+            --body "Automated candidate import. These records remain candidates until reviewed." \
+            --base "${GITHUB_REF_NAME}" \
+            --head "$branch"
+

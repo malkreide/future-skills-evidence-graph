@@ -1,0 +1,142 @@
+[
+  {
+    "id": "map-ai-literacy-unesco-students",
+    "skill_id": "skill-ai-literacy",
+    "framework": "UNESCO AI Competency Framework for Students",
+    "framework_url": "https://www.unesco.org/en/articles/ai-competency-framework-students",
+    "competency": "Human-centered mindset, AI ethics, AI techniques and applications, AI system design",
+    "mapping_strength": "strong",
+    "rationale": "The local skill directly mirrors the student-facing AI competency domains.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-ai-literacy-digcomp",
+    "skill_id": "skill-ai-literacy",
+    "framework": "DigComp 2.2",
+    "framework_url": "https://joint-research-centre.ec.europa.eu/digcomp/digcomp-framework/digcomp-22_en",
+    "competency": "Digital content, safety, problem solving, and AI-related examples",
+    "mapping_strength": "moderate",
+    "rationale": "DigComp covers the broader digital competence context that AI literacy extends.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-critical-thinking-oecd",
+    "skill_id": "skill-critical-thinking",
+    "framework": "OECD Learning Compass 2030",
+    "framework_url": "https://www.oecd.org/education/2030-project/teaching-and-learning/learning/",
+    "competency": "Reconciling tensions and dilemmas; taking responsibility",
+    "mapping_strength": "moderate",
+    "rationale": "Critical thinking supports navigating competing claims and tradeoffs.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-critical-thinking-digcomp",
+    "skill_id": "skill-critical-thinking",
+    "framework": "DigComp 2.2",
+    "framework_url": "https://joint-research-centre.ec.europa.eu/digcomp/digcomp-framework/digcomp-22_en",
+    "competency": "Information and data literacy",
+    "mapping_strength": "strong",
+    "rationale": "Evaluating digital information is a direct component of epistemic vigilance.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-data-literacy-digcomp",
+    "skill_id": "skill-data-literacy",
+    "framework": "DigComp 2.2",
+    "framework_url": "https://joint-research-centre.ec.europa.eu/digcomp/digcomp-framework/digcomp-22_en",
+    "competency": "Information and data literacy; problem solving",
+    "mapping_strength": "strong",
+    "rationale": "The skill operationalizes DigComp data and information competence for AI-rich environments.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-media-literacy-digcomp",
+    "skill_id": "skill-digital-media-literacy",
+    "framework": "DigComp 2.2",
+    "framework_url": "https://joint-research-centre.ec.europa.eu/digcomp/digcomp-framework/digcomp-22_en",
+    "competency": "Information and data literacy; communication; safety",
+    "mapping_strength": "strong",
+    "rationale": "Digital and media literacy is tightly aligned to the core DigComp competence areas.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-ethics-unesco",
+    "skill_id": "skill-ethical-technology-judgment",
+    "framework": "UNESCO AI Competency Framework for Students",
+    "framework_url": "https://www.unesco.org/en/articles/ai-competency-framework-students",
+    "competency": "AI ethics and human-centered mindset",
+    "mapping_strength": "strong",
+    "rationale": "Ethical judgment is central to UNESCO's student-facing AI competencies.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-ethics-unicef",
+    "skill_id": "skill-ethical-technology-judgment",
+    "framework": "UNICEF Policy Guidance on AI for Children",
+    "framework_url": "https://www.unicef.org/globalinsight/reports/policy-guidance-ai-children",
+    "competency": "Child rights, safety, inclusion, transparency, accountability",
+    "mapping_strength": "strong",
+    "rationale": "The local skill translates child-centered AI principles into learner-facing capability.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-self-regulation-oecd",
+    "skill_id": "skill-self-regulated-learning",
+    "framework": "OECD Learning Compass 2030",
+    "framework_url": "https://www.oecd.org/education/2030-project/teaching-and-learning/learning/",
+    "competency": "Student agency and learning to learn",
+    "mapping_strength": "strong",
+    "rationale": "Self-regulated learning is a concrete mechanism for student agency.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-creative-thinking-oecd",
+    "skill_id": "skill-creative-problem-solving",
+    "framework": "PISA 2022 Creative Thinking",
+    "framework_url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-iii_765ee8c2-en.html",
+    "competency": "Creative thinking",
+    "mapping_strength": "strong",
+    "rationale": "The skill maps directly to creative thinking as a learnable and assessable capability.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-collaboration-unesco-futures",
+    "skill_id": "skill-collaborative-problem-solving",
+    "framework": "UNESCO Reimagining Our Futures Together",
+    "framework_url": "https://unesdoc.unesco.org/ark:/48223/pf0000379707",
+    "competency": "Cooperation and shared responsibility",
+    "mapping_strength": "moderate",
+    "rationale": "Collaborative problem solving supports education for shared futures.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-systems-thinking-oecd",
+    "skill_id": "skill-systems-thinking",
+    "framework": "OECD Learning Compass 2030",
+    "framework_url": "https://www.oecd.org/education/2030-project/teaching-and-learning/learning/",
+    "competency": "Reconciling tensions and dilemmas",
+    "mapping_strength": "moderate",
+    "rationale": "Systems thinking helps learners reason about complexity, tensions, and second-order effects.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-resilience-wef",
+    "skill_id": "skill-resilience-adaptability",
+    "framework": "World Economic Forum Future of Jobs Report 2025",
+    "framework_url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/",
+    "competency": "Resilience, flexibility, and agility",
+    "mapping_strength": "strong",
+    "rationale": "The labor-market signal directly names resilience and adaptability-related capabilities.",
+    "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-resilience-oecd",
+    "skill_id": "skill-resilience-adaptability",
+    "framework": "OECD Learning Compass 2030",
+    "framework_url": "https://www.oecd.org/education/2030-project/teaching-and-learning/learning/",
+    "competency": "Student agency and taking responsibility",
+    "mapping_strength": "moderate",
+    "rationale": "Adaptability supports agency under uncertainty.",
+    "created_at": "2026-04-28"
+  }
+]

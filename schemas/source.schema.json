@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://future-skills-evidence-graph.org/schemas/source.schema.json",
+  "title": "Source",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "year",
+    "source_type",
+    "publisher",
+    "url",
+    "topics",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^src-[a-z0-9-]+$" },
+    "title": { "type": "string", "minLength": 3 },
+    "authors": { "type": "array", "items": { "type": "string" } },
+    "year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+    "doi": { "type": ["string", "null"] },
+    "url": { "type": "string", "format": "uri" },
+    "openalex_id": { "type": ["string", "null"] },
+    "semantic_scholar_id": { "type": ["string", "null"] },
+    "eric_id": { "type": ["string", "null"] },
+    "publisher": { "type": "string" },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "framework",
+        "policy_report",
+        "peer_reviewed_article",
+        "systematic_review",
+        "conceptual_review",
+        "working_paper",
+        "book",
+        "dataset",
+        "web_resource"
+      ]
+    },
+    "license": { "type": ["string", "null"] },
+    "abstract": { "type": ["string", "null"] },
+    "topics": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "status": { "type": "string", "enum": ["candidate", "reviewed", "rejected"] },
+    "created_at": { "type": "string" },
+    "reviewed_at": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

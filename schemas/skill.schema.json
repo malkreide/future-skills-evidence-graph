@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://future-skills-evidence-graph.org/schemas/skill.schema.json",
+  "title": "Skill",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "definition",
+    "age_range",
+    "status",
+    "evidence_score",
+    "trend",
+    "supporting_claim_ids",
+    "contradicting_claim_ids",
+    "framework_mapping_ids",
+    "change_log",
+    "created_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^skill-[a-z0-9-]+$" },
+    "name": { "type": "string", "minLength": 3 },
+    "definition": { "type": "string", "minLength": 12 },
+    "age_range": { "type": "string" },
+    "status": { "type": "string", "enum": ["candidate", "active", "deprecated"] },
+    "evidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "trend": { "type": "string", "enum": ["emerging", "growing", "stable", "declining"] },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "supporting_claim_ids": { "type": "array", "items": { "type": "string" } },
+    "contradicting_claim_ids": { "type": "array", "items": { "type": "string" } },
+    "framework_mapping_ids": { "type": "array", "items": { "type": "string" } },
+    "uncertainty": { "type": "string" },
+    "change_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "change", "reason"],
+        "properties": {
+          "date": { "type": "string" },
+          "change": { "type": "string" },
+          "reason": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  },
+  "additionalProperties": false
+}
+

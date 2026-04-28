@@ -1,0 +1,41 @@
+[
+  {
+    "id": "src-lehrplan21-ueberfachliche-kompetenzen",
+    "title": "Lehrplan 21: Ueberfachliche Kompetenzen",
+    "authors": ["D-EDK"],
+    "year": 2016,
+    "doi": null,
+    "url": "https://v-ef.lehrplan.ch/index.php?code=e%7C200%7C3",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "D-EDK",
+    "source_type": "framework",
+    "license": null,
+    "abstract": "Grundlagenkapitel zu personalen, sozialen und methodischen Kompetenzen im Lehrplan 21.",
+    "topics": ["lehrplan 21", "ueberfachliche kompetenzen", "curriculum", "switzerland"],
+    "status": "reviewed",
+    "created_at": "2026-04-28",
+    "reviewed_at": "2026-04-28"
+  },
+  {
+    "id": "src-lehrplan21-medien-informatik",
+    "title": "Lehrplan 21: Medien und Informatik",
+    "authors": ["D-EDK"],
+    "year": 2016,
+    "doi": null,
+    "url": "https://www.lehrplan21.ch/medien-und-informatik",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "D-EDK",
+    "source_type": "framework",
+    "license": null,
+    "abstract": "Modullehrplan zu Medien, Informatik und Anwendungskompetenzen im Lehrplan 21.",
+    "topics": ["lehrplan 21", "medien und informatik", "digital literacy", "curriculum"],
+    "status": "reviewed",
+    "created_at": "2026-04-28",
+    "reviewed_at": "2026-04-28"
+  }
+]
+
