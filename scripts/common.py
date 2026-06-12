@@ -5,7 +5,7 @@ import os
 import re
 from datetime import date
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -111,16 +111,19 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
     return new_records
 
 
-def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Append candidates to *path* instead of rewriting it from scratch.
+def append_unique_records(
+    path: Path,
+    new_records: list[dict[str, Any]],
+    identities: Callable[[dict[str, Any]], list[str]],
+) -> list[dict[str, Any]]:
+    """Append candidate records to *path* instead of rewriting it.
 
-    Earlier import batches may still be awaiting review, so existing records
-    must survive later runs. Records already present in the file (same
-    identity or title/year) are skipped; id collisions with existing records
-    get a numeric suffix. When nothing new is appended the file is left
-    untouched — in particular, an import without results creates no empty
-    file that automation would stage and turn into a noise pull request.
-    Returns the records that were actually appended.
+    Earlier batches may still be awaiting review, so existing records must
+    survive later runs. Records whose identity is already in the file are
+    skipped; id collisions with existing records get a numeric suffix. When
+    nothing new is appended the file is left untouched — in particular, a
+    run without results creates no empty file that automation would stage
+    and turn into a noise pull request. Returns the appended records.
     """
     existing: list[dict[str, Any]] = []
     if path.exists():
@@ -130,30 +133,68 @@ def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> l
         existing = payload
     known: set[str] = set()
     used_ids: set[str] = set()
-    for source in existing:
-        known.add(source_identity(source))
-        known.add(source_title_key(source))
-        used_ids.add(str(source.get("id", "")))
+    for record in existing:
+        known.update(identities(record))
+        used_ids.add(str(record.get("id", "")))
     appended: list[dict[str, Any]] = []
-    for source in new_records:
-        identity = source_identity(source)
-        title_key = source_title_key(source)
-        if identity in known or title_key in known:
+    for record in new_records:
+        record_identities = identities(record)
+        if any(identity in known for identity in record_identities):
             continue
-        base_id = str(source.get("id", "src-record"))
-        source_id = base_id
+        base_id = str(record.get("id", "record"))
+        record_id = base_id
         suffix = 2
-        while source_id in used_ids:
-            source_id = f"{base_id}-{suffix}"
+        while record_id in used_ids:
+            record_id = f"{base_id}-{suffix}"
             suffix += 1
-        source["id"] = source_id
-        used_ids.add(source_id)
-        known.add(identity)
-        known.add(title_key)
-        appended.append(source)
+        record["id"] = record_id
+        used_ids.add(record_id)
+        known.update(record_identities)
+        appended.append(record)
     if appended:
         write_json(path, existing + appended)
     return appended
+
+
+def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Append source candidates, deduplicated by identity and title/year."""
+    return append_unique_records(
+        path,
+        new_records,
+        lambda source: [source_identity(source), source_title_key(source)],
+    )
+
+
+def claim_statement_key(claim: dict[str, Any]) -> str:
+    return f"statement:{normalize_title(str(claim.get('statement', '')))}"
+
+
+def filter_new_claims(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Drop claim candidates whose statement is already known repo-wide.
+
+    Mirrors filter_new_sources: dedupes against every file in data/claims/
+    and uniquifies ids with a numeric suffix.
+    """
+    existing = load_records("claims")
+    known = {claim_statement_key(claim) for claim in existing}
+    used_ids = {str(claim.get("id", "")) for claim in existing}
+    seen: set[str] = set()
+    new_records: list[dict[str, Any]] = []
+    for claim in candidates:
+        key = claim_statement_key(claim)
+        if key in known or key in seen:
+            continue
+        base_id = str(claim.get("id", "claim-record"))
+        claim_id = base_id
+        suffix = 2
+        while claim_id in used_ids:
+            claim_id = f"{base_id}-{suffix}"
+            suffix += 1
+        claim["id"] = claim_id
+        used_ids.add(claim_id)
+        seen.add(key)
+        new_records.append(claim)
+    return new_records
 
 
 def env_or_none(name: str) -> str | None:

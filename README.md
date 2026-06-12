@@ -66,11 +66,15 @@ reproducible evidence path.
 
 ## Automation
 
-The weekly research workflow runs source importers for curated queries and opens a
-candidate pull request when new source metadata is discovered. While that pull
-request stays unmerged, later runs append to its `research/candidates` branch
-instead of opening duplicates. The workflow does not publish active skills
-automatically.
+The weekly research workflow runs source importers for curated queries, extracts
+candidate claims from the new sources' abstracts (`scripts/extract_claims.py`),
+clusters those claims into candidate skills (`scripts/cluster_claims.py`), and opens
+a candidate pull request. While that pull request stays unmerged, later runs append
+to its `research/candidates` branch instead of opening duplicates. The automated
+path stays deliberately conservative: claim statements are verbatim abstract
+sentences with exact text anchors, evidence strength starts at `low`, clustered
+skills start at `evidence_score` 0.0, and nothing becomes active without human
+review. The workflow does not publish active skills automatically.
 
 Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
 and abstracts are matched against the MVP topic vocabulary and audience terms, the
@@ -88,10 +92,10 @@ deliberately implements a subset; the remaining steps are open:
 | --- | --- |
 | 1. Discover and deduplicate sources | Implemented (`ingest_*.py`, `deduplicate_sources.py`) |
 | 2. Classify relevance | Heuristic keyword/abstract score; no trained classifier yet |
-| 3. Extract structured claims | Open — `extract_claim_templates.py` only generates templates for manual completion |
-| 4. Link claims to sources and text anchors | Open — anchors are curated by hand |
+| 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): verbatim abstract sentences become candidate claims; context, age range, outcome, and strength stay human work |
+| 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
 | 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |
-| 6. Cluster claims into skill candidates | Open — skills are curated by hand |
+| 6. Cluster claims into skill candidates | Implemented conservatively (`cluster_claims.py`): topic-vocabulary clustering proposes candidate skills for uncovered topics; existing skills only get review hints |
 | 7. Map skill candidates to frameworks | Implemented as curated data (`data/frameworks/`) |
 | 8. Create changes as pull requests | Implemented (weekly research workflow) |
 | 9. Show reviewed skills in the dashboard | Implemented (`build_site.py`, GitHub Pages) |
