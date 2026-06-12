@@ -9,10 +9,10 @@ from common import (
     RELEVANCE_THRESHOLD,
     ROOT,
     TODAY,
+    append_candidate_sources,
     filter_new_sources,
     filter_relevant_sources,
     slugify,
-    write_json,
 )
 
 
@@ -84,9 +84,9 @@ def main() -> int:
     candidates = [convert(item) for item in fetch(args.query, args.limit)]
     relevant = filter_relevant_sources(candidates, args.min_relevance)
     new_records = filter_new_sources(relevant)
-    write_json(ROOT / args.output, new_records)
+    appended = append_candidate_sources(ROOT / args.output, new_records)
     print(
-        f"Wrote {len(new_records)} Crossref candidates to {args.output} "
+        f"Appended {len(appended)} new Crossref candidates to {args.output} "
         f"({len(candidates) - len(relevant)} filtered as irrelevant)"
     )
     return 0

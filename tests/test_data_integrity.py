@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -11,11 +12,14 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 from common import (  # noqa: E402
+    append_candidate_sources,
     filter_new_sources,
     filter_relevant_sources,
+    load_json,
     load_records,
     normalize_title,
     score_relevance,
+    write_json,
 )
 from score_evidence import skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
@@ -93,6 +97,49 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertEqual(len(kept), 2)
         self.assertEqual(kept[0]["id"], f"{existing_id}-2")
         self.assertEqual(kept[1]["id"], f"{existing_id}-3")
+
+    def test_append_candidate_sources_preserves_earlier_batches(self) -> None:
+        week_one = [
+            {
+                "id": "src-alpha",
+                "title": "A unique candidate title alpha",
+                "url": "https://example.test/alpha",
+                "year": 2026,
+            },
+            {
+                "id": "src-beta",
+                "title": "A unique candidate title beta",
+                "url": "https://example.test/beta",
+                "year": 2026,
+            },
+        ]
+        week_two = [
+            # Duplicate of an existing record: must not be appended again.
+            {
+                "id": "src-alpha-dup",
+                "title": "A unique candidate title alpha",
+                "url": "https://example.test/alpha",
+                "year": 2026,
+            },
+            # Id collision with an existing record: must get a suffix.
+            {
+                "id": "src-beta",
+                "title": "A unique candidate title gamma",
+                "url": "https://example.test/gamma",
+                "year": 2026,
+            },
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "candidates-test.json"
+            write_json(path, week_one)
+            appended = append_candidate_sources(path, week_two)
+            self.assertEqual(len(appended), 1)
+            self.assertEqual(appended[0]["id"], "src-beta-2")
+            stored = load_json(path)
+            self.assertEqual(
+                [record["id"] for record in stored],
+                ["src-alpha", "src-beta", "src-beta-2"],
+            )
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(

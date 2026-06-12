@@ -9,10 +9,10 @@ from common import (
     RELEVANCE_THRESHOLD,
     ROOT,
     TODAY,
+    append_candidate_sources,
     filter_new_sources,
     filter_relevant_sources,
     slugify,
-    write_json,
 )
 
 
@@ -92,9 +92,9 @@ def main() -> int:
     candidates = [convert(work) for work in fetch(args.query, args.limit, args.mailto)]
     relevant = filter_relevant_sources(candidates, args.min_relevance)
     new_records = filter_new_sources(relevant)
-    write_json(ROOT / args.output, new_records)
+    appended = append_candidate_sources(ROOT / args.output, new_records)
     print(
-        f"Wrote {len(new_records)} OpenAlex candidates to {args.output} "
+        f"Appended {len(appended)} new OpenAlex candidates to {args.output} "
         f"({len(candidates) - len(relevant)} filtered as irrelevant)"
     )
     return 0
