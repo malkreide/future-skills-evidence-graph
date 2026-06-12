@@ -141,6 +141,27 @@ class DataIntegrityTests(unittest.TestCase):
                 ["src-alpha", "src-beta", "src-beta-2"],
             )
 
+    def test_append_candidate_sources_skips_empty_results(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            missing = Path(tmp) / "candidates-empty.json"
+            self.assertEqual(append_candidate_sources(missing, []), [])
+            self.assertFalse(missing.exists())
+
+            existing = Path(tmp) / "candidates-existing.json"
+            records = [
+                {
+                    "id": "src-alpha",
+                    "title": "A unique candidate title alpha",
+                    "url": "https://example.test/alpha",
+                    "year": 2026,
+                }
+            ]
+            write_json(existing, records)
+            before = existing.stat().st_mtime_ns
+            self.assertEqual(append_candidate_sources(existing, []), [])
+            self.assertEqual(existing.stat().st_mtime_ns, before)
+            self.assertEqual(load_json(existing), records)
+
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
             normalize_title("AI Literacy: Future-Skills in Education!"),

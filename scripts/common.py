@@ -117,7 +117,10 @@ def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> l
     Earlier import batches may still be awaiting review, so existing records
     must survive later runs. Records already present in the file (same
     identity or title/year) are skipped; id collisions with existing records
-    get a numeric suffix. Returns the records that were actually appended.
+    get a numeric suffix. When nothing new is appended the file is left
+    untouched — in particular, an import without results creates no empty
+    file that automation would stage and turn into a noise pull request.
+    Returns the records that were actually appended.
     """
     existing: list[dict[str, Any]] = []
     if path.exists():
@@ -148,7 +151,8 @@ def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> l
         known.add(identity)
         known.add(title_key)
         appended.append(source)
-    write_json(path, existing + appended)
+    if appended:
+        write_json(path, existing + appended)
     return appended
 
 
