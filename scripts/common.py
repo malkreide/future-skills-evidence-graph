@@ -71,17 +71,6 @@ def source_title_key(source: dict[str, Any]) -> str:
     return f"{normalize_title(str(source.get('title', '')))}::{year}"
 
 
-def known_source_keys(extra_records: list[dict[str, Any]] | None = None) -> set[str]:
-    sources = load_records("sources")
-    if extra_records:
-        sources.extend(extra_records)
-    keys: set[str] = set()
-    for source in sources:
-        keys.add(source_identity(source))
-        keys.add(source_title_key(source))
-    return keys
-
-
 def source_is_valid_candidate(source: dict[str, Any]) -> bool:
     return bool(
         source.get("title")
@@ -92,10 +81,15 @@ def source_is_valid_candidate(source: dict[str, Any]) -> bool:
 
 
 def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    known = known_source_keys()
+    existing = load_records("sources")
+    known: set[str] = set()
+    used_ids: set[str] = set()
+    for source in existing:
+        known.add(source_identity(source))
+        known.add(source_title_key(source))
+        used_ids.add(str(source.get("id", "")))
     seen: set[str] = set()
     new_records: list[dict[str, Any]] = []
-    id_counts: dict[str, int] = {}
     for source in candidates:
         if not source_is_valid_candidate(source):
             continue
@@ -103,10 +97,14 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
         title_key = source_title_key(source)
         if identity in known or title_key in known or identity in seen or title_key in seen:
             continue
-        source_id = str(source.get("id", "src-record"))
-        id_counts[source_id] = id_counts.get(source_id, 0) + 1
-        if id_counts[source_id] > 1:
-            source["id"] = f"{source_id}-{id_counts[source_id]}"
+        base_id = str(source.get("id", "src-record"))
+        source_id = base_id
+        suffix = 2
+        while source_id in used_ids:
+            source_id = f"{base_id}-{suffix}"
+            suffix += 1
+        source["id"] = source_id
+        used_ids.add(source_id)
         seen.add(identity)
         seen.add(title_key)
         new_records.append(source)
