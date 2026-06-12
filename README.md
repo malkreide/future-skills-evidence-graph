@@ -67,8 +67,10 @@ reproducible evidence path.
 ## Automation
 
 The weekly research workflow runs source importers for curated queries and opens a
-candidate pull request when new source metadata is discovered. The workflow does not
-publish active skills automatically.
+candidate pull request when new source metadata is discovered. While that pull
+request stays unmerged, later runs append to its `research/candidates` branch
+instead of opening duplicates. The workflow does not publish active skills
+automatically.
 
 Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
 and abstracts are matched against the MVP topic vocabulary and audience terms, the
