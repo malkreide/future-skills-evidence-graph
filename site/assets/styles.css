@@ -474,6 +474,10 @@ select {
   margin-bottom: 0;
 }
 
+.claim-contradicting {
+  border-left-color: #b3543c;
+}
+
 .claim p {
   margin: 0 0 8px;
 }

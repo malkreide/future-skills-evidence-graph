@@ -49,7 +49,7 @@
     "definition": "Ability to test claims, inspect evidence, identify bias, compare explanations, and resist unsupported authority from humans or machines.",
     "age_range": "10-18",
     "status": "active",
-    "evidence_score": 0.64,
+    "evidence_score": 0.57,
     "trend": "growing",
     "topics": [
       "critical thinking",
@@ -61,12 +61,14 @@
       "claim-labor-market-analytical-ai-resilience",
       "claim-data-literacy-digital-problem-solving"
     ],
-    "contradicting_claim_ids": [],
+    "contradicting_claim_ids": [
+      "claim-critical-thinking-domain-specific"
+    ],
     "framework_mapping_ids": [
       "map-critical-thinking-oecd",
       "map-critical-thinking-digcomp"
     ],
-    "uncertainty": "Strong directional support, but measurement varies across subjects and age groups.",
+    "uncertainty": "Strong directional support, but measurement varies across subjects and age groups; domain-specificity critiques question how far generic critical thinking transfers.",
     "change_log": [
       {
         "date": "2026-04-28",
@@ -76,6 +78,16 @@
       {
         "date": "2026-06-12",
         "change": "evidence_score 0.86 -> 0.64",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "Added contradicting claim on domain specificity",
+        "reason": "Willingham (2008) questions transfer of generic critical thinking instruction."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.64 -> 0.57",
         "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
