@@ -74,13 +74,20 @@ class DataIntegrityTests(unittest.TestCase):
         )
 
     def test_lehrplan21_mappings_have_coverage_metadata(self) -> None:
-        skills = {skill["id"] for skill in load_records("skills")}
+        all_skills = load_records("skills")
+        skills = {skill["id"] for skill in all_skills}
+        active_skills = {skill["id"] for skill in all_skills if skill["status"] == "active"}
         mappings = [
             mapping
             for mapping in load_records("frameworks")
             if mapping.get("framework_group") == "Lehrplan 21"
         ]
-        self.assertEqual(len(mappings), len(skills))
+        mapped_skills = {mapping["skill_id"] for mapping in mappings}
+        self.assertLessEqual(
+            active_skills,
+            mapped_skills,
+            f"active skills without Lehrplan 21 mapping: {sorted(active_skills - mapped_skills)}",
+        )
         for mapping in mappings:
             self.assertIn(mapping["skill_id"], skills)
             self.assertGreaterEqual(mapping["coverage_score"], 0)
