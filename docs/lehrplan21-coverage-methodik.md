@@ -63,10 +63,10 @@ kein eigenständiges Urteil:
 | ≥ 1.5 und < 2.4 | `teilweise` |
 | < 1.5 | `Zukunftsluecke` |
 
-Die Schwellen sind in `scripts/common.py` (`lp21_coverage_label`) definiert
-und werden vom Dashboard (`site/assets/app.js`) gespiegelt.
-`scripts/validate_data.py` prüft, dass gespeicherte Labels mit den
-Schwellen übereinstimmen. (Die Schreibweise `Zukunftsluecke` ohne Umlaut
+Die Schwellen sind ausschliesslich in `scripts/common.py`
+(`lp21_coverage_label`) definiert; das Dashboard zeigt nur das gespeicherte
+Label an. `scripts/validate_data.py` prüft, dass gespeicherte Labels mit
+den Schwellen übereinstimmen. (Die Schreibweise `Zukunftsluecke` ohne Umlaut
 ist beabsichtigt: die Datendateien sind ASCII-kodiert.)
 
 ## Grenzen und geplante Verbesserungen
