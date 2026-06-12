@@ -42,6 +42,7 @@
     "license": { "type": ["string", "null"] },
     "abstract": { "type": ["string", "null"] },
     "topics": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "relevance_score": { "type": "number", "minimum": 0, "maximum": 1 },
     "status": { "type": "string", "enum": ["candidate", "reviewed", "rejected"] },
     "created_at": { "type": "string" },
     "reviewed_at": { "type": ["string", "null"] }

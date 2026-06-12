@@ -10,7 +10,7 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from common import load_records, normalize_title  # noqa: E402
+from common import filter_relevant_sources, load_records, normalize_title, score_relevance  # noqa: E402
 from score_evidence import skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
@@ -43,6 +43,29 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertGreater(skill_score(narrow, claim_scores), skill_score(contradicted, claim_scores))
         self.assertEqual(skill_score(unsupported, claim_scores), 0.0)
         self.assertEqual(skill_score(broad, claim_scores), skill_score(broad, claim_scores))
+
+    def test_relevance_scoring_separates_scope_from_noise(self) -> None:
+        relevant = {
+            "title": "AI literacy and critical thinking for children in primary school",
+            "abstract": "We study how students develop competence with artificial intelligence.",
+        }
+        irrelevant = {
+            "title": "Lattice simulations of quantum chromodynamics",
+            "abstract": "We present improved gauge field configurations.",
+        }
+        relevant_score, relevant_topics = score_relevance(relevant)
+        irrelevant_score, irrelevant_topics = score_relevance(irrelevant)
+        self.assertGreaterEqual(relevant_score, 0.3)
+        self.assertIn("ai literacy", relevant_topics)
+        self.assertIn("critical thinking", relevant_topics)
+        self.assertLess(irrelevant_score, 0.3)
+        self.assertEqual(irrelevant_topics, [])
+
+        kept = filter_relevant_sources([dict(relevant), dict(irrelevant)])
+        self.assertEqual(len(kept), 1)
+        self.assertEqual(kept[0]["title"], relevant["title"])
+        self.assertEqual(kept[0]["relevance_score"], relevant_score)
+        self.assertEqual(kept[0]["topics"], relevant_topics)
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
