@@ -9,6 +9,7 @@ from typing import Any
 from jsonschema import Draft202012Validator, FormatChecker
 
 from common import ROOT, load_json, load_records, source_identity, source_title_key
+from score_evidence import claim_score, skill_score
 
 
 SCHEMA_FILES = {
@@ -100,8 +101,16 @@ def validate_repository() -> list[str]:
             if skill_id not in skill_ids:
                 errors.append(f"claims:{claim_id} contradicts missing skill {skill_id}")
 
+    sources_by_id = {source["id"]: source for source in sources}
+    claim_scores = {claim["id"]: claim_score(claim, sources_by_id) for claim in claims}
     for skill in skills:
         skill_id = skill.get("id", "<missing id>")
+        expected_score = skill_score(skill, claim_scores)
+        if skill.get("evidence_score") != expected_score:
+            errors.append(
+                f"skills:{skill_id} evidence_score {skill.get('evidence_score')!r} does not "
+                f"match computed {expected_score} (run scripts/score_evidence.py --write)"
+            )
         for claim_id in skill.get("supporting_claim_ids", []):
             if claim_id not in claim_ids:
                 errors.append(f"skills:{skill_id} references missing supporting claim {claim_id}")

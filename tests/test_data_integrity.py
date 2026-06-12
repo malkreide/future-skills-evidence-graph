@@ -11,6 +11,7 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 from common import load_records, normalize_title  # noqa: E402
+from score_evidence import skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
 
@@ -31,6 +32,17 @@ class DataIntegrityTests(unittest.TestCase):
                 for source_id in claim["source_ids"]:
                     self.assertIn(source_id, sources)
                     self.assertEqual(sources[source_id]["status"], "reviewed", source_id)
+
+    def test_skill_score_rewards_breadth_and_penalizes_contradictions(self) -> None:
+        claim_scores = {"c1": 0.8, "c2": 0.8, "c3": 0.6}
+        narrow = {"supporting_claim_ids": ["c1"]}
+        broad = {"supporting_claim_ids": ["c1", "c2"]}
+        contradicted = {"supporting_claim_ids": ["c1"], "contradicting_claim_ids": ["c3"]}
+        unsupported = {"supporting_claim_ids": []}
+        self.assertGreater(skill_score(broad, claim_scores), skill_score(narrow, claim_scores))
+        self.assertGreater(skill_score(narrow, claim_scores), skill_score(contradicted, claim_scores))
+        self.assertEqual(skill_score(unsupported, claim_scores), 0.0)
+        self.assertEqual(skill_score(broad, claim_scores), skill_score(broad, claim_scores))
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(

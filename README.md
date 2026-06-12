@@ -43,6 +43,23 @@ Each active skill must reference at least one supporting claim. Each claim must 
 at least one source. Candidate records may be incomplete, but must remain visibly marked
 as `candidate`.
 
+## Evidence scoring
+
+Skill `evidence_score` values are derived, not hand-set. `scripts/score_evidence.py`
+computes a claim score from source quality (60%) and stated evidence strength (40%),
+then aggregates supporting claim scores per skill: the mean is scaled by a breadth
+factor that rewards multiple independent claims (saturating at 6), minus a penalty
+for contradicting claims. After changing claims or sources, regenerate the stored
+scores with:
+
+```powershell
+python scripts/score_evidence.py --write
+```
+
+`scripts/validate_data.py` recomputes every skill score and fails when a stored
+value drifts from the formula, so the dashboard's trust signal always has a
+reproducible evidence path.
+
 ## Automation
 
 The weekly research workflow runs source importers for curated queries and opens a
