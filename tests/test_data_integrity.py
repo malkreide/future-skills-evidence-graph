@@ -21,7 +21,7 @@ from common import (  # noqa: E402
     score_relevance,
     write_json,
 )
-from score_evidence import skill_score  # noqa: E402
+from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
 
@@ -36,7 +36,8 @@ class DataIntegrityTests(unittest.TestCase):
             if skill["status"] != "active":
                 continue
             self.assertGreater(len(skill["supporting_claim_ids"]), 0, skill["id"])
-            for claim_id in skill["supporting_claim_ids"]:
+            referenced = skill["supporting_claim_ids"] + skill.get("contradicting_claim_ids", [])
+            for claim_id in referenced:
                 claim = claims[claim_id]
                 self.assertEqual(claim["status"], "reviewed", claim_id)
                 for source_id in claim["source_ids"]:
@@ -53,6 +54,26 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertGreater(skill_score(narrow, claim_scores), skill_score(contradicted, claim_scores))
         self.assertEqual(skill_score(unsupported, claim_scores), 0.0)
         self.assertEqual(skill_score(broad, claim_scores), skill_score(broad, claim_scores))
+
+    def test_scoring_excludes_unreviewed_claims(self) -> None:
+        sources = {"src-1": {"id": "src-1", "source_type": "systematic_review"}}
+        claims = [
+            {"id": "c-reviewed", "status": "reviewed", "evidence_strength": "strong", "source_ids": ["src-1"]},
+            {"id": "c-candidate", "status": "candidate", "evidence_strength": "strong", "source_ids": ["src-1"]},
+            {"id": "c-rejected", "status": "rejected", "evidence_strength": "strong", "source_ids": ["src-1"]},
+        ]
+        scores = reviewed_claim_scores(claims, sources)
+        self.assertEqual(set(scores), {"c-reviewed"})
+
+        clean = {"supporting_claim_ids": ["c-reviewed"]}
+        inflated = {"supporting_claim_ids": ["c-reviewed", "c-candidate", "c-rejected"]}
+        self.assertEqual(skill_score(inflated, scores), skill_score(clean, scores))
+
+        contradicted = {
+            "supporting_claim_ids": ["c-reviewed"],
+            "contradicting_claim_ids": ["c-candidate"],
+        }
+        self.assertEqual(skill_score(contradicted, scores), skill_score(clean, scores))
 
     def test_relevance_scoring_separates_scope_from_noise(self) -> None:
         relevant = {
