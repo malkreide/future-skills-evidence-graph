@@ -10,7 +10,13 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from common import filter_relevant_sources, load_records, normalize_title, score_relevance  # noqa: E402
+from common import (  # noqa: E402
+    filter_new_sources,
+    filter_relevant_sources,
+    load_records,
+    normalize_title,
+    score_relevance,
+)
 from score_evidence import skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
@@ -66,6 +72,27 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertEqual(kept[0]["title"], relevant["title"])
         self.assertEqual(kept[0]["relevance_score"], relevant_score)
         self.assertEqual(kept[0]["topics"], relevant_topics)
+
+    def test_filter_new_sources_avoids_id_collisions(self) -> None:
+        existing_id = load_records("sources")[0]["id"]
+        candidates = [
+            {
+                "id": existing_id,
+                "title": "A unique candidate title alpha",
+                "url": "https://example.test/alpha",
+                "year": 2026,
+            },
+            {
+                "id": existing_id,
+                "title": "A unique candidate title beta",
+                "url": "https://example.test/beta",
+                "year": 2026,
+            },
+        ]
+        kept = filter_new_sources(candidates)
+        self.assertEqual(len(kept), 2)
+        self.assertEqual(kept[0]["id"], f"{existing_id}-2")
+        self.assertEqual(kept[1]["id"], f"{existing_id}-3")
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
