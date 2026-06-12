@@ -24,6 +24,7 @@ skill can become active without an evidence path.
 ## Local validation
 
 ```powershell
+pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python -m unittest discover -s tests
 ```

@@ -6,104 +6,39 @@ import sys
 from collections import Counter, defaultdict
 from typing import Any
 
-from common import load_records, source_identity, source_title_key
+from jsonschema import Draft202012Validator, FormatChecker
+
+from common import ROOT, load_json, load_records, source_identity, source_title_key
 
 
-REQUIRED = {
-    "sources": {
-        "id",
-        "title",
-        "year",
-        "source_type",
-        "publisher",
-        "url",
-        "topics",
-        "status",
-        "created_at",
-    },
-    "claims": {
-        "id",
-        "statement",
-        "source_ids",
-        "text_anchor",
-        "context",
-        "age_range",
-        "outcome",
-        "evidence_type",
-        "evidence_strength",
-        "supports_skill_ids",
-        "status",
-        "created_at",
-    },
-    "skills": {
-        "id",
-        "name",
-        "definition",
-        "age_range",
-        "status",
-        "evidence_score",
-        "trend",
-        "supporting_claim_ids",
-        "contradicting_claim_ids",
-        "framework_mapping_ids",
-        "change_log",
-        "created_at",
-    },
-    "frameworks": {
-        "id",
-        "skill_id",
-        "framework",
-        "framework_url",
-        "competency",
-        "mapping_strength",
-        "rationale",
-        "created_at",
-    },
-}
-
-ENUMS = {
-    "sources.source_type": {
-        "framework",
-        "policy_report",
-        "peer_reviewed_article",
-        "systematic_review",
-        "conceptual_review",
-        "working_paper",
-        "book",
-        "dataset",
-        "web_resource",
-    },
-    "sources.status": {"candidate", "reviewed", "rejected"},
-    "claims.evidence_type": {
-        "framework_synthesis",
-        "policy_synthesis",
-        "empirical_study",
-        "systematic_review",
-        "conceptual_review",
-        "labor_market_forecast",
-        "expert_consensus",
-    },
-    "claims.evidence_strength": {"low", "moderate", "strong"},
-    "claims.status": {"candidate", "reviewed", "rejected"},
-    "skills.status": {"candidate", "active", "deprecated"},
-    "skills.trend": {"emerging", "growing", "stable", "declining"},
-    "frameworks.mapping_strength": {"weak", "moderate", "strong"},
-    "frameworks.coverage_label": {"gut abgedeckt", "teilweise", "Zukunftsluecke"},
+SCHEMA_FILES = {
+    "sources": "source.schema.json",
+    "claims": "claim.schema.json",
+    "skills": "skill.schema.json",
+    "frameworks": "framework_mapping.schema.json",
 }
 
 
-def _require_fields(kind: str, records: list[dict[str, Any]], errors: list[str]) -> None:
+def _load_validators() -> dict[str, Draft202012Validator]:
+    validators: dict[str, Draft202012Validator] = {}
+    for kind, filename in SCHEMA_FILES.items():
+        schema = load_json(ROOT / "schemas" / filename)
+        Draft202012Validator.check_schema(schema)
+        validators[kind] = Draft202012Validator(schema, format_checker=FormatChecker())
+    return validators
+
+
+def _check_schema(
+    kind: str,
+    validator: Draft202012Validator,
+    records: list[dict[str, Any]],
+    errors: list[str],
+) -> None:
     for record in records:
         record_id = record.get("id", "<missing id>")
-        missing = sorted(REQUIRED[kind] - set(record))
-        if missing:
-            errors.append(f"{kind}:{record_id} missing required fields: {', '.join(missing)}")
-        for field, allowed in ENUMS.items():
-            enum_kind, enum_field = field.split(".", 1)
-            if enum_kind == kind and enum_field in record and record[enum_field] not in allowed:
-                errors.append(
-                    f"{kind}:{record_id} has invalid {enum_field}: {record[enum_field]!r}"
-                )
+        for error in sorted(validator.iter_errors(record), key=lambda e: list(e.absolute_path)):
+            path = ".".join(str(part) for part in error.absolute_path) or "<record>"
+            errors.append(f"{kind}:{record_id} {path}: {error.message}")
 
 
 def _check_unique(kind: str, records: list[dict[str, Any]], errors: list[str]) -> None:
@@ -120,12 +55,6 @@ def _check_sources(sources: list[dict[str, Any]], errors: list[str]) -> None:
         source_id = str(source.get("id", "<missing id>"))
         identity_groups[source_identity(source)].append(source_id)
         title_groups[source_title_key(source)].append(source_id)
-        year = source.get("year")
-        if not isinstance(year, int) or year < 1900 or year > 2100:
-            errors.append(f"sources:{source_id} has invalid year: {year!r}")
-        topics = source.get("topics")
-        if not isinstance(topics, list) or not topics:
-            errors.append(f"sources:{source_id} must have at least one topic")
     for key, ids in identity_groups.items():
         if key and len(ids) > 1:
             errors.append(f"sources duplicate identity {key}: {', '.join(ids)}")
@@ -136,6 +65,7 @@ def _check_sources(sources: list[dict[str, Any]], errors: list[str]) -> None:
 
 def validate_repository() -> list[str]:
     errors: list[str] = []
+    validators = _load_validators()
     sources = load_records("sources")
     claims = load_records("claims")
     skills = load_records("skills")
@@ -148,7 +78,7 @@ def validate_repository() -> list[str]:
         "frameworks": mappings,
     }
     for kind, records in collections.items():
-        _require_fields(kind, records, errors)
+        _check_schema(kind, validators[kind], records, errors)
         _check_unique(kind, records, errors)
 
     _check_sources(sources, errors)
@@ -172,11 +102,6 @@ def validate_repository() -> list[str]:
 
     for skill in skills:
         skill_id = skill.get("id", "<missing id>")
-        score = skill.get("evidence_score")
-        if not isinstance(score, (int, float)) or not 0 <= score <= 1:
-            errors.append(f"skills:{skill_id} evidence_score must be between 0 and 1")
-        if skill.get("status") == "active" and not skill.get("supporting_claim_ids"):
-            errors.append(f"skills:{skill_id} is active without supporting claims")
         for claim_id in skill.get("supporting_claim_ids", []):
             if claim_id not in claim_ids:
                 errors.append(f"skills:{skill_id} references missing supporting claim {claim_id}")
@@ -192,17 +117,6 @@ def validate_repository() -> list[str]:
         skill_id = mapping.get("skill_id")
         if skill_id not in skill_ids:
             errors.append(f"frameworks:{mapping_id} references missing skill {skill_id}")
-        if mapping.get("framework_group") == "Lehrplan 21":
-            coverage_score = mapping.get("coverage_score")
-            if not isinstance(coverage_score, (int, float)) or not 0 <= coverage_score <= 3:
-                errors.append(f"frameworks:{mapping_id} coverage_score must be between 0 and 3")
-            cycles = mapping.get("cycles")
-            if not isinstance(cycles, list) or not cycles:
-                errors.append(f"frameworks:{mapping_id} must define at least one Lehrplan 21 cycle")
-            if not mapping.get("curriculum_area"):
-                errors.append(f"frameworks:{mapping_id} must define curriculum_area")
-            if not mapping.get("evidence_path"):
-                errors.append(f"frameworks:{mapping_id} must define evidence_path")
 
     return errors
 
