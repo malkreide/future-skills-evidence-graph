@@ -14,6 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Restore pending candidates from open pull request branch
+        run: |
+          # Candidates from an earlier run may still sit unmerged on the
+          # research/candidates branch. Restoring them lets the importers
+          # deduplicate against them instead of importing them again.
+          if git fetch origin research/candidates; then
+            git checkout FETCH_HEAD -- 'data/sources/candidates-*.json' || echo "No pending candidate files."
+          fi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -44,7 +52,7 @@ jobs:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
       - name: Validate candidates
         run: python scripts/validate_data.py
-      - name: Open candidate pull request
+      - name: Open or update candidate pull request
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -55,15 +63,22 @@ jobs:
             echo "No candidate changes."
             exit 0
           fi
-          branch="research/candidates-${GITHUB_RUN_ID}"
+          branch="research/candidates"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$branch"
+          # The branch is rebuilt from the current base on every run, so the
+          # force push keeps the open pull request based on the latest base
+          # while preserving its pending candidates (restored above).
+          git checkout -B "$branch"
           git commit -m "chore: add research source candidates"
-          git push origin "$branch"
-          gh pr create \
-            --title "chore: add research source candidates" \
-            --body "Automated candidate import. These records remain candidates until reviewed." \
-            --base "${GITHUB_REF_NAME}" \
-            --head "$branch"
+          git push --force origin "$branch"
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --title "chore: add research source candidates" \
+              --body "Automated candidate import. These records remain candidates until reviewed." \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch"
+          else
+            echo "Updated existing pull request for $branch."
+          fi
 
