@@ -66,6 +66,30 @@ The weekly research workflow runs source importers for curated queries and opens
 candidate pull request when new source metadata is discovered. The workflow does not
 publish active skills automatically.
 
+Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
+and abstracts are matched against the MVP topic vocabulary and audience terms, the
+resulting `relevance_score` (0..1) is stored on each candidate, and topics are
+derived from the matched vocabulary instead of being hardcoded. Candidates below
+the threshold (default 0.3, tunable per importer via `--min-relevance`) are dropped
+before deduplication.
+
+## Roadmap
+
+The master prompt (`MASTER_PROMPT.md`) defines a nine-step pipeline. The MVP
+deliberately implements a subset; the remaining steps are open:
+
+| Step | Status |
+| --- | --- |
+| 1. Discover and deduplicate sources | Implemented (`ingest_*.py`, `deduplicate_sources.py`) |
+| 2. Classify relevance | Heuristic keyword/abstract score; no trained classifier yet |
+| 3. Extract structured claims | Open — `extract_claim_templates.py` only generates templates for manual completion |
+| 4. Link claims to sources and text anchors | Open — anchors are curated by hand |
+| 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |
+| 6. Cluster claims into skill candidates | Open — skills are curated by hand |
+| 7. Map skill candidates to frameworks | Implemented as curated data (`data/frameworks/`) |
+| 8. Create changes as pull requests | Implemented (weekly research workflow) |
+| 9. Show reviewed skills in the dashboard | Implemented (`build_site.py`, GitHub Pages) |
+
 Optional environment variables:
 
 - `SEMANTIC_SCHOLAR_API_KEY`: raises Semantic Scholar rate limits.

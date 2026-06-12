@@ -5,7 +5,15 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
-from common import ROOT, TODAY, filter_new_sources, slugify, write_json
+from common import (
+    RELEVANCE_THRESHOLD,
+    ROOT,
+    TODAY,
+    filter_new_sources,
+    filter_relevant_sources,
+    slugify,
+    write_json,
+)
 
 
 BASE_URL = "https://api.openalex.org/works"
@@ -65,7 +73,7 @@ def convert(work: dict[str, Any]) -> dict[str, Any]:
         "source_type": source_type,
         "license": ((work.get("primary_location") or {}).get("license")),
         "abstract": inverted_index_to_text(work.get("abstract_inverted_index")),
-        "topics": ["candidate", "education", "ai"],
+        "topics": ["education"],
         "status": "candidate",
         "created_at": TODAY,
         "reviewed_at": None,
@@ -78,12 +86,17 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=25)
     parser.add_argument("--output", default="data/sources/candidates-openalex.json")
     parser.add_argument("--mailto", default=None)
+    parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
     args = parser.parse_args()
 
     candidates = [convert(work) for work in fetch(args.query, args.limit, args.mailto)]
-    new_records = filter_new_sources(candidates)
+    relevant = filter_relevant_sources(candidates, args.min_relevance)
+    new_records = filter_new_sources(relevant)
     write_json(ROOT / args.output, new_records)
-    print(f"Wrote {len(new_records)} OpenAlex candidates to {args.output}")
+    print(
+        f"Wrote {len(new_records)} OpenAlex candidates to {args.output} "
+        f"({len(candidates) - len(relevant)} filtered as irrelevant)"
+    )
     return 0
 
 

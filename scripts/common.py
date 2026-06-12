@@ -116,3 +116,106 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
 def env_or_none(name: str) -> str | None:
     value = os.getenv(name)
     return value if value else None
+
+
+# Topic vocabulary derived from the MVP scope in MASTER_PROMPT.md. Keys become
+# the candidate's topics; keyword variants are matched against title and abstract.
+TOPIC_KEYWORDS = {
+    "ai literacy": (
+        "ai literacy",
+        "artificial intelligence literacy",
+        "artificial intelligence",
+        "machine learning",
+        "generative ai",
+        "large language model",
+        "chatgpt",
+    ),
+    "critical thinking": ("critical thinking", "epistemic", "misinformation", "fact checking"),
+    "digital competence": ("digital competence", "digital literacy", "digital skills", "media literacy"),
+    "data literacy": ("data literacy", "data science education"),
+    "creativity": ("creativity", "creative thinking", "creative problem solving"),
+    "collaboration": ("collaboration", "collaborative", "teamwork", "cooperative learning"),
+    "self-regulation": (
+        "self-regulated",
+        "self-regulation",
+        "metacognition",
+        "learning to learn",
+        "lifelong learning",
+    ),
+    "ethics": ("ethics", "ethical", "responsible ai", "privacy", "fairness"),
+    "systems thinking": ("systems thinking", "computational thinking", "complexity"),
+    "resilience": ("resilience", "adaptability"),
+    "future skills": (
+        "future skills",
+        "21st century skills",
+        "twenty-first century skills",
+        "future of work",
+        "key competencies",
+    ),
+}
+
+AUDIENCE_KEYWORDS = (
+    "child",
+    "children",
+    "adolescent",
+    "youth",
+    "student",
+    "pupil",
+    "k-12",
+    "school",
+    "education",
+    "teacher",
+    "classroom",
+    "curriculum",
+    "learner",
+)
+
+# Default minimum relevance for imported candidates: at least one topic match
+# in the title, or a topic plus audience match in the abstract.
+RELEVANCE_THRESHOLD = 0.3
+
+
+def _contains(text: str, keyword: str) -> bool:
+    return f" {normalize_title(keyword)} " in text
+
+
+def score_relevance(source: dict[str, Any]) -> tuple[float, list[str]]:
+    """Score how relevant a source is to the project scope (0..1).
+
+    Each distinct topic matched in the title adds 0.3 (0.15 if only in the
+    abstract), capped at 0.7. An audience term adds 0.3 from the title or
+    0.15 from the abstract. Returns the score and the matched topics.
+    """
+    title = f" {normalize_title(str(source.get('title') or ''))} "
+    abstract = f" {normalize_title(str(source.get('abstract') or ''))} "
+    topics: list[str] = []
+    topic_component = 0.0
+    for topic, keywords in TOPIC_KEYWORDS.items():
+        if any(_contains(title, keyword) for keyword in keywords):
+            topics.append(topic)
+            topic_component += 0.3
+        elif any(_contains(abstract, keyword) for keyword in keywords):
+            topics.append(topic)
+            topic_component += 0.15
+    audience_component = 0.0
+    if any(_contains(title, keyword) for keyword in AUDIENCE_KEYWORDS):
+        audience_component = 0.3
+    elif any(_contains(abstract, keyword) for keyword in AUDIENCE_KEYWORDS):
+        audience_component = 0.15
+    score = min(0.7, topic_component) + audience_component
+    return round(min(1.0, score), 2), topics
+
+
+def filter_relevant_sources(
+    candidates: list[dict[str, Any]], min_relevance: float = RELEVANCE_THRESHOLD
+) -> list[dict[str, Any]]:
+    """Drop candidates below the relevance threshold and derive their topics."""
+    kept: list[dict[str, Any]] = []
+    for source in candidates:
+        score, topics = score_relevance(source)
+        if score < min_relevance:
+            continue
+        source["relevance_score"] = score
+        source["topics"] = topics or ["education"]
+        kept.append(source)
+    return kept

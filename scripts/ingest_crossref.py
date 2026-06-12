@@ -5,7 +5,15 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
-from common import ROOT, TODAY, filter_new_sources, slugify, write_json
+from common import (
+    RELEVANCE_THRESHOLD,
+    ROOT,
+    TODAY,
+    filter_new_sources,
+    filter_relevant_sources,
+    slugify,
+    write_json,
+)
 
 
 BASE_URL = "https://api.crossref.org/works"
@@ -58,7 +66,7 @@ def convert(item: dict[str, Any]) -> dict[str, Any]:
         "source_type": source_type,
         "license": None,
         "abstract": None,
-        "topics": ["candidate", "education", "ai"],
+        "topics": ["education"],
         "status": "candidate",
         "created_at": TODAY,
         "reviewed_at": None,
@@ -70,12 +78,17 @@ def main() -> int:
     parser.add_argument("--query", required=True)
     parser.add_argument("--limit", type=int, default=25)
     parser.add_argument("--output", default="data/sources/candidates-crossref.json")
+    parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
     args = parser.parse_args()
 
     candidates = [convert(item) for item in fetch(args.query, args.limit)]
-    new_records = filter_new_sources(candidates)
+    relevant = filter_relevant_sources(candidates, args.min_relevance)
+    new_records = filter_new_sources(relevant)
     write_json(ROOT / args.output, new_records)
-    print(f"Wrote {len(new_records)} Crossref candidates to {args.output}")
+    print(
+        f"Wrote {len(new_records)} Crossref candidates to {args.output} "
+        f"({len(candidates) - len(relevant)} filtered as irrelevant)"
+    )
     return 0
 
 
