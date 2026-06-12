@@ -5,9 +5,13 @@
     "definition": "Ability to understand, use, question, and shape AI systems with awareness of capabilities, limits, risks, and human purpose.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.91,
+    "evidence_score": 0.79,
     "trend": "growing",
-    "topics": ["ai literacy", "digital competence", "ethics"],
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "ethics"
+    ],
     "supporting_claim_ids": [
       "claim-ai-literacy-human-centered",
       "claim-k12-ai-big-ideas",
@@ -17,17 +21,25 @@
       "claim-ai-literacy-multidimensional"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-ai-literacy-unesco-students", "map-ai-literacy-digcomp"],
+    "framework_mapping_ids": [
+      "map-ai-literacy-unesco-students",
+      "map-ai-literacy-digcomp"
+    ],
     "uncertainty": "Evidence strongly supports AI literacy as a broad capability, but age-specific progressions still need more empirical validation.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Supported by UNESCO framework, K-12 AI guidance, AI literacy review, and labor-market signals."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.91 -> 0.79",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-critical-thinking",
@@ -35,26 +47,38 @@
     "definition": "Ability to test claims, inspect evidence, identify bias, compare explanations, and resist unsupported authority from humans or machines.",
     "age_range": "10-18",
     "status": "active",
-    "evidence_score": 0.86,
+    "evidence_score": 0.64,
     "trend": "growing",
-    "topics": ["critical thinking", "misinformation", "ai outputs"],
+    "topics": [
+      "critical thinking",
+      "misinformation",
+      "ai outputs"
+    ],
     "supporting_claim_ids": [
       "claim-critical-thinking-ai-outputs",
       "claim-labor-market-analytical-ai-resilience",
       "claim-data-literacy-digital-problem-solving"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-critical-thinking-oecd", "map-critical-thinking-digcomp"],
+    "framework_mapping_ids": [
+      "map-critical-thinking-oecd",
+      "map-critical-thinking-digcomp"
+    ],
     "uncertainty": "Strong directional support, but measurement varies across subjects and age groups.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "AI-generated content and labor-market forecasts both increase need for evidence judgment."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.86 -> 0.64",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-data-literacy",
@@ -62,25 +86,36 @@
     "definition": "Ability to interpret, question, communicate, and use data-informed claims while understanding uncertainty and model limits.",
     "age_range": "10-18",
     "status": "active",
-    "evidence_score": 0.78,
+    "evidence_score": 0.66,
     "trend": "growing",
-    "topics": ["data", "ai", "digital problem solving"],
+    "topics": [
+      "data",
+      "ai",
+      "digital problem solving"
+    ],
     "supporting_claim_ids": [
       "claim-digital-competence-information-literacy",
       "claim-data-literacy-digital-problem-solving"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-data-literacy-digcomp"],
+    "framework_mapping_ids": [
+      "map-data-literacy-digcomp"
+    ],
     "uncertainty": "Clear framework support; needs more child-centered evidence on effective teaching progressions.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Mapped from digital competence and AI/big-data skill signals."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.78 -> 0.66",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-digital-media-literacy",
@@ -88,25 +123,36 @@
     "definition": "Ability to find, evaluate, create, communicate, and act safely with digital information and media.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.83,
+    "evidence_score": 0.64,
     "trend": "stable",
-    "topics": ["digital literacy", "media literacy", "online safety"],
+    "topics": [
+      "digital literacy",
+      "media literacy",
+      "online safety"
+    ],
     "supporting_claim_ids": [
       "claim-digital-competence-information-literacy",
       "claim-equity-foundational-learning"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-media-literacy-digcomp"],
+    "framework_mapping_ids": [
+      "map-media-literacy-digcomp"
+    ],
     "uncertainty": "Well-established as a broad capability; AI-specific media literacy needs continuous updating.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Strong alignment with DigComp and education equity requirements."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.83 -> 0.64",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-ethical-technology-judgment",
@@ -114,9 +160,13 @@
     "definition": "Ability to reason about privacy, fairness, safety, accountability, human rights, and tradeoffs when technology affects people.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.84,
+    "evidence_score": 0.72,
     "trend": "growing",
-    "topics": ["ethics", "rights", "ai governance"],
+    "topics": [
+      "ethics",
+      "rights",
+      "ai governance"
+    ],
     "supporting_claim_ids": [
       "claim-ai-child-rights-ethics",
       "claim-trustworthy-ai-risk-reasoning",
@@ -124,17 +174,25 @@
       "claim-ai-literacy-multidimensional"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-ethics-unesco", "map-ethics-unicef"],
+    "framework_mapping_ids": [
+      "map-ethics-unesco",
+      "map-ethics-unicef"
+    ],
     "uncertainty": "Policy evidence is strong; classroom assessment evidence is less mature.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Supported by child-rights, AI ethics, and trustworthy AI frameworks."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.84 -> 0.72",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-self-regulated-learning",
@@ -142,9 +200,13 @@
     "definition": "Ability to set goals, choose strategies, monitor progress, reflect, and adapt learning behavior over time.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.88,
+    "evidence_score": 0.7,
     "trend": "stable",
-    "topics": ["metacognition", "learning to learn", "agency"],
+    "topics": [
+      "metacognition",
+      "learning to learn",
+      "agency"
+    ],
     "supporting_claim_ids": [
       "claim-student-agency-transformative-competencies",
       "claim-learning-science-metacognition",
@@ -152,17 +214,24 @@
       "claim-equity-foundational-learning"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-self-regulation-oecd"],
+    "framework_mapping_ids": [
+      "map-self-regulation-oecd"
+    ],
     "uncertainty": "Well-supported generally; AI-mediated self-regulation remains an emerging subtopic.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Grounded in learning science and future education frameworks."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.88 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-creative-problem-solving",
@@ -170,26 +239,37 @@
     "definition": "Ability to generate, refine, test, and communicate useful ideas when facing open-ended problems.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.79,
+    "evidence_score": 0.64,
     "trend": "growing",
-    "topics": ["creative thinking", "problem solving", "innovation"],
+    "topics": [
+      "creative thinking",
+      "problem solving",
+      "innovation"
+    ],
     "supporting_claim_ids": [
       "claim-student-agency-transformative-competencies",
       "claim-creative-thinking-assessable",
       "claim-future-schools-technology-human-skills"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-creative-thinking-oecd"],
+    "framework_mapping_ids": [
+      "map-creative-thinking-oecd"
+    ],
     "uncertainty": "Good policy and assessment support; domain-specific transfer needs careful interpretation.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Connected to OECD transformative competencies and PISA creative thinking work."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.79 -> 0.64",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-collaborative-problem-solving",
@@ -197,25 +277,36 @@
     "definition": "Ability to coordinate with others, share knowledge, resolve tension, and make progress on complex shared problems.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.76,
+    "evidence_score": 0.56,
     "trend": "stable",
-    "topics": ["collaboration", "communication", "civic learning"],
+    "topics": [
+      "collaboration",
+      "communication",
+      "civic learning"
+    ],
     "supporting_claim_ids": [
       "claim-collaboration-social-contract",
       "claim-future-schools-technology-human-skills"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-collaboration-unesco-futures"],
+    "framework_mapping_ids": [
+      "map-collaboration-unesco-futures"
+    ],
     "uncertainty": "Broadly supported, but evidence quality depends on context and assessment method.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Supported by futures-of-education and future-school model sources."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.76 -> 0.56",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-systems-thinking",
@@ -223,26 +314,37 @@
     "definition": "Ability to understand relationships, feedback loops, incentives, stakeholders, and second-order effects in complex systems.",
     "age_range": "10-18",
     "status": "active",
-    "evidence_score": 0.74,
+    "evidence_score": 0.68,
     "trend": "growing",
-    "topics": ["complexity", "ai systems", "future skills"],
+    "topics": [
+      "complexity",
+      "ai systems",
+      "future skills"
+    ],
     "supporting_claim_ids": [
       "claim-k12-ai-big-ideas",
       "claim-trustworthy-ai-risk-reasoning",
       "claim-student-agency-transformative-competencies"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-systems-thinking-oecd"],
+    "framework_mapping_ids": [
+      "map-systems-thinking-oecd"
+    ],
     "uncertainty": "Strong conceptual fit for AI and future education; more empirical K-12 evidence should be added.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "AI systems and transformative competencies both require reasoning about interdependencies."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.74 -> 0.68",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "skill-resilience-adaptability",
@@ -250,25 +352,36 @@
     "definition": "Ability to respond constructively to uncertainty, change, error, feedback, and shifting technological conditions.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.72,
+    "evidence_score": 0.63,
     "trend": "growing",
-    "topics": ["resilience", "adaptability", "lifelong learning"],
+    "topics": [
+      "resilience",
+      "adaptability",
+      "lifelong learning"
+    ],
     "supporting_claim_ids": [
       "claim-labor-market-analytical-ai-resilience",
       "claim-student-agency-transformative-competencies"
     ],
     "contradicting_claim_ids": [],
-    "framework_mapping_ids": ["map-resilience-wef", "map-resilience-oecd"],
+    "framework_mapping_ids": [
+      "map-resilience-wef",
+      "map-resilience-oecd"
+    ],
     "uncertainty": "Labor-market signal is clear, but child-development and school intervention evidence should be expanded.",
     "change_log": [
       {
         "date": "2026-04-28",
         "change": "Created active seed skill",
         "reason": "Supported by future jobs and transformative competence signals."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "evidence_score 0.72 -> 0.63",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-04-28"
+    "updated_at": "2026-06-12"
   }
 ]
-
