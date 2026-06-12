@@ -12,7 +12,7 @@ review through pull requests.
 
 - Versioned data in `data/`
 - JSON Schemas in `schemas/`
-- Python standard-library validation and importer scripts in `scripts/`
+- Python validation (JSON Schema via `jsonschema`) and standard-library importer scripts in `scripts/`
 - Static dashboard in `site/`
 - GitHub Actions for validation, candidate research import, and GitHub Pages deploy
 - Governance templates for source suggestions, claim corrections, and new skills
@@ -21,6 +21,7 @@ review through pull requests.
 ## Local commands
 
 ```powershell
+pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python scripts/build_site.py
 python -m unittest discover -s tests

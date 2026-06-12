@@ -46,6 +46,13 @@
     "created_at": { "type": "string" },
     "updated_at": { "type": "string" }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "if": {
+    "properties": { "status": { "const": "active" } },
+    "required": ["status"]
+  },
+  "then": {
+    "properties": { "supporting_claim_ids": { "minItems": 1 } }
+  }
 }
 

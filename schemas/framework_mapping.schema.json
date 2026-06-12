@@ -35,5 +35,17 @@
     "evidence_path": { "type": "string" },
     "created_at": { "type": "string" }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "if": {
+    "properties": { "framework_group": { "const": "Lehrplan 21" } },
+    "required": ["framework_group"]
+  },
+  "then": {
+    "required": ["coverage_score", "coverage_label", "cycles", "curriculum_area", "evidence_path"],
+    "properties": {
+      "cycles": { "minItems": 1 },
+      "curriculum_area": { "minLength": 1 },
+      "evidence_path": { "minLength": 1 }
+    }
+  }
 }
