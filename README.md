@@ -28,7 +28,8 @@ python -m unittest discover -s tests
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000/site/`.
+Then open `http://localhost:8000/public/`. The dashboard reads all data from the
+generated `data/index.json`, so rerun `build_site.py` after changing data files.
 
 ## Data model
 

@@ -20,6 +20,7 @@
   "properties": {
     "id": { "type": "string", "pattern": "^skill-[a-z0-9-]+$" },
     "name": { "type": "string", "minLength": 3 },
+    "short_label": { "type": "string", "minLength": 1, "maxLength": 12 },
     "definition": { "type": "string", "minLength": 12 },
     "age_range": { "type": "string" },
     "status": { "type": "string", "enum": ["candidate", "active", "deprecated"] },
