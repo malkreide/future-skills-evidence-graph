@@ -111,6 +111,47 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
     return new_records
 
 
+def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Append candidates to *path* instead of rewriting it from scratch.
+
+    Earlier import batches may still be awaiting review, so existing records
+    must survive later runs. Records already present in the file (same
+    identity or title/year) are skipped; id collisions with existing records
+    get a numeric suffix. Returns the records that were actually appended.
+    """
+    existing: list[dict[str, Any]] = []
+    if path.exists():
+        payload = load_json(path)
+        if not isinstance(payload, list):
+            raise ValueError(f"{path} must contain a JSON array")
+        existing = payload
+    known: set[str] = set()
+    used_ids: set[str] = set()
+    for source in existing:
+        known.add(source_identity(source))
+        known.add(source_title_key(source))
+        used_ids.add(str(source.get("id", "")))
+    appended: list[dict[str, Any]] = []
+    for source in new_records:
+        identity = source_identity(source)
+        title_key = source_title_key(source)
+        if identity in known or title_key in known:
+            continue
+        base_id = str(source.get("id", "src-record"))
+        source_id = base_id
+        suffix = 2
+        while source_id in used_ids:
+            source_id = f"{base_id}-{suffix}"
+            suffix += 1
+        source["id"] = source_id
+        used_ids.add(source_id)
+        known.add(identity)
+        known.add(title_key)
+        appended.append(source)
+    write_json(path, existing + appended)
+    return appended
+
+
 def env_or_none(name: str) -> str | None:
     value = os.getenv(name)
     return value if value else None
