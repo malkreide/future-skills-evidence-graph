@@ -16,7 +16,7 @@ from common import (
     source_identity,
     source_title_key,
 )
-from score_evidence import claim_score, skill_score
+from score_evidence import reviewed_claim_scores, skill_score
 
 
 SCHEMA_FILES = {
@@ -109,7 +109,7 @@ def validate_repository() -> list[str]:
                 errors.append(f"claims:{claim_id} contradicts missing skill {skill_id}")
 
     sources_by_id = {source["id"]: source for source in sources}
-    claim_scores = {claim["id"]: claim_score(claim, sources_by_id) for claim in claims}
+    claim_scores = reviewed_claim_scores(claims, sources_by_id)
     for skill in skills:
         skill_id = skill.get("id", "<missing id>")
         expected_score = skill_score(skill, claim_scores)

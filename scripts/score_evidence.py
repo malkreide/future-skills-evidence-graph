@@ -1,11 +1,13 @@
 """Deterministic evidence scoring for claims and skills.
 
 Claim scores combine source quality (60%) with the claim's stated
-evidence strength (40%). Skill scores are derived from the supporting
-claim scores: the mean claim score is scaled by a breadth factor that
-rewards multiple independent claims (saturating at BREADTH_SATURATION),
-minus a penalty for contradicting claims. This keeps the dashboard's
-central trust signal on a reproducible evidence path.
+evidence strength (40%). Only reviewed claims are scored: candidate or
+rejected claims neither support nor penalize a skill. Skill scores are
+derived from the supporting claim scores: the mean claim score is
+scaled by a breadth factor that rewards multiple independent claims
+(saturating at BREADTH_SATURATION), minus a penalty for contradicting
+claims. This keeps the dashboard's central trust signal on a
+reproducible evidence path.
 
 validate_data.py recomputes these values and fails when stored
 evidence_score values drift from the formula. Run with --write to
@@ -52,9 +54,25 @@ def claim_score(claim: dict[str, Any], sources: dict[str, dict[str, Any]]) -> fl
     return round((source_component * 0.6) + (claim_component * 0.4), 3)
 
 
+def reviewed_claim_scores(
+    claims: list[dict[str, Any]], sources: dict[str, dict[str, Any]]
+) -> dict[str, float]:
+    """Score the claims that may enter the evidence path.
+
+    Claims that are still candidates or were rejected get no score at
+    all, so skill_score skips them for both supporting and contradicting
+    references instead of counting them at full weight.
+    """
+    return {
+        claim["id"]: claim_score(claim, sources)
+        for claim in claims
+        if claim.get("status") == "reviewed"
+    }
+
+
 def compute_claim_scores() -> dict[str, float]:
     sources = {source["id"]: source for source in load_records("sources")}
-    return {claim["id"]: claim_score(claim, sources) for claim in load_records("claims")}
+    return reviewed_claim_scores(load_records("claims"), sources)
 
 
 def skill_score(skill: dict[str, Any], claim_scores: dict[str, float]) -> float:
