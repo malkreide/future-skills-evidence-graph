@@ -1,10 +1,4 @@
 const DATA_INDEX_PATHS = ["./data/index.json", "../data/index.json"];
-const COLLECTION_PATHS = {
-  sources: ["../data/sources/seed.json", "../data/sources/lehrplan21.json"],
-  claims: ["../data/claims/seed.json"],
-  skills: ["../data/skills/seed.json"],
-  frameworks: ["../data/frameworks/seed.json", "../data/frameworks/lehrplan21.json"],
-};
 
 const state = {
   sources: [],
@@ -52,22 +46,11 @@ async function loadData() {
         return payload;
       }
     } catch (_) {
-      // Try the next location. Local development and Pages builds use different paths.
+      // Try the next location. Pages serves index.json next to the page,
+      // a local repository checkout serves it one level up.
     }
   }
-
-  const [sources, claims, skills, frameworks] = await Promise.all([
-    loadCollection(COLLECTION_PATHS.sources),
-    loadCollection(COLLECTION_PATHS.claims),
-    loadCollection(COLLECTION_PATHS.skills),
-    loadCollection(COLLECTION_PATHS.frameworks),
-  ]);
-  return { sources, claims, skills, frameworks };
-}
-
-async function loadCollection(paths) {
-  const chunks = await Promise.all(paths.map((path) => fetchJson(path)));
-  return chunks.flat();
+  throw new Error("data/index.json fehlt. Erst `python scripts/build_site.py` ausfuehren und `public/` serven.");
 }
 
 function byId(records) {
@@ -107,19 +90,7 @@ function gapClass(label) {
 }
 
 function radarLabel(skill) {
-  const labels = {
-    "skill-ai-literacy": "AI",
-    "skill-critical-thinking": "Kritik",
-    "skill-data-literacy": "Daten",
-    "skill-digital-media-literacy": "Medien",
-    "skill-ethical-technology-judgment": "Ethik",
-    "skill-self-regulated-learning": "Selbst",
-    "skill-creative-problem-solving": "Kreativ",
-    "skill-collaborative-problem-solving": "Koop.",
-    "skill-systems-thinking": "Systeme",
-    "skill-resilience-adaptability": "Resilienz",
-  };
-  return labels[skill.id] || skill.name.slice(0, 12);
+  return skill.short_label || skill.name.slice(0, 12);
 }
 
 function filteredSkills() {

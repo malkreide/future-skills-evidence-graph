@@ -2,6 +2,7 @@
   {
     "id": "skill-ai-literacy",
     "name": "AI Literacy",
+    "short_label": "AI",
     "definition": "Ability to understand, use, question, and shape AI systems with awareness of capabilities, limits, risks, and human purpose.",
     "age_range": "6-18",
     "status": "active",
@@ -44,6 +45,7 @@
   {
     "id": "skill-critical-thinking",
     "name": "Critical Thinking and Epistemic Vigilance",
+    "short_label": "Kritik",
     "definition": "Ability to test claims, inspect evidence, identify bias, compare explanations, and resist unsupported authority from humans or machines.",
     "age_range": "10-18",
     "status": "active",
@@ -83,6 +85,7 @@
   {
     "id": "skill-data-literacy",
     "name": "Data Literacy",
+    "short_label": "Daten",
     "definition": "Ability to interpret, question, communicate, and use data-informed claims while understanding uncertainty and model limits.",
     "age_range": "10-18",
     "status": "active",
@@ -120,6 +123,7 @@
   {
     "id": "skill-digital-media-literacy",
     "name": "Digital and Media Literacy",
+    "short_label": "Medien",
     "definition": "Ability to find, evaluate, create, communicate, and act safely with digital information and media.",
     "age_range": "6-18",
     "status": "active",
@@ -157,6 +161,7 @@
   {
     "id": "skill-ethical-technology-judgment",
     "name": "Ethical Technology Judgment",
+    "short_label": "Ethik",
     "definition": "Ability to reason about privacy, fairness, safety, accountability, human rights, and tradeoffs when technology affects people.",
     "age_range": "6-18",
     "status": "active",
@@ -197,6 +202,7 @@
   {
     "id": "skill-self-regulated-learning",
     "name": "Self-Regulated Learning",
+    "short_label": "Selbst",
     "definition": "Ability to set goals, choose strategies, monitor progress, reflect, and adapt learning behavior over time.",
     "age_range": "6-18",
     "status": "active",
@@ -236,6 +242,7 @@
   {
     "id": "skill-creative-problem-solving",
     "name": "Creative Problem Solving",
+    "short_label": "Kreativ",
     "definition": "Ability to generate, refine, test, and communicate useful ideas when facing open-ended problems.",
     "age_range": "6-18",
     "status": "active",
@@ -274,6 +281,7 @@
   {
     "id": "skill-collaborative-problem-solving",
     "name": "Collaborative Problem Solving",
+    "short_label": "Koop.",
     "definition": "Ability to coordinate with others, share knowledge, resolve tension, and make progress on complex shared problems.",
     "age_range": "6-18",
     "status": "active",
@@ -311,6 +319,7 @@
   {
     "id": "skill-systems-thinking",
     "name": "Systems Thinking",
+    "short_label": "Systeme",
     "definition": "Ability to understand relationships, feedback loops, incentives, stakeholders, and second-order effects in complex systems.",
     "age_range": "10-18",
     "status": "active",
@@ -349,6 +358,7 @@
   {
     "id": "skill-resilience-adaptability",
     "name": "Resilience and Adaptability",
+    "short_label": "Resilienz",
     "definition": "Ability to respond constructively to uncertainty, change, error, feedback, and shifting technological conditions.",
     "age_range": "6-18",
     "status": "active",
