@@ -372,11 +372,12 @@ function renderDetail() {
   }
 
   const claims = (skill.supporting_claim_ids || []).map((id) => claimMap.get(id)).filter(Boolean);
+  const contradictingClaims = (skill.contradicting_claim_ids || []).map((id) => claimMap.get(id)).filter(Boolean);
   const mappingIds = new Set(skill.framework_mapping_ids || []);
   const mappings = state.frameworks.filter((mapping) => mapping.skill_id === skill.id || mappingIds.has(mapping.id));
   const sources = [
     ...new Map(
-      claims
+      [...claims, ...contradictingClaims]
         .flatMap((claim) => claim.source_ids || [])
         .map((id) => sourceMap.get(id))
         .filter(Boolean)
@@ -418,6 +419,21 @@ function renderDetail() {
     meta.textContent = `${claim.evidence_strength} - ${claim.evidence_type} - ${claim.text_anchor}`;
     claimEl.append(statement, meta);
     evidencePanel.append(claimEl);
+  }
+  if (contradictingClaims.length) {
+    const heading = document.createElement("h3");
+    heading.textContent = "Gegenbelege";
+    evidencePanel.append(heading);
+    for (const claim of contradictingClaims) {
+      const claimEl = document.createElement("div");
+      claimEl.className = "claim claim-contradicting";
+      const statement = document.createElement("p");
+      statement.textContent = claim.statement;
+      const meta = document.createElement("small");
+      meta.textContent = `${claim.evidence_strength} - ${claim.evidence_type} - ${claim.text_anchor}`;
+      claimEl.append(statement, meta);
+      evidencePanel.append(claimEl);
+    }
   }
 
   const side = document.createElement("div");
