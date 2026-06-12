@@ -51,7 +51,7 @@ jobs:
             echo "No candidate changes."
             exit 0
           fi
-          branch="codex/research-candidates-${GITHUB_RUN_ID}"
+          branch="research/candidates-${GITHUB_RUN_ID}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
