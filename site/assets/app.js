@@ -77,12 +77,6 @@ function cycleMatches(mapping) {
   return state.selectedCycle === "all" || (mapping.cycles || []).includes(state.selectedCycle);
 }
 
-function lp21CoverageLabel(score) {
-  if (score >= 2.4) return "gut abgedeckt";
-  if (score >= 1.5) return "teilweise";
-  return "Zukunftsluecke";
-}
-
 function gapClass(label) {
   if (label === "gut abgedeckt") return "gap-good";
   if (label === "teilweise") return "gap-partial";
@@ -221,7 +215,7 @@ function renderLp21Comparison() {
     const row = document.createElement("tr");
     const evidenceScore = Number(skill.evidence_score || 0);
     const coverageScore = Number(mapping.coverage_score || 0);
-    const label = mapping.coverage_label || lp21CoverageLabel(coverageScore);
+    const label = mapping.coverage_label;
 
     const skillCell = document.createElement("td");
     skillCell.innerHTML = `<strong>${skill.name}</strong><br><small>${skill.age_range}</small>`;
