@@ -118,6 +118,19 @@ def env_or_none(name: str) -> str | None:
     return value if value else None
 
 
+def lp21_coverage_label(score: float) -> str:
+    """Derive the Lehrplan 21 coverage label from the coverage score.
+
+    Thresholds are documented in docs/lehrplan21-coverage-methodik.md and
+    mirrored by the dashboard in site/assets/app.js (lp21CoverageLabel).
+    """
+    if score >= 2.4:
+        return "gut abgedeckt"
+    if score >= 1.5:
+        return "teilweise"
+    return "Zukunftsluecke"
+
+
 # Topic vocabulary derived from the MVP scope in MASTER_PROMPT.md. Keys become
 # the candidate's topics; keyword variants are matched against title and abstract.
 TOPIC_KEYWORDS = {

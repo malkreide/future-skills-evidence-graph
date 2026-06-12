@@ -37,7 +37,10 @@ Then open `http://localhost:8000/site/`.
 - `Skill`: reviewed or candidate future-skill profile.
 - `FrameworkMapping`: mapping between local skills and external frameworks.
 - Lehrplan 21 mappings add `coverage_score` on a 0-3 scale, `cycles`,
-  `curriculum_area`, `coverage_label`, and a short `evidence_path`.
+  `curriculum_area`, `coverage_label`, and a short `evidence_path`. The
+  coverage scores are editorial judgments; how they were assessed, the label
+  thresholds, and the method's limits are documented in
+  [docs/lehrplan21-coverage-methodik.md](docs/lehrplan21-coverage-methodik.md).
 
 Each active skill must reference at least one supporting claim. Each claim must reference
 at least one source. Candidate records may be incomplete, but must remain visibly marked

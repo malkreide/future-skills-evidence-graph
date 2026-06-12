@@ -8,7 +8,14 @@ from typing import Any
 
 from jsonschema import Draft202012Validator, FormatChecker
 
-from common import ROOT, load_json, load_records, source_identity, source_title_key
+from common import (
+    ROOT,
+    load_json,
+    load_records,
+    lp21_coverage_label,
+    source_identity,
+    source_title_key,
+)
 from score_evidence import claim_score, skill_score
 
 
@@ -126,6 +133,14 @@ def validate_repository() -> list[str]:
         skill_id = mapping.get("skill_id")
         if skill_id not in skill_ids:
             errors.append(f"frameworks:{mapping_id} references missing skill {skill_id}")
+        if mapping.get("framework_group") == "Lehrplan 21":
+            score = mapping.get("coverage_score")
+            label = mapping.get("coverage_label")
+            if isinstance(score, (int, float)) and label != lp21_coverage_label(score):
+                errors.append(
+                    f"frameworks:{mapping_id} coverage_label {label!r} does not match "
+                    f"coverage_score {score} (expected {lp21_coverage_label(score)!r})"
+                )
 
     return errors
 
