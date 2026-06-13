@@ -11,8 +11,12 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
+from jsonschema import Draft202012Validator  # noqa: E402
+
+from cluster_claims import cluster_candidate_skills  # noqa: E402
 from common import (  # noqa: E402
     append_candidate_sources,
+    filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
     load_json,
@@ -21,6 +25,7 @@ from common import (  # noqa: E402
     score_relevance,
     write_json,
 )
+from extract_claims import claim_from_source  # noqa: E402
 from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
@@ -182,6 +187,92 @@ class DataIntegrityTests(unittest.TestCase):
             self.assertEqual(append_candidate_sources(existing, []), [])
             self.assertEqual(existing.stat().st_mtime_ns, before)
             self.assertEqual(load_json(existing), records)
+
+    def test_claim_extraction_uses_verbatim_text_anchor(self) -> None:
+        source = {
+            "id": "src-test-ai-literacy",
+            "source_type": "systematic_review",
+            "status": "candidate",
+            "abstract": (
+                "Background remarks describing the structure of this paper come first. "
+                "We find that AI literacy instruction improves critical thinking among "
+                "primary school students. Short note."
+            ),
+        }
+        claim = claim_from_source(source)
+        self.assertIsNotNone(claim)
+        self.assertEqual(
+            claim["statement"],
+            "We find that AI literacy instruction improves critical thinking among "
+            "primary school students.",
+        )
+        self.assertIn('sentence 2: "We find that AI literacy', claim["text_anchor"])
+        self.assertEqual(claim["source_ids"], ["src-test-ai-literacy"])
+        self.assertEqual(claim["evidence_type"], "systematic_review")
+        self.assertEqual(claim["evidence_strength"], "low")
+        self.assertEqual(claim["status"], "candidate")
+        schema = load_json(ROOT / "schemas" / "claim.schema.json")
+        Draft202012Validator(schema).validate(claim)
+
+        self.assertIsNone(claim_from_source({"id": "src-x", "abstract": None}))
+        self.assertIsNone(
+            claim_from_source(
+                {
+                    "id": "src-x",
+                    "abstract": "Lattice quantum chromodynamics simulations with improved gauge actions.",
+                }
+            )
+        )
+
+    def test_filter_new_claims_drops_known_statements(self) -> None:
+        existing = load_records("claims")[0]
+        duplicate = {
+            "id": "claim-duplicate-statement",
+            "statement": existing["statement"],
+        }
+        colliding = {
+            "id": existing["id"],
+            "statement": "A genuinely new candidate claim statement about creativity.",
+        }
+        kept = filter_new_claims([duplicate, colliding])
+        self.assertEqual(len(kept), 1)
+        self.assertEqual(kept[0]["id"], f"{existing['id']}-2")
+
+    def test_clustering_proposes_skills_only_for_uncovered_topics(self) -> None:
+        claims = [
+            {
+                "id": "claim-a",
+                "status": "candidate",
+                "statement": "Creativity training fosters creative thinking in students.",
+            },
+            {
+                "id": "claim-b",
+                "status": "candidate",
+                "statement": "Creative problem solving practice benefits pupils in classrooms.",
+            },
+            {
+                "id": "claim-c",
+                "status": "reviewed",
+                "statement": "Creativity also appears in reviewed claims about schools.",
+            },
+        ]
+        proposals, hints = cluster_candidate_skills(claims, [], min_claims=2)
+        self.assertEqual(len(proposals), 1)
+        self.assertEqual(proposals[0]["id"], "skill-creativity")
+        self.assertEqual(proposals[0]["status"], "candidate")
+        self.assertEqual(proposals[0]["evidence_score"], 0.0)
+        self.assertEqual(proposals[0]["supporting_claim_ids"], ["claim-a", "claim-b"])
+        schema = load_json(ROOT / "schemas" / "skill.schema.json")
+        Draft202012Validator(schema).validate(proposals[0])
+        self.assertEqual(hints, [])
+
+        existing_skill = {"id": "skill-creative-problem-solving", "topics": ["creativity"]}
+        proposals, hints = cluster_candidate_skills(claims, [existing_skill], min_claims=2)
+        self.assertEqual(proposals, [])
+        self.assertEqual(
+            hints,
+            [("creativity", "skill-creative-problem-solving", ["claim-a", "claim-b"])],
+        )
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(

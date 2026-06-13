@@ -106,7 +106,8 @@
     "topics": [
       "data",
       "ai",
-      "digital problem solving"
+      "digital problem solving",
+      "data literacy"
     ],
     "supporting_claim_ids": [
       "claim-digital-competence-information-literacy",
@@ -127,6 +128,11 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.78 -> 0.66",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "Added topic 'data literacy'",
+        "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
       }
     ],
     "created_at": "2026-04-28",
@@ -223,7 +229,8 @@
     "topics": [
       "metacognition",
       "learning to learn",
-      "agency"
+      "agency",
+      "self-regulation"
     ],
     "supporting_claim_ids": [
       "claim-student-agency-transformative-competencies",
@@ -246,6 +253,11 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.88 -> 0.7",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "Added topic 'self-regulation'",
+        "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
       }
     ],
     "created_at": "2026-04-28",
@@ -263,7 +275,8 @@
     "topics": [
       "creative thinking",
       "problem solving",
-      "innovation"
+      "innovation",
+      "creativity"
     ],
     "supporting_claim_ids": [
       "claim-student-agency-transformative-competencies",
@@ -285,6 +298,11 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.79 -> 0.64",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "Added topic 'creativity'",
+        "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
       }
     ],
     "created_at": "2026-04-28",
@@ -340,7 +358,8 @@
     "topics": [
       "complexity",
       "ai systems",
-      "future skills"
+      "future skills",
+      "systems thinking"
     ],
     "supporting_claim_ids": [
       "claim-k12-ai-big-ideas",
@@ -362,6 +381,11 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.74 -> 0.68",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-12",
+        "change": "Added topic 'systems thinking'",
+        "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
       }
     ],
     "created_at": "2026-04-28",
