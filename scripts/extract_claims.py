@@ -40,6 +40,13 @@ EVIDENCE_TYPE_BY_SOURCE_TYPE = {
 }
 DEFAULT_EVIDENCE_TYPE = "conceptual_review"
 
+# Placeholder values written for fields a human reviewer must complete before
+# a claim can be promoted to reviewed. promote_candidate.py imports these so
+# the review gate stays in sync with what extraction actually leaves behind.
+AGE_RANGE_PLACEHOLDER = "unspecified"
+OUTCOME_PLACEHOLDER = "Not extracted automatically; describe during review."
+CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
+
 
 def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
     """Pick the most relevant abstract sentence as (index, sentence, topics).
@@ -77,9 +84,9 @@ def claim_from_source(source: dict[str, Any]) -> dict[str, Any] | None:
         "statement": sentence,
         "source_ids": [source_id],
         "text_anchor": f'abstract, sentence {index + 1}: "{sentence}"',
-        "context": f"Auto-extracted candidate; matched topics: {', '.join(topics)}. Verify during review.",
-        "age_range": "unspecified",
-        "outcome": "Not extracted automatically; describe during review.",
+        "context": f"Auto-extracted candidate; matched topics: {', '.join(topics)}. {CONTEXT_PLACEHOLDER_SUFFIX}",
+        "age_range": AGE_RANGE_PLACEHOLDER,
+        "outcome": OUTCOME_PLACEHOLDER,
         "evidence_type": EVIDENCE_TYPE_BY_SOURCE_TYPE.get(
             str(source.get("source_type")), DEFAULT_EVIDENCE_TYPE
         ),
