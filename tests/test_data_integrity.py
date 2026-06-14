@@ -25,7 +25,13 @@ from common import (  # noqa: E402
     score_relevance,
     write_json,
 )
-from extract_claims import claim_from_source  # noqa: E402
+from extract_claims import (  # noqa: E402
+    AGE_RANGE_PLACEHOLDER,
+    CONTEXT_PLACEHOLDER_SUFFIX,
+    OUTCOME_PLACEHOLDER,
+    claim_from_source,
+)
+from promote_candidate import claim_review_errors, skill_activation_errors  # noqa: E402
 from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
@@ -273,6 +279,84 @@ class DataIntegrityTests(unittest.TestCase):
             hints,
             [("creativity", "skill-creative-problem-solving", ["claim-a", "claim-b"])],
         )
+
+    def test_claim_review_gate_blocks_placeholders_and_dangling_refs(self) -> None:
+        extracted = claim_from_source(
+            {
+                "id": "src-gate",
+                "source_type": "empirical_study",
+                "status": "candidate",
+                "abstract": "AI literacy instruction improves critical thinking for primary school students here.",
+            }
+        )
+        # As extracted: placeholders for context/age/outcome, no skill link.
+        errors = claim_review_errors(extracted, skill_ids=set(), source_ids={"src-gate"})
+        joined = " | ".join(errors)
+        self.assertIn("context", joined)
+        self.assertIn("age_range", joined)
+        self.assertIn("outcome", joined)
+        self.assertIn("link at least one skill", joined)
+
+        # Reviewer fills the fields but points at a skill and source that do not exist.
+        extracted.update(
+            context="K-12 classroom study",
+            age_range="6-12",
+            outcome="Learners critique AI outputs",
+            supports_skill_ids=["skill-missing"],
+        )
+        errors = claim_review_errors(extracted, skill_ids=set(), source_ids=set())
+        self.assertEqual(
+            sorted(errors),
+            ["references missing skill skill-missing", "references missing source src-gate"],
+        )
+
+        # Everything resolvable -> no errors.
+        self.assertEqual(
+            claim_review_errors(extracted, skill_ids={"skill-missing"}, source_ids={"src-gate"}),
+            [],
+        )
+
+    def test_skill_activation_gate_requires_definition_and_reviewed_claims(self) -> None:
+        candidate = {
+            "definition": "Candidate skill clustered from 2 candidate claims about ethics. "
+            "Definition requires human review.",
+            "supporting_claim_ids": ["claim-x"],
+            "contradicting_claim_ids": [],
+        }
+        claims = {"claim-x": {"id": "claim-x", "status": "candidate"}}
+        errors = skill_activation_errors(candidate, claims)
+        joined = " | ".join(errors)
+        self.assertIn("definition still holds a placeholder", joined)
+        self.assertIn("claim-x is candidate", joined)
+
+        candidate["definition"] = "Ability to reason about the ethics of technology use."
+        claims["claim-x"]["status"] = "reviewed"
+        self.assertEqual(skill_activation_errors(candidate, claims), [])
+
+        # An empty supporting set is rejected even with a real definition.
+        self.assertIn(
+            "needs at least one supporting claim",
+            " | ".join(skill_activation_errors({"definition": "Real definition text here.",
+                                                 "supporting_claim_ids": []}, claims)),
+        )
+
+    def test_extracted_claim_fields_are_recognized_as_placeholders(self) -> None:
+        # Guards against the generators and the review gate drifting apart.
+        claim = claim_from_source(
+            {
+                "id": "src-drift",
+                "source_type": "systematic_review",
+                "status": "candidate",
+                "abstract": "Digital literacy education supports media literacy for adolescent learners in schools.",
+            }
+        )
+        self.assertTrue(claim["context"].endswith(CONTEXT_PLACEHOLDER_SUFFIX))
+        self.assertEqual(claim["age_range"], AGE_RANGE_PLACEHOLDER)
+        self.assertEqual(claim["outcome"], OUTCOME_PLACEHOLDER)
+        errors = claim_review_errors(claim, skill_ids=set(), source_ids={"src-drift"})
+        self.assertTrue(any("context" in error for error in errors))
+        self.assertTrue(any("age_range" in error for error in errors))
+        self.assertTrue(any("outcome" in error for error in errors))
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(

@@ -18,6 +18,12 @@ from typing import Any
 from common import ROOT, TODAY, append_unique_records, load_records, score_relevance, slugify
 
 
+# Suffix of the auto-generated definition a human reviewer must replace before
+# a clustered skill can be promoted to active. promote_candidate.py imports
+# this so the review gate stays in sync with the clustering output.
+DEFINITION_PLACEHOLDER_SUFFIX = "Definition requires human review."
+
+
 def claim_topics(claim: dict[str, Any]) -> list[str]:
     _, topics = score_relevance({"title": str(claim.get("statement") or "")})
     return topics
@@ -29,7 +35,7 @@ def _candidate_skill(topic: str, claim_ids: list[str]) -> dict[str, Any]:
         "name": topic.title(),
         "definition": (
             f"Candidate skill clustered from {len(claim_ids)} candidate claims about "
-            f"{topic}. Definition requires human review."
+            f"{topic}. {DEFINITION_PLACEHOLDER_SUFFIX}"
         ),
         "age_range": "6-18",
         "status": "candidate",

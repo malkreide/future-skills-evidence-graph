@@ -83,6 +83,26 @@ derived from the matched vocabulary instead of being hardcoded. Candidates below
 the threshold (default 0.3, tunable per importer via `--min-relevance`) are dropped
 before deduplication.
 
+## Reviewing candidates
+
+Automation only ever produces candidates; promoting one is a human decision made
+through `scripts/promote_candidate.py`. The tool applies the reviewer's field
+values, refuses to promote while machine-generated placeholders remain, enforces
+that an active skill rests only on reviewed claims, recomputes evidence scores, and
+re-validates the repository — writing nothing if any check fails.
+
+```powershell
+python scripts/promote_candidate.py claim claim-id `
+  --context "..." --age-range "6-18" --outcome "..." `
+  --evidence-strength moderate --supports skill-id
+python scripts/promote_candidate.py skill skill-id --definition "..." --name "..."
+```
+
+A claim only becomes `reviewed` once its context, age range, and outcome are real
+(not the extraction placeholders) and it links at least one existing skill. A skill
+only becomes `active` once its definition is real and every supporting and
+contradicting claim is already `reviewed`.
+
 ## Roadmap
 
 The master prompt (`MASTER_PROMPT.md`) defines a nine-step pipeline. The MVP
