@@ -67,7 +67,8 @@ reproducible evidence path.
 
 ## Automation
 
-The weekly research workflow runs source importers for curated queries, extracts
+The weekly research workflow runs source importers for curated queries across
+OpenAlex, Crossref, Semantic Scholar, arXiv, and ERIC, extracts
 candidate claims from the new sources' abstracts (`scripts/extract_claims.py`),
 clusters those claims into candidate skills (`scripts/cluster_claims.py`), and opens
 a candidate pull request. While that pull request stays unmerged, later runs append
@@ -83,6 +84,12 @@ yields no auto-claim. The workflow does not publish active skills automatically.
 Each importer degrades gracefully: if one source is rate-limited or unreachable,
 it logs a warning and contributes no candidates that run, so the other importers
 and the downstream extraction and clustering still complete.
+
+The master prompt also lists OECD, WEF, UNESCO, and EU DigComp as preferred
+sources. They are not auto-imported: OECD, WEF, and UNESCO publish reports
+without a public bibliographic search API, and DigComp is a single framework
+document, not a search source (it already appears in `data/frameworks/`). Those
+sources enter through the manual source-suggestion governance template instead.
 
 Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
 and abstracts are matched against the MVP topic vocabulary and audience terms, the
@@ -132,7 +139,7 @@ deliberately implements a subset; the remaining steps are open:
 
 | Step | Status |
 | --- | --- |
-| 1. Discover and deduplicate sources | Implemented (`ingest_*.py`, `deduplicate_sources.py`) |
+| 1. Discover and deduplicate sources | Implemented for OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC (`ingest_*.py`, `deduplicate_sources.py`); OECD/WEF/UNESCO lack a public search API and stay manual |
 | 2. Classify relevance | Keyword/abstract heuristic requiring a topic match; measured against a labeled set (`eval_relevance.py`), but no trained classifier yet |
 | 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |

@@ -52,6 +52,18 @@ jobs:
           --output data/sources/candidates-semantic-scholar.json
         env:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+      - name: Import arXiv candidates
+        run: >
+          python scripts/ingest_arxiv.py
+          --query "AI literacy education children future skills"
+          --limit 20
+          --output data/sources/candidates-arxiv.json
+      - name: Import ERIC candidates
+        run: >
+          python scripts/ingest_eric.py
+          --query "AI literacy education children future skills"
+          --limit 20
+          --output data/sources/candidates-eric.json
       - name: Extract candidate claims
         run: python scripts/extract_claims.py
       - name: Cluster candidate skills

@@ -234,6 +234,65 @@ class DataIntegrityTests(unittest.TestCase):
             )
         )
 
+    def test_arxiv_convert_maps_atom_entry_to_source(self) -> None:
+        from xml.etree import ElementTree
+
+        import ingest_arxiv
+
+        entry_xml = (
+            '<entry xmlns="http://www.w3.org/2005/Atom" '
+            'xmlns:arxiv="http://arxiv.org/schemas/atom">'
+            "<id>http://arxiv.org/abs/2510.12345v1</id>"
+            "<title>AI literacy for school children</title>"
+            "<summary>We study AI literacy education for students.</summary>"
+            "<published>2025-10-26T22:56:08Z</published>"
+            '<link href="https://arxiv.org/abs/2510.12345v1" rel="alternate" type="text/html"/>'
+            "<author><name>Jane Doe</name></author>"
+            "<author><name>John Roe</name></author>"
+            "</entry>"
+        )
+        record = ingest_arxiv.convert(ElementTree.fromstring(entry_xml))
+        self.assertEqual(record["title"], "AI literacy for school children")
+        self.assertEqual(record["year"], 2025)
+        self.assertEqual(record["authors"], ["Jane Doe", "John Roe"])
+        self.assertEqual(record["url"], "https://arxiv.org/abs/2510.12345v1")
+        self.assertEqual(record["source_type"], "working_paper")
+        self.assertTrue(record["abstract"])
+        Draft202012Validator(load_json(ROOT / "schemas" / "source.schema.json")).validate(record)
+
+    def test_eric_convert_and_source_type(self) -> None:
+        import ingest_eric
+
+        journal = {
+            "id": "EJ1476161",
+            "title": "Developing a Holistic AI Literacy Framework for Children",
+            "author": ["A. Author", "B. Author"],
+            "description": "A framework for AI literacy among children.",
+            "publicationdateyear": 2025,
+            "url": "http://dx.doi.org/10.1000/example",
+            "peerreviewed": "T",
+            "publicationtype": ["Journal Articles", "Reports - Research"],
+            "source": "Journal of AI Education",
+        }
+        record = ingest_eric.convert(journal)
+        self.assertEqual(record["eric_id"], "EJ1476161")
+        self.assertEqual(record["year"], 2025)
+        self.assertEqual(record["source_type"], "peer_reviewed_article")
+        self.assertEqual(record["publisher"], "Journal of AI Education")
+        Draft202012Validator(load_json(ROOT / "schemas" / "source.schema.json")).validate(record)
+
+        # Document-type precedence: a standalone report is a policy report,
+        # books are books, journal articles win over the "report" descriptor.
+        self.assertEqual(ingest_eric._source_type({"publicationtype": ["Reports - Descriptive"]}), "policy_report")
+        self.assertEqual(ingest_eric._source_type({"publicationtype": ["Books", "Reports - Research"]}), "book")
+        self.assertEqual(
+            ingest_eric._source_type({"publicationtype": ["Journal Articles", "Reports - Research"]}),
+            "peer_reviewed_article",
+        )
+        # A record with no URL falls back to a stable ERIC link.
+        no_url = ingest_eric.convert({"id": "ED678840", "title": "AI Literacy for the Workforce"})
+        self.assertEqual(no_url["url"], "https://eric.ed.gov/?id=ED678840")
+
     def test_sentence_tier_separates_findings_from_methods(self) -> None:
         self.assertEqual(sentence_tier("Findings show that students improved their critical thinking."), 1)
         self.assertEqual(sentence_tier("We used semi-structured interviews with thirty participants."), -1)
