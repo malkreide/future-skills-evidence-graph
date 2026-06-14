@@ -24,6 +24,7 @@ review through pull requests.
 pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python scripts/build_site.py
+python scripts/eval_relevance.py
 python -m unittest discover -s tests
 python -m http.server 8000
 ```
@@ -83,9 +84,18 @@ and the downstream extraction and clustering still complete.
 Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
 and abstracts are matched against the MVP topic vocabulary and audience terms, the
 resulting `relevance_score` (0..1) is stored on each candidate, and topics are
-derived from the matched vocabulary instead of being hardcoded. Candidates below
-the threshold (default 0.3, tunable per importer via `--min-relevance`) are dropped
-before deduplication.
+derived from the matched vocabulary instead of being hardcoded. A candidate must
+match at least one topic — audience terms ("school", "students") alone do not
+qualify a source — and score at or above the threshold (default 0.3, tunable per
+importer via `--min-relevance`) to survive before deduplication.
+
+The threshold is not guessed: `eval/relevance_labeled.json` is a labeled set
+(real candidates from the first live run plus clear anchor cases) and
+`scripts/eval_relevance.py` reports precision/recall/F1 and sweeps thresholds, so
+the filter's behavior is measured. The current heuristic reaches precision 0.64 /
+recall 1.00 on that set; `test_relevance_heuristic_meets_measured_floor` guards
+against regressions. The keyword heuristic still admits incidental single-keyword
+matches; a larger labeled set and a trained classifier are the planned next step.
 
 ## Reviewing candidates
 
@@ -115,7 +125,7 @@ deliberately implements a subset; the remaining steps are open:
 | Step | Status |
 | --- | --- |
 | 1. Discover and deduplicate sources | Implemented (`ingest_*.py`, `deduplicate_sources.py`) |
-| 2. Classify relevance | Heuristic keyword/abstract score; no trained classifier yet |
+| 2. Classify relevance | Keyword/abstract heuristic requiring a topic match; measured against a labeled set (`eval_relevance.py`), but no trained classifier yet |
 | 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): verbatim abstract sentences become candidate claims; context, age range, outcome, and strength stay human work |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
 | 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |

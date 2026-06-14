@@ -327,13 +327,22 @@ def score_relevance(source: dict[str, Any]) -> tuple[float, list[str]]:
 def filter_relevant_sources(
     candidates: list[dict[str, Any]], min_relevance: float = RELEVANCE_THRESHOLD
 ) -> list[dict[str, Any]]:
-    """Drop candidates below the relevance threshold and derive their topics."""
+    """Drop candidates below the relevance threshold and derive their topics.
+
+    A candidate must match at least one topic in the vocabulary. Audience
+    terms ("school", "students") alone do not qualify a source: that is the
+    intent stated in score_relevance's docstring, but because an audience-only
+    match scores exactly RELEVANCE_THRESHOLD it used to slip through, letting
+    off-topic papers (public health, agriculture) into the candidate set.
+    Requiring a topic match raises precision without dropping topic-matched
+    candidates that sit at the threshold. Measured by scripts/eval_relevance.py.
+    """
     kept: list[dict[str, Any]] = []
     for source in candidates:
         score, topics = score_relevance(source)
-        if score < min_relevance:
+        if not topics or score < min_relevance:
             continue
         source["relevance_score"] = score
-        source["topics"] = topics or ["education"]
+        source["topics"] = topics
         kept.append(source)
     return kept
