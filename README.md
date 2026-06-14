@@ -76,6 +76,10 @@ sentences with exact text anchors, evidence strength starts at `low`, clustered
 skills start at `evidence_score` 0.0, and nothing becomes active without human
 review. The workflow does not publish active skills automatically.
 
+Each importer degrades gracefully: if one source is rate-limited or unreachable,
+it logs a warning and contributes no candidates that run, so the other importers
+and the downstream extraction and clustering still complete.
+
 Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
 and abstracts are matched against the MVP topic vocabulary and audience terms, the
 resulting `relevance_score` (0..1) is stored on each candidate, and topics are

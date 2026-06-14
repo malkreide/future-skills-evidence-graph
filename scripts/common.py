@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Any, Callable, Iterable
@@ -195,6 +196,26 @@ def filter_new_claims(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
         seen.add(key)
         new_records.append(claim)
     return new_records
+
+
+def fetch_or_warn(
+    label: str, fetch: Callable[[], list[dict[str, Any]]]
+) -> list[dict[str, Any]]:
+    """Run an importer's network fetch, degrading gracefully on failure.
+
+    One source's outage — a rate limit, a network error, or a malformed
+    response — must not abort the whole research pipeline: the other
+    importers and the downstream extraction and clustering steps should
+    still run on whatever was fetched. On failure this logs a warning and
+    returns an empty list so the importer writes no candidates this run.
+    """
+    try:
+        # urllib's URLError/HTTPError/TimeoutError subclass OSError; a bad
+        # JSON body raises JSONDecodeError, which subclasses ValueError.
+        return list(fetch())
+    except (OSError, ValueError) as exc:
+        print(f"Warning: {label} fetch failed ({exc}); skipping this source.", file=sys.stderr)
+        return []
 
 
 def env_or_none(name: str) -> str | None:

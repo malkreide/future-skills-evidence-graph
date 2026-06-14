@@ -11,6 +11,7 @@ from common import (
     ROOT,
     TODAY,
     append_candidate_sources,
+    fetch_or_warn,
     filter_new_sources,
     filter_relevant_sources,
     slugify,
@@ -68,7 +69,11 @@ def main() -> int:
     parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
     args = parser.parse_args()
 
-    candidates = [convert(paper) for paper in fetch(args.query, args.limit, os.getenv("SEMANTIC_SCHOLAR_API_KEY"))]
+    papers = fetch_or_warn(
+        "Semantic Scholar",
+        lambda: fetch(args.query, args.limit, os.getenv("SEMANTIC_SCHOLAR_API_KEY")),
+    )
+    candidates = [convert(paper) for paper in papers]
     relevant = filter_relevant_sources(candidates, args.min_relevance)
     new_records = filter_new_sources(relevant)
     appended = append_candidate_sources(ROOT / args.output, new_records)

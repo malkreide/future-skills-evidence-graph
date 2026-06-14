@@ -16,6 +16,7 @@ from jsonschema import Draft202012Validator  # noqa: E402
 from cluster_claims import cluster_candidate_skills  # noqa: E402
 from common import (  # noqa: E402
     append_candidate_sources,
+    fetch_or_warn,
     filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
@@ -357,6 +358,24 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertTrue(any("context" in error for error in errors))
         self.assertTrue(any("age_range" in error for error in errors))
         self.assertTrue(any("outcome" in error for error in errors))
+
+    def test_fetch_or_warn_degrades_gracefully_on_source_outage(self) -> None:
+        import urllib.error
+
+        def rate_limited() -> list[dict[str, object]]:
+            raise urllib.error.HTTPError("https://api.test", 429, "Too Many Requests", {}, None)
+
+        def malformed() -> list[dict[str, object]]:
+            raise ValueError("Expecting value: line 1 column 1 (char 0)")
+
+        # A failing source returns no records instead of raising, so the
+        # pipeline keeps running on the other sources.
+        self.assertEqual(fetch_or_warn("Test", rate_limited), [])
+        self.assertEqual(fetch_or_warn("Test", malformed), [])
+        self.assertEqual(
+            fetch_or_warn("Test", lambda: [{"id": "src-ok"}]),
+            [{"id": "src-ok"}],
+        )
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
