@@ -161,6 +161,223 @@
       "relevant": false,
       "origin": "editorial",
       "note": "Clear out-of-scope anchor case."
+    },
+    {
+      "title": "Discrepancy in Conceptualizing Critical Thinking by Scholars and Secondary Students",
+      "abstract": "Critical thinking has gained much attention in many countries over the past few decades; however, there is no clear definition of what it is due to the richness in meaning of the term 'critical thinking' and the ambiguity of the word 'critical'. In spite of this, many scholars had contributed their conceptions of critical thinking, in which consists of skills and dispositional dimensions. The purpose of the current study was to investigate students conceptions of critical thinking. 480 Secondary 5 (Year 11) students in four Hong Kong secondary schools completed a questionnaire consisting of 40 descriptors of critical thinking. The quantitative data was conducted by principal component analysis (PCA). Results indicated that students conceived critical thinking as one dimension only, contrary to the two-dimensional conceptions of critical thinking from scholars. The results have important implications for teacher education as well as the successful implementation of Liberal Studies.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Critical thinking in secondary/adolescent students; in scope."
+    },
+    {
+      "title": "Investigating Students' Critical Thinking in Weblogs: An Exploratory Study in a Singapore Secondary School",
+      "abstract": "Critical thinking is an essential competency in the new information age. But research shows that students commonly lack critical thinking skills and hence promoting students' critical thinking becomes crucial. This exploratory study investigated the extent to which secondary school students' critical thinking could be promoted by writing reflections in the weblog. Students' critical thinking was measured by using the Newman's model. Results showed that writing reflections in the weblog could help promote students' critical thinking and according to the Newman's model, three categories of critical thinking were promoted the most, they were bringing outside knowledge or experience (O+), relevance (R+), and justification (J+). In addition, the study also found that the types of interaction with peers and the teacher had a more positive effect on the extent of critical thinking. Implications for other research are discussed. (Contains 6 tables and 3 figures.)",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Critical thinking in secondary/adolescent students; in scope."
+    },
+    {
+      "title": "An Investigation of Paideia Program Effects on Students' Critical Thinking Skills.",
+      "abstract": "A control-group, quasi-experimental study measured the effects of the Paideia Program on secondary students' critical thinking skills as measured on the Cornell Critical Thinking test. Findings reveal how shallow the knowledge base undergirding critical thinking is. (JOW)",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Critical thinking in secondary/adolescent students; in scope."
+    },
+    {
+      "title": "Fostering Critical Thinking Skills in Secondary Education to Prepare Students for University: Teacher Perceptions and Practices",
+      "abstract": "Although the importance of critical thinking skills for students when they enter university is widely endorsed, previous research has shown that incoming students show great variation in levels of critical thinking skills. The pre-university track of secondary education plays a major role in preparing students to think critically at university. The present study aims to investigate the way in which secondary education teachers think about and foster critical thinking skills to prepare their students for university. Semi-structured interviews with nine teachers showed that teachers do not have an unambiguous picture of critical thinking skills. Instead, teachers varied in their perceptions of the importance of critical thinking skills for university and in the practices they employ to foster these skills. It appears that teachers' perceptions and practices, firstly, depend on their images of university which are often based on their own study experiences, and secondly reflect the way they think about the cultivation of critical thinking skills and the transition to university. These results indicate that whether certain critical thinking skills are more or less encouraged in secondary education depends on the teacher.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Critical thinking in secondary/adolescent students; in scope."
+    },
+    {
+      "title": "Paving the Road to Critical Thinking.",
+      "abstract": "This article discusses ways that educators can encourage critical thinking in their students, including gifted children. Strategies include: questioning students to encourage critical thinking; developing and prizing creative thinking as a partner to critical thinking; and realizing that if students can learn critical thinking skills, so can they. (CR)",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Critical thinking in secondary/adolescent students; in scope."
+    },
+    {
+      "title": "The Constructivist Classroom Learning Environment and Its Associations with Critical Thinking Ability of Secondary School Students in Liberal Studies",
+      "abstract": "In this study, we investigated-secondary school students' perceptions of their constructivist learning environment in Liberal Studies, and whether their perceptions were related to their critical thinking ability. A convenience sample of Secondary Three students (N = 967) studying Liberal Studies in Hong Kong participated in this research by completing a self-administered questionnaire which included the Constructivist Learning Environment Survey (CLES), Cornell Critical Thinking Test Level X, and demographic information on age and gender. Students perceived their learning environment to be moderately constructivist in nature. Both age and school banding differences were identified in that younger students and students in band 1 schools tended to perceive a higher degree of constructivist characteristics in their learning environment. Multiple regression analyses indicated that three of the five scales of CLES were predictors of critical thinking ability. Shared Control was the strongest predictor and negatively associated with critical thinking ability, while Personal Relevance and Critical Voice were positively related to critical thinking ability. Findings of the study are discussed with reference to developing students' critical thinking ability in Liberal Studies classrooms.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Critical thinking in secondary/adolescent students; in scope."
+    },
+    {
+      "title": "Self-Regulated and Externally Regulated Learning in Adolescence: Developmental Trajectories and Relations with Teacher Behavior, Parent Behavior, and Academic Achievement",
+      "abstract": "Both self-regulation and external regulation are key to understanding adolescents' learning and positive development at school. However, evidence on the joint development of self-regulated learning and externally regulated learning during adolescence is lacking. In addition, the current knowledge on interrelations between the development of adolescents' self-regulated learning, externally regulated learning, behaviors of teachers and parents in terms of autonomy support and achievement pressure, and academic achievement is very limited. The present multilevel longitudinal analysis focusing on the domain of mathematics (N = 1,542 German adolescents; annual assessments from Grades 5 to 9; mean age at Grade 5 = 11.79 years, SD = 0.71, 51.75% female) addressed these gaps. Results from multilevel latent basic growth curve models showed that self- and externally regulated learning decreased over the 5 years at both the individual student and the class level. Changes in self- and externally regulated learning were linked: Classes with higher levels of self-regulated learning at Grade 5 showed a stronger decrease in externally regulated learning over time. Initial levels of and changes in student-reported teacher and parental autonomy support and achievement pressure were associated with self- and externally regulated learning at the individual student level; student-reported teacher autonomy support and self-regulated learning were also linked at the class level. Self-regulated learning related positively to standardized achievement test scores but not to adolescents' grades. This study adds to the scarce evidence base on different regulatory forms of adolescents' learning and can inform future research on adolescents' positive development and educational practice.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Self-regulated learning in adolescents; in scope."
+    },
+    {
+      "title": "Classroom and Individual Differences in Early Adolescents' Motivation and Self-Regulated Learning.",
+      "abstract": "Assessed motivational beliefs, cognitive strategy use, and self-regulation in seventh graders. Found that positive motivational beliefs were positively related to higher levels of self-regulated learning. Classroom differences were also related to motivation and self-regulated learning. Self-efficacy, cognitive strategy use, and self-regulation were related to both early individual difference measures as well as classroom experience. (HTH)",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Self-regulated learning in adolescents; in scope."
+    },
+    {
+      "title": "Influences of Metacognitive and Self-Regulated Learning Strategies for Reading on Mathematical Literacy of Adolescents in Australia and Singapore",
+      "abstract": "This study, drawing on data from the Programme for International Student Assessment (PISA) 2009, explored the influences of metacognitive and self-regulated learning strategies for reading on mathematical literacy of adolescents in Australia and Singapore. Ordinary least squares (OLS) regression analyses revealed the positive influences of metacognitive learning strategies and control strategies for reading on mathematical literacy of adolescents in Australia and Singapore. In contrast, the two components of self-regulated learning strategies for reading--memorization and elaboration--had negative influences on mathematical literacy of adolescents in Australia and Singapore.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Self-regulated learning in adolescents; in scope."
+    },
+    {
+      "title": "The Effects of Adolescent Self-Regulated Learning on Engagement in a College Access Program: An Exploratory Study",
+      "abstract": "College access programs (CAPs) aim to promote college readiness for adolescents, particularly those who may be the first in their family to go to college. Self-regulated learning is a critical component of college readiness. There is limited information about how self-regulated learning beliefs or intentions influence adolescent engagement in CAPs. Using the theory of planned behavior as a guiding framework, the purpose of this study was to examine direct and indirect effects of adolescent self-regulated learning beliefs (i.e., attitudes, norms, and perceived behavioral control) and intentions on participation in activities offered by a regional, federally funded CAP program (Gaining Early Awareness and Readiness for Undergraduate Programs; GEAR UP). Structural equation modeling was the analytic technique. We found positive relationships between self-regulated learning beliefs (perceived behavioral control), intentions, and GEAR UP participation. Implications and directions for future research on self-regulated learning within the context of CAP initiatives are discussed.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Self-regulated learning in adolescents; in scope."
+    },
+    {
+      "title": "Why Is Externally-Facilitated Regulated Learning More Effective than Self-Regulated Learning with Hypermedia?",
+      "abstract": "We examined how self-regulated learning (SRL) and externally-facilitated self-regulated learning (ERL) differentially affected adolescents' learning about the circulatory system while using hypermedia. A total of 128 middle-school and high school students with little prior knowledge of the topic were randomly assigned to either the SRL or ERL condition. Learners in the SRL condition regulated their own learning, while learners in the ERL condition had access to a human tutor who facilitated their self-regulated learning. We converged \"product\" (pretest-posttest shifts in students' mental models and declarative knowledge measures) with \"process\" (think-aloud protocols) data to examine the effectiveness of self- versus externally-facilitated regulated learning. Findings revealed that learners in the ERL condition gained statistically significantly more declarative knowledge and that a greater number of participants in this condition displayed a more advanced mental model on the posttest. Verbal protocol data indicated that learners in the ERL condition regulated their learning by activating prior knowledge, engaging in several monitoring activities, deploying several effective strategies, and engaging in adaptive help-seeking. By contrast, learners in the SRL condition used ineffective strategies and engaged in fewer monitoring activities. Based on these findings, we present design principles for adaptive hypermedia learning environments, engineered to foster students' self-regulated learning about complex and challenging science topics.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Self-regulated learning in adolescents; in scope."
+    },
+    {
+      "title": "Measuring the Complexity of Self-Regulated Learning and Academic Challenges for Adolescents in Canada",
+      "abstract": "Research that uses self-report measures to examine the complexity of self-regulated learning (SRL) and academic challenges for adolescents is limited. This study examined the psychometric property of the Self-Regulated Learning Profile and Self-Diagnostic (SRL-PSD) instrument and addressed the multi-components of SRL and academic challenges for adolescents. Participants were 358 adolescents from a Canadian middle school. The subscales of SRL-PSD were administered to students through LimeSurvey during a 25-min instructional session over two days. Results demonstrated the SRL-PSD was a reliable and valid self-report instrument to measure adolescents' SRL practices and academic challenges. Also, all types of SRL practices and academic challenges were significantly intercorrelated. Additionally, all types of SRL practices were positively associated with school engagement, whereas all types of academic challenges were negatively associated with school engagement. Overall, this study provides a validated self-report measure for educators and researchers to examine adolescents' SRL practices and academic challenges.",
+      "relevant": true,
+      "origin": "live_api",
+      "note": "Self-regulated learning in adolescents; in scope."
+    },
+    {
+      "title": "Agreement Between the Association for Higher Education of Shoreline Community College and the Board of Trustees concerning Salary, Working Conditions, and Related College Policies 1973-74.",
+      "abstract": "This document presents the agreement between the Association for Higher Education of Shoreline Community College and the Board of Trustees concerning salary, working conditions, and related college policies for the period from July 19, 1973 to June 30, 1974. The articles of the agreement cover initial placement of teaching faculty, salary increases, professional coordinating council, professional responsibilities, student and instructional related activities, sabbatical leaves, leaves of absence, insurance benefits, retirement, salary for extra classes and duties, and the college system of evaluation. (PG)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Education-sector labor/governance (salary, employment agreements); not a future skill."
+    },
+    {
+      "title": "Working Conditions and Salary as Correlates of Teachers&apos; Productivity in Government-Owned Secondary Schools in Emure Local Government Area of Ekiti State, Nigeria",
+      "abstract": "The poor performance of candidates in external examination between 2014 and 2018 could be an indication of low productivity of teachers. The research study examined the influence of working conditions and salary on teachers' productivity in government owned secondary schools in Emure Local Government Area of Ekiti State, Nigeria. The descriptive research of the survey type was employed for the research study. The population for this research study was seven government-owned secondary schools while the sample was four government-owned secondary schools. The research study found out the relationship between working conditions and teachers' productivity; salary and teachers' productivity in government-owned secondary schools in Emure Local Government Area of Ekiti State, Nigeria. Validated instruments tagged, &quot;Working Conditions and Salary Questionnaire&quot; (WCSQ) and &quot;Teachers' Productivity Questionnaire&quot; (TPQ) were used to collect data from sample of 80 respondents. Simple random sampling technique was used to select four secondary schools while, proportional sampling technique was used to select 80 teachers. The research study revealed that there was significant relationship between working conditions and teachers' productivity; salary and teachers' productivity. This research study has shown that working conditions and salary had influence on teachers' productivity.",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Education-sector labor/governance (salary, employment agreements); not a future skill."
+    },
+    {
+      "title": "The Policy Implications of Compensation and Working Conditions in Three Publicly Funded Early Childhood Systems.",
+      "abstract": "Analyzes policy implications of compensation and working conditions of teachers in three publicly funded early childhood systems: public school prekindergarten and kindergarten, publicly funded child care, and Head Start. Unacceptable levels of teacher turnover and vacancy in nonpublic school programs resulted from differences in compensation and working conditions. (Author/BB)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Education-sector labor/governance (salary, employment agreements); not a future skill."
+    },
+    {
+      "title": "Strike at Oakland University",
+      "abstract": "Oakland University, Michigan, is perhaps the first 4-year institution at which professors went on strike for better salary and working conditions. (Author/HS)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Education-sector labor/governance (salary, employment agreements); not a future skill."
+    },
+    {
+      "title": "Professional Staff Employment Agreement Between the Board of Trustees of Community College District No. 4 and the Skagit Valley College Education Association for Fiscal Year 1973-74.",
+      "abstract": "Presented in this document is the professional staff employment agreement between the Board of Trustees of Community College District No. 4 and the Skagit Valley College Education Association for the year 1973-74. The Articles of the agreement include implementation of new salary table, negotiated working conditions, leaves of absence, benefits, professional responsibilities, implementation of the continuing education part-time salary schedule, and the salary agreement. The appendices include the salary grid, the faculty college calendar, and the administrative salary schedule. (PG)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Education-sector labor/governance (salary, employment agreements); not a future skill."
+    },
+    {
+      "title": "The Revolving Door",
+      "abstract": "Experienced teachers are, on average, more effective at raising student performance than those in their early years of teaching. This gives rise to the concern that too many teachers leave the profession after less than a full career and that too many leave troubled inner-city schools for suburban ones. Until now, the roots of these problems have not been well understood. In particular, it is not known whether teachers leave schools with high concentrations of disadvantaged and low-achieving populations for financial reasons or because of the working conditions associated with serving these students. Nor are there good estimates of what kinds of salary increases would need to be offered to slow the turnover among teachers. This article presents a path-breaking study of elementary school teachers in the state of Texas. The study examines directly the impact of salary and certain working conditions on teachers' decisions to leave their schools, focusing solely on how many teachers move among schools and out of teaching, and does not examine the quality of the teachers who move from one district to another or leave teaching altogether. It reveals that working conditions matter more than salary. (Contains 2 figures.)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Education-sector labor/governance (salary, employment agreements); not a future skill."
+    },
+    {
+      "title": "Integrating Nutrition into the Physical Education Curriculum",
+      "abstract": "Obesity among children and teens continues to be a major public health concern in the United States. Approximately 16.9% of children and adolescents age 2-19 years are obese. To address this epidemic, schools have been encouraged to develop a coordinated school health program, which includes an interdisciplinary approach to nutrition education. Teachers in all subject matters, especially physical educators, are being called upon to teach nutrition education as a way to help reinforce nutrition concepts learned in the classroom. This article provides physical educators with information on how to integrate nutrition lessons into their classes and presents a sample lesson that physical educators can use to incorporate nutrition into their curriculum. (Contains 3 tables.)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "School health/nutrition/physical education; not a future-skill topic."
+    },
+    {
+      "title": "School Health Index for Physical Activity and Healthy Eating: A Self-Assessment and Planning Guide. Elementary School.",
+      "abstract": "This self-assessment and planning guide is intended to help schools identify the strengths and weaknesses of their health promotion policies and programs, develop an action plan for improving student health, and involve teachers, parents, students, and the community in improving school services. It focuses on physical activity and nutrition. After presenting a physical activity and nutrition fact sheet and instructions for the site coordinator, the guide offers eight modules that look at: school policies and environment; health education; physical education; nutrition services; school health services; school counseling, psychological, and social services; health promotion for staff; and family and community involvement. The modules include instructions for coordinators,  scorecards, questionnaires, and planning questions. Resources for each module are attached. (SM)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "School health/nutrition/physical education; not a future-skill topic."
+    },
+    {
+      "title": "Health Education. Physical Dimensions of Health. Nutrition Education. Grades 10-12.",
+      "abstract": "This guide to nutrition education can be used as a basis for curriculum development at the school district level, as well as a basis for daily lesson planning by teachers. Designed to involve high school students in gathering information from school and community resources, the guide covers the following topics: (1) meal planning; (2) food consumerism; (3) nutrition and physical fitness; (4) health-related problems; (5) nutrition and reproduction; (6) infant nutrition; (7) hunger and malnutrition in the United States; and (8) careers in nutrition. Appendices contain suggested breakfast and lunch surveys for secondary students. (JD)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "School health/nutrition/physical education; not a future-skill topic."
+    },
+    {
+      "title": "Nutrition and Schools: Making Healthy Choices.",
+      "abstract": "In 1989, California launched a statewide child health initiative including components on nutrition, health education, physical education, health services, counseling and psychological services, school safety, health promotion for staff, and parent and community involvement. A sidebar explains what principals can do to improve children's nutrition at school. (MLH)",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "School health/nutrition/physical education; not a future-skill topic."
+    },
+    {
+      "title": "It Takes a Village: Promoting Parent and Family Education on Healthy Lifestyles for Minnesota Secondary Students",
+      "abstract": "Background: This study examines school strategies to educate parents over time about physical activity and nutrition and how those strategies are related to adolescent health behaviors. Methods: Data from the Minnesota School Health Profiles Lead Health Education Teacher survey (2008-2012) and the Minnesota Student Survey (MSS, 2013) included provisions for parent education about physical activity and nutrition and student physical activity and dietary intake behaviors. Analyses were performed using SAS, version 9.3. A generalized estimating equation (GEE) was used to examine changes over time in school policies. Adjusted linear regression models examined cross-sectional association between school policies (2012) and school-level mean student outcomes (2013). Results: Parent education about physical activity and nutrition was constant over time, with the exception of a decrease in physical activity education in schools with low minority enrollment. There was a positive relationship between schools offering physical activity education for parents and the number of days a student meets physical activity and water consumption recommendations. There was no relationship between strategies for nutrition education and dietary intake. Conclusions: School providing strategies for parent engagement around student physical activity and nutrition may increase parent engagement overall and improve adolescent and school-related outcomes.",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "School health/nutrition/physical education; not a future-skill topic."
+    },
+    {
+      "title": "The Relationship between Student Health and Academic Performance: Implications for School Psychologists",
+      "abstract": "Children who are unhealthy are at higher risk for school problems than students who are free from medical problems. Students with poor health have a higher probability of school failure, grade retention, and dropout. The relationship between student health and academic success is complex. Common manageable factors of student health are nutrition, maintaining healthy weight, and physical fitness. Through a comprehensive literature review the relationships among school achievement and nutrition, maintaining healthy weight, and physical fitness are examined. Furthermore, the efficacy of educational programs to improve nutrition, maintain healthy weight, and increase physical fitness is evaluated. The complexity of the relationship among variables is presented and areas for future research and practice for school psychologists are described.",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "School health/nutrition/physical education; not a future-skill topic."
+    },
+    {
+      "title": "PENGAJARAN MAYA GURU INOVATIF PENDIDIKAN ISLAM DALAM ERA PANDEMIK COVID-19 VIRTUAL TEACHING OF INNOVATIVE ISLAMIC EDUCATION TEACHERS IN THE COVID-19 PANDEMIC ERA",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Virtual religious-education pedagogy during COVID; off scope."
+    },
+    {
+      "title": "Comparing and Prioritizing Different Methods of Collection and Decontamination of Waste in Decentralized Healthcare Centers",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Environmental/engineering/clinical topic; clearly out of scope."
+    },
+    {
+      "title": "Studying the Effluent Quality of Enhanced Modified Ludzack Ettinger-oxic Settling Anaerobic Process (E-MLE-OSA) for Treating Real Municipal Wastewater",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Environmental/engineering/clinical topic; clearly out of scope."
+    },
+    {
+      "title": "Effect of Drought Stress, Soil Salinity, P. indica, and MWCNs on Biodegradation of Diesel Oil in the Pb- and Cd-Polluted Soil Under Cultivation of Triticale Plant",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Environmental/engineering/clinical topic; clearly out of scope."
+    },
+    {
+      "title": "Comparing the Performance Evaluation Models of Gas Refineries Using AHP and TOPSIS",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Environmental/engineering/clinical topic; clearly out of scope."
+    },
+    {
+      "title": "A Simplified Approach to Evaluate Retinal Blue Light Hazard Using the Correlated Color Temperature of LED Light Sources",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Environmental/engineering/clinical topic; clearly out of scope."
+    },
+    {
+      "title": "Investigating the Non-carcinogenic Risk and Hazard Quotient of Heavy Metals in High-traffic Districts of Tehran Metropolis, Iran",
+      "abstract": "",
+      "relevant": false,
+      "origin": "live_api",
+      "note": "Environmental/engineering/clinical topic; clearly out of scope."
     }
   ]
 }

@@ -477,12 +477,12 @@ class DataIntegrityTests(unittest.TestCase):
 
     def test_relevance_heuristic_meets_measured_floor(self) -> None:
         # Guards the keyword classifier against regressions using the labeled
-        # eval set; floors are below the current 0.64/1.00 with margin.
+        # eval set; floors sit below the current 0.78/1.00 with margin.
         import eval_relevance
 
         examples = eval_relevance.load_examples()
         metrics = eval_relevance.evaluate(examples, RELEVANCE_THRESHOLD)
-        self.assertGreaterEqual(metrics.precision, 0.60, "relevance precision regressed")
+        self.assertGreaterEqual(metrics.precision, 0.70, "relevance precision regressed")
         self.assertGreaterEqual(metrics.recall, 0.90, "relevance recall regressed")
 
     def test_reject_missing_record_reports_error(self) -> None:

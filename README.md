@@ -100,12 +100,13 @@ qualify a source — and score at or above the threshold (default 0.3, tunable p
 importer via `--min-relevance`) to survive before deduplication.
 
 The threshold is not guessed: `eval/relevance_labeled.json` is a labeled set
-(real candidates from the first live run plus clear anchor cases) and
-`scripts/eval_relevance.py` reports precision/recall/F1 and sweeps thresholds, so
-the filter's behavior is measured. The current heuristic reaches precision 0.64 /
-recall 1.00 on that set; `test_relevance_heuristic_meets_measured_floor` guards
-against regressions. The keyword heuristic still admits incidental single-keyword
-matches; a larger labeled set and a trained classifier are the planned next step.
+(54 examples: real candidates from the live run and live API queries across the
+sources, plus clear anchor cases) and `scripts/eval_relevance.py` reports
+precision/recall/F1 and sweeps thresholds, so the filter's behavior is measured.
+The current heuristic reaches precision 0.78 / recall 1.00 on that set;
+`test_relevance_heuristic_meets_measured_floor` guards against regressions. The
+keyword heuristic still admits incidental single-keyword matches; a trained
+classifier on a still-larger set is the planned next step.
 
 ## Reviewing candidates
 
