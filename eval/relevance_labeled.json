@@ -1,0 +1,166 @@
+{
+  "_README": "Labeled relevance evaluation set for scripts/eval_relevance.py. Labels are editorial judgments per the MVP scope (AI / future-skills education for children and adolescents aged 6-18). 'live_run' examples are real candidates from the first live pipeline run (PR #20); 'editorial' examples are clear anchor cases.",
+  "examples": [
+    {
+      "title": "A Qualitative Study of Immigration Trauma, Posttraumatic Growth, and the College Experience Among MENA Immigrant Students",
+      "abstract": "Middle Eastern and North African (MENA) immigrant students who are seeking to earn a higher education in the United States have to navigate acculturative stressors and systemic barriers. Prior research has focused primarily on the challenges MENA immigrant students experience without deeply exploring how these students adapt and grow. The focus in this qualitative study was to understand how MENA immigrant college students experience and make meaning of their academic journeys. Semi-structured interviews were used to explore the academic experiences of seven MENA immigrant college students in the United States and assess how acculturative stressors, personal strengths, coping strategies, and resilience factors shaped their academic outcomes. Through a phenomenological approach, data were analyzed using Braun and Clarke\u2019s (2006) thematic analysis. The findings indicated the students entered the college setting already experiencing significant acculturative stressors, including language barriers, cultural adjustment, financial strain, discrimination, and family separation, in addition to institutional challenges like limited guidance and difficulties adjusting to academic institutions in the United States. Participants demonstrated adaptive coping through help-seeking behaviors, determination, self-advocacy, and faith-based practices to support their academic engagement and develop post traumatic growth. The participating MENA immigrant students exhibited an academic trajectory of an initial struggle followed by improved performance, increased confidence, and long-term growth and showed an appreciation for educational opportunities. Implications for this study reflect the need for culturally responsive and preemptive support systems within higher education for MENA immigrant students.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "College students and acculturation trauma; outside the 6-18 future-skills scope."
+    },
+    {
+      "title": "An Adaptive Activity Model of DCE: Exploring Educators\u2019 Practices in Resourced-Constrained Primary Schools",
+      "abstract": "This study employs Activity Theory (AT) to examine Digital Citizenship Education (DCE) implementation as an activity system within resource-constrained primary schools. Addressing a persistent policy\u2013practice gap and limited research in early schooling, it explores how teachers in resource-constrained settings understand, enact, and are constrained in their DCE work. A qualitative, abductive case study based predominantly on 12 semi-structured interviews amongst primary school teachers in Cape Town South Africa reveals systemic contradictions within the DCE activity system rooted in digital inequality and infrastructural fragility. Teachers hold largely surface-level, safety-oriented conceptions of DCE, leading to informal, reactive practices that depend on personal moral reasoning and self-directed learning. The paper proposes an Adaptive Activity Model (AAM), which provides a diagnostic framework explaining how infrastructural scarcity forces agents into everyday systems design. The AAM offers transferable insights for guiding IS implementation and designing for resilience in public education systems across digitally unequal context.",
+      "relevant": true,
+      "origin": "live_run",
+      "note": "Digital citizenship education in primary schools = digital agency for children."
+    },
+    {
+      "title": "Underestimated Impact: How Analogue Card Games Can Foster Digital and AI Competence among SMEs",
+      "abstract": "Card-based, analogue learning formats are promising low-threshold tools for building digital and artificial intelligence (AI) competence in organizations, particularly small and medium-sized enterprises (SMEs) that hesitate to move from awareness to hands-on adoption. This research-in-progress presents an ongoing evaluation of an AI-focused card game as a human-centered intervention for organizational learning in resource-constrained contexts. Grounded in design science research, the study will test the game in SME settings using moderated gameplay, questionnaires, and focus groups to examine effects on AI awareness, tool knowledge, problem-solving, and perceived workplace integration possibilities. Once completed, it will provide empirically grounded design knowledge on how analogue, gamified approaches can complement digital competence development and foster AI readiness in SMEs.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "AI competence, but the audience is SMEs/organizations, not children or adolescents."
+    },
+    {
+      "title": "Teaching Innovation Through Location Analytics: Advancing DEI and ESG in Graduate IS Curriculum",
+      "abstract": "This paper presents a teaching innovation that introduces a practical, modular framework integrating Location Analytics (LA) with Diversity, Equity, and Inclusion (DEI) and Environmental, Social, and Governance (ESG) principles in graduate Information Systems (IS) education. Aligned with the Master of Science in Information Systems 2016 Global Competency Model (MSIS 2016 GCM), the framework emphasizes data, technology, business integration, and societal responsibility. It introduces a six-step pedagogical design that covers business understanding, data preparation, spatial analysis, and ethical evaluation, and embeds geospatial thinking and equity-centered reasoning into case-based learning. For IS educators, it offers ready-to-adopt teaching modules, assignments, and case studies that link technical skill development with social impact, aiming to prepare students to use data responsibly and lead with awareness of both business goals and social impact.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "Graduate IS curriculum; not future-skills for youth."
+    },
+    {
+      "title": "Who Owns The Metaverse \u2014 Who Is Excluded \u2013 Who Gets Hurt?\u201d \u2013 Young Generation\u2019S Insights On Metaverse Ethics",
+      "abstract": "This study explores ethical issues surrounding the emerging technology of metaverse from the perspective of young people, emphasizing their views on what constitutes an ethically sustainable metaverse in everyday life and society. As future users and developers, their insights are critical for shaping responsible digital environments. The research adopts a qualitative approach, drawing on semi-structured interviews with computer science university students and high school students during Virtual Reality experiments. Data was analyzed using Effing\u2019s (2024) framework, which was extended by participants\u2019 contributions. Young people highlighted themes such as social interaction, humanity, and safety, alongside domains such as learning, health, and commercial practices. They stressed child protection, accessibility, and equality, while identifying risks such as cyberbullying, harmful content, addiction, and privacy concerns. Findings reveal a strong ethical orientation among youth and their readiness to engage in designing inclusive, safe, and equitable digital futures, expanding IS research beyond organizational contexts.",
+      "relevant": true,
+      "origin": "live_run",
+      "note": "Ethics of emerging technology from young people's perspective."
+    },
+    {
+      "title": "Rethinking architectural education post-disaster: an analytical framework for curricular transformation after the 2023 Kahramanmara\u015f earthquakes",
+      "abstract": "T\u00fcrkiye experienced devastating impacts following the 6 February 2023 Kahramanmara\u015f earthquakes, which revealed the urgent need to strengthen the connection between disaster risk management and education policies. Despite the country\u2019s vulnerability to earthquakes, the inclusion of disaster and earthquake related courses in higher education particularly within architecture and interior architecture programs remains insufficient. This study conducts a comparative analysis of the presence and evolution of disaster and earthquake-focused courses in Turkish public and foundation universities between 2022 and 2025. A qualitative multiple case study design was employed, incorporating document analysis and content evaluation through frequency and percentage distributions. The findings indicate a significant quantitative increase in disaster-related education. While only 35 universities offered such courses in 2022, this number increased to 97 by 2025. The total number of related courses expanded from 40 to 140. However, the majority of these courses were elective (88\u201390%) and theoretical (88\u201395%), with limited compulsory or practice-oriented components. The study demonstrates an escalating institutional acknowledgement of disaster awareness within architectural education; nonetheless, it underscores the necessity for more practice\u2011based and compulsory curricular structures to achieve sustainable integration and to more accurately align architectural education with the disaster risk reduction competencies expected in professional practice.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "Architecture curriculum and disaster-risk management."
+    },
+    {
+      "title": "Menstrual Hygiene Practices and Associated Factors among Post-Menarche Primary-School Girls in Semi-Rural Indonesia: A Mixed-Methods Study",
+      "abstract": "Introduction: Menstrual hygiene management (MHM) remains a significant public health issue, particularly among primary school girls in low- and middle-income countries. Poor menstrual hygiene is associated with an increased risk of reproductive tract infections and may increase vulnerability to sexually transmitted infections (STIs). In Indonesia, inadequate practices remain common, including in semi-rural areas such as Garut Regency, where limited sanitation and family dynamics influence menstrual health behaviors. Methods: This study used a sequential explanatory mixed-methods design. A total of 83 primary school girls who had experienced menarche were included in the quantitative phase and analyzed using multivariate logistic regression. 21 informants were purposively selected for in-depth interviews based on school variation, knowledge level, maternal support level, and menstrual hygiene practice category. All selected informants completed the interviews, and all completed interviews were included in the thematic analysis Results: High knowledge was strongly associated with good MHM practices (OR = 13.60; 95% CI: 3.38\u201354.71; p &lt; 0.001 ). After adjusting for maternal support and sanitary pad availability, girls with adequate knowledge had 13.6 times higher odds of good menstrual hygiene practices . Qualitative findings suggested that maternal support may facilitate the application of menstrual hygiene knowledge through emotional guidance, practical assistance, and the normalization of menstruation. Conclusion: High knowledge was the only statistically significant factor associated with good MHM practices in the adjusted quantitative model. Maternal support, although not statistically significant in the multivariable analysis, emerged in the qualitative findings as a contextual facilitator that may support the application of menstrual hygiene knowledge in daily practice.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "Public-health topic; not an AI/future-skill."
+    },
+    {
+      "title": "The complexity of co-teaching in the secondary science classroom: a case study",
+      "abstract": "To understand the experience of secondary science co-teachers implementing new science standards, the roles they assume in the classroom, and the degree of parity they exhibit in their work, we examined one pair of co-teachers in a case study via questionnaires, video and audio recorded lessons, and teacher interviews. Specifically, this research addresses the following questions: (1) What roles do secondary science co-teachers assume in the classroom when implementing new science standards? and (2) How do the demands of the new standards affect the experiences of co-teachers? In this pairing, the co-teachers lacked parity, or equal status, due to a lack of preparation for the partnership and the complex content, skills, and knowledge needed to teach the new standards. They also lacked time and structure to plan for teaching throughout the year, resulting in greater role disparity. Each partner's respect for the work of the other did increase over the academic year. There is currently little research about how science standards influence the co-teaching environment, this study is meant to add to this discussion.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "Co-teaching pedagogy and parity; matched 'complexity' incidentally, not a future-skill topic."
+    },
+    {
+      "title": "Design and validation of a universal literacy screening tool for Catalan-speaking children",
+      "abstract": "This study describes the design, development, and piloting of a universal literacy screening tool for Catalan-speaking students (Grades 1\u20134) within a Multi-Tiered System of Support (MTSS) framework. The instrument aims to support early identification of students at risk of reading difficulties through an evidence-based approach aligned with the school curriculum. The development followed a multi-phase process, including theoretical conceptualization, expert validation, and two pilot studies (Pilot 1, n = 178; Pilot 2, n = 336). The instrument assesses phonological awareness, alphabetic knowledge, lexical processes, reading fluency, comprehension, and spelling processes. Psychometric analyses examined item difficulty, point-biserial discrimination, internal consistency (Cronbach's alpha), and convergent validity. Results from Pilot 1 supported item refinement and provided initial evidence of convergent validity with established measures. Subsequently, Pilot 2 showed improved point-biserial item discrimination and high internal consistency ( \u03b1 &amp;gt; .80). Findings indicate that the C-DLec is a reliable and efficient tool for early literacy screening in Catalan educational contexts, supporting data-driven decision-making and prevention of academic difficulties.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "Foundational literacy screening tool; not future-skills/AI."
+    },
+    {
+      "title": "Impact of water sanitation and hygiene on quality education in developing countries: a review of theories and indicators",
+      "abstract": "Access to Water, Sanitation and Hygiene (WASH) has increasingly been adopted as a quality determinant of education that affects learning and health outcomes. This study reviews literature on the conceptual synthesis, theory integration, Indicator clarification of the impact of WASH on quality education. A narrative review method was adopted for this study. Desk-based review of literature was used to find and read studies pertaining to the relationship between WASH and educational quality in different culture settings that include developing nations. Three broad theoretical perspectives like ecological system approach, human capital theory, and health belief model have been employed widely in studies examining this link. These studies tend to investigate a battery of variables including infrastructure quality, hygiene behavior, school attendance, gender disparities, and broader socio-economic determinants. This study contributes to knowledge by the development of an integrated variable framework linking WASH inputs to educational outcomes through mediating and moderating conditions. Furthermore, this study will provide literatures on the relationship between WASH and Quality Education for researchers and policy makers towards achieving Sustainable Development Goals 4.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "WASH public-health review; 'education' is incidental."
+    },
+    {
+      "title": "The reductionism of pedagogy in the online primary classrooms of COVID-19 lockdowns",
+      "abstract": "COVID-19 lockdowns forced schools into extended periods of remote teaching, reshaping how teachers engaged with pedagogy and students in online contexts. The authors explore the experiences of three primary school teachers in Victorian government schools in Australia, analysed through the lens of the Victorian Teaching and Learning Model, including the nine Practice Principles and ten High Impact Teaching Strategies (HITS). Data were drawn from graduate teacher presentations to pre-service teachers and follow-up interviews. Findings suggest that while teachers relied on explicit teaching, goal setting and structured lessons, opportunities for student collaboration, agency and deep learning were limited. Departmental directives and the prescriptive use of HITS were experienced as reducing teacher autonomy and shifting pedagogy to repetitive, teacher-centred practices. The article concludes with recommendations for teacher education, professional learning and classroom practice. These include strengthening digital fluency, supporting teacher autonomy and rebalancing socio-constructivist approaches to counterbalance prescriptive routines.",
+      "relevant": false,
+      "origin": "live_run",
+      "note": "Remote-teaching pedagogy during COVID; not a future-skill topic."
+    },
+    {
+      "title": "The integration of generative artificial intelligence in secondary education: A systematic review",
+      "abstract": "In recent years, the emergence of generative artificial intelligence (GenAI) has reshaped multiple domains of human knowledge, including education, giving rise to an emerging field of study that still lacks conceptual and empirical systematization\u2014particularly at the secondary education level. Despite growing interest in exploring its pedagogical potential, existing studies remain fragmented, methodologically uneven, and often rooted in experimental or anecdotal contexts, which hinders the development of a robust evidence base regarding its actual impact on learning. In response to this situation, the present study conducts a systematic review of recent scientific literature with the aim of identifying the main uses of GenAI in secondary education and examining the improvements these uses bring to teaching and learning processes. The review follows the PRISMA protocol and includes a total of 33 studies selected based on explicit inclusion criteria, focusing on experiences involving generative tools. The findings reveal a diverse range of approaches to GenAI integration, with a predominance of applications in written production, STEM problem-solving, creative stimulation, and automated feedback\u2014most of which are initiated by teachers and implemented in isolated or experimental settings. The review also identifies significant improvements in areas such as student motivation, autonomy, critical thinking, and digital competence. However, methodological limitations and gaps in pedagogical integration are also noted. These findings underscore the need to move towards more integrated and sustained pedagogical models and highlight the urgency of strengthening longitudinal and theoretically grounded research to gain deeper insights into the educational implications of this emerging technology.",
+      "relevant": true,
+      "origin": "live_run",
+      "note": "Generative AI in secondary education; squarely AI literacy."
+    },
+    {
+      "title": "A competency framework for AI literacy in K-12 education",
+      "abstract": "This framework describes how school students can learn to understand, use, and critically question artificial intelligence systems, covering capabilities, limitations, and ethical implications for learners aged 6 to 18.",
+      "relevant": true,
+      "origin": "editorial",
+      "note": "Clear in-scope anchor case."
+    },
+    {
+      "title": "Teaching critical thinking and misinformation detection to adolescents",
+      "abstract": "We study how secondary school students develop critical thinking skills to evaluate online information and detect misinformation in digital media.",
+      "relevant": true,
+      "origin": "editorial",
+      "note": "Clear in-scope anchor case."
+    },
+    {
+      "title": "Fostering self-regulated learning and metacognition in secondary school students",
+      "abstract": "This study examines interventions that build self-regulation, metacognition, and learning-to-learn strategies among adolescent pupils in school settings.",
+      "relevant": true,
+      "origin": "editorial",
+      "note": "Clear in-scope anchor case."
+    },
+    {
+      "title": "Computational and systems thinking in primary computing education",
+      "abstract": "We report on a curriculum that develops computational thinking and systems thinking among primary school children through age-appropriate programming activities.",
+      "relevant": true,
+      "origin": "editorial",
+      "note": "Clear in-scope anchor case."
+    },
+    {
+      "title": "Assessing collaborative problem solving among school students",
+      "abstract": "This paper presents a framework for assessing collaboration and collaborative problem solving competence in classrooms of school-aged learners.",
+      "relevant": true,
+      "origin": "editorial",
+      "note": "Clear in-scope anchor case."
+    },
+    {
+      "title": "Data literacy education for school students in the age of AI",
+      "abstract": "We explore how data literacy and data science education can be introduced to pupils, building digital competence and critical thinking about data and AI.",
+      "relevant": true,
+      "origin": "editorial",
+      "note": "Clear in-scope anchor case."
+    },
+    {
+      "title": "Lattice simulations of quantum chromodynamics",
+      "abstract": "We present improved gauge field configurations for lattice QCD and analyze the resulting hadron spectrum.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Clear out-of-scope anchor case."
+    },
+    {
+      "title": "Outcomes after coronary artery bypass grafting in elderly patients",
+      "abstract": "This clinical study reviews post-operative recovery and mortality after cardiac surgery in patients over seventy.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Clear out-of-scope anchor case."
+    },
+    {
+      "title": "Nitrogen fixation dynamics in tropical legume agriculture",
+      "abstract": "We measure soil nitrogen dynamics and rhizobial symbiosis across tropical legume cropping systems.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Clear out-of-scope anchor case."
+    },
+    {
+      "title": "Tax avoidance strategies among multinational corporations",
+      "abstract": "This paper analyzes profit shifting and corporate tax avoidance strategies used by multinational firms.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Clear out-of-scope anchor case."
+    },
+    {
+      "title": "Migratory patterns of arctic seabirds",
+      "abstract": "Using satellite tags we describe the seasonal migratory routes and foraging ranges of arctic seabird colonies.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Clear out-of-scope anchor case."
+    }
+  ]
+}

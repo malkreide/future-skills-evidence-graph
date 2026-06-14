@@ -15,6 +15,7 @@ from jsonschema import Draft202012Validator  # noqa: E402
 
 from cluster_claims import cluster_candidate_skills  # noqa: E402
 from common import (  # noqa: E402
+    RELEVANCE_THRESHOLD,
     append_candidate_sources,
     fetch_or_warn,
     filter_new_claims,
@@ -376,6 +377,30 @@ class DataIntegrityTests(unittest.TestCase):
             fetch_or_warn("Test", lambda: [{"id": "src-ok"}]),
             [{"id": "src-ok"}],
         )
+
+    def test_relevance_requires_a_topic_match(self) -> None:
+        # Audience terms alone must not qualify a source: a paper that only
+        # mentions "school" or "students" but matches no topic is dropped.
+        audience_only = {
+            "title": "Menstrual hygiene practices among primary school girls",
+            "abstract": "A public health study of hygiene management for school students.",
+        }
+        topic_match = {
+            "title": "AI literacy for school students",
+            "abstract": "Building artificial intelligence competence among pupils.",
+        }
+        kept = filter_relevant_sources([dict(audience_only), dict(topic_match)])
+        self.assertEqual([source["title"] for source in kept], [topic_match["title"]])
+
+    def test_relevance_heuristic_meets_measured_floor(self) -> None:
+        # Guards the keyword classifier against regressions using the labeled
+        # eval set; floors are below the current 0.64/1.00 with margin.
+        import eval_relevance
+
+        examples = eval_relevance.load_examples()
+        metrics = eval_relevance.evaluate(examples, RELEVANCE_THRESHOLD)
+        self.assertGreaterEqual(metrics.precision, 0.60, "relevance precision regressed")
+        self.assertGreaterEqual(metrics.recall, 0.90, "relevance recall regressed")
 
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
