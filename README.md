@@ -108,9 +108,14 @@ re-validates the repository — writing nothing if any check fails.
 ```powershell
 python scripts/promote_candidate.py claim claim-id `
   --context "..." --age-range "6-18" --outcome "..." `
-  --evidence-strength moderate --supports skill-id
+  --evidence-type systematic_review --evidence-strength moderate --supports skill-id
 python scripts/promote_candidate.py skill skill-id --definition "..." --name "..."
+python scripts/promote_candidate.py reject claim-id   # off-scope or unusable
 ```
+
+Rejecting a candidate records the decision (claims become `rejected`, skills
+`deprecated`) so it stays out of clustering and later review passes instead of
+lingering as a candidate.
 
 A claim only becomes `reviewed` once its context, age range, and outcome are real
 (not the extraction placeholders) and it links at least one existing skill. A skill

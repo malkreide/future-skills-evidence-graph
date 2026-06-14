@@ -14,9 +14,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   },
   {
     "id": "claim-an-adaptive-activity-model-of-dce-exploring-educators-practices-in-resou",
@@ -33,9 +33,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   },
   {
     "id": "claim-underestimated-impact-how-analogue-card-games-can-foster-digital-and-ai",
@@ -52,9 +52,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   },
   {
     "id": "claim-teaching-innovation-through-location-analytics-advancing-dei-and-esg-in",
@@ -71,9 +71,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   },
   {
     "id": "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s",
@@ -82,17 +82,19 @@
       "src-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s"
     ],
     "text_anchor": "abstract, sentence 6: \"They stressed child protection, accessibility, and equality, while identifying risks such as cyberbullying, harmful content, addiction, and privacy concerns.\"",
-    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Qualitative study of young people's ethical concerns about the metaverse and emerging immersive technologies.",
+    "age_range": "13-18",
+    "outcome": "Young people identify ethical risks of emerging technology (cyberbullying, harmful content, addiction, privacy) and prioritize child protection, accessibility, and equality.",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-ethical-technology-judgment"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   },
   {
     "id": "claim-the-reductionism-of-pedagogy-in-the-online-primary-classrooms-of-covid-1",
@@ -109,9 +111,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   },
   {
     "id": "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa",
@@ -120,16 +122,19 @@
       "src-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
     ],
     "text_anchor": "abstract, sentence 6: \"The review also identifies significant improvements in areas such as student motivation, autonomy, critical thinking, and digital competence.\"",
-    "context": "Auto-extracted candidate; matched topics: critical thinking, digital competence. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "context": "Systematic review of generative AI integration in secondary education.",
+    "age_range": "12-18",
+    "outcome": "Generative AI integration in secondary education is associated with improvements in student motivation, autonomy, critical thinking, and digital competence.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-literacy",
+      "skill-critical-thinking"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "keyword_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-14",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-14"
   }
 ]

@@ -114,6 +114,8 @@ def promote_claim(args: argparse.Namespace) -> list[str]:
         claim["age_range"] = args.age_range
     if args.outcome is not None:
         claim["outcome"] = args.outcome
+    if args.evidence_type is not None:
+        claim["evidence_type"] = args.evidence_type
     if args.evidence_strength is not None:
         claim["evidence_strength"] = args.evidence_strength
     if args.supports is not None:
@@ -237,6 +239,18 @@ def _build_parser() -> argparse.ArgumentParser:
     claim.add_argument("--context")
     claim.add_argument("--age-range")
     claim.add_argument("--outcome")
+    claim.add_argument(
+        "--evidence-type",
+        choices=[
+            "framework_synthesis",
+            "policy_synthesis",
+            "empirical_study",
+            "systematic_review",
+            "conceptual_review",
+            "labor_market_forecast",
+            "expert_consensus",
+        ],
+    )
     claim.add_argument("--evidence-strength", choices=["low", "moderate", "strong"])
     claim.add_argument("--supports", nargs="*")
     claim.add_argument("--contradicts", nargs="*")
@@ -252,30 +266,68 @@ def _build_parser() -> argparse.ArgumentParser:
     skill.add_argument("--uncertainty")
     skill.add_argument("--add-claim", nargs="*")
     skill.add_argument("--add-contradicting-claim", nargs="*")
+
+    reject = sub.add_parser("reject", help="Reject a candidate claim (or deprecate a skill).")
+    reject.add_argument("id")
     return parser
+
+
+def reject_record(args: argparse.Namespace) -> list[str]:
+    """Close out a candidate: claims become rejected, skills deprecated.
+
+    Recording the decision keeps rejected candidates out of clustering and
+    out of any later review pass, instead of leaving them lingering as
+    candidates. Reasons live in the commit/PR, since the schemas carry no
+    free-text review field on claims.
+    """
+    found = find_record("claims", args.id)
+    kind = "claims"
+    if found is None:
+        found = find_record("skills", args.id)
+        kind = "skills"
+    if found is None:
+        return [f"record {args.id} not found in data/claims/ or data/skills/"]
+    _, records, record = found
+    if kind == "claims":
+        record["status"] = "rejected"
+        record["reviewed_at"] = TODAY
+    else:
+        record["status"] = "deprecated"
+        record["updated_at"] = TODAY
+        record.setdefault("change_log", []).append(
+            {"date": TODAY, "change": "Deprecated candidate skill", "reason": "Rejected during review."}
+        )
+    errors = _schema_errors(kind, record)
+    if errors:
+        return errors
+    write_json(found[0], records)
+    return []
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
-    promote: Callable[[argparse.Namespace], list[str]] = (
-        promote_claim if args.kind == "claim" else promote_skill
-    )
-    errors = promote(args)
+    actions: dict[str, Callable[[argparse.Namespace], list[str]]] = {
+        "claim": promote_claim,
+        "skill": promote_skill,
+        "reject": reject_record,
+    }
+    verb = "Rejected" if args.kind == "reject" else "Promoted"
+    errors = actions[args.kind](args)
     if errors:
-        print(f"Refusing to promote {args.kind} {args.id}:")
+        print(f"Refusing to {verb.lower()} {args.id}:")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    # The promotion changed reviewed evidence, so stored skill scores may drift.
+    # The change may have altered reviewed evidence, so stored scores may drift.
     changed = write_skill_scores()
     repo_errors = validate_repository()
     if repo_errors:
-        print("Promotion written but repository validation failed:")
+        print("Change written but repository validation failed:")
         for error in repo_errors:
             print(f"- {error}")
         return 1
-    print(f"Promoted {args.kind} {args.id}. Recomputed {changed} skill score(s).")
+    print(f"{verb} {args.id}. Recomputed {changed} skill score(s).")
     return 0
 
 
