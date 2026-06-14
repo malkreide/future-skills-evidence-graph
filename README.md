@@ -75,7 +75,10 @@ to its `research/candidates` branch instead of opening duplicates. The automated
 path stays deliberately conservative: claim statements are verbatim abstract
 sentences with exact text anchors, evidence strength starts at `low`, clustered
 skills start at `evidence_score` 0.0, and nothing becomes active without human
-review. The workflow does not publish active skills automatically.
+review. Extraction prefers a sentence that reports a finding and never emits a
+pure methodology or structure sentence ("we used interviews", "this paper
+introduces a design") as a claim, so a source with no finding sentence simply
+yields no auto-claim. The workflow does not publish active skills automatically.
 
 Each importer degrades gracefully: if one source is rate-limited or unreachable,
 it logs a warning and contributes no candidates that run, so the other importers
@@ -131,7 +134,7 @@ deliberately implements a subset; the remaining steps are open:
 | --- | --- |
 | 1. Discover and deduplicate sources | Implemented (`ingest_*.py`, `deduplicate_sources.py`) |
 | 2. Classify relevance | Keyword/abstract heuristic requiring a topic match; measured against a labeled set (`eval_relevance.py`), but no trained classifier yet |
-| 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): verbatim abstract sentences become candidate claims; context, age range, outcome, and strength stay human work |
+| 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
 | 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |
 | 6. Cluster claims into skill candidates | Implemented conservatively (`cluster_claims.py`): topic-vocabulary clustering proposes candidate skills for uncovered topics; existing skills only get review hints |

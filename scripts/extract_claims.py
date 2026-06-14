@@ -23,6 +23,7 @@ from common import (
     claim_statement_key,
     filter_new_claims,
     load_json,
+    normalize_title,
     score_relevance,
     slugify,
 )
@@ -30,6 +31,33 @@ from common import (
 
 SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+")
 MIN_SENTENCE_LENGTH = 40
+
+# Cues that mark a sentence as reporting a finding/conclusion (preferred) or as
+# describing methodology/structure/aims (avoided). Among the topic-matching
+# sentences, a finding sentence is chosen over a neutral one, and a neutral one
+# over a method sentence, so extraction surfaces results rather than "we used
+# interviews" or "this paper introduces a six-step design". Heuristic and
+# LLM-free; matched as whole phrases against the normalized sentence.
+FINDING_CUES = (
+    "we find", "we found", "findings", "results show", "results suggest",
+    "results indicate", "results reveal", "study shows", "study suggests",
+    "study finds", "demonstrates that", "evidence suggests", "evidence shows",
+    "we show", "we demonstrate", "indicates that", "suggests that",
+    "reveals that", "identifies", "improves", "improved", "improvements",
+    "enhances", "enhanced", "associated with", "effective", "significant",
+    "concludes", "led to", "resulted in", "fosters", "promotes",
+)
+METHOD_CUES = (
+    "we used", "were used", "we conducted", "we collected", "data were collected",
+    "data was collected", "participants were", "we administered", "we interviewed",
+    "interviews were", "questionnaire", "sample of", "we recruited",
+    "this paper introduces", "this paper presents", "this article presents",
+    "this article describes", "this paper proposes", "introduces a", "presents a",
+    "we propose", "we present", "is organized", "is structured", "employs",
+    "this study examines", "this study explores", "this study aims", "the aim of",
+    "in this paper", "this chapter", "to explore", "to investigate", "to examine",
+    "case study", "we describe",
+)
 
 EVIDENCE_TYPE_BY_SOURCE_TYPE = {
     "systematic_review": "systematic_review",
@@ -49,14 +77,36 @@ OUTCOME_PLACEHOLDER = "Not extracted automatically; describe during review."
 CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 
 
-def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
-    """Pick the most relevant abstract sentence as (index, sentence, topics).
+def _has_cue(normalized: str, cues: tuple[str, ...]) -> bool:
+    padded = f" {normalized} "
+    return any(f" {cue} " in padded for cue in cues)
 
-    Sentences are scored with the same vocabulary the importers use for
-    relevance filtering; ties keep the earliest sentence. Sentences without
-    a topic match or shorter than MIN_SENTENCE_LENGTH are never picked.
+
+def sentence_tier(sentence: str) -> int:
+    """Rank a sentence: +1 finding, -1 methodology/structure, 0 otherwise."""
+    normalized = normalize_title(sentence)
+    finding = _has_cue(normalized, FINDING_CUES)
+    method = _has_cue(normalized, METHOD_CUES)
+    if finding and not method:
+        return 1
+    if method and not finding:
+        return -1
+    return 0
+
+
+def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
+    """Pick the best claim sentence as (index, sentence, topics).
+
+    Among sentences that match a topic and meet MIN_SENTENCE_LENGTH, a finding
+    sentence is preferred over a neutral one (see FINDING_CUES); within a tier
+    the highest relevance score wins and the earliest sentence breaks ties.
+    Pure methodology/structure sentences (tier -1, e.g. "we used interviews",
+    "this paper introduces a six-step design") are never emitted as claims:
+    they are not evidence statements, so such a source yields no claim and a
+    reviewer can author one by hand if the paper merits it. Sentences without
+    a topic match are likewise never picked.
     """
-    best: tuple[float, int, str, list[str]] | None = None
+    best: tuple[tuple[int, float, int], int, str, list[str]] | None = None
     for index, raw in enumerate(SENTENCE_SPLIT.split(abstract)):
         sentence = " ".join(raw.split())
         if len(sentence) < MIN_SENTENCE_LENGTH:
@@ -64,8 +114,12 @@ def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
         score, topics = score_relevance({"title": sentence})
         if not topics:
             continue
-        if best is None or score > best[0]:
-            best = (score, index, sentence, topics)
+        tier = sentence_tier(sentence)
+        if tier < 0:
+            continue
+        key = (tier, score, -index)
+        if best is None or key > best[0]:
+            best = (key, index, sentence, topics)
     if best is None:
         return None
     return best[1], best[2], best[3]
@@ -94,7 +148,7 @@ def claim_from_source(source: dict[str, Any]) -> dict[str, Any] | None:
         "evidence_strength": "low",
         "supports_skill_ids": [],
         "contradicts_skill_ids": [],
-        "extraction_method": "keyword_sentence_extraction_no_llm",
+        "extraction_method": "finding_sentence_extraction_no_llm",
         "status": "candidate",
         "created_at": TODAY,
         "reviewed_at": None,
