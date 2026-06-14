@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
 from typing import Any
 
 from common import (
@@ -119,6 +120,11 @@ def main() -> int:
         paths = sorted((ROOT / "data" / "sources").glob("candidates-*.json"))
     sources: list[dict[str, Any]] = []
     for path in paths:
+        # An importer that fetched nothing writes no file, so a missing path
+        # is normal here and must not abort extraction of the other sources.
+        if not path.exists():
+            print(f"Note: {path} does not exist; skipping.", file=sys.stderr)
+            continue
         payload = load_json(path)
         if not isinstance(payload, list):
             raise SystemExit(f"{path} must contain a JSON array")

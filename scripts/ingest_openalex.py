@@ -10,6 +10,7 @@ from common import (
     ROOT,
     TODAY,
     append_candidate_sources,
+    fetch_or_warn,
     filter_new_sources,
     filter_relevant_sources,
     slugify,
@@ -89,7 +90,8 @@ def main() -> int:
     parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
     args = parser.parse_args()
 
-    candidates = [convert(work) for work in fetch(args.query, args.limit, args.mailto)]
+    works = fetch_or_warn("OpenAlex", lambda: fetch(args.query, args.limit, args.mailto))
+    candidates = [convert(work) for work in works]
     relevant = filter_relevant_sources(candidates, args.min_relevance)
     new_records = filter_new_sources(relevant)
     appended = append_candidate_sources(ROOT / args.output, new_records)
