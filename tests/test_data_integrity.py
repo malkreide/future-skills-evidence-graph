@@ -31,7 +31,9 @@ from extract_claims import (  # noqa: E402
     AGE_RANGE_PLACEHOLDER,
     CONTEXT_PLACEHOLDER_SUFFIX,
     OUTCOME_PLACEHOLDER,
+    best_claim_sentence,
     claim_from_source,
+    sentence_tier,
 )
 from promote_candidate import claim_review_errors, skill_activation_errors  # noqa: E402
 from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
@@ -231,6 +233,28 @@ class DataIntegrityTests(unittest.TestCase):
                 }
             )
         )
+
+    def test_sentence_tier_separates_findings_from_methods(self) -> None:
+        self.assertEqual(sentence_tier("Findings show that students improved their critical thinking."), 1)
+        self.assertEqual(sentence_tier("We used semi-structured interviews with thirty participants."), -1)
+        self.assertEqual(sentence_tier("This paper introduces a six-step pedagogical design framework."), -1)
+        self.assertEqual(sentence_tier("AI literacy is increasingly important for school children."), 0)
+
+    def test_extraction_prefers_findings_over_methodology(self) -> None:
+        # A finding sentence is chosen over a topic-matching methodology sentence.
+        abstract = (
+            "We used semi-structured interviews to study AI literacy in schools. "
+            "Findings show that AI literacy instruction improves critical thinking among students."
+        )
+        picked = best_claim_sentence(abstract)
+        self.assertIsNotNone(picked)
+        self.assertTrue(picked[1].startswith("Findings show that AI literacy"))
+
+    def test_extraction_skips_methodology_only_sources(self) -> None:
+        # When the only topic-matching sentence is methodology/structure, no
+        # claim is emitted rather than a "we used interviews" pseudo-claim.
+        abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
+        self.assertIsNone(best_claim_sentence(abstract))
 
     def test_filter_new_claims_drops_known_statements(self) -> None:
         existing = load_records("claims")[0]
