@@ -402,6 +402,15 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertGreaterEqual(metrics.precision, 0.60, "relevance precision regressed")
         self.assertGreaterEqual(metrics.recall, 0.90, "relevance recall regressed")
 
+    def test_reject_missing_record_reports_error(self) -> None:
+        from argparse import Namespace
+
+        from promote_candidate import reject_record
+
+        errors = reject_record(Namespace(id="claim-does-not-exist-xyz"))
+        self.assertTrue(errors)
+        self.assertIn("not found", errors[0])
+
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
             normalize_title("AI Literacy: Future-Skills in Education!"),
