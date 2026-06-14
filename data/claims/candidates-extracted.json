@@ -1,0 +1,135 @@
+[
+  {
+    "id": "claim-a-qualitative-study-of-immigration-trauma-posttraumatic-growth-and-the-c",
+    "statement": "Semi-structured interviews were used to explore the academic experiences of seven MENA immigrant college students in the United States and assess how acculturative stressors, personal strengths, coping strategies, and resilience factors shaped their academic outcomes.",
+    "source_ids": [
+      "src-a-qualitative-study-of-immigration-trauma-posttraumatic-growth-and-the-c"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Semi-structured interviews were used to explore the academic experiences of seven MENA immigrant college students in the United States and assess how acculturative stressors, personal strengths, coping strategies, and resilience factors shaped their academic outcomes.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-an-adaptive-activity-model-of-dce-exploring-educators-practices-in-resou",
+    "statement": "The AAM offers transferable insights for guiding IS implementation and designing for resilience in public education systems across digitally unequal context.",
+    "source_ids": [
+      "src-an-adaptive-activity-model-of-dce-exploring-educators-practices-in-resou"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The AAM offers transferable insights for guiding IS implementation and designing for resilience in public education systems across digitally unequal context.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-underestimated-impact-how-analogue-card-games-can-foster-digital-and-ai",
+    "statement": "Card-based, analogue learning formats are promising low-threshold tools for building digital and artificial intelligence (AI) competence in organizations, particularly small and medium-sized enterprises (SMEs) that hesitate to move from awareness to hands-on adoption.",
+    "source_ids": [
+      "src-underestimated-impact-how-analogue-card-games-can-foster-digital-and-ai"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Card-based, analogue learning formats are promising low-threshold tools for building digital and artificial intelligence (AI) competence in organizations, particularly small and medium-sized enterprises (SMEs) that hesitate to move from awareness to hands-on adoption.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-innovation-through-location-analytics-advancing-dei-and-esg-in",
+    "statement": "It introduces a six-step pedagogical design that covers business understanding, data preparation, spatial analysis, and ethical evaluation, and embeds geospatial thinking and equity-centered reasoning into case-based learning.",
+    "source_ids": [
+      "src-teaching-innovation-through-location-analytics-advancing-dei-and-esg-in"
+    ],
+    "text_anchor": "abstract, sentence 3: \"It introduces a six-step pedagogical design that covers business understanding, data preparation, spatial analysis, and ethical evaluation, and embeds geospatial thinking and equity-centered reasoning into case-based learning.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s",
+    "statement": "They stressed child protection, accessibility, and equality, while identifying risks such as cyberbullying, harmful content, addiction, and privacy concerns.",
+    "source_ids": [
+      "src-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s"
+    ],
+    "text_anchor": "abstract, sentence 6: \"They stressed child protection, accessibility, and equality, while identifying risks such as cyberbullying, harmful content, addiction, and privacy concerns.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-reductionism-of-pedagogy-in-the-online-primary-classrooms-of-covid-1",
+    "statement": "Findings suggest that while teachers relied on explicit teaching, goal setting and structured lessons, opportunities for student collaboration, agency and deep learning were limited.",
+    "source_ids": [
+      "src-the-reductionism-of-pedagogy-in-the-online-primary-classrooms-of-covid-1"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Findings suggest that while teachers relied on explicit teaching, goal setting and structured lessons, opportunities for student collaboration, agency and deep learning were limited.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa",
+    "statement": "The review also identifies significant improvements in areas such as student motivation, autonomy, critical thinking, and digital competence.",
+    "source_ids": [
+      "src-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The review also identifies significant improvements in areas such as student motivation, autonomy, critical thinking, and digital competence.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "keyword_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-14",
+    "reviewed_at": null
+  }
+]
