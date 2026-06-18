@@ -261,7 +261,7 @@ TOPIC_KEYWORDS = {
         "lifelong learning",
     ),
     "ethics": ("ethics", "ethical", "responsible ai", "privacy", "fairness"),
-    "systems thinking": ("systems thinking", "computational thinking", "complexity"),
+    "systems thinking": ("systems thinking", "computational thinking"),
     "resilience": ("resilience", "adaptability"),
     "future skills": (
         "future skills",
@@ -291,6 +291,65 @@ AUDIENCE_KEYWORDS = (
 # Default minimum relevance for imported candidates: at least one topic match
 # in the title, or a topic plus audience match in the abstract.
 RELEVANCE_THRESHOLD = 0.3
+
+# Curated off-scope vocabulary. These terms mark a source as belonging to a
+# domain outside the MVP scope (AI / future-skills education for ages 6-18):
+# public health and nutrition, environmental and process engineering, labour
+# relations and finance, and audiences other than school-aged learners (clinical
+# patients, university/graduate students, SMEs and workplaces). A candidate is
+# only discarded for an off-scope term when it lacks a genuine topic anchor in
+# its TITLE. In-scope papers name the future skill they study in the title, so
+# an off-scope term paired with a merely incidental abstract topic match (e.g. a
+# pupil health paper that touches "complexity", or a salary agreement that
+# mentions "collaboration") is treated as out of scope. Keeping the guard on the
+# title preserves abstract-only in-scope candidates while raising precision.
+# Measured by scripts/eval_relevance.py.
+OFF_SCOPE_KEYWORDS = (
+    # public health / medicine / nutrition
+    "nutrition",
+    "dietary",
+    "obesity",
+    "menstrual",
+    "menstruation",
+    "hygiene",
+    "sanitation",
+    "wastewater",
+    "effluent",
+    "clinical",
+    "patients",
+    "disease",
+    # environment / process engineering / agriculture
+    "refinery",
+    "refineries",
+    "soil",
+    "agriculture",
+    "agricultural",
+    # labour relations / governance / finance
+    "salary",
+    "salaries",
+    "wages",
+    "tax",
+    # audiences outside ages 6-18 / non-education contexts
+    "trauma",
+    "posttraumatic",
+    "immigrant",
+    "immigrants",
+    "immigration",
+    "acculturation",
+    "acculturative",
+    "sme",
+    "smes",
+    "enterprise",
+    "enterprises",
+    "workplace",
+    "organizational",
+    "esg",
+    # pandemic-era remote-teaching logistics
+    "covid",
+    "pandemic",
+    "lockdown",
+    "lockdowns",
+)
 
 
 def _contains(text: str, keyword: str) -> bool:
@@ -324,6 +383,40 @@ def score_relevance(source: dict[str, Any]) -> tuple[float, list[str]]:
     return round(min(1.0, score), 2), topics
 
 
+def _title_topic_match(source: dict[str, Any]) -> bool:
+    """Whether any topic keyword matches the source's title.
+
+    A title match is treated as a genuine topic relation: in-scope papers name
+    the future skill they study in the title, whereas off-scope papers tend to
+    match a topic keyword only incidentally in the abstract.
+    """
+    title = f" {normalize_title(str(source.get('title') or ''))} "
+    return any(
+        any(_contains(title, keyword) for keyword in keywords)
+        for keywords in TOPIC_KEYWORDS.values()
+    )
+
+
+def is_off_scope(source: dict[str, Any]) -> bool:
+    """Whether a source hits an off-scope term without a genuine topic anchor.
+
+    Returns True when an OFF_SCOPE_KEYWORDS term appears in the title or abstract
+    and no topic keyword matches the title. This discards public-health,
+    environmental, labour-relations and non-6-18-audience papers that match a
+    topic keyword only in passing, while keeping abstract-only in-scope sources
+    that carry no off-scope term.
+    """
+    title = f" {normalize_title(str(source.get('title') or ''))} "
+    abstract = f" {normalize_title(str(source.get('abstract') or ''))} "
+    has_off_scope = any(
+        _contains(title, keyword) or _contains(abstract, keyword)
+        for keyword in OFF_SCOPE_KEYWORDS
+    )
+    if not has_off_scope:
+        return False
+    return not _title_topic_match(source)
+
+
 def filter_relevant_sources(
     candidates: list[dict[str, Any]], min_relevance: float = RELEVANCE_THRESHOLD
 ) -> list[dict[str, Any]]:
@@ -335,12 +428,20 @@ def filter_relevant_sources(
     match scores exactly RELEVANCE_THRESHOLD it used to slip through, letting
     off-topic papers (public health, agriculture) into the candidate set.
     Requiring a topic match raises precision without dropping topic-matched
-    candidates that sit at the threshold. Measured by scripts/eval_relevance.py.
+    candidates that sit at the threshold.
+
+    Candidates that hit a curated off-scope term without a genuine topic anchor
+    in the title (see is_off_scope / OFF_SCOPE_KEYWORDS) are also dropped: this
+    removes incidental matches such as a pupil-health paper touching
+    "complexity" or a salary agreement mentioning "collaboration". Measured by
+    scripts/eval_relevance.py.
     """
     kept: list[dict[str, Any]] = []
     for source in candidates:
         score, topics = score_relevance(source)
         if not topics or score < min_relevance:
+            continue
+        if is_off_scope(source):
             continue
         source["relevance_score"] = score
         source["topics"] = topics
