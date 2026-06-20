@@ -96,6 +96,21 @@ class DataIntegrityTests(unittest.TestCase):
         }
         self.assertEqual(skill_score(contradicted, scores), skill_score(clean, scores))
 
+    def test_off_scope_covers_pe_and_language_pedagogy(self) -> None:
+        # Physical education and foreign-language pedagogy are out of the topic
+        # scope; with no topic anchor in the title they are dropped.
+        pe = {
+            "title": "Integrating technology into physical education classes",
+            "abstract": "We study collaboration in school physical activity programs.",
+        }
+        efl = {
+            "title": "Speech recognition technology for EFL learning",
+            "abstract": "We examine AI literacy gains among English language learners.",
+        }
+        self.assertTrue(is_off_scope(pe))
+        self.assertTrue(is_off_scope(efl))
+        self.assertEqual(filter_relevant_sources([dict(pe), dict(efl)]), [])
+
     def test_audience_gate_excludes_adult_only_sources(self) -> None:
         # Adult / post-secondary audience with no school-age signal is dropped,
         # even though "AI literacy" is named in the title.
