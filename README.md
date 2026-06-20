@@ -99,14 +99,26 @@ match at least one topic — audience terms ("school", "students") alone do not
 qualify a source — and score at or above the threshold (default 0.3, tunable per
 importer via `--min-relevance`) to survive before deduplication.
 
-The threshold is not guessed: `eval/relevance_labeled.json` is a labeled set
-(54 examples: real candidates from the live run and live API queries across the
+A candidate is additionally rejected when it hits a curated **off-scope** term
+(`OFF_SCOPE_KEYWORDS`: e.g. `nutrition`, `menstrual`, `sanitation`, `wastewater`,
+`salary`, `refinery`, `soil`, plus clinical, workplace/SME and pandemic-logistics
+terms) *and* names no future skill in its **title**. In-scope papers name the
+skill they study in the title, so this drops off-domain papers that only match a
+topic keyword in passing — a pupil-health study touching "complexity", a salary
+agreement mentioning "collaboration" — while keeping abstract-only in-scope
+candidates that carry no off-scope term. The over-broad `complexity` keyword was
+also removed from the systems-thinking vocabulary (`computational thinking` and
+`systems thinking` remain), as it matched only incidentally.
+
+The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
+set (54 examples: real candidates from the live run and live API queries across the
 sources, plus clear anchor cases) and `scripts/eval_relevance.py` reports
 precision/recall/F1 and sweeps thresholds, so the filter's behavior is measured.
-The current heuristic reaches precision 0.78 / recall 1.00 on that set;
-`test_relevance_heuristic_meets_measured_floor` guards against regressions. The
-keyword heuristic still admits incidental single-keyword matches; a trained
-classifier on a still-larger set is the planned next step.
+The off-scope filter raised measured **precision from 0.78 to 1.00 at recall 1.00**
+(F1 0.88 → 1.00) at the default threshold, eliminating all six false positives
+without dropping any relevant source. `test_relevance_heuristic_meets_measured_floor`
+guards against regressions (precision ≥ 0.90, recall ≥ 0.90, with margin below the
+measured values). A trained classifier on a still-larger set is the planned next step.
 
 ## Reviewing candidates
 

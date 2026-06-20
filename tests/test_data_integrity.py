@@ -21,6 +21,7 @@ from common import (  # noqa: E402
     filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
+    is_off_scope,
     load_json,
     load_records,
     normalize_title,
@@ -475,14 +476,39 @@ class DataIntegrityTests(unittest.TestCase):
         kept = filter_relevant_sources([dict(audience_only), dict(topic_match)])
         self.assertEqual([source["title"] for source in kept], [topic_match["title"]])
 
+    def test_off_scope_drops_incidental_matches_keeps_anchored(self) -> None:
+        # An off-scope term plus only an incidental abstract topic match is
+        # discarded, but the same off-scope term is tolerated when the future
+        # skill is named in the title (a genuine topic anchor).
+        incidental = {
+            "title": "The Relationship between Student Health and Academic Performance",
+            "abstract": "We examine the complexity of nutrition, fitness and obesity in pupils.",
+        }
+        anchored = {
+            "title": "AI literacy and nutrition: teaching pupils about data",
+            "abstract": "An artificial intelligence literacy unit that also covers nutrition.",
+        }
+        clean = {
+            "title": "Computational thinking in primary computing education",
+            "abstract": "A systems thinking curriculum for school children.",
+        }
+        self.assertTrue(is_off_scope(incidental))
+        self.assertFalse(is_off_scope(anchored))
+        self.assertFalse(is_off_scope(clean))
+        kept = filter_relevant_sources([dict(incidental), dict(anchored), dict(clean)])
+        self.assertEqual(
+            [source["title"] for source in kept], [anchored["title"], clean["title"]]
+        )
+
     def test_relevance_heuristic_meets_measured_floor(self) -> None:
         # Guards the keyword classifier against regressions using the labeled
-        # eval set; floors sit below the current 0.78/1.00 with margin.
+        # eval set. The off-scope filter raised measured precision from 0.78 to
+        # 1.00 at recall 1.00; floors sit below that with margin.
         import eval_relevance
 
         examples = eval_relevance.load_examples()
         metrics = eval_relevance.evaluate(examples, RELEVANCE_THRESHOLD)
-        self.assertGreaterEqual(metrics.precision, 0.70, "relevance precision regressed")
+        self.assertGreaterEqual(metrics.precision, 0.90, "relevance precision regressed")
         self.assertGreaterEqual(metrics.recall, 0.90, "relevance recall regressed")
 
     def test_reject_missing_record_reports_error(self) -> None:
