@@ -64,6 +64,23 @@ select {
   padding: 10px 14px;
 }
 
+.topbar-right {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
+.nav-link {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
 .shell {
   margin: 0 auto;
   max-width: 1360px;

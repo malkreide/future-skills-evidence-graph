@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Architektur · Future Skills Evidence Graph</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/architektur.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Architektur</p>
+        <h1>Future Skills Evidence Graph</h1>
+      </div>
+      <div class="topbar-right">
+        <a class="nav-link" href="./index.html">← Zurück zum Dashboard</a>
+        <div class="principle">Keine Skill-Empfehlung ohne Evidenzpfad</div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="arch-intro">
+        <p>
+          Diese Seite zeigt interaktiv, wie die Lösung aufgebaut ist. Sie ist
+          bewusst <strong>datei-basiert</strong> – kein Server, keine Datenbank:
+          ein versionierter Wissensgraph aus JSON, befüllt und veröffentlicht
+          durch Skripte, freigegeben durch Menschen.
+          Klicke einen Baustein an, um seine Rolle, Dateien und Regeln zu sehen.
+        </p>
+      </section>
+
+      <section class="metrics" aria-label="Live-Kennzahlen aus dem Graphen">
+        <div><span id="metricSkills">–</span><p>Skills</p></div>
+        <div><span id="metricClaims">–</span><p>Claims</p></div>
+        <div><span id="metricSources">–</span><p>Quellen</p></div>
+        <div><span id="metricCandidate">–</span><p>Kandidaten</p></div>
+      </section>
+
+      <section class="arch-tabs" role="tablist" aria-label="Ansicht wählen">
+        <button class="arch-tab is-active" id="tabFlow" role="tab" aria-selected="true" data-view="flow">
+          Systemfluss
+        </button>
+        <button class="arch-tab" id="tabModel" role="tab" aria-selected="false" data-view="model">
+          Datenmodell
+        </button>
+      </section>
+
+      <section class="arch-workspace">
+        <div class="arch-canvas" aria-label="Architektur-Diagramm">
+          <svg id="archSvg" role="group" preserveAspectRatio="xMidYMin meet"></svg>
+        </div>
+
+        <aside class="arch-detail" id="archDetail" aria-live="polite">
+          <!-- gefüllt durch architektur.js -->
+        </aside>
+      </section>
+
+      <p class="arch-footnote">
+        Statisch erzeugt aus <code>data/</code> über <code>build_site.py</code>.
+        Mehr Details:
+        <a href="https://github.com/malkreide/future-skills-evidence-graph/blob/main/docs/architektur.md">docs/architektur.md</a>
+        ·
+        <a href="https://github.com/malkreide/future-skills-evidence-graph/blob/main/docs/erklaerung-fuer-laien.md">Erklärung für Laien</a>.
+      </p>
+    </main>
+
+    <script src="./assets/architektur.js"></script>
+  </body>
+</html>
