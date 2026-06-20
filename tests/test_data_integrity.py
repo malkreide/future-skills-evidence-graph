@@ -563,6 +563,38 @@ class DataIntegrityTests(unittest.TestCase):
         errors = attach_claim(Namespace(id=skill_id, claim="claim-does-not-exist-xyz", contradicting=False))
         self.assertTrue(any("not found" in error for error in errors))
 
+    def test_recall_probe_rejection_reason(self) -> None:
+        from recall_probe import rejection_reason
+
+        # In scope -> the filter keeps it (no rejection reason).
+        self.assertIsNone(
+            rejection_reason(
+                {"title": "AI literacy for primary school children", "abstract": "pupils learn AI"}
+            )
+        )
+        # No topic vocabulary match at all.
+        self.assertEqual(
+            rejection_reason({"title": "Quantum chromodynamics lattice", "abstract": "gauge fields"}),
+            "no_topic",
+        )
+        # Topic only in the abstract, no audience -> below threshold.
+        self.assertEqual(
+            rejection_reason({"title": "A study of pedagogy", "abstract": "mentions critical thinking once"}),
+            "below_threshold",
+        )
+        # Adult audience with a title topic but no school-age signal.
+        self.assertEqual(
+            rejection_reason({"title": "AI literacy for the workforce", "abstract": "employees upskilling"}),
+            "adult_audience",
+        )
+        # Off-scope domain term with no title topic anchor.
+        self.assertEqual(
+            rejection_reason(
+                {"title": "School wellbeing", "abstract": "collaboration and nutrition in pupils"}
+            ),
+            "off_scope",
+        )
+
     def test_reject_missing_record_reports_error(self) -> None:
         from argparse import Namespace
 

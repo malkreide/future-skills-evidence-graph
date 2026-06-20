@@ -13,3 +13,6 @@ build/
 .env
 .env.*
 
+# transient recall-probe labeling worksheet (regenerated each run)
+eval/recall_probe.json
+

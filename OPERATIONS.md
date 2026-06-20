@@ -31,6 +31,9 @@ python scripts/eval_relevance.py                 # baseline metrics
 python scripts/eval_relevance.py --compare-model # heuristic vs model verdict
 ```
 
+Common steps are also wrapped as `make` targets (`make install`, `validate`,
+`test`, `eval`, `eval-model`, `build`, `recall-probe`, `recall-ingest`, `train`).
+
 In GitHub settings:
 - Secret `SEMANTIC_SCHOLAR_API_KEY` (without it that source returns HTTP 429 and
   is skipped every run) and variable `OPENALEX_MAILTO`.
@@ -75,14 +78,19 @@ overfit) eval set:
    sits well below the eval-set number, the off-scope list is overfit to the
    labeled set.
 2. **Promote rate** — promoted claims / total candidate claims.
-3. **Recall probe** — the filter drops silently, so once per cycle re-run one
-   importer with the gate open and inspect what was dropped:
+3. **Recall probe** — the filter drops below-threshold, off-scope and
+   adult-audience sources silently, and the harvest only labels what passed, so
+   the rejected region never reaches the eval set or the model. Once per cycle,
+   surface a sample of the dropped sources for labeling:
    ```bash
-   python scripts/ingest_eric.py --query "<query>" --limit 20 \
-     --min-relevance 0 --output /tmp/recall-probe.json
+   make recall-probe        # writes eval/recall_probe.json (a worksheet, gitignored)
+   # set each row's "relevant": true (a recall leak) or false (correctly dropped)
+   make recall-ingest       # folds the decided labels into eval/relevance_labeled.json
    ```
-   Clearly relevant papers among the dropped ones = a recall leak (missing topic
-   keyword).
+   This is the deliberate counter to the harvest's selection bias: it feeds the
+   eval set (and future model training) negatives AND missed positives from the
+   region the filter discards. Any row labeled `true` is a recall leak (usually a
+   missing topic keyword); fix the vocabulary and re-measure.
 4. **Harvest growth** —
    ```bash
    python -c "import json;print(len(json.load(open('eval/relevance_harvested.json'))['examples']))"
