@@ -46,7 +46,24 @@
     "extraction_method": { "type": "string" },
     "status": { "type": "string", "enum": ["candidate", "reviewed", "rejected"] },
     "created_at": { "type": "string" },
-    "reviewed_at": { "type": ["string", "null"] }
+    "reviewed_at": { "type": ["string", "null"] },
+    "assist": {
+      "type": "object",
+      "description": "Optional, opt-in AI assist annotations. Never required; ignored by validate_data.py and score_evidence.py.",
+      "properties": {
+        "suggestions": { "type": "array", "items": { "type": "object" } },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "model": { "type": "string" },
+            "prompt_version": { "type": "string" },
+            "created_at": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }
