@@ -1,0 +1,496 @@
+[
+  {
+    "id": "src-artificial-intelligence-ai-literacy-in-early-childhood-education-an-inte",
+    "title": "Artificial Intelligence (AI) Literacy in Early Childhood Education: An Intervention Study in Hong Kong",
+    "authors": [
+      "Jiahong Su",
+      "Weipeng Yang"
+    ],
+    "year": 2024,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1080/10494820.2023.2217864",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1449439",
+    "publisher": "Interactive Learning Environments",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The issue of Artificial Intelligence (AI) literacy is gaining popularity in the field of education. Most research on AI literacy has focused on primary, secondary, and higher education, and there has been limited examination of AI literacy programs in early childhood education. This study aimed to evaluate the impact of an eight-week AI literacy program on young children's AI literacy, AI-related creativity, and their perceptions of the AI4KG program. A total of 26 young children (average age of 4 years) enrolled in the program at a kindergarten in Hong Kong were the subjects of the study. The results indicated that (1) young children were capable of learning basic AI concepts and knowledge; (2) in terms of AI-related creativity, younger children were able to design a chatting robot via imagination, while older children created an AI robot to assist people in their drawings; (3) in regards to the children's perceptions of the AI4KG program, older children who enjoyed the activity were able to train AI, while younger children preferred to draw the future AI city and participate in the AI story activity. This study highlights the positive benefits of AI literacy education in preparing young children for an AI-driven future.",
+    "topics": [
+      "ai literacy",
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.75
+  },
+  {
+    "id": "src-ai-literacy-for-the-workforce",
+    "title": "AI Literacy for the Workforce",
+    "authors": [
+      "I. Zachariah",
+      "D. Dallas",
+      "P. Ruiz",
+      "B. Liberman",
+      "S. Karim"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED678840",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED678840",
+    "publisher": "Digital Promise",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "This brief is part of a set sharing specific AI literacy recommendations for various audiences in education. As artificial intelligence (AI) fundamentally reshapes career trajectories across every sector, workers face a significant transformation in the skills required for future employment. Developing AI literacy will support workers in leveraging AI in their current positions, understanding how AI may influence their tasks, and preparing them to effectively use AI tools to complement their future roles Those who do not develop AI literacy skills and knowledge before entering the workforce face the highest risk of job displacement, as they may struggle to adapt to technological advancements and integrate AI tools into their work. This brief provides guidance for organizations, policymakers, and educational institutions to address gaps in AI literacy education as these technologies continue to evolve.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among",
+    "title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
+    "authors": [
+      "Jung Won Hur"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1108/ILS-11-2023-0170",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1464558",
+    "publisher": "Information and Learning Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Purpose: This study aims to investigate how preservice teachers' stages of concern, beliefs, confidence and interest in AI literacy education evolve as they deepen their understanding of AI concepts and AI literacy education. Design/methodology/approach: AI literacy lessons were integrated into a technology integration course for preservice teachers, and the impacts of the lessons were evaluated through a mixed-methods study. The Concerns-Based Adoption Model was employed as the analytical framework to explore participants' specific concerns related to AI. Findings: Findings revealed that participants initially lacked AI knowledge and awareness. However, targeted AI literacy education enhanced preservice teachers' awareness and confidence in teaching AI. While acknowledging AI's educational benefits, participants expressed ongoing concerns after AI literacy lessons, such as fears of teacher displacement and the potential adverse effects of incorporating generative AI on students' critical learning skills development. Originality/value: Despite the importance of providing preservice teachers with AI literacy skills and knowledge, research in this domain remains scarce. This study fills this gap by enhancing the AI-related knowledge and skills of future educators, while also identifying their specific concerns regarding the integration of AI into their future classrooms. The findings of this study offer valuable insights and guidelines for teacher educators to incorporate AI literacy education into teacher training programs.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-developing-a-holistic-ai-literacy-framework-for-children",
+    "title": "Developing a Holistic AI Literacy Framework for Children",
+    "authors": [
+      "Kaiyue Jia",
+      "Teresa H. M. Leung",
+      "Ngai Yan Irene Cheung",
+      "Yixun Li",
+      "Junnan Yu"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://doi.org/10.1145/3727986",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1476161",
+    "publisher": "ACM Transactions on Computing Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The increasing prevalence of AI in everyday life has intensified the emphasis on teaching AI literacy to children. However, there is no consensus on the specific knowledge and skills that constitute children's AI literacy, resulting in varied AI learning materials for young people. We systematically searched for educational practices for children's AI learning in both formal and informal settings and examined the AI learning content taught to children. Our findings led to the development of a holistic AI literacy framework for children, which contains three high-level dimensions and eight content areas of AI literacy: AI awareness (AI definition, AI application, and AI history), AI mechanics (AI input, learning procedure, and AI output), and AI impacts (AI implication and responsible practice). Theoretically, we contribute a research-based, comprehensive, and current framework for children's AI literacy, advancing its conceptualization in early life stages. Practically, our framework can guide researchers and practitioners in promoting AI education for the next generation.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-development-and-validation-of-an-artificial-intelligence-literacy-assess",
+    "title": "Development and Validation of an Artificial Intelligence Literacy Assessment for Kindergarten Children",
+    "authors": [
+      "Jiahong Su"
+    ],
+    "year": 2024,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s10639-024-12611-4",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1450695",
+    "publisher": "Education and Information Technologies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "With Artificial intelligence (AI) literacy gaining more and more attention at the kindergarten level, it is becoming critical to assess the AI literacy levels of kindergarten children and develop appropriate courses to enhance their foundational AI knowledge and skills. This study proposes and validates a comprehensive AI literacy assessment tool (AI4KGA) for kindergarten children. The research involved 215 children and 19 experts. The validity and reliability of the AI4KG assessment were evaluated by experts, with Cronbach's a and Item Response Theory approach. The results demonstrated that the AI literacy assessment (AI4KGA) was valid and reliable. We also found that younger children scored lower on the AI literacy assessment than older children and girls demonstrated a slightly higher AI literacy score than boys after they completed the AI4KG curriculum. The AI4KGA has potential applications for various stakeholders, such as policymakers, educators, instructional designers, researchers, and educational institutions. The findings suggest that the AI4KGA can evaluate children's learning outcomes in terms of AI literacy. Overall, this research contributes to developing AI literacy assessment in kindergarten children and advancing AI literacy education.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-teachers-apos-use-of-generative-ai-to-support-literacy-in-2025",
+    "title": "Teachers&apos; Use of Generative AI to Support Literacy in 2025",
+    "authors": [
+      "I. Picton",
+      "C. Clark"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED675267",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED675267",
+    "publisher": "National Literacy Trust",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "This report aims to update and broaden the understanding of teachers' experiences of teaching reading and writing as the capabilities of generative AI expand and improve. As part of ongoing research considering what it means to be literate in the digital age, the National Literacy Trust have been exploring how generative AI tools might influence, or even redefine, literacy since early 2023. The first reports, published in the summer of 2024, used data from National Literacy Trust's Annual Literacy Survey to explore children, young people and teachers' attitudes and behaviour around using AI to support literacy. This report builds on earlier findings by looking in more detail at teachers' use of AI to support writing and reading, while also exploring frontline perspectives on the benefits and drawbacks of generative AI for literacy to guide future work in this area. When ChatGPT-3 launched in late 2022, early projections around the impact of generative AI focused more on its potential to boost young people's academic progress (such as through more personalised and adaptive learning) than how it might support teachers. More recently (and perhaps reflecting broader concerns around 'screen time'), the discourse has become more nuanced. In early 2025, Education Secretary Bridget Phillipson suggested that, in an educational context, AI was &quot;\u2026 less about how children and young people use technology, and more about how we support staff to use it to deliver a better education for children&quot;. Against a background of these wider debates, in 2025 findings show that the gap between teachers' and young people's use of generative AI has narrowed, although more young people still report using these tools than those who educate them. At the same time, findings indicate increasing concerns about young people's use of AI, from academic integrity to perceptions of the value of developing writing and reading skills in the age of AI.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-mapping-ai-literacy-frameworks-an-analysis-of-the-evolving-metaphorical",
+    "title": "Mapping AI Literacy Frameworks: An Analysis of the Evolving Metaphorical Relationships between Students, Teachers, and AI",
+    "authors": [
+      "Kaitlin A. Lucas",
+      "Alberto Lioy"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1483346",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1483346",
+    "publisher": "Journal of Interactive Media in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Rich metaphors abound within the growing AI literacy research landscape, and there is no better place to look for them than within the rapidly proliferating number of AI literacy frameworks. Conceptual metaphors and AI literacy frameworks, which outline the skills, competencies, and dispositions needed to engage critically with AI, complement each other by organizing people's perceptions of this complex technological change and coordinating our actions in response. Through idiographic metaphor analysis, we coded the metaphors in eighteen AI literacy frameworks to uncover the underlying metaphorical relationships between AI, students, and teachers. We highlight the dominant metaphors for each actor: AI-as-tool-transformer-ubiquitary-artefact-threat; student-as-analyst-citizen-creator; and teacher-as-designer-guide. We then discuss the connections between these metaphors and their alignment with dominant educational paradigms. Finally, we discuss three tensions within the metaphors that address blind spots within the current corpus of AI literacy frameworks. We suggest areas for future research that address these tensions and consider our individual and collective capacity in higher education to shape or reject an AI-saturated future.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e",
+    "title": "Towards an AI-Literate Future: A Systematic Literature Review Exploring Education, Ethics, and Applications",
+    "authors": [
+      "Gabriele Biagini"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s40593-025-00466-w",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1499169",
+    "publisher": "International Journal of Artificial Intelligence in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study investigates the evolving landscape of Artificial Intelligence (AI) literacy, acknowledging AI's transformative impact across various sectors in the twenty-first century. Starting from AI's inception to its current pervasive role in education, everyday life, and beyond, this paper explores the relevance and complexity of AI literacy in the modern world. To evaluate the current state of the literature on AI literacy, a systematic literature review was conducted with the objective of identifying thematic and recent research trends. Through a rigorous selection process involving 323 records from databases such as Web of Science, SCOPUS, ERIC, and IEEE Xplore, 87 high-quality studies have been analysed to identify central themes and definitions related to AI literacy. Our findings reveal that AI literacy extends beyond technical proficiency to encompass ethical considerations, societal impacts, and practical applications. Key themes identified include the ethical and social implications of AI, AI literacy in K-12 education, AI literacy curriculum development, and the integration of AI in education and workplaces. The study also highlights the importance of AI literacy models and frameworks for structuring education across diverse learning environments, as well as the significance of AI and digital interaction literacy. Additionally, our analysis of publication trends indicates a strong growth in AI literacy research, particularly in China and the United States, reflecting the global urgency of addressing AI literacy in policy and education. Conclusively, the research underscores the importance of an adaptable, comprehensive educational paradigm that incorporates AI literacy, reflecting its diverse interpretations and the dynamic nature of AI. The study advocates for interdisciplinary collaboration in developing AI literacy programs, emphasizing the need to equip future generations with the knowledge, skills, and ethical discernment to navigate an increasingly AI-driven world.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 1.0
+  },
+  {
+    "id": "src-justification-and-roadmap-for-artificial-intelligence-ai-literacy-course",
+    "title": "Justification and Roadmap for Artificial Intelligence (AI) Literacy Courses in Higher Education",
+    "authors": [
+      "Sunil Hazari"
+    ],
+    "year": 2024,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1430426",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1430426",
+    "publisher": "Journal of Educational Research and Practice",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In this article, I present a justification for implementing AI literacy courses in higher education. I explore the ethical concerns and biases surrounding AI technologies, highlighting the importance of critical analysis and responsible use of AI. I then propose a conceptual framework, focusing on awareness, skill development, and the practical application of AI. This framework aims to foster comprehensive understanding and empower students to leverage AI's potential while mitigating risks. I also provide sample course titles and learning objectives. The suggested course format covers AI concepts, ethical considerations, bias awareness, and practical prompt engineering skills. There is a need to integrate AI literacy courses into higher education curricula, and I offer a roadmap for implementation. By equipping students with AI literacy, colleges can prepare students to navigate an AI-driven world responsibly while nurturing innovation and critical-thinking skills needed for future success.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-ai-amp-data-competencies-scaffolding-holistic-ai-literacy-in-higher-educ",
+    "title": "AI &amp; Data Competencies: Scaffolding Holistic AI Literacy in Higher Education",
+    "authors": [
+      "Kathleen Kennedy",
+      "Anuj Gupta"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1483968",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1483968",
+    "publisher": "Thresholds in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This chapter introduces the AI &amp; Data Acumen Learning Outcomes Framework, a comprehensive tool designed to guide the integration of AI literacy across higher education. Developed through a collaborative process, the framework defines key AI and data-related competencies across four proficiency levels and seven knowledge dimensions. It provides a structured approach for educators to scaffold student learning in AI, balancing technical skills with ethical considerations and sociocultural awareness. The chapter outlines the framework's development process, its structure, and practical strategies for implementation in curriculum design, learning activities, and assessment. We address challenges in implementation and future directions for AI education. By offering a roadmap for developing students' holistic AI literacy, this framework prepares learners to leverage generative AI capabilities in both academic and professional contexts.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-durable-skills-enhance-career-and-technical-education-in-the-age-of-arti",
+    "title": "Durable Skills: Enhance Career and Technical Education in the Age of Artificial Intelligence",
+    "authors": [],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED672685",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED672685",
+    "publisher": "Center for Public Education, National School Boards Association",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "Job opportunities in the United States are growing, but there are not enough interested or qualified workers to fill them. Artificial Intelligence (AI) is also transforming the future of work, bringing both innovation and uncertainty and emphasizing the growing need to equip students with adaptable, future-ready skills. This report advocates for strengthening career and technical education (CTE) by preparing students with those durable skills for an AI-driven economy. An overview of how AI is rapidly transforming the job market is detailed, followed by an exploration of the current state of CTE in K-12 education. Strategies for CTE practitioners and programs to tackle AI-driven challenges and improve student outcomes are provided in four key areas: (1) Integration of AI Skills--AI is becoming essential across all sectors and job functions, making AI literacy a crucial component of CTE programs; (2) Personalized Learning--Tailoring education to students' career interests ensures they develop the skills most relevant to their future goals; (3) Emphasis on Transferable (Durable) Skills--AI cannot easily replicate problem-solving, communication, critical thinking, and other essential skills, which remain in high demand in the AI age; and (4) Data-Driven Decision-Making--Equipping educators and students with reliable data and insights helps them make informed choices about skill development and program selection. One method to assess students' durable skills for curriculum development and improvement is highlighted--a digital tool called The Tracker. To maximize CTE's impact, increased investment and policy support from both government and industry will also be essential.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-investigation-of-digital-competencies-and-artificial-intelligence-litera",
+    "title": "Investigation of Digital Competencies and Artificial Intelligence Literacy of Special Education Students",
+    "authors": [
+      "Mehross\u00e2dat Vosough Matin"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1494463",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1494463",
+    "publisher": "International Journal of Modern Education Studies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study investigated the digital competence and artificial intelligence (AI) literacy levels of special education students at various universities, examining differences by gender and grade level. A quantitative, descriptive, and correlational design was employed with a sample of 234 voluntary participants studying in special education departments. Data were collected using the &quot;Digital Competence Perception Scale for Pre-service Teachers&quot; and the &quot;Artificial Intelligence Literacy Scale.&quot; Results indicated that students exhibited high levels of both digital competence and AI literacy. Male students scored significantly higher in overall digital competence, whereas gender differences in AI literacy were minimal. Regarding grade level, notable differences emerged in the sub-dimensions of digital competence, and higher-grade students demonstrated greater AI literacy and self-efficacy. Regression analysis showed that digital competence significantly predicted AI literacy, explaining 39% of its variance. These findings highlight the interconnection between digital skills and AI literacy among future special education teachers. Therefore, it is recommended that teacher education programs integrate digital competence and AI literacy modules into their curricula. Future studies should adopt mixed or qualitative methods to explore participants' experiences more deeply and validate the quantitative outcomes.",
+    "topics": [
+      "ai literacy",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.75
+  },
+  {
+    "id": "src-embracing-the-future-of-artificial-intelligence-in-the-classroom-the-rel",
+    "title": "Embracing the Future of Artificial Intelligence in the Classroom: The Relevance of AI Literacy, Prompt Engineering, and Critical Thinking in Modern Education",
+    "authors": [
+      "Yoshija Walter"
+    ],
+    "year": 2024,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1186/s41239-024-00448-3",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1413928",
+    "publisher": "International Journal of Educational Technology in Higher Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The present discussion examines the transformative impact of Artificial Intelligence (AI) in educational settings, focusing on the necessity for AI literacy, prompt engineering proficiency, and enhanced critical thinking skills. The introduction of AI into education marks a significant departure from conventional teaching methods, offering personalized learning and support for diverse educational requirements, including students with special needs. However, this integration presents challenges, including the need for comprehensive educator training and curriculum adaptation to align with societal structures. AI literacy is identified as crucial, encompassing an understanding of AI technologies and their broader societal impacts. Prompt engineering is highlighted as a key skill for eliciting specific responses from AI systems, thereby enriching educational experiences and promoting critical thinking. There is detailed analysis of strategies for embedding these skills within educational curricula and pedagogical practices. This is discussed through a case-study based on a Swiss university and a narrative literature review, followed by practical suggestions of how to implement AI in the classroom.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-artificial-intelligence-literacy-education-in-primary-schools-a-review",
+    "title": "Artificial Intelligence Literacy Education\u00a0in Primary Schools: A Review",
+    "authors": [
+      "Iris Heung Yue Yim",
+      "Jiahong Su"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s10798-025-09979-w",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1492903",
+    "publisher": "International Journal of Technology and Design Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) has become an important part of 21st-century life\u00a0and this requires that\u00a0students understand how to adapt to this change. Despite calls to extend AI literacy education from university to young students, there remains a lack of evidence-based research informing educators and researchers on the content of AI literacy education at the primary school level. This study aims to offer a comprehensive overview of what constitutes AI literacy education in primary schools, including its theoretical frameworks, pedagogical strategies, learning tools, assessment methods, educational outcomes, and challenges. The study presents a systematic review mapping process using Scopus and the Web of Science. Twenty-five empirical studies focusing on the primary school context were selected. The review revealed that (1) AI literacy encompasses a fluid conceptual understanding of digital literacy in terms of interacting\u00a0and collaborating with AI, computational thinking, critical data literacy, and AI ethics; (2) constructionism, the constructivist theoretical framework, and the ARCS (Attention, Relevance, Confidence, and Satisfaction) model of instructional design were the dominant means of constructing the research design of the selected studies; (3) constructivist methodologies, project-based learning, programming, and human-agent interaction were commonly used by the selected studies, and AI learning tools, particularly intelligent agents, were often adopted in AI literacy teaching and learning research; (4) mixed-research methods were the most common, with surveys, interviews, and artifacts being employed to evaluate students' learning outcomes; and (5) there were positive academic, affective, and behavioral educational outcomes, as well as course satisfaction. To our knowledge, this is the first systematic review to offer a detailed perspective on AI literacy at the primary school level, providing valuable insights for researchers, policymakers, and educators designing future educational frameworks, curricula, and assessment. Future research directions are also discussed.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "data literacy",
+      "ethics",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 1.0
+  },
+  {
+    "id": "src-kindergarten-parents-apos-perceptions-of-the-use-of-ai-technologies-and",
+    "title": "Kindergarten Parents&apos; Perceptions of the Use of AI Technologies and AI Literacy Education: Positive Views but Practical Concerns",
+    "authors": [
+      "Jiahong Su"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s10639-024-12673-4",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1457862",
+    "publisher": "Education and Information Technologies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Although artificial intelligence (AI) is becoming more commonly integrated into our everyday lives, homes, and schools, there needs to be more research regarding parental attitudes toward using AI technologies and\u00a0AI literacy education to understand better and advance AI and AI literacy in kindergarten. To address this gap, this study explored kindergarten parents' perceptions of using AI technologies and AI literacy education in kindergarten. In Study One, 215 parents completed a survey regarding their views and concerns about the use of AI technologies and AI literacy education in kindergarten, the challenges encountered in AI literacy education in kindergarten and their opinions on the use of AI technologies in kindergarten. In Study Two, we interviewed five parents to gain further insight into their perspectives. The results indicated that 74.4%, 19.1%, and 6.5% felt positive, neutral, and negative towards using AI technology in kindergarten settings, respectively, illustrating that most parents remained positive. Results showed that most parents reported that it is suitable for kindergarten children to learn about AI tools and AI literacy. The kindergarten level may be an appropriate starting point for learning AI literacy. We found that the four main challenges that parents reported their children encountered when learning about AI literacy are limited comprehension ability, time constraints, the difficulty of the AI learning content, and uncertainty regarding the appropriateness of AI learning content for children. The findings indicate that Hong Kong parents positively perceive using AI in kindergartens. Still, designing AI-based educational tools for kindergarten children must address the challenges identified while ensuring equal access for all children.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-collaborating-with-ai-assistants-on-future-focused-ai-literacy",
+    "title": "Collaborating with AI Assistants on Future-Focused AI Literacy",
+    "authors": [
+      "Miranda Yaggi Rodak"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1494990",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1494990",
+    "publisher": "Journal of Teaching and Learning with Technology",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This article explores the integration of generative artificial intelligence (AI) assistants in undergraduate writing courses, advocating for a shift from restrictive policies to transparent and critical engagement. Through the &quot;Hire AI&quot; framework, students learn to treat AI as a collaborative assistant--developing rhetorical and ethically informed uses of these tools. The approach emphasizes active learning, applied AI literacy, and scaffolded instruction, empowering students to manage AI responsibly while maintaining their voice and authorship. Evidence from student reflections and course outcomes demonstrates increased confidence, nuanced understanding, and transferable skills, positioning AI as a tool for human-centered learning rather than a replacement for critical thinking.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.75
+  },
+  {
+    "id": "src-a-scoping-review-of-empirical-research-on-ai-literacy-assessments",
+    "title": "A Scoping Review of Empirical Research on AI Literacy Assessments",
+    "authors": [
+      "Jiahong Su",
+      "Xinyu Chen",
+      "Samuel Kai Wah Chu",
+      "Xiao Hu"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s11423-025-10515-9",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1497456",
+    "publisher": "Educational Technology Research and Development",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "AI literacy is becoming increasingly popular in education, yet there has been limited focus on\u00a0reviewing empirical research on AI literacy assessment. The purpose of this study was to synthesize existing empirical studies on AI literacy assessment, with the aim to\u00a0understand how AI literacy has been assessed and to\u00a0inform future AI literacy assessment development. This scoping review evaluates and synthesizes 36 studies on AI literacy assessment published between 2019 and 2024, involving assessment tools, forms of assessment, and reliability and validity evidence related to AI literacy assessment. The review proposes four aspects (i.e., knowledge of AI, AI ethics,\u00a0affect towards AI, and use of AI) for assessing AI literacy. The results showed that (1) most research focused on assessing primary and secondary school students' AI literacy; (2) most studies used questionnaires, followed by surveys; (3) most studies used computer-based tests, followed by paper-based tests; (4) most studies assessed participants' AI knowledge, followed by AI ethics; and (5) only a few studies reported evidence of the reliability and effectiveness of their assessments. Based on the reviewed literature, this study develops an AI literacy framework for people of all ages and from all countries. The findings and directions for future research are also\u00a0discussed.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-understanding-the-relationship-between-colleges-students-apos-artificial",
+    "title": "Understanding the Relationship between Colleges Students&apos; Artificial Intelligence Literacy and Higher Order Thinking Skills Using the 3P Model: The Mediating Roles of Behavioral Engagement and Peer Interaction",
+    "authors": [
+      "Kaili Lu",
+      "Jianrong Zhu",
+      "Feng Pang",
+      "Rustam Shadiev"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s11423-024-10434-1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1470802",
+    "publisher": "Educational Technology Research and Development",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial Intelligence (AI) has brought about significant changes in our lives, making AI literacy a crucial endeavor for the future. Despite its growing importance in academia, there is limited empirical research on its impact on college students' higher order thinking skills (HOTS). The present study systematically and comprehensively explores the relationship between college students' AI literacy and HOTS using the 3P (Presage-process-product) model. In this model, students' AI literacy represents the presage factors, while behavioral engagement and peer interaction serves as the process factors, and HOTS is the product factor. We gathered data from a survey of 260 college students. We utilized structural equation modeling to analyze the relationships between the 3P factors. The results showed that both AI usage and AI evaluation directly influenced HOTS and also indirectly affected HOTS through the mediating role of behavioral engagement and peer interaction. Conversely, AI awareness and AI ethics showed no direct influence on HOTS, although AI awareness impacted HOTS via peer interaction mediation. The results of the study have several theoretical and practical implications. From a theoretical perspective, this study incorporates AI literacy, behavioral engagement, peer interaction, and HOTS within the 3P model framework, shedding light on their interrelations. On a practical note, the results emphasize the need to consider AI literacy, behavioral engagement, peer interaction when designing courses to enhance HOTS in the era of AI.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-developing-ai-literacy-in-students",
+    "title": "Developing AI Literacy in Students",
+    "authors": [
+      "Jitendra Pandey, Editor"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://doi.org/10.4018/979-8-3373-2297-1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED680095",
+    "publisher": "IGI Global",
+    "source_type": "book",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) becomes increasingly integrated into daily life, fostering AI literacy is essential to prepare the next generation for a technology-driven world. Understanding AI concepts, ethical challenges, and societal implications enables students to engage critically and responsibly with emerging technologies. By promoting informed awareness and hands-on learning, AI literacy empowers learners to navigate, shape, and contribute to the future workforce and civic life. This foundational knowledge supports equitable access to opportunities in STEM and beyond, helping to close digital divides and promote inclusive innovation. \"Developing AI Literacy in Students\" delves into the multifaceted nature of AI literacy, exploring its key components, pedagogical approaches, and strategies for implementation across diverse educational settings. It emphasizes the importance of equipping students with a comprehensive understanding of AI concepts, ethical considerations, and societal implications. Covering topics such as adaptive education, feedback systems, and tutoring, this book is an excellent resource for educators, faculty, curriculum developers, researchers, teacher educators, policymakers, and more.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  }
+]

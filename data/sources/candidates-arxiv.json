@@ -1,0 +1,135 @@
+[
+  {
+    "id": "src-abstracting-cross-domain-action-sequences-into-interpretable-workflows",
+    "title": "Abstracting Cross-Domain Action Sequences into Interpretable Workflows",
+    "authors": [
+      "Gaurav Verma",
+      "Scott Counts"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.14654v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Sequential or time-stamped interaction logs provide objective records of digital application usage, yet their granularity and noise often obscure meaningful insights into people's work. Such insights are essential for improving digital products in ways grounded in real-world user interactions. Prior research has applied deep learning models to cluster user actions into high-level activities, but these approaches are highly sensitive to noise and struggle to generalize across applications. To address this limitation, we introduce WorkflowView, a framework that uses large language models (LLMs) to abstract low-level action sequences into high-level activities. We establish the effectiveness and generality of our approach across three distinct, challenging sequential tasks and diverse domains: (a) zero-shot task description reconstruction from browser logs (achieving high semantic similarity, $\u03bc_{sim} = 0.91$), (b) few-shot student dropout prediction using MOOC interaction logs (reaching weighted $F_1 = 0.90$ with only five few-shot examples), and (c) anonymized, privacy-preserving analysis of AI tool integration within document workflows in Microsoft Word. Our work demonstrates that LLM-based abstraction is a robust and efficient path forward for transforming low-level behavioral data into high-level, interpretable, and actionable insights. We also discuss practical considerations for deploying LLM-based inferences within logging infrastructures, including computational efficiency and user privacy.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  },
+  {
+    "id": "src-teaching-machine-learning-to-software-engineers",
+    "title": "Teaching Machine Learning to Software Engineers",
+    "authors": [
+      "Nafiseh Kahani",
+      "Jason Jaskolka"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.14618v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Machine learning (ML) and Artificial Intelligence (AI) components are increasingly embedded in software products, yet undergraduate software engineering (SE) curricula rarely provide systematic preparation for building, testing, deploying, and maintaining AI/ML-based software systems. This paper aims to provide evidence-based guidance for integrating AI/MLrelevant content into core SE education. We compile and define a structured inventory of topics relevant to SE practice in AI/MLbased software, then map these topics against required courses in a set of representative SE curricula to identify coverage gaps. To assess educational priorities and feasibility, we survey SE instructors on topic importance and integration constraints. Based on the crosswalk between topic definitions, curriculum coverage, and instructor prioritization, we derive a guideline that recommends where and how high-priority topics can be embedded within existing SE courses.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-empowering-student-debugging-in-parallel-programming-with-execution-trac",
+    "title": "Empowering Student Debugging in Parallel Programming with Execution Traces and Large Language Models",
+    "authors": [
+      "God'salvation F. Oguibe",
+      "Vinodh Kumaran Jayakumar",
+      "Tongping Liu",
+      "Andrew Lan",
+      "Wei Wang"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.14607v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Concurrent programming is a core component of Computer Science curricula, yet remains notoriously difficult for students to master due to its inherent complexity and the nondeterministic nature of concurrency bugs such as deadlocks and race conditions. In this work, we present ParaView, an educational tool designed to help students understand, debug, and correct concurrency issues in parallel programs written in C/C++. ParaView provides transparent execution recording and visualization to make parallel execution observable and comprehensible. We evaluated ParaView through a series of debugging and implementation tasks, with 17 students participating. Results showed a significant improvement in debugging and implementation successes compared to previous course iterations. A student survey confirmed that most participants found ParaView helpful. To further support learning outside the classroom, we explored using Large Language Models (LLMs) to analyze concurrency bugs and suggest fixes. While LLMs were highly effective in identifying bugs and explaining execution traces, the correctness of their bug fixes varied, especially for more complex synchronization patterns. Our findings suggest that recording-visualization tools like ParaView, complemented by artificial intelligence (AI), can improve teaching and learning of concurrent programming.",
+    "topics": [
+      "ai literacy",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-regional-climate-model-emulation-with-diffusion-approaches-what-is-the-a",
+    "title": "Regional Climate Model Emulation with Diffusion Approaches: What is the Added Value of Generative Machine Learning?",
+    "authors": [
+      "Mikel N. Legasa",
+      "Antoine Doury",
+      "Achille Gellens",
+      "Redouane Lguensat",
+      "Clara Naldesi",
+      "Soulivanh Thao",
+      "Mathieu Vrac"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.14570v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Emulators provide a cost-effective alternative to regional climate models (RCMs) by capturing their dynamical downscaling function. They link large-scale predictors simulated by global climate models (GCMs) to RCM-simulated high-resolution fields of the target variable, here precipitation. Machine learning methods, typically deep learning, are cheaper than running RCMs in computation time and energy. Among them, generative models are appealing because they can simulate ensembles of local high-resolution fields consistent with the predictors. This ensemble, which we call the uncertainty envelope, remains to be properly assessed for added value. Here, we make three contributions. First, we introduce ParamDiffusion, a new two-stage diffusion-based framework, and compare it with a state-of-the-art diffusion approach. Second, we expand standard validation through a comprehensive framework aligned with climate-science needs, examining specific precipitation events, including extremes. Third, within this framework, we assess the added value of diffusion approaches relative to deterministic methods. We intercompare four deep-learning models: a deterministic model designed to capture the precipitation tail; a parametric probabilistic model based on it; a recently proposed diffusion approach; and ParamDiffusion, which couples the parametric model with a diffusion model. Our results show that diffusion-based approaches reproduce climatological precipitation statistics with high skill, including distributional tails and spatially compounded extremes, while generating spatially detailed fields. However, none of the assessed models consistently accounts for the most extreme RCM-simulated events within its uncertainty envelope. Diffusion models are therefore promising for probabilistic RCM emulation, but progress is still required before they can reliably represent high-impact precipitation extremes.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-15",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  },
+  {
+    "id": "src-directors-duties-in-the-age-of-agentic-artificial-intelligence",
+    "title": "Directors Duties in the Age of Agentic Artificial Intelligence",
+    "authors": [
+      "Deirdre Ahern"
+    ],
+    "year": 2026,
+    "doi": "10.1017/cfl.2026.10049",
+    "url": "https://arxiv.org/abs/2606.20453v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "As boards engage with the adoption of Artificial Intelligence including agentic AI to drive operational efficiencies, this presents new opportunities for profit maximisation. AI adoption is increasingly identified with employee role displacement and in companies, and the interests of employees as stakeholders require exploration. A novel question posed is whether in an age of AI ascendancy AI may warrant being given stakeholder status as its role in the company approximates or eclipses that of human employees. The article probes four distinct models of corporate purpose within the duty on directors to act in the best interests of the company, the shareholder primacy model, the Enlightened Shareholder value model, the stakeholder friendly model, and the stakeholder value model, highlighting the available scope for directors to accommodate the interests of employees around AI adoption in decision-making by boards around AI. It is concluded that given the degree to which directors are insulated from legal scrutiny in relation to their best interests duty, adopting a wider law in context approach to promote employee welfare would serve the interests of employees, directors and companies alike. This would see directors engaging meaningfully with employees and providing opportunities for reskilling to adapt to the age of AI.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  }
+]
