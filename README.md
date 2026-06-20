@@ -69,6 +69,9 @@ reproducible evidence path.
 
 ## Automation
 
+See [OPERATIONS.md](OPERATIONS.md) for the operating runbook: the weekly cycle,
+the per-cycle verification tests, and the improvement triggers.
+
 The weekly research workflow runs source importers for curated queries across
 OpenAlex, Crossref, Semantic Scholar, arXiv, and ERIC, extracts
 candidate claims from the new sources' abstracts (`scripts/extract_claims.py`),
