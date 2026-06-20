@@ -350,6 +350,14 @@ OFF_SCOPE_KEYWORDS = (
     "pandemic",
     "lockdown",
     "lockdowns",
+    # physical education / health-promotion (not a future-skill domain)
+    "physical education",
+    "physical activity",
+    "physical fitness",
+    # foreign-language pedagogy (EAP/EFL/ESL is out of the MVP topic scope)
+    "eap",
+    "efl",
+    "esl",
 )
 
 

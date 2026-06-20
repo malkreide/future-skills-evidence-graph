@@ -133,10 +133,19 @@ re-run of the same query showed accepted sources **26 → 15** and live precisio
 **~0.58 → ~0.73**, with the higher-ed/workforce class removed. Curated eval set
 stays precision 1.00 / recall 1.00 (now 73 examples, incl. the audience cases).
 
-**Remaining fresh-data false-positive classes** (next improvement targets, not
-yet addressed): physical education / wearables, language-translation pedagogy
-(EAP/EFL), teacher tool-use, and disaster/health papers that carry a school-age
-word so the audience gate keeps them.
+### Improvement applied: physical-education & language-pedagogy off-scope terms
+
+Added `physical education / physical activity / physical fitness` and
+`eap / efl / esl` to `OFF_SCOPE_KEYWORDS`. A re-run dropped accepted sources
+**15 → 13** and lifted live precision **~0.73 → ~0.85**. Eval set grew to 81
+examples (still precision 1.00 / recall 1.00; model still does not beat the
+heuristic on held-out CV).
+
+**Remaining fresh-data false-positive classes** (harder, not yet addressed):
+teacher tool-use (teachers are a legitimate audience, so a blanket teacher gate
+would cost recall), and disaster/health papers that name a school-age audience
+and a topic in the title (off-scope title-anchor exemption keeps them). These
+are candidates for the trained model once the harvested label set grows.
 
 ## Cycle log
 
@@ -146,3 +155,4 @@ Record each cycle so trends are visible.
 | --- | --- | --- | --- | --- | --- | --- |
 | (dry run) | 26 | ~0.58 | — | ~0.23 | 0 | Adult/higher-ed FPs dominate |
 | (audience gate) | 15 | ~0.73 | — | — | 0 | Higher-ed/workforce removed; PE/EAP/teacher FPs remain |
+| (PE + language off-scope) | 13 | ~0.85 | — | — | 0 | PE/EFL removed; teacher tool-use + disaster/health FPs remain |

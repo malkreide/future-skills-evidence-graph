@@ -106,8 +106,9 @@ importer via `--min-relevance`) to survive before deduplication.
 
 A candidate is additionally rejected when it hits a curated **off-scope** term
 (`OFF_SCOPE_KEYWORDS`: e.g. `nutrition`, `menstrual`, `sanitation`, `wastewater`,
-`salary`, `refinery`, `soil`, plus clinical, workplace/SME and pandemic-logistics
-terms) *and* names no future skill in its **title**. In-scope papers name the
+`salary`, `refinery`, `soil`, plus clinical, workplace/SME, pandemic-logistics,
+physical-education and foreign-language-pedagogy (EAP/EFL/ESL) terms) *and* names
+no future skill in its **title**. In-scope papers name the
 skill they study in the title, so this drops off-domain papers that only match a
 topic keyword in passing — a pupil-health study touching "complexity", a salary
 agreement mentioning "collaboration" — while keeping abstract-only in-scope
@@ -128,7 +129,7 @@ operating cycle showed adult/higher-education papers were the dominant false
 positive, so this gate is the highest-value precision lever.
 
 The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
-set (73 examples: real candidates from the live runs and live API queries across the
+set (81 examples: real candidates from the live runs and live API queries across the
 sources, plus clear anchor cases) and `scripts/eval_relevance.py` reports
 precision/recall/F1 and sweeps thresholds, so the filter's behavior is measured.
 The off-scope filter and the audience gate hold measured **precision 1.00 at
@@ -137,11 +138,13 @@ are correctly excluded; no relevant source dropped).
 `test_relevance_heuristic_meets_measured_floor` guards against regressions
 (precision ≥ 0.90, recall ≥ 0.90, with margin below the measured values).
 
-On **fresh** live data the audience gate lifted live precision from ~0.58 to
-~0.73 (accepted sources 26 → 15 on the same query), removing the higher-ed/
-workforce false positives. The eval-set 1.00 stays optimistic relative to fresh
-data; the remaining fresh-data false positives are other domains (physical
-education, language pedagogy, teacher tool-use) tracked in `OPERATIONS.md`.
+On **fresh** live data, successive precision passes lifted live precision from
+~0.58 (baseline) to ~0.73 (audience gate) to ~0.85 (physical-education and
+foreign-language-pedagogy off-scope terms), with accepted sources falling 26 →
+15 → 13 on the same query. The eval-set 1.00 stays optimistic relative to fresh
+data; the remaining fresh-data false positives are harder classes (teacher
+tool-use, and disaster/health papers that carry a school-age word) tracked in
+`OPERATIONS.md`.
 
 ### Optional trained relevance classifier
 
