@@ -133,7 +133,8 @@ python scripts/promote_candidate.py claim claim-id `
   --context "..." --age-range "6-18" --outcome "..." `
   --evidence-type systematic_review --evidence-strength moderate --supports skill-id
 python scripts/promote_candidate.py skill skill-id --definition "..." --name "..."
-python scripts/promote_candidate.py reject claim-id   # off-scope or unusable
+python scripts/promote_candidate.py reject claim-id          # unusable claim
+python scripts/promote_candidate.py reject-source src-id     # source is off-scope
 ```
 
 Rejecting a candidate records the decision (claims become `rejected`, skills
@@ -144,6 +145,36 @@ A claim only becomes `reviewed` once its context, age range, and outcome are rea
 (not the extraction placeholders) and it links at least one existing skill. A skill
 only becomes `active` once its definition is real and every supporting and
 contradicting claim is already `reviewed`.
+
+### Harvesting relevance labels
+
+Every review decision is, in effect, a relevance label for the underlying
+**source**, so `promote_candidate.py` records each one as a labeled example
+(title + abstract, with provenance) in `eval/relevance_harvested.json` — kept
+**separate** from the hand-curated `eval/relevance_labeled.json`. This grows the
+training base for a future relevance classifier automatically with review
+throughput. The mapping is:
+
+- Promoting a claim to `reviewed` → its source(s) are labeled **relevant**
+  (positives), tagged with the deciding `claim_id`.
+- `reject-source src-id` → the reviewer marks a source itself off-scope, labeling
+  it **irrelevant** (a negative); the source's status becomes `rejected`.
+
+Negatives come **only** from this explicit source reject, never naively from
+rejected claims: a poorly extracted claim sentence does not mean its source is
+off-scope. Labels are deduped by normalized title (first decision wins) and carry
+provenance (`decision`, `harvested_at`, `source_id`, plus `claim_id` for
+positives).
+
+**Selection bias (important).** Only candidates that already passed the relevance
+filter ever reach human review, so the harvested set systematically
+*under-represents the off-scope region the filter discards upstream* and is missing
+most true negatives. It is therefore a **supplement, not a replacement** for the
+curated eval set: `eval/relevance_labeled.json` and the regression test
+(`test_relevance_heuristic_meets_measured_floor`) stay the source of truth.
+`python scripts/eval_relevance.py --include-harvested` folds the harvested labels
+into the report (deduped against the curated set, which wins on conflict) for an
+exploratory, larger-sample view — but never measure on the harvested set alone.
 
 ## Roadmap
 

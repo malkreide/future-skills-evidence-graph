@@ -29,7 +29,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from cluster_claims import DEFINITION_PLACEHOLDER_SUFFIX
-from common import TODAY, iter_json_files, load_json, write_json
+from common import ROOT, TODAY, iter_json_files, load_json, normalize_title, write_json
 from extract_claims import (
     AGE_RANGE_PLACEHOLDER,
     CONTEXT_PLACEHOLDER_SUFFIX,
@@ -40,6 +40,91 @@ from validate_data import _load_validators, validate_repository
 
 
 AGE_RANGE_PLACEHOLDERS = {AGE_RANGE_PLACEHOLDER.casefold(), "todo", "tbd", ""}
+
+# Auto-harvested relevance labels accumulate here, separate from the curated
+# eval/relevance_labeled.json. Each human review decision is, in effect, a
+# relevance label for the underlying source, so the training base for a future
+# relevance classifier grows with review throughput instead of by hand.
+HARVEST_PATH = ROOT / "eval" / "relevance_harvested.json"
+
+HARVEST_README = (
+    "Auto-harvested relevance labels written by scripts/promote_candidate.py on "
+    "each review decision. DO NOT edit by hand. Mapping: a claim promoted to "
+    "'reviewed' marks its source(s) 'relevant' (positives); a reviewer source "
+    "reject ('reject-source') marks a source 'irrelevant' (negative). Rejected "
+    "claims are NOT harvested -- a weak sentence does not make its source "
+    "off-scope. SELECTION BIAS: only candidates that already passed the relevance "
+    "filter reach human review, so this set under-represents the off-scope region "
+    "the filter discards upstream and is missing most true negatives. It must NOT "
+    "replace the curated eval/relevance_labeled.json; use it only as a supplement "
+    "(eval_relevance.py --include-harvested), never on its own."
+)
+
+
+def _load_harvest() -> dict[str, Any]:
+    """Return the harvested-labels document, or a fresh skeleton if absent."""
+    if HARVEST_PATH.exists():
+        payload = load_json(HARVEST_PATH)
+        if isinstance(payload, dict) and isinstance(payload.get("examples"), list):
+            return payload
+    return {"_README": HARVEST_README, "examples": []}
+
+
+def _harvest_example(
+    source: dict[str, Any], relevant: bool, decision: str, **provenance: Any
+) -> dict[str, Any]:
+    """Build a labeled relevance example (title + abstract) with provenance."""
+    example = {
+        "title": str(source.get("title") or ""),
+        "abstract": str(source.get("abstract") or ""),
+        "relevant": relevant,
+        "origin": "harvested",
+        "decision": decision,
+        "harvested_at": TODAY,
+        "source_id": source.get("id"),
+    }
+    example.update(provenance)
+    return example
+
+
+def record_relevance_labels(examples: list[dict[str, Any]]) -> int:
+    """Append harvested relevance labels, deduped by normalized title.
+
+    The first recorded decision for a given (normalized) title wins, so the
+    harvest stays deterministic and append-only across re-runs. Titleless
+    examples are skipped. The file is only written when something new is added,
+    so a no-op review never produces a noise diff. Returns the count appended.
+    """
+    if not examples:
+        return 0
+    harvest = _load_harvest()
+    known = {normalize_title(str(item.get("title", ""))) for item in harvest["examples"]}
+    added = 0
+    for example in examples:
+        key = normalize_title(str(example.get("title", "")))
+        if not key or key in known:
+            continue
+        harvest["examples"].append(example)
+        known.add(key)
+        added += 1
+    if added:
+        harvest["_README"] = HARVEST_README
+        write_json(HARVEST_PATH, harvest)
+    return added
+
+
+def _harvest_promoted_claim(claim: dict[str, Any]) -> int:
+    """Harvest a positive label for every source backing a reviewed claim."""
+    examples: list[dict[str, Any]] = []
+    for source_id in claim.get("source_ids", []):
+        located = find_record("sources", source_id)
+        if located is None:
+            continue
+        _, _, source = located
+        examples.append(
+            _harvest_example(source, True, "promote_claim", claim_id=claim.get("id"))
+        )
+    return record_relevance_labels(examples)
 
 
 def find_record(kind: str, record_id: str) -> tuple[Path, list[dict[str, Any]], dict[str, Any]] | None:
@@ -134,6 +219,8 @@ def promote_claim(args: argparse.Namespace) -> list[str]:
     if errors:
         return errors
     write_json(found[0], records)
+    # The review decision is a relevance label for the claim's source(s).
+    _harvest_promoted_claim(claim)
     return []
 
 
@@ -269,6 +356,12 @@ def _build_parser() -> argparse.ArgumentParser:
 
     reject = sub.add_parser("reject", help="Reject a candidate claim (or deprecate a skill).")
     reject.add_argument("id")
+
+    reject_src = sub.add_parser(
+        "reject-source",
+        help="Mark a source off-scope; harvests an 'irrelevant' relevance label.",
+    )
+    reject_src.add_argument("id")
     return parser
 
 
@@ -304,14 +397,38 @@ def reject_record(args: argparse.Namespace) -> list[str]:
     return []
 
 
+def reject_source(args: argparse.Namespace) -> list[str]:
+    """Mark a source off-scope and harvest an 'irrelevant' relevance label.
+
+    This is the deliberate, documented path for negatives: a reviewer judges a
+    source itself out of scope (not merely its auto-extracted claim). Rejected
+    *claims* are never harvested as negatives -- a poorly extracted sentence does
+    not make its source irrelevant. The source's status becomes 'rejected' so it
+    drops out of later passes, mirroring reject_record for claims/skills.
+    """
+    found = find_record("sources", args.id)
+    if found is None:
+        return [f"source {args.id} not found in data/sources/"]
+    _, records, source = found
+    source["status"] = "rejected"
+    source["reviewed_at"] = TODAY
+    errors = _schema_errors("sources", source)
+    if errors:
+        return errors
+    write_json(found[0], records)
+    record_relevance_labels([_harvest_example(source, False, "reject_source")])
+    return []
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
     actions: dict[str, Callable[[argparse.Namespace], list[str]]] = {
         "claim": promote_claim,
         "skill": promote_skill,
         "reject": reject_record,
+        "reject-source": reject_source,
     }
-    verb = "Rejected" if args.kind == "reject" else "Promoted"
+    verb = "Rejected" if args.kind in ("reject", "reject-source") else "Promoted"
     errors = actions[args.kind](args)
     if errors:
         print(f"Refusing to {verb.lower()} {args.id}:")
