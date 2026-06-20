@@ -90,14 +90,23 @@ Diese Bausteine gelten für alle Pakete und werden in P0 angelegt:
 aufsetzen, ohne die Importer dependency-schwer zu machen.
 
 **Umfang.**
-- Neues Modul `scripts/ai_provider.py` mit einem schmalen Interface:
+- Neues Modul `scripts/ai_provider.py` mit **zwei getrennten** Interfaces, weil
+  Text-Generierung und Embeddings von verschiedenen Anbietern kommen:
   `complete(prompt, *, schema=None) -> dict` (LLM) und
   `embed(texts) -> list[vector]` (Embeddings).
-- Provider-Auswahl per Env-Flag mit Fallback: `AI_PROVIDER` ∈
+- **LLM-Provider** per Env-Flag mit Fallback: `AI_PROVIDER` ∈
   `none` (Default) | `anthropic` | `cache`. `none` → jede KI-Fähigkeit gibt
-  „kein Vorschlag" zurück, exakt wie heute.
-- Default-LLM: aktuelles Claude-Modell (z. B. `claude-opus-4-8`); konfigurierbar
-  über `AI_MODEL`. API-Key aus `ANTHROPIC_API_KEY`.
+  „kein Vorschlag" zurück, exakt wie heute. SDK: offizielles `anthropic`-Paket.
+- Default-LLM: aktuelles Claude-Modell (`claude-opus-4-8`); konfigurierbar
+  über `AI_MODEL`. API-Key aus `ANTHROPIC_API_KEY`. Strukturierte Ausgaben über
+  `output_config.format` (JSON-Schema) — **kein** Assistant-Prefill (auf Opus 4.8
+  mit 400 abgelehnt) und **kein** `temperature` (ebenfalls entfernt); Determinismus
+  über `output_config.effort` + striktes Schema.
+- **Embedding-Provider** ist davon getrennt (`EMBEDDING_PROVIDER`), denn Anthropic
+  hat **keine** native Embeddings-API. Empfohlen: ein lokales, dependency-armes
+  Modell (z. B. `sentence-transformers`) — wahrt Netzunabhängigkeit und
+  Reproduzierbarkeit; Alternative wäre ein externer Dienst wie Voyage AI. Wird
+  erst von P2/P3 benötigt.
 - Fixture-Cache-Layer (Abschnitt 2) + `fetch_or_warn`-Stil-Wrapper für Graceful
   Degradation.
 - Provenienz-Helfer `ai_provenance(model, prompt_version)`.
@@ -126,10 +135,15 @@ Aufgabe: Lege das Fundament für optionale, abschaltbare KI-Funktionen an, ohne
 den bestehenden Standard zu verändern.
 
 1. Erstelle scripts/ai_provider.py mit:
-   - relevanten Env-Flags AI_PROVIDER (none|anthropic|cache, Default none),
-     AI_MODEL (Default das aktuelle Claude-Opus-Modell), ANTHROPIC_API_KEY.
-   - Funktionen complete(prompt, *, schema=None) -> dict und
-     embed(texts) -> list[list[float]].
+   - Env-Flags AI_PROVIDER (none|anthropic|cache, Default none), AI_MODEL
+     (Default claude-opus-4-8), ANTHROPIC_API_KEY; sowie EMBEDDING_PROVIDER
+     (none|local|... , Default none) fuer den GETRENNTEN Embedding-Pfad.
+   - complete(prompt, *, schema=None) -> dict: nutzt das offizielle anthropic-SDK
+     mit output_config.format (JSON-Schema). KEIN temperature und KEIN Assistant-
+     Prefill (beide auf Opus 4.8 mit 400 abgelehnt); Determinismus ueber
+     output_config.effort='low'. Bei stop_reason=='refusal' -> None.
+   - embed(texts) -> list[list[float]]: eigener Anbieter (Anthropic hat KEINE
+     Embeddings-API). Default 'none' -> None; 'local' nutzt ein lokales Modell.
    - Einem Fixture-Cache (tests/fixtures/ai/), der Requests per stabilem Hash
      auf gespeicherte Antworten abbildet; im Modus 'cache' nur lesen.
    - Graceful Degradation im fetch_or_warn-Stil: bei Fehler Warnung auf stderr +
@@ -167,8 +181,9 @@ und `text_anchor` bleiben unverändert deterministisch.
 - `promote_candidate.py` zeigt die Vorschläge an und kann sie per Flag
   (`--accept-suggestions`) als Startwerte übernehmen; der Mensch bestätigt jeden
   Wert (der Platzhalter-Gate-Mechanismus bleibt scharf).
-- In-Feature-Prompt versioniert (siehe Anhang A), `temperature=0`, Ausgabe als
-  striktes JSON gegen ein kleines Schema.
+- In-Feature-Prompt versioniert (siehe Anhang A); Ausgabe als striktes JSON über
+  `output_config.format`. **Kein** `temperature` (auf Opus 4.8 entfernt → 400);
+  niedrige Streuung über `output_config.effort='low'` plus das strikte Schema.
 
 **Tests / Akzeptanz.**
 - Golden-Set `eval/claim_prefill_labeled.json`: Abstracts mit von Hand
@@ -192,8 +207,8 @@ Aufgabe: LLM-gestütztes Pre-Fill der manuellen Claim-Felder als VORSCHLAG.
 1. Neue Funktion suggest_claim_fields(abstract, statement, topics) ->
    {age_range, outcome, context, evidence_strength} | None, die ai_provider.complete
    mit dem versionierten Prompt aus docs/ki-weiterentwicklung-plan.md Anhang A
-   aufruft (temperature=0, JSON-Schema-validiert). Bei Provider 'none' oder
-   Fehler: None.
+   aufruft (output_config.format mit JSON-Schema, effort='low', KEIN temperature).
+   Bei Provider 'none', stop_reason=='refusal' oder Fehler: None.
 2. In claim_from_source: wenn ein Vorschlag vorliegt, schreibe ihn nach
    claim["assist"] = {"suggestions": ..., "provenance": ai_provenance(...)}.
    Die ECHTEN Felder behalten ihre Platzhalter. statement/text_anchor unverändert.
@@ -221,6 +236,8 @@ Katastrophen-/Gesundheits-Paper mit Schul-Wort – siehe README/OPERATIONS) übe
 **Umfang.**
 - Neuer Modus `RELEVANCE_CLASSIFIER=embedding` in `common.py::decide_relevance`
   (dritte Option neben `heuristic`/`model`), mit Heuristik als Fallback.
+- Embeddings über `ai_provider.embed` (separater `EMBEDDING_PROVIDER`, **nicht**
+  Anthropic — siehe P0; empfohlen: lokales Modell für Offline-/Reproduzierbarkeit).
 - Kuratierte Anker-Embeddings (positive/negative Prototypen) als versioniertes
   Artefakt `models/relevance_anchors.json`; Score = Ähnlichkeit zu Positiv- minus
   Negativ-Prototypen.
@@ -274,6 +291,8 @@ Kompetenz-Kandidaten vor.
 **Umfang.**
 - Optionaler Clustering-Modus (Env-Flag, z. B. `CLUSTER_METHOD=embedding`) mit
   dem bestehenden Vokabular-Clustering als Default/Fallback.
+- Claim-Embeddings über `ai_provider.embed` (derselbe separate
+  `EMBEDDING_PROVIDER` wie in P2, nicht Anthropic).
 - Agglomeratives/Schwellen-Clustering über Claim-Embeddings; jedes erzeugte
   Cluster bleibt `candidate` mit `evidence_score 0.0`.
 - Bestehende Skills bekommen weiterhin nur Review-Hinweise, keine
@@ -414,9 +433,12 @@ Antwortschema:
  "evidence_strength": "low"|"moderate"|"high"}
 ```
 
-*Reproduzierbarkeit:* `temperature=0`, Prompt-Version im `assist.provenance`
-mitschreiben, Ausgabe strikt gegen das Antwortschema validieren; bei
-Schema-Verstoß Vorschlag verwerfen (Fallback = keine Vorschläge).
+*Reproduzierbarkeit:* Das Antwortschema wird über `output_config.format`
+(JSON-Schema) erzwungen, nicht über Prefill (auf Opus 4.8 mit 400 abgelehnt).
+**Kein** `temperature` (ebenfalls entfernt) — niedrige Streuung über
+`output_config.effort='low'`. Prompt-Version im `assist.provenance` mitschreiben;
+bei `stop_reason=='refusal'` oder Schema-Verstoß den Vorschlag verwerfen
+(Fallback = keine Vorschläge).
 
 ---
 
