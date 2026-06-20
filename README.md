@@ -18,6 +18,14 @@ review through pull requests.
 - Governance templates for source suggestions, claim corrections, and new skills
 - Lehrplan 21 comparison view with radar chart, cycle filter, coverage table, and gap labels
 
+## Architecture
+
+For a visual walkthrough of how the pieces fit together — the data model, the
+research pipeline, the human review loop, and publication — see
+[docs/architektur.md](docs/architektur.md) (with Mermaid diagrams). A
+non-technical overview is in
+[docs/erklaerung-fuer-laien.md](docs/erklaerung-fuer-laien.md).
+
 ## Local commands
 
 ```powershell
