@@ -199,11 +199,18 @@ python scripts/promote_candidate.py claim claim-id `
 python scripts/promote_candidate.py skill skill-id --definition "..." --name "..."
 python scripts/promote_candidate.py reject claim-id          # unusable claim
 python scripts/promote_candidate.py reject-source src-id     # source is off-scope
+python scripts/promote_candidate.py promote-source src-id    # source is in scope (reviewed)
+python scripts/promote_candidate.py attach-claim skill-id --claim claim-id
 ```
 
 Rejecting a candidate records the decision (claims become `rejected`, skills
 `deprecated`) so it stays out of clustering and later review passes instead of
 lingering as a candidate.
+
+`attach-claim` folds a reviewed claim into an existing skill's evidence and
+recomputes the score. It refuses to attach unless the claim and all its sources
+are reviewed, so the active-skill evidence path stays intact — review the source
+with `promote-source` first (which also harvests a positive relevance label).
 
 A claim only becomes `reviewed` once its context, age range, and outcome are real
 (not the extraction placeholders) and it links at least one existing skill. A skill
