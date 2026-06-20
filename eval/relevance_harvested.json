@@ -1,4 +1,23 @@
 {
   "_README": "Auto-harvested relevance labels written by scripts/promote_candidate.py on each review decision. DO NOT edit by hand. Mapping: a claim promoted to 'reviewed' marks its source(s) 'relevant' (positives); a reviewer source reject ('reject-source') marks a source 'irrelevant' (negative). Rejected claims are NOT harvested -- a weak sentence does not make its source off-scope. SELECTION BIAS: only candidates that already passed the relevance filter reach human review, so this set under-represents the off-scope region the filter discards upstream and is missing most true negatives. It must NOT replace the curated eval/relevance_labeled.json; use it only as a supplement (eval_relevance.py --include-harvested), never on its own.",
-  "examples": []
+  "examples": [
+    {
+      "title": "Who Owns The Metaverse \u2014 Who Is Excluded \u2013 Who Gets Hurt?\u201d \u2013 Young Generation\u2019S Insights On Metaverse Ethics",
+      "abstract": "This study explores ethical issues surrounding the emerging technology of metaverse from the perspective of young people, emphasizing their views on what constitutes an ethically sustainable metaverse in everyday life and society. As future users and developers, their insights are critical for shaping responsible digital environments. The research adopts a qualitative approach, drawing on semi-structured interviews with computer science university students and high school students during Virtual Reality experiments. Data was analyzed using Effing\u2019s (2024) framework, which was extended by participants\u2019 contributions. Young people highlighted themes such as social interaction, humanity, and safety, alongside domains such as learning, health, and commercial practices. They stressed child protection, accessibility, and equality, while identifying risks such as cyberbullying, harmful content, addiction, and privacy concerns. Findings reveal a strong ethical orientation among youth and their readiness to engage in designing inclusive, safe, and equitable digital futures, expanding IS research beyond organizational contexts.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-20",
+      "source_id": "src-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s"
+    },
+    {
+      "title": "The integration of generative artificial intelligence in secondary education: A systematic review",
+      "abstract": "In recent years, the emergence of generative artificial intelligence (GenAI) has reshaped multiple domains of human knowledge, including education, giving rise to an emerging field of study that still lacks conceptual and empirical systematization\u2014particularly at the secondary education level. Despite growing interest in exploring its pedagogical potential, existing studies remain fragmented, methodologically uneven, and often rooted in experimental or anecdotal contexts, which hinders the development of a robust evidence base regarding its actual impact on learning. In response to this situation, the present study conducts a systematic review of recent scientific literature with the aim of identifying the main uses of GenAI in secondary education and examining the improvements these uses bring to teaching and learning processes. The review follows the PRISMA protocol and includes a total of 33 studies selected based on explicit inclusion criteria, focusing on experiences involving generative tools. The findings reveal a diverse range of approaches to GenAI integration, with a predominance of applications in written production, STEM problem-solving, creative stimulation, and automated feedback\u2014most of which are initiated by teachers and implemented in isolated or experimental settings. The review also identifies significant improvements in areas such as student motivation, autonomy, critical thinking, and digital competence. However, methodological limitations and gaps in pedagogical integration are also noted. These findings underscore the need to move towards more integrated and sustained pedagogical models and highlight the urgency of strengthening longitudinal and theoretically grounded research to gain deeper insights into the educational implications of this emerging technology.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-20",
+      "source_id": "src-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
+    }
+  ]
 }

@@ -549,6 +549,20 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertGreaterEqual(metrics.precision, 0.90, "relevance precision regressed")
         self.assertGreaterEqual(metrics.recall, 0.90, "relevance recall regressed")
 
+    def test_attach_claim_validates_targets(self) -> None:
+        from argparse import Namespace
+
+        from promote_candidate import attach_claim
+
+        # Missing skill is rejected before any write.
+        self.assertTrue(
+            attach_claim(Namespace(id="skill-does-not-exist", claim="claim-x", contradicting=False))
+        )
+        # Existing skill but missing claim is rejected too.
+        skill_id = load_records("skills")[0]["id"]
+        errors = attach_claim(Namespace(id=skill_id, claim="claim-does-not-exist-xyz", contradicting=False))
+        self.assertTrue(any("not found" in error for error in errors))
+
     def test_reject_missing_record_reports_error(self) -> None:
         from argparse import Namespace
 

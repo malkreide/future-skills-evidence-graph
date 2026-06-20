@@ -362,7 +362,99 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Mark a source off-scope; harvests an 'irrelevant' relevance label.",
     )
     reject_src.add_argument("id")
+
+    promote_src = sub.add_parser(
+        "promote-source",
+        help="Mark a source reviewed (in scope); harvests a 'relevant' label.",
+    )
+    promote_src.add_argument("id")
+
+    attach = sub.add_parser(
+        "attach-claim",
+        help="Attach a reviewed claim to a skill's evidence and recompute scores.",
+    )
+    attach.add_argument("id", help="skill id")
+    attach.add_argument("--claim", required=True, help="reviewed claim id")
+    attach.add_argument(
+        "--contradicting",
+        action="store_true",
+        help="Attach as contradicting evidence instead of supporting.",
+    )
     return parser
+
+
+def promote_source(args: argparse.Namespace) -> list[str]:
+    """Mark a source reviewed (human-verified in scope); harvest a positive label.
+
+    The counterpart to reject_source and the prerequisite for attaching a claim
+    to an active skill, whose evidence path requires reviewed sources. A reviewed
+    source is a confirmed in-scope relevance example, so it is harvested as a
+    positive label, mirroring reject_source's negative.
+    """
+    found = find_record("sources", args.id)
+    if found is None:
+        return [f"source {args.id} not found in data/sources/"]
+    _, records, source = found
+    source["status"] = "reviewed"
+    source["reviewed_at"] = TODAY
+    errors = _schema_errors("sources", source)
+    if errors:
+        return errors
+    write_json(found[0], records)
+    record_relevance_labels([_harvest_example(source, True, "promote_source")])
+    return []
+
+
+def attach_claim(args: argparse.Namespace) -> list[str]:
+    """Attach a reviewed claim to an existing skill's evidence list.
+
+    The operating path for folding reviewed claims into skills: the importers
+    only ever produce candidates and promote_skill handles the candidate->active
+    transition, but reviewed claims also need to be folded into already-active
+    skills. Only reviewed claims may be attached (the active-skill evidence
+    invariant); the skill score is recomputed afterwards by main().
+    """
+    found = find_record("skills", args.id)
+    if found is None:
+        return [f"skill {args.id} not found in data/skills/"]
+    _, records, skill = found
+    claim_found = find_record("claims", args.claim)
+    if claim_found is None:
+        return [f"claim {args.claim} not found in data/claims/"]
+    if claim_found[2].get("status") != "reviewed":
+        return [f"claim {args.claim} is {claim_found[2].get('status')}; only reviewed claims may back a skill"]
+    # An active skill's evidence path requires reviewed sources, so a claim
+    # cannot be folded in until its sources are reviewed (promote-source first).
+    sources = {s["id"]: s for s in _records_of("sources")}
+    unreviewed = [
+        sid for sid in claim_found[2].get("source_ids", [])
+        if sources.get(sid, {}).get("status") != "reviewed"
+    ]
+    if unreviewed:
+        return [
+            f"claim {args.claim} has non-reviewed source(s) {', '.join(unreviewed)}; "
+            "run promote-source on them first"
+        ]
+
+    role = "contradicting" if args.contradicting else "supporting"
+    field = f"{role}_claim_ids"
+    ids = skill.setdefault(field, [])
+    if args.claim in ids:
+        return [f"claim {args.claim} is already {role} evidence for {args.id}"]
+    ids.append(args.claim)
+    skill["updated_at"] = TODAY
+    skill.setdefault("change_log", []).append(
+        {
+            "date": TODAY,
+            "change": f"Attached reviewed claim {args.claim} as {role} evidence",
+            "reason": "Folded reviewed candidate evidence into the skill during operations.",
+        }
+    )
+    errors = _schema_errors("skills", skill)
+    if errors:
+        return errors
+    write_json(found[0], records)
+    return []
 
 
 def reject_record(args: argparse.Namespace) -> list[str]:
@@ -427,8 +519,12 @@ def main(argv: list[str] | None = None) -> int:
         "skill": promote_skill,
         "reject": reject_record,
         "reject-source": reject_source,
+        "promote-source": promote_source,
+        "attach-claim": attach_claim,
     }
-    verb = "Rejected" if args.kind in ("reject", "reject-source") else "Promoted"
+    verb = {"reject": "Rejected", "reject-source": "Rejected", "attach-claim": "Attached"}.get(
+        args.kind, "Promoted"
+    )
     errors = actions[args.kind](args)
     if errors:
         print(f"Refusing to {verb.lower()} {args.id}:")

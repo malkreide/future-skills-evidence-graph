@@ -53,9 +53,15 @@ In GitHub settings:
    python scripts/promote_candidate.py reject <claim-id>
    # Off-scope source → off-scope + harvests a NEGATIVE relevance label:
    python scripts/promote_candidate.py reject-source <source-id>
+   # In-scope source → reviewed + harvests a POSITIVE relevance label:
+   python scripts/promote_candidate.py promote-source <source-id>
+   # Fold a reviewed claim into a skill's evidence (recomputes the score):
+   python scripts/promote_candidate.py attach-claim <skill-id> --claim <claim-id>
    ```
-   Use `reject-source` on every false positive — it builds the negative labels
-   the trained classifier needs.
+   Use `reject-source` / `promote-source` on every reviewed source — together
+   they build the negative and positive labels the trained classifier needs.
+   `attach-claim` requires the claim and its sources to be reviewed first, so the
+   active-skill evidence path stays intact.
 4. **Merge** the candidate PR.
 5. **Deploy** happens automatically on push to `main` (`deploy-pages.yml`).
 
@@ -146,6 +152,17 @@ teacher tool-use (teachers are a legitimate audience, so a blanket teacher gate
 would cost recall), and disaster/health papers that name a school-age audience
 and a topic in the title (off-scope title-anchor exemption keeps them). These
 are candidates for the trained model once the harvested label set grows.
+
+### First evidence folded into the graph
+
+The two reviewed claims from the first live run (PR #22) were folded into their
+skills with `attach-claim`, completing the source→claim→skill path: the GenAI
+systematic-review claim into `skill-critical-thinking` (0.57 → 0.61) and
+`skill-ai-literacy` (0.79 → 0.78, a correct dip — moderate evidence below a high
+mean at saturated breadth), the metaverse-ethics claim into
+`skill-ethical-technology-judgment` (0.72, unchanged). Their sources were
+reviewed first with `promote-source`, which seeded the harvested label set with
+its first two positive labels.
 
 ## Cycle log
 

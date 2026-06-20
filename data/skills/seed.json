@@ -6,7 +6,7 @@
     "definition": "Ability to understand, use, question, and shape AI systems with awareness of capabilities, limits, risks, and human purpose.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.79,
+    "evidence_score": 0.78,
     "trend": "growing",
     "topics": [
       "ai literacy",
@@ -19,7 +19,8 @@
       "claim-critical-thinking-ai-outputs",
       "claim-labor-market-analytical-ai-resilience",
       "claim-ai-education-teacher-augmentation",
-      "claim-ai-literacy-multidimensional"
+      "claim-ai-literacy-multidimensional",
+      "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -37,10 +38,20 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.91 -> 0.79",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-20",
+        "change": "Attached reviewed claim claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-20",
+        "change": "evidence_score 0.79 -> 0.78",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-06-20"
   },
   {
     "id": "skill-critical-thinking",
@@ -49,7 +60,7 @@
     "definition": "Ability to test claims, inspect evidence, identify bias, compare explanations, and resist unsupported authority from humans or machines.",
     "age_range": "10-18",
     "status": "active",
-    "evidence_score": 0.57,
+    "evidence_score": 0.61,
     "trend": "growing",
     "topics": [
       "critical thinking",
@@ -59,7 +70,8 @@
     "supporting_claim_ids": [
       "claim-critical-thinking-ai-outputs",
       "claim-labor-market-analytical-ai-resilience",
-      "claim-data-literacy-digital-problem-solving"
+      "claim-data-literacy-digital-problem-solving",
+      "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
     ],
     "contradicting_claim_ids": [
       "claim-critical-thinking-domain-specific"
@@ -89,10 +101,20 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.64 -> 0.57",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-20",
+        "change": "Attached reviewed claim claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-20",
+        "change": "evidence_score 0.57 -> 0.61",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-06-20"
   },
   {
     "id": "skill-data-literacy",
@@ -194,7 +216,8 @@
       "claim-ai-child-rights-ethics",
       "claim-trustworthy-ai-risk-reasoning",
       "claim-ai-education-teacher-augmentation",
-      "claim-ai-literacy-multidimensional"
+      "claim-ai-literacy-multidimensional",
+      "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -212,10 +235,15 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.84 -> 0.72",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-20",
+        "change": "Attached reviewed claim claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-06-20"
   },
   {
     "id": "skill-self-regulated-learning",
