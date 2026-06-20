@@ -324,5 +324,195 @@
     "created_at": "2026-06-14",
     "reviewed_at": "2026-06-20",
     "relevance_score": 0.9
+  },
+  {
+    "id": "src-understanding-older-adults-intention-to-use-ai-based-devices-a-socioemot",
+    "title": "Understanding Older Adults\u2019 Intention to Use AI-based Devices: A Socioemotional Selectivity Perspective",
+    "authors": [
+      "Sophie Kniepkamp",
+      "Theresa Wortmann",
+      "Julia Kroenung"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7164723014",
+    "openalex_id": "https://openalex.org/W7164723014",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of the Association for Information Systems",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial intelligence (AI)-based devices are increasingly embedded in everyday technologies used by older adults, yet research on AI adoption has largely focused on organizational or domain-specific contexts, leaving everyday use among older populations underexplored. Drawing on Socioemotional Selectivity Theory and digital divide research, this study investigates which socioemotional factors determine older adults\u2019 intention to use AI-based devices. Using survey data from 303 older adults, we analyze how factors as enjoyment, perceived social isolation, or privacy concerns influence performance expectancy and the usage intention. The results show that socioemotional factors act as antecedents of performance expectancy and significantly influence intention to use AI-based devices. By integrating a lifespan perspective with established adoption constructs, this study contributes to IS research by explaining how socioemotional priorities shape technology acceptance in later life and by highlighting implications for the deployment strategy of AI-based technologies to support social connectedness and transparent data practices.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  },
+  {
+    "id": "src-generative-ai-in-education-for-sdg-4-insights-from-indonesia-and-kazakhs",
+    "title": "Generative AI in Education for SDG 4: Insights from Indonesia and Kazakhstan",
+    "authors": [
+      "Afifah Mesha Putri",
+      "Saide Saide",
+      "Dorien Herremans"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7164706247",
+    "openalex_id": "https://openalex.org/W7164706247",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of the Association for Information Systems",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The realization of Sustainable Development Goal 4 (SDG 4) increasingly involves the integration of technologies such as Generative AI (GenAI). Nevertheless, its implementation continues to face various challenges. These challenges become more complex because each country has a different level of readiness. This study explores the governance landscape of GenAI implementation in education based on the perspectives of experts from Indonesia and Kazakhstan. The study employs a mixed qualitative design by combining a systematic literature review (SLR) and open-ended questionnaires addressed to experts in Indonesia and Kazakhstan. The findings reveal variations in national readiness, policy priorities, infrastructure conditions and capacity-building requirements between the two countries. From a dynamic capabilities perspective, the study highlights the importance of adaptive governance, digital infrastructure development and educational system transformation in supporting inclusive and equitable SDG 4 outcomes.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-if-you-re-very-clever-no-one-knows-you-ve-used-it-the-social-dynamics-of",
+    "title": "\"If You're Very Clever, No One Knows You've Used It\": The Social Dynamics of Developing Generative AI Literacy in the Workplace",
+    "authors": [
+      "Qing",
+      "Marios Constantinides",
+      "Advait Sarkar",
+      "Duncan P. Brumby",
+      "Anna Cox"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3808045.3808050",
+    "url": "https://openalex.org/W7157997690",
+    "openalex_id": "https://openalex.org/W7157997690",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OpenAlex",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Generative AI (GenAI) tools are rapidly transforming knowledge work, making AI literacy a critical priority for organizations. However, research on AI literacy lacks empirical insight into how knowledge workers' beliefs around GenAI literacy are shaped by the social dynamics of the workplace, and how workers learn to apply GenAI tools in these environments. To address this gap, we conducted in-depth interviews with 19 knowledge workers across multiple sectors to examine how they develop GenAI competencies in real-world professional contexts. We found that, while knowledge sharing from colleagues supported learning, the ability to remove cues indicating GenAI use was perceived as validation of domain expertise. These behaviours ultimately reduced opportunities for learning via knowledge sharing and undermined transparency. To advance workplace AI literacy, we argue for fostering open dialogue, increasing visibility of user-generated knowledge, and greater emphasis on the benefits of collaborative learning for navigating rapid technological developments.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-smart-wearables-for-school-based-physical-activity-promotion-k-12-physic",
+    "title": "Smart wearables for school-based physical activity promotion: K\u201312 physical education teachers\u2019 continuance intention and adoption pathways",
+    "authors": [
+      "J Zhao",
+      "Xianguo Liu",
+      "Jinhai Liu"
+    ],
+    "year": 2026,
+    "doi": "10.3389/fpubh.2026.1756723",
+    "url": "https://openalex.org/W7165130169",
+    "openalex_id": "https://openalex.org/W7165130169",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Public Health",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Introduction Smart wearable devices are increasingly used in physical education to support data-driven monitoring and feedback. However, limited research has examined why K\u201312 physical education teachers continue using these devices. This study investigates teachers\u2019 continuance intention by integrating the Task\u2013Technology Fit model and the Unified Theory of Acceptance and Use of Technology, with self-efficacy and perceived data privacy added as extended variables. Methods Using convenience sampling, 755 valid questionnaires were collected from K\u201312 physical education teachers, including 500 male teachers (66.22%) and 255 female teachers (33.78%). The model was tested using covariance-based structural equation modeling (CB-SEM), and fuzzy-set qualitative comparative analysis (fsQCA) was used to identify configurations leading to high and low continuance intention. Results The CB-SEM results showed that task characteristics significantly predicted task\u2013technology fit ( \u03b2 = 0.916, p &amp;lt; 0.001), whereas technological characteristics did not. Task\u2013technology fit was the strongest predictor of continuance intention ( \u03b2 = 0.504, p &amp;lt; 0.001), followed by performance expectancy, social influence, self-efficacy, and effort expectancy. Perceived data privacy had a significant negative effect. The fsQCA identified four configurations leading to high continuance intention and five leading to low continuance intention, indicating that continued use results from multiple combinations of task-related, technological, psychological, and social conditions. Discussion This study advances understanding of teachers\u2019 technology adoption by integrating symmetric and asymmetric analytical approaches within a unified theoretical framework. The findings highlight the central role of task\u2013technology fit and show that continuance intention is not determined by a single factor, but by multiple interacting conditions. These results provide practical implications for policymakers, school administrators, and technology developers seeking to support the sustainable integration of smart wearable devices into physical education and school-based physical activity promotion.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-human-translation-and-ai-reimagining-eap-efl-pedagogy-in-the-language-of",
+    "title": "Human Translation and AI: Reimagining EAP/EFL Pedagogy in the Language of Emotions.The Cases of The Diary of Ana\u00efs Nin and Gratitude by Oliver Sacks",
+    "authors": [
+      "Paola Clara Leotta",
+      "Vincenza Tutino",
+      "Heidi Littunen"
+    ],
+    "year": 2026,
+    "doi": "10.63871/unvl.jsuv2.1.26",
+    "url": "https://openalex.org/W7165155636",
+    "openalex_id": "https://openalex.org/W7165155636",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "UniVlora Scientific Journal",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As English for Academic Purposes (EAP) and Eng lish as a Foreign Language (EFL) classrooms evolve with technology, this research aims to ar gue that integrating the practice of AI-powered literary translation not only modernizes peda gogy but also fundamentally enhances EAP/EFL learners\u2019 linguistic, cultural, and critical capabili ties. In classroom interventions across a Master\u2019s in Psychology, a University Language Centre and a Secondary School, 106 students translated 18 ex tracts from two literary Diaries (by Anais Nin and Oliver Sacks). They compared their Italian trans lations with those from ChatGPT, DeepL, or Google Translate to determine human-AI transla tion differences and assess which better conveys the source author\u2019s emotions.Textual similarity was calculated using the TF-IDF (Term Frequency\u2013Inverse Document Frequency) method, a vector-representation technique that assigns a weight to terms based on their fre quency in a text and their distribution across the entire corpus. In addition, an Emotional Detec tion (ED) analysis was conducted on the human translations and on those generated by the artifi cial intelligence systems, in order to explore how the affective content of texts is reworked in the transition from the original to the translation. Results show that human translations present significantly greater variability and emotional sensitivity than AI, particularly in metaphorical and affectively charged texts.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  },
+  {
+    "id": "src-psychological-resilience-and-disaster-preparedness-among-parents-of-chil",
+    "title": "Psychological resilience and disaster preparedness among parents of children with hearing impairments: a cross-sectional analysis",
+    "authors": [
+      "Nesrullah Ay\u015fin",
+      "Fatma G\u00fcd\u00fcc\u00fc T\u00fcfekci",
+      "A. Adiyaman",
+      "Veysel Can",
+      "Mehmet Bulduk"
+    ],
+    "year": 2026,
+    "doi": "10.3389/fpubh.2026.1819901",
+    "url": "https://openalex.org/W7165173765",
+    "openalex_id": "https://openalex.org/W7165173765",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Public Health",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Background Families of children with disabilities are considered vulnerable populations in disaster contexts due to communication barriers, increased caregiving demands, and limited access to emergency resources. Psychological resilience, defined as the capacity to adapt positively in the face of adversity, may function as a protective factor influencing disaster preparedness behaviors. However, evidence regarding the role of parental psychological resilience in shaping disaster preparedness among parents of children with hearing impairment remains limited. Methods This cross-sectional descriptive study was conducted between December 2023 and January 2025 with 183 parents of children with hearing impairment. Data were collected using a Parent\u2013Child Information Form, the Adult Psychological Resilience Scale, and the Disaster Preparedness Scale. Descriptive statistics, independent samples t -test, one-way ANOVA, Pearson correlation analysis, and hierarchical multiple regression analysis were performed using SPSS 29.0. Statistical significance was set at p &amp;lt; 0.05. Results Psychological resilience was positively and significantly associated with disaster preparedness ( r = 0.227, p = 0.002). Regression analysis indicated that psychological resilience was significantly associated with disaster preparedness levels ( \u03b2 = 0.23, B = 0.16, p = 0.002). Parents with higher resilience scores demonstrated higher preparedness levels. Education level, prior disaster training, and home preparedness behaviors were also significantly associated with both resilience and preparedness. The effect size of resilience was low, suggesting that disaster preparedness is a multidimensional construct influenced by both psychological and socio-structural factors. Conclusion Psychological resilience is a significant but not solely sufficient protective factor for disaster preparedness among parents of children with hearing impairment. Integrating psychosocial strengthening components into disaster preparedness interventions may enhance behavioral readiness in vulnerable families. Public health strategies should prioritize inclusive, family-centered, and accessible preparedness programs to support resilience and reduce disaster-related vulnerabilities.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-memory-in-motion-ai-mediated-storytelling-across-languages-classrooms-an",
+    "title": "Memory in Motion: AI-Mediated Storytelling Across Languages, Classrooms and Generations",
+    "authors": [
+      "Ghadah Al Murshidi",
+      "Ahmed Al Zaabi",
+      "Adelina Kalandarova"
+    ],
+    "year": 2026,
+    "doi": "10.63871/unvl.jsuv2.1.27",
+    "url": "https://openalex.org/W7165157855",
+    "openalex_id": "https://openalex.org/W7165157855",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "UniVlora Scientific Journal",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In increasingly multilingual and culturally di verse educational environments, storytelling has emerged as a powerful pedagogical practice for fostering language development, identity expres sion, and cultural continuity. At the same time, advances in artificial intelligence (AI) have trans formed digital storytelling by introducing new possibilities for content generation, translation, and multimodal communication. This paper ex plores the role of AI-mediated storytelling across languages, classrooms, and generations, examin ing how AI can support narrative practices while preserving human creative agency. Drawing on interdisciplinary research in language education, digital storytelling, multilingualism, heritage lan guage learning, and intergenerational memory, the study proposes a conceptual framework that positions AI as a narrative mediator rather than an autonomous storyteller. The discussion highlights the educational potential of AI-sup ported storytelling for enhancing language learn ing, promoting multilingual expression, strength ening cultural identity, and facilitating the trans mission of intergenerational memory. At the same time, it addresses critical ethical concerns related to authorship, bias, transparency, and learner agency. The paper argues that the peda gogical value of AI-mediated storytelling de pends on human-centered instructional design, critical engagement with technology, and the preservation of authentic narrative voice. Ulti mately, AI-mediated storytelling is presented as a collaborative human\u2013machine practice that re connects language, memory, and meaning across linguistic, cultural, and generational boundaries.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-20",
+    "reviewed_at": null,
+    "relevance_score": 0.6
   }
 ]
