@@ -122,10 +122,21 @@ limit 20 per source:
 - **Promote rate: ~0.23** (≈6/26 promotable finding claims).
 - **Dominant false-positive class:** adult / higher-education audience
   ("AI Literacy for the Workforce", "...in Higher Education", "College Students'
-  AI Literacy", "Preservice Teachers"). The keyword filter has no age/audience
-  gate, so "AI literacy" matches regardless of who the learner is. **Highest-value
-  next improvement: an audience/age gate that excludes higher-ed/workforce
-  papers** — bigger lever than more off-scope domain terms.
+  AI Literacy", "Preservice Teachers"). The keyword filter had no age/audience
+  gate, so "AI literacy" matched regardless of who the learner was.
+
+### Improvement applied: audience/age gate
+
+`is_adult_audience` (`HIGHER_ED_KEYWORDS` present, no `SCHOOL_AGE_KEYWORDS`) now
+drops adult/post-secondary papers even when they name the skill in the title. A
+re-run of the same query showed accepted sources **26 → 15** and live precision
+**~0.58 → ~0.73**, with the higher-ed/workforce class removed. Curated eval set
+stays precision 1.00 / recall 1.00 (now 73 examples, incl. the audience cases).
+
+**Remaining fresh-data false-positive classes** (next improvement targets, not
+yet addressed): physical education / wearables, language-translation pedagogy
+(EAP/EFL), teacher tool-use, and disaster/health papers that carry a school-age
+word so the audience gate keeps them.
 
 ## Cycle log
 
@@ -134,3 +145,4 @@ Record each cycle so trends are visible.
 | Date | Accepted | Live precision | Promoted | Promote rate | Harvest size | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | (dry run) | 26 | ~0.58 | — | ~0.23 | 0 | Adult/higher-ed FPs dominate |
+| (audience gate) | 15 | ~0.73 | — | — | 0 | Higher-ed/workforce removed; PE/EAP/teacher FPs remain |
