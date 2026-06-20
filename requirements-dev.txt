@@ -1,1 +1,7 @@
 jsonschema>=4.21
+# scikit-learn is only needed to TRAIN the optional relevance classifier
+# (scripts/train_relevance.py) and to run the fair model-vs-heuristic comparison
+# in scripts/eval_relevance.py --compare-model. The importers and the runtime
+# relevance decision stay standard-library only: the trained model is consulted
+# from a JSON artifact (models/relevance_model.json) with stdlib math.
+scikit-learn>=1.4

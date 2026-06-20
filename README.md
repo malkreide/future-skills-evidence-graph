@@ -25,6 +25,8 @@ pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python scripts/build_site.py
 python scripts/eval_relevance.py
+python scripts/eval_relevance.py --compare-model   # fair heuristic vs model
+python scripts/train_relevance.py                  # (re)train the optional model
 python -m unittest discover -s tests
 python -m http.server 8000
 ```
@@ -118,7 +120,45 @@ The off-scope filter raised measured **precision from 0.78 to 1.00 at recall 1.0
 (F1 0.88 → 1.00) at the default threshold, eliminating all six false positives
 without dropping any relevant source. `test_relevance_heuristic_meets_measured_floor`
 guards against regressions (precision ≥ 0.90, recall ≥ 0.90, with margin below the
-measured values). A trained classifier on a still-larger set is the planned next step.
+measured values).
+
+### Optional trained relevance classifier
+
+The relevance decision is **pluggable**. The default is the keyword heuristic above —
+transparent, dependency-free, and the fallback whenever anything goes wrong. As an
+*opt-in* alternative, `scripts/train_relevance.py` trains a TF-IDF +
+LogisticRegression model (scikit-learn) from the label files with a fixed
+`random_state` and exports it to a versioned JSON artifact
+(`models/relevance_model.json`). The model is consulted at filter time only when the
+env flag `RELEVANCE_CLASSIFIER=model` is set **and** a valid artifact is present;
+otherwise the heuristic runs. The topic/keyword hits stay an explainable companion
+signal next to the model score: even in model mode, `topics` is still derived from the
+vocabulary and the `relevance_score`/`topics` data model is unchanged.
+
+The model is wired into the pipeline only if it **measurably beats** the heuristic on
+held-out data, and we report that honestly. `python scripts/eval_relevance.py
+--compare-model` runs a fair stratified cross-validation: the heuristic needs no
+training and is scored on each test fold directly, while the model is retrained on the
+train folds and scored on the held-out fold; both report pooled precision/recall/F1.
+On the current 54-example set the heuristic already reaches **F1 1.00** (P 1.00 / R
+1.00), and the model lands at **F1 ≈ 0.84** (P 0.94 / R 0.76) — it does **not** beat
+the baseline. The data is small and the heuristic is already saturated, so **the
+heuristic stays the default and active decision**; the model ships disabled for a
+larger, less separable future label set.
+
+**Reproducibility & trade-off.** Training is reproducible from a fixed seed
+(`SEED = 42`, seeding both the classifier and the CV splits) and the artifact records
+the seed, the scikit-learn version, the input files and label counts, and the
+vectorizer configuration. Inference is pure standard library: `common.py` reproduces
+scikit-learn's TF-IDF + logistic-regression math from the JSON artifact, so the
+importers stay stdlib-only and never import scikit-learn (it is a dev/CI dependency for
+*training* and the comparison). `scripts/train_relevance.py` asserts the stdlib scorer
+reproduces scikit-learn's `predict_proba` to < 1e-9, and a sklearn-gated test guards
+it. The trade-off is deliberate: the heuristic is fully deterministic and
+human-auditable (you can read why a source was kept from its matched topics), whereas a
+model trades some of that transparency for the *potential* to generalize. The JSON
+artifact keeps the model inspectable and diffable, and keeping the keyword topics as a
+companion signal preserves an explainable trace even when the model decides.
 
 ## Reviewing candidates
 
@@ -184,7 +224,7 @@ deliberately implements a subset; the remaining steps are open:
 | Step | Status |
 | --- | --- |
 | 1. Discover and deduplicate sources | Implemented for OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC (`ingest_*.py`, `deduplicate_sources.py`); OECD/WEF/UNESCO lack a public search API and stay manual |
-| 2. Classify relevance | Keyword/abstract heuristic requiring a topic match; measured against a labeled set (`eval_relevance.py`), but no trained classifier yet |
+| 2. Classify relevance | Keyword/abstract heuristic requiring a topic match (default, fallback, fully deterministic), measured against a labeled set (`eval_relevance.py`); an **optional** TF-IDF + LogisticRegression classifier (`train_relevance.py`, opt-in via `RELEVANCE_CLASSIFIER=model`) exists but stays disabled because it does not beat the heuristic on the held-out comparison |
 | 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
 | 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |
@@ -197,6 +237,10 @@ Optional environment variables:
 
 - `SEMANTIC_SCHOLAR_API_KEY`: raises Semantic Scholar rate limits.
 - `OPENALEX_MAILTO`: polite contact email appended to OpenAlex requests.
+- `RELEVANCE_CLASSIFIER`: `heuristic` (default) keeps the deterministic keyword
+  filter; `model` opts into the trained classifier (`models/relevance_model.json`),
+  falling back to the heuristic if the artifact is missing. The model currently does
+  not beat the heuristic, so the default is recommended.
 
 ## Licensing
 

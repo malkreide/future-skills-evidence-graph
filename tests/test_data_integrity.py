@@ -15,8 +15,10 @@ from jsonschema import Draft202012Validator  # noqa: E402
 
 from cluster_claims import cluster_candidate_skills  # noqa: E402
 from common import (  # noqa: E402
+    RELEVANCE_MODEL_PATH,
     RELEVANCE_THRESHOLD,
     append_candidate_sources,
+    decide_relevance,
     fetch_or_warn,
     filter_new_claims,
     filter_new_sources,
@@ -24,7 +26,9 @@ from common import (  # noqa: E402
     is_off_scope,
     load_json,
     load_records,
+    load_relevance_model,
     normalize_title,
+    relevance_classifier_mode,
     score_relevance,
     write_json,
 )
@@ -641,6 +645,94 @@ class DataIntegrityTests(unittest.TestCase):
             self.assertIn(mapping["coverage_label"], {"gut abgedeckt", "teilweise", "Zukunftsluecke"})
             self.assertTrue(mapping["cycles"])
             self.assertTrue(mapping["evidence_path"])
+
+    def test_relevance_decision_defaults_to_heuristic(self) -> None:
+        # The default decision (no env flag) must be the deterministic heuristic,
+        # byte-for-byte the same keep/score/topics it always produced.
+        import os
+        from unittest import mock
+
+        relevant = {
+            "title": "AI literacy and critical thinking for school students",
+            "abstract": "A classroom study with pupils.",
+        }
+        off_scope = {
+            "title": "Soil nutrition in wastewater refinery effluent",
+            "abstract": "An agriculture and salary study.",
+        }
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("RELEVANCE_CLASSIFIER", None)
+            self.assertEqual(relevance_classifier_mode(), "heuristic")
+            keep, score, topics = decide_relevance(relevant)
+            expected_score, expected_topics = score_relevance(relevant)
+            self.assertTrue(keep)
+            self.assertEqual(score, expected_score)
+            self.assertEqual(topics, expected_topics)
+            self.assertFalse(decide_relevance(off_scope)[0])
+
+    def test_model_mode_falls_back_to_heuristic_when_artifact_missing(self) -> None:
+        # Opting into the model but with no artifact must not break the pipeline:
+        # it falls back to the heuristic decision rather than raising.
+        import os
+        from unittest import mock
+
+        import common
+
+        relevant = {
+            "title": "Data literacy and collaboration in K-12 education",
+            "abstract": "A study of learners.",
+        }
+        heuristic = decide_relevance(relevant)  # env unset here
+        with mock.patch.dict(os.environ, {"RELEVANCE_CLASSIFIER": "model"}), mock.patch.object(
+            common, "RELEVANCE_MODEL_PATH", Path(tempfile.gettempdir()) / "no_such_model.json"
+        ), mock.patch.object(common, "_model_fallback_warned", False):
+            self.assertEqual(relevance_classifier_mode(), "model")
+            self.assertIsNone(load_relevance_model())
+            self.assertEqual(decide_relevance(relevant), heuristic)
+
+    def test_model_mode_keeps_keyword_topics_as_companion_signal(self) -> None:
+        # With the model active the data model is unchanged: relevance_score holds
+        # the model probability, but topics stay the explainable keyword signal.
+        import os
+        from unittest import mock
+
+        artifact = load_relevance_model()
+        self.assertIsNotNone(artifact, "committed model artifact should load")
+        source = {
+            "title": "AI literacy and critical thinking in classrooms",
+            "abstract": "A study with students.",
+        }
+        _, keyword_topics = score_relevance(source)
+        with mock.patch.dict(os.environ, {"RELEVANCE_CLASSIFIER": "model"}):
+            keep, score, topics = decide_relevance(source)
+        self.assertEqual(topics, keyword_topics)
+        self.assertTrue(0.0 <= score <= 1.0)
+        self.assertIsInstance(keep, bool)
+
+    def test_model_artifact_is_versioned_and_reproducible(self) -> None:
+        # The committed artifact must carry the provenance needed to reproduce it.
+        artifact = load_relevance_model()
+        self.assertIsNotNone(artifact)
+        self.assertEqual(artifact["model_type"], "tfidf+logreg")
+        training = artifact["training"]
+        self.assertEqual(training["seed"], 42)
+        self.assertIn("sklearn_version", training)
+        self.assertEqual(len(artifact["classifier"]["coef"]), training["n_features"])
+        self.assertEqual(len(artifact["vectorizer"]["idf"]), training["n_features"])
+        self.assertEqual(len(artifact["vectorizer"]["vocabulary"]), training["n_features"])
+
+    def test_stdlib_scorer_reproduces_sklearn(self) -> None:
+        # The stdlib inference must reproduce scikit-learn's predict_proba so the
+        # importers can stay dependency-free. Skipped when sklearn is absent.
+        try:
+            import train_relevance
+        except ImportError:
+            self.skipTest("scikit-learn not installed")
+        texts, labels, _ = train_relevance.load_examples(include_harvested=False)
+        vectorizer, classifier = train_relevance.fit_model(texts, labels)
+        artifact = train_relevance.build_artifact(vectorizer, classifier, texts, labels, ["test"])
+        max_diff = train_relevance.self_check(artifact, vectorizer, classifier, texts)
+        self.assertLess(max_diff, 1e-9)
 
 
 if __name__ == "__main__":
