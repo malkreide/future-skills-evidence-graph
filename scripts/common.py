@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import sys
@@ -417,10 +418,14 @@ def is_off_scope(source: dict[str, Any]) -> bool:
     return not _title_topic_match(source)
 
 
-def filter_relevant_sources(
-    candidates: list[dict[str, Any]], min_relevance: float = RELEVANCE_THRESHOLD
-) -> list[dict[str, Any]]:
-    """Drop candidates below the relevance threshold and derive their topics.
+def heuristic_keep(
+    source: dict[str, Any],
+    score: float,
+    topics: list[str],
+    min_relevance: float = RELEVANCE_THRESHOLD,
+) -> bool:
+    """The deterministic keyword rule: a topic anchor at/above the threshold
+    and no off-scope term without a title anchor.
 
     A candidate must match at least one topic in the vocabulary. Audience
     terms ("school", "students") alone do not qualify a source: that is the
@@ -428,20 +433,156 @@ def filter_relevant_sources(
     match scores exactly RELEVANCE_THRESHOLD it used to slip through, letting
     off-topic papers (public health, agriculture) into the candidate set.
     Requiring a topic match raises precision without dropping topic-matched
-    candidates that sit at the threshold.
-
-    Candidates that hit a curated off-scope term without a genuine topic anchor
-    in the title (see is_off_scope / OFF_SCOPE_KEYWORDS) are also dropped: this
-    removes incidental matches such as a pupil-health paper touching
-    "complexity" or a salary agreement mentioning "collaboration". Measured by
+    candidates that sit at the threshold. Candidates that hit a curated
+    off-scope term without a genuine topic anchor in the title (see
+    is_off_scope / OFF_SCOPE_KEYWORDS) are dropped too. Measured by
     scripts/eval_relevance.py.
+    """
+    if not topics or score < min_relevance:
+        return False
+    if is_off_scope(source):
+        return False
+    return True
+
+
+# --- Optional trained relevance classifier ---------------------------------
+#
+# The default relevance decision is the deterministic keyword heuristic above:
+# transparent, dependency-free, and the fallback whenever anything goes wrong.
+# A trained TF-IDF + LogisticRegression model (scripts/train_relevance.py) can
+# be opted into via the RELEVANCE_CLASSIFIER env flag, but ONLY the *training*
+# step needs scikit-learn. The model is exported to a small, human-readable
+# JSON artifact (models/relevance_model.json) and scored here with pure
+# standard-library math that reproduces sklearn's TF-IDF + logistic regression
+# exactly (train_relevance.py asserts the reproduction matches to < 1e-9), so
+# the importers stay stdlib-only.
+
+RELEVANCE_CLASSIFIER_ENV = "RELEVANCE_CLASSIFIER"
+RELEVANCE_MODEL_PATH = ROOT / "models" / "relevance_model.json"
+_TOKEN_RE = re.compile(r"(?u)\b\w\w+\b")
+_model_fallback_warned = False
+
+
+def relevance_classifier_mode() -> str:
+    """Active relevance decider: "heuristic" (default) or "model"."""
+    return (os.getenv(RELEVANCE_CLASSIFIER_ENV) or "heuristic").strip().lower()
+
+
+def load_relevance_model(path: Path | None = None) -> dict[str, Any] | None:
+    """Load the JSON model artifact, or None if absent/unreadable/foreign."""
+    if path is None:
+        path = RELEVANCE_MODEL_PATH
+    if not path.exists():
+        return None
+    try:
+        artifact = load_json(path)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(artifact, dict) or artifact.get("model_type") != "tfidf+logreg":
+        return None
+    return artifact
+
+
+def _word_ngrams(tokens: list[str], ngram_range: tuple[int, int]) -> list[str]:
+    """Reproduce sklearn CountVectorizer._word_ngrams: n-grams joined by a
+    single space, for n in [min_n, max_n]."""
+    min_n, max_n = ngram_range
+    grams = list(tokens) if min_n == 1 else []
+    n_tokens = len(tokens)
+    for n in range(max(min_n, 2), max_n + 1):
+        for i in range(n_tokens - n + 1):
+            grams.append(" ".join(tokens[i : i + n]))
+    return grams
+
+
+def source_text(source: dict[str, Any]) -> str:
+    """Title + abstract, the text the relevance model is trained and scored on."""
+    return f"{source.get('title') or ''} {source.get('abstract') or ''}"
+
+
+def model_relevance_probability(source: dict[str, Any], artifact: dict[str, Any]) -> float:
+    """Probability that *source* is relevant under the trained model.
+
+    Pure stdlib reimplementation of sklearn's TfidfVectorizer (smooth idf, L2
+    norm) followed by binary LogisticRegression: tfidf = tf * idf, L2-normalize,
+    logit = intercept + w . x, probability = sigmoid(logit).
+    """
+    vec = artifact["vectorizer"]
+    clf = artifact["classifier"]
+    vocabulary = vec["vocabulary"]
+    idf = vec["idf"]
+    coef = clf["coef"]
+    intercept = float(clf["intercept"])
+    ngram_range = tuple(vec.get("ngram_range", (1, 1)))
+
+    tokens = _TOKEN_RE.findall(source_text(source).lower())
+    counts: dict[int, int] = {}
+    for gram in _word_ngrams(tokens, ngram_range):
+        index = vocabulary.get(gram)
+        if index is not None:
+            counts[index] = counts.get(index, 0) + 1
+
+    weighted = {index: count * idf[index] for index, count in counts.items()}
+    norm = math.sqrt(sum(value * value for value in weighted.values()))
+    logit = intercept
+    if norm > 0.0:
+        for index, value in weighted.items():
+            logit += (value / norm) * coef[index]
+    return 1.0 / (1.0 + math.exp(-logit))
+
+
+def _warn_model_fallback(reason: str) -> None:
+    global _model_fallback_warned
+    if not _model_fallback_warned:
+        print(
+            f"Warning: RELEVANCE_CLASSIFIER=model but {reason}; "
+            "falling back to the keyword heuristic.",
+            file=sys.stderr,
+        )
+        _model_fallback_warned = True
+
+
+def decide_relevance(
+    source: dict[str, Any], min_relevance: float = RELEVANCE_THRESHOLD
+) -> tuple[bool, float, list[str]]:
+    """Decide whether to keep *source*; returns (keep, relevance_score, topics).
+
+    The decision is pluggable. The default is the keyword heuristic, which is
+    also the fallback whenever the model is not opted in or cannot be loaded.
+    The trained model is consulted only when RELEVANCE_CLASSIFIER=model and a
+    valid artifact is present.
+
+    The topic/keyword hits are ALWAYS derived from the vocabulary and returned
+    as an explainable companion signal next to whichever score decides keep, so
+    the data model (relevance_score, topics) is unchanged regardless of mode.
+    """
+    score, topics = score_relevance(source)
+    if relevance_classifier_mode() == "model":
+        artifact = load_relevance_model()
+        if artifact is None:
+            _warn_model_fallback("the model artifact is missing or unreadable")
+        else:
+            probability = model_relevance_probability(source, artifact)
+            threshold = float(artifact.get("decision_threshold", 0.5))
+            keep = probability >= threshold
+            return keep, round(probability, 2), topics
+    return heuristic_keep(source, score, topics, min_relevance), score, topics
+
+
+def filter_relevant_sources(
+    candidates: list[dict[str, Any]], min_relevance: float = RELEVANCE_THRESHOLD
+) -> list[dict[str, Any]]:
+    """Drop irrelevant candidates and annotate the survivors.
+
+    Uses the pluggable decide_relevance: the keyword heuristic by default (and
+    as fallback), the trained model only when RELEVANCE_CLASSIFIER=model and an
+    artifact is available. relevance_score and topics are written exactly as
+    before; topics stay the explainable keyword companion signal in either mode.
     """
     kept: list[dict[str, Any]] = []
     for source in candidates:
-        score, topics = score_relevance(source)
-        if not topics or score < min_relevance:
-            continue
-        if is_off_scope(source):
+        keep, score, topics = decide_relevance(source, min_relevance)
+        if not keep:
             continue
         source["relevance_score"] = score
         source["topics"] = topics

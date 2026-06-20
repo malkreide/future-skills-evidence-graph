@@ -9,6 +9,16 @@ so the choice is data-driven, and lists misclassified examples. With
 
     python scripts/eval_relevance.py            # report + sweep
     python scripts/eval_relevance.py --min-precision 0.6 --min-recall 0.7
+    python scripts/eval_relevance.py --compare-model   # fair held-out heuristic vs model
+
+The --compare-model flag adds a FAIR comparison of the keyword heuristic against
+the optional trained classifier (scripts/train_relevance.py) using stratified
+cross-validation: the heuristic needs no training, so it is scored on each test
+fold directly, while the model is retrained on the train folds and scored on the
+held-out test fold. Both report pooled precision/recall/F1. The data is small,
+so the verdict is reported honestly and the heuristic stays the default unless
+the model measurably beats it. This path needs scikit-learn; without it the
+comparison is skipped and the heuristic report still runs.
 """
 
 from __future__ import annotations
@@ -107,6 +117,68 @@ def evaluate(examples: list[dict[str, Any]], threshold: float) -> Metrics:
     return Metrics(threshold, tp, fp, fn, tn)
 
 
+def metrics_from_predictions(
+    predictions: list[bool], actuals: list[bool]
+) -> Metrics:
+    tp = fp = fn = tn = 0
+    for predicted, actual in zip(predictions, actuals):
+        if predicted and actual:
+            tp += 1
+        elif predicted and not actual:
+            fp += 1
+        elif not predicted and actual:
+            fn += 1
+        else:
+            tn += 1
+    return Metrics(0.0, tp, fp, fn, tn)
+
+
+def compare_with_model(
+    examples: list[dict[str, Any]], threshold: float, folds: int, seed: int
+) -> tuple[Metrics, Metrics] | None:
+    """Fair held-out comparison: heuristic vs trained model via stratified CV.
+
+    The heuristic needs no training, so it is scored directly on each test fold;
+    the model is refit on the train folds and scored on the held-out test fold.
+    Predictions are pooled across folds and a single precision/recall/F1 is
+    reported for each. Returns (heuristic_metrics, model_metrics), or None when
+    scikit-learn is unavailable.
+    """
+    try:
+        from sklearn.model_selection import StratifiedKFold
+
+        from train_relevance import DECISION_THRESHOLD, build_classifier, build_vectorizer
+    except ImportError:
+        return None
+
+    texts = [f"{ex['title']} {ex['abstract']}" for ex in examples]
+    labels = [1 if ex["relevant"] else 0 for ex in examples]
+    n_pos = sum(labels)
+    n_splits = max(2, min(folds, n_pos, len(labels) - n_pos))
+
+    heuristic_pred: list[bool] = []
+    model_pred: list[bool] = []
+    actuals: list[bool] = []
+
+    splitter = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
+    for train_idx, test_idx in splitter.split(texts, labels):
+        vectorizer = build_vectorizer()
+        classifier = build_classifier()
+        matrix = vectorizer.fit_transform([texts[i] for i in train_idx])
+        classifier.fit(matrix, [labels[i] for i in train_idx])
+        test_matrix = vectorizer.transform([texts[i] for i in test_idx])
+        probs = classifier.predict_proba(test_matrix)[:, 1]
+        for offset, i in enumerate(test_idx):
+            actuals.append(bool(labels[i]))
+            heuristic_pred.append(is_predicted_relevant(examples[i], threshold))
+            model_pred.append(bool(probs[offset] >= DECISION_THRESHOLD))
+
+    return (
+        metrics_from_predictions(heuristic_pred, actuals),
+        metrics_from_predictions(model_pred, actuals),
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate the relevance heuristic against a labeled set.")
     parser.add_argument("--threshold", type=float, default=RELEVANCE_THRESHOLD)
@@ -121,6 +193,13 @@ def main() -> int:
             "supplement, never replace, the curated set."
         ),
     )
+    parser.add_argument(
+        "--compare-model",
+        action="store_true",
+        help="Fairly compare the heuristic against the trained model via stratified CV.",
+    )
+    parser.add_argument("--folds", type=int, default=5, help="CV folds for --compare-model.")
+    parser.add_argument("--seed", type=int, default=42, help="CV split seed for --compare-model.")
     args = parser.parse_args()
 
     examples = load_examples()
@@ -152,6 +231,36 @@ def main() -> int:
         print(f"\nMisclassified at threshold {args.threshold}:")
         for kind, score, topics, title in misses:
             print(f"  [{kind}] score={score} topics={topics or []}: {title[:70]}")
+
+    if args.compare_model:
+        print(f"\nFair held-out comparison (stratified {args.folds}-fold CV, seed {args.seed}):")
+        result = compare_with_model(examples, args.threshold, args.folds, args.seed)
+        if result is None:
+            print("  scikit-learn not installed; skipping model comparison (heuristic stays active).")
+        else:
+            heuristic_cv, model_cv = result
+            print(
+                f"  heuristic:  P {heuristic_cv.precision:.2f}  R {heuristic_cv.recall:.2f}  "
+                f"F1 {heuristic_cv.f1:.2f}  (tp={heuristic_cv.tp} fp={heuristic_cv.fp} "
+                f"fn={heuristic_cv.fn} tn={heuristic_cv.tn})"
+            )
+            print(
+                f"  model:      P {model_cv.precision:.2f}  R {model_cv.recall:.2f}  "
+                f"F1 {model_cv.f1:.2f}  (tp={model_cv.tp} fp={model_cv.fp} "
+                f"fn={model_cv.fn} tn={model_cv.tn})"
+            )
+            if model_cv.f1 > heuristic_cv.f1:
+                print(
+                    f"  VERDICT: model beats the heuristic on held-out F1 "
+                    f"({model_cv.f1:.2f} > {heuristic_cv.f1:.2f}). Consider enabling "
+                    "RELEVANCE_CLASSIFIER=model after review."
+                )
+            else:
+                print(
+                    f"  VERDICT: model does NOT beat the heuristic on held-out F1 "
+                    f"({model_cv.f1:.2f} <= {heuristic_cv.f1:.2f}). The heuristic "
+                    "stays the default and active decision."
+                )
 
     status = 0
     if args.min_precision is not None and metrics.precision < args.min_precision:
