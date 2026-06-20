@@ -23,6 +23,7 @@ from common import (  # noqa: E402
     filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
+    is_adult_audience,
     is_off_scope,
     load_json,
     load_records,
@@ -94,6 +95,24 @@ class DataIntegrityTests(unittest.TestCase):
             "contradicting_claim_ids": ["c-candidate"],
         }
         self.assertEqual(skill_score(contradicted, scores), skill_score(clean, scores))
+
+    def test_audience_gate_excludes_adult_only_sources(self) -> None:
+        # Adult / post-secondary audience with no school-age signal is dropped,
+        # even though "AI literacy" is named in the title.
+        adult = {"title": "AI Literacy for the Workforce", "abstract": "Upskilling employees."}
+        higher_ed = {"title": "AI literacy courses in higher education", "abstract": "For undergraduates."}
+        self.assertTrue(is_adult_audience(adult))
+        self.assertTrue(is_adult_audience(higher_ed))
+        self.assertEqual(filter_relevant_sources([dict(adult), dict(higher_ed)]), [])
+
+        # A paper naming both an adult and a school-age audience is kept.
+        both = {"title": "AI literacy for secondary students preparing for university", "abstract": ""}
+        self.assertFalse(is_adult_audience(both))
+
+        # A school-age source is kept and survives the filter.
+        school = {"title": "AI literacy in primary schools", "abstract": "for children"}
+        self.assertFalse(is_adult_audience(school))
+        self.assertEqual(len(filter_relevant_sources([dict(school)])), 1)
 
     def test_relevance_scoring_separates_scope_from_noise(self) -> None:
         relevant = {

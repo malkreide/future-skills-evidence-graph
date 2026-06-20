@@ -115,15 +115,33 @@ candidates that carry no off-scope term. The over-broad `complexity` keyword was
 also removed from the systems-thinking vocabulary (`computational thinking` and
 `systems thinking` remain), as it matched only incidentally.
 
+A candidate is also rejected by the **audience/age gate** (`is_adult_audience`)
+when it names an adult / post-secondary audience (`HIGHER_ED_KEYWORDS`: university,
+undergraduate, college student, workforce, employee, preservice/in-service
+teacher, adult learner …) **and** no school-age audience (`SCHOOL_AGE_KEYWORDS`:
+child, kindergarten, primary/secondary/middle/high school, pupil, adolescent …).
+Unlike the off-scope filter this has no title-anchor exemption: "AI literacy" is
+in scope only for ages 6-18, so a workforce or university AI-literacy paper is
+dropped even though it names the skill in the title. Papers naming both audiences
+(e.g. "secondary students preparing for university") are kept. The first live
+operating cycle showed adult/higher-education papers were the dominant false
+positive, so this gate is the highest-value precision lever.
+
 The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
-set (54 examples: real candidates from the live run and live API queries across the
+set (73 examples: real candidates from the live runs and live API queries across the
 sources, plus clear anchor cases) and `scripts/eval_relevance.py` reports
 precision/recall/F1 and sweeps thresholds, so the filter's behavior is measured.
-The off-scope filter raised measured **precision from 0.78 to 1.00 at recall 1.00**
-(F1 0.88 → 1.00) at the default threshold, eliminating all six false positives
-without dropping any relevant source. `test_relevance_heuristic_meets_measured_floor`
-guards against regressions (precision ≥ 0.90, recall ≥ 0.90, with margin below the
-measured values).
+The off-scope filter and the audience gate hold measured **precision 1.00 at
+recall 1.00** on the labeled set (the audience-gated higher-ed/workforce papers
+are correctly excluded; no relevant source dropped).
+`test_relevance_heuristic_meets_measured_floor` guards against regressions
+(precision ≥ 0.90, recall ≥ 0.90, with margin below the measured values).
+
+On **fresh** live data the audience gate lifted live precision from ~0.58 to
+~0.73 (accepted sources 26 → 15 on the same query), removing the higher-ed/
+workforce false positives. The eval-set 1.00 stays optimistic relative to fresh
+data; the remaining fresh-data false positives are other domains (physical
+education, language pedagogy, teacher tool-use) tracked in `OPERATIONS.md`.
 
 ### Optional trained relevance classifier
 

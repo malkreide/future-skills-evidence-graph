@@ -353,6 +353,85 @@ OFF_SCOPE_KEYWORDS = (
 )
 
 
+# Audience/age gate. The MVP scope is learners aged 6-18, but "AI literacy" (and
+# other topics) match regardless of who learns, so post-secondary and workplace
+# papers slip through with a title topic anchor ("AI Literacy for the Workforce",
+# "...in Higher Education", "College Students' AI Literacy"). HIGHER_ED_KEYWORDS
+# mark an adult / post-secondary audience; SCHOOL_AGE_KEYWORDS mark the in-scope
+# audience. A candidate is gated out only when an adult term is present AND no
+# school-age term is, so papers covering both (e.g. "secondary students preparing
+# for university") survive. Stored in normalized form (normalize_title collapses
+# punctuation, so "k-12" -> "k 12", "pre-service" -> "pre service").
+HIGHER_ED_KEYWORDS = (
+    "higher education",
+    "postsecondary",
+    "post secondary",
+    "tertiary",
+    "university",
+    "universities",
+    "undergraduate",
+    "undergraduates",
+    "postgraduate",
+    "postgraduates",
+    "graduate student",
+    "graduate students",
+    "college student",
+    "college students",
+    "doctoral",
+    "workforce",
+    "employee",
+    "employees",
+    "preservice teacher",
+    "preservice teachers",
+    "pre service teacher",
+    "pre service teachers",
+    "in service teacher",
+    "in service teachers",
+    "adult learner",
+    "adult learners",
+    "adult education",
+)
+SCHOOL_AGE_KEYWORDS = (
+    "child",
+    "children",
+    "kindergarten",
+    "preschool",
+    "pre school",
+    "early childhood",
+    "primary school",
+    "primary education",
+    "primary schools",
+    "elementary",
+    "secondary school",
+    "secondary schools",
+    "secondary education",
+    "middle school",
+    "high school",
+    "primary student",
+    "primary students",
+    "secondary student",
+    "secondary students",
+    "school student",
+    "school students",
+    "high schooler",
+    "high schoolers",
+    "middle schooler",
+    "middle schoolers",
+    "k 12",
+    "k12",
+    "pupil",
+    "pupils",
+    "adolescent",
+    "adolescents",
+    "teenager",
+    "teenagers",
+    "schoolchild",
+    "schoolchildren",
+    "young learner",
+    "young learners",
+)
+
+
 def _contains(text: str, keyword: str) -> bool:
     return f" {normalize_title(keyword)} " in text
 
@@ -418,6 +497,26 @@ def is_off_scope(source: dict[str, Any]) -> bool:
     return not _title_topic_match(source)
 
 
+def is_adult_audience(source: dict[str, Any]) -> bool:
+    """Whether a source targets an adult / post-secondary audience only.
+
+    True when a HIGHER_ED_KEYWORDS term appears (title or abstract) and no
+    SCHOOL_AGE_KEYWORDS term does. Unlike is_off_scope this has no title-anchor
+    exemption: naming "AI literacy" in the title does not make a workforce or
+    university paper in scope for ages 6-18. Papers that mention both an adult
+    and a school-age audience are kept.
+    """
+    title = f" {normalize_title(str(source.get('title') or ''))} "
+    abstract = f" {normalize_title(str(source.get('abstract') or ''))} "
+
+    def text_has(keywords: tuple[str, ...]) -> bool:
+        return any(_contains(title, kw) or _contains(abstract, kw) for kw in keywords)
+
+    if not text_has(HIGHER_ED_KEYWORDS):
+        return False
+    return not text_has(SCHOOL_AGE_KEYWORDS)
+
+
 def heuristic_keep(
     source: dict[str, Any],
     score: float,
@@ -435,12 +534,15 @@ def heuristic_keep(
     Requiring a topic match raises precision without dropping topic-matched
     candidates that sit at the threshold. Candidates that hit a curated
     off-scope term without a genuine topic anchor in the title (see
-    is_off_scope / OFF_SCOPE_KEYWORDS) are dropped too. Measured by
-    scripts/eval_relevance.py.
+    is_off_scope / OFF_SCOPE_KEYWORDS) are dropped too, as are adult /
+    post-secondary-audience papers with no school-age signal (see
+    is_adult_audience). Measured by scripts/eval_relevance.py.
     """
     if not topics or score < min_relevance:
         return False
     if is_off_scope(source):
+        return False
+    if is_adult_audience(source):
         return False
     return True
 
