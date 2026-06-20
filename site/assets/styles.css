@@ -152,13 +152,147 @@ select {
   margin: 2px 0 0;
 }
 
-.lp21-comparison {
+.lp21-comparison,
+.pipeline {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
   margin-bottom: 16px;
   padding: clamp(16px, 3vw, 24px);
+}
+
+.pipeline-actions {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.pipeline-updated {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pipeline-refresh {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--blue);
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 38px;
+  padding: 0 14px;
+}
+
+.pipeline-refresh:hover {
+  border-color: var(--blue);
+}
+
+.pipeline-refresh:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.pipeline-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pipeline-col {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.pipeline-col .section-heading h3 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.pipeline-list {
+  display: grid;
+  gap: 8px;
+}
+
+.pipeline-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: inherit;
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.pipeline-item:hover {
+  border-color: var(--blue);
+}
+
+.pipeline-item-top {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.pipeline-item strong {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipeline-item small {
+  color: var(--muted);
+}
+
+.pipeline-hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.pipeline-foot {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 14px 0 0;
+}
+
+.status-badge {
+  border-radius: 999px;
+  flex: none;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-success {
+  background: #e7f4ee;
+  color: var(--green);
+}
+
+.status-failure {
+  background: #f8e7e7;
+  color: var(--red);
+}
+
+.status-running {
+  background: #e4edf9;
+  color: var(--blue);
+}
+
+.status-pending {
+  background: #fff2db;
+  color: var(--amber);
+}
+
+.status-neutral {
+  background: var(--surface-2);
+  color: var(--muted);
 }
 
 .comparison-header {
@@ -551,6 +685,7 @@ select {
   .metrics,
   .workspace,
   .comparison-grid,
+  .pipeline-grid,
   .detail-grid {
     grid-template-columns: 1fr;
   }

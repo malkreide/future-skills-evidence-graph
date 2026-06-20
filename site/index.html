@@ -68,6 +68,43 @@
         </div>
       </section>
 
+      <section class="pipeline" aria-label="Pipeline und Jobs">
+        <div class="comparison-header">
+          <div>
+            <p class="eyebrow">Betrieb</p>
+            <h2>Pipeline &amp; Jobs</h2>
+          </div>
+          <div class="pipeline-actions">
+            <span id="pipelineUpdated" class="pipeline-updated"></span>
+            <button id="pipelineRefresh" type="button" class="pipeline-refresh">Aktualisieren</button>
+          </div>
+        </div>
+
+        <div class="pipeline-grid">
+          <section class="pipeline-col" aria-label="Letzte Jobs">
+            <div class="section-heading">
+              <h3>Letzte Jobs (GitHub Actions)</h3>
+              <span id="jobCount">–</span>
+            </div>
+            <div id="jobList" class="pipeline-list">
+              <p class="pipeline-hint">Jobs werden geladen …</p>
+            </div>
+          </section>
+
+          <section class="pipeline-col" aria-label="Anstehende Reviews">
+            <div class="section-heading">
+              <h3>Anstehend (offene Pull Requests)</h3>
+              <span id="prCount">–</span>
+            </div>
+            <div id="prList" class="pipeline-list">
+              <p class="pipeline-hint">Pull Requests werden geladen …</p>
+            </div>
+          </section>
+        </div>
+
+        <p class="pipeline-foot">Datenstand des Dashboards: <span id="dataGeneratedAt">–</span></p>
+      </section>
+
       <section class="lp21-comparison" aria-label="Lehrplan 21 Vergleich">
         <div class="comparison-header">
           <div>
@@ -146,5 +183,6 @@
     </main>
 
     <script src="./assets/app.js"></script>
+    <script src="./assets/status.js"></script>
   </body>
 </html>
