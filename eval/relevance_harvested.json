@@ -1,0 +1,4 @@
+{
+  "_README": "Auto-harvested relevance labels written by scripts/promote_candidate.py on each review decision. DO NOT edit by hand. Mapping: a claim promoted to 'reviewed' marks its source(s) 'relevant' (positives); a reviewer source reject ('reject-source') marks a source 'irrelevant' (negative). Rejected claims are NOT harvested -- a weak sentence does not make its source off-scope. SELECTION BIAS: only candidates that already passed the relevance filter reach human review, so this set under-represents the off-scope region the filter discards upstream and is missing most true negatives. It must NOT replace the curated eval/relevance_labeled.json; use it only as a supplement (eval_relevance.py --include-harvested), never on its own.",
+  "examples": []
+}

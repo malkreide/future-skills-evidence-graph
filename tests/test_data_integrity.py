@@ -520,6 +520,99 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertTrue(errors)
         self.assertIn("not found", errors[0])
 
+    def test_reject_source_missing_reports_error(self) -> None:
+        from argparse import Namespace
+
+        from promote_candidate import reject_source
+
+        errors = reject_source(Namespace(id="src-does-not-exist-xyz"))
+        self.assertTrue(errors)
+        self.assertIn("not found", errors[0])
+
+    def test_harvest_dedup_and_provenance(self) -> None:
+        # A positive label carries its provenance; a later decision for the same
+        # normalized title is ignored (append-only, first decision wins).
+        import promote_candidate as pc
+
+        with tempfile.TemporaryDirectory() as tmp:
+            original = pc.HARVEST_PATH
+            pc.HARVEST_PATH = Path(tmp) / "relevance_harvested.json"
+            try:
+                positive = pc._harvest_example(
+                    {"id": "src-x", "title": "AI Literacy: For Pupils!", "abstract": "abc"},
+                    True,
+                    "promote_claim",
+                    claim_id="claim-x",
+                )
+                self.assertEqual(pc.record_relevance_labels([positive]), 1)
+                # Same title, different punctuation/case and opposite decision.
+                duplicate = pc._harvest_example(
+                    {"id": "src-y", "title": "ai literacy for pupils", "abstract": "z"},
+                    False,
+                    "reject_source",
+                )
+                self.assertEqual(pc.record_relevance_labels([duplicate]), 0)
+                # An empty batch is a no-op.
+                self.assertEqual(pc.record_relevance_labels([]), 0)
+
+                payload = load_json(pc.HARVEST_PATH)
+                self.assertEqual(len(payload["examples"]), 1)
+                example = payload["examples"][0]
+                self.assertTrue(example["relevant"])
+                self.assertEqual(example["origin"], "harvested")
+                self.assertEqual(example["decision"], "promote_claim")
+                self.assertEqual(example["source_id"], "src-x")
+                self.assertEqual(example["claim_id"], "claim-x")
+                self.assertIn("harvested_at", example)
+                self.assertIn("title", example)
+                self.assertIn("abstract", example)
+                # The bias / do-not-replace note travels with the harvested file.
+                self.assertIn("SELECTION BIAS", payload["_README"])
+            finally:
+                pc.HARVEST_PATH = original
+
+    def test_promoted_claim_harvests_positive_per_source(self) -> None:
+        # promote_claim's success maps the claim to a positive label for each of
+        # its sources; rejected claims never reach this path (no naive negatives).
+        import promote_candidate as pc
+
+        sources = {
+            "src-a": {"id": "src-a", "title": "Critical thinking in schools", "abstract": "x"},
+            "src-b": {"id": "src-b", "title": "Data literacy for teens", "abstract": "y"},
+        }
+        original_find = pc.find_record
+        original_path = pc.HARVEST_PATH
+        pc.find_record = lambda kind, rid: (None, None, sources[rid]) if rid in sources else None
+        with tempfile.TemporaryDirectory() as tmp:
+            pc.HARVEST_PATH = Path(tmp) / "relevance_harvested.json"
+            try:
+                claim = {"id": "claim-z", "source_ids": ["src-a", "src-b", "src-missing"]}
+                added = pc._harvest_promoted_claim(claim)
+                self.assertEqual(added, 2)
+                labels = load_json(pc.HARVEST_PATH)["examples"]
+                self.assertTrue(all(label["relevant"] for label in labels))
+                self.assertTrue(all(label["decision"] == "promote_claim" for label in labels))
+                self.assertEqual({label["source_id"] for label in labels}, {"src-a", "src-b"})
+            finally:
+                pc.find_record = original_find
+                pc.HARVEST_PATH = original_path
+
+    def test_eval_combine_examples_prefers_curated(self) -> None:
+        # The harvested set supplements the curated set without overriding it,
+        # and is deduped by normalized title; the curated file stays separate.
+        import eval_relevance
+
+        curated = [{"title": "Shared Title", "abstract": "c", "relevant": True}]
+        harvested = [
+            {"title": "shared title", "abstract": "h", "relevant": False, "origin": "harvested"},
+            {"title": "Fresh Harvested", "abstract": "h2", "relevant": True, "origin": "harvested"},
+        ]
+        combined = eval_relevance.combine_examples(curated, harvested)
+        self.assertEqual(len(combined), 2)
+        shared = next(ex for ex in combined if ex["title"] == "Shared Title")
+        self.assertEqual(shared["abstract"], "c")  # curated wins
+        self.assertNotEqual(eval_relevance.EVAL_PATH, eval_relevance.HARVESTED_PATH)
+
     def test_normalize_title_is_deduplication_friendly(self) -> None:
         self.assertEqual(
             normalize_title("AI Literacy: Future-Skills in Education!"),

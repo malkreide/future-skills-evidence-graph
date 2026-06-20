@@ -18,10 +18,18 @@ import sys
 from dataclasses import dataclass
 from typing import Any
 
-from common import RELEVANCE_THRESHOLD, ROOT, filter_relevant_sources, load_json, score_relevance
+from common import (
+    RELEVANCE_THRESHOLD,
+    ROOT,
+    filter_relevant_sources,
+    load_json,
+    normalize_title,
+    score_relevance,
+)
 
 
 EVAL_PATH = ROOT / "eval" / "relevance_labeled.json"
+HARVESTED_PATH = ROOT / "eval" / "relevance_harvested.json"
 
 
 @dataclass
@@ -51,6 +59,32 @@ def load_examples() -> list[dict[str, Any]]:
     return payload["examples"]
 
 
+def load_harvested_examples() -> list[dict[str, Any]]:
+    """Load auto-harvested labels, or [] if none have been collected yet."""
+    if not HARVESTED_PATH.exists():
+        return []
+    payload = load_json(HARVESTED_PATH)
+    return payload.get("examples", []) if isinstance(payload, dict) else []
+
+
+def combine_examples(
+    curated: list[dict[str, Any]], harvested: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Curated set plus harvested labels, deduped by normalized title.
+
+    Curated examples win on conflict, so the hand-labeled judgments are never
+    overridden by an auto-harvested label for the same title.
+    """
+    combined = list(curated)
+    seen = {normalize_title(str(ex.get("title", ""))) for ex in curated}
+    for example in harvested:
+        key = normalize_title(str(example.get("title", "")))
+        if key and key not in seen:
+            combined.append(example)
+            seen.add(key)
+    return combined
+
+
 def is_predicted_relevant(example: dict[str, Any], threshold: float) -> bool:
     """Predict relevance exactly as filter_relevant_sources would decide it."""
     kept = filter_relevant_sources([{"title": example["title"], "abstract": example["abstract"]}], threshold)
@@ -78,9 +112,22 @@ def main() -> int:
     parser.add_argument("--threshold", type=float, default=RELEVANCE_THRESHOLD)
     parser.add_argument("--min-precision", type=float, default=None)
     parser.add_argument("--min-recall", type=float, default=None)
+    parser.add_argument(
+        "--include-harvested",
+        action="store_true",
+        help=(
+            "Also measure auto-harvested labels from eval/relevance_harvested.json. "
+            "These are biased (only filter-passing candidates get reviewed) and "
+            "supplement, never replace, the curated set."
+        ),
+    )
     args = parser.parse_args()
 
     examples = load_examples()
+    if args.include_harvested:
+        harvested = load_harvested_examples()
+        examples = combine_examples(examples, harvested)
+        print(f"Including {len(harvested)} harvested label(s) (deduped by title).")
     metrics = evaluate(examples, args.threshold)
 
     print(f"Labeled examples: {len(examples)} ({metrics.tp + metrics.fn} relevant)")
