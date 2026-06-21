@@ -1,5 +1,12 @@
 # Umsetzungsplan: KI-Weiterentwicklung des Evidence Graph
 
+> **Archiviert — historisches Planungsdokument.** Die hier beschriebenen Pakete
+> P0–P4 sind vollständig umgesetzt. Der gelebte Stand wird in
+> [../../README.md](../../README.md) und [../architektur.md](../architektur.md)
+> dokumentiert; dieses Dokument ist keine Spezifikation mehr, sondern ein
+> Nachweis, *was* gebaut wurde und *warum*. Offene Weiterentwicklungen werden als
+> GitHub-Issues geführt.
+
 *Schritt-für-Schritt-Plan in eigenständig lieferbaren Paketen – mit Tests und
 fertigen Umsetzungs-Prompts.*
 
