@@ -1,0 +1,94 @@
+name: Import report candidate (manual)
+
+# Manually triggered ONLY. API-less report bodies (OECD / WEF / UNESCO) are
+# imported via an LLM, which costs money and needs a human to choose the report
+# and its plaintext, so this is never part of the mandatory CI (see validate.yml)
+# and never runs on a schedule. It writes into the same candidate pull-request
+# path as the research pipeline; every source and claim stays a candidate until a
+# human reviews it.
+on:
+  workflow_dispatch:
+    inputs:
+      report_path:
+        description: "Path to the committed report plaintext (PDF extraction done separately)."
+        required: true
+      url:
+        description: "Canonical URL of the report."
+        required: true
+      publisher:
+        description: "Publishing organisation (e.g. OECD, WEF, UNESCO)."
+        required: false
+        default: ""
+      year:
+        description: "Publication year override (optional)."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  import-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore pending candidates from open pull request branch
+        run: |
+          # Reuse the research pipeline's candidate branch so the report importer
+          # deduplicates against candidates already awaiting review.
+          if git fetch origin research/candidates; then
+            for pattern in 'data/sources/candidates-*.json' 'data/claims/candidates-*.json' 'data/skills/candidates-*.json'; do
+              git checkout FETCH_HEAD -- "$pattern" || echo "No pending files for $pattern."
+            done
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Import report candidate (LLM)
+        run: >
+          python scripts/ingest_reports.py
+          --report "${{ inputs.report_path }}"
+          --url "${{ inputs.url }}"
+          ${{ inputs.publisher && format('--publisher "{0}"', inputs.publisher) || '' }}
+          ${{ inputs.year && format('--year {0}', inputs.year) || '' }}
+        env:
+          AI_PROVIDER: anthropic
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Cluster candidate skills
+        run: python scripts/cluster_claims.py
+      - name: Validate candidates
+        run: python scripts/validate_data.py
+      - name: Open or update candidate pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for pattern in "data/sources/candidates-*.json" "data/claims/candidates-*.json" "data/skills/candidates-*.json"; do
+            if compgen -G "$pattern" > /dev/null; then
+              git add -- $pattern
+            fi
+          done
+          if git diff --cached --quiet; then
+            echo "No candidate changes."
+            exit 0
+          fi
+          branch="research/candidates"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Rebuild the candidate branch from the current base, preserving the
+          # pending candidates restored above, then refresh the open pull request.
+          git checkout -B "$branch"
+          git commit -m "chore: add report candidate"
+          git push --force origin "$branch"
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --title "chore: add research candidates" \
+              --body "Manual report import (OECD/WEF/UNESCO): a candidate source plus verbatim finding-claims. Everything remains a candidate until reviewed." \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch"
+          else
+            echo "Updated existing pull request for $branch."
+          fi

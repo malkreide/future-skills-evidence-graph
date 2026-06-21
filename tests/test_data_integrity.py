@@ -54,6 +54,17 @@ from extract_claims import (  # noqa: E402
     sentence_tier,
     suggest_claim_fields,
 )
+from ingest_reports import (  # noqa: E402
+    MIN_PASSAGE_LENGTH,
+    REPORT_OUTPUT_SCHEMA,
+    REPORT_PROMPT_VERSION,
+    build_claims,
+    build_source,
+    propose_report,
+    report_candidates,
+    report_prompt,
+    verbatim_passage,
+)
 from promote_candidate import (  # noqa: E402
     apply_claim_suggestions,
     claim_review_errors,
@@ -1314,6 +1325,174 @@ class ClaimPrefillAssistTests(unittest.TestCase):
         # With the reviewer-supplied skill link the gate finally clears.
         claim["supports_skill_ids"] = ["skill-x"]
         self.assertEqual(claim_review_errors(claim, skill_ids, source_ids), [])
+
+
+class ReportImportTests(unittest.TestCase):
+    """P2: the LLM report importer proposes candidates but never decides, and
+    every claim statement must be a verbatim quote from the report text."""
+
+    REPORT = (ROOT / "tests" / "fixtures" / "reports" / "sample-report.txt").read_text(
+        encoding="utf-8"
+    )
+    URL = "https://www.oecd.org/education/2030-project/report.pdf"
+
+    # A verbatim finding, given to the importer WITH the report's original line
+    # wraps to prove matching is whitespace-agnostic.
+    VERBATIM_WRAPPED = (
+        "Schools that embed AI literacy across the curriculum report stronger\n"
+        "critical thinking among primary school students than schools that teach\n"
+        "it as a stand-alone unit."
+    )
+    VERBATIM_COLLAPSED = (
+        "Schools that embed AI literacy across the curriculum report stronger "
+        "critical thinking among primary school students than schools that teach "
+        "it as a stand-alone unit."
+    )
+    FABRICATED = "AI literacy doubles student test scores within one academic year."
+
+    def _proposal(self) -> dict:
+        return {
+            "title": "OECD Future of Education and Skills 2030: AI Literacy in Schools",
+            "year": 2023,
+            "source_type": "policy_report",
+            "authors": ["OECD"],
+            "summary": (
+                "The report examines how compulsory education prepares learners aged "
+                "6 to 18 for artificial intelligence across member states."
+            ),
+            "findings": [
+                {
+                    "statement": self.VERBATIM_WRAPPED,
+                    "outcome": "Embedding AI literacy is linked to stronger critical thinking.",
+                    "context": "OECD country survey across member states.",
+                    "age_range": "6-12",
+                    "evidence_strength": "moderate",
+                },
+                {
+                    "statement": self.FABRICATED,
+                    "outcome": None,
+                    "context": None,
+                    "age_range": None,
+                    "evidence_strength": None,
+                },
+            ],
+        }
+
+    def test_verbatim_guard_keeps_quotes_and_drops_inventions(self) -> None:
+        # A real quote survives (whitespace-collapsed), an invented one and a
+        # too-short fragment are rejected.
+        self.assertEqual(
+            verbatim_passage(self.VERBATIM_WRAPPED, self.REPORT), self.VERBATIM_COLLAPSED
+        )
+        self.assertIsNone(verbatim_passage(self.FABRICATED, self.REPORT))
+        self.assertIsNone(verbatim_passage("AI", self.REPORT))
+        # A paraphrase that is not literally present is rejected.
+        self.assertIsNone(
+            verbatim_passage(
+                "Schools embedding AI literacy see much better critical thinking.",
+                self.REPORT,
+            )
+        )
+        self.assertGreater(MIN_PASSAGE_LENGTH, len("AI"))
+
+    def test_provider_none_is_a_no_op(self) -> None:
+        # With AI off (the default) nothing is proposed and no candidates are built.
+        import os
+
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("AI_PROVIDER", None)
+            self.assertIsNone(propose_report(self.REPORT, self.URL))
+        self.assertEqual(report_candidates(None, self.REPORT, self.URL, "OECD", None), ([], []))
+
+    def test_proposal_yields_schema_valid_candidates(self) -> None:
+        # A proposal becomes exactly one candidate source and one candidate claim
+        # (the fabricated finding is dropped); both validate against the schemas.
+        sources, claims = report_candidates(
+            self._proposal(), self.REPORT, self.URL, "OECD", 2023
+        )
+        self.assertEqual(len(sources), 1)
+        relevant = filter_relevant_sources(sources)
+        self.assertEqual(len(relevant), 1, "the report source should be in scope")
+        source = relevant[0]
+        self.assertEqual(source["status"], "candidate")
+        self.assertEqual(source["source_type"], "policy_report")
+        self.assertEqual(source["url"], self.URL)
+        self.assertEqual(source["reviewed_at"], None)
+        Draft202012Validator(load_json(ROOT / "schemas" / "source.schema.json")).validate(source)
+
+        # Only the verbatim finding becomes a claim; the invention is discarded.
+        self.assertEqual(len(claims), 1)
+        claim = claims[0]
+        self.assertEqual(claim["statement"], self.VERBATIM_COLLAPSED)
+        self.assertIn(self.VERBATIM_COLLAPSED, claim["text_anchor"])
+        self.assertEqual(claim["source_ids"], [source["id"]])
+        self.assertEqual(claim["status"], "candidate")
+        self.assertEqual(claim["evidence_strength"], "low")
+        self.assertEqual(claim["evidence_type"], "policy_synthesis")
+        self.assertEqual(claim["reviewed_at"], None)
+        Draft202012Validator(load_json(ROOT / "schemas" / "claim.schema.json")).validate(claim)
+
+        # The model's richer guesses live ONLY under the non-binding assist block;
+        # the real review fields keep their placeholders.
+        self.assertEqual(claim["age_range"], AGE_RANGE_PLACEHOLDER)
+        self.assertEqual(claim["outcome"], OUTCOME_PLACEHOLDER)
+        self.assertTrue(claim["context"].endswith(CONTEXT_PLACEHOLDER_SUFFIX))
+        self.assertEqual(claim["assist"]["suggestions"][0]["age_range"], "6-12")
+        self.assertEqual(
+            claim["assist"]["provenance"]["prompt_version"], REPORT_PROMPT_VERSION
+        )
+
+    def test_irrelevant_report_yields_no_claims(self) -> None:
+        # An out-of-scope report is dropped by the relevance filter; even a
+        # verbatim finding produces no candidate because its source is gone.
+        proposal = {
+            "title": "Soil nutrition in wastewater refinery effluent",
+            "year": 2022,
+            "source_type": "policy_report",
+            "authors": ["ACME"],
+            "summary": "An agriculture and salary study of refinery soil.",
+            "findings": [],
+        }
+        sources, _ = report_candidates(proposal, self.REPORT, self.URL, "ACME", 2022)
+        self.assertEqual(filter_relevant_sources(sources), [])
+
+    def test_unusable_proposal_builds_no_source(self) -> None:
+        # No title, or no schema-valid year, is something the importer refuses to
+        # invent, so it builds no source at all.
+        self.assertIsNone(build_source({"title": "", "year": 2023}, self.URL, "OECD", None))
+        self.assertIsNone(
+            build_source({"title": "A report", "year": None}, self.URL, "OECD", None)
+        )
+        self.assertIsNotNone(
+            build_source({"title": "A report", "year": None}, self.URL, "OECD", 2023)
+        )
+
+    def test_cache_mode_replays_proposal_deterministically(self) -> None:
+        # The provider integration: a committed fixture is replayed under
+        # AI_PROVIDER=cache, with the same request hash the importer computes.
+        import os
+
+        import ai_provider
+
+        proposal = self._proposal()
+        prompt = report_prompt(self.REPORT, self.URL)
+        payload = {
+            "kind": "complete",
+            "model": "claude-opus-4-8",
+            "prompt": prompt,
+            "schema": REPORT_OUTPUT_SCHEMA,
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp)
+            with mock.patch.object(ai_provider, "CACHE_DIR", cache_dir):
+                ai_provider.cache_write(payload, proposal)
+                with mock.patch.dict(
+                    os.environ, {"AI_PROVIDER": "cache", "AI_MODEL": "claude-opus-4-8"}
+                ):
+                    replayed = propose_report(self.REPORT, self.URL)
+        self.assertEqual(replayed, proposal)
+        _, claims = report_candidates(replayed, self.REPORT, self.URL, "OECD", 2023)
+        self.assertEqual([claim["statement"] for claim in claims], [self.VERBATIM_COLLAPSED])
 
 
 if __name__ == "__main__":
