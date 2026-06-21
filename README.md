@@ -113,117 +113,17 @@ single framework document, not a search source (it already appears in
 `data/frameworks/`), and enters through the manual source-suggestion governance
 template.
 
-Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
-and abstracts are matched against the MVP topic vocabulary and audience terms, the
-resulting `relevance_score` (0..1) is stored on each candidate, and topics are
-derived from the matched vocabulary instead of being hardcoded. A candidate must
-match at least one topic — audience terms ("school", "students") alone do not
-qualify a source — and score at or above the threshold (default 0.3, tunable per
-importer via `--min-relevance`) to survive before deduplication.
-
-A candidate is additionally rejected when it hits a curated **off-scope** term
-(`OFF_SCOPE_KEYWORDS`: e.g. `nutrition`, `menstrual`, `sanitation`, `wastewater`,
-`salary`, `refinery`, `soil`, plus clinical, workplace/SME, pandemic-logistics,
-physical-education and foreign-language-pedagogy (EAP/EFL/ESL) terms) *and* names
-no future skill in its **title**. In-scope papers name the
-skill they study in the title, so this drops off-domain papers that only match a
-topic keyword in passing — a pupil-health study touching "complexity", a salary
-agreement mentioning "collaboration" — while keeping abstract-only in-scope
-candidates that carry no off-scope term. The over-broad `complexity` keyword was
-also removed from the systems-thinking vocabulary (`computational thinking` and
-`systems thinking` remain), as it matched only incidentally.
-
-A candidate is also rejected by the **audience/age gate** (`is_adult_audience`)
-when it names an adult / post-secondary audience (`HIGHER_ED_KEYWORDS`: university,
-undergraduate, college student, workforce, employee, preservice/in-service
-teacher, adult learner …) **and** no school-age audience (`SCHOOL_AGE_KEYWORDS`:
-child, kindergarten, primary/secondary/middle/high school, pupil, adolescent …).
-Unlike the off-scope filter this has no title-anchor exemption: "AI literacy" is
-in scope only for ages 6-18, so a workforce or university AI-literacy paper is
-dropped even though it names the skill in the title. Papers naming both audiences
-(e.g. "secondary students preparing for university") are kept. The first live
-operating cycle showed adult/higher-education papers were the dominant false
-positive, so this gate is the highest-value precision lever.
-
-The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
-set (81 examples: real candidates from the live runs and live API queries across the
-sources, plus clear anchor cases) and `scripts/eval_relevance.py` reports
-precision/recall/F1 and sweeps thresholds, so the filter's behavior is measured.
-The off-scope filter and the audience gate hold measured **precision 1.00 at
-recall 1.00** on the labeled set (the audience-gated higher-ed/workforce papers
-are correctly excluded; no relevant source dropped).
-`test_relevance_heuristic_meets_measured_floor` guards against regressions
-(precision ≥ 0.90, recall ≥ 0.90, with margin below the measured values).
-
-On **fresh** live data, successive precision passes lifted live precision from
-~0.58 (baseline) to ~0.73 (audience gate) to ~0.85 (physical-education and
-foreign-language-pedagogy off-scope terms), with accepted sources falling 26 →
-15 → 13 on the same query. The eval-set 1.00 stays optimistic relative to fresh
-data; the remaining fresh-data false positives are harder classes (teacher
-tool-use, and disaster/health papers that carry a school-age word) tracked in
-`OPERATIONS.md`.
-
-### Optional trained relevance classifier
-
-The relevance decision is **pluggable**. The default is the keyword heuristic above —
-transparent, dependency-free, and the fallback whenever anything goes wrong. As an
-*opt-in* alternative, `scripts/train_relevance.py` trains a TF-IDF +
-LogisticRegression model (scikit-learn) from the label files with a fixed
-`random_state` and exports it to a versioned JSON artifact
-(`models/relevance_model.json`). The model is consulted at filter time only when the
-env flag `RELEVANCE_CLASSIFIER=model` is set **and** a valid artifact is present;
-otherwise the heuristic runs. The topic/keyword hits stay an explainable companion
-signal next to the model score: even in model mode, `topics` is still derived from the
-vocabulary and the `relevance_score`/`topics` data model is unchanged.
-
-The model is wired into the pipeline only if it **measurably beats** the heuristic on
-held-out data, and we report that honestly. `python scripts/eval_relevance.py
---compare-model` runs a fair stratified cross-validation: the heuristic needs no
-training and is scored on each test fold directly, while the model is retrained on the
-train folds and scored on the held-out fold; both report pooled precision/recall/F1.
-On the current 54-example set the heuristic already reaches **F1 1.00** (P 1.00 / R
-1.00), and the model lands at **F1 ≈ 0.84** (P 0.94 / R 0.76) — it does **not** beat
-the baseline. The data is small and the heuristic is already saturated, so **the
-heuristic stays the default and active decision**; the model ships disabled for a
-larger, less separable future label set.
-
-**Reproducibility & trade-off.** Training is reproducible from a fixed seed
-(`SEED = 42`, seeding both the classifier and the CV splits) and the artifact records
-the seed, the scikit-learn version, the input files and label counts, and the
-vectorizer configuration. Inference is pure standard library: `common.py` reproduces
-scikit-learn's TF-IDF + logistic-regression math from the JSON artifact, so the
-importers stay stdlib-only and never import scikit-learn (it is a dev/CI dependency for
-*training* and the comparison). `scripts/train_relevance.py` asserts the stdlib scorer
-reproduces scikit-learn's `predict_proba` to < 1e-9, and a sklearn-gated test guards
-it. The trade-off is deliberate: the heuristic is fully deterministic and
-human-auditable (you can read why a source was kept from its matched topics), whereas a
-model trades some of that transparency for the *potential* to generalize. The JSON
-artifact keeps the model inspectable and diffable, and keeping the keyword topics as a
-companion signal preserves an explainable trace even when the model decides.
-
-### Optional embedding relevance anchors
-
-A second, lighter opt-in signal lives next to the trained model: a pair of
-**prototype embeddings** ("anchors"). `scripts/build_relevance_anchors.py` embeds the
-labeled examples through `ai_provider.embed` (so it needs an `EMBEDDING_PROVIDER`, e.g.
-the dependency-free, deterministic `EMBEDDING_PROVIDER=local`) and stores the centroid
-of the relevant examples and the centroid of the irrelevant ones in a versioned JSON
-artifact (`models/relevance_anchors.json`). At filter time, only when
-`RELEVANCE_CLASSIFIER=embedding` is set **and** the artifact loads **and** an embedding
-provider is configured, a source is kept when it is closer (cosine) to the positive
-anchor than to the negative one by at least the artifact's `decision_threshold`; a
-missing artifact or provider warns once and falls back to the keyword heuristic. As with
-the model, `topics` stays the explainable keyword companion signal and the
-`relevance_score`/`topics` data model is unchanged.
-
-The anchors are wired in only after a **measured win**. `EMBEDDING_PROVIDER=local python
-scripts/eval_relevance.py --compare-embedding` runs the same fair stratified
-cross-validation (anchors rebuilt on the train folds, heuristic scored directly,
-pooled P/R/F1, honest `VERDICT`). With the local hashing embedding the anchors land well
-below the saturated heuristic, so **the heuristic stays the default and active
-decision** and the anchors ship disabled. The artifact records its provenance — the
-embedding provider, dimensionality, build date, the input files and their SHA-256
-hashes, and the label counts — so it is reproducible and diffable.
+Imported candidates pass a **relevance filter** (`scripts/common.py`) before
+deduplication. The default is a transparent keyword/topic heuristic: a candidate
+must match at least one MVP topic, score at or above the threshold, clear a curated
+off-scope term list, and pass an audience/age gate that keeps only the ages 6-18
+audience. The decision is **pluggable** via `RELEVANCE_CLASSIFIER`: two optional,
+opt-in alternatives (a trained TF-IDF + LogisticRegression model and a pair of
+embedding prototype anchors) exist but ship **disabled**, because neither beats the
+heuristic on the held-out comparison. The filter mechanics, the measured
+precision/recall, the optional modes, and the activation/decommission rule are all
+documented in
+[docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
 
 ## Reviewing candidates
 
@@ -231,18 +131,9 @@ Automation only ever produces candidates; promoting one is a human decision made
 through `scripts/promote_candidate.py`. The tool applies the reviewer's field
 values, refuses to promote while machine-generated placeholders remain, enforces
 that an active skill rests only on reviewed claims, recomputes evidence scores, and
-re-validates the repository — writing nothing if any check fails.
-
-```powershell
-python scripts/promote_candidate.py claim claim-id `
-  --context "..." --age-range "6-18" --outcome "..." `
-  --evidence-type systematic_review --evidence-strength moderate --supports skill-id
-python scripts/promote_candidate.py skill skill-id --definition "..." --name "..."
-python scripts/promote_candidate.py reject claim-id          # unusable claim
-python scripts/promote_candidate.py reject-source src-id     # source is off-scope
-python scripts/promote_candidate.py promote-source src-id    # source is in scope (reviewed)
-python scripts/promote_candidate.py attach-claim skill-id --claim claim-id
-```
+re-validates the repository — writing nothing if any check fails. The exact
+subcommands and their flags are in the review step of
+[OPERATIONS.md](OPERATIONS.md).
 
 Rejecting a candidate records the decision (claims become `rejected`, skills
 `deprecated`) so it stays out of clustering and later review passes instead of
