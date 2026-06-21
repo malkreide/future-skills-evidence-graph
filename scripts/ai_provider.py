@@ -20,8 +20,10 @@ Env flags
 ``AI_PROVIDER``      ``none`` (default) | ``anthropic`` | ``cache``
 ``AI_MODEL``         model id for completions (default ``claude-opus-4-8``)
 ``ANTHROPIC_API_KEY``read by the anthropic SDK when ``AI_PROVIDER=anthropic``
-``EMBEDDING_PROVIDER`` ``none`` (default) | ``local`` | ...  — a SEPARATE path,
+``EMBEDDING_PROVIDER`` ``none`` (default) | ``local`` | ``st`` — a SEPARATE path,
                        because Anthropic has no embeddings API.
+``ST_EMBED_MODEL``   sentence-transformers model id for ``EMBEDDING_PROVIDER=st``
+                       (default ``all-MiniLM-L6-v2``).
 """
 
 from __future__ import annotations
@@ -41,6 +43,9 @@ ROOT = Path(__file__).resolve().parents[1]
 # Fixture cache: stable request hash -> stored response. In `cache` mode this is
 # read-only, so tests and CI run fully offline against committed fixtures.
 CACHE_DIR = ROOT / "tests" / "fixtures" / "ai"
+# Fixture cache for `st` embeddings, one file per (model, text). Committed so CI
+# replays real sentence-transformers vectors offline, without the heavy package.
+EMBED_CACHE_DIR = ROOT / "tests" / "fixtures" / "embeddings"
 TODAY = date.today().isoformat()
 
 # Default to the latest, most capable Claude model. Overridable via AI_MODEL.
@@ -48,6 +53,10 @@ DEFAULT_MODEL = "claude-opus-4-8"
 
 # Dimensionality of the dependency-free local embedding (see _local_embedding).
 EMBED_DIM = 256
+
+# Default sentence-transformers model for EMBEDDING_PROVIDER=st. Small, widely
+# used, 384-dim; overridable via ST_EMBED_MODEL. Only loaded on a cache miss.
+ST_DEFAULT_MODEL = "all-MiniLM-L6-v2"
 
 
 # --- Env flags -------------------------------------------------------------
@@ -64,12 +73,21 @@ def ai_model() -> str:
 
 
 def embedding_provider() -> str:
-    """Active embedding provider: ``none`` (default), ``local`` or ...
+    """Active embedding provider: ``none`` (default), ``local`` or ``st``.
 
     Kept separate from AI_PROVIDER on purpose: Anthropic has no embeddings API,
     so embeddings come from their own (local or third-party) provider.
+
+    - ``local``: the deterministic, dependency-free hashing embedding (CI default).
+    - ``st``: a real local sentence-transformers model, served offline from the
+      committed embedding fixtures (the heavy package is only imported on a miss).
     """
     return (os.getenv("EMBEDDING_PROVIDER") or "none").strip().lower()
+
+
+def st_model_name() -> str:
+    """sentence-transformers model id for ``EMBEDDING_PROVIDER=st``."""
+    return (os.getenv("ST_EMBED_MODEL") or ST_DEFAULT_MODEL).strip()
 
 
 def _warn(message: str) -> None:
@@ -207,16 +225,20 @@ def embed(texts: list[str]) -> list[list[float]] | None:
 
     A separate path from completions: Anthropic has no embeddings API.
     - ``none`` (default): returns None.
-    - ``local``: a deterministic, dependency-free hashing embedding that runs
-      locally with no network — a real local model that can later be swapped for
-      a heavier one without changing the call sites.
+    - ``local`` (CI default): a deterministic, dependency-free hashing embedding
+      that runs locally with no network.
+    - ``st``: a real local sentence-transformers model (semantic embeddings),
+      served offline from the committed fixture cache; the heavy package is only
+      imported on a cache miss (i.e. for a text not yet recorded).
     """
     provider = embedding_provider()
     if provider == "none":
         return None
     if provider == "local":
         return [_local_embedding(text) for text in texts]
-    _warn(f"Unknown EMBEDDING_PROVIDER {provider!r}; expected none|local.")
+    if provider == "st":
+        return _st_embed(texts)
+    _warn(f"Unknown EMBEDDING_PROVIDER {provider!r}; expected none|local|st.")
     return None
 
 
@@ -235,6 +257,119 @@ def _local_embedding(text: str, dim: int = EMBED_DIM) -> list[float]:
     if norm > 0.0:
         vector = [value / norm for value in vector]
     return vector
+
+
+# --- Local sentence-transformers embeddings (st), fixture-backed -----------
+#
+# A real semantic embedding, kept offline-safe the same way the AI completion
+# cache is: each (model, text) maps to a stable hash and the L2-normalized vector
+# is committed under tests/fixtures/embeddings/. With the fixtures present every
+# call is a cache hit, so CI never imports sentence-transformers and never hits
+# the network. The package is a pure dev/live dependency, imported lazily only to
+# fill a cache *miss* (when building anchors or recording new fixtures locally).
+
+_st_model_cache: tuple[str, Any] | None = None
+
+
+def _embed_cache_key(model: str, text: str) -> str:
+    blob = json.dumps([model, text], ensure_ascii=True, separators=(",", ":"))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+def _embed_cache_path(model: str, text: str) -> Path:
+    return EMBED_CACHE_DIR / f"{_embed_cache_key(model, text)}.json"
+
+
+def embed_cache_read(model: str, text: str) -> list[float] | None:
+    """Return the cached vector for (model, text), or None on a miss."""
+    path = _embed_cache_path(model, text)
+    if not path.exists():
+        return None
+    try:
+        stored = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        _warn(f"embedding fixture {path.name} unreadable ({exc}); treating as a miss.")
+        return None
+    vector = stored.get("embedding")
+    return vector if isinstance(vector, list) else None
+
+
+def embed_cache_write(model: str, text: str, vector: list[float]) -> None:
+    """Persist *vector* for (model, text) so a later run replays it offline."""
+    try:
+        EMBED_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        body = {
+            "model": model,
+            "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "dim": len(vector),
+            "embedding": vector,
+        }
+        text_blob = json.dumps(body, ensure_ascii=True, indent=2, sort_keys=True) + "\n"
+        _embed_cache_path(model, text).write_text(text_blob, encoding="utf-8")
+    except OSError as exc:
+        _warn(f"embedding fixture write failed ({exc}); continuing without persisting.")
+
+
+def _load_st_model(model: str) -> Any:
+    """Lazily load (and memoize) the sentence-transformers model."""
+    global _st_model_cache
+    if _st_model_cache is None or _st_model_cache[0] != model:
+        from sentence_transformers import SentenceTransformer  # lazy, dev/live only
+
+        _st_model_cache = (model, SentenceTransformer(model))
+    return _st_model_cache[1]
+
+
+def _st_embed(texts: list[str]) -> list[list[float]] | None:
+    """L2-normalized sentence-transformers vectors, cache-first.
+
+    Returns the cached vector for every text that has a committed fixture. Any
+    miss is filled by loading the model (network/package required); when the
+    model cannot be loaded a miss warns and yields None, so callers fall back to
+    the keyword heuristic instead of failing.
+    """
+    model = st_model_name()
+    results: list[list[float] | None] = [embed_cache_read(model, text) for text in texts]
+    missing = [index for index, vector in enumerate(results) if vector is None]
+    if missing:
+        try:
+            encoder = _load_st_model(model)
+        except Exception as exc:  # noqa: BLE001 - missing package/network must not abort
+            _warn(
+                f"sentence-transformers unavailable for EMBEDDING_PROVIDER=st ({exc}); "
+                f"{len(missing)} text(s) not in the embedding fixture cache."
+            )
+            return None
+        encoded = encoder.encode(
+            [texts[index] for index in missing], normalize_embeddings=True
+        )
+        for offset, index in enumerate(missing):
+            vector = [float(value) for value in encoded[offset]]
+            embed_cache_write(model, texts[index], vector)
+            results[index] = vector
+    return [vector for vector in results if vector is not None]
+
+
+def embedding_model_info(provider: str | None = None) -> dict[str, str]:
+    """Provenance for the active embedding provider: model name + version.
+
+    - ``st``: the sentence-transformers model id and the installed package
+      version (``unknown`` when the package is absent, e.g. a fixture-only run).
+    - ``local``: the deterministic hashing scheme and its dimensionality.
+    """
+    if provider is None:
+        provider = embedding_provider()
+    if provider == "st":
+        try:
+            import sentence_transformers  # lazy: only to read the version string
+
+            version = sentence_transformers.__version__
+        except Exception:  # noqa: BLE001 - version is best-effort provenance
+            version = "unknown"
+        return {"model_name": st_model_name(), "model_version": f"sentence-transformers {version}"}
+    if provider == "local":
+        return {"model_name": "local-hashing-sha1", "model_version": f"dim-{EMBED_DIM}"}
+    return {"model_name": "", "model_version": ""}
 
 
 # --- Provenance ------------------------------------------------------------

@@ -46,19 +46,31 @@ operating cycle showed adult/higher-education papers were the dominant false
 positive, so this gate is the highest-value precision lever.
 
 The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
-set (81 examples: real candidates from the live runs and live API queries across the
-sources, plus clear anchor cases) and `scripts/eval_relevance.py` reports
-precision/recall/F1 and sweeps thresholds, so the filter's behavior is measured.
-The off-scope filter and the audience gate hold measured **precision 1.00 at
-recall 1.00** on the labeled set (the audience-gated higher-ed/workforce papers
-are correctly excluded; no relevant source dropped).
+set (87 examples: real candidates from the live runs and live API queries across the
+sources, clear anchor cases, plus the residual **hard false-positive classes**
+described below) and `scripts/eval_relevance.py` reports precision/recall/F1 and
+sweeps thresholds, so the filter's behavior is measured. On this set the heuristic
+holds measured **precision 0.86 at recall 1.00** (F1 0.92): no relevant source is
+dropped, and the only false positives are the deliberately added hard cases.
 `test_relevance_heuristic_meets_measured_floor` guards against regressions
-(precision ≥ 0.90, recall ≥ 0.90, with margin below the measured values).
+(precision ≥ 0.80, recall ≥ 0.95, with margin below the measured values).
 
-On **fresh** live data the eval-set 1.00 is optimistic: the remaining false
-positives are harder classes (teacher tool-use, and disaster/health papers that
-carry a school-age word). The per-cycle live-precision history lives in
-[OPERATIONS.md](../OPERATIONS.md).
+Until recently the labeled set held precision 1.00 / recall 1.00, but that was
+optimistic: it contained no examples of the residual false-positive classes the
+heuristic is known to miss on **fresh** live data. Those classes are now labeled
+in the set so the comparison against the optional classifiers is honest:
+
+- **Teacher tool-use** — papers whose studied outcome is a *teacher's* own
+  adoption of an AI tool (lesson planning, grading, administrative automation),
+  not a future skill cultivated in 6-18 learners. Teachers are a legitimate
+  audience, so a blanket teacher gate would cost recall; the in-service-teacher
+  age gate catches some, but generic "teachers" using "ChatGPT/AI" survive.
+- **Disaster/health with a school-age word** — public-health or disaster-safety
+  papers (WASH, nutrition, earthquake preparedness) that name a future-skill topic
+  and a school-age audience in the title. The off-scope title-anchor exemption is
+  designed to keep abstract-only in-scope papers, and it also keeps these.
+
+The per-cycle live-precision history lives in [OPERATIONS.md](../OPERATIONS.md).
 
 ## Optional trained relevance classifier
 
@@ -78,11 +90,12 @@ held-out data, and we report that honestly. `python scripts/eval_relevance.py
 --compare-model` runs a fair stratified cross-validation: the heuristic needs no
 training and is scored on each test fold directly, while the model is retrained on the
 train folds and scored on the held-out fold; both report pooled precision/recall/F1.
-On the current 54-example set the heuristic already reaches **F1 1.00** (P 1.00 / R
-1.00), and the model lands at **F1 ≈ 0.84** (P 0.94 / R 0.76) — it does **not** beat
-the baseline. The data is small and the heuristic is already saturated, so **the
-heuristic stays the default and active decision**; the model ships disabled for a
-larger, less separable future label set.
+On the current 87-example set the heuristic reaches **F1 0.92** (P 0.86 / R 1.00),
+and the model lands at **F1 0.86** (P 0.92 / R 0.80) — it does **not** beat the
+baseline on held-out F1. The model trades recall for precision (it correctly
+rejects some of the hard false-positive cases but also drops genuine positives),
+so **the heuristic stays the default and active decision**; the model ships
+disabled for a larger, less separable future label set.
 
 **Reproducibility & trade-off.** Training is reproducible from a fixed seed
 (`SEED = 42`, seeding both the classifier and the CV splits) and the artifact records
@@ -102,33 +115,55 @@ companion signal preserves an explainable trace even when the model decides.
 
 A second, lighter opt-in signal lives next to the trained model: a pair of
 **prototype embeddings** ("anchors"). `scripts/build_relevance_anchors.py` embeds the
-labeled examples through `ai_provider.embed` (so it needs an `EMBEDDING_PROVIDER`, e.g.
-the dependency-free, deterministic `EMBEDDING_PROVIDER=local`) and stores the centroid
-of the relevant examples and the centroid of the irrelevant ones in a versioned JSON
-artifact (`models/relevance_anchors.json`). At filter time, only when
-`RELEVANCE_CLASSIFIER=embedding` is set **and** the artifact loads **and** an embedding
-provider is configured, a source is kept when it is closer (cosine) to the positive
-anchor than to the negative one by at least the artifact's `decision_threshold`; a
-missing artifact or provider warns once and falls back to the keyword heuristic. As with
-the model, `topics` stays the explainable keyword companion signal and the
-`relevance_score`/`topics` data model is unchanged.
+labeled examples through `ai_provider.embed` (so it needs an `EMBEDDING_PROVIDER`) and
+stores the centroid of the relevant examples and the centroid of the irrelevant ones
+in a versioned JSON artifact (`models/relevance_anchors.json`). At filter time, only
+when `RELEVANCE_CLASSIFIER=embedding` is set **and** the artifact loads **and** an
+embedding provider is configured, a source is kept when it is closer (cosine) to the
+positive anchor than to the negative one by at least the artifact's
+`decision_threshold`; a missing artifact or provider warns once and falls back to the
+keyword heuristic. As with the model, `topics` stays the explainable keyword companion
+signal and the `relevance_score`/`topics` data model is unchanged.
 
-The anchors are wired in only after a **measured win**. `EMBEDDING_PROVIDER=local python
-scripts/eval_relevance.py --compare-embedding` runs the same fair stratified
-cross-validation (anchors rebuilt on the train folds, heuristic scored directly,
-pooled P/R/F1, honest `VERDICT`). With the local hashing embedding the anchors land well
-below the saturated heuristic, so **the heuristic stays the default and active
-decision** and the anchors ship disabled. The artifact records its provenance — the
-embedding provider, dimensionality, build date, the input files and their SHA-256
-hashes, and the label counts — so it is reproducible and diffable.
+**Two embedding providers, one stdlib runtime.** `EMBEDDING_PROVIDER=local` is the
+dependency-free, deterministic hashing embedding (256-dim, the CI default).
+`EMBEDDING_PROVIDER=st` is a *real local semantic model* — sentence-transformers
+`all-MiniLM-L6-v2` (384-dim). `sentence-transformers` is a pure dev/live dependency
+(`requirements-dev.txt`), imported lazily and only to fill an embedding-cache *miss*;
+each `(model, text)` vector is committed under `tests/fixtures/embeddings/`, so the
+`st` path replays **offline and deterministically** in CI without the heavy package or
+the network. The committed `models/relevance_anchors.json` is built with `st`, and its
+provenance records the `model_name` (`all-MiniLM-L6-v2`) and `model_version`
+(the sentence-transformers release), alongside the dimensionality, build date, the
+input files and their SHA-256 hashes, and the label counts — so it is reproducible
+and diffable.
+
+The anchors are wired in only after a **measured win**.
+`EMBEDDING_PROVIDER=st python scripts/eval_relevance.py --compare-embedding` runs the
+same fair stratified cross-validation (anchors rebuilt on the train folds, heuristic
+scored directly, pooled P/R/F1, honest `VERDICT`). The honest result on the current
+87-example set:
+
+| Signal | P | R | F1 | Verdict |
+| --- | --- | --- | --- | --- |
+| Heuristic (baseline) | 0.86 | 1.00 | **0.92** | active default |
+| Embedding anchors, `st` (all-MiniLM-L6-v2) | 0.64 | 0.93 | 0.76 | does **not** beat baseline |
+| Embedding anchors, `local` (hashing) | 0.62 | 0.67 | 0.65 | does **not** beat baseline |
+
+The real semantic embedding (`st`, F1 0.76) is a clear step up from the local hashing
+embedding (F1 0.65) and recovers more of the hard cases on recall, but it is noisier on
+precision and still lands **well below the keyword heuristic** (F1 0.92), which is
+already well separated on this small, keyword-shaped set. So **the heuristic stays the
+default and active decision** and the anchors ship disabled. The verdict is recorded
+honestly here rather than activated; activation would require a positive `VERDICT`.
 
 ## Welcher Modus – und warum keiner aktiv ist
 
 | Modus (`RELEVANCE_CLASSIFIER`) | Artefakt | Status | Warum |
 | --- | --- | --- | --- |
-| `heuristic` (Default) | — | **aktiv** | Transparent, deterministisch, dependency-frei; auf dem Label-Set bereits gesättigt (F1 1.00). |
-| `model` | `models/relevance_model.json` | deaktiviert | Schlägt die Heuristik im fairen Held-out-Vergleich nicht (F1 ≈ 0.84 < 1.00). |
-| `embedding` | `models/relevance_anchors.json` | deaktiviert | Liegt mit dem lokalen Hashing-Embedding klar unter der gesättigten Heuristik. |
+| `heuristic` (Default) | — | **aktiv** | Transparent, deterministisch, dependency-frei; auf dem Label-Set klar führend (F1 0.92). |
+| `model` | `models/relevance_model.json` | deaktiviert | Schlägt die Heuristik im fairen Held-out-Vergleich nicht (F1 0.86 < 0.92). |
+| `embedding` | `models/relevance_anchors.json` | deaktiviert | Echtes Semantik-Embedding (`st`, all-MiniLM-L6-v2, F1 0.76) schlägt das lokale Hashing (F1 0.65), bleibt aber klar unter der Heuristik (F1 0.92). |
 
 **Aktivierungsregel.** Ein optionaler Modus wird nur dann scharf geschaltet, wenn
 er die Heuristik auf Held-out-Daten **messbar schlägt** (positives `VERDICT` aus

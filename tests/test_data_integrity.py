@@ -574,14 +574,17 @@ class DataIntegrityTests(unittest.TestCase):
 
     def test_relevance_heuristic_meets_measured_floor(self) -> None:
         # Guards the keyword classifier against regressions using the labeled
-        # eval set. The off-scope filter raised measured precision from 0.78 to
-        # 1.00 at recall 1.00; floors sit below that with margin.
+        # eval set. The set now includes the residual hard false-positive classes
+        # tracked in OPERATIONS.md (teacher tool-use, disaster/health papers that
+        # carry a school-age word plus a topic in the title), which the keyword
+        # heuristic keeps. Measured at threshold 0.3 the heuristic holds
+        # precision 0.86 / recall 1.00; the floors sit below those with margin.
         import eval_relevance
 
         examples = eval_relevance.load_examples()
         metrics = eval_relevance.evaluate(examples, RELEVANCE_THRESHOLD)
-        self.assertGreaterEqual(metrics.precision, 0.90, "relevance precision regressed")
-        self.assertGreaterEqual(metrics.recall, 0.90, "relevance recall regressed")
+        self.assertGreaterEqual(metrics.precision, 0.80, "relevance precision regressed")
+        self.assertGreaterEqual(metrics.recall, 0.95, "relevance recall regressed")
 
     def test_attach_claim_validates_targets(self) -> None:
         from argparse import Namespace
@@ -889,9 +892,10 @@ class DataIntegrityTests(unittest.TestCase):
             self.assertEqual(decide_relevance(relevant), heuristic)
 
     def test_embedding_mode_is_deterministic_from_fixtures(self) -> None:
-        # With the anchors active and the deterministic local embedding, the
-        # decision is reproducible; topics stay the explainable keyword signal and
-        # the stored relevance_score stays schema-valid in [0, 1].
+        # With the committed (st) anchors active and the fixture-backed semantic
+        # embedding, the decision is reproducible and offline (the source text has
+        # a committed embedding fixture); topics stay the explainable keyword
+        # signal and the stored relevance_score stays schema-valid in [0, 1].
         import os
 
         source = {
@@ -900,7 +904,7 @@ class DataIntegrityTests(unittest.TestCase):
         }
         _, keyword_topics = score_relevance(source)
         with mock.patch.dict(
-            os.environ, {"RELEVANCE_CLASSIFIER": "embedding", "EMBEDDING_PROVIDER": "local"}
+            os.environ, {"RELEVANCE_CLASSIFIER": "embedding", "EMBEDDING_PROVIDER": "st"}
         ):
             first = decide_relevance(source)
             second = decide_relevance(source)
@@ -911,7 +915,8 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertTrue(0.0 <= score <= 1.0)
 
     def test_embedding_anchors_artifact_is_versioned_and_reproducible(self) -> None:
-        # The committed anchors must carry the provenance needed to reproduce them.
+        # The committed anchors must carry the provenance needed to reproduce them,
+        # including the embedding model name and version (P3: real semantic st).
         artifact = load_relevance_anchors()
         self.assertIsNotNone(artifact)
         self.assertEqual(artifact["model_type"], "embedding-anchors")
@@ -921,6 +926,8 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertEqual(len(artifact["anchors"]["negative"]), artifact["embedding_dim"])
         provenance = artifact["provenance"]
         self.assertIn("embedding_provider", provenance)
+        self.assertTrue(provenance["model_name"])
+        self.assertTrue(provenance["model_version"])
         self.assertIn("built_at", provenance)
         self.assertIn("input_hashes", provenance)
         self.assertEqual(
@@ -928,19 +935,21 @@ class DataIntegrityTests(unittest.TestCase):
         )
 
     def test_embedding_anchors_rebuild_is_reproducible(self) -> None:
-        # Rebuilding the anchors from the same labeled set with the deterministic
-        # local embedding reproduces the committed artifact's anchors. The
-        # comparison is tolerance-based, not bit-exact: the centroid sums are
-        # floating point, so they reproduce to well within any decision-relevant
-        # precision but can differ at the ULP level across Python builds.
+        # Rebuilding the anchors from the same labeled set reproduces the committed
+        # artifact's anchors. The committed artifact uses the semantic st provider,
+        # served offline from the embedding fixtures (every labeled text has a
+        # committed vector), so the rebuild is network-free. The comparison is
+        # tolerance-based, not bit-exact: the centroid sums are floating point, so
+        # they reproduce to well within any decision-relevant precision but can
+        # differ at the ULP level across Python builds.
         import os
 
         import build_relevance_anchors as bra
 
         examples = load_json(bra.EVAL_PATH)["examples"]
         positives, negatives = bra.split_texts(examples)
-        with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "local"}):
-            rebuilt = bra.build_artifact(positives, negatives, "local", bra.DEFAULT_DECISION_THRESHOLD)
+        with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "st"}):
+            rebuilt = bra.build_artifact(positives, negatives, "st", bra.DEFAULT_DECISION_THRESHOLD)
         committed = load_relevance_anchors()
         for sign in ("positive", "negative"):
             rebuilt_vec = rebuilt["anchors"][sign]
@@ -1143,6 +1152,41 @@ class OptionalAiFoundationTests(unittest.TestCase):
         with mock.patch.dict(os.environ, {}, clear=False):
             os.environ.pop("EMBEDDING_PROVIDER", None)
             self.assertIsNone(ai_provider.embed(["x"]))
+
+    def test_st_embedding_is_fixture_backed_and_offline(self) -> None:
+        # EMBEDDING_PROVIDER=st replays a committed sentence-transformers vector
+        # from tests/fixtures/embeddings/ without importing the heavy package or
+        # touching the network: the fixture is a cache hit, so a sentinel that
+        # would explode on import is never reached. A miss with no package (and no
+        # fixture) returns None so callers fall back to the heuristic.
+        import os
+        from unittest import mock
+
+        import ai_provider
+
+        cached_text = "AI literacy for school children fixture probe"
+        self.assertIsNotNone(
+            ai_provider.embed_cache_read(ai_provider.ST_DEFAULT_MODEL, cached_text),
+            "expected a committed st fixture for the probe text",
+        )
+
+        def explode(_model: str):  # the model must never load on a cache hit
+            raise AssertionError("st model loaded despite a fixture cache hit")
+
+        with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "st"}), mock.patch.object(
+            ai_provider, "_load_st_model", explode
+        ):
+            vectors = ai_provider.embed([cached_text, cached_text])
+        self.assertIsNotNone(vectors)
+        self.assertEqual(vectors[0], vectors[1])  # deterministic replay
+        self.assertEqual(len(vectors[0]), 384)  # all-MiniLM-L6-v2 dimensionality
+        self.assertAlmostEqual(math.sqrt(sum(v * v for v in vectors[0])), 1.0, places=5)
+
+        # A genuine miss with no usable provider degrades to None, not a crash.
+        with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "st"}), mock.patch.object(
+            ai_provider, "_load_st_model", lambda model: (_ for _ in ()).throw(ImportError("no st"))
+        ):
+            self.assertIsNone(ai_provider.embed(["a text with no committed fixture at all"]))
 
     def test_schema_accepts_records_with_and_without_assist(self) -> None:
         import ai_provider

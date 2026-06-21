@@ -154,9 +154,12 @@ flowchart TD
 - Zusätzliche Tore: **Off-Scope-Begriffe** (z. B. Ernährung, Gehalt) und ein
   **Zielgruppen-Tor** (nur Alter 6–18, keine reinen Hochschul-/Workforce-Paper).
 - Optional und **abschaltbar**: ein trainiertes TF-IDF-+-Logistic-Regression-Modell
-  (`models/relevance_model.json`). Es ist aktuell **deaktiviert**, weil es die
-  Heuristik im fairen Vergleich (`eval_relevance.py --compare-model`) *nicht*
-  schlägt – die Heuristik erreicht auf dem Label-Set bereits F1 1.00.
+  (`models/relevance_model.json`) sowie Embedding-Prototyp-Anker
+  (`models/relevance_anchors.json`, real-semantisch via sentence-transformers
+  `all-MiniLM-L6-v2`, fixture-gestützt offline). Beide sind aktuell **deaktiviert**,
+  weil sie die Heuristik im fairen Vergleich (`eval_relevance.py --compare-model`
+  bzw. `--compare-embedding`) *nicht* schlagen – die Heuristik führt auf dem
+  Label-Set mit F1 0.92 (Modell 0.86, Embedding `st` 0.76).
 
 ---
 
