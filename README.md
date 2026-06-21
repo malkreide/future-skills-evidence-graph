@@ -99,10 +99,19 @@ it logs a warning and contributes no candidates that run, so the other importers
 and the downstream extraction and clustering still complete.
 
 The master prompt also lists OECD, WEF, UNESCO, and EU DigComp as preferred
-sources. They are not auto-imported: OECD, WEF, and UNESCO publish reports
-without a public bibliographic search API, and DigComp is a single framework
-document, not a search source (it already appears in `data/frameworks/`). Those
-sources enter through the manual source-suggestion governance template instead.
+sources. OECD, WEF, and UNESCO publish reports without a public bibliographic
+search API, so they are not part of the weekly automated harvest. They have a
+dedicated **manual, opt-in** LLM importer instead
+(`scripts/ingest_reports.py`, triggered via the `ingest-reports`
+`workflow_dispatch` workflow): it turns a report's plaintext into a candidate
+source plus candidate finding-claims, where every claim statement must be a
+*verbatim* passage of the report (else it is discarded) and everything starts at
+`status=candidate`/`evidence_strength=low` for human review. PDF→plaintext is a
+separate step (`scripts/extract_pdf_text.py`, optional `pypdf`), kept out of the
+import path. See [docs/report-import.md](docs/report-import.md). DigComp is a
+single framework document, not a search source (it already appears in
+`data/frameworks/`), and enters through the manual source-suggestion governance
+template.
 
 Imported candidates pass a keyword relevance filter (`scripts/common.py`): titles
 and abstracts are matched against the MVP topic vocabulary and audience terms, the
@@ -286,7 +295,7 @@ deliberately implements a subset; the remaining steps are open:
 
 | Step | Status |
 | --- | --- |
-| 1. Discover and deduplicate sources | Implemented for OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC (`ingest_*.py`, `deduplicate_sources.py`); OECD/WEF/UNESCO lack a public search API and stay manual |
+| 1. Discover and deduplicate sources | Implemented for OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC (`ingest_*.py`, `deduplicate_sources.py`); OECD/WEF/UNESCO lack a public search API and use a manual, opt-in LLM report importer (`ingest_reports.py`, see [docs/report-import.md](docs/report-import.md)) |
 | 2. Classify relevance | Keyword/abstract heuristic requiring a topic match (default, fallback, fully deterministic), measured against a labeled set (`eval_relevance.py`); two **optional** opt-in signals — a TF-IDF + LogisticRegression classifier (`train_relevance.py`, `RELEVANCE_CLASSIFIER=model`) and embedding prototype anchors (`build_relevance_anchors.py`, `RELEVANCE_CLASSIFIER=embedding`) — exist but stay disabled because neither beats the heuristic on the held-out comparison |
 | 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
