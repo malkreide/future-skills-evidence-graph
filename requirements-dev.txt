@@ -10,3 +10,8 @@ scikit-learn>=1.4
 # when AI_PROVIDER is in {none, cache} (the default and the test/CI mode) the import
 # path stays standard-library only and this package is never imported.
 anthropic>=0.40
+# pypdf is only needed by the OPTIONAL PDF->plaintext helper
+# (scripts/extract_pdf_text.py), which an operator runs to prepare a report for
+# scripts/ingest_reports.py. It is imported lazily and only when actually parsing
+# a PDF; the importer itself takes plaintext and stays standard-library only.
+pypdf>=4.0

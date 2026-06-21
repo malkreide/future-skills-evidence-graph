@@ -10,17 +10,23 @@ on:
   workflow_dispatch:
     inputs:
       report_path:
-        description: "Path to the committed report plaintext (PDF extraction done separately)."
-        required: true
+        description: "Single report plaintext path (PDF extraction done separately). Ignored if manifest is set."
+        required: false
+        default: ""
       url:
-        description: "Canonical URL of the report."
-        required: true
+        description: "Canonical URL of the single report. Ignored if manifest is set."
+        required: false
+        default: ""
       publisher:
         description: "Publishing organisation (e.g. OECD, WEF, UNESCO)."
         required: false
         default: ""
       year:
         description: "Publication year override (optional)."
+        required: false
+        default: ""
+      manifest:
+        description: "Path to a JSON manifest of {report, url, publisher?, year?} entries to import in one run."
         required: false
         default: ""
 
@@ -47,14 +53,23 @@ jobs:
           python-version: "3.12"
       - name: Install dev dependencies
         run: pip install -r requirements-dev.txt
-      - name: Import report candidate (LLM)
-        run: >
-          python scripts/ingest_reports.py
-          --report "${{ inputs.report_path }}"
-          --url "${{ inputs.url }}"
-          ${{ inputs.publisher && format('--publisher "{0}"', inputs.publisher) || '' }}
-          ${{ inputs.year && format('--year {0}', inputs.year) || '' }}
+      - name: Import report candidate(s) (LLM)
+        run: |
+          if [ -n "${MANIFEST}" ]; then
+            python scripts/ingest_reports.py --manifest "${MANIFEST}"
+          else
+            python scripts/ingest_reports.py \
+              --report "${REPORT_PATH}" \
+              --url "${URL}" \
+              ${PUBLISHER:+--publisher "${PUBLISHER}"} \
+              ${YEAR:+--year "${YEAR}"}
+          fi
         env:
+          MANIFEST: ${{ inputs.manifest }}
+          REPORT_PATH: ${{ inputs.report_path }}
+          URL: ${{ inputs.url }}
+          PUBLISHER: ${{ inputs.publisher }}
+          YEAR: ${{ inputs.year }}
           AI_PROVIDER: anthropic
           AI_MODEL: ${{ vars.AI_MODEL }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

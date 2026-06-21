@@ -54,12 +54,16 @@ from extract_claims import (  # noqa: E402
     sentence_tier,
     suggest_claim_fields,
 )
+from extract_pdf_text import clean_extracted_text  # noqa: E402
 from ingest_reports import (  # noqa: E402
     MIN_PASSAGE_LENGTH,
     REPORT_OUTPUT_SCHEMA,
     REPORT_PROMPT_VERSION,
     build_claims,
     build_source,
+    import_job,
+    load_jobs,
+    normalize_for_match,
     propose_report,
     report_candidates,
     report_prompt,
@@ -1493,6 +1497,123 @@ class ReportImportTests(unittest.TestCase):
         self.assertEqual(replayed, proposal)
         _, claims = report_candidates(replayed, self.REPORT, self.URL, "OECD", 2023)
         self.assertEqual([claim["statement"] for claim in claims], [self.VERBATIM_COLLAPSED])
+
+    def test_verbatim_match_tolerates_pdf_typography(self) -> None:
+        # PDF artifacts (curly quotes, dashes, ligatures, hyphenated line breaks,
+        # non-breaking spaces) must not defeat a genuine verbatim quote.
+        curly = 'The report calls the “skill” gap real and growing across school systems.'
+        straight = 'The report calls the "skill" gap real and growing across school systems.'
+        self.assertEqual(verbatim_passage(straight, curly), normalize_for_match(straight))
+
+        hyphenated = "Schools build curricu-\nlum competence in critical thinking for pupils."
+        joined = "Schools build curriculum competence in critical thinking for pupils."
+        self.assertEqual(verbatim_passage(joined, hyphenated), normalize_for_match(joined))
+
+        ligature = "A key ﬁnding about AI literacy for school children is reported here."
+        plain = "A key finding about AI literacy for school children is reported here."
+        self.assertEqual(verbatim_passage(plain, ligature), plain)
+
+        nbsp = "Digital competence matters for every school learner today."
+        spaced = "Digital competence matters for every school learner today."
+        self.assertEqual(verbatim_passage(spaced, nbsp), spaced)
+
+        # A genuine paraphrase (different words) is still rejected: only typography
+        # is neutralized, never wording.
+        self.assertIsNone(
+            verbatim_passage("The skill gap is enormous and growing fast in schools.", curly)
+        )
+
+    def test_load_jobs_single_and_manifest(self) -> None:
+        from argparse import Namespace
+
+        rel = "tests/fixtures/reports/sample-report.txt"
+        single = load_jobs(
+            Namespace(manifest=None, report=rel, url=self.URL, publisher="OECD", year=2023)
+        )
+        self.assertEqual(len(single), 1)
+        self.assertEqual(single[0]["url"], self.URL)
+        self.assertEqual(single[0]["year"], 2023)
+        self.assertTrue(single[0]["text"])
+
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = Path(tmp) / "manifest.json"
+            write_json(
+                manifest,
+                [
+                    {"report": rel, "url": "https://oecd.org/a", "publisher": "OECD", "year": 2023},
+                    {"report": rel, "url": "https://wef.org/b"},
+                ],
+            )
+            jobs = load_jobs(
+                Namespace(manifest=str(manifest), report=None, url=None, publisher=None, year=None)
+            )
+        self.assertEqual([job["url"] for job in jobs], ["https://oecd.org/a", "https://wef.org/b"])
+        self.assertEqual(jobs[1]["year"], None)
+
+        # A malformed request is rejected rather than silently importing nothing.
+        with self.assertRaises(ValueError):
+            load_jobs(Namespace(manifest=None, report=None, url=None, publisher=None, year=None))
+        with self.assertRaises(ValueError):
+            load_jobs(Namespace(
+                manifest=None, report="tests/fixtures/reports/missing.txt",
+                url=self.URL, publisher=None, year=None,
+            ))
+
+    def test_batch_import_dedupes_across_jobs(self) -> None:
+        # Two identical jobs in one run: the first writes a source + claim, the
+        # second is fully deduplicated against the first via the output files.
+        import os
+
+        import ai_provider
+
+        prompt = report_prompt(self.REPORT, self.URL)
+        payload = {
+            "kind": "complete",
+            "model": "claude-opus-4-8",
+            "prompt": prompt,
+            "schema": REPORT_OUTPUT_SCHEMA,
+        }
+        job = {"text": self.REPORT, "url": self.URL, "publisher": "OECD", "year": 2023}
+        with tempfile.TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp) / "ai"
+            sources_path = Path(tmp) / "candidates-reports-sources.json"
+            claims_path = Path(tmp) / "candidates-reports-claims.json"
+            with mock.patch.object(ai_provider, "CACHE_DIR", cache_dir), mock.patch.dict(
+                os.environ, {"AI_PROVIDER": "cache", "AI_MODEL": "claude-opus-4-8"}
+            ):
+                ai_provider.cache_write(payload, self._proposal())
+                first = import_job(dict(job), sources_path, claims_path)
+                second = import_job(dict(job), sources_path, claims_path)
+            stored_sources = load_json(sources_path)
+            stored_claims = load_json(claims_path)
+        self.assertEqual(first, (1, 1, 0))
+        self.assertEqual(second, (0, 0, 0))
+        self.assertEqual(len(stored_sources), 1)
+        self.assertEqual(len(stored_claims), 1)
+        self.assertEqual(stored_sources[0]["status"], "candidate")
+        self.assertEqual(stored_claims[0]["evidence_strength"], "low")
+
+
+class PdfTextExtractionTests(unittest.TestCase):
+    """The optional PDF->plaintext helper's pure cleaner (no pypdf needed)."""
+
+    def test_clean_extracted_text_repairs_extraction_noise(self) -> None:
+        raw = (
+            "AI lite­racy and curricu-\nlum design\n\n\n\n"
+            "improve  critical   thinking.\nThe ﬁnal section follows. \n"
+        )
+        cleaned = clean_extracted_text(raw)
+        # Soft hyphen dropped, hyphenated line break rejoined.
+        self.assertIn("AI literacy and curriculum design", cleaned)
+        # Runs of spaces collapsed; ligature folded by NFKC.
+        self.assertIn("improve critical thinking.", cleaned)
+        self.assertIn("The final section follows.", cleaned)
+        # Blank-line runs squeezed to a single blank line; trailing newline added.
+        self.assertNotIn("\n\n\n", cleaned)
+        self.assertTrue(cleaned.endswith("\n"))
+
+    def test_clean_extracted_text_handles_empty(self) -> None:
+        self.assertEqual(clean_extracted_text("   \n\n  "), "")
 
 
 if __name__ == "__main__":

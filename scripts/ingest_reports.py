@@ -29,7 +29,10 @@ proposes nothing and writes no files.
 from __future__ import annotations
 
 import argparse
+import re
 import sys
+import unicodedata
+from pathlib import Path
 from typing import Any
 
 import ai_provider
@@ -42,6 +45,7 @@ from common import (
     filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
+    load_json,
     score_relevance,
     slugify,
 )
@@ -163,25 +167,56 @@ def propose_report(text: str, url: str) -> dict[str, Any] | None:
     return result
 
 
-def _collapse(text: str) -> str:
-    """Collapse all runs of whitespace to single spaces (line-wrap agnostic)."""
-    return " ".join(str(text).split())
+# Typographic noise from PDF extraction that carries no semantic difference and
+# must not defeat a verbatim match: curly quotes, the various dashes, and the
+# non-breaking space are mapped to their plain ASCII equivalents. Applied
+# SYMMETRICALLY to both the statement and the report text, so paraphrases (which
+# differ in actual words) still fail — only typography is neutralized.
+_CHAR_MAP = {
+    **{ord(c): "'" for c in "‘’‚‛′"},  # ' ' ‚ ‛ ′
+    **{ord(c): '"' for c in "“”„‟″"},  # " " „ ‟ ″
+    **{ord(c): "-" for c in "‐‑‒–—―−"},  # ‐ ‑ ‒ – — ― −
+    0x00A0: " ",  # non-breaking space
+}
+
+# Intra-word hyphenation at a line break ("curricu-\nlum" -> "curriculum") is a
+# PDF artifact and is rejoined before whitespace is collapsed. The same is done
+# for the Unicode soft hyphen (U+00AD), the explicit hyphenation point. This is
+# deliberately conservative: it only joins across a newline, so a genuine
+# compound that happens to wrap ("decision-\nmaking") is also joined — at worst
+# that rejects a real quote, never invents one.
+_LINEBREAK_HYPHEN = re.compile(r"­\s*|-\s*\n\s*")
+
+
+def normalize_for_match(text: str) -> str:
+    """Normalize *text* for verbatim matching, neutralizing PDF typography.
+
+    NFKC folds compatibility forms (ligatures like ``ﬁ`` -> ``fi``, full-width
+    characters); curly quotes/dashes/nbsp are mapped to ASCII; hyphenated line
+    breaks are rejoined; whitespace is collapsed. Wording and case are preserved,
+    so the result is still a faithful, verbatim form of the passage.
+    """
+    text = unicodedata.normalize("NFKC", str(text))
+    text = text.translate(_CHAR_MAP)
+    text = _LINEBREAK_HYPHEN.sub("", text)
+    return " ".join(text.split())
 
 
 def verbatim_passage(statement: str, text: str) -> str | None:
-    """Return the whitespace-normalized *statement* iff it is a verbatim quote.
+    """Return the normalized *statement* iff it is a verbatim quote of *text*.
 
-    PDF-extracted plaintext wraps lines arbitrarily, so matching is done on the
-    whitespace-collapsed forms; everything else (wording, case, punctuation) must
-    match exactly. A paraphrased, summarized or invented statement does not occur
-    literally in the text and returns None — the hallucination guard. Statements
-    below MIN_PASSAGE_LENGTH are rejected as too thin to be evidence.
+    Matching runs on the typography-normalized forms (see normalize_for_match):
+    PDF line wraps, curly quotes, dashes, ligatures and hyphenation are
+    neutralized, but the actual words and their order must match exactly. A
+    paraphrased, summarized or invented statement does not occur literally and
+    returns None — the hallucination guard. Statements below MIN_PASSAGE_LENGTH
+    are rejected as too thin to be evidence.
     """
-    collapsed_statement = _collapse(statement)
-    if len(collapsed_statement) < MIN_PASSAGE_LENGTH:
+    normalized_statement = normalize_for_match(statement)
+    if len(normalized_statement) < MIN_PASSAGE_LENGTH:
         return None
-    if collapsed_statement in _collapse(text):
-        return collapsed_statement
+    if normalized_statement in normalize_for_match(text):
+        return normalized_statement
     return None
 
 
@@ -312,52 +347,112 @@ def report_candidates(
     return [source], build_claims(proposal, source, report_text)
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Import a candidate report source + verbatim finding-claims via an LLM."
-    )
-    parser.add_argument("--report", required=True, help="Path to the report plaintext file.")
-    parser.add_argument("--url", required=True, help="Canonical URL of the report.")
-    parser.add_argument("--publisher", default=None, help="Publishing organisation (e.g. OECD).")
-    parser.add_argument("--year", type=int, default=None, help="Publication year override.")
-    parser.add_argument("--sources-output", default="data/sources/candidates-reports.json")
-    parser.add_argument("--claims-output", default="data/claims/candidates-reports.json")
-    args = parser.parse_args()
+def load_jobs(args: argparse.Namespace) -> list[dict[str, Any]]:
+    """Resolve the report import jobs from --manifest or a single --report.
 
-    report_path = ROOT / args.report
-    if not report_path.exists():
-        print(f"Report plaintext {report_path} does not exist.", file=sys.stderr)
-        return 1
-    report_text = report_path.read_text(encoding="utf-8")
+    A manifest is a JSON array of objects, each ``{"report", "url",
+    "publisher"?, "year"?}``; the single-report form mirrors one such entry on
+    the command line. Each job's report plaintext is read here so missing files
+    fail fast before any LLM call. Raises ValueError on a malformed request.
+    """
+    if args.manifest:
+        entries = load_json(ROOT / args.manifest)
+        if not isinstance(entries, list):
+            raise ValueError(f"{args.manifest} must contain a JSON array of report entries")
+    elif args.report and args.url:
+        entries = [{"report": args.report, "url": args.url,
+                    "publisher": args.publisher, "year": args.year}]
+    else:
+        raise ValueError("provide either --manifest, or both --report and --url")
 
-    proposal = propose_report(report_text, args.url)
-    if proposal is None:
-        # AI off / unavailable: a deliberate no-op, like the rest of the project.
-        print("AI provider off or unavailable; imported no report candidates.")
-        return 0
+    jobs: list[dict[str, Any]] = []
+    for entry in entries:
+        if not isinstance(entry, dict) or not entry.get("report") or not entry.get("url"):
+            raise ValueError(f"each report entry needs a 'report' path and a 'url': {entry!r}")
+        report_path = ROOT / entry["report"]
+        if not report_path.exists():
+            raise ValueError(f"report plaintext {report_path} does not exist")
+        year = entry.get("year")
+        jobs.append({
+            "text": report_path.read_text(encoding="utf-8"),
+            "url": str(entry["url"]),
+            "publisher": entry.get("publisher"),
+            "year": int(year) if isinstance(year, (int, str)) and str(year).isdigit() else None,
+        })
+    return jobs
 
+
+def import_job(
+    job: dict[str, Any], sources_path: Path, claims_path: Path
+) -> tuple[int, int, int]:
+    """Import one report job, returning (sources, claims, irrelevant) counts.
+
+    Cross-job dedupe is automatic: each append re-reads the candidate files, and
+    filter_new_sources/filter_new_claims dedupe against the whole repository, so a
+    later job in the same run sees the earlier jobs' appends.
+    """
+    proposal = propose_report(job["text"], job["url"])
     sources, _ = report_candidates(
-        proposal, report_text, args.url, args.publisher, args.year
+        proposal, job["text"], job["url"], job["publisher"], job["year"]
     )
     relevant = filter_relevant_sources(sources)
     new_sources = filter_new_sources(relevant)
-    appended_sources = append_candidate_sources(ROOT / args.sources_output, new_sources)
+    appended_sources = append_candidate_sources(sources_path, new_sources)
 
     # Build claims only AFTER the source id is final: relevance + dedupe may have
     # suffixed it, and the claims must reference the id actually written. A source
     # that was filtered as irrelevant or already known yields no claims.
-    appended_claims: list[dict[str, Any]] = []
+    claim_count = 0
     for source in appended_sources:
-        claims = build_claims(proposal, source, report_text)
-        new_claims = filter_new_claims(claims)
-        appended_claims += append_unique_records(
-            ROOT / args.claims_output, new_claims, lambda claim: [claim_statement_key(claim)]
+        new_claims = filter_new_claims(build_claims(proposal, source, job["text"]))
+        appended = append_unique_records(
+            claims_path, new_claims, lambda claim: [claim_statement_key(claim)]
         )
+        claim_count += len(appended)
+    return len(appended_sources), claim_count, len(sources) - len(relevant)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Import candidate report source(s) + verbatim finding-claims via an LLM."
+    )
+    parser.add_argument("--report", help="Path to a single report plaintext file.")
+    parser.add_argument("--url", help="Canonical URL of the single report.")
+    parser.add_argument("--publisher", default=None, help="Publishing organisation (e.g. OECD).")
+    parser.add_argument("--year", type=int, default=None, help="Publication year override.")
+    parser.add_argument(
+        "--manifest",
+        help="JSON array of {report, url, publisher?, year?} entries to import in one run.",
+    )
+    parser.add_argument("--sources-output", default="data/sources/candidates-reports.json")
+    parser.add_argument("--claims-output", default="data/claims/candidates-reports.json")
+    args = parser.parse_args()
+
+    # Off by default: skip even reading files so the path is fully inert and the
+    # message is unambiguous, exactly like the rest of the project's AI features.
+    if ai_provider.ai_provider() == "none":
+        print("AI provider off; imported no report candidates.")
+        return 0
+
+    try:
+        jobs = load_jobs(args)
+    except ValueError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
+
+    sources_path = ROOT / args.sources_output
+    claims_path = ROOT / args.claims_output
+    total_sources = total_claims = total_irrelevant = 0
+    for job in jobs:
+        n_sources, n_claims, n_irrelevant = import_job(job, sources_path, claims_path)
+        total_sources += n_sources
+        total_claims += n_claims
+        total_irrelevant += n_irrelevant
 
     print(
-        f"Appended {len(appended_sources)} report source(s) to {args.sources_output} "
-        f"and {len(appended_claims)} verbatim finding-claim(s) to {args.claims_output} "
-        f"({len(sources) - len(relevant)} source(s) filtered as irrelevant)."
+        f"Imported {len(jobs)} report(s): appended {total_sources} source(s) to "
+        f"{args.sources_output} and {total_claims} verbatim finding-claim(s) to "
+        f"{args.claims_output} ({total_irrelevant} source(s) filtered as irrelevant)."
     )
     return 0
 
