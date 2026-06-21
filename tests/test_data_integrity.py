@@ -15,7 +15,13 @@ if str(SCRIPTS) not in sys.path:
 
 from jsonschema import Draft202012Validator  # noqa: E402
 
-from cluster_claims import cluster_candidate_skills  # noqa: E402
+from cluster_claims import (  # noqa: E402
+    EMBEDDING_CLUSTER_THRESHOLD,
+    cluster_candidate_skills,
+    cluster_candidate_skills_embedding,
+    cluster_method,
+    cluster_skills,
+)
 from common import (  # noqa: E402
     RELEVANCE_MODEL_PATH,
     RELEVANCE_THRESHOLD,
@@ -927,6 +933,124 @@ class DataIntegrityTests(unittest.TestCase):
             self.assertEqual(len(rebuilt_vec), len(committed_vec))
             for got, expected in zip(rebuilt_vec, committed_vec):
                 self.assertAlmostEqual(got, expected, places=9)
+
+
+class EmbeddingClusteringTests(unittest.TestCase):
+    # Three candidate claims: alpha/beta embed near each other (they cluster),
+    # gamma is orthogonal (it stays a singleton and is dropped). The reviewed
+    # claim is ignored. Vectors are a fixture so the test never touches a real
+    # embedding provider or the network.
+    CLAIMS = [
+        {"id": "claim-a", "status": "candidate", "statement": "alpha statement"},
+        {"id": "claim-b", "status": "candidate", "statement": "beta statement"},
+        {"id": "claim-c", "status": "candidate", "statement": "gamma statement"},
+        {"id": "claim-d", "status": "reviewed", "statement": "delta reviewed"},
+    ]
+    VECTORS = {
+        "alpha statement": [1.0, 0.0, 0.0, 0.0],
+        "beta statement": [0.9, 0.2, 0.0, 0.0],
+        "gamma statement": [0.0, 0.0, 1.0, 0.0],
+    }
+
+    def _embedder(self, extra=None):
+        mapping = dict(self.VECTORS)
+        if extra:
+            mapping.update(extra)
+        return lambda texts: [mapping.get(text, [0.0, 0.0, 0.0, 0.0]) for text in texts]
+
+    def test_vocabulary_is_the_default_method(self) -> None:
+        import os
+
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("CLUSTER_METHOD", None)
+            self.assertEqual(cluster_method(), "vocabulary")
+
+    def test_embedding_clustering_is_deterministic_and_schema_valid(self) -> None:
+        embedder = self._embedder()
+        first = cluster_candidate_skills_embedding(
+            self.CLAIMS, [], min_claims=2, embedder=embedder, provider="local"
+        )
+        second = cluster_candidate_skills_embedding(
+            self.CLAIMS, [], min_claims=2, embedder=embedder, provider="local"
+        )
+        self.assertEqual(first, second)  # reproducible for the same input
+        proposals, hints = first
+        self.assertEqual(hints, [])
+        self.assertEqual(len(proposals), 1)  # gamma singleton is dropped at min_claims=2
+        proposal = proposals[0]
+        self.assertEqual(proposal["supporting_claim_ids"], ["claim-a", "claim-b"])
+        self.assertEqual(proposal["status"], "candidate")
+        self.assertEqual(proposal["evidence_score"], 0.0)
+        # Provenance is recorded in the change_log (the schema admits no extra field).
+        self.assertIn("embedding", proposal["change_log"][0]["change"])
+        # Output satisfies skill.schema.json and the definition keeps the review gate.
+        schema = load_json(ROOT / "schemas" / "skill.schema.json")
+        Draft202012Validator(schema).validate(proposal)
+        self.assertTrue(proposal["definition"].endswith("Definition requires human review."))
+
+    def test_embedding_clustering_is_order_independent(self) -> None:
+        embedder = self._embedder()
+        forward, _ = cluster_candidate_skills_embedding(
+            self.CLAIMS, [], min_claims=2, embedder=embedder, provider="local"
+        )
+        reversed_claims = list(reversed(self.CLAIMS))
+        backward, _ = cluster_candidate_skills_embedding(
+            reversed_claims, [], min_claims=2, embedder=embedder, provider="local"
+        )
+        self.assertEqual(forward, backward)
+
+    def test_existing_skill_is_only_a_hint_not_a_suppressor(self) -> None:
+        existing = {
+            "id": "skill-creativity",
+            "name": "Creativity",
+            "definition": "Creative thinking skills here.",
+        }
+        skill_text = "Creativity Creative thinking skills here."
+        embedder = self._embedder({skill_text: [0.95, 0.1, 0.0, 0.0]})
+        proposals, hints = cluster_candidate_skills_embedding(
+            self.CLAIMS, [existing], min_claims=2, embedder=embedder, provider="local"
+        )
+        # The proposal is still made: existing skills never suppress, only hint.
+        self.assertEqual(len(proposals), 1)
+        self.assertEqual(
+            hints, [("claim-a", "skill-creativity", ["claim-a", "claim-b"])]
+        )
+
+    def test_embedding_returns_none_without_a_provider(self) -> None:
+        # No embedding provider: the embedder yields nothing, the function signals
+        # None, and the dispatcher falls back to the vocabulary method.
+        none_embedder = lambda texts: None
+        self.assertIsNone(
+            cluster_candidate_skills_embedding(
+                self.CLAIMS, [], min_claims=2, embedder=none_embedder, provider="none"
+            )
+        )
+
+    def test_dispatcher_falls_back_to_vocabulary_when_embedding_unavailable(self) -> None:
+        import os
+
+        claims = [
+            {
+                "id": "claim-a",
+                "status": "candidate",
+                "statement": "Creativity training fosters creative thinking in students.",
+            },
+            {
+                "id": "claim-b",
+                "status": "candidate",
+                "statement": "Creative problem solving practice benefits pupils in classrooms.",
+            },
+        ]
+        vocab = cluster_candidate_skills(claims, [], min_claims=2)
+        with mock.patch.dict(
+            os.environ, {"CLUSTER_METHOD": "embedding"}, clear=False
+        ):
+            os.environ.pop("EMBEDDING_PROVIDER", None)
+            dispatched = cluster_skills(claims, [], min_claims=2)
+        self.assertEqual(dispatched, vocab)
+
+    def test_threshold_constant_is_a_fixed_cosine(self) -> None:
+        self.assertTrue(0.0 < EMBEDDING_CLUSTER_THRESHOLD <= 1.0)
 
 
 class OptionalAiFoundationTests(unittest.TestCase):
