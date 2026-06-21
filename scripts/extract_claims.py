@@ -16,6 +16,7 @@ import re
 import sys
 from typing import Any
 
+import ai_provider
 from common import (
     ROOT,
     TODAY,
@@ -76,6 +77,102 @@ AGE_RANGE_PLACEHOLDER = "unspecified"
 OUTCOME_PLACEHOLDER = "Not extracted automatically; describe during review."
 CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 
+# --- Optional LLM claim pre-fill (P1) -------------------------------------
+#
+# When (and only when) an AI provider is configured (AI_PROVIDER != none) the
+# extractor additionally asks the LLM to *suggest* the otherwise-manual review
+# fields (context, outcome, age_range, evidence_strength). The suggestion is
+# stored under claim["assist"] as a NON-binding proposal; the real fields keep
+# their placeholders and statement/text_anchor stay verbatim. With the provider
+# off this whole path is inert and the output is byte-identical to before.
+
+# Versioned so every stored suggestion carries its prompt version in provenance.
+PREFILL_PROMPT_VERSION = "claim-prefill-v1"
+
+# Strict JSON Schema for the suggestion (enforced via output_config.format). It
+# mirrors Anhang A: every field is optional content (null when the abstract does
+# not support it); evidence_strength uses the {low, moderate, high} vocabulary.
+PREFILL_OUTPUT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["age_range", "outcome", "context", "evidence_strength"],
+    "properties": {
+        "age_range": {"type": ["string", "null"]},
+        "outcome": {"type": ["string", "null"]},
+        "context": {"type": ["string", "null"]},
+        "evidence_strength": {"enum": ["low", "moderate", "high", None]},
+    },
+}
+
+PREFILL_SUGGESTION_FIELDS = ("age_range", "outcome", "context", "evidence_strength")
+
+# In-feature prompt, version 1 (docs/ki-weiterentwicklung-plan.md, Anhang A).
+# System and user turn are concatenated into the single prompt the provider
+# takes; the response shape is constrained by PREFILL_OUTPUT_SCHEMA, not prefill.
+PREFILL_PROMPT_TEMPLATE = '''System: Du extrahierst strukturierte Evidenz-Metadaten aus dem Abstract einer \
+bildungswissenschaftlichen Studie. Du erfindest nichts. Wenn der Abstract eine \
+Angabe nicht hergibt, gib für das Feld null zurück. Antworte ausschließlich als \
+JSON nach dem vorgegebenen Schema.
+
+User:
+Abstract:
+"""{abstract}"""
+
+Bereits extrahierter wörtlicher Befund-Satz (NICHT verändern):
+"""{statement}"""
+
+Erkannte Topics: {topics}
+
+Liefere Vorschläge für die Review-Felder dieses Claims:
+- age_range: Altersbereich der untersuchten Lernenden als "min-max" (6-18-Skala), \
+oder null. Studien außerhalb 6-18 => null.
+- outcome: 1 Satz, welches Lernergebnis/Effekt berichtet wird (neutral, ohne \
+Übertreibung), oder null.
+- context: 1 Satz zum Setting (Land, Schulstufe, Interventionsart), oder null.
+- evidence_strength: eine von {{low, moderate, high}}, konservativ geschätzt aus \
+Studientyp und Stichprobe; im Zweifel low.
+
+Antwortschema:
+{{"age_range": string|null, "outcome": string|null, "context": string|null, \
+ "evidence_strength": "low"|"moderate"|"high"}}'''
+
+
+def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:
+    """Render the versioned claim pre-fill prompt for *abstract*/*statement*/*topics*."""
+    return PREFILL_PROMPT_TEMPLATE.format(
+        abstract=abstract.strip(),
+        statement=statement.strip(),
+        topics=", ".join(topics) if topics else "—",
+    )
+
+
+def suggest_claim_fields(
+    abstract: str, statement: str, topics: list[str]
+) -> dict[str, Any] | None:
+    """Suggest the manual review fields for a claim, or None when unavailable.
+
+    Calls ``ai_provider.complete`` with the versioned prompt (Anhang A) and a
+    strict JSON Schema (``output_config.format``); determinism comes from
+    ``effort='low'`` with NO temperature. Returns a mapping of the four review
+    fields (``age_range``, ``outcome``, ``context``, ``evidence_strength``), each
+    a string or None. Returns None entirely when the provider is ``none``, on a
+    refusal, on any failure, or when the model proposes nothing — so a missing
+    suggestion is always indistinguishable from AI being off.
+    """
+    # Off by default: skip even building the prompt so the path is fully inert.
+    if ai_provider.ai_provider() == "none":
+        return None
+    prompt = prefill_prompt(abstract, statement, topics)
+    result = ai_provider.complete(prompt, schema=PREFILL_OUTPUT_SCHEMA)
+    if not isinstance(result, dict):
+        return None
+    fields = {field: result.get(field) for field in PREFILL_SUGGESTION_FIELDS}
+    # Nothing useful proposed (all null) is treated as "no suggestion" so we do
+    # not attach an empty assist block.
+    if all(value is None for value in fields.values()):
+        return None
+    return fields
+
 
 def _has_cue(normalized: str, cues: tuple[str, ...]) -> bool:
     padded = f" {normalized} "
@@ -134,7 +231,7 @@ def claim_from_source(source: dict[str, Any]) -> dict[str, Any] | None:
         return None
     index, sentence, topics = picked
     source_id = str(source.get("id", "unknown-source"))
-    return {
+    claim: dict[str, Any] = {
         "id": slugify(f"{source_id.removeprefix('src-')} abstract s{index + 1}", "claim"),
         "statement": sentence,
         "source_ids": [source_id],
@@ -153,6 +250,17 @@ def claim_from_source(source: dict[str, Any]) -> dict[str, Any] | None:
         "created_at": TODAY,
         "reviewed_at": None,
     }
+    # Opt-in LLM pre-fill: attach the suggestion ONLY under "assist". The real
+    # fields above keep their placeholders, and statement/text_anchor stay
+    # verbatim. With AI_PROVIDER=none this returns None and nothing is added,
+    # so the output is byte-identical to the LLM-free pipeline.
+    suggestion = suggest_claim_fields(abstract, sentence, topics)
+    if suggestion is not None:
+        claim["assist"] = {
+            "suggestions": [suggestion],
+            "provenance": ai_provider.ai_provenance(PREFILL_PROMPT_VERSION),
+        }
+    return claim
 
 
 def main() -> int:

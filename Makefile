@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model build recall-probe recall-ingest train
+.PHONY: install validate test eval eval-model eval-prefill build recall-probe recall-ingest train
 
 install:
 	pip install -r requirements-dev.txt
@@ -15,6 +15,10 @@ eval:
 
 eval-model:
 	python scripts/eval_relevance.py --compare-model
+
+# Offline field metrics for the optional LLM claim pre-fill (P1), from fixtures.
+eval-prefill:
+	python scripts/eval_claim_prefill.py
 
 build:
 	python scripts/build_site.py

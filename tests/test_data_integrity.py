@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,11 +39,21 @@ from extract_claims import (  # noqa: E402
     AGE_RANGE_PLACEHOLDER,
     CONTEXT_PLACEHOLDER_SUFFIX,
     OUTCOME_PLACEHOLDER,
+    PREFILL_OUTPUT_SCHEMA,
+    PREFILL_PROMPT_VERSION,
     best_claim_sentence,
     claim_from_source,
+    prefill_prompt,
     sentence_tier,
+    suggest_claim_fields,
 )
-from promote_candidate import claim_review_errors, skill_activation_errors  # noqa: E402
+from promote_candidate import (  # noqa: E402
+    apply_claim_suggestions,
+    claim_review_errors,
+    claim_suggestions,
+    format_claim_suggestions,
+    skill_activation_errors,
+)
 from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
@@ -938,6 +949,145 @@ class OptionalAiFoundationTests(unittest.TestCase):
         # "assist" is never required: removing it leaves a valid record.
         self.assertNotIn("assist", base_claim)
         self.assertNotIn("assist", base_source)
+
+
+class ClaimPrefillAssistTests(unittest.TestCase):
+    """P1: the LLM claim pre-fill only ever proposes -- never decides."""
+
+    SOURCE = {
+        "id": "src-prefill-test",
+        "source_type": "systematic_review",
+        "status": "candidate",
+        "abstract": (
+            "Background remarks describing the structure of this paper come first. "
+            "We find that AI literacy instruction improves critical thinking among "
+            "primary school students. Short note."
+        ),
+    }
+
+    EXPECTED_STATEMENT = (
+        "We find that AI literacy instruction improves critical thinking among "
+        "primary school students."
+    )
+
+    def _write_suggestion_fixture(self, cache_dir: Path, suggestion: dict) -> None:
+        """Record a model suggestion for SOURCE's extracted sentence into the cache."""
+        import ai_provider
+
+        picked = best_claim_sentence(self.SOURCE["abstract"])
+        assert picked is not None
+        _, sentence, topics = picked
+        prompt = prefill_prompt(self.SOURCE["abstract"], sentence, topics)
+        payload = {
+            "kind": "complete",
+            "model": ai_provider.ai_model(),
+            "prompt": prompt,
+            "schema": PREFILL_OUTPUT_SCHEMA,
+        }
+        with mock.patch.object(ai_provider, "CACHE_DIR", cache_dir):
+            ai_provider.cache_write(payload, suggestion)
+
+    def test_provider_none_adds_no_assist(self) -> None:
+        # With AI off (the default), claim_from_source must behave exactly as
+        # before: no "assist" key, suggestion path inert.
+        import os
+
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("AI_PROVIDER", None)
+            self.assertIsNone(suggest_claim_fields("abstract", "statement", ["ai literacy"]))
+            claim = claim_from_source(self.SOURCE)
+        self.assertIsNotNone(claim)
+        self.assertNotIn("assist", claim)
+        self.assertEqual(claim["age_range"], AGE_RANGE_PLACEHOLDER)
+        self.assertEqual(claim["outcome"], OUTCOME_PLACEHOLDER)
+
+    def test_suggestion_lands_only_under_assist(self) -> None:
+        # With a cached suggestion, claim_from_source attaches it under "assist"
+        # while statement/text_anchor stay verbatim and the REAL fields keep
+        # their placeholders -- the suggestion never touches them.
+        import os
+
+        import ai_provider
+
+        suggestion = {
+            "age_range": "6-12",
+            "outcome": "AI literacy instruction improves critical thinking.",
+            "context": "Systematic review in primary school classrooms.",
+            "evidence_strength": "moderate",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp)
+            self._write_suggestion_fixture(cache_dir, suggestion)
+            with mock.patch.object(ai_provider, "CACHE_DIR", cache_dir), mock.patch.dict(
+                os.environ, {"AI_PROVIDER": "cache", "AI_MODEL": "claude-opus-4-8"}
+            ):
+                claim = claim_from_source(self.SOURCE)
+
+        # statement / text_anchor remain the deterministic verbatim evidence.
+        self.assertEqual(claim["statement"], self.EXPECTED_STATEMENT)
+        self.assertIn('sentence 2: "We find that AI literacy', claim["text_anchor"])
+        # The real review fields are untouched placeholders.
+        self.assertEqual(claim["age_range"], AGE_RANGE_PLACEHOLDER)
+        self.assertEqual(claim["outcome"], OUTCOME_PLACEHOLDER)
+        self.assertTrue(claim["context"].endswith(CONTEXT_PLACEHOLDER_SUFFIX))
+        # The suggestion lives ONLY under assist, with provenance.
+        self.assertEqual(claim["assist"]["suggestions"], [suggestion])
+        self.assertEqual(
+            claim["assist"]["provenance"]["prompt_version"], PREFILL_PROMPT_VERSION
+        )
+        # And the record still validates against the schema.
+        schema = load_json(ROOT / "schemas" / "claim.schema.json")
+        Draft202012Validator(schema).validate(claim)
+
+    def test_promotion_gate_stays_sharp_with_suggestions(self) -> None:
+        # A suggestion sitting under assist must NOT satisfy the review gate; only
+        # explicit adoption (--accept-suggestions / reviewer args) fills the real
+        # fields, and even then a skill link is still required.
+        suggestion = {
+            "age_range": "6-12",
+            "outcome": "AI literacy instruction improves critical thinking.",
+            "context": "Systematic review in primary school classrooms.",
+            "evidence_strength": "high",
+        }
+        claim = {
+            "id": "claim-prefill-gate",
+            "context": f"Auto-extracted candidate. {CONTEXT_PLACEHOLDER_SUFFIX}",
+            "age_range": AGE_RANGE_PLACEHOLDER,
+            "outcome": OUTCOME_PLACEHOLDER,
+            "evidence_strength": "low",
+            "supports_skill_ids": [],
+            "contradicts_skill_ids": [],
+            "source_ids": ["src-x"],
+            "assist": {
+                "suggestions": [suggestion],
+                "provenance": {"prompt_version": PREFILL_PROMPT_VERSION},
+            },
+        }
+        skill_ids, source_ids = {"skill-x"}, {"src-x"}
+
+        # Gate is sharp: placeholders remain -> errors, despite the suggestion.
+        errors = claim_review_errors(claim, skill_ids, source_ids)
+        self.assertTrue(any("context" in e for e in errors))
+        self.assertTrue(any("age_range" in e for e in errors))
+        self.assertTrue(any("outcome" in e for e in errors))
+        # Helpers expose the suggestion for display without changing the record.
+        self.assertEqual(claim_suggestions(claim), suggestion)
+        self.assertTrue(format_claim_suggestions(claim))
+        self.assertEqual(claim["age_range"], AGE_RANGE_PLACEHOLDER)  # unchanged
+
+        # Adopt the suggestions as starting values (the --accept-suggestions path).
+        adopted = apply_claim_suggestions(claim)
+        self.assertEqual(set(adopted), {"age_range", "outcome", "context", "evidence_strength"})
+        self.assertEqual(claim["age_range"], "6-12")
+        self.assertEqual(claim["evidence_strength"], "strong")  # high -> strong mapping
+
+        # Adoption alone is not enough: a reviewed claim still needs a skill link.
+        errors = claim_review_errors(claim, skill_ids, source_ids)
+        self.assertEqual(errors, ["a reviewed claim must link at least one skill; pass --supports or --contradicts"])
+
+        # With the reviewer-supplied skill link the gate finally clears.
+        claim["supports_skill_ids"] = ["skill-x"]
+        self.assertEqual(claim_review_errors(claim, skill_ids, source_ids), [])
 
 
 if __name__ == "__main__":

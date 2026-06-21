@@ -1,0 +1,204 @@
+{
+  "_README": "Golden set for the LLM claim pre-fill (P1). Each example holds the extractor inputs (abstract, statement, topics) and the hand-curated 'gold' review fields a human would accept. '_recorded' is a recorded/simulated model suggestion for the SAME prompt; scripts/eval_claim_prefill.py --write-fixtures replays it into tests/fixtures/ai/ so the eval runs offline and deterministically (AI_PROVIDER=cache). evidence_strength uses the prompt vocabulary low|moderate|high (Anhang A); null means the abstract does not support that field. DO NOT wire these into data/ -- they are an evaluation artifact only.",
+  "prompt_version": "claim-prefill-v1",
+  "examples": [
+    {
+      "id": "prefill-ai-literacy-primary",
+      "source_type": "systematic_review",
+      "abstract": "We synthesise 18 classroom studies of AI literacy instruction in European primary schools. We find that structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs. Effects were consistent across the reviewed interventions.",
+      "statement": "We find that structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs.",
+      "topics": ["ai literacy", "critical thinking"],
+      "gold": {"age_range": "6-12", "outcome": "Pupils become better at critically evaluating machine-generated outputs.", "context": "Systematic review of AI literacy lessons in European primary school classrooms.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "6-12", "outcome": "Pupils become better at critically evaluating machine-generated outputs.", "context": "Systematic review of AI literacy lessons in European primary school classrooms.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-coding-secondary-rct",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A randomised controlled trial with 240 secondary students in Germany evaluated a block-based programming curriculum. Students in the treatment group showed significantly higher computational thinking scores than controls. The intervention ran for one semester.",
+      "statement": "Students in the treatment group showed significantly higher computational thinking scores than controls.",
+      "topics": ["computational thinking", "programming"],
+      "gold": {"age_range": "12-18", "outcome": "Block-based programming raises computational thinking scores.", "context": "One-semester randomised controlled trial in German secondary schools.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "12-18", "outcome": "Block-based programming raises computational thinking scores.", "context": "One-semester randomised controlled trial in German secondary schools.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-collaboration-middle",
+      "source_type": "peer_reviewed_article",
+      "abstract": "This study examined project-based collaborative learning in middle-school science classrooms across three districts. Results indicate that sustained group projects improved students' collaboration and peer-feedback skills. Teachers reported higher engagement.",
+      "statement": "Results indicate that sustained group projects improved students' collaboration and peer-feedback skills.",
+      "topics": ["collaboration", "project-based learning"],
+      "gold": {"age_range": "10-14", "outcome": "Group projects improve collaboration and peer-feedback skills.", "context": "Multi-district study of project-based science learning in middle schools.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "10-14", "outcome": "Group projects improve collaboration and peer-feedback skills.", "context": "Multi-district study of project-based science learning in middle schools.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-data-literacy-highschool",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We taught a data literacy module to 95 high-school students and measured changes in their ability to interpret charts and detect misleading statistics. Post-test scores improved, with the largest gains for students with low prior numeracy. The module lasted six weeks.",
+      "statement": "Post-test scores improved, with the largest gains for students with low prior numeracy.",
+      "topics": ["data literacy", "numeracy"],
+      "gold": {"age_range": "14-18", "outcome": "A data literacy module improves chart interpretation, especially for low-numeracy students.", "context": "Six-week data literacy module with high-school students.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "14-18", "outcome": "A data literacy module improves chart interpretation, especially for low-numeracy students.", "context": "Six-week data literacy module with high-school students.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-self-regulation-elementary",
+      "source_type": "systematic_review",
+      "abstract": "A meta-analysis of 32 studies investigated self-regulated learning interventions for elementary pupils. The evidence suggests that explicit goal-setting and self-monitoring routines modestly improve task persistence. Heterogeneity across studies was high.",
+      "statement": "The evidence suggests that explicit goal-setting and self-monitoring routines modestly improve task persistence.",
+      "topics": ["self-regulation", "metacognition"],
+      "gold": {"age_range": "6-12", "outcome": "Goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of self-regulated learning interventions in elementary schools.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "6-12", "outcome": "Goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of self-regulated learning interventions in elementary schools.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-creativity-design",
+      "source_type": "peer_reviewed_article",
+      "abstract": "In a quasi-experimental design, two secondary cohorts followed a design-thinking unit. The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric. Sample size was modest at 84 students.",
+      "statement": "The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric.",
+      "topics": ["creativity", "design thinking"],
+      "gold": {"age_range": "12-18", "outcome": "A design-thinking unit increases originality and feasibility of student solutions.", "context": "Quasi-experimental design-thinking unit in secondary cohorts.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "12-18", "outcome": "A design-thinking unit increases originality and feasibility of student solutions.", "context": "Quasi-experimental design-thinking unit in secondary cohorts.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-digital-citizenship",
+      "source_type": "policy_report",
+      "abstract": "This policy report reviews national digital citizenship curricula. It argues that media-evaluation skills should be introduced earlier, but it presents no new measured learning outcomes. Recommendations target ministries of education.",
+      "statement": "It argues that media-evaluation skills should be introduced earlier, but it presents no new measured learning outcomes.",
+      "topics": ["digital citizenship", "media literacy"],
+      "gold": {"age_range": null, "outcome": null, "context": "Policy report reviewing national digital citizenship curricula.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": null, "context": "Policy report reviewing national digital citizenship curricula.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-physics-simulations",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We compared interactive simulations to traditional lectures for teaching mechanics to 11th-grade physics students. Students using simulations demonstrated deeper conceptual understanding on a transfer test. The study involved four classes.",
+      "statement": "Students using simulations demonstrated deeper conceptual understanding on a transfer test.",
+      "topics": ["science education", "conceptual understanding"],
+      "gold": {"age_range": "15-17", "outcome": "Interactive simulations deepen conceptual understanding of mechanics.", "context": "Classroom comparison of simulations versus lectures in 11th-grade physics.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "15-17", "outcome": "Interactive simulations deepen conceptual understanding of mechanics.", "context": "Classroom comparison of simulations versus lectures in 11th-grade physics.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-reading-comprehension",
+      "source_type": "systematic_review",
+      "abstract": "A systematic review of reciprocal teaching examined its effect on reading comprehension in upper-primary classrooms. Results show consistent, moderate improvements in comprehension across 21 studies. The approach was robust to different text genres.",
+      "statement": "Results show consistent, moderate improvements in comprehension across 21 studies.",
+      "topics": ["reading comprehension", "literacy"],
+      "gold": {"age_range": "9-12", "outcome": "Reciprocal teaching consistently and moderately improves reading comprehension.", "context": "Systematic review of reciprocal teaching in upper-primary classrooms.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "9-12", "outcome": "Reciprocal teaching consistently and moderately improves reading comprehension.", "context": "Systematic review of reciprocal teaching in upper-primary classrooms.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-ai-tutor-math",
+      "source_type": "peer_reviewed_article",
+      "abstract": "An adaptive AI tutoring system was deployed for algebra practice with 310 secondary students over eight weeks. Students using the tutor solved more problems correctly than a worksheet control group. Gains were largest among initially struggling students.",
+      "statement": "Students using the tutor solved more problems correctly than a worksheet control group.",
+      "topics": ["intelligent tutoring", "mathematics"],
+      "gold": {"age_range": "12-16", "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy.", "context": "Eight-week deployment of an AI algebra tutor in secondary schools.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "12-16", "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy.", "context": "Eight-week deployment of an AI algebra tutor in secondary schools.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-emotional-regulation",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A classroom social-emotional learning program for early primary children was evaluated with teacher ratings. Children in the program showed improved emotional regulation and fewer conflicts. The study used a waitlist control.",
+      "statement": "Children in the program showed improved emotional regulation and fewer conflicts.",
+      "topics": ["social-emotional learning", "self-regulation"],
+      "gold": {"age_range": "6-8", "outcome": "A social-emotional learning program improves emotional regulation and reduces conflicts.", "context": "Waitlist-controlled SEL program in early primary classrooms.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "6-8", "outcome": "A social-emotional learning program improves emotional regulation and reduces conflicts.", "context": "Waitlist-controlled SEL program in early primary classrooms.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-robotics-club",
+      "source_type": "working_paper",
+      "abstract": "This working paper describes an after-school robotics club and reports preliminary engagement data. We present a six-step design for the club's activities. No comparison group or learning outcome was measured.",
+      "statement": "We present a six-step design for the club's activities.",
+      "topics": ["robotics", "stem"],
+      "gold": {"age_range": null, "outcome": null, "context": "Working paper describing an after-school robotics club design.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": null, "context": "Working paper describing an after-school robotics club design.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-writing-feedback",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We studied automated writing feedback for argumentative essays among 150 high-school students. Students who received automated feedback revised more substantively and improved essay quality scores. Improvements held at a delayed post-test.",
+      "statement": "Students who received automated feedback revised more substantively and improved essay quality scores.",
+      "topics": ["writing", "feedback"],
+      "gold": {"age_range": "14-18", "outcome": "Automated feedback leads to more substantive revision and higher essay quality.", "context": "Study of automated essay feedback with high-school writers.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "14-18", "outcome": "Automated feedback leads to more substantive revision and higher essay quality.", "context": "Study of automated essay feedback with high-school writers.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-inquiry-biology",
+      "source_type": "peer_reviewed_article",
+      "abstract": "Guided-inquiry biology lessons were compared with direct instruction in lower-secondary classrooms. Students in the inquiry condition retained more conceptual knowledge after six months. Engagement measures also favoured inquiry.",
+      "statement": "Students in the inquiry condition retained more conceptual knowledge after six months.",
+      "topics": ["inquiry learning", "science education"],
+      "gold": {"age_range": "11-14", "outcome": "Guided inquiry improves long-term retention of biology concepts.", "context": "Comparison of guided inquiry and direct instruction in lower-secondary biology.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "11-14", "outcome": "Guided inquiry improves long-term retention of biology concepts.", "context": "Comparison of guided inquiry and direct instruction in lower-secondary biology.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-gamified-vocab",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A gamified vocabulary app was trialled with primary English-language learners. Children using the app learned and retained more vocabulary than those using flashcards. The trial ran for four weeks with 120 pupils.",
+      "statement": "Children using the app learned and retained more vocabulary than those using flashcards.",
+      "topics": ["gamification", "language learning"],
+      "gold": {"age_range": "7-11", "outcome": "A gamified app improves vocabulary learning and retention over flashcards.", "context": "Four-week trial of a gamified vocabulary app with primary language learners.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "7-11", "outcome": "A gamified app improves vocabulary learning and retention over flashcards.", "context": "Four-week trial of a gamified vocabulary app with primary language learners.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-peer-tutoring",
+      "source_type": "systematic_review",
+      "abstract": "This review synthesises peer-tutoring programs in secondary mathematics. Findings indicate small-to-moderate gains in achievement for both tutors and tutees. Effects were stronger in structured, well-monitored programs.",
+      "statement": "Findings indicate small-to-moderate gains in achievement for both tutors and tutees.",
+      "topics": ["peer tutoring", "mathematics"],
+      "gold": {"age_range": "12-18", "outcome": "Peer tutoring yields small-to-moderate achievement gains for tutors and tutees.", "context": "Review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "12-18", "outcome": "Peer tutoring yields small-to-moderate achievement gains for tutors and tutees.", "context": "Review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-handwriting-tablet",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We compared tablet-based and paper-based handwriting instruction for first graders. Both groups improved legibility, with no significant difference between conditions. The study followed 60 children over a term.",
+      "statement": "Both groups improved legibility, with no significant difference between conditions.",
+      "topics": ["handwriting", "early education"],
+      "gold": {"age_range": "6-7", "outcome": "Tablet and paper handwriting instruction improve legibility equally.", "context": "Term-long comparison of tablet versus paper handwriting instruction for first graders.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "6-7", "outcome": "Tablet and paper handwriting instruction improve legibility equally.", "context": "Term-long comparison of tablet versus paper handwriting instruction for first graders.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-flipped-classroom",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A flipped-classroom model was implemented in upper-secondary chemistry. Students completed more practice in class and achieved higher exam scores than in the prior traditional year. The comparison was non-randomised.",
+      "statement": "Students completed more practice in class and achieved higher exam scores than in the prior traditional year.",
+      "topics": ["flipped classroom", "science education"],
+      "gold": {"age_range": "15-18", "outcome": "A flipped classroom increases in-class practice and exam scores in chemistry.", "context": "Non-randomised flipped-classroom implementation in upper-secondary chemistry.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "15-18", "outcome": "A flipped classroom increases in-class practice and exam scores in chemistry.", "context": "Non-randomised flipped-classroom implementation in upper-secondary chemistry.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-mindset-intervention",
+      "source_type": "systematic_review",
+      "abstract": "A review of growth-mindset interventions across school ages reports that effects on achievement are small and concentrated among disadvantaged students. Many studies had methodological limitations. The authors urge cautious interpretation.",
+      "statement": "A review of growth-mindset interventions across school ages reports that effects on achievement are small and concentrated among disadvantaged students.",
+      "topics": ["growth mindset", "motivation"],
+      "gold": {"age_range": "6-18", "outcome": "Growth-mindset interventions yield small achievement effects, mainly for disadvantaged students.", "context": "Review of growth-mindset interventions across school ages.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "6-18", "outcome": "Growth-mindset interventions yield small achievement effects, mainly for disadvantaged students.", "context": "Review of growth-mindset interventions across school ages.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-coding-unplugged",
+      "source_type": "peer_reviewed_article",
+      "abstract": "An unplugged computing curriculum was evaluated with early-primary pupils who had no computer access. Pupils improved on algorithmic-thinking tasks compared with a control class. The intervention used physical games and cards.",
+      "statement": "Pupils improved on algorithmic-thinking tasks compared with a control class.",
+      "topics": ["computational thinking", "programming"],
+      "gold": {"age_range": "6-9", "outcome": "An unplugged computing curriculum improves algorithmic thinking.", "context": "Evaluation of an unplugged computing curriculum with early-primary pupils.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": null, "outcome": "An unplugged computing curriculum improves algorithmic thinking.", "context": "Evaluation of an unplugged computing curriculum with early-primary pupils.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-vr-history",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A virtual-reality history experience was tested with secondary students. Students reported high engagement, but knowledge-test gains did not differ from a video condition. The sample comprised two classes.",
+      "statement": "Students reported high engagement, but knowledge-test gains did not differ from a video condition.",
+      "topics": ["virtual reality", "history education"],
+      "gold": {"age_range": "13-16", "outcome": "VR history boosts engagement but not knowledge gains over video.", "context": "Classroom test of a VR history experience in secondary students.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "13-16", "outcome": "VR raises engagement and substantially improves history knowledge.", "context": "Classroom test of a VR history experience in secondary students.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-adult-mooc",
+      "source_type": "peer_reviewed_article",
+      "abstract": "This study analysed completion patterns in a university MOOC for adult professionals. Learners who set weekly goals completed more modules. The cohort ranged from 22 to 55 years old.",
+      "statement": "Learners who set weekly goals completed more modules.",
+      "topics": ["self-regulation", "online learning"],
+      "gold": {"age_range": null, "outcome": "Weekly goal-setting raises MOOC module completion.", "context": "Analysis of completion patterns in an adult-professional university MOOC.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": "Weekly goal-setting raises MOOC module completion.", "context": "Analysis of completion patterns in an adult-professional university MOOC.", "evidence_strength": "low"}
+    }
+  ]
+}
