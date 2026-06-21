@@ -908,7 +908,10 @@ class DataIntegrityTests(unittest.TestCase):
 
     def test_embedding_anchors_rebuild_is_reproducible(self) -> None:
         # Rebuilding the anchors from the same labeled set with the deterministic
-        # local embedding reproduces the committed artifact's anchors exactly.
+        # local embedding reproduces the committed artifact's anchors. The
+        # comparison is tolerance-based, not bit-exact: the centroid sums are
+        # floating point, so they reproduce to well within any decision-relevant
+        # precision but can differ at the ULP level across Python builds.
         import os
 
         import build_relevance_anchors as bra
@@ -918,7 +921,12 @@ class DataIntegrityTests(unittest.TestCase):
         with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "local"}):
             rebuilt = bra.build_artifact(positives, negatives, "local", bra.DEFAULT_DECISION_THRESHOLD)
         committed = load_relevance_anchors()
-        self.assertEqual(rebuilt["anchors"], committed["anchors"])
+        for sign in ("positive", "negative"):
+            rebuilt_vec = rebuilt["anchors"][sign]
+            committed_vec = committed["anchors"][sign]
+            self.assertEqual(len(rebuilt_vec), len(committed_vec))
+            for got, expected in zip(rebuilt_vec, committed_vec):
+                self.assertAlmostEqual(got, expected, places=9)
 
 
 class OptionalAiFoundationTests(unittest.TestCase):
