@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import sys
 import tempfile
 import unittest
@@ -813,6 +814,130 @@ class DataIntegrityTests(unittest.TestCase):
         artifact = train_relevance.build_artifact(vectorizer, classifier, texts, labels, ["test"])
         max_diff = train_relevance.self_check(artifact, vectorizer, classifier, texts)
         self.assertLess(max_diff, 1e-9)
+
+
+class OptionalAiFoundationTests(unittest.TestCase):
+    def test_provider_none_is_default_and_inert(self) -> None:
+        # AI_PROVIDER=none (the default) must behave exactly as before: no AI,
+        # no network, no SDK import — complete/embed simply return None.
+        import os
+        from unittest import mock
+
+        import ai_provider
+
+        with mock.patch.dict(os.environ, {}, clear=False):
+            for var in ("AI_PROVIDER", "AI_MODEL", "EMBEDDING_PROVIDER"):
+                os.environ.pop(var, None)
+            self.assertEqual(ai_provider.ai_provider(), "none")
+            self.assertEqual(ai_provider.ai_model(), "claude-opus-4-8")
+            self.assertEqual(ai_provider.embedding_provider(), "none")
+            self.assertIsNone(ai_provider.complete("hello", schema={"type": "object"}))
+            self.assertIsNone(ai_provider.embed(["hello", "world"]))
+
+    def test_provenance_has_model_prompt_version_and_created_at(self) -> None:
+        import ai_provider
+
+        provenance = ai_provider.ai_provenance("claim-assist-v1")
+        self.assertEqual(set(provenance), {"model", "prompt_version", "created_at"})
+        self.assertEqual(provenance["prompt_version"], "claim-assist-v1")
+        self.assertTrue(provenance["model"])
+        self.assertTrue(provenance["created_at"])
+
+    def test_cache_provider_is_deterministic_and_miss_is_detectable(self) -> None:
+        # The cache provider replays committed fixtures deterministically; a miss
+        # returns None so that in CI (cache mode) it surfaces as a failure rather
+        # than a silent network fall-through.
+        import os
+        from unittest import mock
+
+        import ai_provider
+
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(
+            ai_provider, "CACHE_DIR", Path(tmp)
+        ), mock.patch.dict(os.environ, {"AI_PROVIDER": "cache", "AI_MODEL": "claude-opus-4-8"}):
+            prompt = "Summarize this claim."
+            schema = {"type": "object"}
+            payload = {
+                "kind": "complete",
+                "model": "claude-opus-4-8",
+                "prompt": prompt,
+                "schema": schema,
+            }
+            stored = {"suggestions": [{"field": "context", "value": "K-12 classroom"}]}
+            ai_provider.cache_write(payload, stored)
+
+            first = ai_provider.complete(prompt, schema=schema)
+            second = ai_provider.complete(prompt, schema=schema)
+            self.assertEqual(first, stored)
+            self.assertEqual(first, second)  # deterministic replay
+
+            # A miss has no offline answer -> None (a failure in CI cache mode).
+            self.assertIsNone(ai_provider.complete("an uncached prompt", schema=schema))
+
+    def test_local_embedding_is_deterministic_and_normalized(self) -> None:
+        import os
+        from unittest import mock
+
+        import ai_provider
+
+        with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "local"}):
+            vectors = ai_provider.embed(["AI literacy", "AI literacy"])
+            self.assertIsNotNone(vectors)
+            self.assertEqual(len(vectors), 2)
+            self.assertEqual(vectors[0], vectors[1])  # deterministic, network-free
+            self.assertEqual(len(vectors[0]), ai_provider.EMBED_DIM)
+            self.assertAlmostEqual(math.sqrt(sum(v * v for v in vectors[0])), 1.0, places=6)
+
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("EMBEDDING_PROVIDER", None)
+            self.assertIsNone(ai_provider.embed(["x"]))
+
+    def test_schema_accepts_records_with_and_without_assist(self) -> None:
+        import ai_provider
+
+        claim_validator = Draft202012Validator(load_json(ROOT / "schemas" / "claim.schema.json"))
+        source_validator = Draft202012Validator(load_json(ROOT / "schemas" / "source.schema.json"))
+
+        base_claim = {
+            "id": "claim-assist-example",
+            "statement": "A sample claim statement long enough to validate.",
+            "source_ids": ["src-x"],
+            "text_anchor": 'sentence 1: "..."',
+            "context": "K-12 classroom",
+            "age_range": "6-12",
+            "outcome": "Learners critique AI outputs",
+            "evidence_type": "empirical_study",
+            "evidence_strength": "low",
+            "supports_skill_ids": ["skill-x"],
+            "status": "candidate",
+            "created_at": "2026-06-20",
+        }
+        base_source = {
+            "id": "src-assist-example",
+            "title": "A sample source title",
+            "year": 2026,
+            "source_type": "peer_reviewed_article",
+            "publisher": "Example Publisher",
+            "url": "https://example.test/x",
+            "topics": ["ai literacy"],
+            "status": "candidate",
+            "created_at": "2026-06-20",
+        }
+
+        assist = {
+            "suggestions": [{"field": "outcome", "value": "Learners critique AI outputs"}],
+            "provenance": ai_provider.ai_provenance("assist-v1"),
+        }
+
+        # Without "assist" (the existing, unchanged shape) and with it both validate.
+        claim_validator.validate(base_claim)
+        claim_validator.validate({**base_claim, "assist": assist})
+        source_validator.validate(base_source)
+        source_validator.validate({**base_source, "assist": assist})
+
+        # "assist" is never required: removing it leaves a valid record.
+        self.assertNotIn("assist", base_claim)
+        self.assertNotIn("assist", base_source)
 
 
 if __name__ == "__main__":

@@ -5,3 +5,8 @@ jsonschema>=4.21
 # relevance decision stay standard-library only: the trained model is consulted
 # from a JSON artifact (models/relevance_model.json) with stdlib math.
 scikit-learn>=1.4
+# anthropic is a pure dev/live dependency for the OPTIONAL AI features
+# (scripts/ai_provider.py). It is imported lazily and only when AI_PROVIDER=anthropic;
+# when AI_PROVIDER is in {none, cache} (the default and the test/CI mode) the import
+# path stays standard-library only and this package is never imported.
+anthropic>=0.40
