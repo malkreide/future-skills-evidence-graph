@@ -192,6 +192,30 @@ model trades some of that transparency for the *potential* to generalize. The JS
 artifact keeps the model inspectable and diffable, and keeping the keyword topics as a
 companion signal preserves an explainable trace even when the model decides.
 
+### Optional embedding relevance anchors
+
+A second, lighter opt-in signal lives next to the trained model: a pair of
+**prototype embeddings** ("anchors"). `scripts/build_relevance_anchors.py` embeds the
+labeled examples through `ai_provider.embed` (so it needs an `EMBEDDING_PROVIDER`, e.g.
+the dependency-free, deterministic `EMBEDDING_PROVIDER=local`) and stores the centroid
+of the relevant examples and the centroid of the irrelevant ones in a versioned JSON
+artifact (`models/relevance_anchors.json`). At filter time, only when
+`RELEVANCE_CLASSIFIER=embedding` is set **and** the artifact loads **and** an embedding
+provider is configured, a source is kept when it is closer (cosine) to the positive
+anchor than to the negative one by at least the artifact's `decision_threshold`; a
+missing artifact or provider warns once and falls back to the keyword heuristic. As with
+the model, `topics` stays the explainable keyword companion signal and the
+`relevance_score`/`topics` data model is unchanged.
+
+The anchors are wired in only after a **measured win**. `EMBEDDING_PROVIDER=local python
+scripts/eval_relevance.py --compare-embedding` runs the same fair stratified
+cross-validation (anchors rebuilt on the train folds, heuristic scored directly,
+pooled P/R/F1, honest `VERDICT`). With the local hashing embedding the anchors land well
+below the saturated heuristic, so **the heuristic stays the default and active
+decision** and the anchors ship disabled. The artifact records its provenance — the
+embedding provider, dimensionality, build date, the input files and their SHA-256
+hashes, and the label counts — so it is reproducible and diffable.
+
 ## Reviewing candidates
 
 Automation only ever produces candidates; promoting one is a human decision made
@@ -263,7 +287,7 @@ deliberately implements a subset; the remaining steps are open:
 | Step | Status |
 | --- | --- |
 | 1. Discover and deduplicate sources | Implemented for OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC (`ingest_*.py`, `deduplicate_sources.py`); OECD/WEF/UNESCO lack a public search API and stay manual |
-| 2. Classify relevance | Keyword/abstract heuristic requiring a topic match (default, fallback, fully deterministic), measured against a labeled set (`eval_relevance.py`); an **optional** TF-IDF + LogisticRegression classifier (`train_relevance.py`, opt-in via `RELEVANCE_CLASSIFIER=model`) exists but stays disabled because it does not beat the heuristic on the held-out comparison |
+| 2. Classify relevance | Keyword/abstract heuristic requiring a topic match (default, fallback, fully deterministic), measured against a labeled set (`eval_relevance.py`); two **optional** opt-in signals — a TF-IDF + LogisticRegression classifier (`train_relevance.py`, `RELEVANCE_CLASSIFIER=model`) and embedding prototype anchors (`build_relevance_anchors.py`, `RELEVANCE_CLASSIFIER=embedding`) — exist but stay disabled because neither beats the heuristic on the held-out comparison |
 | 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
 | 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |
@@ -277,9 +301,13 @@ Optional environment variables:
 - `SEMANTIC_SCHOLAR_API_KEY`: raises Semantic Scholar rate limits.
 - `OPENALEX_MAILTO`: polite contact email appended to OpenAlex requests.
 - `RELEVANCE_CLASSIFIER`: `heuristic` (default) keeps the deterministic keyword
-  filter; `model` opts into the trained classifier (`models/relevance_model.json`),
-  falling back to the heuristic if the artifact is missing. The model currently does
-  not beat the heuristic, so the default is recommended.
+  filter; `model` opts into the trained classifier (`models/relevance_model.json`);
+  `embedding` opts into the embedding anchors (`models/relevance_anchors.json`, also
+  needs `EMBEDDING_PROVIDER`). Both fall back to the heuristic if their artifact (or, for
+  embeddings, the provider) is missing, and neither currently beats the heuristic, so the
+  default is recommended.
+- `EMBEDDING_PROVIDER`: `none` (default) | `local`. Selects the embedding backend used by
+  `ai_provider.embed`, `build_relevance_anchors.py`, and the `embedding` relevance mode.
 
 ## Licensing
 

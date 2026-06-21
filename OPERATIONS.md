@@ -101,6 +101,7 @@ overfit) eval set:
 ```bash
 python scripts/eval_relevance.py --include-harvested  # metrics incl. harvested labels
 python scripts/eval_relevance.py --compare-model      # model vs heuristic (held-out CV)
+EMBEDDING_PROVIDER=local python scripts/eval_relevance.py --compare-embedding  # anchors vs heuristic
 ```
 
 Triggers → actions:
@@ -114,6 +115,10 @@ Triggers → actions:
 - **Model beats heuristic** (`--compare-model` says so) → `train_relevance.py`,
   commit `models/relevance_model.json`, set `RELEVANCE_CLASSIFIER=model` in the
   workflow env. Until then the heuristic stays the default (gating is built in).
+- **Embedding anchors beat heuristic** (`--compare-embedding` says so) →
+  `EMBEDDING_PROVIDER=local python scripts/build_relevance_anchors.py`, commit
+  `models/relevance_anchors.json`, set `RELEVANCE_CLASSIFIER=embedding` (plus
+  `EMBEDDING_PROVIDER`) in the workflow env. Until then the heuristic stays the default.
 
 ## Optional AI claim pre-fill (P1)
 

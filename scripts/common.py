@@ -652,22 +652,134 @@ def _warn_model_fallback(reason: str) -> None:
         _model_fallback_warned = True
 
 
+# --- Optional embedding relevance anchors ----------------------------------
+#
+# A SECOND optional, opt-in relevance signal (alongside the trained model): a
+# pair of prototype embeddings ("anchors"). The positive anchor is the centroid
+# of the embeddings of the relevant labeled examples, the negative anchor the
+# centroid of the irrelevant ones (scripts/build_relevance_anchors.py). A source
+# is kept when it is closer (cosine) to the positive anchor than to the negative
+# one by at least the artifact's decision_threshold. The embeddings come from
+# ai_provider.embed, so this needs an EMBEDDING_PROVIDER; when the artifact is
+# absent or no embedding provider is configured we warn and fall back to the
+# keyword heuristic, exactly like the model path. The default stays the
+# heuristic; activate only after a measured win (eval_relevance.py).
+
+RELEVANCE_ANCHORS_PATH = ROOT / "models" / "relevance_anchors.json"
+ANCHORS_MODEL_TYPE = "embedding-anchors"
+_embedding_fallback_warned = False
+
+
+def load_relevance_anchors(path: Path | None = None) -> dict[str, Any] | None:
+    """Load the anchor artifact, or None if absent/unreadable/foreign."""
+    if path is None:
+        path = RELEVANCE_ANCHORS_PATH
+    if not path.exists():
+        return None
+    try:
+        artifact = load_json(path)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(artifact, dict) or artifact.get("model_type") != ANCHORS_MODEL_TYPE:
+        return None
+    return artifact
+
+
+def cosine_similarity(a: list[float], b: list[float]) -> float:
+    """Cosine similarity of two equal-length vectors (0.0 if either is zero)."""
+    dot = sum(x * y for x, y in zip(a, b))
+    norm_a = math.sqrt(sum(x * x for x in a))
+    norm_b = math.sqrt(sum(y * y for y in b))
+    if norm_a == 0.0 or norm_b == 0.0:
+        return 0.0
+    return dot / (norm_a * norm_b)
+
+
+def vector_centroid(vectors: list[list[float]]) -> list[float]:
+    """L2-normalized mean of *vectors* (the prototype anchor for a class)."""
+    if not vectors:
+        raise ValueError("cannot build a centroid from no vectors")
+    dim = len(vectors[0])
+    sums = [0.0] * dim
+    for vector in vectors:
+        for index, value in enumerate(vector):
+            sums[index] += value
+    mean = [value / len(vectors) for value in sums]
+    norm = math.sqrt(sum(value * value for value in mean))
+    if norm > 0.0:
+        mean = [value / norm for value in mean]
+    return mean
+
+
+def anchor_relevance_difference(vector: list[float], anchors: dict[str, Any]) -> float:
+    """cosine(vector, positive) - cosine(vector, negative): >0 leans relevant."""
+    return cosine_similarity(vector, anchors["positive"]) - cosine_similarity(
+        vector, anchors["negative"]
+    )
+
+
+def embedding_relevance_decision(
+    source: dict[str, Any],
+    artifact: dict[str, Any],
+    embedder: Callable[[list[str]], list[list[float]] | None] | None = None,
+) -> tuple[bool, float] | None:
+    """Keep decision and similarity difference for *source* from the anchors.
+
+    Embeds the source text via *embedder* (ai_provider.embed by default) and
+    compares it to the two anchors. Returns (keep, difference), or None when no
+    embedding provider is configured (embed returns None) so the caller can fall
+    back to the heuristic.
+    """
+    if embedder is None:
+        from ai_provider import embed as embedder  # lazy: stdlib import path stays clean
+    vectors = embedder([source_text(source)])
+    if not vectors:
+        return None
+    difference = anchor_relevance_difference(vectors[0], artifact["anchors"])
+    threshold = float(artifact.get("decision_threshold", 0.0))
+    return difference >= threshold, difference
+
+
+def _anchor_difference_to_score(difference: float) -> float:
+    """Map the cosine difference in [-2, 2] to a bounded relevance_score in [0, 1].
+
+    The boundary difference (0.0, equally close to both anchors) maps to 0.5, so
+    the stored score stays schema-valid and monotonic with the keep decision.
+    """
+    return round(min(1.0, max(0.0, (difference + 1.0) / 2.0)), 2)
+
+
+def _warn_embedding_fallback(reason: str) -> None:
+    global _embedding_fallback_warned
+    if not _embedding_fallback_warned:
+        print(
+            f"Warning: RELEVANCE_CLASSIFIER=embedding but {reason}; "
+            "falling back to the keyword heuristic.",
+            file=sys.stderr,
+        )
+        _embedding_fallback_warned = True
+
+
 def decide_relevance(
     source: dict[str, Any], min_relevance: float = RELEVANCE_THRESHOLD
 ) -> tuple[bool, float, list[str]]:
     """Decide whether to keep *source*; returns (keep, relevance_score, topics).
 
     The decision is pluggable. The default is the keyword heuristic, which is
-    also the fallback whenever the model is not opted in or cannot be loaded.
-    The trained model is consulted only when RELEVANCE_CLASSIFIER=model and a
-    valid artifact is present.
+    also the fallback whenever an opt-in classifier is not selected or cannot be
+    loaded. The trained TF-IDF model is consulted only when
+    RELEVANCE_CLASSIFIER=model; the embedding anchors only when
+    RELEVANCE_CLASSIFIER=embedding and an EMBEDDING_PROVIDER is configured. A
+    missing artifact or missing provider warns once and degrades to the
+    heuristic, never raising into the pipeline.
 
     The topic/keyword hits are ALWAYS derived from the vocabulary and returned
     as an explainable companion signal next to whichever score decides keep, so
     the data model (relevance_score, topics) is unchanged regardless of mode.
     """
     score, topics = score_relevance(source)
-    if relevance_classifier_mode() == "model":
+    mode = relevance_classifier_mode()
+    if mode == "model":
         artifact = load_relevance_model()
         if artifact is None:
             _warn_model_fallback("the model artifact is missing or unreadable")
@@ -676,6 +788,19 @@ def decide_relevance(
             threshold = float(artifact.get("decision_threshold", 0.5))
             keep = probability >= threshold
             return keep, round(probability, 2), topics
+    elif mode == "embedding":
+        artifact = load_relevance_anchors()
+        if artifact is None:
+            _warn_embedding_fallback("the anchor artifact is missing or unreadable")
+        else:
+            decision = embedding_relevance_decision(source, artifact)
+            if decision is None:
+                _warn_embedding_fallback(
+                    "no embedding provider is configured (set EMBEDDING_PROVIDER)"
+                )
+            else:
+                keep, difference = decision
+                return keep, _anchor_difference_to_score(difference), topics
     return heuristic_keep(source, score, topics, min_relevance), score, topics
 
 
