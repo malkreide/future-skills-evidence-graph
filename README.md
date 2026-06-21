@@ -206,8 +206,12 @@ Optional environment variables:
   needs `EMBEDDING_PROVIDER`). Both fall back to the heuristic if their artifact (or, for
   embeddings, the provider) is missing, and neither currently beats the heuristic, so the
   default is recommended.
-- `EMBEDDING_PROVIDER`: `none` (default) | `local`. Selects the embedding backend used by
-  `ai_provider.embed`, `build_relevance_anchors.py`, and the `embedding` relevance mode.
+- `EMBEDDING_PROVIDER`: `none` (default) | `local` | `st`. Selects the embedding backend
+  used by `ai_provider.embed`, `build_relevance_anchors.py`, and the `embedding` relevance
+  mode. `local` is the dependency-free, deterministic hashing embedding (CI default); `st`
+  is a real local semantic model (sentence-transformers `all-MiniLM-L6-v2`), a dev/live
+  dependency that replays committed vectors from `tests/fixtures/embeddings/` offline and
+  only imports the package to embed an uncached text.
 
 ## Licensing
 

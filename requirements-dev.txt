@@ -10,6 +10,14 @@ scikit-learn>=1.4
 # when AI_PROVIDER is in {none, cache} (the default and the test/CI mode) the import
 # path stays standard-library only and this package is never imported.
 anthropic>=0.40
+# sentence-transformers is a pure dev/live dependency for the OPTIONAL semantic
+# embedding provider (EMBEDDING_PROVIDER=st in scripts/ai_provider.py). It is
+# imported lazily and ONLY to fill an embedding-cache miss when building anchors
+# or recording fixtures locally. At runtime the embedding path is fixture-backed:
+# with EMBEDDING_PROVIDER in {none, local} (the default and CI mode) nothing here
+# is imported, and EMBEDDING_PROVIDER=st replays committed vectors from
+# tests/fixtures/embeddings/ offline, so the importers stay standard-library only.
+sentence-transformers>=2.2
 # pypdf is only needed by the OPTIONAL PDF->plaintext helper
 # (scripts/extract_pdf_text.py), which an operator runs to prepare a report for
 # scripts/ingest_reports.py. It is imported lazily and only when actually parsing

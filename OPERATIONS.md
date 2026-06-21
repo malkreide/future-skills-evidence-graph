@@ -101,8 +101,17 @@ overfit) eval set:
 ```bash
 python scripts/eval_relevance.py --include-harvested  # metrics incl. harvested labels
 python scripts/eval_relevance.py --compare-model      # model vs heuristic (held-out CV)
-EMBEDDING_PROVIDER=local python scripts/eval_relevance.py --compare-embedding  # anchors vs heuristic
+EMBEDDING_PROVIDER=st python scripts/eval_relevance.py --compare-embedding     # st anchors vs heuristic
+EMBEDDING_PROVIDER=local python scripts/eval_relevance.py --compare-embedding  # hashing anchors vs heuristic
 ```
+
+The `st` provider is the real semantic embedding (sentence-transformers
+`all-MiniLM-L6-v2`); it replays committed vectors from `tests/fixtures/embeddings/`
+offline, and only imports the package to embed a text not yet cached. `local` is the
+dependency-free hashing embedding. The current honest verdict (87-example set):
+heuristic F1 0.92, `st` anchors F1 0.76, `local` anchors F1 0.65 — neither beats the
+heuristic, so it stays the active default (see
+[docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md)).
 
 Triggers → actions:
 - **False positive seen** → `reject-source`; add the domain to `OFF_SCOPE_KEYWORDS`
@@ -116,9 +125,11 @@ Triggers → actions:
   commit `models/relevance_model.json`, set `RELEVANCE_CLASSIFIER=model` in the
   workflow env. Until then the heuristic stays the default (gating is built in).
 - **Embedding anchors beat heuristic** (`--compare-embedding` says so) →
-  `EMBEDDING_PROVIDER=local python scripts/build_relevance_anchors.py`, commit
-  `models/relevance_anchors.json`, set `RELEVANCE_CLASSIFIER=embedding` (plus
-  `EMBEDDING_PROVIDER`) in the workflow env. Until then the heuristic stays the default.
+  `EMBEDDING_PROVIDER=st python scripts/build_relevance_anchors.py` (re-embed the
+  changed labels, refreshing `tests/fixtures/embeddings/`), commit
+  `models/relevance_anchors.json` **and** the new fixtures, set
+  `RELEVANCE_CLASSIFIER=embedding` plus `EMBEDDING_PROVIDER=st` in the workflow env.
+  Until then the heuristic stays the default.
 
 ## Optional AI claim pre-fill (P1)
 
@@ -188,7 +199,11 @@ heuristic on held-out CV).
 teacher tool-use (teachers are a legitimate audience, so a blanket teacher gate
 would cost recall), and disaster/health papers that name a school-age audience
 and a topic in the title (off-scope title-anchor exemption keeps them). These
-are candidates for the trained model once the harvested label set grows.
+are now **labeled in `eval/relevance_labeled.json`** (`origin: hard_case`) so the
+measured numbers are honest: they drop the heuristic from a saturated 1.00 to
+precision 0.86 / recall 1.00. Neither the trained model nor the embedding anchors
+(local hashing or the real semantic `st`) beats the heuristic on these yet — they
+are candidates for a classifier once the harvested label set grows.
 
 ### First evidence folded into the graph
 

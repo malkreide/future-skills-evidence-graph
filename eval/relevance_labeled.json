@@ -1,5 +1,5 @@
 {
-  "_README": "Labeled relevance evaluation set for scripts/eval_relevance.py. Labels are editorial judgments per the MVP scope (AI / future-skills education for children and adolescents aged 6-18). 'live_run' examples are real candidates from the first live pipeline run (PR #20); 'editorial' examples are clear anchor cases.",
+  "_README": "Labeled relevance evaluation set for scripts/eval_relevance.py. Labels are editorial judgments per the MVP scope (AI / future-skills education for children and adolescents aged 6-18). 'live_run'/'live_api' examples are real candidates from the live pipeline runs and source queries; 'editorial' examples are clear anchor cases; 'hard_case' examples are the residual false-positive classes tracked in OPERATIONS.md (teacher tool-use, and disaster/health papers that carry a school-age word plus a topic in the title) which the keyword heuristic still keeps -- deliberately included so the comparison against the optional classifiers is honest.",
   "examples": [
     {
       "title": "A Qualitative Study of Immigration Trauma, Posttraumatic Growth, and the College Experience Among MENA Immigrant Students",
@@ -567,6 +567,48 @@
       "relevant": true,
       "origin": "live_api",
       "note": "School-age future-skills study (middle-school / adolescent digital literacy, 21st-century skills); in scope."
+    },
+    {
+      "title": "Teachers' Adoption of Generative AI Tools for Lesson Planning and Grading Workload",
+      "abstract": "This survey study examines how in-service teachers adopt generative artificial intelligence tools such as ChatGPT to reduce their lesson-planning and grading workload. Using a technology acceptance model, we surveyed 312 teachers about perceived usefulness, ease of use, and time saved when delegating administrative and preparation tasks to AI assistants. Findings indicate that perceived workload reduction is the strongest predictor of sustained tool use, while concerns about output accuracy moderate adoption. The study offers recommendations for schools seeking to support teachers' professional use of AI productivity tools.",
+      "relevant": false,
+      "origin": "hard_case",
+      "note": "Hard FP class (teacher tool-use): the studied outcome is teachers' own productivity/adoption of AI tools, not a future skill cultivated in 6-18 learners. Matches 'generative ai' + 'teacher' so the heuristic keeps it."
+    },
+    {
+      "title": "How Secondary School Teachers Use ChatGPT to Automate Administrative Communication",
+      "abstract": "Drawing on interviews with twenty secondary school teachers, this paper explores how educators integrate ChatGPT into routine administrative communication, including parent emails, report comments, and meeting minutes. We analyze the workflows teachers build around the tool and the time savings they report. The contribution is a typology of teacher-facing AI automation practices; student learning outcomes are out of scope for this study, which centers on teacher labor and administrative efficiency.",
+      "relevant": false,
+      "origin": "hard_case",
+      "note": "Hard FP class (teacher tool-use): teacher administrative workflow, not a learner future-skill outcome. 'chatgpt' + 'secondary school'/'teacher' keep it through the heuristic."
+    },
+    {
+      "title": "Teachers' Use of AI Chatbot Tools for Generating Classroom Quiz Questions",
+      "abstract": "This design study reports on a six-week deployment in which teachers used an AI chatbot to generate quiz questions and rubric drafts. We measured teacher satisfaction, editing effort, and perceived quality of the machine-generated items. The focus is on the teacher as the user of the artificial intelligence tool and on the practicality of AI authoring assistants for instructional preparation, rather than on any change in pupils' competencies.",
+      "relevant": false,
+      "origin": "hard_case",
+      "note": "Hard FP class (teacher tool-use): teacher-as-tool-user, no measured 6-18 learner skill. 'artificial intelligence' + 'teacher'/'classroom' keep it."
+    },
+    {
+      "title": "Disaster Risk Reduction and Hygiene Education: Building Resilience among Primary School Children",
+      "abstract": "This intervention study evaluates a disaster risk reduction and water, sanitation and hygiene (WASH) programme delivered in primary schools. Outcomes include children's handwashing behaviour, latrine use, and preparedness for floods and earthquakes. While the programme is framed around community resilience, its measured endpoints are public-health and physical-safety behaviours rather than cognitive or socio-emotional competencies.",
+      "relevant": false,
+      "origin": "hard_case",
+      "note": "Hard FP class (disaster/health with a school word): a WASH/disaster-safety study whose real domain is public health. The off-scope term 'hygiene'/'sanitation' is exempted because 'resilience' appears in the title with a school-age audience, so the heuristic keeps it."
+    },
+    {
+      "title": "Earthquake Preparedness and Critical Thinking among Secondary School Students",
+      "abstract": "This study assesses an earthquake preparedness curriculum for secondary school students and its association with disease prevention and post-disaster sanitation knowledge. Although the title frames the work around critical thinking about hazards, the instrument measures factual disaster-safety and public-health knowledge rather than transferable reasoning skills. The contribution is to disaster education and adolescent health behaviour.",
+      "relevant": false,
+      "origin": "hard_case",
+      "note": "Hard FP class (disaster/health with a school word): disaster-safety and health knowledge, not a cultivated future skill. The off-scope 'disease'/'sanitation' terms are exempted by 'critical thinking' in the title plus a school-age audience, so the heuristic keeps it."
+    },
+    {
+      "title": "Nutrition, Hygiene and Self-Regulation: A School Health Promotion Program for Adolescents",
+      "abstract": "We report on a school health promotion program for adolescents combining nutrition education, menstrual hygiene management, and goal-setting routines described as self-regulation. The evaluated outcomes are dietary intake, hygiene practices, and body-mass index. The self-regulation framing is incidental scaffolding for the health behaviours; the study's domain is adolescent public health, not future-skills education.",
+      "relevant": false,
+      "origin": "hard_case",
+      "note": "Hard FP class (disaster/health with a school word): a nutrition/hygiene school-health study. The off-scope 'nutrition'/'hygiene'/'menstrual' terms are exempted by 'self-regulation' in the title with a school-age audience, so the heuristic keeps it."
     }
   ]
 }

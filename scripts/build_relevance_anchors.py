@@ -34,7 +34,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-from ai_provider import EMBED_DIM, embed, embedding_provider
+from ai_provider import embed, embedding_model_info, embedding_provider
 from common import ROOT, load_json, source_text, vector_centroid, write_json
 
 
@@ -75,6 +75,7 @@ def build_artifact(
             f"embedding provider {provider!r} returned no vectors; "
             "set EMBEDDING_PROVIDER (e.g. EMBEDDING_PROVIDER=local)."
         )
+    model_info = embedding_model_info(provider)
     return {
         "model_type": "embedding-anchors",
         "format_version": FORMAT_VERSION,
@@ -87,6 +88,8 @@ def build_artifact(
         },
         "provenance": {
             "embedding_provider": provider,
+            "model_name": model_info["model_name"],
+            "model_version": model_info["model_version"],
             "embedding_dim": len(pos_vectors[0]),
             "built_at": date.today().isoformat(),
             "n_examples": len(positives) + len(negatives),
@@ -132,7 +135,7 @@ def main() -> int:
     print(
         f"Building anchors from {len(examples)} labeled examples "
         f"({len(positives)} relevant, {len(negatives)} irrelevant) "
-        f"via EMBEDDING_PROVIDER={provider} (dim {EMBED_DIM})."
+        f"via EMBEDDING_PROVIDER={provider}."
     )
     if not positives or not negatives:
         print("Need at least one relevant and one irrelevant example.", file=sys.stderr)
