@@ -115,6 +115,30 @@ Triggers → actions:
   commit `models/relevance_model.json`, set `RELEVANCE_CLASSIFIER=model` in the
   workflow env. Until then the heuristic stays the default (gating is built in).
 
+## Optional AI claim pre-fill (P1)
+
+Off by default (`AI_PROVIDER=none`): extraction is byte-identical to the LLM-free
+pipeline. When a provider is configured (`AI_PROVIDER=anthropic`, model from
+`AI_MODEL`, default `claude-opus-4-8`), `extract_claims.py` additionally asks the
+LLM to *suggest* the manual review fields (`context`, `outcome`, `age_range`,
+`evidence_strength`). The suggestion is stored **only** under
+`claim["assist"]["suggestions"]` with provenance; the real fields keep their
+placeholders and `statement`/`text_anchor` stay verbatim.
+
+```bash
+python scripts/eval_claim_prefill.py                 # offline field metrics (fixtures)
+python scripts/eval_claim_prefill.py --min-precision 0.8 --min-recall 0.8  # CI gate
+python scripts/eval_claim_prefill.py --write-fixtures # (re)record fixtures from the golden set
+```
+
+During review, `promote_candidate.py` prints any suggestion and
+`--accept-suggestions` adopts the non-null values as starting points. This never
+weakens the gate: fields the model left null stay placeholders and still block
+promotion, a reviewed claim still needs a `--supports`/`--contradicts` skill
+link, and every explicit flag overrides the suggestion. CI runs fully offline
+against committed fixtures (`tests/fixtures/ai/`); a cache miss is a failure, not
+a network call.
+
 ## Guardrails
 
 - Review and merge the `research/candidates` PR promptly so candidates do not

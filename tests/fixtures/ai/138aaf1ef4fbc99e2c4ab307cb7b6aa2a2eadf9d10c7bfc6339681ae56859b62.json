@@ -1,0 +1,10 @@
+{
+  "hash": "138aaf1ef4fbc99e2c4ab307cb7b6aa2a2eadf9d10c7bfc6339681ae56859b62",
+  "kind": "complete",
+  "response": {
+    "age_range": "15-18",
+    "context": "Non-randomised flipped-classroom implementation in upper-secondary chemistry.",
+    "evidence_strength": "low",
+    "outcome": "A flipped classroom increases in-class practice and exam scores in chemistry."
+  }
+}

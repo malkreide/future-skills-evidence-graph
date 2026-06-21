@@ -41,6 +41,20 @@ from validate_data import _load_validators, validate_repository
 
 AGE_RANGE_PLACEHOLDERS = {AGE_RANGE_PLACEHOLDER.casefold(), "todo", "tbd", ""}
 
+# The pre-fill prompt (Anhang A) proposes evidence_strength as low|moderate|high,
+# but the claim schema's vocabulary is low|moderate|strong. Map on acceptance so
+# an adopted suggestion lands as a valid start value; unknown values pass through
+# untouched so the schema gate still catches anything out of range.
+STRENGTH_SUGGESTION_TO_CLAIM = {
+    "low": "low",
+    "moderate": "moderate",
+    "high": "strong",
+    "strong": "strong",
+}
+
+# Review fields a suggestion can pre-fill, mapped to the claim key they populate.
+SUGGESTION_REVIEW_FIELDS = ("context", "age_range", "outcome", "evidence_strength")
+
 # Auto-harvested relevance labels accumulate here, separate from the curated
 # eval/relevance_labeled.json. Each human review decision is, in effect, a
 # relevance label for the underlying source, so the training base for a future
@@ -158,6 +172,67 @@ def _is_placeholder_definition(value: str) -> bool:
     return not stripped or stripped.endswith(DEFINITION_PLACEHOLDER_SUFFIX) or stripped.upper().startswith("TODO")
 
 
+def claim_suggestions(claim: dict[str, Any]) -> dict[str, Any] | None:
+    """Return the LLM-proposed review fields stored under claim["assist"], or None.
+
+    The suggestion is purely advisory: it never reaches the real fields unless a
+    reviewer opts in via --accept-suggestions, and it is never consulted by the
+    promotion gate (claim_review_errors), so its presence cannot loosen review.
+    """
+    assist = claim.get("assist")
+    if not isinstance(assist, dict):
+        return None
+    suggestions = assist.get("suggestions")
+    if isinstance(suggestions, list) and suggestions and isinstance(suggestions[0], dict):
+        return suggestions[0]
+    return None
+
+
+def format_claim_suggestions(claim: dict[str, Any]) -> list[str]:
+    """Render the AI suggestion (if any) as human-readable lines for display."""
+    suggestion = claim_suggestions(claim)
+    if suggestion is None:
+        return []
+    assist = claim.get("assist", {})
+    provenance = assist.get("provenance", {}) if isinstance(assist, dict) else {}
+    stamp = ", ".join(
+        f"{key} {provenance[key]}" for key in ("model", "prompt_version") if provenance.get(key)
+    )
+    lines = [f"AI suggestions for {claim.get('id')}" + (f" ({stamp})" if stamp else "") + ":"]
+    for field in SUGGESTION_REVIEW_FIELDS:
+        if field in suggestion:
+            lines.append(f"  {field}: {suggestion[field]!r}")
+    lines.append("  (advisory only; pass --accept-suggestions to adopt as starting values)")
+    return lines
+
+
+def apply_claim_suggestions(claim: dict[str, Any]) -> dict[str, Any]:
+    """Adopt non-null AI suggestions into the claim's real fields as start values.
+
+    Only fields the suggestion actually proposes (non-null) are written, and
+    evidence_strength is mapped into the claim vocabulary. This fills nothing the
+    model left as null, so a placeholder with no usable suggestion stays a
+    placeholder and the promotion gate still refuses it. Explicit reviewer args
+    are applied AFTER this and therefore override the adopted values. Returns the
+    mapping of fields actually adopted (for display).
+    """
+    suggestion = claim_suggestions(claim)
+    if suggestion is None:
+        return {}
+    adopted: dict[str, Any] = {}
+    for field in ("context", "age_range", "outcome"):
+        value = suggestion.get(field)
+        if isinstance(value, str) and value.strip():
+            claim[field] = value
+            adopted[field] = value
+    strength = suggestion.get("evidence_strength")
+    if isinstance(strength, str) and strength.strip():
+        mapped = STRENGTH_SUGGESTION_TO_CLAIM.get(strength.strip().casefold(), strength)
+        claim["evidence_strength"] = mapped
+        adopted["evidence_strength"] = mapped
+    return adopted
+
+
 def claim_review_errors(
     claim: dict[str, Any], skill_ids: set[str], source_ids: set[str]
 ) -> list[str]:
@@ -188,6 +263,15 @@ def promote_claim(args: argparse.Namespace) -> list[str]:
     _, records, claim = found
     if claim.get("status") == "rejected":
         return [f"claim {args.id} is rejected; re-open it before promoting"]
+
+    # Surface any AI suggestion so the reviewer can see it regardless of whether
+    # they adopt it. Adoption is opt-in and never weakens the gate below.
+    for line in format_claim_suggestions(claim):
+        print(line)
+    if getattr(args, "accept_suggestions", False):
+        adopted = apply_claim_suggestions(claim)
+        if adopted:
+            print(f"Adopted AI suggestion(s) as starting values: {', '.join(sorted(adopted))}")
 
     if args.statement is not None:
         claim["statement"] = args.statement
@@ -341,6 +425,16 @@ def _build_parser() -> argparse.ArgumentParser:
     claim.add_argument("--evidence-strength", choices=["low", "moderate", "strong"])
     claim.add_argument("--supports", nargs="*")
     claim.add_argument("--contradicts", nargs="*")
+    claim.add_argument(
+        "--accept-suggestions",
+        action="store_true",
+        help=(
+            "Adopt any AI claim.assist suggestions as starting values for the "
+            "review fields. Explicit flags still override them, and the review "
+            "gate is unchanged: fields the model left null stay placeholders and "
+            "block promotion."
+        ),
+    )
 
     skill = sub.add_parser("skill", help="Promote a candidate skill to active.")
     skill.add_argument("id")
