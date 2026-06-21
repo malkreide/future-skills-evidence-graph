@@ -9,7 +9,8 @@ so the choice is data-driven, and lists misclassified examples. With
 
     python scripts/eval_relevance.py            # report + sweep
     python scripts/eval_relevance.py --min-precision 0.6 --min-recall 0.7
-    python scripts/eval_relevance.py --compare-model   # fair held-out heuristic vs model
+    python scripts/eval_relevance.py --compare-model       # fair held-out heuristic vs model
+    python scripts/eval_relevance.py --compare-embedding   # fair held-out heuristic vs anchors
 
 The --compare-model flag adds a FAIR comparison of the keyword heuristic against
 the optional trained classifier (scripts/train_relevance.py) using stratified
@@ -19,6 +20,13 @@ held-out test fold. Both report pooled precision/recall/F1. The data is small,
 so the verdict is reported honestly and the heuristic stays the default unless
 the model measurably beats it. This path needs scikit-learn; without it the
 comparison is skipped and the heuristic report still runs.
+
+The --compare-embedding flag does the same FAIR held-out comparison for the
+optional embedding anchors (scripts/build_relevance_anchors.py): the anchors are
+rebuilt (positive/negative centroids) on each train fold and scored on the
+held-out test fold, the heuristic scored directly. It needs an EMBEDDING_PROVIDER
+(e.g. EMBEDDING_PROVIDER=local); without one the comparison is skipped and the
+heuristic report still runs. Same honest verdict, same default.
 """
 
 from __future__ import annotations
@@ -31,10 +39,13 @@ from typing import Any
 from common import (
     RELEVANCE_THRESHOLD,
     ROOT,
+    anchor_relevance_difference,
     filter_relevant_sources,
     load_json,
     normalize_title,
     score_relevance,
+    source_text,
+    vector_centroid,
 )
 
 
@@ -179,6 +190,102 @@ def compare_with_model(
     )
 
 
+def _stratified_folds(labels: list[int], n_splits: int, seed: int) -> list[list[int]]:
+    """Deterministic stratified k-fold split (pure stdlib, no scikit-learn).
+
+    Positives and negatives are shuffled with a seeded RNG and dealt round-robin
+    into the folds, so each fold keeps roughly the class balance. Returns the
+    list of test-index lists.
+    """
+    import random
+
+    rng = random.Random(seed)
+    positives = [i for i, label in enumerate(labels) if label]
+    negatives = [i for i, label in enumerate(labels) if not label]
+    rng.shuffle(positives)
+    rng.shuffle(negatives)
+    folds: list[list[int]] = [[] for _ in range(n_splits)]
+    for offset, index in enumerate(positives):
+        folds[offset % n_splits].append(index)
+    for offset, index in enumerate(negatives):
+        folds[offset % n_splits].append(index)
+    return folds
+
+
+def compare_with_embedding(
+    examples: list[dict[str, Any]], threshold: float, folds: int, seed: int
+) -> tuple[Metrics, Metrics] | None:
+    """Fair held-out comparison: heuristic vs embedding anchors via stratified CV.
+
+    The anchors (positive/negative centroids) are rebuilt on the train folds and
+    scored on the held-out test fold; the heuristic is scored on the test fold
+    directly. Predictions are pooled across folds and a single precision/recall/
+    F1 is reported for each. Returns (heuristic_metrics, embedding_metrics), or
+    None when no embedding provider is configured (embed returns None).
+    """
+    from ai_provider import embed
+    from build_relevance_anchors import DEFAULT_DECISION_THRESHOLD
+
+    texts = [source_text({"title": ex["title"], "abstract": ex["abstract"]}) for ex in examples]
+    vectors = embed(texts)
+    if not vectors:
+        return None
+
+    labels = [1 if ex["relevant"] else 0 for ex in examples]
+    n_pos = sum(labels)
+    n_neg = len(labels) - n_pos
+    n_splits = max(2, min(folds, n_pos, n_neg))
+
+    heuristic_pred: list[bool] = []
+    embedding_pred: list[bool] = []
+    actuals: list[bool] = []
+
+    fold_tests = _stratified_folds(labels, n_splits, seed)
+    for test_idx in fold_tests:
+        test_set = set(test_idx)
+        train_pos = [vectors[i] for i in range(len(labels)) if i not in test_set and labels[i]]
+        train_neg = [vectors[i] for i in range(len(labels)) if i not in test_set and not labels[i]]
+        if not train_pos or not train_neg:
+            continue
+        anchors = {"positive": vector_centroid(train_pos), "negative": vector_centroid(train_neg)}
+        for i in test_idx:
+            actuals.append(bool(labels[i]))
+            heuristic_pred.append(is_predicted_relevant(examples[i], threshold))
+            difference = anchor_relevance_difference(vectors[i], anchors)
+            embedding_pred.append(bool(difference >= DEFAULT_DECISION_THRESHOLD))
+
+    return (
+        metrics_from_predictions(heuristic_pred, actuals),
+        metrics_from_predictions(embedding_pred, actuals),
+    )
+
+
+def _print_comparison(name: str, heuristic_cv: Metrics, contender_cv: Metrics) -> None:
+    """Shared report + honest verdict for a held-out heuristic-vs-X comparison."""
+    print(
+        f"  heuristic:  P {heuristic_cv.precision:.2f}  R {heuristic_cv.recall:.2f}  "
+        f"F1 {heuristic_cv.f1:.2f}  (tp={heuristic_cv.tp} fp={heuristic_cv.fp} "
+        f"fn={heuristic_cv.fn} tn={heuristic_cv.tn})"
+    )
+    print(
+        f"  {name + ':':<11}P {contender_cv.precision:.2f}  R {contender_cv.recall:.2f}  "
+        f"F1 {contender_cv.f1:.2f}  (tp={contender_cv.tp} fp={contender_cv.fp} "
+        f"fn={contender_cv.fn} tn={contender_cv.tn})"
+    )
+    if contender_cv.f1 > heuristic_cv.f1:
+        print(
+            f"  VERDICT: {name} beats the heuristic on held-out F1 "
+            f"({contender_cv.f1:.2f} > {heuristic_cv.f1:.2f}). Consider enabling it "
+            "after review."
+        )
+    else:
+        print(
+            f"  VERDICT: {name} does NOT beat the heuristic on held-out F1 "
+            f"({contender_cv.f1:.2f} <= {heuristic_cv.f1:.2f}). The heuristic "
+            "stays the default and active decision."
+        )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate the relevance heuristic against a labeled set.")
     parser.add_argument("--threshold", type=float, default=RELEVANCE_THRESHOLD)
@@ -198,8 +305,13 @@ def main() -> int:
         action="store_true",
         help="Fairly compare the heuristic against the trained model via stratified CV.",
     )
-    parser.add_argument("--folds", type=int, default=5, help="CV folds for --compare-model.")
-    parser.add_argument("--seed", type=int, default=42, help="CV split seed for --compare-model.")
+    parser.add_argument(
+        "--compare-embedding",
+        action="store_true",
+        help="Fairly compare the heuristic against the embedding anchors via stratified CV.",
+    )
+    parser.add_argument("--folds", type=int, default=5, help="CV folds for the held-out comparisons.")
+    parser.add_argument("--seed", type=int, default=42, help="CV split seed for the held-out comparisons.")
     args = parser.parse_args()
 
     examples = load_examples()
@@ -239,28 +351,19 @@ def main() -> int:
             print("  scikit-learn not installed; skipping model comparison (heuristic stays active).")
         else:
             heuristic_cv, model_cv = result
+            _print_comparison("model", heuristic_cv, model_cv)
+
+    if args.compare_embedding:
+        print(f"\nFair held-out comparison (stratified {args.folds}-fold CV, seed {args.seed}):")
+        result = compare_with_embedding(examples, args.threshold, args.folds, args.seed)
+        if result is None:
             print(
-                f"  heuristic:  P {heuristic_cv.precision:.2f}  R {heuristic_cv.recall:.2f}  "
-                f"F1 {heuristic_cv.f1:.2f}  (tp={heuristic_cv.tp} fp={heuristic_cv.fp} "
-                f"fn={heuristic_cv.fn} tn={heuristic_cv.tn})"
+                "  no embedding provider configured (set EMBEDDING_PROVIDER, e.g. "
+                "EMBEDDING_PROVIDER=local); skipping embedding comparison (heuristic stays active)."
             )
-            print(
-                f"  model:      P {model_cv.precision:.2f}  R {model_cv.recall:.2f}  "
-                f"F1 {model_cv.f1:.2f}  (tp={model_cv.tp} fp={model_cv.fp} "
-                f"fn={model_cv.fn} tn={model_cv.tn})"
-            )
-            if model_cv.f1 > heuristic_cv.f1:
-                print(
-                    f"  VERDICT: model beats the heuristic on held-out F1 "
-                    f"({model_cv.f1:.2f} > {heuristic_cv.f1:.2f}). Consider enabling "
-                    "RELEVANCE_CLASSIFIER=model after review."
-                )
-            else:
-                print(
-                    f"  VERDICT: model does NOT beat the heuristic on held-out F1 "
-                    f"({model_cv.f1:.2f} <= {heuristic_cv.f1:.2f}). The heuristic "
-                    "stays the default and active decision."
-                )
+        else:
+            heuristic_cv, embedding_cv = result
+            _print_comparison("embedding", heuristic_cv, embedding_cv)
 
     status = 0
     if args.min_precision is not None and metrics.precision < args.min_precision:

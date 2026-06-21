@@ -29,6 +29,7 @@ from common import (  # noqa: E402
     is_off_scope,
     load_json,
     load_records,
+    load_relevance_anchors,
     load_relevance_model,
     normalize_title,
     relevance_classifier_mode,
@@ -825,6 +826,99 @@ class DataIntegrityTests(unittest.TestCase):
         artifact = train_relevance.build_artifact(vectorizer, classifier, texts, labels, ["test"])
         max_diff = train_relevance.self_check(artifact, vectorizer, classifier, texts)
         self.assertLess(max_diff, 1e-9)
+
+    def test_embedding_mode_falls_back_to_heuristic_when_artifact_missing(self) -> None:
+        # Opting into the embedding anchors but with no artifact must not break
+        # the pipeline: it degrades to the exact heuristic decision, not raise.
+        import os
+
+        import common
+
+        relevant = {
+            "title": "AI literacy and collaboration in K-12 education",
+            "abstract": "A study of school learners.",
+        }
+        heuristic = decide_relevance(relevant)  # env unset here
+        with mock.patch.dict(
+            os.environ, {"RELEVANCE_CLASSIFIER": "embedding", "EMBEDDING_PROVIDER": "local"}
+        ), mock.patch.object(
+            common, "RELEVANCE_ANCHORS_PATH", Path(tempfile.gettempdir()) / "no_such_anchors.json"
+        ), mock.patch.object(common, "_embedding_fallback_warned", False):
+            self.assertEqual(relevance_classifier_mode(), "embedding")
+            self.assertIsNone(load_relevance_anchors())
+            self.assertEqual(decide_relevance(relevant), heuristic)
+
+    def test_embedding_mode_falls_back_when_no_embedding_provider(self) -> None:
+        # The artifact is present but no EMBEDDING_PROVIDER is configured (embed
+        # returns None): the decision must match the heuristic exactly.
+        import os
+
+        import common
+
+        relevant = {
+            "title": "Data literacy and critical thinking for school students",
+            "abstract": "A classroom study with pupils.",
+        }
+        heuristic = decide_relevance(relevant)  # env unset here
+        self.assertIsNotNone(load_relevance_anchors(), "committed anchors should load")
+        with mock.patch.dict(os.environ, {"RELEVANCE_CLASSIFIER": "embedding"}), mock.patch.object(
+            common, "_embedding_fallback_warned", False
+        ):
+            os.environ.pop("EMBEDDING_PROVIDER", None)
+            self.assertEqual(decide_relevance(relevant), heuristic)
+
+    def test_embedding_mode_is_deterministic_from_fixtures(self) -> None:
+        # With the anchors active and the deterministic local embedding, the
+        # decision is reproducible; topics stay the explainable keyword signal and
+        # the stored relevance_score stays schema-valid in [0, 1].
+        import os
+
+        source = {
+            "title": "AI literacy and critical thinking in classrooms",
+            "abstract": "A study with students.",
+        }
+        _, keyword_topics = score_relevance(source)
+        with mock.patch.dict(
+            os.environ, {"RELEVANCE_CLASSIFIER": "embedding", "EMBEDDING_PROVIDER": "local"}
+        ):
+            first = decide_relevance(source)
+            second = decide_relevance(source)
+        self.assertEqual(first, second)  # deterministic, network-free
+        keep, score, topics = first
+        self.assertIsInstance(keep, bool)
+        self.assertEqual(topics, keyword_topics)
+        self.assertTrue(0.0 <= score <= 1.0)
+
+    def test_embedding_anchors_artifact_is_versioned_and_reproducible(self) -> None:
+        # The committed anchors must carry the provenance needed to reproduce them.
+        artifact = load_relevance_anchors()
+        self.assertIsNotNone(artifact)
+        self.assertEqual(artifact["model_type"], "embedding-anchors")
+        self.assertIn("positive", artifact["anchors"])
+        self.assertIn("negative", artifact["anchors"])
+        self.assertEqual(len(artifact["anchors"]["positive"]), artifact["embedding_dim"])
+        self.assertEqual(len(artifact["anchors"]["negative"]), artifact["embedding_dim"])
+        provenance = artifact["provenance"]
+        self.assertIn("embedding_provider", provenance)
+        self.assertIn("built_at", provenance)
+        self.assertIn("input_hashes", provenance)
+        self.assertEqual(
+            provenance["n_examples"], provenance["n_relevant"] + provenance["n_irrelevant"]
+        )
+
+    def test_embedding_anchors_rebuild_is_reproducible(self) -> None:
+        # Rebuilding the anchors from the same labeled set with the deterministic
+        # local embedding reproduces the committed artifact's anchors exactly.
+        import os
+
+        import build_relevance_anchors as bra
+
+        examples = load_json(bra.EVAL_PATH)["examples"]
+        positives, negatives = bra.split_texts(examples)
+        with mock.patch.dict(os.environ, {"EMBEDDING_PROVIDER": "local"}):
+            rebuilt = bra.build_artifact(positives, negatives, "local", bra.DEFAULT_DECISION_THRESHOLD)
+        committed = load_relevance_anchors()
+        self.assertEqual(rebuilt["anchors"], committed["anchors"])
 
 
 class OptionalAiFoundationTests(unittest.TestCase):
