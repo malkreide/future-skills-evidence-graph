@@ -48,9 +48,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-22",
     "relevance_score": 0.45
   },
   {
@@ -72,9 +72,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-22",
     "relevance_score": 0.45
   },
   {
@@ -227,9 +227,9 @@
       "critical thinking",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-22",
     "relevance_score": 0.9
   },
   {
@@ -254,9 +254,9 @@
       "collaboration",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-22",
     "relevance_score": 0.9
   },
   {
@@ -303,9 +303,9 @@
       "ai literacy",
       "digital competence"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-22",
     "relevance_score": 0.75
   },
   {
@@ -463,9 +463,9 @@
       "ai literacy",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-22",
     "relevance_score": 0.45
   },
   {
