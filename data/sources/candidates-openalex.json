@@ -514,5 +514,118 @@
     "created_at": "2026-06-20",
     "reviewed_at": null,
     "relevance_score": 0.6
+  },
+  {
+    "id": "src-predicting-student-proficiency-in-literacy-and-numeracy-using-random-for",
+    "title": "Predicting Student Proficiency in Literacy and Numeracy Using Random Forests: An End-to-End Machine Learning Pipeline",
+    "authors": [
+      "Joshua S. Plaza",
+      "Levi A. Corvera",
+      "Jessica Rose E. Fernandez"
+    ],
+    "year": 2026,
+    "doi": "10.47760/oajmr.2026.v02i06.005",
+    "url": "https://openalex.org/W7165365025",
+    "openalex_id": "https://openalex.org/W7165365025",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OpenAlex",
+    "source_type": "peer_reviewed_article",
+    "license": "other-oa",
+    "abstract": "Identifying where students stand in literacy and numeracy is harder than it sounds. Tests produce subscale scores that correlate heavily with each other, class distributions are rarely balanced, and field data almost always have gaps. This paper describes a complete machine learning pipeline that tackles those problems head-on and produces two working classifiers\u2014one for literacy, one for numeracy\u2014that assign students to one of three proficiency bands: high, medium, or low. Both models are Random Forests trained on feature sets drawn from standardized assessment instruments, with grade level included as context. We added seven domain-informed interaction features on top of the raw subscale scores, handled a realistic 7% missing-data rate through median imputation, and normalized inputs using pre-fitted StandardScaler parameters. On a 600-sample test set deliberately constructed with boundary noise to mimic real deployment conditions, the literacy model reached 97.00% accuracy and a weighted ROC-AUC of 0.9986. The numeracy model came in at 85.00% accuracy with ROC-AUC of 0.9801\u2014meaningfully lower, for reasons we think are tied to the inherent heterogeneity of mathematical skill. Five-fold stratified cross-validation put numeracy training accuracy at 97.39% \u00b1 0.97%, which is reassuring for stability. Feature importance analysis pointed to raw accuracy as the single strongest literacy predictor (Gini importance 0.3014) and overall numeracy as the top numeracy predictor (0.3066). Beyond the numbers, the main argument here is that interpretable ensemble classifiers, when built carefully with domain knowledge, can serve as useful components in early warning systems\u2014provided the underlying assessment data are sound.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-22",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-from-fragmentation-to-integration-a-systematic-review-of-cross-jurisdict",
+    "title": "From Fragmentation to Integration: A Systematic Review of Cross-Jurisdictional Frameworks for Responsible Gaming and Gaming Disorder Prevention",
+    "authors": [
+      "Cedric Marvin Nkiko",
+      "Daria J. Kuss"
+    ],
+    "year": 2026,
+    "doi": "10.3390/addictprev1010002",
+    "url": "https://openalex.org/W7165369514",
+    "openalex_id": "https://openalex.org/W7165369514",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Addiction & Prevention",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The rapid expansion of the global gaming industry has intensified concern about Gaming Disorder (GD), creating a need for strategies that protect player well-being while remaining feasible for industry implementation. Using a PRISMA 2020-guided systematic review method, the study synthesised evidence from 40 peer-reviewed studies published between 2015 and 2025 on responsible gaming interventions implemented by game developers, platform operators, and digital storefronts. The review identified four main strategy clusters: structural design features, behavioural tools, monetisation controls, and regulatory measures. Across the literature, some interventions, including break reminders, spending controls, adaptive warnings, and design modifications that interrupt continuous play, showed potential to reduce excessive gaming and support self-regulation. However, effectiveness was often constrained by fragmented implementation, inconsistent evaluation, jurisdictional differences, and limited evidence from low- and middle-income settings. Digital storefronts were notably underexamined despite their growing influence on access and monetisation. The findings suggest that isolated technical or behavioural measures are unlikely to be sufficient on their own. In response, this review proposes the Integrated Responsible Gaming Strategy Framework (IRGSF), which brings together ethical design, behavioural support, socio-technical coordination, and stakeholder governance to guide more coherent and sustainable approaches to GD prevention.",
+    "topics": [
+      "self-regulation",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-22",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  },
+  {
+    "id": "src-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct",
+    "title": "The Role of AI Literacy and Media Education Interventions in Deconstructing Deepfakes",
+    "authors": [
+      "Igor Kani\u017eaj",
+      "Lana Ciboci Per\u0161a"
+    ],
+    "year": 2026,
+    "doi": "10.59549/n.167.1-2.1",
+    "url": "https://openalex.org/W7165160896",
+    "openalex_id": "https://openalex.org/W7165160896",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Napredak",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "One of the most concerning manifestations of artificial intelligence (AI) misuse is deepfake technology, which generates realistic but fabricated media content with the potential to deceive, manipulate, and erode public trust in digital communication. This threat is particularly acute for Generation Z, whose high exposure to synthetic media underscores the urgency of developing necessary critical skills. This study investigates the effectiveness of a short, targeted educational intervention designed to enhance deepfake recognition skills. Conducted in six secondary schools in Croatia, the intervention involved 118 students who participated in workshops focusing on the recognition, analysis, and critical evaluation of AI-generated manipulative content. A pre-test and post-test design was used to measure changes in students\u2019 competencies related to AI and media literacy. Findings indicate that even a short onetime intervention can produce measurable improvements in students\u2019 critical thinking, awareness of AI generated content, and ability to assess digital authenticity.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-22",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-young-people-s-perceptions-and-recommendations-for-conversational-genera",
+    "title": "Young people\u2019s perceptions and recommendations for conversational generative artificial intelligence in youth mental health",
+    "authors": [
+      "Adam Poulsen",
+      "Ian B. Hickie",
+      "Carla Gorban",
+      "Zsofi de Haan",
+      "William Capon",
+      "Ebenezer Eyeson-Annan",
+      "Jalal Radwan",
+      "Elizabeth Scott",
+      "Frank Iorfino",
+      "Haley M LaMonica"
+    ],
+    "year": 2026,
+    "doi": "10.1038/s41746-026-02888-9",
+    "url": "https://openalex.org/W7165172255",
+    "openalex_id": "https://openalex.org/W7165172255",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "npj Digital Medicine",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Conversational generative artificial intelligence agents (or genAI chatbots) could benefit youth mental health, yet young people's perspectives remain underexplored. We examined the Mental health Intelligence Agent (Mia), a genAI chatbot originally designed for professionals in Australian youth services. Following co-design, 32 young people participated in online workshops exploring their perceptions of genAI chatbots in youth mental health and to develop recommendations for reconceptualising Mia for consumers and integrating it into services. Four themes were developed using reflexive thematic analysis: (1) Humanising AI without dehumanising care, (2) I need to know what's under the hood, (3) Right tool, right place, right time?, and (4) Making it mine on safe ground. This study offers insights into young people's attitudes, needs, and requirements regarding genAI chatbots in youth mental health, with key implications for service integration. Additionally, by co-designing system requirements, this work informs the ethics, design, development, implementation, and governance of genAI chatbots in youth mental health contexts.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-22",
+    "reviewed_at": null,
+    "relevance_score": 0.75
   }
 ]
