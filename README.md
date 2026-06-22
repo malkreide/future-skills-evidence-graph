@@ -4,6 +4,12 @@ Open, GitHub-first evidence catalog for future skills in AI and education.
 
 Design principle: no skill recommendation without an evidence path.
 
+> 🇩🇪 **Deutschsprachiger Einstieg:** Worum es geht, ohne Technik, steht in
+> [docs/erklaerung-fuer-laien.md](docs/erklaerung-fuer-laien.md); die technische
+> Architektur in [docs/architektur.md](docs/architektur.md); die Governance- und
+> Haltungs-Story – warum ehrliche, auditierbare KI – in
+> [docs/governance-und-haltung.md](docs/governance-und-haltung.md).
+
 The project starts as a static, versioned evidence graph. Research automation may create
 candidate sources, claims, or skills, but publication of active skills requires human
 review through pull requests.
