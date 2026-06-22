@@ -18,6 +18,70 @@
       "decision": "promote_source",
       "harvested_at": "2026-06-20",
       "source_id": "src-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
+    },
+    {
+      "title": "AI literacy in K-12: a systematic literature review",
+      "abstract": "Systematic review of how AI literacy is being introduced in K-12. The authors analyze published interventions and frameworks and find that learners can develop AI literacy across conceptual, practical, and ethical dimensions, but that AI is rarely integrated as a structured part of the curriculum and that teacher preparation and assessment remain weak points.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-casal-otero-ai-literacy-k12-review-2023"
+    },
+    {
+      "title": "Developing Middle School Students' AI Literacy",
+      "abstract": "Reports the design and classroom implementation of a middle-school AI literacy curriculum. Following the curriculum, students were able to train and evaluate simple machine learning models, explain how training data shapes a model's behavior, and discuss the societal and ethical implications of AI systems they use.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-lee-developing-middle-school-ai-literacy-2021"
+    },
+    {
+      "title": "Artificial Intelligence (AI) literacy in early childhood education: The challenges and opportunities",
+      "abstract": "Reviews opportunities and challenges of introducing AI literacy in early childhood education. Argues that young children can grasp age-appropriate AI concepts when teaching is concrete, playful, and embedded in familiar everyday contexts, while cautioning about developmental fit, teacher readiness, and the need for ethics-aware design.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-su-ai-literacy-early-childhood-2023"
+    },
+    {
+      "title": "A is for Artificial Intelligence: The Impact of Artificial Intelligence Activities on Young Children's Perceptions of Robots",
+      "abstract": "Empirical study of AI learning activities with young children. Hands-on activities measurably changed children's perceptions of intelligent agents, improving their ability to reason about what such systems can and cannot do and reducing naive anthropomorphic assumptions about robots and AI.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-williams-young-children-ai-perceptions-2019"
+    },
+    {
+      "title": "Family as a Third Space for AI Literacies: How do children and parents learn about AI together?",
+      "abstract": "Study of children and parents learning about AI together at home. Through guided, social exploration of everyday smart devices, children developed algorithmic awareness - recognizing that such devices make data-driven decisions - and learned to question the behavior of the AI embedded in everyday tools.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-druga-family-ai-literacy-2022"
+    },
+    {
+      "title": "What Is the Impact of ChatGPT on Education? A Rapid Review of the Literature",
+      "abstract": "Rapid review of early literature on ChatGPT in education. Finds clear potential to support teaching and learning alongside recurring concerns about inaccurate or fabricated output, over-reliance, and academic integrity, and stresses that learners need to verify AI-generated content against reliable sources.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-lo-chatgpt-education-review-2023"
+    },
+    {
+      "title": "Guidance for Generative AI in Education and Research",
+      "abstract": "Policy guidance on safe, equitable, and human-centered use of generative AI in education and research.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_claim",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-unesco-genai-guidance-2023",
+      "claim_id": "claim-generative-ai-responsible-use"
     }
   ]
 }

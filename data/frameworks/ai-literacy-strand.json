@@ -1,0 +1,32 @@
+[
+  {
+    "id": "map-ai-foundational-concepts-ai4k12",
+    "skill_id": "skill-ai-foundational-concepts",
+    "framework": "AI4K12 Five Big Ideas in AI",
+    "framework_url": "https://ai4k12.org/",
+    "competency": "Perception; representation and reasoning; learning; natural interaction; societal impact",
+    "mapping_strength": "strong",
+    "rationale": "The skill operationalizes the AI4K12 big ideas about how AI systems perceive, represent, and learn for ages 6-18.",
+    "created_at": "2026-06-22"
+  },
+  {
+    "id": "map-ai-everyday-recognition-digcomp",
+    "skill_id": "skill-ai-everyday-recognition",
+    "framework": "DigComp 2.2",
+    "framework_url": "https://joint-research-centre.ec.europa.eu/digcomp/digcomp-framework/digcomp-22_en",
+    "competency": "Information and data literacy; interacting through digital technologies; AI-related examples",
+    "mapping_strength": "moderate",
+    "rationale": "DigComp 2.2 adds AI-aware examples to digital competence; recognizing AI in everyday tools extends those examples to ages 6-18.",
+    "created_at": "2026-06-22"
+  },
+  {
+    "id": "map-generative-ai-unesco",
+    "skill_id": "skill-generative-ai-literacy",
+    "framework": "UNESCO Guidance for Generative AI in Education and Research",
+    "framework_url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+    "competency": "Human-centered, safe, and equitable use of generative AI",
+    "mapping_strength": "strong",
+    "rationale": "The skill translates UNESCO's generative-AI guidance into learner-facing capability for older students.",
+    "created_at": "2026-06-22"
+  }
+]
