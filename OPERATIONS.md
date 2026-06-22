@@ -6,6 +6,10 @@ candidates, review them, verify quality, and improve the pipeline over time.
 The automation only ever produces **candidates**. Publishing active skills always
 requires human review through pull requests. Nothing here changes that.
 
+> Bringing the project into live operation for the first time? Work through
+> [docs/go-live-checkliste.md](docs/go-live-checkliste.md) — the configuration and
+> first-cycle acceptance steps that this runbook assumes are already in place.
+
 ## Components
 
 | Stage | Script / Workflow | Notes |
@@ -33,7 +37,7 @@ python scripts/eval_relevance.py --compare-model # heuristic vs model verdict
 
 Common steps are also wrapped as `make` targets (`make install`, `validate`,
 `test`, `eval`, `eval-model`, `eval-prefill`, `eval-prefill-record`, `build`,
-`recall-probe`, `recall-ingest`, `train`).
+`recall-probe`, `recall-ingest`, `triage`, `train`).
 
 In GitHub settings:
 - Secret `SEMANTIC_SCHOLAR_API_KEY` (without it that source returns HTTP 429 and
@@ -46,7 +50,15 @@ In GitHub settings:
    "Research candidate import" → Run workflow. (The API token cannot trigger
    `workflow_dispatch` — 403 — so use the UI or the cron.)
 2. **CI** — confirm `validate` is green on the opened `research/candidates` PR.
-3. **Review** each candidate:
+3. **Review** each candidate. To work the standing backlog without hand-joining
+   claims to their sources, generate a worksheet first:
+   ```bash
+   make triage   # writes eval/candidate_triage.json (gitignored, read-only)
+   ```
+   It lists every open candidate claim with its verbatim statement, matched
+   topics, the source(s) it rests on, any `assist` pre-fill suggestions, and the
+   exact `promote_candidate.py` commands to choose between. It promotes nothing;
+   run those commands yourself:
    ```bash
    # Good claim → reviewed:
    python scripts/promote_candidate.py claim <claim-id> \
