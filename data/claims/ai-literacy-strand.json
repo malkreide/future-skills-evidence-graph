@@ -1,0 +1,154 @@
+[
+  {
+    "id": "claim-ai-literacy-k12-systematic-review",
+    "statement": "A systematic review of K-12 AI literacy concludes that learners can develop AI literacy across conceptual understanding, hands-on use, and ethical awareness, but that integration into curricula and teacher preparation remains limited.",
+    "source_ids": [
+      "src-casal-otero-ai-literacy-k12-review-2023"
+    ],
+    "text_anchor": "Systematic review synthesis on AI literacy dimensions and the gap in curricular integration and teacher preparation in K-12.",
+    "context": "K-12 AI education across primary and secondary schooling",
+    "age_range": "6-18",
+    "outcome": "Schools can teach AI literacy as a structured, age-appropriate competence rather than leaving it incidental.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "strong",
+    "supports_skill_ids": [
+      "skill-ai-foundational-concepts",
+      "skill-ai-literacy"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  },
+  {
+    "id": "claim-middle-school-train-evaluate-ml",
+    "statement": "Middle school students who completed a dedicated AI curriculum were able to train and evaluate simple machine learning models and articulate how training data shapes model behavior and societal impact.",
+    "source_ids": [
+      "src-lee-developing-middle-school-ai-literacy-2021"
+    ],
+    "text_anchor": "Reported learning outcomes after the middle-school AI literacy curriculum implementation.",
+    "context": "Middle-school classroom AI curriculum (empirical implementation)",
+    "age_range": "11-14",
+    "outcome": "Learners gain a working mental model of how machine learning systems are built and where they can fail.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-foundational-concepts"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  },
+  {
+    "id": "claim-early-childhood-ai-concepts",
+    "statement": "Young children can develop age-appropriate understanding of basic AI concepts when learning is concrete, playful, and embedded in familiar everyday contexts.",
+    "source_ids": [
+      "src-su-ai-literacy-early-childhood-2023"
+    ],
+    "text_anchor": "Review argument that age-appropriate AI concepts are learnable in early childhood under concrete, playful, context-embedded teaching.",
+    "context": "Early childhood and lower-primary AI education",
+    "age_range": "6-9",
+    "outcome": "Foundational AI ideas can be introduced in the earliest school years instead of being deferred to secondary education.",
+    "evidence_type": "conceptual_review",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-foundational-concepts",
+      "skill-ai-everyday-recognition"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  },
+  {
+    "id": "claim-young-children-ai-perceptions",
+    "statement": "Hands-on AI activities measurably changed young children's perceptions of intelligent agents, improving their ability to reason about what such systems can and cannot do.",
+    "source_ids": [
+      "src-williams-young-children-ai-perceptions-2019"
+    ],
+    "text_anchor": "Empirical finding that AI activities shifted young children's perceptions and reasoning about intelligent agents.",
+    "context": "Early-primary classroom AI activities (empirical study)",
+    "age_range": "6-10",
+    "outcome": "Direct, guided experience helps children form accurate concepts of machine intelligence rather than anthropomorphic ones.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-foundational-concepts",
+      "skill-ai-everyday-recognition"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  },
+  {
+    "id": "claim-family-algorithmic-awareness",
+    "statement": "Children build algorithmic awareness - recognizing that everyday smart devices make data-driven decisions - through guided, social exploration, including with family members.",
+    "source_ids": [
+      "src-druga-family-ai-literacy-2022"
+    ],
+    "text_anchor": "Finding that guided, social exploration with family fostered children's algorithmic awareness of everyday smart devices.",
+    "context": "Informal and family-mediated AI learning around everyday smart devices",
+    "age_range": "7-14",
+    "outcome": "Learners notice and question the AI embedded in everyday tools instead of treating it as neutral magic.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-everyday-recognition"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  },
+  {
+    "id": "claim-generative-ai-responsible-use",
+    "statement": "Using generative AI responsibly requires learners to understand how such systems produce content, to verify outputs, to protect personal data, and to respect age and data-protection limits.",
+    "source_ids": [
+      "src-unesco-genai-guidance-2023"
+    ],
+    "text_anchor": "UNESCO guidance recommendations on responsible, human-centered use of generative AI in education, including verification, privacy, and age limits.",
+    "context": "School use of generative AI tools for learning and creation",
+    "age_range": "13-18",
+    "outcome": "Learners can use generative AI as a tool under their own judgment rather than as an unquestioned authority.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "strong",
+    "supports_skill_ids": [
+      "skill-generative-ai-literacy",
+      "skill-ai-literacy"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  },
+  {
+    "id": "claim-chatgpt-output-verification",
+    "statement": "A rapid review of ChatGPT in education finds clear potential to support learning alongside recurring risks of inaccurate or fabricated output, underscoring the need for learners to verify AI-generated content.",
+    "source_ids": [
+      "src-lo-chatgpt-education-review-2023"
+    ],
+    "text_anchor": "Rapid review synthesis on ChatGPT's educational potential and its risks of inaccurate or fabricated output.",
+    "context": "Use of large language model chatbots in education",
+    "age_range": "13-18",
+    "outcome": "Learners treat generative AI output as a draft to be checked against reliable sources, not as established fact.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-generative-ai-literacy",
+      "skill-critical-thinking"
+    ],
+    "contradicts_skill_ids": [],
+    "extraction_method": "manual_strand_review",
+    "status": "reviewed",
+    "created_at": "2026-06-22",
+    "reviewed_at": "2026-06-22"
+  }
+]

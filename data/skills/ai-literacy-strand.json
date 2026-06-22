@@ -1,0 +1,173 @@
+[
+  {
+    "id": "skill-ai-foundational-concepts",
+    "name": "AI Foundational Concepts",
+    "short_label": "KI-Konzepte",
+    "definition": "Ability to explain in age-appropriate terms how AI and machine-learning systems take in data, learn patterns, make predictions, and where the limits of machine intelligence lie.",
+    "age_range": "6-18",
+    "status": "active",
+    "evidence_score": 0.75,
+    "trend": "growing",
+    "topics": [
+      "ai literacy",
+      "machine learning",
+      "education"
+    ],
+    "supporting_claim_ids": [
+      "claim-ai-literacy-k12-systematic-review",
+      "claim-middle-school-train-evaluate-ml",
+      "claim-early-childhood-ai-concepts",
+      "claim-young-children-ai-perceptions",
+      "claim-k12-ai-big-ideas"
+    ],
+    "contradicting_claim_ids": [],
+    "framework_mapping_ids": [
+      "map-ai-foundational-concepts-ai4k12",
+      "map-lp21-ai-foundational-concepts"
+    ],
+    "uncertainty": "Strong and broad evidence that AI/ML concepts are learnable across ages 6-18; age-specific progressions and durable transfer still need more longitudinal study.",
+    "change_log": [
+      {
+        "date": "2026-06-22",
+        "change": "Created candidate skill for the AI literacy strand",
+        "reason": "Proposed sub-skill capturing conceptual understanding of how AI/ML systems work, ahead of human review."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.0 -> 0.57",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.57 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.7 -> 0.71",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.71 -> 0.72",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.72 -> 0.75",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "Promoted candidate skill to active",
+        "reason": "Human review confirmed definition and reviewed supporting evidence."
+      }
+    ],
+    "created_at": "2026-06-22",
+    "updated_at": "2026-06-22"
+  },
+  {
+    "id": "skill-ai-everyday-recognition",
+    "name": "Everyday AI Recognition",
+    "short_label": "Alltag-KI",
+    "definition": "Ability to recognize where AI and algorithms operate in everyday tools - search, recommendations, voice assistants, smart devices - and to question how they shape what we see and do.",
+    "age_range": "6-18",
+    "status": "active",
+    "evidence_score": 0.62,
+    "trend": "growing",
+    "topics": [
+      "ai literacy",
+      "digital literacy",
+      "ethics"
+    ],
+    "supporting_claim_ids": [
+      "claim-early-childhood-ai-concepts",
+      "claim-young-children-ai-perceptions",
+      "claim-family-algorithmic-awareness"
+    ],
+    "contradicting_claim_ids": [],
+    "framework_mapping_ids": [
+      "map-ai-everyday-recognition-digcomp",
+      "map-lp21-ai-everyday-recognition"
+    ],
+    "uncertainty": "Good empirical support that children can recognize and question everyday AI; evidence concentrates on informal and early-years settings and should be extended across secondary schooling.",
+    "change_log": [
+      {
+        "date": "2026-06-22",
+        "change": "Created candidate skill for the AI literacy strand",
+        "reason": "Proposed sub-skill capturing algorithmic awareness of AI in everyday life, ahead of human review."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.0 -> 0.5",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.5 -> 0.57",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.57 -> 0.62",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "Promoted candidate skill to active",
+        "reason": "Human review confirmed definition and reviewed supporting evidence."
+      }
+    ],
+    "created_at": "2026-06-22",
+    "updated_at": "2026-06-22"
+  },
+  {
+    "id": "skill-generative-ai-literacy",
+    "name": "Generative AI Literacy",
+    "short_label": "GenKI",
+    "definition": "Ability to use generative AI tools effectively while understanding how they produce content, verifying their outputs, protecting personal data, and recognizing bias and limits.",
+    "age_range": "13-18",
+    "status": "active",
+    "evidence_score": 0.68,
+    "trend": "emerging",
+    "topics": [
+      "ai literacy",
+      "generative ai",
+      "critical thinking"
+    ],
+    "supporting_claim_ids": [
+      "claim-generative-ai-responsible-use",
+      "claim-chatgpt-output-verification"
+    ],
+    "contradicting_claim_ids": [],
+    "framework_mapping_ids": [
+      "map-generative-ai-unesco",
+      "map-lp21-generative-ai-literacy"
+    ],
+    "uncertainty": "Policy guidance is clear and recent, but classroom evidence on teaching generative AI use to ages 13-18 is still early and fast-moving.",
+    "change_log": [
+      {
+        "date": "2026-06-22",
+        "change": "Created candidate skill for the AI literacy strand",
+        "reason": "Proposed sub-skill capturing critical, responsible use of generative AI tools, ahead of human review."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.0 -> 0.61",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "evidence_score 0.61 -> 0.68",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-22",
+        "change": "Promoted candidate skill to active",
+        "reason": "Human review confirmed definition and reviewed supporting evidence."
+      }
+    ],
+    "created_at": "2026-06-22",
+    "updated_at": "2026-06-22"
+  }
+]

@@ -158,5 +158,53 @@
     "coverage_label": "teilweise",
     "evidence_path": "Future Skill wird durch WEF-Skill-Signale und OECD-Agency gestuetzt; LP21-Bezug liegt bei personalen Kompetenzen.",
     "created_at": "2026-04-28"
+  },
+  {
+    "id": "map-lp21-ai-foundational-concepts",
+    "skill_id": "skill-ai-foundational-concepts",
+    "framework": "Lehrplan 21",
+    "framework_url": "https://www.lehrplan21.ch/medien-und-informatik",
+    "competency": "Informatik: Datenstrukturen, Algorithmen und Funktionsweise informationsverarbeitender Systeme",
+    "mapping_strength": "weak",
+    "rationale": "LP21 vermittelt im Informatikbereich Algorithmen und Datenverarbeitung, behandelt aber das Lernen aus Daten (maschinelles Lernen) und KI-spezifische Funktionsweisen nicht explizit.",
+    "framework_group": "Lehrplan 21",
+    "curriculum_area": "Medien und Informatik",
+    "cycles": ["Zyklus 2", "Zyklus 3"],
+    "coverage_score": 1.4,
+    "coverage_label": "Zukunftsluecke",
+    "evidence_path": "Future Skill wird durch AI4K12-Big-Ideas, einen K-12-Systematic-Review und empirische Klassenzimmer-Studien gestuetzt; LP21-Bezug liegt bei Algorithmen und Datenverarbeitung, ohne explizite ML-/KI-Konzepte.",
+    "created_at": "2026-06-22"
+  },
+  {
+    "id": "map-lp21-ai-everyday-recognition",
+    "skill_id": "skill-ai-everyday-recognition",
+    "framework": "Lehrplan 21",
+    "framework_url": "https://www.lehrplan21.ch/medien-und-informatik",
+    "competency": "Medien: Medien und Medienbeitraege verstehen; Informatiksysteme im Alltag erkennen und reflektieren",
+    "mapping_strength": "moderate",
+    "rationale": "LP21 adressiert das Verstehen und Reflektieren von Medien und digitalen Systemen im Alltag; das gezielte Erkennen von KI/Algorithmen in Alltagswerkzeugen bleibt aber nur teilweise ausgewiesen.",
+    "framework_group": "Lehrplan 21",
+    "curriculum_area": "Medien und Informatik",
+    "cycles": ["Zyklus 1", "Zyklus 2", "Zyklus 3"],
+    "coverage_score": 1.7,
+    "coverage_label": "teilweise",
+    "evidence_path": "Future Skill wird durch Early-Childhood- und Familien-Studien zu algorithmischer Wahrnehmung gestuetzt; LP21-Bezug liegt bei Medienreflexion und dem Erkennen von Informatiksystemen im Alltag.",
+    "created_at": "2026-06-22"
+  },
+  {
+    "id": "map-lp21-generative-ai-literacy",
+    "skill_id": "skill-generative-ai-literacy",
+    "framework": "Lehrplan 21",
+    "framework_url": "https://www.lehrplan21.ch/medien-und-informatik",
+    "competency": "Medien und Informatik: verantwortungsvoller Umgang mit Medien, Daten und digitalen Werkzeugen",
+    "mapping_strength": "weak",
+    "rationale": "Generative KI ist im LP21 nicht vorgesehen; Anknuepfungspunkte bestehen nur ueber den allgemeinen verantwortungsvollen Umgang mit Medien und Daten.",
+    "framework_group": "Lehrplan 21",
+    "curriculum_area": "Medien und Informatik",
+    "cycles": ["Zyklus 3"],
+    "coverage_score": 0.8,
+    "coverage_label": "Zukunftsluecke",
+    "evidence_path": "Future Skill wird durch UNESCO-GenAI-Guidance und einen ChatGPT-Rapid-Review gestuetzt; LP21 enthaelt keinen expliziten Bezug zu generativer KI.",
+    "created_at": "2026-06-22"
   }
 ]

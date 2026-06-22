@@ -35,7 +35,8 @@
     "evidence_strength": "moderate",
     "supports_skill_ids": [
       "skill-ai-literacy",
-      "skill-systems-thinking"
+      "skill-systems-thinking",
+      "skill-ai-foundational-concepts"
     ],
     "contradicts_skill_ids": [],
     "extraction_method": "manual_seed_review",
