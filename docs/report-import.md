@@ -72,6 +72,52 @@ PDF  ──(extract_pdf_text.py, optional)──▶  plaintext  ──(ingest_re
 - **No provider, no-op.** With `AI_PROVIDER=none` (the default) the importer reads
   nothing, calls nothing, and writes nothing.
 
+## Sicherheitsmodell
+
+The verbatim guard is the importer's defence against an LLM that invents
+evidence. It is deliberately narrow, so it is worth being precise about what it
+does and does not buy us. (The adversarial suite in
+`tests/test_data_integrity.py::ReportImportTests` exercises every line below.)
+
+**What the guard guarantees**
+
+- **Literal provenance.** Every retained statement occurs *verbatim* in the
+  report plaintext. Paraphrases, summaries, reorderings, truncations and outright
+  inventions do not occur literally and are dropped — including the hard case
+  where a paraphrase reuses *every* word of a real sentence but changes their
+  order. Shared vocabulary is not shared provenance.
+- **Codepoint-level matching.** After a *closed* normalization (NFKC folding, a
+  fixed map of curly quotes / dashes / non-breaking space, and rejoining
+  hyphenated line breaks) the comparison is exact on characters. A homoglyph
+  forgery — e.g. a Cyrillic `а` standing in for a Latin `a` — looks identical but
+  is a different codepoint and is rejected, not silently accepted.
+- **Conservative bias.** Normalization only ever neutralizes that closed set of
+  PDF artefacts and only joins hyphens across a newline. At worst this rejects a
+  genuine quote (e.g. a real compound that happened to wrap); it never invents a
+  match. The guard fails safe.
+
+**What the guard does *not* guarantee**
+
+- **Semantic fidelity.** A verbatim quote can still be cherry-picked, quoted out
+  of context, or paired with a wrong `outcome` / `context` / `age_range` /
+  `evidence_strength` in the non-binding `assist` block. *Verbatim ≠ true,
+  representative, or correctly interpreted.* The `text_anchor` proves where a
+  sentence came from, not what it means.
+- **Source authenticity.** The guard checks the statement against the plaintext
+  it is handed; it does not verify that the plaintext is a faithful extraction of
+  the real PDF, nor that the `title` / `year` / `url` are correct. Misleading
+  plaintext in yields a faithfully-anchored misleading claim out.
+- **A trustworthy report.** If the report text itself asserts something false,
+  the guard will dutifully anchor it. It constrains the *LLM*, not the *author*.
+- **Well-formed quotes.** A match only has to be a contiguous passage; it may be a
+  fragment or straddle a sentence boundary.
+
+In short, the guard removes the LLM's freedom to invent wording and reduces it to
+*which* true-to-text passages to surface. Judging whether a surfaced passage is
+true, fairly framed and correctly interpreted remains a human job — which is why
+everything stays `status=candidate` / `evidence_strength=low` until a reviewer
+promotes it via `promote_candidate.py`.
+
 ## Automation
 
 `.github/workflows/ingest-reports.yml` runs the importer on
