@@ -32,7 +32,8 @@ python scripts/eval_relevance.py --compare-model # heuristic vs model verdict
 ```
 
 Common steps are also wrapped as `make` targets (`make install`, `validate`,
-`test`, `eval`, `eval-model`, `build`, `recall-probe`, `recall-ingest`, `train`).
+`test`, `eval`, `eval-model`, `eval-prefill`, `eval-prefill-record`, `build`,
+`recall-probe`, `recall-ingest`, `train`).
 
 In GitHub settings:
 - Secret `SEMANTIC_SCHOLAR_API_KEY` (without it that source returns HTTP 429 and
@@ -144,16 +145,56 @@ placeholders and `statement`/`text_anchor` stay verbatim.
 ```bash
 python scripts/eval_claim_prefill.py                 # offline field metrics (fixtures)
 python scripts/eval_claim_prefill.py --min-precision 0.8 --min-recall 0.8  # CI gate
-python scripts/eval_claim_prefill.py --write-fixtures # (re)record fixtures from the golden set
+python scripts/eval_claim_prefill.py --write-fixtures # replay '_recorded' into the cache
 ```
 
 During review, `promote_candidate.py` prints any suggestion and
 `--accept-suggestions` adopts the non-null values as starting points. This never
 weakens the gate: fields the model left null stay placeholders and still block
 promotion, a reviewed claim still needs a `--supports`/`--contradicts` skill
-link, and every explicit flag overrides the suggestion. CI runs fully offline
-against committed fixtures (`tests/fixtures/ai/`); a cache miss is a failure, not
-a network call.
+link, and every explicit flag overrides the suggestion.
+
+### What the CI gate actually measures (regression, not live accuracy)
+
+The golden set `eval/claim_prefill_labeled.json` (~50 examples, broad topics, age
+bands 4–18, and deliberately hard `outcome`/`evidence_strength` cases) carries two
+things per example: the hand-curated `gold` review fields, and `_recorded` — the
+**model output last captured** for that prompt. `--write-fixtures` replays
+`_recorded` into `tests/fixtures/ai/`, and the offline run (CI default) reads its
+suggestions only from those fixtures (`AI_PROVIDER=cache`).
+
+So the CI gate is a **regression against the recorded outputs**: it is fully
+offline and deterministic (a cache miss is a failure, not a network call) and it
+catches drift between what we froze and the labels — it does **not** call the
+model and is **not** a live-accuracy number. `_recorded` is intentionally allowed
+to diverge from `gold` on the harder cases (e.g. an over-confident
+`evidence_strength`), so the frozen number stays honest rather than a saturated
+1.00. The current regression sits at overall precision ≈0.95 / recall ≈0.94,
+`evidence_strength` precision ≈0.84 — comfortably above the
+`--min-precision 0.8 / --min-recall 0.8 / --min-evidence-strength-precision 0.7`
+gate, which is unchanged.
+
+### Re-recording — where live accuracy is measured
+
+Live accuracy is measured only when you re-record against the real model:
+
+```bash
+make eval-prefill-record        # AI_PROVIDER=anthropic python scripts/eval_claim_prefill.py --record-live
+# needs ANTHROPIC_API_KEY; AI_MODEL overrides the model (default claude-opus-4-8)
+```
+
+`--record-live` calls the live model once per golden example, **overwrites**
+each `_recorded` (and its fixture in `tests/fixtures/ai/`) with the fresh output,
+then prints the field metrics — now scoring the *live* suggestions against
+`gold`. That printed number is the honest live-accuracy snapshot; the JSON edit
+keeps `_recorded` and the fixtures in lock-step (a failed/refused call leaves
+that example's prior recording untouched). Commit the refreshed
+`eval/claim_prefill_labeled.json` **and** the changed `tests/fixtures/ai/`
+together — that moves the regression baseline forward to the latest live
+behaviour and is the moment a new live-accuracy figure is recorded. Re-record
+after a prompt change (`PREFILL_PROMPT_VERSION`), a model bump (`AI_MODEL`), or
+when growing the golden set; then re-run `make eval-prefill` to confirm the gate
+still passes offline.
 
 ## Guardrails
 
