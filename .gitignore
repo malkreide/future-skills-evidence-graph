@@ -16,3 +16,6 @@ build/
 # transient recall-probe labeling worksheet (regenerated each run)
 eval/recall_probe.json
 
+# transient candidate-backlog review worksheet (regenerated each run)
+eval/candidate_triage.json
+

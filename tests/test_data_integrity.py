@@ -77,6 +77,7 @@ from promote_candidate import (  # noqa: E402
     skill_activation_errors,
 )
 from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
+from triage_candidates import build_worksheet  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
 
@@ -1772,6 +1773,34 @@ class PdfTextExtractionTests(unittest.TestCase):
 
     def test_clean_extracted_text_handles_empty(self) -> None:
         self.assertEqual(clean_extracted_text("   \n\n  "), "")
+
+
+class CandidateTriageTests(unittest.TestCase):
+    """The candidate-backlog worksheet is read-only and mirrors the real data."""
+
+    def test_worksheet_lists_every_open_candidate_claim(self) -> None:
+        worksheet = build_worksheet()
+        rows = worksheet["open_candidate_claims"]
+        open_claim_ids = {c["id"] for c in load_records("claims") if c.get("status") == "candidate"}
+        self.assertEqual({row["claim_id"] for row in rows}, open_claim_ids)
+        # No reviewed/rejected claim leaks into the worksheet.
+        non_candidate = {c["id"] for c in load_records("claims") if c.get("status") != "candidate"}
+        self.assertFalse({row["claim_id"] for row in rows} & non_candidate)
+
+    def test_worksheet_is_deterministic_and_undecided(self) -> None:
+        first = build_worksheet()
+        second = build_worksheet()
+        self.assertEqual(first, second)
+        for row in first["open_candidate_claims"]:
+            # Every row ships undecided and carries actionable review commands.
+            self.assertIsNone(row["decision"])
+            self.assertTrue(any("promote_candidate.py claim" in cmd for cmd in row["review_commands"]))
+
+    def test_worksheet_promotes_nothing(self) -> None:
+        before = [dict(c) for c in load_records("claims")]
+        build_worksheet()
+        after = load_records("claims")
+        self.assertEqual(before, after)
 
 
 if __name__ == "__main__":

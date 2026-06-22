@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-prefill eval-prefill-record build recall-probe recall-ingest train
+.PHONY: install validate test eval eval-model eval-prefill eval-prefill-record build recall-probe recall-ingest triage train
 
 install:
 	pip install -r requirements-dev.txt
@@ -38,6 +38,11 @@ recall-probe:
 # After filling in the 'relevant' fields, fold the labels into the eval set.
 recall-ingest:
 	python scripts/recall_probe.py --ingest eval/recall_probe.json
+
+# Turn the standing candidate backlog into a review worksheet
+# (eval/candidate_triage.json, gitignored). Reads only; promotes nothing.
+triage:
+	python scripts/triage_candidates.py
 
 train:
 	python scripts/train_relevance.py
