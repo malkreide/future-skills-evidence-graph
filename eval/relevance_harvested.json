@@ -82,6 +82,150 @@
       "harvested_at": "2026-06-22",
       "source_id": "src-unesco-genai-guidance-2023",
       "claim_id": "claim-generative-ai-responsible-use"
+    },
+    {
+      "title": "Abstracting Cross-Domain Action Sequences into Interpretable Workflows",
+      "abstract": "Sequential or time-stamped interaction logs provide objective records of digital application usage, yet their granularity and noise often obscure meaningful insights into people's work. Such insights are essential for improving digital products in ways grounded in real-world user interactions. Prior research has applied deep learning models to cluster user actions into high-level activities, but these approaches are highly sensitive to noise and struggle to generalize across applications. To address this limitation, we introduce WorkflowView, a framework that uses large language models (LLMs) to abstract low-level action sequences into high-level activities. We establish the effectiveness and generality of our approach across three distinct, challenging sequential tasks and diverse domains: (a) zero-shot task description reconstruction from browser logs (achieving high semantic similarity, $\u03bc_{sim} = 0.91$), (b) few-shot student dropout prediction using MOOC interaction logs (reaching weighted $F_1 = 0.90$ with only five few-shot examples), and (c) anonymized, privacy-preserving analysis of AI tool integration within document workflows in Microsoft Word. Our work demonstrates that LLM-based abstraction is a robust and efficient path forward for transforming low-level behavioral data into high-level, interpretable, and actionable insights. We also discuss practical considerations for deploying LLM-based inferences within logging infrastructures, including computational efficiency and user privacy.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-abstracting-cross-domain-action-sequences-into-interpretable-workflows"
+    },
+    {
+      "title": "AI &amp; Data Competencies: Scaffolding Holistic AI Literacy in Higher Education",
+      "abstract": "This chapter introduces the AI &amp; Data Acumen Learning Outcomes Framework, a comprehensive tool designed to guide the integration of AI literacy across higher education. Developed through a collaborative process, the framework defines key AI and data-related competencies across four proficiency levels and seven knowledge dimensions. It provides a structured approach for educators to scaffold student learning in AI, balancing technical skills with ethical considerations and sociocultural awareness. The chapter outlines the framework's development process, its structure, and practical strategies for implementation in curriculum design, learning activities, and assessment. We address challenges in implementation and future directions for AI education. By offering a roadmap for developing students' holistic AI literacy, this framework prepares learners to leverage generative AI capabilities in both academic and professional contexts.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-ai-amp-data-competencies-scaffolding-holistic-ai-literacy-in-higher-educ"
+    },
+    {
+      "title": "AI Literacy for the Workforce",
+      "abstract": "This brief is part of a set sharing specific AI literacy recommendations for various audiences in education. As artificial intelligence (AI) fundamentally reshapes career trajectories across every sector, workers face a significant transformation in the skills required for future employment. Developing AI literacy will support workers in leveraging AI in their current positions, understanding how AI may influence their tasks, and preparing them to effectively use AI tools to complement their future roles Those who do not develop AI literacy skills and knowledge before entering the workforce face the highest risk of job displacement, as they may struggle to adapt to technological advancements and integrate AI tools into their work. This brief provides guidance for organizations, policymakers, and educational institutions to address gaps in AI literacy education as these technologies continue to evolve.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-ai-literacy-for-the-workforce"
+    },
+    {
+      "title": "Directors Duties in the Age of Agentic Artificial Intelligence",
+      "abstract": "As boards engage with the adoption of Artificial Intelligence including agentic AI to drive operational efficiencies, this presents new opportunities for profit maximisation. AI adoption is increasingly identified with employee role displacement and in companies, and the interests of employees as stakeholders require exploration. A novel question posed is whether in an age of AI ascendancy AI may warrant being given stakeholder status as its role in the company approximates or eclipses that of human employees. The article probes four distinct models of corporate purpose within the duty on directors to act in the best interests of the company, the shareholder primacy model, the Enlightened Shareholder value model, the stakeholder friendly model, and the stakeholder value model, highlighting the available scope for directors to accommodate the interests of employees around AI adoption in decision-making by boards around AI. It is concluded that given the degree to which directors are insulated from legal scrutiny in relation to their best interests duty, adopting a wider law in context approach to promote employee welfare would serve the interests of employees, directors and companies alike. This would see directors engaging meaningfully with employees and providing opportunities for reskilling to adapt to the age of AI.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-directors-duties-in-the-age-of-agentic-artificial-intelligence"
+    },
+    {
+      "title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
+      "abstract": "Purpose: This study aims to investigate how preservice teachers' stages of concern, beliefs, confidence and interest in AI literacy education evolve as they deepen their understanding of AI concepts and AI literacy education. Design/methodology/approach: AI literacy lessons were integrated into a technology integration course for preservice teachers, and the impacts of the lessons were evaluated through a mixed-methods study. The Concerns-Based Adoption Model was employed as the analytical framework to explore participants' specific concerns related to AI. Findings: Findings revealed that participants initially lacked AI knowledge and awareness. However, targeted AI literacy education enhanced preservice teachers' awareness and confidence in teaching AI. While acknowledging AI's educational benefits, participants expressed ongoing concerns after AI literacy lessons, such as fears of teacher displacement and the potential adverse effects of incorporating generative AI on students' critical learning skills development. Originality/value: Despite the importance of providing preservice teachers with AI literacy skills and knowledge, research in this domain remains scarce. This study fills this gap by enhancing the AI-related knowledge and skills of future educators, while also identifying their specific concerns regarding the integration of AI into their future classrooms. The findings of this study offer valuable insights and guidelines for teacher educators to incorporate AI literacy education into teacher training programs.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among"
+    },
+    {
+      "title": "From Fragmentation to Integration: A Systematic Review of Cross-Jurisdictional Frameworks for Responsible Gaming and Gaming Disorder Prevention",
+      "abstract": "The rapid expansion of the global gaming industry has intensified concern about Gaming Disorder (GD), creating a need for strategies that protect player well-being while remaining feasible for industry implementation. Using a PRISMA 2020-guided systematic review method, the study synthesised evidence from 40 peer-reviewed studies published between 2015 and 2025 on responsible gaming interventions implemented by game developers, platform operators, and digital storefronts. The review identified four main strategy clusters: structural design features, behavioural tools, monetisation controls, and regulatory measures. Across the literature, some interventions, including break reminders, spending controls, adaptive warnings, and design modifications that interrupt continuous play, showed potential to reduce excessive gaming and support self-regulation. However, effectiveness was often constrained by fragmented implementation, inconsistent evaluation, jurisdictional differences, and limited evidence from low- and middle-income settings. Digital storefronts were notably underexamined despite their growing influence on access and monetisation. The findings suggest that isolated technical or behavioural measures are unlikely to be sufficient on their own. In response, this review proposes the Integrated Responsible Gaming Strategy Framework (IRGSF), which brings together ethical design, behavioural support, socio-technical coordination, and stakeholder governance to guide more coherent and sustainable approaches to GD prevention.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-from-fragmentation-to-integration-a-systematic-review-of-cross-jurisdict"
+    },
+    {
+      "title": "Human Translation and AI: Reimagining EAP/EFL Pedagogy in the Language of Emotions.The Cases of The Diary of Ana\u00efs Nin and Gratitude by Oliver Sacks",
+      "abstract": "As English for Academic Purposes (EAP) and Eng lish as a Foreign Language (EFL) classrooms evolve with technology, this research aims to ar gue that integrating the practice of AI-powered literary translation not only modernizes peda gogy but also fundamentally enhances EAP/EFL learners\u2019 linguistic, cultural, and critical capabili ties. In classroom interventions across a Master\u2019s in Psychology, a University Language Centre and a Secondary School, 106 students translated 18 ex tracts from two literary Diaries (by Anais Nin and Oliver Sacks). They compared their Italian trans lations with those from ChatGPT, DeepL, or Google Translate to determine human-AI transla tion differences and assess which better conveys the source author\u2019s emotions.Textual similarity was calculated using the TF-IDF (Term Frequency\u2013Inverse Document Frequency) method, a vector-representation technique that assigns a weight to terms based on their fre quency in a text and their distribution across the entire corpus. In addition, an Emotional Detec tion (ED) analysis was conducted on the human translations and on those generated by the artifi cial intelligence systems, in order to explore how the affective content of texts is reworked in the transition from the original to the translation. Results show that human translations present significantly greater variability and emotional sensitivity than AI, particularly in metaphorical and affectively charged texts.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-human-translation-and-ai-reimagining-eap-efl-pedagogy-in-the-language-of"
+    },
+    {
+      "title": "\"If You're Very Clever, No One Knows You've Used It\": The Social Dynamics of Developing Generative AI Literacy in the Workplace",
+      "abstract": "Generative AI (GenAI) tools are rapidly transforming knowledge work, making AI literacy a critical priority for organizations. However, research on AI literacy lacks empirical insight into how knowledge workers' beliefs around GenAI literacy are shaped by the social dynamics of the workplace, and how workers learn to apply GenAI tools in these environments. To address this gap, we conducted in-depth interviews with 19 knowledge workers across multiple sectors to examine how they develop GenAI competencies in real-world professional contexts. We found that, while knowledge sharing from colleagues supported learning, the ability to remove cues indicating GenAI use was perceived as validation of domain expertise. These behaviours ultimately reduced opportunities for learning via knowledge sharing and undermined transparency. To advance workplace AI literacy, we argue for fostering open dialogue, increasing visibility of user-generated knowledge, and greater emphasis on the benefits of collaborative learning for navigating rapid technological developments.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-if-you-re-very-clever-no-one-knows-you-ve-used-it-the-social-dynamics-of"
+    },
+    {
+      "title": "Investigation of Digital Competencies and Artificial Intelligence Literacy of Special Education Students",
+      "abstract": "This study investigated the digital competence and artificial intelligence (AI) literacy levels of special education students at various universities, examining differences by gender and grade level. A quantitative, descriptive, and correlational design was employed with a sample of 234 voluntary participants studying in special education departments. Data were collected using the &quot;Digital Competence Perception Scale for Pre-service Teachers&quot; and the &quot;Artificial Intelligence Literacy Scale.&quot; Results indicated that students exhibited high levels of both digital competence and AI literacy. Male students scored significantly higher in overall digital competence, whereas gender differences in AI literacy were minimal. Regarding grade level, notable differences emerged in the sub-dimensions of digital competence, and higher-grade students demonstrated greater AI literacy and self-efficacy. Regression analysis showed that digital competence significantly predicted AI literacy, explaining 39% of its variance. These findings highlight the interconnection between digital skills and AI literacy among future special education teachers. Therefore, it is recommended that teacher education programs integrate digital competence and AI literacy modules into their curricula. Future studies should adopt mixed or qualitative methods to explore participants' experiences more deeply and validate the quantitative outcomes.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-investigation-of-digital-competencies-and-artificial-intelligence-litera"
+    },
+    {
+      "title": "Justification and Roadmap for Artificial Intelligence (AI) Literacy Courses in Higher Education",
+      "abstract": "In this article, I present a justification for implementing AI literacy courses in higher education. I explore the ethical concerns and biases surrounding AI technologies, highlighting the importance of critical analysis and responsible use of AI. I then propose a conceptual framework, focusing on awareness, skill development, and the practical application of AI. This framework aims to foster comprehensive understanding and empower students to leverage AI's potential while mitigating risks. I also provide sample course titles and learning objectives. The suggested course format covers AI concepts, ethical considerations, bias awareness, and practical prompt engineering skills. There is a need to integrate AI literacy courses into higher education curricula, and I offer a roadmap for implementation. By equipping students with AI literacy, colleges can prepare students to navigate an AI-driven world responsibly while nurturing innovation and critical-thinking skills needed for future success.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-justification-and-roadmap-for-artificial-intelligence-ai-literacy-course"
+    },
+    {
+      "title": "Psychological resilience and disaster preparedness among parents of children with hearing impairments: a cross-sectional analysis",
+      "abstract": "Background Families of children with disabilities are considered vulnerable populations in disaster contexts due to communication barriers, increased caregiving demands, and limited access to emergency resources. Psychological resilience, defined as the capacity to adapt positively in the face of adversity, may function as a protective factor influencing disaster preparedness behaviors. However, evidence regarding the role of parental psychological resilience in shaping disaster preparedness among parents of children with hearing impairment remains limited. Methods This cross-sectional descriptive study was conducted between December 2023 and January 2025 with 183 parents of children with hearing impairment. Data were collected using a Parent\u2013Child Information Form, the Adult Psychological Resilience Scale, and the Disaster Preparedness Scale. Descriptive statistics, independent samples t -test, one-way ANOVA, Pearson correlation analysis, and hierarchical multiple regression analysis were performed using SPSS 29.0. Statistical significance was set at p &amp;lt; 0.05. Results Psychological resilience was positively and significantly associated with disaster preparedness ( r = 0.227, p = 0.002). Regression analysis indicated that psychological resilience was significantly associated with disaster preparedness levels ( \u03b2 = 0.23, B = 0.16, p = 0.002). Parents with higher resilience scores demonstrated higher preparedness levels. Education level, prior disaster training, and home preparedness behaviors were also significantly associated with both resilience and preparedness. The effect size of resilience was low, suggesting that disaster preparedness is a multidimensional construct influenced by both psychological and socio-structural factors. Conclusion Psychological resilience is a significant but not solely sufficient protective factor for disaster preparedness among parents of children with hearing impairment. Integrating psychosocial strengthening components into disaster preparedness interventions may enhance behavioral readiness in vulnerable families. Public health strategies should prioritize inclusive, family-centered, and accessible preparedness programs to support resilience and reduce disaster-related vulnerabilities.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-psychological-resilience-and-disaster-preparedness-among-parents-of-chil"
+    },
+    {
+      "title": "Regional Climate Model Emulation with Diffusion Approaches: What is the Added Value of Generative Machine Learning?",
+      "abstract": "Emulators provide a cost-effective alternative to regional climate models (RCMs) by capturing their dynamical downscaling function. They link large-scale predictors simulated by global climate models (GCMs) to RCM-simulated high-resolution fields of the target variable, here precipitation. Machine learning methods, typically deep learning, are cheaper than running RCMs in computation time and energy. Among them, generative models are appealing because they can simulate ensembles of local high-resolution fields consistent with the predictors. This ensemble, which we call the uncertainty envelope, remains to be properly assessed for added value. Here, we make three contributions. First, we introduce ParamDiffusion, a new two-stage diffusion-based framework, and compare it with a state-of-the-art diffusion approach. Second, we expand standard validation through a comprehensive framework aligned with climate-science needs, examining specific precipitation events, including extremes. Third, within this framework, we assess the added value of diffusion approaches relative to deterministic methods. We intercompare four deep-learning models: a deterministic model designed to capture the precipitation tail; a parametric probabilistic model based on it; a recently proposed diffusion approach; and ParamDiffusion, which couples the parametric model with a diffusion model. Our results show that diffusion-based approaches reproduce climatological precipitation statistics with high skill, including distributional tails and spatially compounded extremes, while generating spatially detailed fields. However, none of the assessed models consistently accounts for the most extreme RCM-simulated events within its uncertainty envelope. Diffusion models are therefore promising for probabilistic RCM emulation, but progress is still required before they can reliably represent high-impact precipitation extremes.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-regional-climate-model-emulation-with-diffusion-approaches-what-is-the-a"
+    },
+    {
+      "title": "Smart wearables for school-based physical activity promotion: K\u201312 physical education teachers\u2019 continuance intention and adoption pathways",
+      "abstract": "Introduction Smart wearable devices are increasingly used in physical education to support data-driven monitoring and feedback. However, limited research has examined why K\u201312 physical education teachers continue using these devices. This study investigates teachers\u2019 continuance intention by integrating the Task\u2013Technology Fit model and the Unified Theory of Acceptance and Use of Technology, with self-efficacy and perceived data privacy added as extended variables. Methods Using convenience sampling, 755 valid questionnaires were collected from K\u201312 physical education teachers, including 500 male teachers (66.22%) and 255 female teachers (33.78%). The model was tested using covariance-based structural equation modeling (CB-SEM), and fuzzy-set qualitative comparative analysis (fsQCA) was used to identify configurations leading to high and low continuance intention. Results The CB-SEM results showed that task characteristics significantly predicted task\u2013technology fit ( \u03b2 = 0.916, p &amp;lt; 0.001), whereas technological characteristics did not. Task\u2013technology fit was the strongest predictor of continuance intention ( \u03b2 = 0.504, p &amp;lt; 0.001), followed by performance expectancy, social influence, self-efficacy, and effort expectancy. Perceived data privacy had a significant negative effect. The fsQCA identified four configurations leading to high continuance intention and five leading to low continuance intention, indicating that continued use results from multiple combinations of task-related, technological, psychological, and social conditions. Discussion This study advances understanding of teachers\u2019 technology adoption by integrating symmetric and asymmetric analytical approaches within a unified theoretical framework. The findings highlight the central role of task\u2013technology fit and show that continuance intention is not determined by a single factor, but by multiple interacting conditions. These results provide practical implications for policymakers, school administrators, and technology developers seeking to support the sustainable integration of smart wearable devices into physical education and school-based physical activity promotion.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-smart-wearables-for-school-based-physical-activity-promotion-k-12-physic"
+    },
+    {
+      "title": "Teaching Machine Learning to Software Engineers",
+      "abstract": "Machine learning (ML) and Artificial Intelligence (AI) components are increasingly embedded in software products, yet undergraduate software engineering (SE) curricula rarely provide systematic preparation for building, testing, deploying, and maintaining AI/ML-based software systems. This paper aims to provide evidence-based guidance for integrating AI/MLrelevant content into core SE education. We compile and define a structured inventory of topics relevant to SE practice in AI/MLbased software, then map these topics against required courses in a set of representative SE curricula to identify coverage gaps. To assess educational priorities and feasibility, we survey SE instructors on topic importance and integration constraints. Based on the crosswalk between topic definitions, curriculum coverage, and instructor prioritization, we derive a guideline that recommends where and how high-priority topics can be embedded within existing SE courses.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-teaching-machine-learning-to-software-engineers"
+    },
+    {
+      "title": "Understanding Older Adults\u2019 Intention to Use AI-based Devices: A Socioemotional Selectivity Perspective",
+      "abstract": "Artificial intelligence (AI)-based devices are increasingly embedded in everyday technologies used by older adults, yet research on AI adoption has largely focused on organizational or domain-specific contexts, leaving everyday use among older populations underexplored. Drawing on Socioemotional Selectivity Theory and digital divide research, this study investigates which socioemotional factors determine older adults\u2019 intention to use AI-based devices. Using survey data from 303 older adults, we analyze how factors as enjoyment, perceived social isolation, or privacy concerns influence performance expectancy and the usage intention. The results show that socioemotional factors act as antecedents of performance expectancy and significantly influence intention to use AI-based devices. By integrating a lifespan perspective with established adoption constructs, this study contributes to IS research by explaining how socioemotional priorities shape technology acceptance in later life and by highlighting implications for the deployment strategy of AI-based technologies to support social connectedness and transparent data practices.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-understanding-older-adults-intention-to-use-ai-based-devices-a-socioemot"
+    },
+    {
+      "title": "Understanding the Relationship between Colleges Students&apos; Artificial Intelligence Literacy and Higher Order Thinking Skills Using the 3P Model: The Mediating Roles of Behavioral Engagement and Peer Interaction",
+      "abstract": "Artificial Intelligence (AI) has brought about significant changes in our lives, making AI literacy a crucial endeavor for the future. Despite its growing importance in academia, there is limited empirical research on its impact on college students' higher order thinking skills (HOTS). The present study systematically and comprehensively explores the relationship between college students' AI literacy and HOTS using the 3P (Presage-process-product) model. In this model, students' AI literacy represents the presage factors, while behavioral engagement and peer interaction serves as the process factors, and HOTS is the product factor. We gathered data from a survey of 260 college students. We utilized structural equation modeling to analyze the relationships between the 3P factors. The results showed that both AI usage and AI evaluation directly influenced HOTS and also indirectly affected HOTS through the mediating role of behavioral engagement and peer interaction. Conversely, AI awareness and AI ethics showed no direct influence on HOTS, although AI awareness impacted HOTS via peer interaction mediation. The results of the study have several theoretical and practical implications. From a theoretical perspective, this study incorporates AI literacy, behavioral engagement, peer interaction, and HOTS within the 3P model framework, shedding light on their interrelations. On a practical note, the results emphasize the need to consider AI literacy, behavioral engagement, peer interaction when designing courses to enhance HOTS in the era of AI.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-22",
+      "source_id": "src-understanding-the-relationship-between-colleges-students-apos-artificial"
     }
   ]
 }

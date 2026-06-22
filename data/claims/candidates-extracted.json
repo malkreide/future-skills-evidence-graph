@@ -152,9 +152,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-teaching-machine-learning-to-software-engineers-abstract-s1",
@@ -171,9 +171,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-empowering-student-debugging-in-parallel-programming-with-execution-trac",
@@ -209,9 +209,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-artificial-intelligence-ai-literacy-in-early-childhood-education-an-inte",
@@ -247,9 +247,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among",
@@ -266,9 +266,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-developing-a-holistic-ai-literacy-framework-for-children-abstract-s4",
@@ -323,9 +323,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-mapping-ai-literacy-frameworks-an-analysis-of-the-evolving-metaphorical",
@@ -342,9 +342,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e",
@@ -380,9 +380,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-ai-amp-data-competencies-scaffolding-holistic-ai-literacy-in-higher-educ",
@@ -399,9 +399,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-durable-skills-enhance-career-and-technical-education-in-the-age-of-arti",
@@ -437,9 +437,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-embracing-the-future-of-artificial-intelligence-in-the-classroom-the-rel",
@@ -456,9 +456,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
@@ -551,9 +551,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-developing-ai-literacy-in-students-abstract-s1",
@@ -570,9 +570,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s-2",
@@ -608,9 +608,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-understanding-older-adults-intention-to-use-ai-based-devices-a-socioemot",
@@ -627,9 +627,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-generative-ai-in-education-for-sdg-4-insights-from-indonesia-and-kazakhs",
@@ -646,9 +646,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-if-you-re-very-clever-no-one-knows-you-ve-used-it-the-social-dynamics-of",
@@ -665,9 +665,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-smart-wearables-for-school-based-physical-activity-promotion-k-12-physic",
@@ -684,9 +684,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-human-translation-and-ai-reimagining-eap-efl-pedagogy-in-the-language-of",
@@ -703,9 +703,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-psychological-resilience-and-disaster-preparedness-among-parents-of-chil",
@@ -722,9 +722,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-memory-in-motion-ai-mediated-storytelling-across-languages-classrooms-an",
@@ -760,9 +760,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-22",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-from-fragmentation-to-integration-a-systematic-review-of-cross-jurisdict",
@@ -779,9 +779,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-22",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-22"
   },
   {
     "id": "claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct",
