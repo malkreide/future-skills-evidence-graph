@@ -1567,6 +1567,120 @@ class ReportImportTests(unittest.TestCase):
             verbatim_passage("The skill gap is enormous and growing fast in schools.", curly)
         )
 
+    # --- Adversarial hallucination-guard suite -------------------------------
+    # A finding that occurs verbatim in the report (across its original line
+    # wraps). It is the positive control every forgery below is measured against.
+    GENUINE_PASSAGE = (
+        "Sustained collaboration between teachers and learners improves the "
+        "uptake of digital competence in lower-secondary classrooms."
+    )
+
+    def test_adversarial_forgeries_are_rejected(self) -> None:
+        # Each forgery is comfortably longer than the length floor, so its
+        # rejection proves the *verbatim* guard fired, not the MIN_PASSAGE_LENGTH
+        # cutoff. They span the four ways an LLM can drift from the text:
+        # invention, paraphrase, truncation, and typographic forgery.
+        cyrillic_a = "а"  # looks identical to Latin "a", different codepoint
+
+        fabricated = (
+            "AI literacy doubles student test scores within a single academic year."
+        )
+        # The hard paraphrase: every word of the genuine passage is present, only
+        # "teachers and learners" is swapped to "learners and teachers". Maximum
+        # lexical overlap, yet not a literal quote -> rejected. This is the key
+        # negative proof: shared vocabulary is not shared provenance.
+        reordered_paraphrase = (
+            "Sustained collaboration between learners and teachers improves the "
+            "uptake of digital competence in lower-secondary classrooms."
+        )
+        # A looser paraphrase: same claim, different words.
+        loose_paraphrase = (
+            "Working together, teachers and pupils raise digital competence in "
+            "the lower-secondary grades over time."
+        )
+        # Shortened: the interior words "the uptake of" are removed, so the result
+        # is no longer a contiguous passage of the report.
+        shortened = (
+            "Sustained collaboration between teachers and learners improves "
+            "digital competence in lower-secondary classrooms."
+        )
+        # Typographic forgery: a single Latin "a" swapped for its Cyrillic
+        # homoglyph. It looks identical, but it is a different codepoint and NFKC
+        # does not fold across scripts, so the guard -- which compares codepoints,
+        # not glyphs -- rejects it instead of silently accepting a lookalike.
+        homoglyph_forgery = self.GENUINE_PASSAGE.replace("a", cyrillic_a, 1)
+        # Single-word substitution: "lower-secondary" -> "upper-secondary". One
+        # word changed, meaning altered, no longer verbatim.
+        altered_word = self.GENUINE_PASSAGE.replace("lower-secondary", "upper-secondary")
+
+        forgeries = {
+            "fabricated": fabricated,
+            "reordered_paraphrase": reordered_paraphrase,
+            "loose_paraphrase": loose_paraphrase,
+            "shortened": shortened,
+            "homoglyph_forgery": homoglyph_forgery,
+            "altered_word": altered_word,
+        }
+        for label, forgery in forgeries.items():
+            self.assertGreaterEqual(
+                len(normalize_for_match(forgery)), MIN_PASSAGE_LENGTH, label
+            )
+            self.assertIsNone(verbatim_passage(forgery, self.REPORT), label)
+
+        # The positive control: the genuine passage IS accepted, so the rejections
+        # above are about wording/provenance, not an over-eager guard.
+        self.assertEqual(
+            verbatim_passage(self.GENUINE_PASSAGE, self.REPORT), self.GENUINE_PASSAGE
+        )
+
+    def test_genuine_passages_survive_pdf_noise(self) -> None:
+        # Genuine quotes carrying real PDF artefacts -- a folded ligature and an
+        # intra-word hyphenation across a line break -- still match, while a
+        # homoglyph forgery of the very same sentence does not.
+        report_text = (
+            "A key ﬁnding is that sustained collabora-\n"
+            "tion between teachers improves critical thinking for school pupils."
+        )
+        genuine = (
+            "A key finding is that sustained collaboration between teachers "
+            "improves critical thinking for school pupils."
+        )
+        self.assertEqual(
+            verbatim_passage(genuine, report_text), normalize_for_match(genuine)
+        )
+        forged = genuine.replace("a", "а", 1)  # Cyrillic homoglyph
+        self.assertIsNone(verbatim_passage(forged, report_text))
+
+    def test_adversarial_proposal_keeps_only_the_verbatim_finding(self) -> None:
+        # End-to-end: a proposal whose findings are mostly forgeries (an invention
+        # and a high-overlap paraphrase) plus one genuine quote yields exactly one
+        # claim -- only the verbatim finding survives the guard into a candidate.
+        proposal = {
+            "title": "OECD Future of Education and Skills 2030: AI Literacy in Schools",
+            "year": 2023,
+            "source_type": "policy_report",
+            "authors": ["OECD"],
+            "summary": (
+                "The report examines how compulsory education prepares learners "
+                "aged 6 to 18 for artificial intelligence across member states."
+            ),
+            "findings": [
+                {"statement": self.FABRICATED},
+                {
+                    "statement": (
+                        "Sustained collaboration between learners and teachers "
+                        "improves the uptake of digital competence in "
+                        "lower-secondary classrooms."
+                    )
+                },
+                {"statement": self.VERBATIM_WRAPPED},
+            ],
+        }
+        _, claims = report_candidates(proposal, self.REPORT, self.URL, "OECD", 2023)
+        self.assertEqual(
+            [claim["statement"] for claim in claims], [self.VERBATIM_COLLAPSED]
+        )
+
     def test_load_jobs_single_and_manifest(self) -> None:
         from argparse import Namespace
 
