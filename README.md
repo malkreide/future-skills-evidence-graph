@@ -194,7 +194,7 @@ deliberately implements a subset; the remaining steps are open:
 | --- | --- |
 | 1. Discover and deduplicate sources | Implemented for OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC (`ingest_*.py`, `deduplicate_sources.py`); OECD/WEF/UNESCO lack a public search API and use a manual, opt-in LLM report importer (`ingest_reports.py`, see [docs/report-import.md](docs/report-import.md)) |
 | 2. Classify relevance | Keyword/abstract heuristic requiring a topic match (default, fallback, fully deterministic), measured against a labeled set (`eval_relevance.py`); two **optional** opt-in signals — a TF-IDF + LogisticRegression classifier (`train_relevance.py`, `RELEVANCE_CLASSIFIER=model`) and embedding prototype anchors (`build_relevance_anchors.py`, `RELEVANCE_CLASSIFIER=embedding`) — exist but stay disabled because neither beats the heuristic on the held-out comparison |
-| 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work |
+| 3. Extract structured claims | Implemented conservatively (`extract_claims.py`): a verbatim finding sentence becomes a candidate claim (methodology/structure sentences are skipped); context, age range, outcome, and strength stay human work. An **optional, opt-in** LLM pre-fill (`AI_PROVIDER=anthropic`) only *suggests* those review fields under a non-binding `claim["assist"]` block — off by default, the output is byte-identical to the LLM-free path. Its quality is tracked by `eval_claim_prefill.py` against a labeled golden set; see [OPERATIONS.md](OPERATIONS.md#optional-ai-claim-pre-fill-p1) |
 | 4. Link claims to sources and text anchors | Implemented for extracted claims — anchors cite the exact abstract sentence; reviewed claims keep curated anchors |
 | 5. Score evidence quality | Implemented (`score_evidence.py`, enforced by validation) |
 | 6. Cluster claims into skill candidates | Implemented conservatively (`cluster_claims.py`): topic-vocabulary clustering proposes candidate skills for uncovered topics; existing skills only get review hints |
@@ -212,6 +212,13 @@ Optional environment variables:
   needs `EMBEDDING_PROVIDER`). Both fall back to the heuristic if their artifact (or, for
   embeddings, the provider) is missing, and neither currently beats the heuristic, so the
   default is recommended.
+- `AI_PROVIDER`: `none` (default) | `anthropic` | `cache`. Enables the optional claim
+  pre-fill (step 3). `none` keeps the pipeline LLM-free and byte-identical; `anthropic`
+  asks the live model (via `AI_MODEL`, default `claude-opus-4-8`) to *suggest* the manual
+  review fields; `cache` replays committed fixtures offline. The `eval_claim_prefill.py`
+  CI gate runs in `cache` mode — a **regression** that scores the recorded outputs against
+  the golden labels, fully deterministic; live accuracy is measured separately when the
+  fixtures are re-recorded (`make eval-prefill-record`, see [OPERATIONS.md](OPERATIONS.md#optional-ai-claim-pre-fill-p1)).
 - `EMBEDDING_PROVIDER`: `none` (default) | `local` | `st`. Selects the embedding backend
   used by `ai_provider.embed`, `build_relevance_anchors.py`, and the `embedding` relevance
   mode. `local` is the dependency-free, deterministic hashing embedding (CI default); `st`

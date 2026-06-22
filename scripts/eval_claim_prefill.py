@@ -15,17 +15,30 @@ hand-curated gold values, reporting precision-style metrics:
 
     python scripts/eval_claim_prefill.py                      # offline report
     python scripts/eval_claim_prefill.py --min-precision 0.8  # CI gate
-    python scripts/eval_claim_prefill.py --write-fixtures     # (re)record fixtures
+    python scripts/eval_claim_prefill.py --write-fixtures     # replay '_recorded' into the cache
+    AI_PROVIDER=anthropic \
+      python scripts/eval_claim_prefill.py --record-live      # re-record from the live model
 
-Reproducibility mirrors the rest of the project: the suggestions come from the
-fixture cache (AI_PROVIDER=cache), never the network, so CI is deterministic. A
-cache miss means a fixture is missing -- regenerate with --write-fixtures, which
-replays each example's recorded suggestion through ai_provider.cache_write.
+Two clocks, kept honest and separate:
+
+- The **offline report / CI gate** is a *regression*: every suggestion comes
+  from the committed fixture cache (AI_PROVIDER=cache), never the network, so it
+  is fully deterministic. It scores the *recorded* outputs against gold, i.e. it
+  catches drift between what we froze and the labels -- not the live model's
+  current accuracy. A cache miss means a fixture is missing; regenerate with
+  --write-fixtures, which replays each example's '_recorded' through
+  ai_provider.cache_write.
+- **--record-live** (AI_PROVIDER=anthropic) is where *live accuracy* is actually
+  measured: it calls the real model once per example, overwrites '_recorded' (and
+  the fixture cache) with the fresh output, and prints the same field metrics --
+  now against live suggestions. Commit the refreshed '_recorded' + fixtures to
+  move the regression baseline forward. See OPERATIONS.md ("Re-recording").
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -97,9 +110,43 @@ class FieldMetrics:
         return 2 * p * r / (p + r) if (p + r) else 0.0
 
 
+def load_payload() -> dict[str, Any]:
+    return load_json(EVAL_PATH)
+
+
 def load_examples() -> list[dict[str, Any]]:
-    payload = load_json(EVAL_PATH)
-    return payload["examples"]
+    return load_payload()["examples"]
+
+
+def _dump_value(value: Any) -> str:
+    """Compact JSON for a nested value, matching the golden file's hand style."""
+    return json.dumps(value, ensure_ascii=False)
+
+
+def dump_payload(payload: dict[str, Any]) -> str:
+    """Serialize the golden set preserving its one-object-per-line layout.
+
+    The file is hand-formatted (each example's keys on their own line, with
+    'gold'/'_recorded'/'topics' as compact single-line JSON). --record-live
+    rewrites it in place, so a faithful dumper keeps the diff to the lines that
+    actually changed instead of reflowing the whole artifact.
+    """
+    lines = ["{"]
+    top_keys = [key for key in payload if key != "examples"]
+    for key in top_keys:
+        lines.append(f"  {json.dumps(key)}: {_dump_value(payload[key])},")
+    lines.append('  "examples": [')
+    examples = payload["examples"]
+    for example_index, example in enumerate(examples):
+        lines.append("    {")
+        keys = list(example.keys())
+        for key_index, key in enumerate(keys):
+            tail = "," if key_index < len(keys) - 1 else ""
+            lines.append(f"      {json.dumps(key)}: {_dump_value(example[key])}{tail}")
+        lines.append("    }" + ("," if example_index < len(examples) - 1 else ""))
+    lines.append("  ]")
+    lines.append("}")
+    return "\n".join(lines) + "\n"
 
 
 def _suggestion_for(example: dict[str, Any]) -> dict[str, Any] | None:
@@ -170,6 +217,47 @@ def write_fixtures(examples: list[dict[str, Any]]) -> int:
     return written
 
 
+def _normalize_recorded(response: dict[str, Any]) -> dict[str, Any]:
+    """Pin a live suggestion to the canonical field order for a clean diff."""
+    return {name: response.get(name) for name in PREFILL_SUGGESTION_FIELDS}
+
+
+def record_live(payload: dict[str, Any]) -> int:
+    """Re-record every example's '_recorded' (and its fixture) from the live model.
+
+    Requires AI_PROVIDER=anthropic: this is the one path that actually calls the
+    network, so it is where live accuracy is measured. Each call goes through
+    ai_provider.complete, which in 'anthropic' mode also caches the response, so
+    the committed fixtures and '_recorded' stay in lock-step. A failed/refused
+    call (complete -> None) leaves that example's prior recording untouched and
+    warns, rather than wiping a good baseline. Returns the number re-recorded.
+    """
+    if ai_provider.ai_provider() != "anthropic":
+        print(
+            "FAIL: --record-live needs AI_PROVIDER=anthropic (it calls the live model). "
+            f"Got {ai_provider.ai_provider()!r}.",
+            file=sys.stderr,
+        )
+        return -1
+    recorded = 0
+    for example in payload["examples"]:
+        prompt = prefill_prompt(
+            example["abstract"], example["statement"], example.get("topics", [])
+        )
+        response = ai_provider.complete(prompt, schema=PREFILL_OUTPUT_SCHEMA)
+        if not isinstance(response, dict):
+            print(
+                f"Warning: no live suggestion for {example['id']}; keeping its prior "
+                "'_recorded'.",
+                file=sys.stderr,
+            )
+            continue
+        example["_recorded"] = _normalize_recorded(response)
+        recorded += 1
+    EVAL_PATH.write_text(dump_payload(payload), encoding="utf-8")
+    return recorded
+
+
 def _report(metrics: dict[str, FieldMetrics], overall: FieldMetrics) -> None:
     print(f"Labeled examples scored against gold review fields ({EVAL_PATH.name}):\n")
     print(f"  {'field':<18} {'P':>5} {'R':>5} {'F1':>5}   predicted/gold  abstain")
@@ -196,7 +284,13 @@ def main() -> int:
     parser.add_argument(
         "--write-fixtures",
         action="store_true",
-        help="Record each example's '_recorded' suggestion into tests/fixtures/ai and exit.",
+        help="Replay each example's '_recorded' suggestion into tests/fixtures/ai and exit.",
+    )
+    parser.add_argument(
+        "--record-live",
+        action="store_true",
+        help="Re-record '_recorded' + fixtures from the live model (needs AI_PROVIDER=anthropic), "
+        "then report live accuracy vs gold.",
     )
     parser.add_argument("--min-precision", type=float, default=None, help="Gate on overall precision.")
     parser.add_argument("--min-recall", type=float, default=None, help="Gate on overall recall.")
@@ -214,13 +308,27 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    examples = load_examples()
+    payload = load_payload()
+    examples = payload["examples"]
 
     if args.write_fixtures:
         # Recording always uses the canonical cache path; no provider needed.
         count = write_fixtures(examples)
         print(f"Wrote {count} fixture(s) to {ai_provider.CACHE_DIR}.")
         return 0
+
+    if args.record_live:
+        # The live path: overwrite '_recorded' + fixtures, then fall through to
+        # the report so the printed metrics are the freshly measured live accuracy.
+        count = record_live(payload)
+        if count < 0:
+            return 1
+        print(
+            f"Re-recorded {count} example(s) from the live model into {EVAL_PATH.name} "
+            f"and {ai_provider.CACHE_DIR.name}/. Live accuracy below:\n"
+        )
+        # Score the freshly written fixtures deterministically (no second live call).
+        os.environ["AI_PROVIDER"] = "cache"
 
     # Read suggestions from the committed fixtures unless a live provider is set.
     # 'none' would make every suggestion None, so default to deterministic replay.

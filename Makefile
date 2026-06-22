@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-prefill build recall-probe recall-ingest train
+.PHONY: install validate test eval eval-model eval-prefill eval-prefill-record build recall-probe recall-ingest train
 
 install:
 	pip install -r requirements-dev.txt
@@ -17,8 +17,15 @@ eval-model:
 	python scripts/eval_relevance.py --compare-model
 
 # Offline field metrics for the optional LLM claim pre-fill (P1), from fixtures.
+# This is the regression view: it scores the RECORDED outputs against gold.
 eval-prefill:
 	python scripts/eval_claim_prefill.py
+
+# Re-record the pre-fill fixtures from the live model and report live accuracy.
+# Needs AI_PROVIDER=anthropic + ANTHROPIC_API_KEY; overwrites '_recorded' and the
+# fixtures, so commit both afterwards. See OPERATIONS.md ("Re-recording").
+eval-prefill-record:
+	AI_PROVIDER=anthropic python scripts/eval_claim_prefill.py --record-live
 
 build:
 	python scripts/build_site.py

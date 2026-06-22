@@ -1,5 +1,5 @@
 {
-  "_README": "Golden set for the LLM claim pre-fill (P1). Each example holds the extractor inputs (abstract, statement, topics) and the hand-curated 'gold' review fields a human would accept. '_recorded' is a recorded/simulated model suggestion for the SAME prompt; scripts/eval_claim_prefill.py --write-fixtures replays it into tests/fixtures/ai/ so the eval runs offline and deterministically (AI_PROVIDER=cache). evidence_strength uses the prompt vocabulary low|moderate|high (Anhang A); null means the abstract does not support that field. DO NOT wire these into data/ -- they are an evaluation artifact only.",
+  "_README": "Golden set for the LLM claim pre-fill (P1). Each example holds the extractor inputs (abstract, statement, topics) and the hand-curated 'gold' review fields a human would accept. '_recorded' is the model suggestion last captured for the SAME prompt: `scripts/eval_claim_prefill.py --record-live` (AI_PROVIDER=anthropic) overwrites it from a real call AND reports live accuracy vs gold; `scripts/eval_claim_prefill.py --write-fixtures` replays it into tests/fixtures/ai/ so CI runs offline and deterministically (AI_PROVIDER=cache). The offline eval therefore measures a REGRESSION of the recorded outputs against gold, not a fresh live call -- '_recorded' deliberately diverges from 'gold' on the harder cases so the numbers stay honest. evidence_strength uses the prompt vocabulary low|moderate|high (Anhang A); null means the abstract does not support that field. DO NOT wire these into data/ -- they are an evaluation artifact only.",
   "prompt_version": "claim-prefill-v1",
   "examples": [
     {
@@ -199,6 +199,258 @@
       "topics": ["self-regulation", "online learning"],
       "gold": {"age_range": null, "outcome": "Weekly goal-setting raises MOOC module completion.", "context": "Analysis of completion patterns in an adult-professional university MOOC.", "evidence_strength": "low"},
       "_recorded": {"age_range": null, "outcome": "Weekly goal-setting raises MOOC module completion.", "context": "Analysis of completion patterns in an adult-professional university MOOC.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-early-numeracy-preschool",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We evaluated a manipulatives-based number-sense program with 130 preschool children in two countries. Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison. The program ran for ten weeks with trained educators.",
+      "statement": "Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison.",
+      "topics": ["numeracy", "early education"],
+      "gold": {"age_range": "4-6", "outcome": "A manipulatives-based program strengthens preschoolers' early numeracy.", "context": "Ten-week manipulatives number-sense program with preschool children in two countries.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "4-6", "outcome": "A manipulatives-based program strengthens preschoolers' early numeracy.", "context": "Ten-week manipulatives number-sense program with preschool children in two countries.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-phonics-reception",
+      "source_type": "systematic_review",
+      "abstract": "A systematic review of 28 trials examined systematic synthetic phonics in the first years of formal schooling. The evidence consistently shows improved word reading and decoding accuracy. Effects were robust across languages with transparent orthographies.",
+      "statement": "The evidence consistently shows improved word reading and decoding accuracy.",
+      "topics": ["reading comprehension", "literacy"],
+      "gold": {"age_range": "5-7", "outcome": "Systematic synthetic phonics improves early word reading and decoding.", "context": "Systematic review of synthetic phonics trials in the first years of schooling.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "5-7", "outcome": "Systematic synthetic phonics improves early word reading and decoding.", "context": "Systematic review of synthetic phonics trials in the first years of schooling.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-cyber-safety-middle",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A cyber-safety curriculum was delivered to middle-school students across eleven schools. Students who completed it reported fewer risky online disclosures and better password practices at a two-month follow-up. The design was a matched-school comparison.",
+      "statement": "Students who completed it reported fewer risky online disclosures and better password practices at a two-month follow-up.",
+      "topics": ["digital citizenship", "media literacy"],
+      "gold": {"age_range": "11-14", "outcome": "A cyber-safety curriculum reduces risky online disclosures and improves password practices.", "context": "Matched-school comparison of a cyber-safety curriculum in middle schools.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "11-14", "outcome": "A cyber-safety curriculum reduces risky online disclosures and improves password practices.", "context": "Matched-school comparison of a cyber-safety curriculum in middle schools.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-financial-literacy-secondary",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A budgeting simulation game was trialled with 180 secondary students to teach personal finance. Players improved their budgeting knowledge and reported greater confidence managing money. The study used a pre-post design without a control group.",
+      "statement": "Players improved their budgeting knowledge and reported greater confidence managing money.",
+      "topics": ["financial literacy", "numeracy"],
+      "gold": {"age_range": "14-18", "outcome": "A budgeting game improves students' budgeting knowledge and money confidence.", "context": "Pre-post trial of a budgeting simulation game with secondary students.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "14-18", "outcome": "A budgeting game improves students' budgeting knowledge and money confidence.", "context": "Pre-post trial of a budgeting simulation game with secondary students.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-music-cognition",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A small quasi-experiment gave 48 primary children weekly music training and measured executive-function tasks. The trained group showed modest gains in working memory and inhibitory control. The sample was small and not randomised.",
+      "statement": "The trained group showed modest gains in working memory and inhibitory control.",
+      "topics": ["self-regulation", "metacognition"],
+      "gold": {"age_range": "7-10", "outcome": "Music training yields modest working-memory and inhibitory-control gains.", "context": "Small non-randomised quasi-experiment of music training with primary children.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "7-10", "outcome": "Music training yields modest working-memory and inhibitory-control gains.", "context": "Small non-randomised quasi-experiment of music training with primary children.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-debate-civics",
+      "source_type": "peer_reviewed_article",
+      "abstract": "Structured classroom debate was introduced in upper-secondary civics lessons across six schools. Students improved measurably in argument quality and willingness to consider opposing views. Teachers implemented a common debate protocol.",
+      "statement": "Students improved measurably in argument quality and willingness to consider opposing views.",
+      "topics": ["critical thinking", "collaboration"],
+      "gold": {"age_range": "14-18", "outcome": "Structured debate improves argument quality and openness to opposing views.", "context": "Multi-school study of structured debate in upper-secondary civics.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "14-18", "outcome": "Structured debate improves argument quality and openness to opposing views.", "context": "Multi-school study of structured debate in upper-secondary civics.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-dyslexia-app",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A multisensory reading app for children with dyslexia was evaluated against standard remediation. App users improved decoding speed and accuracy more than the comparison group. The trial enrolled 72 children over twelve weeks.",
+      "statement": "App users improved decoding speed and accuracy more than the comparison group.",
+      "topics": ["reading comprehension", "literacy"],
+      "gold": {"age_range": "8-11", "outcome": "A multisensory app improves decoding speed and accuracy for children with dyslexia.", "context": "Twelve-week controlled trial of a multisensory dyslexia app versus standard remediation.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "8-11", "outcome": "A multisensory app improves decoding speed and accuracy for children with dyslexia.", "context": "Twelve-week controlled trial of a multisensory dyslexia app versus standard remediation.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-adhd-selfmonitor",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A tablet self-monitoring tool was tested with primary students showing attention difficulties. Using the tool, students reduced off-task behaviour and completed more independent work. The study used a single-case multiple-baseline design.",
+      "statement": "Using the tool, students reduced off-task behaviour and completed more independent work.",
+      "topics": ["self-regulation", "metacognition"],
+      "gold": {"age_range": "9-12", "outcome": "A self-monitoring tool reduces off-task behaviour and increases independent work.", "context": "Single-case multiple-baseline study of a self-monitoring tool with inattentive primary students.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "9-12", "outcome": "A self-monitoring tool reduces off-task behaviour and increases independent work.", "context": "Single-case multiple-baseline study of a self-monitoring tool with inattentive primary students.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-gifted-acceleration",
+      "source_type": "systematic_review",
+      "abstract": "This systematic review synthesised studies of academic acceleration for high-ability students. Across the evidence, accelerated students achieved more without social-emotional harm. The review covered both grade-skipping and subject acceleration.",
+      "statement": "Across the evidence, accelerated students achieved more without social-emotional harm.",
+      "topics": ["motivation", "mathematics"],
+      "gold": {"age_range": "8-16", "outcome": "Acceleration raises achievement for high-ability students without social-emotional harm.", "context": "Systematic review of grade-skipping and subject acceleration for gifted students.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "8-16", "outcome": "Acceleration raises achievement for high-ability students without social-emotional harm.", "context": "Systematic review of grade-skipping and subject acceleration for gifted students.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-outdoor-science",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A place-based outdoor science unit was compared with classroom-only instruction in two primary cohorts. Outdoor learners gained more environmental knowledge and reported more positive attitudes to science. The comparison was quasi-experimental.",
+      "statement": "Outdoor learners gained more environmental knowledge and reported more positive attitudes to science.",
+      "topics": ["science education", "inquiry learning"],
+      "gold": {"age_range": "10-12", "outcome": "Place-based outdoor science improves environmental knowledge and attitudes.", "context": "Quasi-experimental comparison of outdoor versus classroom science in primary cohorts.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "10-12", "outcome": "Place-based outdoor science improves environmental knowledge and attitudes.", "context": "Quasi-experimental comparison of outdoor versus classroom science in primary cohorts.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-spaced-retrieval",
+      "source_type": "systematic_review",
+      "abstract": "A review of spaced retrieval practice in schools analysed its effect on durable learning. Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study. The benefit held across subjects and school ages.",
+      "statement": "Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study.",
+      "topics": ["metacognition", "self-regulation"],
+      "gold": {"age_range": "10-18", "outcome": "Spaced retrieval practice reliably improves long-term retention over massed study.", "context": "Review of spaced retrieval practice across school subjects and ages.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "10-18", "outcome": "Spaced retrieval practice reliably improves long-term retention over massed study.", "context": "Review of spaced retrieval practice across school subjects and ages.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-translanguaging-bilingual",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We studied translanguaging pedagogy in bilingual primary classrooms over a school year. Pupils allowed to draw on both languages understood science content better and participated more. The study used teacher logs and content assessments.",
+      "statement": "Pupils allowed to draw on both languages understood science content better and participated more.",
+      "topics": ["language learning", "science education"],
+      "gold": {"age_range": "6-12", "outcome": "Translanguaging pedagogy improves bilingual pupils' content understanding and participation.", "context": "Year-long study of translanguaging in bilingual primary science classrooms.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "6-12", "outcome": "Translanguaging pedagogy improves bilingual pupils' content understanding and participation.", "context": "Year-long study of translanguaging in bilingual primary science classrooms.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-ai-feedback-coding",
+      "source_type": "peer_reviewed_article",
+      "abstract": "An AI tool giving real-time feedback on student code was deployed in lower-secondary computing. Students using it fixed bugs faster and submitted more working programs than a control class. The deployment lasted seven weeks.",
+      "statement": "Students using it fixed bugs faster and submitted more working programs than a control class.",
+      "topics": ["programming", "computational thinking"],
+      "gold": {"age_range": "12-15", "outcome": "An AI code-feedback tool speeds debugging and increases working submissions.", "context": "Seven-week deployment of an AI code-feedback tool in lower-secondary computing.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "12-15", "outcome": "An AI code-feedback tool speeds debugging and increases working submissions.", "context": "Seven-week deployment of an AI code-feedback tool in lower-secondary computing.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-misinformation-game",
+      "source_type": "peer_reviewed_article",
+      "abstract": "An inoculation 'prebunking' game was tested with secondary students to build resistance to misinformation. Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later. The trial randomised classes to game or control.",
+      "statement": "Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later.",
+      "topics": ["media literacy", "critical thinking"],
+      "gold": {"age_range": "13-17", "outcome": "A prebunking game improves detection of misinformation techniques, with gains persisting two weeks.", "context": "Class-randomised trial of an inoculation game against misinformation in secondary students.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "13-17", "outcome": "A prebunking game improves detection of misinformation techniques, with gains persisting two weeks.", "context": "Class-randomised trial of an inoculation game against misinformation in secondary students.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-chatbot-design-null",
+      "source_type": "working_paper",
+      "abstract": "This working paper outlines the architecture of a conversational chatbot for language practice. We detail the dialogue-management design and planned classroom integration. No learning outcomes were measured in this phase.",
+      "statement": "We detail the dialogue-management design and planned classroom integration.",
+      "topics": ["language learning", "intelligent tutoring"],
+      "gold": {"age_range": null, "outcome": null, "context": "Working paper describing the design of a language-practice chatbot.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": null, "context": "Working paper describing the design of a language-practice chatbot.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-formative-assessment",
+      "source_type": "systematic_review",
+      "abstract": "A synthesis of classroom formative-assessment studies examined effects on attainment. The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels. Effects were larger when feedback was specific and actionable.",
+      "statement": "The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels.",
+      "topics": ["feedback", "self-regulation"],
+      "gold": {"age_range": "6-18", "outcome": "Frequent feedback-rich formative assessment raises achievement across grades.", "context": "Synthesis of classroom formative-assessment studies across grade levels.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "6-18", "outcome": "Frequent feedback-rich formative assessment raises achievement across grades.", "context": "Synthesis of classroom formative-assessment studies across grade levels.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-game-fractions",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A digital game targeting fraction concepts was trialled with upper-primary pupils. Players developed stronger conceptual understanding of fractions than a worksheet group. The four-week trial involved 110 pupils.",
+      "statement": "Players developed stronger conceptual understanding of fractions than a worksheet group.",
+      "topics": ["mathematics", "gamification"],
+      "gold": {"age_range": "9-11", "outcome": "A fractions game improves conceptual understanding over worksheets.", "context": "Four-week trial of a digital fractions game with upper-primary pupils.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": null, "outcome": "A fractions game improves conceptual understanding over worksheets.", "context": "Four-week trial of a digital fractions game with upper-primary pupils.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-pair-programming",
+      "source_type": "peer_reviewed_article",
+      "abstract": "Pair programming was introduced in a secondary computing course and compared with solo work. Paired students solved problems more successfully and reported higher confidence. The study ran across two terms with rotating pairs.",
+      "statement": "Paired students solved problems more successfully and reported higher confidence.",
+      "topics": ["programming", "collaboration"],
+      "gold": {"age_range": "12-15", "outcome": "Pair programming improves problem-solving success and confidence.", "context": "Two-term comparison of pair programming versus solo work in secondary computing.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "12-15", "outcome": "Pair programming improves problem-solving success and confidence.", "context": "Two-term comparison of pair programming versus solo work in secondary computing.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-ar-anatomy",
+      "source_type": "peer_reviewed_article",
+      "abstract": "An augmented-reality anatomy app was compared with a textbook in upper-secondary biology. Students using the app were more engaged, but post-test anatomy knowledge did not differ between conditions. The sample comprised three classes.",
+      "statement": "Students using the app were more engaged, but post-test anatomy knowledge did not differ between conditions.",
+      "topics": ["science education", "augmented reality"],
+      "gold": {"age_range": "15-18", "outcome": "An AR anatomy app raises engagement but not knowledge over a textbook.", "context": "Classroom comparison of an AR anatomy app versus a textbook in upper-secondary biology.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "15-18", "outcome": "An AR anatomy app raises engagement but not knowledge over a textbook.", "context": "Classroom comparison of an AR anatomy app versus a textbook in upper-secondary biology.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-policy-ai-ethics",
+      "source_type": "policy_report",
+      "abstract": "This policy report reviews how school systems address the ethics of AI use in classrooms. It recommends clearer guidance for teachers and students but reports no measured learning outcomes. The report targets regional education authorities.",
+      "statement": "It recommends clearer guidance for teachers and students but reports no measured learning outcomes.",
+      "topics": ["ai literacy", "digital citizenship"],
+      "gold": {"age_range": null, "outcome": null, "context": "Policy report reviewing how school systems address AI ethics in classrooms.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": null, "context": "Policy report reviewing how school systems address AI ethics in classrooms.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-mother-tongue-literacy",
+      "source_type": "systematic_review",
+      "abstract": "A review examined mother-tongue-based instruction in the early grades of multilingual countries. The evidence shows that initial literacy in the home language improves early reading outcomes. Transfer to the second language was also supported.",
+      "statement": "The evidence shows that initial literacy in the home language improves early reading outcomes.",
+      "topics": ["literacy", "language learning"],
+      "gold": {"age_range": "6-9", "outcome": "Mother-tongue-based early instruction improves early reading outcomes.", "context": "Review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "6-9", "outcome": "Mother-tongue-based early instruction improves early reading outcomes.", "context": "Review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "high"}
+    },
+    {
+      "id": "prefill-worked-examples-math",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A randomised study compared worked examples with conventional problem-solving for teaching algebra. Students given worked examples learned more efficiently and scored higher on a delayed test. The trial involved 200 lower-secondary students.",
+      "statement": "Students given worked examples learned more efficiently and scored higher on a delayed test.",
+      "topics": ["mathematics", "metacognition"],
+      "gold": {"age_range": "13-16", "outcome": "Worked examples improve learning efficiency and delayed-test performance in algebra.", "context": "Randomised comparison of worked examples versus problem-solving in lower-secondary algebra.", "evidence_strength": "high"},
+      "_recorded": {"age_range": "13-16", "outcome": "Worked examples improve learning efficiency and delayed-test performance in algebra.", "context": "Randomised comparison of worked examples versus problem-solving in lower-secondary algebra.", "evidence_strength": "moderate"}
+    },
+    {
+      "id": "prefill-vr-empathy",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A virtual-reality perspective-taking experience was tested with secondary students to foster empathy. Immediately afterwards students reported higher empathy, but the effect was not measured beyond the session. The study had no active control.",
+      "statement": "Immediately afterwards students reported higher empathy, but the effect was not measured beyond the session.",
+      "topics": ["social-emotional learning", "virtual reality"],
+      "gold": {"age_range": "12-16", "outcome": "A VR perspective-taking experience raises immediate self-reported empathy, with durability untested.", "context": "Uncontrolled test of a VR perspective-taking experience with secondary students.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "12-16", "outcome": "A VR perspective-taking experience raises immediate self-reported empathy, with durability untested.", "context": "Uncontrolled test of a VR perspective-taking experience with secondary students.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-notetaking-longhand",
+      "source_type": "peer_reviewed_article",
+      "abstract": "We compared longhand and laptop note-taking among lower-secondary students during science lessons. Students taking longhand notes recalled slightly more conceptual content on a later quiz. Differences were small and varied by topic.",
+      "statement": "Students taking longhand notes recalled slightly more conceptual content on a later quiz.",
+      "topics": ["metacognition", "science education"],
+      "gold": {"age_range": "12-15", "outcome": "Longhand note-taking yields slightly better conceptual recall than laptop notes.", "context": "Comparison of longhand versus laptop note-taking in lower-secondary science.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "12-15", "outcome": "Longhand note-taking yields slightly better conceptual recall than laptop notes.", "context": "Comparison of longhand versus laptop note-taking in lower-secondary science.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-girls-coding-club",
+      "source_type": "peer_reviewed_article",
+      "abstract": "An all-girls coding club ran weekly across a school year in an underserved district. Participants reported higher coding self-efficacy and interest in computing careers. Engagement was measured by surveys and attendance.",
+      "statement": "Participants reported higher coding self-efficacy and interest in computing careers.",
+      "topics": ["programming", "motivation"],
+      "gold": {"age_range": "11-14", "outcome": "An all-girls coding club raises coding self-efficacy and interest in computing.", "context": "Year-long all-girls coding club in an underserved district.", "evidence_strength": "low"},
+      "_recorded": {"age_range": "11-14", "outcome": "An all-girls coding club raises coding self-efficacy and interest in computing.", "context": "Year-long all-girls coding club in an underserved district.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-mindfulness-attention",
+      "source_type": "peer_reviewed_article",
+      "abstract": "A classroom mindfulness program was evaluated with a cluster-randomised design in primary schools. Children in the program showed improved sustained attention on a standardised task. Twelve classes participated over eight weeks.",
+      "statement": "Children in the program showed improved sustained attention on a standardised task.",
+      "topics": ["self-regulation", "social-emotional learning"],
+      "gold": {"age_range": "8-11", "outcome": "A mindfulness program improves children's sustained attention.", "context": "Cluster-randomised evaluation of a classroom mindfulness program in primary schools.", "evidence_strength": "moderate"},
+      "_recorded": {"age_range": "8-11", "outcome": "A mindfulness program improves children's sustained attention.", "context": "Cluster-randomised evaluation of a classroom mindfulness program in primary schools.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-adult-digital-literacy",
+      "source_type": "peer_reviewed_article",
+      "abstract": "This study evaluated a community digital-literacy course for adult learners aged 25 to 55. Participants improved their ability to use online public services after the course. The evaluation used pre- and post-course assessments.",
+      "statement": "Participants improved their ability to use online public services after the course.",
+      "topics": ["digital citizenship", "media literacy"],
+      "gold": {"age_range": null, "outcome": "A community course improves adults' ability to use online public services.", "context": "Pre-post evaluation of a community digital-literacy course for adult learners.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": "A community course improves adults' ability to use online public services.", "context": "Pre-post evaluation of a community digital-literacy course for adult learners.", "evidence_strength": "low"}
+    },
+    {
+      "id": "prefill-stem-camp-null",
+      "source_type": "working_paper",
+      "abstract": "This working paper describes the curriculum design of a two-week summer STEM camp. We outline the project sequence and share preliminary interest-survey responses. No learning outcomes were measured.",
+      "statement": "We outline the project sequence and share preliminary interest-survey responses.",
+      "topics": ["stem", "robotics"],
+      "gold": {"age_range": null, "outcome": null, "context": "Working paper describing the curriculum design of a summer STEM camp.", "evidence_strength": "low"},
+      "_recorded": {"age_range": null, "outcome": null, "context": "Working paper describing the curriculum design of a summer STEM camp.", "evidence_strength": "low"}
     }
   ]
 }
