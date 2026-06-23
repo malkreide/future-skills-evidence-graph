@@ -220,17 +220,19 @@
       "src-artificial-intelligence-ai-literacy-in-early-childhood-education-an-inte"
     ],
     "text_anchor": "abstract, sentence 3: \"This study aimed to evaluate the impact of an eight-week AI literacy program on young children's AI literacy, AI-related creativity, and their perceptions of the AI4KG program.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, creativity. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Eight-week AI-literacy program in a Hong Kong kindergarten; 26 young children (average age 4), single-group study.",
+    "age_range": "3-6",
+    "outcome": "Young children were able to learn basic AI concepts and knowledge and to express AI-related creativity (e.g., imagining chat or assistive robots).",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-early-childhood-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-ai-literacy-for-the-workforce-abstract-s2",
@@ -296,17 +298,19 @@
       "src-development-and-validation-of-an-artificial-intelligence-literacy-assess"
     ],
     "text_anchor": "abstract, sentence 8: \"The findings suggest that the AI4KGA can evaluate children's learning outcomes in terms of AI literacy.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Development and validation of an AI-literacy assessment (AI4KGA) for kindergarten children; 215 children and 19 experts, evaluated with Cronbach's alpha and Item Response Theory.",
+    "age_range": "3-6",
+    "outcome": "A validated, reliable instrument (AI4KGA) can assess kindergarten children's AI-literacy learning outcomes, with older children scoring higher than younger ones.",
     "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-early-childhood-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-teachers-apos-use-of-generative-ai-to-support-literacy-in-2025-abstract",
@@ -490,17 +494,19 @@
       "src-kindergarten-parents-apos-perceptions-of-the-use-of-ai-technologies-and"
     ],
     "text_anchor": "abstract, sentence 8: \"We found that the four main challenges that parents reported their children encountered when learning about AI literacy are limited comprehension ability, time constraints, the difficulty of the AI learning content, and uncertainty regarding the appropriateness of AI learning content for children.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Mixed-methods study of kindergarten parents' perceptions in Hong Kong (survey of 215 parents plus 5 interviews).",
+    "age_range": "3-6",
+    "outcome": "Parents were largely positive about AI-literacy education in kindergarten but reported children's main obstacles as limited comprehension, time constraints, content difficulty, and uncertain age-appropriateness.",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-early-childhood-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-collaborating-with-ai-assistants-on-future-focused-ai-literacy-abstract",

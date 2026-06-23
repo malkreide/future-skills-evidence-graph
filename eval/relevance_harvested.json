@@ -262,6 +262,33 @@
       "decision": "promote_source",
       "harvested_at": "2026-06-23",
       "source_id": "src-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e"
+    },
+    {
+      "title": "Artificial Intelligence (AI) Literacy in Early Childhood Education: An Intervention Study in Hong Kong",
+      "abstract": "The issue of Artificial Intelligence (AI) literacy is gaining popularity in the field of education. Most research on AI literacy has focused on primary, secondary, and higher education, and there has been limited examination of AI literacy programs in early childhood education. This study aimed to evaluate the impact of an eight-week AI literacy program on young children's AI literacy, AI-related creativity, and their perceptions of the AI4KG program. A total of 26 young children (average age of 4 years) enrolled in the program at a kindergarten in Hong Kong were the subjects of the study. The results indicated that (1) young children were capable of learning basic AI concepts and knowledge; (2) in terms of AI-related creativity, younger children were able to design a chatting robot via imagination, while older children created an AI robot to assist people in their drawings; (3) in regards to the children's perceptions of the AI4KG program, older children who enjoyed the activity were able to train AI, while younger children preferred to draw the future AI city and participate in the AI story activity. This study highlights the positive benefits of AI literacy education in preparing young children for an AI-driven future.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-artificial-intelligence-ai-literacy-in-early-childhood-education-an-inte"
+    },
+    {
+      "title": "Development and Validation of an Artificial Intelligence Literacy Assessment for Kindergarten Children",
+      "abstract": "With Artificial intelligence (AI) literacy gaining more and more attention at the kindergarten level, it is becoming critical to assess the AI literacy levels of kindergarten children and develop appropriate courses to enhance their foundational AI knowledge and skills. This study proposes and validates a comprehensive AI literacy assessment tool (AI4KGA) for kindergarten children. The research involved 215 children and 19 experts. The validity and reliability of the AI4KG assessment were evaluated by experts, with Cronbach's a and Item Response Theory approach. The results demonstrated that the AI literacy assessment (AI4KGA) was valid and reliable. We also found that younger children scored lower on the AI literacy assessment than older children and girls demonstrated a slightly higher AI literacy score than boys after they completed the AI4KG curriculum. The AI4KGA has potential applications for various stakeholders, such as policymakers, educators, instructional designers, researchers, and educational institutions. The findings suggest that the AI4KGA can evaluate children's learning outcomes in terms of AI literacy. Overall, this research contributes to developing AI literacy assessment in kindergarten children and advancing AI literacy education.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-development-and-validation-of-an-artificial-intelligence-literacy-assess"
+    },
+    {
+      "title": "Kindergarten Parents&apos; Perceptions of the Use of AI Technologies and AI Literacy Education: Positive Views but Practical Concerns",
+      "abstract": "Although artificial intelligence (AI) is becoming more commonly integrated into our everyday lives, homes, and schools, there needs to be more research regarding parental attitudes toward using AI technologies and\u00a0AI literacy education to understand better and advance AI and AI literacy in kindergarten. To address this gap, this study explored kindergarten parents' perceptions of using AI technologies and AI literacy education in kindergarten. In Study One, 215 parents completed a survey regarding their views and concerns about the use of AI technologies and AI literacy education in kindergarten, the challenges encountered in AI literacy education in kindergarten and their opinions on the use of AI technologies in kindergarten. In Study Two, we interviewed five parents to gain further insight into their perspectives. The results indicated that 74.4%, 19.1%, and 6.5% felt positive, neutral, and negative towards using AI technology in kindergarten settings, respectively, illustrating that most parents remained positive. Results showed that most parents reported that it is suitable for kindergarten children to learn about AI tools and AI literacy. The kindergarten level may be an appropriate starting point for learning AI literacy. We found that the four main challenges that parents reported their children encountered when learning about AI literacy are limited comprehension ability, time constraints, the difficulty of the AI learning content, and uncertainty regarding the appropriateness of AI learning content for children. The findings indicate that Hong Kong parents positively perceive using AI in kindergartens. Still, designing AI-based educational tools for kindergarten children must address the challenges identified while ensuring equal access for all children.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-kindergarten-parents-apos-perceptions-of-the-use-of-ai-technologies-and"
     }
   ]
 }
