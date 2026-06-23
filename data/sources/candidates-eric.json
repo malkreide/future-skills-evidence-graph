@@ -100,9 +100,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-23",
     "relevance_score": 0.6
   },
   {
@@ -407,9 +407,9 @@
       "critical thinking",
       "collaboration"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-23",
     "relevance_score": 0.75
   },
   {

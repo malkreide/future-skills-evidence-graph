@@ -6,7 +6,7 @@
     "definition": "Ability to explain in age-appropriate terms how AI and machine-learning systems take in data, learn patterns, make predictions, and where the limits of machine intelligence lie.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.75,
+    "evidence_score": 0.76,
     "trend": "growing",
     "topics": [
       "ai literacy",
@@ -18,7 +18,8 @@
       "claim-middle-school-train-evaluate-ml",
       "claim-early-childhood-ai-concepts",
       "claim-young-children-ai-perceptions",
-      "claim-k12-ai-big-ideas"
+      "claim-k12-ai-big-ideas",
+      "claim-developing-a-holistic-ai-literacy-framework-for-children-abstract-s4"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -61,10 +62,20 @@
         "date": "2026-06-22",
         "change": "Promoted candidate skill to active",
         "reason": "Human review confirmed definition and reviewed supporting evidence."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "Attached reviewed claim claim-developing-a-holistic-ai-literacy-framework-for-children-abstract-s4 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "evidence_score 0.75 -> 0.76",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-22",
-    "updated_at": "2026-06-22"
+    "updated_at": "2026-06-23"
   },
   {
     "id": "skill-ai-everyday-recognition",
