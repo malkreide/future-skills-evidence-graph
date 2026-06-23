@@ -131,5 +131,64 @@
     "created_at": "2026-06-20",
     "reviewed_at": "2026-06-22",
     "relevance_score": 0.3
+  },
+  {
+    "id": "src-statistical-proof-as-a-window-into-human-ai-collaboration-practical-insi",
+    "title": "Statistical Proof as a Window into Human-AI Collaboration: Practical Insights and a Community Agenda",
+    "authors": [
+      "Xiaojing Sun",
+      "Huayu Tang",
+      "Buxin Su",
+      "Mateo Matijasevick",
+      "Chong Wu",
+      "Fei Xue",
+      "Bingxin Zhao"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.23666v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Large language models (LLMs) are increasingly woven into expert cognitive work in daily research, yet we know little about how human expertise should adapt when an AI system can execute substantial technical reasoning on its own. Here we use statistical proof development, a demanding and structured form of expert reasoning, as a window into this broader question. Drawing on day-to-day proof problems, we find that current general-purpose LLMs occupy a useful but limited role: they can execute technical components given a precisely formulated problem and targeted guidance, but become unreliable when the problem is open-ended or requires a long reasoning chain with multiple interdependent steps. This execution-strategy gap is rooted in what makes research-level statistical proof distinctive: unlike pure mathematics, where problems arrive pre-formulated and often demand novel techniques, statistical proof requires first modeling a scientific question into a statistical framework with appropriate assumptions, and then identifying and adapting the right strategy from a repertoire of reusable domain-specific tools. Each step requires deep expertise in both the statistical literature and the real-world context being modeled. In such work, current AI assistance does not reduce the need for human expertise; it relocates that expertise to where human decision-making matters most, such as problem formulation and verification of AI-generated results, and may raise the bar for both. These findings yield practical suggestions for how statisticians can structure AI-assisted proof workflows, and point to a broader community agenda for shared resources, better AI tools, and training the next generation of researchers. Using statistical proof as a window, our study has implications for how experts structure human-AI collaboration in technical cognitive domains more broadly.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.3
+  },
+  {
+    "id": "src-ai-exposure-scores-what-they-measure-what-they-miss-and-what-comes-next",
+    "title": "AI Exposure Scores: what they measure, what they miss, and what comes next",
+    "authors": [
+      "Campbell Lund",
+      "Thomas Euyang",
+      "Zanele Munyikwa",
+      "Marzieh Fadaee"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.23633v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "A set of exposure scores calculated in 2023 has become a central empirical input to the future of work debate. Produced by Eloundou et al. (2023) and referred to here as the GPTs are GPTs scores, they define exposure as the share of occupational tasks a large language model can assist with. This work is a genuine methodological contribution, but as the scores travel from the time and place they were produced, the limitations the authors named do not always travel with them. Two gaps have widened as a result. The first is structural, between what static exposure scores measure and what policy questions actually require. Taking the diffusion of these scores as a case study, we show how their temporal, geographic, and ontological limitations compound in policy-facing analyses, and we survey five families of research responding to these limits: dynamic and benchmark-based measures, ensemble methods, task-framework extensions, worker-centered metrics, and adoption and usage data. The second gap is the one we argue needs more attention: the coordination between researchers and policymakers. The policy-relevant work which ask who is harmed, who benefits, how, and when, continues to reference the static GPTs are GPTs scores without engagement with the methodological updates that would let these questions be answered more reliably. We then ask what additional steps towards navigating uncertainty remain: ex-post frameworks and the deliberate, political work of reimagining what futures are worthy of building towards are. Closing the research-policy gap is a shared task: policymakers must widen their evidence base, engage workers as epistemic partners, and shift from prediction to preparedness; researchers must build data infrastructure, adopt participatory methods, and write with policymakers in mind. Better measurement matters, but it will not close the second gap alone.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45
   }
 ]
