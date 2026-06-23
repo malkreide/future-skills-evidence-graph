@@ -279,17 +279,19 @@
       "src-developing-a-holistic-ai-literacy-framework-for-children"
     ],
     "text_anchor": "abstract, sentence 4: \"Our findings led to the development of a holistic AI literacy framework for children, which contains three high-level dimensions and eight content areas of AI literacy: AI awareness (AI definition, AI application, and AI history), AI mechanics (AI input, learning procedure, and AI output), and AI impacts (AI implication and responsible practice).\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
+    "context": "Systematic search of formal and informal AI-learning practices for children, synthesising the taught content into a structured framework.",
+    "age_range": "6-18",
+    "outcome": "Proposes a research-based holistic AI-literacy framework for children with three dimensions (AI awareness, AI mechanics, AI impacts) across eight content areas.",
+    "evidence_type": "framework_synthesis",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-ai-foundational-concepts"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-development-and-validation-of-an-artificial-intelligence-literacy-assess",
@@ -523,9 +525,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-a-scoping-review-of-empirical-research-on-ai-literacy-assessments-abstra",

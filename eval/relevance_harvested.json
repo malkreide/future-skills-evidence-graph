@@ -289,6 +289,24 @@
       "decision": "promote_source",
       "harvested_at": "2026-06-23",
       "source_id": "src-kindergarten-parents-apos-perceptions-of-the-use-of-ai-technologies-and"
+    },
+    {
+      "title": "Developing a Holistic AI Literacy Framework for Children",
+      "abstract": "The increasing prevalence of AI in everyday life has intensified the emphasis on teaching AI literacy to children. However, there is no consensus on the specific knowledge and skills that constitute children's AI literacy, resulting in varied AI learning materials for young people. We systematically searched for educational practices for children's AI learning in both formal and informal settings and examined the AI learning content taught to children. Our findings led to the development of a holistic AI literacy framework for children, which contains three high-level dimensions and eight content areas of AI literacy: AI awareness (AI definition, AI application, and AI history), AI mechanics (AI input, learning procedure, and AI output), and AI impacts (AI implication and responsible practice). Theoretically, we contribute a research-based, comprehensive, and current framework for children's AI literacy, advancing its conceptualization in early life stages. Practically, our framework can guide researchers and practitioners in promoting AI education for the next generation.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-developing-a-holistic-ai-literacy-framework-for-children"
+    },
+    {
+      "title": "Collaborating with AI Assistants on Future-Focused AI Literacy",
+      "abstract": "This article explores the integration of generative artificial intelligence (AI) assistants in undergraduate writing courses, advocating for a shift from restrictive policies to transparent and critical engagement. Through the &quot;Hire AI&quot; framework, students learn to treat AI as a collaborative assistant--developing rhetorical and ethically informed uses of these tools. The approach emphasizes active learning, applied AI literacy, and scaffolded instruction, empowering students to manage AI responsibly while maintaining their voice and authorship. Evidence from student reflections and course outcomes demonstrates increased confidence, nuanced understanding, and transferable skills, positioning AI as a tool for human-centered learning rather than a replacement for critical thinking.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-collaborating-with-ai-assistants-on-future-focused-ai-literacy"
     }
   ]
 }
