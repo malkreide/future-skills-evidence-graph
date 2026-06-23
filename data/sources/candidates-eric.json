@@ -201,9 +201,9 @@
       "ethics",
       "systems thinking"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-23",
     "relevance_score": 1.0
   },
   {
@@ -357,9 +357,9 @@
       "ethics",
       "systems thinking"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-23",
     "relevance_score": 1.0
   },
   {
@@ -435,9 +435,9 @@
       "ai literacy",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-23",
     "relevance_score": 0.6
   },
   {

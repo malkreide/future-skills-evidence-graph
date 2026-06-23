@@ -190,9 +190,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-regional-climate-model-emulation-with-diffusion-approaches-what-is-the-a",
@@ -353,17 +353,19 @@
       "src-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e"
     ],
     "text_anchor": "abstract, sentence 5: \"Our findings reveal that AI literacy extends beyond technical proficiency to encompass ethical considerations, societal impacts, and practical applications.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "context": "Systematic literature review of 87 high-quality studies (from 323 records across Web of Science, Scopus, ERIC, IEEE) on the state and themes of AI literacy.",
+    "age_range": "6-18",
+    "outcome": "AI literacy extends beyond technical proficiency to encompass ethical considerations, societal impacts and practical applications.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-justification-and-roadmap-for-artificial-intelligence-ai-literacy-course",
@@ -418,9 +420,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-investigation-of-digital-competencies-and-artificial-intelligence-litera",
@@ -467,17 +469,19 @@
       "src-artificial-intelligence-literacy-education-in-primary-schools-a-review"
     ],
     "text_anchor": "abstract, sentence 6: \"The review revealed that (1) AI literacy encompasses a fluid conceptual understanding of digital literacy in terms of interacting and collaborating with AI, computational thinking, critical data literacy, and AI ethics; (2) constructionism, the constructivist theoretical framework, and the ARCS (Attention, Relevance, Confidence, and Satisfaction) model of instructional design were the dominant means of constructing the research design of the selected studies; (3) constructivist methodologies, project-based learning, programming, and human-agent interaction were commonly used by the selected studies, and AI learning tools, particularly intelligent agents, were often adopted in AI literacy teaching and learning research; (4) mixed-research methods were the most common, with surveys, interviews, and artifacts being employed to evaluate students' learning outcomes; and (5) there were positive academic, affective, and behavioral educational outcomes, as well as course satisfaction.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, digital competence, data literacy, ethics, systems thinking. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "context": "Systematic review of 25 empirical studies on AI-literacy education in the primary-school context (theoretical frameworks, pedagogy, tools, assessment, outcomes).",
+    "age_range": "6-12",
+    "outcome": "AI-literacy instruction in primary schools using constructivist, project-based and programming approaches produced positive academic, affective and behavioural outcomes and course satisfaction.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-kindergarten-parents-apos-perceptions-of-the-use-of-ai-technologies-and",
@@ -524,17 +528,19 @@
       "src-a-scoping-review-of-empirical-research-on-ai-literacy-assessments"
     ],
     "text_anchor": "abstract, sentence 5: \"The results showed that (1) most research focused on assessing primary and secondary school students' AI literacy; (2) most studies used questionnaires, followed by surveys; (3) most studies used computer-based tests, followed by paper-based tests; (4) most studies assessed participants' AI knowledge, followed by AI ethics; and (5) only a few studies reported evidence of the reliability and effectiveness of their assessments.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "context": "Scoping review synthesising 36 empirical AI-literacy assessment studies (2019-2024), covering assessment tools, formats, and reliability/validity evidence.",
+    "age_range": "6-18",
+    "outcome": "Most AI-literacy assessment research targets primary and secondary students and centres on AI knowledge and ethics, but only a few studies report reliability or effectiveness evidence for their instruments.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-understanding-the-relationship-between-colleges-students-apos-artificial",
@@ -581,17 +587,19 @@
       "src-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s"
     ],
     "text_anchor": "abstract, sentence 7: \"Findings reveal a strong ethical orientation among youth and their readiness to engage in designing inclusive, safe, and equitable digital futures, expanding IS research beyond organizational contexts.\"",
-    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Qualitative interview study with high-school (and university) students during VR experiments, analysing young people's views on an ethically sustainable metaverse.",
+    "age_range": "14-18",
+    "outcome": "Young people show a strong ethical orientation and readiness to help design inclusive, safe and equitable digital environments, stressing child protection, accessibility and equality.",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-ethical-technology-judgment"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-directors-duties-in-the-age-of-agentic-artificial-intelligence-abstract",
@@ -741,9 +749,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-20",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-predicting-student-proficiency-in-literacy-and-numeracy-using-random-for",
@@ -790,17 +798,19 @@
       "src-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct"
     ],
     "text_anchor": "abstract, sentence 6: \"Findings indicate that even a short onetime intervention can produce measurable improvements in students\u2019 critical thinking, awareness of AI generated content, and ability to assess digital authenticity.\"",
-    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Pre/post intervention study with 118 students across six secondary schools in Croatia; workshops on recognising, analysing and critically evaluating AI-generated (deepfake) media.",
+    "age_range": "14-18",
+    "outcome": "Even a short one-time intervention produced measurable gains in students' critical thinking, awareness of AI-generated content, and ability to assess digital authenticity.",
     "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-digital-media-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-22",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   },
   {
     "id": "claim-young-people-s-perceptions-and-recommendations-for-conversational-genera",
@@ -817,8 +827,8 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-22",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-23"
   }
 ]
