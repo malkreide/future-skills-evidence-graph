@@ -226,6 +226,42 @@
       "decision": "reject_source",
       "harvested_at": "2026-06-22",
       "source_id": "src-understanding-the-relationship-between-colleges-students-apos-artificial"
+    },
+    {
+      "title": "A Scoping Review of Empirical Research on AI Literacy Assessments",
+      "abstract": "AI literacy is becoming increasingly popular in education, yet there has been limited focus on\u00a0reviewing empirical research on AI literacy assessment. The purpose of this study was to synthesize existing empirical studies on AI literacy assessment, with the aim to\u00a0understand how AI literacy has been assessed and to\u00a0inform future AI literacy assessment development. This scoping review evaluates and synthesizes 36 studies on AI literacy assessment published between 2019 and 2024, involving assessment tools, forms of assessment, and reliability and validity evidence related to AI literacy assessment. The review proposes four aspects (i.e., knowledge of AI, AI ethics,\u00a0affect towards AI, and use of AI) for assessing AI literacy. The results showed that (1) most research focused on assessing primary and secondary school students' AI literacy; (2) most studies used questionnaires, followed by surveys; (3) most studies used computer-based tests, followed by paper-based tests; (4) most studies assessed participants' AI knowledge, followed by AI ethics; and (5) only a few studies reported evidence of the reliability and effectiveness of their assessments. Based on the reviewed literature, this study develops an AI literacy framework for people of all ages and from all countries. The findings and directions for future research are also\u00a0discussed.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-a-scoping-review-of-empirical-research-on-ai-literacy-assessments"
+    },
+    {
+      "title": "Artificial Intelligence Literacy Education\u00a0in Primary Schools: A Review",
+      "abstract": "Artificial intelligence (AI) has become an important part of 21st-century life\u00a0and this requires that\u00a0students understand how to adapt to this change. Despite calls to extend AI literacy education from university to young students, there remains a lack of evidence-based research informing educators and researchers on the content of AI literacy education at the primary school level. This study aims to offer a comprehensive overview of what constitutes AI literacy education in primary schools, including its theoretical frameworks, pedagogical strategies, learning tools, assessment methods, educational outcomes, and challenges. The study presents a systematic review mapping process using Scopus and the Web of Science. Twenty-five empirical studies focusing on the primary school context were selected. The review revealed that (1) AI literacy encompasses a fluid conceptual understanding of digital literacy in terms of interacting\u00a0and collaborating with AI, computational thinking, critical data literacy, and AI ethics; (2) constructionism, the constructivist theoretical framework, and the ARCS (Attention, Relevance, Confidence, and Satisfaction) model of instructional design were the dominant means of constructing the research design of the selected studies; (3) constructivist methodologies, project-based learning, programming, and human-agent interaction were commonly used by the selected studies, and AI learning tools, particularly intelligent agents, were often adopted in AI literacy teaching and learning research; (4) mixed-research methods were the most common, with surveys, interviews, and artifacts being employed to evaluate students' learning outcomes; and (5) there were positive academic, affective, and behavioral educational outcomes, as well as course satisfaction. To our knowledge, this is the first systematic review to offer a detailed perspective on AI literacy at the primary school level, providing valuable insights for researchers, policymakers, and educators designing future educational frameworks, curricula, and assessment. Future research directions are also discussed.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-artificial-intelligence-literacy-education-in-primary-schools-a-review"
+    },
+    {
+      "title": "The Role of AI Literacy and Media Education Interventions in Deconstructing Deepfakes",
+      "abstract": "One of the most concerning manifestations of artificial intelligence (AI) misuse is deepfake technology, which generates realistic but fabricated media content with the potential to deceive, manipulate, and erode public trust in digital communication. This threat is particularly acute for Generation Z, whose high exposure to synthetic media underscores the urgency of developing necessary critical skills. This study investigates the effectiveness of a short, targeted educational intervention designed to enhance deepfake recognition skills. Conducted in six secondary schools in Croatia, the intervention involved 118 students who participated in workshops focusing on the recognition, analysis, and critical evaluation of AI-generated manipulative content. A pre-test and post-test design was used to measure changes in students\u2019 competencies related to AI and media literacy. Findings indicate that even a short onetime intervention can produce measurable improvements in students\u2019 critical thinking, awareness of AI generated content, and ability to assess digital authenticity.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct"
+    },
+    {
+      "title": "Towards an AI-Literate Future: A Systematic Literature Review Exploring Education, Ethics, and Applications",
+      "abstract": "This study investigates the evolving landscape of Artificial Intelligence (AI) literacy, acknowledging AI's transformative impact across various sectors in the twenty-first century. Starting from AI's inception to its current pervasive role in education, everyday life, and beyond, this paper explores the relevance and complexity of AI literacy in the modern world. To evaluate the current state of the literature on AI literacy, a systematic literature review was conducted with the objective of identifying thematic and recent research trends. Through a rigorous selection process involving 323 records from databases such as Web of Science, SCOPUS, ERIC, and IEEE Xplore, 87 high-quality studies have been analysed to identify central themes and definitions related to AI literacy. Our findings reveal that AI literacy extends beyond technical proficiency to encompass ethical considerations, societal impacts, and practical applications. Key themes identified include the ethical and social implications of AI, AI literacy in K-12 education, AI literacy curriculum development, and the integration of AI in education and workplaces. The study also highlights the importance of AI literacy models and frameworks for structuring education across diverse learning environments, as well as the significance of AI and digital interaction literacy. Additionally, our analysis of publication trends indicates a strong growth in AI literacy research, particularly in China and the United States, reflecting the global urgency of addressing AI literacy in policy and education. Conclusively, the research underscores the importance of an adaptable, comprehensive educational paradigm that incorporates AI literacy, reflecting its diverse interpretations and the dynamic nature of AI. The study advocates for interdisciplinary collaboration in developing AI literacy programs, emphasizing the need to equip future generations with the knowledge, skills, and ethical discernment to navigate an increasingly AI-driven world.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-23",
+      "source_id": "src-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e"
     }
   ]
 }

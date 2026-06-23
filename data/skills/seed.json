@@ -20,7 +20,10 @@
       "claim-labor-market-analytical-ai-resilience",
       "claim-ai-education-teacher-augmentation",
       "claim-ai-literacy-multidimensional",
-      "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
+      "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa",
+      "claim-a-scoping-review-of-empirical-research-on-ai-literacy-assessments-abstra",
+      "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
+      "claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -48,10 +51,35 @@
         "date": "2026-06-20",
         "change": "evidence_score 0.79 -> 0.78",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "Attached reviewed claim claim-a-scoping-review-of-empirical-research-on-ai-literacy-assessments-abstra as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "Attached reviewed claim claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "Attached reviewed claim claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "evidence_score 0.78 -> 0.77",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "evidence_score 0.77 -> 0.78",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-20"
+    "updated_at": "2026-06-23"
   },
   {
     "id": "skill-critical-thinking",
@@ -167,7 +195,7 @@
     "definition": "Ability to find, evaluate, create, communicate, and act safely with digital information and media.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.64,
+    "evidence_score": 0.67,
     "trend": "stable",
     "topics": [
       "digital literacy",
@@ -176,7 +204,8 @@
     ],
     "supporting_claim_ids": [
       "claim-digital-competence-information-literacy",
-      "claim-equity-foundational-learning"
+      "claim-equity-foundational-learning",
+      "claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -193,10 +222,20 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.83 -> 0.64",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "Attached reviewed claim claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "evidence_score 0.64 -> 0.67",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-06-23"
   },
   {
     "id": "skill-ethical-technology-judgment",
@@ -205,7 +244,7 @@
     "definition": "Ability to reason about privacy, fairness, safety, accountability, human rights, and tradeoffs when technology affects people.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.72,
+    "evidence_score": 0.74,
     "trend": "growing",
     "topics": [
       "ethics",
@@ -217,7 +256,8 @@
       "claim-trustworthy-ai-risk-reasoning",
       "claim-ai-education-teacher-augmentation",
       "claim-ai-literacy-multidimensional",
-      "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s"
+      "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s",
+      "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s-2"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -240,10 +280,20 @@
         "date": "2026-06-20",
         "change": "Attached reviewed claim claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s as supporting evidence",
         "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "Attached reviewed claim claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s-2 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "evidence_score 0.72 -> 0.74",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-20"
+    "updated_at": "2026-06-23"
   },
   {
     "id": "skill-self-regulated-learning",
