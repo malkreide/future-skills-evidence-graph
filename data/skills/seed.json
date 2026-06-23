@@ -6,7 +6,7 @@
     "definition": "Ability to understand, use, question, and shape AI systems with awareness of capabilities, limits, risks, and human purpose.",
     "age_range": "6-18",
     "status": "active",
-    "evidence_score": 0.77,
+    "evidence_score": 0.78,
     "trend": "growing",
     "topics": [
       "ai literacy",
@@ -70,6 +70,11 @@
       {
         "date": "2026-06-23",
         "change": "evidence_score 0.78 -> 0.77",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-23",
+        "change": "evidence_score 0.77 -> 0.78",
         "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],

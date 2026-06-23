@@ -12,11 +12,19 @@ reproducible evidence path.
 validate_data.py recomputes these values and fails when stored
 evidence_score values drift from the formula. Run with --write to
 update data/skills/*.json after claims change.
+
+Summations use math.fsum rather than the builtin sum so a score sitting
+exactly on a rounding boundary (e.g. a claim mean of 7.75/10) resolves
+identically on every Python version. CPython 3.12 switched the builtin
+sum to compensated floating-point summation, so plain sum would round
+such a value differently on 3.11 vs 3.12 and make the stored score
+non-reproducible across environments; fsum is exact on both.
 """
 
 from __future__ import annotations
 
 import argparse
+import math
 import sys
 from typing import Any
 
@@ -49,7 +57,7 @@ def claim_score(claim: dict[str, Any], sources: dict[str, dict[str, Any]]) -> fl
         for source_id in claim.get("source_ids", [])
         if source_id in sources
     ]
-    source_component = sum(source_scores) / len(source_scores) if source_scores else 0
+    source_component = math.fsum(source_scores) / len(source_scores) if source_scores else 0
     claim_component = CLAIM_WEIGHTS.get(claim.get("evidence_strength"), 0)
     return round((source_component * 0.6) + (claim_component * 0.4), 3)
 
@@ -83,9 +91,9 @@ def skill_score(skill: dict[str, Any], claim_scores: dict[str, float]) -> float:
     ]
     if not supporting:
         return 0.0
-    base = sum(supporting) / len(supporting)
+    base = math.fsum(supporting) / len(supporting)
     breadth = min(len(supporting), BREADTH_SATURATION) / BREADTH_SATURATION
-    contradiction = sum(
+    contradiction = math.fsum(
         claim_scores[claim_id]
         for claim_id in skill.get("contradicting_claim_ids", [])
         if claim_id in claim_scores

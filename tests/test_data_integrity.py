@@ -111,6 +111,19 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertEqual(skill_score(unsupported, claim_scores), 0.0)
         self.assertEqual(skill_score(broad, claim_scores), skill_score(broad, claim_scores))
 
+    def test_skill_score_resolves_rounding_boundary_reproducibly(self) -> None:
+        # Ten claim scores summing to exactly 7.75 put the mean (0.775) on a
+        # rounding boundary. The builtin sum accumulates float error to
+        # 7.749999... on Python < 3.12 (rounds to 0.77) but is exact on 3.12
+        # (rounds to 0.78); math.fsum is exact on every version. The score must
+        # be 0.78 regardless of interpreter, or the stored evidence_score is not
+        # reproducible across environments (it was the skill-ai-literacy case).
+        boundary = {f"c{i}": v for i, v in enumerate(
+            [0.895, 0.76, 0.82, 0.7, 0.7, 0.835, 0.76, 0.76, 0.76, 0.76]
+        )}
+        skill = {"supporting_claim_ids": list(boundary)}
+        self.assertEqual(skill_score(skill, boundary), 0.78)
+
     def test_scoring_excludes_unreviewed_claims(self) -> None:
         sources = {"src-1": {"id": "src-1", "source_type": "systematic_review"}}
         claims = [
