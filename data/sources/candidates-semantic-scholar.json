@@ -1,0 +1,324 @@
+[
+  {
+    "id": "src-ai-literacy-education-for-older-adults-motivations-challenges-and-prefer",
+    "title": "AI Literacy Education for Older Adults: Motivations, Challenges and Preferences",
+    "authors": [
+      "K. Tang",
+      "Tianqi Song",
+      "Zicheng Zhu",
+      "Jingshu Li",
+      "Yi-Chieh Lee"
+    ],
+    "year": 2025,
+    "doi": "10.1145/3706599.3720033",
+    "url": "https://www.semanticscholar.org/paper/2cea5eadacb064f57b7c8e2ddf2aeb79ae2509be",
+    "openalex_id": null,
+    "semantic_scholar_id": "2cea5eadacb064f57b7c8e2ddf2aeb79ae2509be",
+    "eric_id": null,
+    "publisher": "CHI Extended Abstracts",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "As Artificial Intelligence (AI) becomes increasingly integrated into older adults\u2019 daily lives, equipping them with the knowledge and skills to understand and use AI is crucial. However, most research on AI literacy education has focused on students and children, leaving a gap in understanding the unique needs of older adults when learning about AI. To address this, we surveyed 103 older adults aged 50 and above (Mean = 64, SD = 7). Results revealed that they found it important and were motivated to learn about AI because they wish to harness the benefits and avoid the dangers of AI, seeing it as necessary to cope in the future. However, they expressed learning challenges such as difficulties in understanding and not knowing how to start learning AI. Particularly, a strong preference for hands-on learning was indicated. We discussed design opportunities to support AI literacy education for older adults.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-primary-and-secondary-ai-education-preparing-children-for-the-future",
+    "title": "Primary and Secondary AI Education: Preparing Children for the Future",
+    "authors": [
+      "Longjun Zhou"
+    ],
+    "year": 2025,
+    "doi": "10.15354/sief.25.co451",
+    "url": "https://www.semanticscholar.org/paper/00a7807912dcffc22790f6dd639112023c9bf4f7",
+    "openalex_id": null,
+    "semantic_scholar_id": "00a7807912dcffc22790f6dd639112023c9bf4f7",
+    "eric_id": null,
+    "publisher": "Science Insights Education Frontiers",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As a result of the expedited advancement and expanded application of artificial intelligence (AI) technology, its social and economic impacts become increasingly significant. AI is often counted as one of the major technologies in the \u201cFourth Industrial Revolution\u201d (Wong et al., 2020), which is reshaping the structure and demands of the future labor markets. AI literacy, alongside reading and mathematical skills, constitutes one of the core 21st century competencies (Steinbauer et al., 2021). Hence, it is essential to integrate AI education into the primary and secondary curricula.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil",
+    "title": "Survey on Digital Literacy, AI in Education and Tech-Driven Pedagogy Skills among Secondary School Educators",
+    "authors": [
+      "Saidulu Reddipally",
+      "Shail Dhaka"
+    ],
+    "year": 2026,
+    "doi": "10.59231/edumania/9190",
+    "url": "https://www.semanticscholar.org/paper/d999f71ac43665631e52060db4543bdcc7aeb087",
+    "openalex_id": null,
+    "semantic_scholar_id": "d999f71ac43665631e52060db4543bdcc7aeb087",
+    "eric_id": null,
+    "publisher": "Edumania-An International Multidisciplinary Journal",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Abstract\n\nThis present study explored the teachers\u2019 digital literacy, artificial intelligence in education and tech- driven pedagogy in teaching learning process in secondary schools and succeeds in understanding the overview levels of secondary school educators\u2019 digital literacy, using AI in education and integrating techno pedagogy to prepare the future work force. Since, we are living in the digital era, and everybody is dependent on technology directly or indirectly. Most importantly, our younger generation needs to be equipped with 21st century skills such as learning skills, literacy skills and life skills. As part of the literacy skills, young children need information literacy, media literacy and Technology literacy. Now, to impart all the skills among young generations, educators need for them to be digitally literate is imperative. The methodology in this study employed is the traditional survey method which compiled questions in the form of questionnaire. A sample of 125 government secondary school teachers\u2019 responses were collected electronically using Google forms and analyzed the data using the SPSSs latest version. Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes and provide a techno-savvy and student-friendly digital environment. It suggested that the educators\u2019 digital literacy paved a way to prepare the future generations to cope with rapid technology development and for 21st century skills. To summarize, as it is at the moderate level, most secondary educators are digitally literate. However, future research may evaluate digital literacy capacity building programs for educators to assess what improvements should be made to delivery as well as existing frame works used to test educators\u2019 digital literacy. This study was limited to only one district educators and helpful to the educators and the government to understand the digital tools required, and challenges teachers\u2019 face in adopting digital technology in their classrooms.\n\nKeywords: Digital Literacy, AI in Education, Tech-Driven Pedagogy, 21st Century Skills, Secondary School Educators",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-digital-competences-of-future-social-workers-the-art-of-education-in-unc",
+    "title": "Digital competences of future social workers: the art of education in uncertain times",
+    "authors": [
+      "I. \u017demaitaityt\u0117",
+      "R. Bardauskiene",
+      "J. Pivorien\u0117",
+      "Agata Katkonien\u0117"
+    ],
+    "year": 2023,
+    "doi": "10.1080/02615479.2022.2164269",
+    "url": "https://www.semanticscholar.org/paper/a1d7cd69fad498154e5cbddfde10e802fa125910",
+    "openalex_id": null,
+    "semantic_scholar_id": "a1d7cd69fad498154e5cbddfde10e802fa125910",
+    "eric_id": null,
+    "publisher": "Social Work Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT Digital literacy plays a crucial role as part of modern-day citizenship and modern life in general. There are a lot of social work practitioners who lack the digital skills or attitudes to fully benefit from the opportunities created by digital technologies for delivering quality youth work. Social workers see digital media only as social media. Their understanding of the possibilities of digital media and technology should be widened (European Commission, 2018). The goal of the article is to discuss the development of digital competence of future social workers needed in uncertain times during the implementation of European Joint Master programme in Social Work with Children and Youth (ESWOCHY). ESWOCHY is a project funded by Erasmus Mundus in 2020 and it is implemented by four Consortium partners: MRU (LT), RSU (LV), CUR (SK), and ISTCE (PT). ESWOCHY seeks to prepare highly skilled professionals, supporting human dignity and cultural heritage. The main areas for increasing competencies of social workers in working with children and youth where one of the most important is digital competence. The article shares the experiences and reflections of Consortium partners and discusses in depth how digital competence of future social workers are developed in ESWOCHY.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools",
+    "title": "Assessing the state of media literacy policy in U.S. K-12 schools",
+    "authors": [
+      "D. DiGiacomo",
+      "Erica R. Hodgin",
+      "Josephn Kahne",
+      "Samia Alkam",
+      "Caitlin J Taylor"
+    ],
+    "year": 2023,
+    "doi": "10.1080/17482798.2023.2201890",
+    "url": "https://www.semanticscholar.org/paper/4fb0cdc72708b14208b23c7312dee4d7a1b8b801",
+    "openalex_id": null,
+    "semantic_scholar_id": "4fb0cdc72708b14208b23c7312dee4d7a1b8b801",
+    "eric_id": null,
+    "publisher": "Journal of Children and Media",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT Warning signs for the health of the American democracy abound. These challenges have multiple manifestations and multiple roots, but media and the Internet, more broadly, are implicated in prominent ways. Schools, the institutions charged with educating current and future generations, have a role to play in supporting the preparation of an informed citizenry. This study examines the extent to which state level legislation supports the provision of civically oriented media literacy education. To do so, we first identify several critically needed media literacy education dimensions and then examine how well existing legislation from all 50 states responds to these identified needs. Findings reveal that not only is there an overall dearth of K-12 media literacy policy, but definitions and corresponding resources remain sparse and varied. For schools to fulfill their role of providing young people with the knowledge, skills, and commitments to participate and promote a vibrant and informed democracy, this study concludes that more must be done to support media literacy education within state level policy. IMPACT SUMMARY Prior State of Knowledge: Studies indicate that few young people in the United States receive significant learning opportunities to develop and practice media literacy-related skills. While federal legislation is valuable to help set the tone for the nation, state support for local innovation has long been a key strategy for supporting school reform efforts. Novel Contributions: Accordingly, this study examines the extent to which state level legislation supports the provision of civically oriented media literacy education. Practical Implications: Findings reveal that media literacy policy remains the exception, rather than the norm, in states across country \u2013 which suggests the need for all state legislators to consider the importance of developing and passing policy that would provide the infrastructure their states need to support young people in learning media literacy skills on a routine basis in schools.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-the-aewake-model-an-ai-enabled-instructional-system-for-enhancing-execut",
+    "title": "The AEWake Model: An AI-Enabled Instructional System for Enhancing Executive Function and Islamic Growth Mindset in Early Learners",
+    "authors": [
+      "Erna Budiarti",
+      "Rd. Heri Solehudin",
+      "Balqis Shinta Rahayu",
+      "Elyasa Hariangwibawa",
+      "Nita Priyanti"
+    ],
+    "year": 2025,
+    "doi": "10.33086/cej.v7i3.8415",
+    "url": "https://www.semanticscholar.org/paper/2eb457d4f7d1c39fc808f107021f3687bd1c966a",
+    "openalex_id": null,
+    "semantic_scholar_id": "2eb457d4f7d1c39fc808f107021f3687bd1c966a",
+    "eric_id": null,
+    "publisher": "Child Education Journal",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In today's era of digital transformation and artificial intelligence, executive function skills and adaptive character are crucial competencies for students to face complex future challenges. Teaching that integrates interactive media based on smart technology with a spiritual values \u200b\u200bapproach is seen as an effective and creative strategy to cultivate these skills from an early age. Although previous research has focused on basic digital literacy, evaluation of the impact of teaching that combines cognitive and spiritual aspects holistically is still limited. This study aims to develop and test the effectiveness of an instructional system based on the AEWake model through a smart puzzle barcode hijaiyah media designed to stimulate executive function while instilling an Islamic Growth Mindset. Using a Research and Development (R&D) method with an adapted development model, the study involved 90 early childhood children as test subjects. Data collection techniques were carried out through structured observations based on the AEWake instrument and digital documentation, which were then analyzed using inferential statistics to measure the media's effectiveness. The results showed that the use of this instructional media had a significant positive impact on improving children's directed attention, self-control, and cognitive flexibility. The findings revealed that digital scaffolding through interactive content was a key variable influencing learning success, while the use of recycled materials was shown to increase sensory comfort without reducing the effectiveness of the technology. It is concluded that the integration of AI-enabled technology and Islamic values \u200b\u200bis able to support sustainable cognitive and character development in the PAUD environment.",
+    "topics": [
+      "ai literacy",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45
+  },
+  {
+    "id": "src-children-s-mental-models-of-ai-reasoning-implications-for-ai-literacy-ed",
+    "title": "Children's Mental Models of AI Reasoning: Implications for AI Literacy Education",
+    "authors": [
+      "Aayushi Dangol",
+      "Robert Wolfe",
+      "Runhua Zhao",
+      "Jaewon Kim",
+      "Trushaa Ramanan",
+      "Katie Davis",
+      "J. Kientz"
+    ],
+    "year": 2025,
+    "doi": "10.1145/3713043.3728856",
+    "url": "https://www.semanticscholar.org/paper/14aae53b54419e395d738b7cb7d557dda0770254",
+    "openalex_id": null,
+    "semantic_scholar_id": "14aae53b54419e395d738b7cb7d557dda0770254",
+    "eric_id": null,
+    "publisher": "International Conference on Interaction Design and Children",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) advances in reasoning capabilities, most recently with the emergence of Large Reasoning Models (LRMs), understanding how children conceptualize AI\u2019s reasoning processes becomes critical for fostering AI literacy. While one of the \u201cFive Big Ideas\u201d in AI education highlights reasoning algorithms as central to AI decision-making, less is known about children\u2019s mental models in this area. Through a two-phase approach, consisting of a co-design session with 8 children followed by a field study with 106 children (grades 3 - 8), we identified three models of AI reasoning: Deductive, Inductive, and Inherent. Our findings reveal that younger children (grades 3 - 5) often attribute AI\u2019s reasoning to inherent intelligence, while older children (grades 6 - 8) recognize AI as a pattern recognizer. We highlight three tensions that surfaced in children\u2019s understanding of AI reasoning and conclude with implications for scaffolding AI curricula and designing explainable AI tools.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-leveraging-ai-to-enhance-children-s-learning-anchoring-policy-and-practi",
+    "title": "Leveraging AI to Enhance Children\u2019s Learning: Anchoring Policy and Practice in Equity, AI Literacy, and Ethics for Education Leaders and Teachers",
+    "authors": [
+      "Jennifer J. Chen",
+      "Victoria Delaney"
+    ],
+    "year": 2025,
+    "doi": "10.1007/s10643-025-02036-0",
+    "url": "https://www.semanticscholar.org/paper/239ffd0e12523abfc66e79982bc801e66013bd71",
+    "openalex_id": null,
+    "semantic_scholar_id": "239ffd0e12523abfc66e79982bc801e66013bd71",
+    "eric_id": null,
+    "publisher": "Early Childhood Education Journal",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9
+  },
+  {
+    "id": "src-professional-development-for-teachers-in-ai-literacy-education-teaching",
+    "title": "Professional Development for Teachers in AI Literacy Education: Teaching Machine Learning to Senior Primary and Junior Secondary Students",
+    "authors": [
+      "Yin Yang",
+      "Siu Cheung Kong"
+    ],
+    "year": 2025,
+    "doi": "10.5220/0013200300003932",
+    "url": "https://www.semanticscholar.org/paper/e02d88de30afd1be669e21b83b93c045fbbe5a2b",
+    "openalex_id": null,
+    "semantic_scholar_id": "e02d88de30afd1be669e21b83b93c045fbbe5a2b",
+    "eric_id": null,
+    "publisher": "International Conference on Computer Supported Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": ": This paper presents a study focused on equipping in-service teachers\u2019 skills of delivering courses on teaching machine learning concepts to senior primary and junior secondary school students. The pedagogical design of this study was based on the neuroscience-informed Attention-Engagement-Error-feedback-Reflection (AEER) framework. This study involved 36 in-service teachers from Hong Kong primary and secondary schools. We developed a model supported by Workshops, Discussions, and Resources (WDR) within the framework of Technological Pedagogical Content Knowledge (TPACK) to design the teacher professional development program. Data collection included pre-and post-tests on AI concepts, as well as pre-and post-questionnaires on using robots to teach machine learning on their TPACK, teachers\u2019 written feedback on the professional development. The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools. Furthermore, the workshops notably improved teachers\u2019 perceptions of their TPACK abilities. The implications for the professional development on equipping teachers for AI literacy education are summarised.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev",
+    "title": "Artificial intelligence (AI) literacy education in secondary schools: a review",
+    "authors": [
+      "D. Ng",
+      "Jiahong Su",
+      "J. Leung",
+      "S. K. Chu"
+    ],
+    "year": 2023,
+    "doi": "10.1080/10494820.2023.2255228",
+    "url": "https://www.semanticscholar.org/paper/a565172bdd324865d2e68b6823f27e6fac948866",
+    "openalex_id": null,
+    "semantic_scholar_id": "a565172bdd324865d2e68b6823f27e6fac948866",
+    "eric_id": null,
+    "publisher": "Interactive Learning Environments",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "ABSTRACT Artificial intelligence (AI) literacy has emerged to equip students with digital skills for effective evaluation, communication, collaboration, and ethical use of AI in online, home, and workplace settings. Countries are increasingly developing AI curricula to support students' technological skills for future studies and careers. However, there is a lack of reviews summarizing AI education in secondary schools. This study aims to provide an up-to-date summary of the literature, informing researchers, policymakers, and educators on fostering students' AI literacy. A thematic analysis of 50 AI education studies from 2016 to 2022 was conducted, evaluating pedagogies, teaching tools, learning contents, and assessment methods among secondary students. Results were identified: (1) Collaborative project-based learning, involving interdisciplinary problem-solving through artifact creation, emerged as the most common pedagogical approach; (2) Teaching tools were categorized into hardware, software, intelligent agents, and unplugged tools; (3) Junior students focused on experiencing AI and basic concepts, while senior students explored advanced and technical components; (4) Assessments included knowledge tests, questionnaires, and qualitative analysis (e.g., videos, documents, presentations); (5) Students' learning effects were measured across affective, behavioral, cognitive, and ethical dimensions. The study identifies suggestions and challenges for implementing AI education in secondary schools, offering valuable insights and recommendations for educators and decision-makers.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 1.0
+  },
+  {
+    "id": "src-kindergarten-teachers-perceptions-of-ai-literacy-education-for-young-chi",
+    "title": "Kindergarten Teachers\u2019 Perceptions of AI Literacy Education for Young Children",
+    "authors": [
+      "Jiahong Su"
+    ],
+    "year": 2024,
+    "doi": "10.1007/s10798-024-09876-8",
+    "url": "https://www.semanticscholar.org/paper/b19d9d91a66501475f0d8be3b6d627b26533a16d",
+    "openalex_id": null,
+    "semantic_scholar_id": "b19d9d91a66501475f0d8be3b6d627b26533a16d",
+    "eric_id": null,
+    "publisher": "International Journal of Technology and Design Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  },
+  {
+    "id": "src-integrating-ai-literacy-into-teacher-education-a-critical-perspective-pa",
+    "title": "Integrating AI literacy into teacher education: a critical perspective paper",
+    "authors": [
+      "R. Daher"
+    ],
+    "year": 2025,
+    "doi": "10.1007/s44163-025-00475-7",
+    "url": "https://www.semanticscholar.org/paper/0a04bf43b26c3c2acb5d8e44c98a8d82df00530f",
+    "openalex_id": null,
+    "semantic_scholar_id": "0a04bf43b26c3c2acb5d8e44c98a8d82df00530f",
+    "eric_id": null,
+    "publisher": "Discover Artificial Intelligence",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6
+  }
+]

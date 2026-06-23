@@ -838,5 +838,290 @@
     "status": "rejected",
     "created_at": "2026-06-22",
     "reviewed_at": "2026-06-23"
+  },
+  {
+    "id": "claim-statistical-proof-as-a-window-into-human-ai-collaboration-practical-insi",
+    "statement": "Using statistical proof as a window, our study has implications for how experts structure human-AI collaboration in technical cognitive domains more broadly.",
+    "source_ids": [
+      "src-statistical-proof-as-a-window-into-human-ai-collaboration-practical-insi"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Using statistical proof as a window, our study has implications for how experts structure human-AI collaboration in technical cognitive domains more broadly.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-exposure-scores-what-they-measure-what-they-miss-and-what-comes-next",
+    "statement": "A set of exposure scores calculated in 2023 has become a central empirical input to the future of work debate.",
+    "source_ids": [
+      "src-ai-exposure-scores-what-they-measure-what-they-miss-and-what-comes-next"
+    ],
+    "text_anchor": "abstract, sentence 1: \"A set of exposure scores calculated in 2023 has become a central empirical input to the future of work debate.\"",
+    "context": "Auto-extracted candidate; matched topics: future skills. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-mapping-research-trends-on-curriculum-literacy-and-social-emotional-lear",
+    "statement": "Findings: The findings reveal a growing scholarly interest in SEL and curriculum literacy, with increasing publication and citation trends, dominant research clusters, and strong international collaboration networks.",
+    "source_ids": [
+      "src-mapping-research-trends-on-curriculum-literacy-and-social-emotional-lear"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Findings: The findings reveal a growing scholarly interest in SEL and curriculum literacy, with increasing publication and citation trends, dominant research clusters, and strong international collaboration networks.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-heterogeneity-of-curiosity-implications-for-education-academic-perfo",
+    "statement": "In today\u2019s dynamic and complex world, adaptability, critical thinking, and lifelong learning are essential competencies\u2014among which curiosity is proven to have a central role for overall performance.",
+    "source_ids": [
+      "src-the-heterogeneity-of-curiosity-implications-for-education-academic-perfo"
+    ],
+    "text_anchor": "abstract, sentence 1: \"In today\u2019s dynamic and complex world, adaptability, critical thinking, and lifelong learning are essential competencies\u2014among which curiosity is proven to have a central role for overall performance.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, self-regulation, resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-bridging-digital-innovation-and-cultural-heritage-integrating-technology",
+    "statement": "The findings highlight the importance of culturally responsive digital pedagogy and suggest that technology can function as a bridge between young learners and local cultural heritage when supported by meaningful educational practices and collaborative home\u2013school partnerships.",
+    "source_ids": [
+      "src-bridging-digital-innovation-and-cultural-heritage-integrating-technology"
+    ],
+    "text_anchor": "abstract, sentence 9: \"The findings highlight the importance of culturally responsive digital pedagogy and suggest that technology can function as a bridge between young learners and local cultural heritage when supported by meaningful educational practices and collaborative home\u2013school partnerships.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-dangerous-bond-identification-with-social-media-influencers-and-the-ef",
+    "statement": "While neither misinformation nor overgeneralized messaging consistently affected behavioral intentions or self-diagnosis, findings showed that exposure to mental health-related misinformation by an SMI significantly increased belief inaccuracy, that is, a greater endorsement of inaccurate claims, regardless of whether participants strongly identified with the influencer.",
+    "source_ids": [
+      "src-a-dangerous-bond-identification-with-social-media-influencers-and-the-ef"
+    ],
+    "text_anchor": "abstract, sentence 8: \"While neither misinformation nor overgeneralized messaging consistently affected behavioral intentions or self-diagnosis, findings showed that exposure to mental health-related misinformation by an SMI significantly increased belief inaccuracy, that is, a greater endorsement of inaccurate claims, regardless of whether participants strongly identified with the influencer.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-literacy-education-for-older-adults-motivations-challenges-and-prefer",
+    "statement": "However, most research on AI literacy education has focused on students and children, leaving a gap in understanding the unique needs of older adults when learning about AI.",
+    "source_ids": [
+      "src-ai-literacy-education-for-older-adults-motivations-challenges-and-prefer"
+    ],
+    "text_anchor": "abstract, sentence 2: \"However, most research on AI literacy education has focused on students and children, leaving a gap in understanding the unique needs of older adults when learning about AI.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-primary-and-secondary-ai-education-preparing-children-for-the-future-abs",
+    "statement": "As a result of the expedited advancement and expanded application of artificial intelligence (AI) technology, its social and economic impacts become increasingly significant.",
+    "source_ids": [
+      "src-primary-and-secondary-ai-education-preparing-children-for-the-future"
+    ],
+    "text_anchor": "abstract, sentence 1: \"As a result of the expedited advancement and expanded application of artificial intelligence (AI) technology, its social and economic impacts become increasingly significant.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil",
+    "statement": "Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes and provide a techno-savvy and student-friendly digital environment.",
+    "source_ids": [
+      "src-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes and provide a techno-savvy and student-friendly digital environment.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-competences-of-future-social-workers-the-art-of-education-in-unc",
+    "statement": "There are a lot of social work practitioners who lack the digital skills or attitudes to fully benefit from the opportunities created by digital technologies for delivering quality youth work.",
+    "source_ids": [
+      "src-digital-competences-of-future-social-workers-the-art-of-education-in-unc"
+    ],
+    "text_anchor": "abstract, sentence 2: \"There are a lot of social work practitioners who lack the digital skills or attitudes to fully benefit from the opportunities created by digital technologies for delivering quality youth work.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac",
+    "statement": "Findings reveal that not only is there an overall dearth of K-12 media literacy policy, but definitions and corresponding resources remain sparse and varied.",
+    "source_ids": [
+      "src-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Findings reveal that not only is there an overall dearth of K-12 media literacy policy, but definitions and corresponding resources remain sparse and varied.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-aewake-model-an-ai-enabled-instructional-system-for-enhancing-execut",
+    "statement": "In today's era of digital transformation and artificial intelligence, executive function skills and adaptive character are crucial competencies for students to face complex future challenges.",
+    "source_ids": [
+      "src-the-aewake-model-an-ai-enabled-instructional-system-for-enhancing-execut"
+    ],
+    "text_anchor": "abstract, sentence 1: \"In today's era of digital transformation and artificial intelligence, executive function skills and adaptive character are crucial competencies for students to face complex future challenges.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-children-s-mental-models-of-ai-reasoning-implications-for-ai-literacy-ed",
+    "statement": "As artificial intelligence (AI) advances in reasoning capabilities, most recently with the emergence of Large Reasoning Models (LRMs), understanding how children conceptualize AI\u2019s reasoning processes becomes critical for fostering AI literacy.",
+    "source_ids": [
+      "src-children-s-mental-models-of-ai-reasoning-implications-for-ai-literacy-ed"
+    ],
+    "text_anchor": "abstract, sentence 1: \"As artificial intelligence (AI) advances in reasoning capabilities, most recently with the emergence of Large Reasoning Models (LRMs), understanding how children conceptualize AI\u2019s reasoning processes becomes critical for fostering AI literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-professional-development-for-teachers-in-ai-literacy-education-teaching",
+    "statement": "The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools.",
+    "source_ids": [
+      "src-professional-development-for-teachers-in-ai-literacy-education-teaching"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev",
+    "statement": "ABSTRACT Artificial intelligence (AI) literacy has emerged to equip students with digital skills for effective evaluation, communication, collaboration, and ethical use of AI in online, home, and workplace settings.",
+    "source_ids": [
+      "src-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev"
+    ],
+    "text_anchor": "abstract, sentence 1: \"ABSTRACT Artificial intelligence (AI) literacy has emerged to equip students with digital skills for effective evaluation, communication, collaboration, and ethical use of AI in online, home, and workplace settings.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, digital competence, collaboration, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-23",
+    "reviewed_at": null
   }
 ]
