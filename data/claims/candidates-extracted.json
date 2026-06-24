@@ -998,15 +998,17 @@
       "src-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil"
     ],
     "text_anchor": "abstract, sentence 8: \"Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes and provide a techno-savvy and student-friendly digital environment.\"",
-    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "systematic_review",
+    "context": "Survey of secondary-school educators' digital literacy, use of AI in education, and tech-driven pedagogy.",
+    "age_range": "Lehrende",
+    "outcome": "Secondary-school educators report only moderate levels of digital literacy for classroom use, indicating a gap in the foundational tech competence needed for AI-rich teaching.",
+    "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-educator-digital-competence"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "rejected",
+    "status": "reviewed",
     "created_at": "2026-06-23",
     "reviewed_at": "2026-06-24"
   },
@@ -1097,15 +1099,17 @@
       "src-professional-development-for-teachers-in-ai-literacy-education-teaching"
     ],
     "text_anchor": "abstract, sentence 6: \"The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Professional-development study with 36 in-service primary/secondary teachers in Hong Kong using the AEER (Attention-Engagement-Error-feedback-Reflection) framework and a Workshops-Discussions-Resources model to teach machine-learning concepts.",
+    "age_range": "Lehrende",
+    "outcome": "Integrating robots with a transdisciplinary AEER pedagogical design motivated in-service teachers to teach AI literacy (machine learning) at senior-primary and junior-secondary levels.",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-educator-ai-pedagogy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "rejected",
+    "status": "reviewed",
     "created_at": "2026-06-23",
     "reviewed_at": "2026-06-24"
   },

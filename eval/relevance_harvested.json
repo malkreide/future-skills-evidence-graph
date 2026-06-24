@@ -397,6 +397,24 @@
       "decision": "promote_source",
       "harvested_at": "2026-06-24",
       "source_id": "src-children-s-mental-models-of-ai-reasoning-implications-for-ai-literacy-ed"
+    },
+    {
+      "title": "Professional Development for Teachers in AI Literacy Education: Teaching Machine Learning to Senior Primary and Junior Secondary Students",
+      "abstract": ": This paper presents a study focused on equipping in-service teachers\u2019 skills of delivering courses on teaching machine learning concepts to senior primary and junior secondary school students. The pedagogical design of this study was based on the neuroscience-informed Attention-Engagement-Error-feedback-Reflection (AEER) framework. This study involved 36 in-service teachers from Hong Kong primary and secondary schools. We developed a model supported by Workshops, Discussions, and Resources (WDR) within the framework of Technological Pedagogical Content Knowledge (TPACK) to design the teacher professional development program. Data collection included pre-and post-tests on AI concepts, as well as pre-and post-questionnaires on using robots to teach machine learning on their TPACK, teachers\u2019 written feedback on the professional development. The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools. Furthermore, the workshops notably improved teachers\u2019 perceptions of their TPACK abilities. The implications for the professional development on equipping teachers for AI literacy education are summarised.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-professional-development-for-teachers-in-ai-literacy-education-teaching"
+    },
+    {
+      "title": "Survey on Digital Literacy, AI in Education and Tech-Driven Pedagogy Skills among Secondary School Educators",
+      "abstract": "Abstract\n\nThis present study explored the teachers\u2019 digital literacy, artificial intelligence in education and tech- driven pedagogy in teaching learning process in secondary schools and succeeds in understanding the overview levels of secondary school educators\u2019 digital literacy, using AI in education and integrating techno pedagogy to prepare the future work force. Since, we are living in the digital era, and everybody is dependent on technology directly or indirectly. Most importantly, our younger generation needs to be equipped with 21st century skills such as learning skills, literacy skills and life skills. As part of the literacy skills, young children need information literacy, media literacy and Technology literacy. Now, to impart all the skills among young generations, educators need for them to be digitally literate is imperative. The methodology in this study employed is the traditional survey method which compiled questions in the form of questionnaire. A sample of 125 government secondary school teachers\u2019 responses were collected electronically using Google forms and analyzed the data using the SPSSs latest version. Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes and provide a techno-savvy and student-friendly digital environment. It suggested that the educators\u2019 digital literacy paved a way to prepare the future generations to cope with rapid technology development and for 21st century skills. To summarize, as it is at the moderate level, most secondary educators are digitally literate. However, future research may evaluate digital literacy capacity building programs for educators to assess what improvements should be made to delivery as well as existing frame works used to test educators\u2019 digital literacy. This study was limited to only one district educators and helpful to the educators and the government to understand the digital tools required, and challenges teachers\u2019 face in adopting digital technology in their classrooms.\n\nKeywords: Digital Literacy, AI in Education, Tech-Driven Pedagogy, 21st Century Skills, Secondary School Educators",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil"
     }
   ]
 }

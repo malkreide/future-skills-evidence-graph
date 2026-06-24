@@ -57,7 +57,10 @@ generated `data/index.json`, so rerun `build_site.py` after changing data files.
   the future skills of learners aged 0-18, anchored to Lehrplan 21 and learner
   frameworks) and `educator` (the competencies of the teachers who enable them,
   anchored to the UNESCO AI Competency Framework for Teachers). Absence means
-  `learner`.
+  `learner`. Educator-audience evidence (teacher studies the learner relevance
+  filter intentionally drops) currently enters through manual review rather than
+  an automated educator relevance lane; an active educator skill must carry a
+  UNESCO-for-Teachers mapping the way a learner skill must carry a Lehrplan 21 one.
 - `FrameworkMapping`: mapping between local skills and external frameworks.
 - Lehrplan 21 mappings add `coverage_score` on a 0-3 scale, `cycles`,
   `curriculum_area`, `coverage_label`, and a short `evidence_path`. The
