@@ -1,0 +1,63 @@
+name: "Bericht einreichen (manueller Import)"
+description: "Einen Bericht (OECD/WEF/UNESCO o. ä.) manuell als Kandidaten einreichen – Text einfügen, PDF anhängen oder nur eine URL. Funktioniert auch mobil."
+title: "[ingest] "
+labels: ["ingest"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reiche hier einen Bericht zur Aufnahme ein. Daraus entstehen nur
+        **Kandidaten** (Quelle + wörtlich belegte Befunde); nichts wird
+        automatisch aktiv – ein Mensch prüft alles im `research/candidates`-PR.
+
+        Du hast drei Wege, den Inhalt zu liefern (mindestens einen ausfüllen):
+        1. **Text einfügen** – am robustesten, keine PDF-Extraktion nötig.
+        2. **PDF anhängen** – PDF ins Anhang-Feld ziehen (am Handy: Datei/Foto
+           anhängen). Wird im Workflow zu Text extrahiert.
+        3. **Nur URL** – zeigt die URL direkt auf ein PDF, holen wir es selbst.
+  - type: input
+    id: url
+    attributes:
+      label: "Quellen-URL"
+      description: "Kanonischer Link zum Bericht (bevorzugt der direkte PDF-Link)."
+      placeholder: "https://www.oecd.org/.../report.pdf"
+    validations:
+      required: true
+  - type: input
+    id: publisher
+    attributes:
+      label: "Herausgeber"
+      description: "Herausgebende Organisation, optional."
+      placeholder: "OECD / WEF / UNESCO"
+    validations:
+      required: false
+  - type: input
+    id: year
+    attributes:
+      label: "Erscheinungsjahr"
+      description: "Vierstellig, optional."
+      placeholder: "2023"
+    validations:
+      required: false
+  - type: textarea
+    id: plaintext
+    attributes:
+      label: "Berichtstext (einfügen)"
+      description: "Den Volltext oder die relevanten Passagen hier einfügen. Leer lassen, wenn du ein PDF anhängst oder eine PDF-URL angibst."
+      placeholder: "Text des Berichts einfügen …"
+    validations:
+      required: false
+  - type: textarea
+    id: attachment
+    attributes:
+      label: "PDF anhängen"
+      description: "PDF in dieses Feld ziehen (Desktop) oder am Handy über das Anhang-Symbol auswählen. Nur PDFs werden extrahiert."
+      placeholder: "PDF hierher ziehen …"
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        Nach dem Absenden läuft der Import automatisch und kommentiert das
+        Ergebnis hier. Bei Fehlern (z. B. kein Text gefunden) bekommst du einen
+        Hinweis, wie du nachbesserst.

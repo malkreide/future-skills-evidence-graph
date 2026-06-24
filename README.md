@@ -127,7 +127,13 @@ source plus candidate finding-claims, where every claim statement must be a
 *verbatim* passage of the report (else it is discarded) and everything starts at
 `status=candidate`/`evidence_strength=low` for human review. PDF→plaintext is a
 separate step (`scripts/extract_pdf_text.py`, optional `pypdf`), kept out of the
-import path. See [docs/report-import.md](docs/report-import.md). DigComp is a
+import path. Besides the `workflow_dispatch` trigger, the same importer also has
+a **mobile-friendly issue intake**: filing the "Bericht einreichen" issue form
+(`.github/ISSUE_TEMPLATE/ingest-report.yml`) — pasting report text, drag-and-drop
+or attaching a PDF, or giving a direct PDF URL — runs `ingest-from-issue.yml`,
+which resolves the input (`scripts/parse_ingest_issue.py`) and feeds the same
+candidate-PR review path, commenting the result back on the issue. See
+[docs/report-import.md](docs/report-import.md). DigComp is a
 single framework document, not a search source (it already appears in
 `data/frameworks/`), and enters through the manual source-suggestion governance
 template.

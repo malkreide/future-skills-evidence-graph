@@ -118,6 +118,37 @@ true, fairly framed and correctly interpreted remains a human job — which is w
 everything stays `status=candidate` / `evidence_strength=low` until a reviewer
 promotes it via `promote_candidate.py`.
 
+## Manueller Eingang per Issue (Drag & Drop, mobil)
+
+Den `workflow_dispatch`-Pfad unten kann nur bedienen, wer Schreibrechte und
+Zugriff auf die Actions-UI hat – am Handy praktisch nicht. Für die alltägliche
+manuelle Einreichung gibt es daher ein **Issue-Formular** als Eingang:
+
+```
+Issue-Formular  ──(ingest-from-issue.yml)──▶  parse_ingest_issue.py  ──▶  ingest_reports.py  ──▶  Kandidaten-PR
+```
+
+1. **Einreichen.** Über *New issue → „Bericht einreichen"*
+   (`.github/ISSUE_TEMPLATE/ingest-report.yml`) eine URL angeben und **einen** von
+   drei Inhalten liefern: den **Berichtstext einfügen**, ein **PDF ins
+   Anhang-Feld ziehen** (am Handy über das Anhang-Symbol Datei/Foto wählen) oder
+   – wenn die URL direkt auf ein PDF zeigt – nichts weiter. Das Formular vergibt
+   automatisch das Label `ingest`.
+2. **Auflösen.** `scripts/parse_ingest_issue.py` liest den Issue-Text, ermittelt
+   die Plaintext-Quelle in der Reihenfolge *eingefügter Text → angehängtes PDF →
+   PDF aus der URL*, lädt ein PDF (Größenlimit 25 MB) herunter und extrahiert es
+   mit `extract_pdf_text.py`, und schreibt ein `ingest_reports`-Manifest. Findet
+   es keinen Text, schreibt es kein Manifest, sondern einen verständlichen Grund.
+3. **Importieren.** `.github/workflows/ingest-from-issue.yml` läuft bei jedem
+   `ingest`-Issue, ruft denselben LLM-Importer und denselben Kandidaten-PR-Pfad
+   wie unten auf und **kommentiert das Ergebnis (oder den Grund) zurück ins
+   Issue**. Es bleibt alles `status=candidate` bis zur Review.
+
+Das Sicherheitsmodell ist identisch zum `workflow_dispatch`-Pfad: derselbe
+Verbatim-Guard, dieselbe Relevanz-/Dedupe-Filterung, nichts wird automatisch
+aktiv. Eine spätere, hübschere Drag-&-Drop-Oberfläche direkt im Dashboard
+(`site/`) ist als optionaler Aufsatz auf diesen Eingang vorgesehen.
+
 ## Automation
 
 `.github/workflows/ingest-reports.yml` runs the importer on

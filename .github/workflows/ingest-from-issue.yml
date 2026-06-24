@@ -1,0 +1,111 @@
+name: Import report from issue (manual)
+
+# Mobile-friendly, drag-and-drop manual intake. A human files the
+# "Bericht einreichen" issue form (.github/ISSUE_TEMPLATE/ingest-report.yml),
+# which carries the `ingest` label; this workflow resolves the pasted text /
+# attached PDF / PDF URL into plaintext and runs the SAME LLM report importer and
+# candidate-PR path as the manual ingest-reports workflow. Like everything else,
+# it only ever produces candidates for human review; nothing is auto-activated.
+on:
+  issues:
+    types: [opened, labeled, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+# An edit while a run is in flight should supersede it, not race it.
+concurrency:
+  group: ingest-issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  import-from-issue:
+    # Only the report-intake issues, and only once they carry the `ingest` label.
+    if: contains(github.event.issue.labels.*.name, 'ingest')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore pending candidates from open pull request branch
+        run: |
+          # Reuse the research pipeline's candidate branch so this import
+          # deduplicates against candidates already awaiting review.
+          if git fetch origin research/candidates; then
+            for pattern in 'data/sources/candidates-*.json' 'data/claims/candidates-*.json' 'data/skills/candidates-*.json'; do
+              git checkout FETCH_HEAD -- "$pattern" || echo "No pending files for $pattern."
+            done
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Parse issue into an import manifest
+        id: parse
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/parse_ingest_issue.py --workdir .ingest_work
+      - name: Comment when nothing to import
+        if: steps.parse.outputs.status != 'ingest'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REASON: ${{ steps.parse.outputs.reason }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" \
+            --body "⚠️ Kein Import ausgeführt: ${REASON}"
+      - name: Import report candidate(s) (LLM)
+        if: steps.parse.outputs.status == 'ingest'
+        env:
+          MANIFEST: ${{ steps.parse.outputs.manifest }}
+          AI_PROVIDER: anthropic
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/ingest_reports.py --manifest "${MANIFEST}"
+      - name: Cluster candidate skills
+        if: steps.parse.outputs.status == 'ingest'
+        run: python scripts/cluster_claims.py
+      - name: Validate candidates
+        if: steps.parse.outputs.status == 'ingest'
+        run: python scripts/validate_data.py
+      - name: Open or update candidate pull request
+        id: pr
+        if: steps.parse.outputs.status == 'ingest'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          for pattern in "data/sources/candidates-*.json" "data/claims/candidates-*.json" "data/skills/candidates-*.json"; do
+            if compgen -G "$pattern" > /dev/null; then
+              git add -- $pattern
+            fi
+          done
+          if git diff --cached --quiet; then
+            echo "result=No new candidates (already known or filtered as off-scope)." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          branch="research/candidates"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git commit -m "chore: add report candidate from issue #${ISSUE_NUMBER}"
+          git push --force origin "$branch"
+          number="$(gh pr list --head "$branch" --state open --json number --jq '.[].number')"
+          if [ -z "$number" ]; then
+            number="$(gh pr create \
+              --title "chore: add research candidates" \
+              --body "Manual report imports (issue form): candidate sources plus verbatim finding-claims. Everything remains a candidate until reviewed." \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch")"
+          fi
+          echo "result=Kandidaten ergänzt und im Review-PR bereitgestellt: ${number}" >> "$GITHUB_OUTPUT"
+      - name: Comment result on the issue
+        if: steps.parse.outputs.status == 'ingest'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PARSE_REASON: ${{ steps.parse.outputs.reason }}
+          PR_RESULT: ${{ steps.pr.outputs.result }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" \
+            --body "✅ Import gelaufen. ${PARSE_REASON} ${PR_RESULT}"

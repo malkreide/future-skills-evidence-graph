@@ -19,3 +19,6 @@ eval/recall_probe.json
 # transient candidate-backlog review worksheet (regenerated each run)
 eval/candidate_triage.json
 
+# transient working dir for the issue-form report importer (downloaded PDF, plaintext, manifest)
+.ingest_work/
+
