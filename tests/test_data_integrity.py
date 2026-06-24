@@ -757,7 +757,14 @@ class DataIntegrityTests(unittest.TestCase):
     def test_lehrplan21_mappings_have_coverage_metadata(self) -> None:
         all_skills = load_records("skills")
         skills = {skill["id"] for skill in all_skills}
-        active_skills = {skill["id"] for skill in all_skills if skill["status"] == "active"}
+        # Lehrplan 21 is a learner curriculum, so only learner-audience active
+        # skills must carry an LP21 mapping; educator-audience skills are anchored
+        # to an educator framework (UNESCO AI Competency Framework for Teachers).
+        active_skills = {
+            skill["id"]
+            for skill in all_skills
+            if skill["status"] == "active" and skill.get("audience", "learner") == "learner"
+        }
         mappings = [
             mapping
             for mapping in load_records("frameworks")
@@ -776,6 +783,19 @@ class DataIntegrityTests(unittest.TestCase):
             self.assertIn(mapping["coverage_label"], {"gut abgedeckt", "teilweise", "Zukunftsluecke"})
             self.assertTrue(mapping["cycles"])
             self.assertTrue(mapping["evidence_path"])
+
+    def test_skill_audience_dimension(self) -> None:
+        # The optional audience axis separates learner future-skills from the
+        # educator competencies that enable them. Absence means learner.
+        validator = Draft202012Validator(load_json(ROOT / "schemas" / "skill.schema.json"))
+        base = next(s for s in load_records("skills") if s["status"] == "active")
+        for value in ("learner", "educator"):
+            self.assertEqual(list(validator.iter_errors({**base, "audience": value})), [])
+        self.assertTrue(list(validator.iter_errors({**base, "audience": "teacher"})))
+        # Every shipped skill is explicitly tagged, and all are learner for now.
+        skills = load_records("skills")
+        self.assertTrue(all("audience" in s for s in skills))
+        self.assertTrue(all(s.get("audience", "learner") in {"learner", "educator"} for s in skills))
 
     def test_relevance_decision_defaults_to_heuristic(self) -> None:
         # The default decision (no env flag) must be the deterministic heuristic,
