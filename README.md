@@ -52,7 +52,12 @@ generated `data/index.json`, so rerun `build_site.py` after changing data files.
 
 - `Source`: bibliographic or policy source metadata.
 - `Claim`: structured evidence statement extracted from a source.
-- `Skill`: reviewed or candidate future-skill profile.
+- `Skill`: reviewed or candidate future-skill profile. An optional `audience`
+  field separates the two perspectives the catalog tracks: `learner` (default —
+  the future skills of learners aged 0-18, anchored to Lehrplan 21 and learner
+  frameworks) and `educator` (the competencies of the teachers who enable them,
+  anchored to the UNESCO AI Competency Framework for Teachers). Absence means
+  `learner`.
 - `FrameworkMapping`: mapping between local skills and external frameworks.
 - Lehrplan 21 mappings add `coverage_score` on a 0-3 scale, `cycles`,
   `curriculum_area`, `coverage_label`, and a short `evidence_path`. The

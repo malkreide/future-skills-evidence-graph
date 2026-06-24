@@ -5,6 +5,7 @@
     "short_label": "Vorschul-KI",
     "definition": "Ability of young children in the pre-primary years (ages 0-6) to encounter and make sense of basic AI concepts - recognising that AI systems learn from data and make simple predictions - through age-appropriate, playful and creative activities.",
     "age_range": "0-6",
+    "audience": "learner",
     "status": "active",
     "evidence_score": 0.57,
     "trend": "emerging",

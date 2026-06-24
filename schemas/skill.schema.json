@@ -23,6 +23,7 @@
     "short_label": { "type": "string", "minLength": 1, "maxLength": 12 },
     "definition": { "type": "string", "minLength": 12 },
     "age_range": { "type": "string" },
+    "audience": { "type": "string", "enum": ["learner", "educator"] },
     "status": { "type": "string", "enum": ["candidate", "active", "deprecated"] },
     "evidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
     "trend": { "type": "string", "enum": ["emerging", "growing", "stable", "declining"] },
