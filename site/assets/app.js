@@ -12,6 +12,7 @@ const state = {
 const els = {
   searchInput: document.querySelector("#searchInput"),
   statusFilter: document.querySelector("#statusFilter"),
+  audienceFilter: document.querySelector("#audienceFilter"),
   ageFilter: document.querySelector("#ageFilter"),
   scoreFilter: document.querySelector("#scoreFilter"),
   scoreValue: document.querySelector("#scoreValue"),
@@ -87,13 +88,24 @@ function radarLabel(skill) {
   return skill.short_label || skill.name.slice(0, 12);
 }
 
+function currentAudience() {
+  return els.audienceFilter ? els.audienceFilter.value : "all";
+}
+
+function skillAudience(skill) {
+  return skill.audience || "learner";
+}
+
 function filteredSkills() {
   const query = normalize(els.searchInput.value);
   const status = els.statusFilter.value;
-  const age = els.ageFilter.value;
+  const audience = currentAudience();
+  // The age bands describe learners; they never apply when viewing educators.
+  const age = audience === "educator" ? "all" : els.ageFilter.value;
   const score = Number(els.scoreFilter.value);
 
   return state.skills
+    .filter((skill) => audience === "all" || skillAudience(skill) === audience)
     .filter((skill) => {
       const haystack = normalize([
         skill.name,
@@ -185,6 +197,25 @@ function renderLp21Comparison() {
   if (!els.lp21TableBody || !els.lp21Radar) return;
 
   const skillMap = byId(state.skills);
+
+  // Lehrplan 21 is a learner curriculum; the educator perspective is anchored to
+  // the UNESCO AI Competency Framework for Teachers instead, so the LP21 view does
+  // not apply when only educators are shown.
+  if (currentAudience() === "educator") {
+    els.lp21Average.textContent = "0.00";
+    els.lp21GapCount.textContent = "0";
+    els.lp21MappingCount.textContent = "0";
+    els.lp21TableBody.replaceChildren();
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = 6;
+    cell.textContent = "Lehrplan 21 gilt fuer Lernende; Lehrende sind am UNESCO AI Competency Framework for Teachers verankert.";
+    row.append(cell);
+    els.lp21TableBody.append(row);
+    drawRadar([], skillMap);
+    return;
+  }
+
   const mappings = lp21Mappings()
     .filter(cycleMatches)
     .filter((mapping) => skillMap.has(mapping.skill_id))
@@ -492,14 +523,25 @@ function renderDetail() {
 function render() {
   els.scoreValue.textContent = scoreLabel(els.scoreFilter.value);
   state.selectedCycle = els.lp21CycleFilter ? els.lp21CycleFilter.value : "all";
+  if (els.ageFilter) {
+    // Age bands describe learners, so the control is inert for the educator view.
+    els.ageFilter.disabled = currentAudience() === "educator";
+  }
   renderMetrics();
   renderLp21Comparison();
   renderSkillList();
   renderDetail();
 }
 
-for (const control of [els.searchInput, els.statusFilter, els.ageFilter, els.scoreFilter, els.lp21CycleFilter]) {
-  control.addEventListener("input", render);
+for (const control of [
+  els.searchInput,
+  els.statusFilter,
+  els.audienceFilter,
+  els.ageFilter,
+  els.scoreFilter,
+  els.lp21CycleFilter,
+]) {
+  if (control) control.addEventListener("input", render);
 }
 
 window.addEventListener("resize", () => renderLp21Comparison());
