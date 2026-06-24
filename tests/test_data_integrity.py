@@ -727,6 +727,49 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertTrue(errors)
         self.assertIn("not found", errors[0])
 
+    def test_reopen_missing_record_reports_error(self) -> None:
+        from argparse import Namespace
+
+        from promote_candidate import reopen_record
+
+        errors = reopen_record(Namespace(id="claim-does-not-exist-xyz"))
+        self.assertTrue(errors)
+        self.assertIn("not found", errors[0])
+
+    def test_reopen_refuses_non_rejected_record(self) -> None:
+        # Re-opening only applies to a rejected (or deprecated) record; a reviewed
+        # source is left untouched with a clear message and no write.
+        from argparse import Namespace
+
+        from promote_candidate import reopen_record
+
+        reviewed = next(s for s in load_records("sources") if s.get("status") == "reviewed")
+        errors = reopen_record(Namespace(id=reviewed["id"]))
+        self.assertTrue(errors)
+        self.assertIn("nothing to re-open", errors[0])
+
+    def test_remove_harvested_label_by_title(self) -> None:
+        # Re-opening a source drops its stale harvested label, matched by
+        # normalized title (case/punctuation-insensitive); a second call no-ops.
+        import promote_candidate as pc
+
+        with tempfile.TemporaryDirectory() as tmp:
+            original = pc.HARVEST_PATH
+            pc.HARVEST_PATH = Path(tmp) / "relevance_harvested.json"
+            try:
+                negative = pc._harvest_example(
+                    {"id": "src-x", "title": "Preservice Teachers and AI", "abstract": "a"},
+                    False,
+                    "reject_source",
+                )
+                pc.record_relevance_labels([negative])
+                self.assertEqual(len(load_json(pc.HARVEST_PATH)["examples"]), 1)
+                self.assertEqual(pc.remove_harvested_label({"title": "preservice teachers and ai!"}), 1)
+                self.assertEqual(load_json(pc.HARVEST_PATH)["examples"], [])
+                self.assertEqual(pc.remove_harvested_label({"title": "preservice teachers and ai"}), 0)
+            finally:
+                pc.HARVEST_PATH = original
+
     def test_harvest_dedup_and_provenance(self) -> None:
         # A positive label carries its provenance; a later decision for the same
         # normalized title is ignored (append-only, first decision wins).

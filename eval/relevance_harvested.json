@@ -120,15 +120,6 @@
       "source_id": "src-directors-duties-in-the-age-of-agentic-artificial-intelligence"
     },
     {
-      "title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
-      "abstract": "Purpose: This study aims to investigate how preservice teachers' stages of concern, beliefs, confidence and interest in AI literacy education evolve as they deepen their understanding of AI concepts and AI literacy education. Design/methodology/approach: AI literacy lessons were integrated into a technology integration course for preservice teachers, and the impacts of the lessons were evaluated through a mixed-methods study. The Concerns-Based Adoption Model was employed as the analytical framework to explore participants' specific concerns related to AI. Findings: Findings revealed that participants initially lacked AI knowledge and awareness. However, targeted AI literacy education enhanced preservice teachers' awareness and confidence in teaching AI. While acknowledging AI's educational benefits, participants expressed ongoing concerns after AI literacy lessons, such as fears of teacher displacement and the potential adverse effects of incorporating generative AI on students' critical learning skills development. Originality/value: Despite the importance of providing preservice teachers with AI literacy skills and knowledge, research in this domain remains scarce. This study fills this gap by enhancing the AI-related knowledge and skills of future educators, while also identifying their specific concerns regarding the integration of AI into their future classrooms. The findings of this study offer valuable insights and guidelines for teacher educators to incorporate AI literacy education into teacher training programs.",
-      "relevant": false,
-      "origin": "harvested",
-      "decision": "reject_source",
-      "harvested_at": "2026-06-22",
-      "source_id": "src-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among"
-    },
-    {
       "title": "From Fragmentation to Integration: A Systematic Review of Cross-Jurisdictional Frameworks for Responsible Gaming and Gaming Disorder Prevention",
       "abstract": "The rapid expansion of the global gaming industry has intensified concern about Gaming Disorder (GD), creating a need for strategies that protect player well-being while remaining feasible for industry implementation. Using a PRISMA 2020-guided systematic review method, the study synthesised evidence from 40 peer-reviewed studies published between 2015 and 2025 on responsible gaming interventions implemented by game developers, platform operators, and digital storefronts. The review identified four main strategy clusters: structural design features, behavioural tools, monetisation controls, and regulatory measures. Across the literature, some interventions, including break reminders, spending controls, adaptive warnings, and design modifications that interrupt continuous play, showed potential to reduce excessive gaming and support self-regulation. However, effectiveness was often constrained by fragmented implementation, inconsistent evaluation, jurisdictional differences, and limited evidence from low- and middle-income settings. Digital storefronts were notably underexamined despite their growing influence on access and monetisation. The findings suggest that isolated technical or behavioural measures are unlikely to be sufficient on their own. In response, this review proposes the Integrated Responsible Gaming Strategy Framework (IRGSF), which brings together ethical design, behavioural support, socio-technical coordination, and stakeholder governance to guide more coherent and sustainable approaches to GD prevention.",
       "relevant": false,
@@ -154,15 +145,6 @@
       "decision": "reject_source",
       "harvested_at": "2026-06-22",
       "source_id": "src-if-you-re-very-clever-no-one-knows-you-ve-used-it-the-social-dynamics-of"
-    },
-    {
-      "title": "Investigation of Digital Competencies and Artificial Intelligence Literacy of Special Education Students",
-      "abstract": "This study investigated the digital competence and artificial intelligence (AI) literacy levels of special education students at various universities, examining differences by gender and grade level. A quantitative, descriptive, and correlational design was employed with a sample of 234 voluntary participants studying in special education departments. Data were collected using the &quot;Digital Competence Perception Scale for Pre-service Teachers&quot; and the &quot;Artificial Intelligence Literacy Scale.&quot; Results indicated that students exhibited high levels of both digital competence and AI literacy. Male students scored significantly higher in overall digital competence, whereas gender differences in AI literacy were minimal. Regarding grade level, notable differences emerged in the sub-dimensions of digital competence, and higher-grade students demonstrated greater AI literacy and self-efficacy. Regression analysis showed that digital competence significantly predicted AI literacy, explaining 39% of its variance. These findings highlight the interconnection between digital skills and AI literacy among future special education teachers. Therefore, it is recommended that teacher education programs integrate digital competence and AI literacy modules into their curricula. Future studies should adopt mixed or qualitative methods to explore participants' experiences more deeply and validate the quantitative outcomes.",
-      "relevant": false,
-      "origin": "harvested",
-      "decision": "reject_source",
-      "harvested_at": "2026-06-22",
-      "source_id": "src-investigation-of-digital-competencies-and-artificial-intelligence-litera"
     },
     {
       "title": "Justification and Roadmap for Artificial Intelligence (AI) Literacy Courses in Higher Education",
@@ -415,6 +397,24 @@
       "decision": "promote_source",
       "harvested_at": "2026-06-24",
       "source_id": "src-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil"
+    },
+    {
+      "title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
+      "abstract": "Purpose: This study aims to investigate how preservice teachers' stages of concern, beliefs, confidence and interest in AI literacy education evolve as they deepen their understanding of AI concepts and AI literacy education. Design/methodology/approach: AI literacy lessons were integrated into a technology integration course for preservice teachers, and the impacts of the lessons were evaluated through a mixed-methods study. The Concerns-Based Adoption Model was employed as the analytical framework to explore participants' specific concerns related to AI. Findings: Findings revealed that participants initially lacked AI knowledge and awareness. However, targeted AI literacy education enhanced preservice teachers' awareness and confidence in teaching AI. While acknowledging AI's educational benefits, participants expressed ongoing concerns after AI literacy lessons, such as fears of teacher displacement and the potential adverse effects of incorporating generative AI on students' critical learning skills development. Originality/value: Despite the importance of providing preservice teachers with AI literacy skills and knowledge, research in this domain remains scarce. This study fills this gap by enhancing the AI-related knowledge and skills of future educators, while also identifying their specific concerns regarding the integration of AI into their future classrooms. The findings of this study offer valuable insights and guidelines for teacher educators to incorporate AI literacy education into teacher training programs.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among"
+    },
+    {
+      "title": "Investigation of Digital Competencies and Artificial Intelligence Literacy of Special Education Students",
+      "abstract": "This study investigated the digital competence and artificial intelligence (AI) literacy levels of special education students at various universities, examining differences by gender and grade level. A quantitative, descriptive, and correlational design was employed with a sample of 234 voluntary participants studying in special education departments. Data were collected using the &quot;Digital Competence Perception Scale for Pre-service Teachers&quot; and the &quot;Artificial Intelligence Literacy Scale.&quot; Results indicated that students exhibited high levels of both digital competence and AI literacy. Male students scored significantly higher in overall digital competence, whereas gender differences in AI literacy were minimal. Regarding grade level, notable differences emerged in the sub-dimensions of digital competence, and higher-grade students demonstrated greater AI literacy and self-efficacy. Regression analysis showed that digital competence significantly predicted AI literacy, explaining 39% of its variance. These findings highlight the interconnection between digital skills and AI literacy among future special education teachers. Therefore, it is recommended that teacher education programs integrate digital competence and AI literacy modules into their curricula. Future studies should adopt mixed or qualitative methods to explore participants' experiences more deeply and validate the quantitative outcomes.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-investigation-of-digital-competencies-and-artificial-intelligence-litera"
     }
   ]
 }
