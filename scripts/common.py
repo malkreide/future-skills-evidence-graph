@@ -440,6 +440,136 @@ SCHOOL_AGE_KEYWORDS = (
 )
 
 
+# Educator relevance lane. The catalog tracks two audiences (see
+# schemas/skill.schema.json): the future skills of learners aged 0-18 (default)
+# and the competencies of the educators who enable them, anchored to the UNESCO
+# AI Competency Framework for Teachers. The learner lane above intentionally
+# drops adult / post-secondary audiences via is_adult_audience -- including
+# pre-/in-service teachers -- so until now educator evidence could only enter
+# through manual review. This lane keeps that evidence automatically: a
+# topic-anchored, in-scope source whose SUBJECT is the (school) educator's own
+# competence is kept and tagged audience="educator", even though it names an
+# adult audience.
+#
+# The lane is deliberately narrow. EDUCATOR_STRONG_KEYWORDS are phrases that on
+# their own denote a SCHOOL educator's competence as the subject of study
+# (teacher education/training, pre-/in-service teachers, teacher competence,
+# teaching AI literacy) -- these are exempt from the higher-education guard
+# because teacher training, though university-based, produces school teachers.
+# Failing a strong phrase, a source still qualifies only when it names an
+# educator SUBJECT *and* a competence/development CONTEXT (which is where the
+# non-school-bound pedagogy markers such as AI pedagogy / TPACK live, so they
+# still need an educator subject and remain subject to the higher-ed guard).
+# Bare "teacher"/"classroom" mentions, and pure teacher-productivity tool-use
+# (lesson planning, grading, administrative automation), do NOT qualify -- those
+# stay on the learner lane, where teacher-tool-use remains the tracked
+# false-positive class (docs/relevanz-entscheidung.md). The vocabulary is
+# teacher-centric on purpose ("teacher"/"educator", not "faculty"/"lecturer"/
+# "instructor"), so it targets school educators rather than higher-education
+# faculty teaching adults. The off-scope gate still applies before this lane.
+EDUCATOR_STRONG_KEYWORDS = (
+    "teacher education",
+    "teacher educator",
+    "teacher educators",
+    "teacher training",
+    "teacher preparation",
+    "teacher professional development",
+    "professional development for teachers",
+    "professional development of teachers",
+    "preservice teacher",
+    "preservice teachers",
+    "pre service teacher",
+    "pre service teachers",
+    "in service teacher",
+    "in service teachers",
+    "trainee teacher",
+    "trainee teachers",
+    "student teacher",
+    "student teachers",
+    "teacher candidate",
+    "teacher candidates",
+    "teacher competence",
+    "teacher competency",
+    "teacher competencies",
+    "educator competence",
+    "educator competency",
+    "educator competencies",
+    "teacher readiness",
+    "teaching ai literacy",
+    "teachers ai literacy",
+)
+EDUCATOR_SUBJECT_KEYWORDS = (
+    "teacher",
+    "teachers",
+    "educator",
+    "educators",
+    "teaching staff",
+)
+EDUCATOR_CONTEXT_KEYWORDS = (
+    "professional development",
+    "professional learning",
+    "teacher education",
+    "teacher training",
+    "competence",
+    "competency",
+    "competencies",
+    "readiness",
+    "pedagogy",
+    "pedagogical",
+    "didactic",
+    "didactics",
+    "preservice",
+    "pre service",
+    "in service",
+    "upskilling",
+    "capacity building",
+    "continuing education",
+    "professional learning community",
+    "tpack",
+    "pedagogical content knowledge",
+)
+# Teacher PRODUCTIVITY / tool-use is the educator's adoption of an AI tool to
+# reduce their own workload (lesson planning, grading, administrative
+# automation), not the development of a teaching competence. It is the tracked
+# false-positive class on the learner lane and is held off the educator lane too:
+# the educator strand is about competence and pedagogy, not office automation.
+EDUCATOR_OFF_KEYWORDS = (
+    "lesson planning",
+    "lesson plan",
+    "grading",
+    "marking",
+    "workload",
+    "administrative",
+    "administration",
+    "quiz question",
+    "quiz questions",
+    "automate",
+    "automating",
+    "automation",
+)
+# A school educator -- not a higher-education faculty member teaching adults --
+# is the educator lane's subject. A source set in a higher-education TEACHING
+# context with no school-age signal is therefore out of the lane, even if it
+# names teachers/educators and a competence. Pre-/in-service teacher training
+# (an EDUCATOR_STRONG_KEYWORDS phrase) is exempt: it is trained at universities
+# but produces school teachers, so it is decided before this guard.
+HIGHER_ED_TEACHING_KEYWORDS = (
+    "higher education",
+    "postsecondary",
+    "post secondary",
+    "tertiary",
+    "university",
+    "universities",
+    "undergraduate",
+    "undergraduates",
+    "college student",
+    "college students",
+    "graduate student",
+    "graduate students",
+    "faculty",
+)
+
+
 def _contains(text: str, keyword: str) -> bool:
     return f" {normalize_title(keyword)} " in text
 
@@ -525,6 +655,48 @@ def is_adult_audience(source: dict[str, Any]) -> bool:
     return not text_has(SCHOOL_AGE_KEYWORDS)
 
 
+def is_educator_audience(source: dict[str, Any]) -> bool:
+    """Whether a source's subject is a (school) educator's own competence.
+
+    True when the title/abstract carries a strong educator-competence phrase
+    (EDUCATOR_STRONG_KEYWORDS), or names both an educator SUBJECT and a
+    competence/development CONTEXT. This is the signal for the educator lane:
+    such a source is kept and tagged audience="educator" even though it names an
+    adult audience the learner lane would drop (see heuristic_keep). The off-scope
+    gate is applied first, so this never resurrects an off-domain paper. The
+    vocabulary is teacher-centric (not faculty/lecturer/instructor), so it tracks
+    school educators rather than higher-education faculty teaching adults.
+    """
+    title = f" {normalize_title(str(source.get('title') or ''))} "
+    abstract = f" {normalize_title(str(source.get('abstract') or ''))} "
+
+    def text_has(keywords: tuple[str, ...]) -> bool:
+        return any(_contains(title, kw) or _contains(abstract, kw) for kw in keywords)
+
+    # Teacher-productivity tool-use is not a competence: held off the lane.
+    if text_has(EDUCATOR_OFF_KEYWORDS):
+        return False
+    # A higher-education teaching context with no school-age signal is
+    # higher-ed faculty, not a school educator -- out of the lane. Strong
+    # pre-/in-service teacher-education phrases are decided first and exempt.
+    if text_has(EDUCATOR_STRONG_KEYWORDS):
+        return True
+    if text_has(HIGHER_ED_TEACHING_KEYWORDS) and not text_has(SCHOOL_AGE_KEYWORDS):
+        return False
+    return text_has(EDUCATOR_SUBJECT_KEYWORDS) and text_has(EDUCATOR_CONTEXT_KEYWORDS)
+
+
+def classify_audience(source: dict[str, Any]) -> str:
+    """The relevance lane a kept source belongs to: "educator" or "learner".
+
+    Educator-competence sources (is_educator_audience) ride the educator lane;
+    everything else is a learner future-skill source. Mirrors the skill schema's
+    audience axis (absence means learner) and is written onto survivors by
+    filter_relevant_sources as an explainable companion signal next to topics.
+    """
+    return "educator" if is_educator_audience(source) else "learner"
+
+
 def heuristic_keep(
     source: dict[str, Any],
     score: float,
@@ -544,12 +716,19 @@ def heuristic_keep(
     off-scope term without a genuine topic anchor in the title (see
     is_off_scope / OFF_SCOPE_KEYWORDS) are dropped too, as are adult /
     post-secondary-audience papers with no school-age signal (see
-    is_adult_audience). Measured by scripts/eval_relevance.py.
+    is_adult_audience) -- UNLESS the source rides the educator lane
+    (is_educator_audience), which keeps in-scope educator-competence evidence the
+    adult gate would otherwise drop. Measured by scripts/eval_relevance.py.
     """
     if not topics or score < min_relevance:
         return False
     if is_off_scope(source):
         return False
+    # Educator lane: a topic-anchored, in-scope source about an educator's own
+    # competence is kept even though it names an adult audience the learner gate
+    # would otherwise drop. filter_relevant_sources tags it audience="educator".
+    if is_educator_audience(source):
+        return True
     if is_adult_audience(source):
         return False
     return True
@@ -821,5 +1000,6 @@ def filter_relevant_sources(
             continue
         source["relevance_score"] = score
         source["topics"] = topics
+        source["audience"] = classify_audience(source)
         kept.append(source)
     return kept

@@ -41,6 +41,7 @@ from common import (
     ROOT,
     anchor_relevance_difference,
     filter_relevant_sources,
+    is_educator_audience,
     load_json,
     normalize_title,
     score_relevance,
@@ -51,6 +52,7 @@ from common import (
 
 EVAL_PATH = ROOT / "eval" / "relevance_labeled.json"
 HARVESTED_PATH = ROOT / "eval" / "relevance_harvested.json"
+EDUCATOR_PATH = ROOT / "eval" / "relevance_educator.json"
 
 
 @dataclass
@@ -110,6 +112,51 @@ def is_predicted_relevant(example: dict[str, Any], threshold: float) -> bool:
     """Predict relevance exactly as filter_relevant_sources would decide it."""
     kept = filter_relevant_sources([{"title": example["title"], "abstract": example["abstract"]}], threshold)
     return bool(kept)
+
+
+def predicted_audience(example: dict[str, Any], threshold: float) -> str | None:
+    """The lane filter_relevant_sources would tag this example, or None if dropped."""
+    kept = filter_relevant_sources(
+        [{"title": example["title"], "abstract": example["abstract"]}], threshold
+    )
+    return kept[0]["audience"] if kept else None
+
+
+def load_educator_examples() -> list[dict[str, Any]]:
+    """Load the dedicated educator-lane labeled set, or [] if absent."""
+    if not EDUCATOR_PATH.exists():
+        return []
+    payload = load_json(EDUCATOR_PATH)
+    return payload.get("examples", []) if isinstance(payload, dict) else []
+
+
+def educator_lane_report(examples: list[dict[str, Any]], threshold: float) -> dict[str, Any]:
+    """Measure the automated educator lane against eval/relevance_educator.json.
+
+    Kept separate from the learner set so educator labels never perturb the
+    heuristic baseline or the optional model/anchor training inputs. Precision:
+    of the educator-shaped examples the filter keeps AND tags audience="educator",
+    the fraction that are genuinely relevant (the lane must reject the off-scope
+    higher-education and teacher-tool-use negatives). Recall: of the positives
+    labeled audience=="educator" -- the educator-competence evidence the learner
+    gate drops as adult -- the fraction the lane recovers.
+    """
+    decisions = [(e, predicted_audience(e, threshold)) for e in examples]
+    predicted = [e for e, aud in decisions if aud == "educator"]
+    predicted_relevant = [e for e in predicted if e["relevant"]]
+    labeled = [e for e in examples if e["relevant"] and e.get("audience") == "educator"]
+    recalled = [e for e in labeled if predicted_audience(e, threshold) == "educator"]
+    leaked = [e["title"] for e, aud in decisions if aud == "educator" and not e["relevant"]]
+    return {
+        "predicted": len(predicted),
+        "predicted_relevant": len(predicted_relevant),
+        "labeled": len(labeled),
+        "recalled": len(recalled),
+        "precision": len(predicted_relevant) / len(predicted) if predicted else 0.0,
+        "recall": len(recalled) / len(labeled) if labeled else 0.0,
+        "rescued": [e["title"] for e in recalled],
+        "leaked": leaked,
+    }
 
 
 def evaluate(examples: list[dict[str, Any]], threshold: float) -> Metrics:
@@ -310,6 +357,15 @@ def main() -> int:
         action="store_true",
         help="Fairly compare the heuristic against the embedding anchors via stratified CV.",
     )
+    parser.add_argument(
+        "--educator-lane",
+        action="store_true",
+        help=(
+            "Report precision/recall of the automated educator lane against the "
+            "dedicated eval/relevance_educator.json set (kept separate from the "
+            "learner labels so it never perturbs the heuristic baseline)."
+        ),
+    )
     parser.add_argument("--folds", type=int, default=5, help="CV folds for the held-out comparisons.")
     parser.add_argument("--seed", type=int, default=42, help="CV split seed for the held-out comparisons.")
     args = parser.parse_args()
@@ -343,6 +399,23 @@ def main() -> int:
         print(f"\nMisclassified at threshold {args.threshold}:")
         for kind, score, topics, title in misses:
             print(f"  [{kind}] score={score} topics={topics or []}: {title[:70]}")
+
+    if args.educator_lane:
+        educator = load_educator_examples()
+        lane = educator_lane_report(educator, args.threshold)
+        print(
+            f"\nEducator lane (eval/relevance_educator.json, {len(educator)} examples):"
+        )
+        print(
+            f"  precision {lane['precision']:.2f}  recall {lane['recall']:.2f}  "
+            f"(kept+tagged educator {lane['predicted']}, of which relevant "
+            f"{lane['predicted_relevant']}; labeled educator {lane['labeled']}, "
+            f"recovered {lane['recalled']})"
+        )
+        for title in lane["rescued"]:
+            print(f"  [rescued] {title[:74]}")
+        for title in lane["leaked"]:
+            print(f"  [LEAK - off-scope kept on educator lane] {title[:60]}")
 
     if args.compare_model:
         print(f"\nFair held-out comparison (stratified {args.folds}-fold CV, seed {args.seed}):")

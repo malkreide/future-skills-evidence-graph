@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-prefill eval-prefill-record build recall-probe recall-ingest triage train
+.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record build recall-probe recall-ingest triage train
 
 install:
 	pip install -r requirements-dev.txt
@@ -15,6 +15,11 @@ eval:
 
 eval-model:
 	python scripts/eval_relevance.py --compare-model
+
+# Measure the automated educator relevance lane against its own labeled set
+# (eval/relevance_educator.json), kept separate from the learner labels.
+eval-educator:
+	python scripts/eval_relevance.py --educator-lane
 
 # Offline field metrics for the optional LLM claim pre-fill (P1), from fixtures.
 # This is the regression view: it scores the RECORDED outputs against gold.

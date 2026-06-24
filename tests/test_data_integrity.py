@@ -26,12 +26,14 @@ from common import (  # noqa: E402
     RELEVANCE_MODEL_PATH,
     RELEVANCE_THRESHOLD,
     append_candidate_sources,
+    classify_audience,
     decide_relevance,
     fetch_or_warn,
     filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
     is_adult_audience,
+    is_educator_audience,
     is_off_scope,
     load_json,
     load_records,
@@ -176,6 +178,67 @@ class DataIntegrityTests(unittest.TestCase):
         school = {"title": "AI literacy in primary schools", "abstract": "for children"}
         self.assertFalse(is_adult_audience(school))
         self.assertEqual(len(filter_relevant_sources([dict(school)])), 1)
+
+    def test_educator_lane_recovers_teacher_competence_evidence(self) -> None:
+        # The educator lane keeps in-scope educator-competence evidence the
+        # adult-audience gate would otherwise drop, and tags it audience="educator".
+        pd = {
+            "title": "Professional Development for In-Service Teachers in AI Literacy",
+            "abstract": "Building in-service teachers' competence and readiness to teach AI literacy.",
+        }
+        teacher_ed = {
+            "title": "Integrating AI literacy into teacher education: a critical perspective",
+            "abstract": "",
+        }
+        # The PD paper names in-service teachers and no school-age audience, so the
+        # adult-audience gate would drop it on the learner lane -- the educator
+        # lane is what rescues it.
+        self.assertTrue(is_adult_audience(pd), "premise: the learner gate would drop it")
+        for source in (pd, teacher_ed):
+            self.assertTrue(is_educator_audience(source))
+            kept = filter_relevant_sources([dict(source)])
+            self.assertEqual(len(kept), 1)
+            self.assertEqual(kept[0]["audience"], "educator")
+
+    def test_educator_lane_guards_reject_out_of_scope(self) -> None:
+        # Higher-education faculty (not a school educator) and pure teacher
+        # productivity tool-use must NOT ride the educator lane.
+        faculty = {
+            "title": "Faculty Development for Generative AI Literacy in University Teaching",
+            "abstract": "Preparing university lecturers and college faculty for undergraduate teaching.",
+        }
+        productivity = {
+            "title": "An AI Grading Assistant to Reduce Secondary Teachers' Marking Workload",
+            "abstract": "Teachers adopt a tool that automates marking and administrative communication.",
+        }
+        for source in (faculty, productivity):
+            self.assertFalse(is_educator_audience(source))
+            self.assertEqual(filter_relevant_sources([dict(source)]), [])
+
+    def test_learner_source_is_tagged_learner(self) -> None:
+        # A plain school-age future-skills source rides the learner lane: it is
+        # kept (as before) and tagged audience="learner" (absence-equivalent).
+        learner = {
+            "title": "AI literacy and critical thinking for children in primary school",
+            "abstract": "How students build competence with artificial intelligence.",
+        }
+        self.assertEqual(classify_audience(learner), "learner")
+        kept = filter_relevant_sources([dict(learner)])
+        self.assertEqual(len(kept), 1)
+        self.assertEqual(kept[0]["audience"], "learner")
+
+    def test_educator_lane_measured_on_labeled_set(self) -> None:
+        # The dedicated educator-lane set is recovered cleanly: every labeled
+        # positive is rescued and tagged educator, and no off-scope negative leaks
+        # onto the lane. Mirrors the learner heuristic's measured floor.
+        import eval_relevance
+
+        examples = eval_relevance.load_educator_examples()
+        self.assertTrue(examples, "educator-lane labeled set should be present")
+        lane = eval_relevance.educator_lane_report(examples, RELEVANCE_THRESHOLD)
+        self.assertEqual(lane["leaked"], [], "off-scope example leaked onto the educator lane")
+        self.assertGreaterEqual(lane["precision"], 0.99)
+        self.assertGreaterEqual(lane["recall"], 0.99)
 
     def test_relevance_scoring_separates_scope_from_noise(self) -> None:
         relevant = {
