@@ -73,9 +73,9 @@
       "digital competence",
       "future skills"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-23",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-24",
     "relevance_score": 0.9
   },
   {
@@ -238,9 +238,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-23",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-24",
     "relevance_score": 0.6
   },
   {

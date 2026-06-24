@@ -1,0 +1,24 @@
+[
+  {
+    "id": "map-unesco-teachers-ai-pedagogy",
+    "skill_id": "skill-educator-ai-pedagogy",
+    "framework": "UNESCO AI Competency Framework for Teachers",
+    "framework_group": "UNESCO AI Competency Framework for Teachers",
+    "framework_url": "https://www.unesco.org/en/articles/ai-competency-framework-teachers",
+    "competency": "AI Pedagogy: designing and facilitating AI-supported and AI-about learning experiences",
+    "mapping_strength": "moderate",
+    "rationale": "The skill captures teachers' ability to make AI concepts learnable for school pupils, which the UNESCO framework locates in its 'AI Pedagogy' aspect (progressing from acquire to deepen to create).",
+    "created_at": "2026-06-24"
+  },
+  {
+    "id": "map-unesco-teachers-digital-competence",
+    "skill_id": "skill-educator-digital-competence",
+    "framework": "UNESCO AI Competency Framework for Teachers",
+    "framework_group": "UNESCO AI Competency Framework for Teachers",
+    "framework_url": "https://www.unesco.org/en/articles/ai-competency-framework-teachers",
+    "competency": "AI Foundations and Applications: educators' own foundational digital and AI competence",
+    "mapping_strength": "moderate",
+    "rationale": "Educators' baseline digital and AI literacy maps to the UNESCO framework's 'AI Foundations and Applications' aspect, the prerequisite tech competence for integrating AI into teaching.",
+    "created_at": "2026-06-24"
+  }
+]

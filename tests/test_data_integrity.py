@@ -792,10 +792,37 @@ class DataIntegrityTests(unittest.TestCase):
         for value in ("learner", "educator"):
             self.assertEqual(list(validator.iter_errors({**base, "audience": value})), [])
         self.assertTrue(list(validator.iter_errors({**base, "audience": "teacher"})))
-        # Every shipped skill is explicitly tagged, and all are learner for now.
+        # Every shipped skill is explicitly tagged with a valid audience.
         skills = load_records("skills")
         self.assertTrue(all("audience" in s for s in skills))
         self.assertTrue(all(s.get("audience", "learner") in {"learner", "educator"} for s in skills))
+
+    def test_educator_skills_map_to_unesco_teacher_framework(self) -> None:
+        # Parallel to the Lehrplan 21 invariant: every active educator-audience
+        # skill must carry a UNESCO AI Competency Framework for Teachers mapping,
+        # the educator-side anchor (educators are out of scope for LP21).
+        all_skills = load_records("skills")
+        skill_ids = {skill["id"] for skill in all_skills}
+        active_educators = {
+            skill["id"]
+            for skill in all_skills
+            if skill["status"] == "active" and skill.get("audience") == "educator"
+        }
+        mapped = {
+            mapping["skill_id"]
+            for mapping in load_records("frameworks")
+            if mapping.get("framework_group") == "UNESCO AI Competency Framework for Teachers"
+        }
+        self.assertLessEqual(
+            active_educators,
+            mapped,
+            f"active educator skills without a UNESCO-for-Teachers mapping: {sorted(active_educators - mapped)}",
+        )
+        for mapping in load_records("frameworks"):
+            if mapping.get("framework_group") == "UNESCO AI Competency Framework for Teachers":
+                self.assertIn(mapping["skill_id"], skill_ids)
+                self.assertTrue(mapping["competency"])
+                self.assertTrue(mapping["rationale"])
 
     def test_relevance_decision_defaults_to_heuristic(self) -> None:
         # The default decision (no env flag) must be the deterministic heuristic,
