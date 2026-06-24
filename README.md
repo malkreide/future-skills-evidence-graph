@@ -57,10 +57,13 @@ generated `data/index.json`, so rerun `build_site.py` after changing data files.
   the future skills of learners aged 0-18, anchored to Lehrplan 21 and learner
   frameworks) and `educator` (the competencies of the teachers who enable them,
   anchored to the UNESCO AI Competency Framework for Teachers). Absence means
-  `learner`. Educator-audience evidence (teacher studies the learner relevance
-  filter intentionally drops) currently enters through manual review rather than
-  an automated educator relevance lane; an active educator skill must carry a
-  UNESCO-for-Teachers mapping the way a learner skill must carry a Lehrplan 21 one.
+  `learner`. Educator-competence evidence (teacher studies the learner gate
+  drops as adult) now enters through an **automated educator relevance lane**
+  (`scripts/common.py` `is_educator_audience`): a topic-anchored, in-scope source
+  whose subject is a school educator's own competence is kept and tagged
+  `audience: "educator"` instead of requiring manual re-opening. An active
+  educator skill must carry a UNESCO-for-Teachers mapping the way a learner skill
+  must carry a Lehrplan 21 one.
 - `FrameworkMapping`: mapping between local skills and external frameworks.
 - Lehrplan 21 mappings add `coverage_score` on a 0-3 scale, `cycles`,
   `curriculum_area`, `coverage_label`, and a short `evidence_path`. The
@@ -132,8 +135,12 @@ template.
 Imported candidates pass a **relevance filter** (`scripts/common.py`) before
 deduplication. The default is a transparent keyword/topic heuristic: a candidate
 must match at least one MVP topic, score at or above the threshold, clear a curated
-off-scope term list, and pass an audience/age gate that keeps only the ages 6-18
-audience. The decision is **pluggable** via `RELEVANCE_CLASSIFIER`: two optional,
+off-scope term list, and pass an audience/age gate that keeps only the ages 0-18
+learner audience. Running alongside that learner lane, an **educator lane** keeps
+the topic-anchored evidence about a school educator's own competence that the
+adult-audience gate would otherwise drop, tagging each survivor `audience`
+(`learner` or `educator`); its higher-education and teacher-tool-use guards keep
+the lane precise. The decision is **pluggable** via `RELEVANCE_CLASSIFIER`: two optional,
 opt-in alternatives (a trained TF-IDF + LogisticRegression model and a pair of
 embedding prototype anchors) exist but ship **disabled**, because neither beats the
 heuristic on the held-out comparison. The filter mechanics, the measured

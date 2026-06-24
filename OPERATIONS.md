@@ -15,7 +15,7 @@ requires human review through pull requests. Nothing here changes that.
 | Stage | Script / Workflow | Notes |
 | --- | --- | --- |
 | Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | Each degrades gracefully on outage (`fetch_or_warn`) |
-| Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3 |
+| Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate |
 | Claim extraction | `extract_claims.py` | Verbatim finding sentence + text anchor; skips methodology |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
 | Review | `promote_candidate.py {claim,skill,reject,reject-source}` | Promotes to reviewed/active; `reject-source` harvests a negative label |
@@ -36,8 +36,9 @@ python scripts/eval_relevance.py --compare-model # heuristic vs model verdict
 ```
 
 Common steps are also wrapped as `make` targets (`make install`, `validate`,
-`test`, `eval`, `eval-model`, `eval-prefill`, `eval-prefill-record`, `build`,
-`recall-probe`, `recall-ingest`, `triage`, `train`).
+`test`, `eval`, `eval-model`, `eval-educator`, `eval-prefill`,
+`eval-prefill-record`, `build`, `recall-probe`, `recall-ingest`, `triage`,
+`train`).
 
 In GitHub settings:
 - Secret `SEMANTIC_SCHOLAR_API_KEY` (without it that source returns HTTP 429 and
@@ -257,6 +258,22 @@ measured numbers are honest: they drop the heuristic from a saturated 1.00 to
 precision 0.86 / recall 1.00. Neither the trained model nor the embedding anchors
 (local hashing or the real semantic `st`) beats the heuristic on these yet — they
 are candidates for a classifier once the harvested label set grows.
+
+### Improvement applied: automated educator lane
+
+Educator-competence evidence (in-service teacher PD, educators' digital/AI
+competence, AI literacy in teacher education) is exactly the "teacher studies the
+learner gate drops as adult" class that used to require **manual re-opening** of a
+filtered source. The educator lane (`is_educator_audience`, run inside
+`filter_relevant_sources`) now keeps it automatically and tags it
+`audience: "educator"`, while its higher-education and teacher-tool-use guards keep
+the lane precise (pure teacher tool-use stays the learner-lane FP class above). It
+is measured against its **own** set, `eval/relevance_educator.json` (separate from
+the learner labels so it never perturbs the heuristic baseline or the classifier
+training inputs): **precision 1.00 / recall 1.00** on the real educator-strand
+positives plus educator-shaped guard negatives. Run `make eval-educator`; the
+learner floor is unchanged (P 0.86 / R 1.00). See
+[docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
 
 ### First evidence folded into the graph
 

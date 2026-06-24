@@ -47,6 +47,10 @@ def _claim_row(claim: dict[str, Any], sources: dict[str, dict[str, Any]]) -> dic
                 "source_id": sid,
                 "title": (src or {}).get("title", "") if src else "",
                 "status": (src or {}).get("status", "missing"),
+                # Which relevance lane the filter tagged the source (absence ->
+                # learner), so a reviewer can route educator-competence evidence
+                # to an educator skill instead of re-opening it by hand.
+                "audience": (src or {}).get("audience", "learner") if src else "learner",
             }
         )
     assist = claim.get("assist", {}).get("suggestions") if isinstance(claim.get("assist"), dict) else None

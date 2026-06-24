@@ -1,0 +1,51 @@
+{
+  "_README": "Labeled set for the automated EDUCATOR relevance lane (scripts/common.py is_educator_audience; scripts/eval_relevance.py --educator-lane). Kept SEPARATE from eval/relevance_labeled.json on purpose: that curated learner set is the source of truth for the heuristic and the training input for the optional model and embedding anchors (whose committed artifacts + fixtures are derived from it), so educator examples must not perturb it. Positives ('relevant': true) are the educator-competence sources the learner gate drops as adult but the educator lane recovers and tags 'audience':'educator' (anchored to the UNESCO AI Competency Framework for Teachers); negatives ('relevant': false) are educator-SHAPED but out of scope and must be rejected by the lane's higher-education and teacher-tool-use guards. See docs/relevanz-entscheidung.md.",
+  "examples": [
+    {
+      "title": "Professional Development for Teachers in AI Literacy Education: Teaching Machine Learning to Senior Primary and Junior Secondary Students",
+      "abstract": ": This paper presents a study focused on equipping in-service teachers\u2019 skills of delivering courses on teaching machine learning concepts to senior primary and junior secondary school students. The pedagogical design of this study was based on the neuroscience-informed Attention-Engagement-Error-feedback-Reflection (AEER) framework. This study involved 36 in-service teachers from Hong Kong primary and secondary schools. We developed a model supported by Workshops, Discussions, and Resources (WDR) within the framework of Technological Pedagogical Content Knowledge (TPACK) to design the teacher professional development program. The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools. Furthermore, the workshops notably improved teachers\u2019 perceptions of their TPACK abilities.",
+      "relevant": true,
+      "audience": "educator",
+      "origin": "educator_strand",
+      "note": "Real reviewed educator-strand source. In-service teacher professional development to teach AI literacy in primary/secondary schools - dropped by the learner adult-audience gate, recovered by the educator lane (strong teacher-education + TPACK signal)."
+    },
+    {
+      "title": "Survey on Digital Literacy, AI in Education and Tech-Driven Pedagogy Skills among Secondary School Educators",
+      "abstract": "This present study explored the teachers\u2019 digital literacy, artificial intelligence in education and tech-driven pedagogy in teaching learning process in secondary schools and succeeds in understanding the overview levels of secondary school educators\u2019 digital literacy, using AI in education and integrating techno pedagogy to prepare the future generation. A sample of 125 government secondary school teachers\u2019 responses were collected. Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes. It suggested that the educators\u2019 digital literacy paved a way to prepare the future generations to cope with rapid technology development and for 21st century skills.",
+      "relevant": true,
+      "audience": "educator",
+      "origin": "educator_strand",
+      "note": "Real reviewed educator-strand source. Secondary-school educators' own digital/AI literacy and tech-driven pedagogy - educator subject + pedagogy context."
+    },
+    {
+      "title": "Integrating AI literacy into teacher education: a critical perspective paper",
+      "abstract": "",
+      "relevant": true,
+      "audience": "educator",
+      "origin": "educator_strand",
+      "note": "Real candidate educator source. Title-only teacher-education anchor (strong phrase 'teacher education')."
+    },
+    {
+      "title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
+      "abstract": "This study supports preservice teachers in primary teacher education to build confidence and competence in AI literacy, so they are ready to teach AI concepts when they enter the classroom.",
+      "relevant": true,
+      "audience": "educator",
+      "origin": "editorial",
+      "note": "Preservice teacher education in AI literacy - strong phrase 'preservice teachers' exempt from the higher-education guard (university-based teacher training produces school teachers)."
+    },
+    {
+      "title": "Faculty Development for Generative AI Literacy in University Teaching",
+      "abstract": "This study reports a faculty development program preparing university lecturers and college faculty to integrate generative AI into undergraduate teaching. Through workshops on AI pedagogy, participating faculty improved their competence to design assignments for university students.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Educator-shaped but out of scope: higher-education faculty teaching undergraduates, not a school educator. The lane's higher-education guard rejects it."
+    },
+    {
+      "title": "An AI Grading Assistant to Reduce Secondary Teachers' Marking Workload",
+      "abstract": "We evaluate teachers' adoption of an AI grading and lesson planning assistant that automates marking and administrative communication. The study measures the reduction in secondary school teachers' workload, not a teaching competence.",
+      "relevant": false,
+      "origin": "editorial",
+      "note": "Educator-shaped but out of scope: teacher productivity tool-use (grading/marking/workload automation), not a teaching competence. The lane's tool-use guard rejects it."
+    }
+  ]
+}

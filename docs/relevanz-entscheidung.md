@@ -72,6 +72,61 @@ in the set so the comparison against the optional classifiers is honest:
 
 The per-cycle live-precision history lives in [OPERATIONS.md](../OPERATIONS.md).
 
+## The educator lane
+
+The catalog tracks two audiences (`schemas/skill.schema.json`): the future skills
+of learners aged 0-18 (the default) and the competencies of the educators who
+enable them, anchored to the UNESCO AI Competency Framework for Teachers. The
+learner gate above intentionally drops adult / post-secondary audiences via
+`is_adult_audience` — including pre-/in-service teachers — so educator-competence
+evidence used to enter only through **manual re-opening** of a dropped source.
+The **educator lane** (`scripts/common.py` `is_educator_audience`) automates that
+path: running alongside the learner gate, it keeps a topic-anchored, in-scope
+source whose **subject is a school educator's own competence** even though it
+names an adult audience, and `filter_relevant_sources` tags every survivor with
+`audience` (`learner` or `educator`, mirroring the skill schema; absence means
+learner). The off-scope gate still runs first, so the lane never resurrects an
+off-domain paper.
+
+The lane is deliberately narrow — three rules keep it precise:
+
+- **Strong educator anchors.** Phrases that on their own denote a school
+  educator's competence as the subject (teacher education/training/preparation,
+  pre-/in-service teachers, teacher competence, teaching AI literacy) keep a
+  source outright. These are exempt from the higher-education guard below, because
+  teacher training, though university-based, produces *school* teachers.
+- **Subject + context.** Failing a strong anchor, a source qualifies only when it
+  names an educator **subject** (teacher/educator/teaching staff) *and* a
+  competence/development **context** (professional development, competence,
+  pedagogy/pedagogical, TPACK, readiness, …). Bare "teacher"/"classroom" mentions
+  in a learner study do not qualify — those stay on the learner lane.
+- **Two guards.** A **higher-education** context with no school-age signal
+  (university, undergraduate, college, faculty, …) is higher-ed faculty teaching
+  adults, not a school educator → off the lane. Pure teacher **productivity /
+  tool-use** (lesson planning, grading, marking, workload, administrative
+  automation) is the educator's office automation, not a teaching competence → off
+  the lane, where teacher-tool-use remains the tracked learner-lane false-positive
+  class. The vocabulary is teacher-centric ("teacher"/"educator", not
+  "faculty"/"lecturer"/"instructor") so the lane targets school educators by
+  construction.
+
+The lane is measured against its **own** labeled set,
+`eval/relevance_educator.json`, kept separate from the learner
+`eval/relevance_labeled.json` on purpose: that curated learner set is the source
+of truth for the heuristic and the training input for the optional model and
+embedding anchors (whose committed artifacts and fixtures are derived from it), so
+educator examples must not perturb it. The set pairs the real reviewed
+educator-strand sources (in-service teacher PD in AI literacy, secondary educators'
+digital competence, AI literacy in teacher education, pre-service teachers) as
+positives with educator-*shaped* negatives that exercise the guards (a
+higher-education faculty paper, a teacher grading/workload tool). On it the lane
+holds **precision 1.00 / recall 1.00**: every positive is recovered and tagged
+`educator`, and neither guard-negative leaks onto the lane. Run it with
+`python scripts/eval_relevance.py --educator-lane`. Adding the lane leaves the
+learner heuristic's measured floor unchanged (still P 0.86 / R 1.00 / F1 0.92 on
+the 87-example set), and `test_educator_lane_*` guards both the recovery and the
+guards against regression.
+
 ## Optional trained relevance classifier
 
 The relevance decision is **pluggable**. The default is the keyword heuristic —
