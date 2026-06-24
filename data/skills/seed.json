@@ -23,7 +23,8 @@
       "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa",
       "claim-a-scoping-review-of-empirical-research-on-ai-literacy-assessments-abstra",
       "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
-      "claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e"
+      "claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e",
+      "claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -76,10 +77,15 @@
         "date": "2026-06-23",
         "change": "evidence_score 0.77 -> 0.78",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-24",
+        "change": "Attached reviewed claim claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-23"
+    "updated_at": "2026-06-24"
   },
   {
     "id": "skill-critical-thinking",
@@ -205,7 +211,8 @@
     "supporting_claim_ids": [
       "claim-digital-competence-information-literacy",
       "claim-equity-foundational-learning",
-      "claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct"
+      "claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct",
+      "claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -232,10 +239,15 @@
         "date": "2026-06-23",
         "change": "evidence_score 0.64 -> 0.67",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-24",
+        "change": "Attached reviewed claim claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-23"
+    "updated_at": "2026-06-24"
   },
   {
     "id": "skill-ethical-technology-judgment",

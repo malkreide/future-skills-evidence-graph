@@ -307,6 +307,96 @@
       "decision": "reject_source",
       "harvested_at": "2026-06-23",
       "source_id": "src-collaborating-with-ai-assistants-on-future-focused-ai-literacy"
+    },
+    {
+      "title": "AI Exposure Scores: what they measure, what they miss, and what comes next",
+      "abstract": "A set of exposure scores calculated in 2023 has become a central empirical input to the future of work debate. Produced by Eloundou et al. (2023) and referred to here as the GPTs are GPTs scores, they define exposure as the share of occupational tasks a large language model can assist with. This work is a genuine methodological contribution, but as the scores travel from the time and place they were produced, the limitations the authors named do not always travel with them. Two gaps have widened as a result. The first is structural, between what static exposure scores measure and what policy questions actually require. Taking the diffusion of these scores as a case study, we show how their temporal, geographic, and ontological limitations compound in policy-facing analyses, and we survey five families of research responding to these limits: dynamic and benchmark-based measures, ensemble methods, task-framework extensions, worker-centered metrics, and adoption and usage data. The second gap is the one we argue needs more attention: the coordination between researchers and policymakers. The policy-relevant work which ask who is harmed, who benefits, how, and when, continues to reference the static GPTs are GPTs scores without engagement with the methodological updates that would let these questions be answered more reliably. We then ask what additional steps towards navigating uncertainty remain: ex-post frameworks and the deliberate, political work of reimagining what futures are worthy of building towards are. Closing the research-policy gap is a shared task: policymakers must widen their evidence base, engage workers as epistemic partners, and shift from prediction to preparedness; researchers must build data infrastructure, adopt participatory methods, and write with policymakers in mind. Better measurement matters, but it will not close the second gap alone.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-ai-exposure-scores-what-they-measure-what-they-miss-and-what-comes-next"
+    },
+    {
+      "title": "AI Literacy Education for Older Adults: Motivations, Challenges and Preferences",
+      "abstract": "As Artificial Intelligence (AI) becomes increasingly integrated into older adults\u2019 daily lives, equipping them with the knowledge and skills to understand and use AI is crucial. However, most research on AI literacy education has focused on students and children, leaving a gap in understanding the unique needs of older adults when learning about AI. To address this, we surveyed 103 older adults aged 50 and above (Mean = 64, SD = 7). Results revealed that they found it important and were motivated to learn about AI because they wish to harness the benefits and avoid the dangers of AI, seeing it as necessary to cope in the future. However, they expressed learning challenges such as difficulties in understanding and not knowing how to start learning AI. Particularly, a strong preference for hands-on learning was indicated. We discussed design opportunities to support AI literacy education for older adults.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-ai-literacy-education-for-older-adults-motivations-challenges-and-prefer"
+    },
+    {
+      "title": "Digital competences of future social workers: the art of education in uncertain times",
+      "abstract": "ABSTRACT Digital literacy plays a crucial role as part of modern-day citizenship and modern life in general. There are a lot of social work practitioners who lack the digital skills or attitudes to fully benefit from the opportunities created by digital technologies for delivering quality youth work. Social workers see digital media only as social media. Their understanding of the possibilities of digital media and technology should be widened (European Commission, 2018). The goal of the article is to discuss the development of digital competence of future social workers needed in uncertain times during the implementation of European Joint Master programme in Social Work with Children and Youth (ESWOCHY). ESWOCHY is a project funded by Erasmus Mundus in 2020 and it is implemented by four Consortium partners: MRU (LT), RSU (LV), CUR (SK), and ISTCE (PT). ESWOCHY seeks to prepare highly skilled professionals, supporting human dignity and cultural heritage. The main areas for increasing competencies of social workers in working with children and youth where one of the most important is digital competence. The article shares the experiences and reflections of Consortium partners and discusses in depth how digital competence of future social workers are developed in ESWOCHY.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-digital-competences-of-future-social-workers-the-art-of-education-in-unc"
+    },
+    {
+      "title": "Mapping Research Trends on Curriculum Literacy and Social Emotional Learning in Teacher Education: A Bibliometric Analysis",
+      "abstract": "Purpose: This study presents a bibliometric mapping of research on curriculum literacy and social emotional learning (SEL) in teacher education. Rather than examining empirical effects or causal relationships, the study aims to identify publication trends, collaboration patterns, and the intellectual structure of the field. Method: Using the Web of Science (WoS) database, 85 publications published between 2019 and 2024 were analyzed through bibliometric techniques. Data were examined using VOSviewer to visualize co-authorship networks, co-citation structures, and keyword co-occurrence patterns. Findings: The findings reveal a growing scholarly interest in SEL and curriculum literacy, with increasing publication and citation trends, dominant research clusters, and strong international collaboration networks. The bibliometric maps highlight key thematic concentrations, influential authors, and emerging subtopics that shape the current research landscape. Conclusion: By providing a systematic overview of the field, this study contributes to a clearer understanding of how SEL and curriculum literacy are positioned within teacher education research and offers a foundation for future empirical and theoretical studies.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-mapping-research-trends-on-curriculum-literacy-and-social-emotional-lear"
+    },
+    {
+      "title": "Statistical Proof as a Window into Human-AI Collaboration: Practical Insights and a Community Agenda",
+      "abstract": "Large language models (LLMs) are increasingly woven into expert cognitive work in daily research, yet we know little about how human expertise should adapt when an AI system can execute substantial technical reasoning on its own. Here we use statistical proof development, a demanding and structured form of expert reasoning, as a window into this broader question. Drawing on day-to-day proof problems, we find that current general-purpose LLMs occupy a useful but limited role: they can execute technical components given a precisely formulated problem and targeted guidance, but become unreliable when the problem is open-ended or requires a long reasoning chain with multiple interdependent steps. This execution-strategy gap is rooted in what makes research-level statistical proof distinctive: unlike pure mathematics, where problems arrive pre-formulated and often demand novel techniques, statistical proof requires first modeling a scientific question into a statistical framework with appropriate assumptions, and then identifying and adapting the right strategy from a repertoire of reusable domain-specific tools. Each step requires deep expertise in both the statistical literature and the real-world context being modeled. In such work, current AI assistance does not reduce the need for human expertise; it relocates that expertise to where human decision-making matters most, such as problem formulation and verification of AI-generated results, and may raise the bar for both. These findings yield practical suggestions for how statisticians can structure AI-assisted proof workflows, and point to a broader community agenda for shared resources, better AI tools, and training the next generation of researchers. Using statistical proof as a window, our study has implications for how experts structure human-AI collaboration in technical cognitive domains more broadly.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-statistical-proof-as-a-window-into-human-ai-collaboration-practical-insi"
+    },
+    {
+      "title": "Assessing the state of media literacy policy in U.S. K-12 schools",
+      "abstract": "ABSTRACT Warning signs for the health of the American democracy abound. These challenges have multiple manifestations and multiple roots, but media and the Internet, more broadly, are implicated in prominent ways. Schools, the institutions charged with educating current and future generations, have a role to play in supporting the preparation of an informed citizenry. This study examines the extent to which state level legislation supports the provision of civically oriented media literacy education. To do so, we first identify several critically needed media literacy education dimensions and then examine how well existing legislation from all 50 states responds to these identified needs. Findings reveal that not only is there an overall dearth of K-12 media literacy policy, but definitions and corresponding resources remain sparse and varied. For schools to fulfill their role of providing young people with the knowledge, skills, and commitments to participate and promote a vibrant and informed democracy, this study concludes that more must be done to support media literacy education within state level policy. IMPACT SUMMARY Prior State of Knowledge: Studies indicate that few young people in the United States receive significant learning opportunities to develop and practice media literacy-related skills. While federal legislation is valuable to help set the tone for the nation, state support for local innovation has long been a key strategy for supporting school reform efforts. Novel Contributions: Accordingly, this study examines the extent to which state level legislation supports the provision of civically oriented media literacy education. Practical Implications: Findings reveal that media literacy policy remains the exception, rather than the norm, in states across country \u2013 which suggests the need for all state legislators to consider the importance of developing and passing policy that would provide the infrastructure their states need to support young people in learning media literacy skills on a routine basis in schools.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools"
+    },
+    {
+      "title": "A Dangerous Bond? Identification with Social Media Influencers and the Effects of Mental Health Misinformation and Overgeneralized Messaging",
+      "abstract": "Social media influencers (SMIs) have become a prominent source of mental health \u2013 related information for young audiences, who often view them as role models and develop strong identification with them. However, SMIs sometimes share health content that is either misleading or overgeneralized, raising concerns about its potential effects. This study investigates the impact of such messaging and examines the role of identification with the message source. We conducted a pre-registered 3 (message type: misinformation vs. overgeneralized vs. control) \u00d7 2 (identification: higher vs. lower) between-subjects experiment with N = 549 Gen Z social media users in Germany recruited from an online panel, investigating three main outcomes: belief inaccuracy, behavioral intentions, and self-diagnostic tendencies. While neither misinformation nor overgeneralized messaging consistently affected behavioral intentions or self-diagnosis, findings showed that exposure to mental health-related misinformation by an SMI significantly increased belief inaccuracy, that is, a greater endorsement of inaccurate claims, regardless of whether participants strongly identified with the influencer.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-a-dangerous-bond-identification-with-social-media-influencers-and-the-ef"
+    },
+    {
+      "title": "Bridging digital innovation and cultural heritage: Integrating technology to foster Dompu local culture in early childhood education",
+      "abstract": "The rapid expansion of digital technology has transformed children's learning experiences while simultaneously raising concerns about the preservation of local cultural heritage. In early childhood education, integrating digital technology with culturally relevant learning offers opportunities to strengthen children's cultural identity and sense of belonging. This study aimed to explore how digital technology is utilized to introduce Dompu local culture in early childhood education settings and to examine the factors influencing its implementation. Employing a qualitative approach with an ethnographic orientation, the research was conducted in four early childhood education institutions in Dompu Regency, Indonesia. Data were collected through classroom observations, semi-structured interviews with school leaders, teachers, and parents, as well as document analysis. The findings reveal that digital technology serves as an effective medium for introducing various aspects of Dompu culture, including rimpu, traditional welcoming dances, local folklore, traditional houses, and cultural food practices. Interactive digital content enhanced children's interest, participation, and understanding of cultural symbols and values. The study further found that teacher mediation and parental involvement were critical factors shaping the effectiveness of digital cultural learning. The findings highlight the importance of culturally responsive digital pedagogy and suggest that technology can function as a bridge between young learners and local cultural heritage when supported by meaningful educational practices and collaborative home\u2013school partnerships.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-bridging-digital-innovation-and-cultural-heritage-integrating-technology"
+    },
+    {
+      "title": "Artificial intelligence (AI) literacy education in secondary schools: a review",
+      "abstract": "ABSTRACT Artificial intelligence (AI) literacy has emerged to equip students with digital skills for effective evaluation, communication, collaboration, and ethical use of AI in online, home, and workplace settings. Countries are increasingly developing AI curricula to support students' technological skills for future studies and careers. However, there is a lack of reviews summarizing AI education in secondary schools. This study aims to provide an up-to-date summary of the literature, informing researchers, policymakers, and educators on fostering students' AI literacy. A thematic analysis of 50 AI education studies from 2016 to 2022 was conducted, evaluating pedagogies, teaching tools, learning contents, and assessment methods among secondary students. Results were identified: (1) Collaborative project-based learning, involving interdisciplinary problem-solving through artifact creation, emerged as the most common pedagogical approach; (2) Teaching tools were categorized into hardware, software, intelligent agents, and unplugged tools; (3) Junior students focused on experiencing AI and basic concepts, while senior students explored advanced and technical components; (4) Assessments included knowledge tests, questionnaires, and qualitative analysis (e.g., videos, documents, presentations); (5) Students' learning effects were measured across affective, behavioral, cognitive, and ethical dimensions. The study identifies suggestions and challenges for implementing AI education in secondary schools, offering valuable insights and recommendations for educators and decision-makers.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev"
+    },
+    {
+      "title": "Children's Mental Models of AI Reasoning: Implications for AI Literacy Education",
+      "abstract": "As artificial intelligence (AI) advances in reasoning capabilities, most recently with the emergence of Large Reasoning Models (LRMs), understanding how children conceptualize AI\u2019s reasoning processes becomes critical for fostering AI literacy. While one of the \u201cFive Big Ideas\u201d in AI education highlights reasoning algorithms as central to AI decision-making, less is known about children\u2019s mental models in this area. Through a two-phase approach, consisting of a co-design session with 8 children followed by a field study with 106 children (grades 3 - 8), we identified three models of AI reasoning: Deductive, Inductive, and Inherent. Our findings reveal that younger children (grades 3 - 5) often attribute AI\u2019s reasoning to inherent intelligence, while older children (grades 6 - 8) recognize AI as a pattern recognizer. We highlight three tensions that surfaced in children\u2019s understanding of AI reasoning and conclude with implications for scaffolding AI curricula and designing explainable AI tools.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-24",
+      "source_id": "src-children-s-mental-models-of-ai-reasoning-implications-for-ai-literacy-ed"
     }
   ]
 }
