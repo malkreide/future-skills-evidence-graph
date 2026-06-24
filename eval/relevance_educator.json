@@ -27,11 +27,19 @@
     },
     {
       "title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
-      "abstract": "This study supports preservice teachers in primary teacher education to build confidence and competence in AI literacy, so they are ready to teach AI concepts when they enter the classroom.",
+      "abstract": "This study investigated how preservice teachers' concerns, beliefs, confidence and interest in AI literacy education evolve as they deepen their understanding of AI. AI-literacy lessons were integrated into a technology-integration course for preservice teachers and evaluated with a mixed-methods design using the Concerns-Based Adoption Model. Findings revealed participants initially lacked AI knowledge; targeted AI literacy education enhanced preservice teachers' awareness and confidence in teaching AI, though concerns about teacher displacement and effects on students' critical thinking persisted. The findings offer guidelines for teacher educators to incorporate AI literacy into teacher training programs.",
       "relevant": true,
       "audience": "educator",
-      "origin": "editorial",
-      "note": "Preservice teacher education in AI literacy - strong phrase 'preservice teachers' exempt from the higher-education guard (university-based teacher training produces school teachers)."
+      "origin": "educator_strand",
+      "note": "Real reviewed educator-strand source (preservice-teacher case). Mixed-methods course study raising preservice teachers' confidence to teach AI - dropped by the learner adult-audience gate, recovered by the educator lane via the 'preservice teachers' strong anchor."
+    },
+    {
+      "title": "Investigation of Digital Competencies and Artificial Intelligence Literacy of Special Education Students",
+      "abstract": "This study investigated the digital competence and AI literacy of special education students (pre-service teachers) at various universities, with a correlational design and 234 participants using the Digital Competence Perception Scale for Pre-service Teachers and an AI Literacy Scale. Regression showed digital competence significantly predicted AI literacy, explaining 39% of its variance, highlighting the interconnection between digital skills and AI literacy among future special education teachers. Teacher education programs should integrate digital competence and AI literacy modules into their curricula.",
+      "relevant": true,
+      "audience": "educator",
+      "origin": "educator_strand",
+      "note": "Real reviewed educator-strand source (preservice-teacher case). University special-education students framed as pre-service teachers; digital competence predicts AI literacy. Exercises the higher-education guard EXEMPTION: the 'pre-service teachers' strong anchor keeps it on the educator lane despite the university context."
     },
     {
       "title": "Faculty Development for Generative AI Literacy in University Teaching",

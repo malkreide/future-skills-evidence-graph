@@ -7,7 +7,7 @@
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",
-    "evidence_score": 0.46,
+    "evidence_score": 0.5,
     "trend": "emerging",
     "topics": [
       "ai literacy",
@@ -15,7 +15,8 @@
       "education"
     ],
     "supporting_claim_ids": [
-      "claim-professional-development-for-teachers-in-ai-literacy-education-teaching"
+      "claim-professional-development-for-teachers-in-ai-literacy-education-teaching",
+      "claim-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -42,6 +43,16 @@
         "date": "2026-06-24",
         "change": "Promoted candidate skill to active",
         "reason": "Human review confirmed definition and reviewed supporting evidence."
+      },
+      {
+        "date": "2026-06-24",
+        "change": "Attached reviewed claim claim-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-24",
+        "change": "evidence_score 0.46 -> 0.5",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-24",
@@ -55,7 +66,7 @@
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",
-    "evidence_score": 0.55,
+    "evidence_score": 0.54,
     "trend": "growing",
     "topics": [
       "digital competence",
@@ -63,7 +74,8 @@
       "education"
     ],
     "supporting_claim_ids": [
-      "claim-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil"
+      "claim-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil",
+      "claim-investigation-of-digital-competencies-and-artificial-intelligence-litera"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -90,6 +102,16 @@
         "date": "2026-06-24",
         "change": "Promoted candidate skill to active",
         "reason": "Human review confirmed definition and reviewed supporting evidence."
+      },
+      {
+        "date": "2026-06-24",
+        "change": "Attached reviewed claim claim-investigation-of-digital-competencies-and-artificial-intelligence-litera as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-24",
+        "change": "evidence_score 0.55 -> 0.54",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-24",

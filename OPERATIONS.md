@@ -18,7 +18,7 @@ requires human review through pull requests. Nothing here changes that.
 | Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate |
 | Claim extraction | `extract_claims.py` | Verbatim finding sentence + text anchor; skips methodology |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
-| Review | `promote_candidate.py {claim,skill,reject,reject-source}` | Promotes to reviewed/active; `reject-source` harvests a negative label |
+| Review | `promote_candidate.py {claim,skill,reject,reject-source,promote-source,attach-claim,reopen}` | Promotes to reviewed/active; `reject-source` harvests a negative label; `reopen` flips a rejected record back to candidate |
 | Scoring | `score_evidence.py` | Recomputed automatically on promotion; drift-guarded by validation |
 | Validation | `validate_data.py` | Schema + cross-refs + score drift |
 | Dashboard | `build_site.py` + `deploy-pages.yml` | Auto-deploys on push to `main` |
@@ -74,11 +74,18 @@ In GitHub settings:
    python scripts/promote_candidate.py promote-source <source-id>
    # Fold a reviewed claim into a skill's evidence (recomputes the score):
    python scripts/promote_candidate.py attach-claim <skill-id> --claim <claim-id>
+   # Re-open a record rejected under an earlier scope (rejected → candidate):
+   python scripts/promote_candidate.py reopen <claim-id|source-id>
    ```
    Use `reject-source` / `promote-source` on every reviewed source — together
    they build the negative and positive labels the trained classifier needs.
    `attach-claim` requires the claim and its sources to be reviewed first, so the
-   active-skill evidence path stays intact.
+   active-skill evidence path stays intact. `reopen` is the inverse of `reject` /
+   `reject-source`: it flips a record back to `candidate` so it can be reviewed
+   again when the scope changes (e.g. the educator lane brings a previously
+   off-scope teacher/educator study into scope), and for a source it drops the
+   stale `irrelevant` label its rejection harvested so a later `promote-source`
+   records the corrected positive.
 4. **Merge** the candidate PR.
 5. **Deploy** happens automatically on push to `main` (`deploy-pages.yml`).
 
@@ -274,6 +281,18 @@ training inputs): **precision 1.00 / recall 1.00** on the real educator-strand
 positives plus educator-shaped guard negatives. Run `make eval-educator`; the
 learner floor is unchanged (P 0.86 / R 1.00). See
 [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
+
+**Educator strand deepened (preservice-teacher cases).** Two preservice/future-
+teacher studies the learner gate had rejected as adult — "Fostering AI Literacy …
+among Preservice Teachers" and "Investigation of Digital Competencies and AI
+Literacy of Special Education Students" (pre-service teachers) — were re-opened
+with the new `reopen` subcommand (which also dropped their stale harvested
+negatives), reviewed, and folded in with `attach-claim`. Each active educator
+skill now rests on two supporting claims: `skill-educator-ai-pedagogy` (0.46 →
+0.50) and `skill-educator-digital-competence` (0.55 → 0.54, a correct dip — a
+second low-strength claim below the prior mean). Both studies are also added to
+`eval/relevance_educator.json` (the Investigation case exercises the
+higher-education guard's preservice exemption).
 
 ### First evidence folded into the graph
 

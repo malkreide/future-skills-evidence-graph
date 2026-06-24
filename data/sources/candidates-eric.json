@@ -72,9 +72,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "rejected",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": "2026-06-22",
+    "reviewed_at": "2026-06-24",
     "relevance_score": 0.45
   },
   {
@@ -303,9 +303,9 @@
       "ai literacy",
       "digital competence"
     ],
-    "status": "rejected",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": "2026-06-22",
+    "reviewed_at": "2026-06-24",
     "relevance_score": 0.75
   },
   {

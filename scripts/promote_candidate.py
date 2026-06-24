@@ -127,6 +127,31 @@ def record_relevance_labels(examples: list[dict[str, Any]]) -> int:
     return added
 
 
+def remove_harvested_label(source: dict[str, Any]) -> int:
+    """Drop any harvested relevance label for *source*, keyed by normalized title.
+
+    Used when re-opening a rejected source: its rejection harvested an
+    'irrelevant' label, which becomes stale once the source is back in scope.
+    Removing it lets a later promote-source re-harvest the corrected (positive)
+    label instead of being blocked by the append-only title dedup. The file is
+    only rewritten when something is removed, so a no-op leaves no diff. Returns
+    the count removed.
+    """
+    if not HARVEST_PATH.exists():
+        return 0
+    harvest = _load_harvest()
+    key = normalize_title(str(source.get("title", "")))
+    if not key:
+        return 0
+    kept = [e for e in harvest["examples"] if normalize_title(str(e.get("title", ""))) != key]
+    removed = len(harvest["examples"]) - len(kept)
+    if removed:
+        harvest["examples"] = kept
+        harvest["_README"] = HARVEST_README
+        write_json(HARVEST_PATH, harvest)
+    return removed
+
+
 def _harvest_promoted_claim(claim: dict[str, Any]) -> int:
     """Harvest a positive label for every source backing a reviewed claim."""
     examples: list[dict[str, Any]] = []
@@ -451,6 +476,12 @@ def _build_parser() -> argparse.ArgumentParser:
     reject = sub.add_parser("reject", help="Reject a candidate claim (or deprecate a skill).")
     reject.add_argument("id")
 
+    reopen = sub.add_parser(
+        "reopen",
+        help="Re-open a rejected claim/source (or deprecated skill) back to candidate.",
+    )
+    reopen.add_argument("id")
+
     reject_src = sub.add_parser(
         "reject-source",
         help="Mark a source off-scope; harvests an 'irrelevant' relevance label.",
@@ -606,6 +637,60 @@ def reject_source(args: argparse.Namespace) -> list[str]:
     return []
 
 
+def reopen_record(args: argparse.Namespace) -> list[str]:
+    """Re-open a rejected claim/source (or deprecated skill) back to candidate.
+
+    The inverse of reject_record / reject_source: a record rejected under an
+    earlier scope can become reviewable again when the scope itself changes -- in
+    particular when the educator relevance lane brings teacher/educator studies
+    that the learner gate once dropped back into scope. Re-opening ONLY resets the
+    status to 'candidate' (skills keep their change log); every promote_* gate
+    still applies before anything becomes reviewed or active, so this never
+    promotes by itself. For a source, the stale 'irrelevant' label its rejection
+    harvested is removed, so a later promote-source records the corrected positive
+    instead of being blocked by the harvest's title dedup.
+    """
+    found = find_record("claims", args.id)
+    kind = "claims"
+    if found is None:
+        found = find_record("sources", args.id)
+        kind = "sources"
+    if found is None:
+        found = find_record("skills", args.id)
+        kind = "skills"
+    if found is None:
+        return [f"record {args.id} not found in data/claims/, data/sources/ or data/skills/"]
+    _, records, record = found
+
+    if kind == "skills":
+        if record.get("status") != "deprecated":
+            return [f"skill {args.id} is {record.get('status')}, not deprecated; nothing to re-open"]
+        record["status"] = "candidate"
+        record["updated_at"] = TODAY
+        record.setdefault("change_log", []).append(
+            {
+                "date": TODAY,
+                "change": "Re-opened deprecated skill to candidate",
+                "reason": "Re-opened for review under a changed scope.",
+            }
+        )
+    else:
+        if record.get("status") != "rejected":
+            return [f"{kind[:-1]} {args.id} is {record.get('status')}, not rejected; nothing to re-open"]
+        record["status"] = "candidate"
+        record["reviewed_at"] = None
+
+    errors = _schema_errors(kind, record)
+    if errors:
+        return errors
+    write_json(found[0], records)
+    if kind == "sources":
+        removed = remove_harvested_label(record)
+        if removed:
+            print(f"Removed {removed} stale harvested label(s) for {args.id}.")
+    return []
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
     actions: dict[str, Callable[[argparse.Namespace], list[str]]] = {
@@ -615,10 +700,14 @@ def main(argv: list[str] | None = None) -> int:
         "reject-source": reject_source,
         "promote-source": promote_source,
         "attach-claim": attach_claim,
+        "reopen": reopen_record,
     }
-    verb = {"reject": "Rejected", "reject-source": "Rejected", "attach-claim": "Attached"}.get(
-        args.kind, "Promoted"
-    )
+    verb = {
+        "reject": "Rejected",
+        "reject-source": "Rejected",
+        "attach-claim": "Attached",
+        "reopen": "Re-opened",
+    }.get(args.kind, "Promoted")
     errors = actions[args.kind](args)
     if errors:
         print(f"Refusing to {verb.lower()} {args.id}:")
