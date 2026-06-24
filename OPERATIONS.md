@@ -278,3 +278,4 @@ Record each cycle so trends are visible.
 | (dry run) | 26 | ~0.58 | — | ~0.23 | 0 | Adult/higher-ed FPs dominate |
 | (audience gate) | 15 | ~0.73 | — | — | 0 | Higher-ed/workforce removed; PE/EAP/teacher FPs remain |
 | (PE + language off-scope) | 13 | ~0.85 | — | — | 0 | PE/EFL removed; teacher tool-use + disaster/health FPs remain |
+| 2026-06-24 (first live cron) | 18 | ~0.40 | 3 | 0.20 | 44 | First scheduled run merged via PR #71; Semantic Scholar key now live (+12 candidates). Low extraction yield: off-scope audiences (older adults, social workers, experts) + definitional/non-finding sentences. Promoted: K-12 media-literacy policy → digital-media-literacy, secondary-school AI-literacy review → ai-literacy, children's AI mental models → ai-foundational-concepts |
