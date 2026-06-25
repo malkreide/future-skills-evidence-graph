@@ -1,0 +1,191 @@
+"""Tests for the issue-form -> report-import bridge (parse_ingest_issue).
+
+These cover the parsing and input-resolution logic only; no network and no LLM
+are exercised (PDF download/extraction is patched). They lock in the contract the
+ingest-from-issue workflow depends on: a manifest is produced only when usable
+plaintext is found, and every other case becomes a human-readable skip reason.
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest import mock
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+import parse_ingest_issue as pii  # noqa: E402
+
+
+def make_body(url="", publisher="", year="", plaintext="", attachment="") -> str:
+    """Render an issue-form body the way GitHub does (### heading per field)."""
+
+    def field(value: str) -> str:
+        return value if value else pii.NO_RESPONSE
+
+    return "\n\n".join(
+        [
+            f"### Quellen-URL\n\n{field(url)}",
+            f"### Herausgeber\n\n{field(publisher)}",
+            f"### Erscheinungsjahr\n\n{field(year)}",
+            f"### Berichtstext (einfügen)\n\n{field(plaintext)}",
+            f"### PDF anhängen\n\n{field(attachment)}",
+        ]
+    )
+
+
+class ParseSectionsTests(unittest.TestCase):
+    def test_maps_labels_to_keys_and_blanks_no_response(self):
+        body = make_body(url="https://example.org/r.pdf", publisher="OECD")
+        values = pii.parse_sections(body)
+        self.assertEqual(values["url"], "https://example.org/r.pdf")
+        self.assertEqual(values["publisher"], "OECD")
+        # Untouched fields render as the placeholder and must come back empty.
+        self.assertEqual(values["year"], "")
+        self.assertEqual(values["plaintext"], "")
+
+    def test_unknown_headings_ignored(self):
+        body = "### Something else\n\nvalue\n\n### Quellen-URL\n\nhttps://x.org/a.pdf"
+        values = pii.parse_sections(body)
+        self.assertEqual(values, {"url": "https://x.org/a.pdf"})
+
+    def test_multiline_value_preserved(self):
+        body = make_body(plaintext="Line one.\nLine two.")
+        self.assertEqual(pii.parse_sections(body)["plaintext"], "Line one.\nLine two.")
+
+
+class PdfDetectionTests(unittest.TestCase):
+    def test_is_pdf_url_handles_query_and_case(self):
+        self.assertTrue(pii.is_pdf_url("https://x.org/A.PDF?token=1"))
+        self.assertTrue(pii.is_pdf_url("https://github.com/user-attachments/files/9/r.pdf"))
+        self.assertFalse(pii.is_pdf_url("https://x.org/page.html"))
+
+    def test_find_pdf_url_prefers_first_attachment(self):
+        attachment = "[report.pdf](https://github.com/user-attachments/files/1/report.pdf)"
+        self.assertEqual(
+            pii.find_pdf_url(attachment, ""),
+            "https://github.com/user-attachments/files/1/report.pdf",
+        )
+
+    def test_find_pdf_url_ignores_non_pdf_links(self):
+        self.assertIsNone(pii.find_pdf_url("[site](https://x.org/page.html)", ""))
+
+
+class ParseYearTests(unittest.TestCase):
+    def test_extracts_four_digit_year(self):
+        self.assertEqual(pii.parse_year("2023"), 2023)
+        self.assertEqual(pii.parse_year("erschienen 2019 bei OECD"), 2019)
+        self.assertIsNone(pii.parse_year(""))
+        self.assertIsNone(pii.parse_year("letztes Jahr"))
+
+
+class ResolvePlaintextTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.workdir = Path(self._tmp.name)
+        self.addCleanup(self._tmp.cleanup)
+
+    def test_pasted_text_wins(self):
+        values = {"plaintext": "Ein Befund über Zukunftskompetenzen."}
+        text, reason = pii.resolve_plaintext(values, "", self.workdir, None)
+        self.assertEqual(text, "Ein Befund über Zukunftskompetenzen.")
+        self.assertIn("Formular", reason)
+
+    def test_pdf_attachment_downloaded_and_extracted(self):
+        values = {"attachment": "[r.pdf](https://github.com/user-attachments/files/1/r.pdf)"}
+        with mock.patch.object(pii, "download") as dl, mock.patch.object(
+            pii, "extract_text", return_value="Extrahierter PDF-Text."
+        ):
+            text, reason = pii.resolve_plaintext(values, "", self.workdir, "tok")
+        dl.assert_called_once()
+        self.assertEqual(text.strip(), "Extrahierter PDF-Text.")
+        self.assertIn("angehängtes PDF", reason)
+
+    def test_pdf_from_url_when_no_paste_or_attachment(self):
+        values = {"url": "https://oecd.org/report.pdf"}
+        with mock.patch.object(pii, "download"), mock.patch.object(
+            pii, "extract_text", return_value="Aus der URL."
+        ):
+            text, reason = pii.resolve_plaintext(values, "", self.workdir, None)
+        self.assertEqual(text.strip(), "Aus der URL.")
+        self.assertIn("Quellen-URL", reason)
+
+    def test_no_input_yields_skip_reason(self):
+        text, reason = pii.resolve_plaintext({"url": "https://x.org/page.html"}, "", self.workdir, None)
+        self.assertIsNone(text)
+        self.assertIn("Kein Text gefunden", reason)
+
+    def test_failed_download_becomes_reason_not_exception(self):
+        values = {"url": "https://oecd.org/report.pdf"}
+        with mock.patch.object(pii, "download", side_effect=RuntimeError("404")):
+            text, reason = pii.resolve_plaintext(values, "", self.workdir, None)
+        self.assertIsNone(text)
+        self.assertIn("PDF konnte nicht verarbeitet werden", reason)
+
+    def test_empty_extraction_asks_for_text(self):
+        values = {"url": "https://oecd.org/report.pdf"}
+        with mock.patch.object(pii, "download"), mock.patch.object(
+            pii, "extract_text", return_value="   "
+        ):
+            text, reason = pii.resolve_plaintext(values, "", self.workdir, None)
+        self.assertIsNone(text)
+        self.assertIn("kein Text extrahieren", reason)
+
+
+class MainTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.workdir_name = ".ingest_work_test"
+        self._out = Path(self._tmp.name) / "out.txt"
+        self.addCleanup(self._tmp.cleanup)
+
+    def _run(self, body):
+        argv = ["parse_ingest_issue.py", "--workdir", self.workdir_name, "--body", body]
+        env = {"GITHUB_OUTPUT": str(self._out)}
+        with mock.patch.object(sys, "argv", argv), mock.patch.dict("os.environ", env, clear=False):
+            pii.main()
+        return self._out.read_text(encoding="utf-8") if self._out.exists() else ""
+
+    def tearDown(self):
+        workdir = pii.ROOT / self.workdir_name
+        if workdir.exists():
+            for child in workdir.iterdir():
+                child.unlink()
+            workdir.rmdir()
+
+    def test_pasted_text_writes_manifest(self):
+        body = make_body(
+            url="https://oecd.org/r.pdf",
+            publisher="OECD",
+            year="2023",
+            plaintext="Ein wichtiger Befund zu Zukunftskompetenzen in Schulen.",
+        )
+        output = self._run(body)
+        self.assertIn("status=ingest", output)
+        manifest_path = pii.ROOT / self.workdir_name / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        self.assertEqual(len(manifest), 1)
+        entry = manifest[0]
+        self.assertEqual(entry["url"], "https://oecd.org/r.pdf")
+        self.assertEqual(entry["publisher"], "OECD")
+        self.assertEqual(entry["year"], 2023)
+        self.assertTrue((pii.ROOT / entry["report"]).exists())
+
+    def test_missing_url_skips(self):
+        output = self._run(make_body(plaintext="text but no url"))
+        self.assertIn("status=skip", output)
+        self.assertIn("Quellen-URL", output)
+
+    def test_no_text_skips(self):
+        output = self._run(make_body(url="https://x.org/page.html"))
+        self.assertIn("status=skip", output)
+
+
+if __name__ == "__main__":
+    unittest.main()
