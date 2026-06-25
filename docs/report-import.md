@@ -146,8 +146,23 @@ Issue-Formular  ──(ingest-from-issue.yml)──▶  parse_ingest_issue.py  �
 
 Das Sicherheitsmodell ist identisch zum `workflow_dispatch`-Pfad: derselbe
 Verbatim-Guard, dieselbe Relevanz-/Dedupe-Filterung, nichts wird automatisch
-aktiv. Eine spätere, hübschere Drag-&-Drop-Oberfläche direkt im Dashboard
-(`site/`) ist als optionaler Aufsatz auf diesen Eingang vorgesehen.
+aktiv.
+
+### Dashboard-Dropzone (Komfort-Oberfläche)
+
+Als hübschere Oberfläche auf genau diesem Eingang gibt es im statischen
+Dashboard die Seite **„Bericht einreichen"** (`site/einreichen.html`,
+`site/assets/submit.js`), verlinkt aus der Topbar. Sie bietet echtes Drag & Drop
+(plus Datei-Auswahl und Texteinfügen, auch mobil) und liest eine abgelegte
+**PDF im Browser** mit `pdf.js` (dynamischer, versionsgepinnter CDN-Import) zu
+Text. Beim Absenden baut sie keinen API-Aufruf mit Token, sondern öffnet das
+**vorausgefüllte Issue-Formular** (`?template=ingest-report.yml&url=…`), das der
+Mensch auf GitHub bestätigt – so braucht die öffentliche Pages-Seite **kein
+Secret im Browser** und die Anmeldung übernimmt GitHub. Ist der extrahierte Text
+zu lang für die Issue-URL, landet er in der Zwischenablage und wird auf der
+GitHub-Seite eingefügt; eine reine PDF-URL wird ohnehin erst serverseitig
+gelesen. Die Dropzone ist damit nur eine Bedienhilfe – die eigentliche
+Verarbeitung und alle Guard Rails bleiben der Issue-/Workflow-Pfad oben.
 
 ## Automation
 

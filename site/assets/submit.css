@@ -1,0 +1,196 @@
+/* Einreichungsseite (einreichen.html): Dropzone + Formular im Stil des
+   Dashboards. Nutzt die Design-Tokens aus styles.css. Mobil-first. */
+
+.submit-shell {
+  display: grid;
+  gap: 20px;
+  max-width: 760px;
+}
+
+.submit-intro p {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+
+.submit-how {
+  border-left: 4px solid var(--green);
+  padding-left: 14px;
+}
+
+.submit-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 16px;
+  padding: clamp(16px, 4vw, 28px);
+}
+
+.submit-fields {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.submit-fields label:first-child {
+  grid-column: 1 / -1;
+}
+
+.submit-card label {
+  color: var(--muted);
+  display: grid;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 6px;
+}
+
+.submit-card input,
+.submit-card textarea {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.submit-card textarea {
+  font: inherit;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.submit-card input:focus,
+.submit-card textarea:focus,
+.dropzone:focus {
+  border-color: var(--blue);
+  outline: 2px solid rgba(49, 95, 159, 0.25);
+  outline-offset: 1px;
+}
+
+.req {
+  color: var(--red);
+}
+
+.dropzone {
+  align-content: center;
+  background: var(--surface-2);
+  border: 2px dashed var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  padding: 28px 16px;
+  text-align: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone.is-dragover {
+  background: #e7f4ee;
+  border-color: var(--green);
+}
+
+.dropzone-main {
+  color: var(--text);
+  font-weight: 700;
+  margin: 0;
+}
+
+.dropzone-sub {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.dropzone-status {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 6px 0 0;
+  min-height: 18px;
+}
+
+.dropzone-status[data-kind="ok"] {
+  color: var(--green);
+}
+.dropzone-status[data-kind="error"] {
+  color: var(--red);
+}
+.dropzone-status[data-kind="busy"] {
+  color: var(--blue);
+}
+
+.submit-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.submit-btn {
+  background: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 20px;
+}
+
+.submit-btn:hover {
+  filter: brightness(1.05);
+}
+
+.submit-hint {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+.submit-hint[data-kind="ok"] {
+  color: var(--green);
+}
+.submit-hint[data-kind="error"] {
+  color: var(--red);
+}
+
+.submit-note {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: clamp(16px, 4vw, 24px);
+}
+
+.submit-note h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.submit-note ol {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+.submit-note code {
+  background: var(--surface-2);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.submit-fineprint {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .submit-fields {
+    grid-template-columns: 1fr;
+  }
+}
