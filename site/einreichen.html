@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bericht einreichen · Future Skills Evidence Graph</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/submit.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Manueller Eingang</p>
+        <h1>Bericht einreichen</h1>
+      </div>
+      <div class="topbar-right">
+        <a class="nav-link" href="./index.html">← Zum Dashboard</a>
+        <div class="principle">Keine Skill-Empfehlung ohne Evidenzpfad</div>
+      </div>
+    </header>
+
+    <main class="shell submit-shell">
+      <section class="submit-intro">
+        <p>
+          Reiche einen Bericht (z. B. OECD, WEF, UNESCO) zur Aufnahme ein – per
+          Drag &amp; Drop, Datei-Auswahl oder Text einfügen. Funktioniert auch am
+          Handy. Daraus entstehen nur <strong>Kandidaten</strong>; nichts wird
+          automatisch aktiv – ein Mensch prüft alles im Review-Pull-Request.
+        </p>
+        <p class="submit-how">
+          Beim Absenden öffnet sich ein <strong>vorausgefülltes GitHub-Issue</strong>,
+          das du nur noch bestätigst. So braucht diese Seite kein Passwort und
+          keinen Token – die Anmeldung übernimmt GitHub.
+        </p>
+      </section>
+
+      <section class="submit-card" aria-label="Einreichungsformular">
+        <div class="submit-fields">
+          <label>
+            Quellen-URL <span class="req">*</span>
+            <input id="urlInput" type="url" inputmode="url"
+                   placeholder="https://www.oecd.org/.../report.pdf" />
+          </label>
+          <label>
+            Herausgeber
+            <input id="publisherInput" type="text" placeholder="OECD / WEF / UNESCO" />
+          </label>
+          <label>
+            Erscheinungsjahr
+            <input id="yearInput" type="text" inputmode="numeric" placeholder="2023" />
+          </label>
+        </div>
+
+        <div id="dropzone" class="dropzone" tabindex="0" role="button"
+             aria-label="Datei hierher ziehen oder zum Auswählen tippen">
+          <input id="fileInput" type="file" accept=".pdf,.txt,.md,text/plain,application/pdf" hidden />
+          <p class="dropzone-main">PDF oder Textdatei hierher ziehen</p>
+          <p class="dropzone-sub">oder tippen zum Auswählen · oder Text unten einfügen</p>
+          <p id="fileStatus" class="dropzone-status" aria-live="polite"></p>
+        </div>
+
+        <label class="submit-textarea-label">
+          Berichtstext
+          <textarea id="textInput" rows="10"
+                    placeholder="Berichtstext hier einfügen – oder oben eine Datei ablegen, dann wird der Text automatisch eingelesen."></textarea>
+        </label>
+
+        <div class="submit-actions">
+          <button id="submitBtn" type="button" class="submit-btn">Auf GitHub einreichen</button>
+          <p id="submitHint" class="submit-hint" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="submit-note">
+        <h2>Wie es weitergeht</h2>
+        <ol>
+          <li>Du bestätigst das vorausgefüllte Issue auf GitHub (Label <code>ingest</code> ist gesetzt).</li>
+          <li>Der Import läuft automatisch, extrahiert wörtlich belegte Befunde und legt Kandidaten an.</li>
+          <li>Das Ergebnis wird als Kommentar zurück ins Issue geschrieben; geprüft wird im Review-PR.</li>
+        </ol>
+        <p class="submit-fineprint">
+          Bei sehr langem Text öffnet sich das Issue ohne den Text und der Text
+          landet in der Zwischenablage – dann auf der GitHub-Seite ins Textfeld
+          einfügen. Alternativ eine direkte PDF-URL angeben oder die PDF dort
+          anhängen (klappt auch mobil).
+        </p>
+      </section>
+    </main>
+
+    <script src="./assets/submit.js"></script>
+  </body>
+</html>
