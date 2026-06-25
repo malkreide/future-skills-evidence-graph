@@ -129,6 +129,11 @@ issue comment and stays a candidate. The Google tier is opt-in and the only one
 needing a secret (`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX` variable);
 Crossref/OpenAlex run keyless.
 
+To verify the resolver (and the Google credentials) without an LLM call or a
+candidate PR, run the **Resolve URL check** workflow (Actions →
+`resolve-url-check.yml`, `workflow_dispatch`) with a report title: it prints each
+tier's result and whether Google is configured.
+
 ## Verification tests — every cycle
 
 Measure these four; they reflect real quality, not just the (small, possibly

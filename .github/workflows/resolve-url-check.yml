@@ -1,0 +1,46 @@
+name: Resolve URL check (diagnostic)
+
+# Manual smoke test for the source-URL resolver (Option B), especially the
+# optional Google tier: enter a report title and see which tier (document /
+# Crossref / OpenAlex / Google) resolves a URL, and whether the Google
+# credentials are configured. Makes no LLM call, opens no PR, changes no data.
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Report title to resolve a URL for."
+        required: true
+      year:
+        description: "Publication year (optional, sharpens catalogue matching)."
+        required: false
+        default: ""
+      publisher:
+        description: "Publisher (optional)."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  resolve-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Resolve URL for the given title
+        # Inputs are passed via env (never interpolated into the shell) to avoid
+        # script injection from the title/publisher text.
+        env:
+          TITLE: ${{ inputs.title }}
+          YEAR: ${{ inputs.year }}
+          PUBLISHER: ${{ inputs.publisher }}
+          GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
+          GOOGLE_SEARCH_CX: ${{ vars.GOOGLE_SEARCH_CX }}
+        run: |
+          python scripts/resolve_source_url.py \
+            --title "$TITLE" \
+            ${YEAR:+--year "$YEAR"} \
+            ${PUBLISHER:+--publisher "$PUBLISHER"}

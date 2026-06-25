@@ -245,3 +245,51 @@ def resolve_url(
     if google:
         return {"url": google, "via": "google"}
     return None
+
+
+def _diagnose(title: str, year: int | None, publisher: str | None) -> int:
+    """Print a per-tier resolution diagnostic for *title*; used by the smoke test.
+
+    Runs each tier independently so the output shows exactly which one produced a
+    URL — and whether the Google tier is configured at all (a missing or
+    misnamed ``GOOGLE_SEARCH_API_KEY`` / ``GOOGLE_SEARCH_CX`` shows as "not
+    configured"). Makes no LLM call and writes nothing.
+    """
+    google_configured = bool(
+        os.environ.get("GOOGLE_SEARCH_API_KEY") and os.environ.get("GOOGLE_SEARCH_CX")
+    )
+    print(f"Titel: {title!r}  (Jahr: {year or '-'}, Herausgeber: {publisher or '-'})")
+
+    crossref = crossref_best(title, year)
+    print(f"  Crossref : {crossref[0] if crossref else '— kein Treffer'}")
+    openalex = openalex_best(title, year)
+    print(f"  OpenAlex : {openalex[0] if openalex else '— kein Treffer'}")
+    if google_configured:
+        google = google_best(title)
+        print(f"  Google   : {google or '— kein Treffer'}  (konfiguriert)")
+    else:
+        print("  Google   : übersprungen — GOOGLE_SEARCH_API_KEY / GOOGLE_SEARCH_CX nicht gesetzt")
+
+    resolved = resolve_url("", title=title, year=year, publisher=publisher)
+    if resolved:
+        print(f"=> aufgelöst via {resolved['via']}: {resolved['url']}")
+    else:
+        print("=> keine URL aufgelöst")
+    return 0
+
+
+def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Diagnose source-URL resolution for a title (per-tier smoke test)."
+    )
+    parser.add_argument("--title", required=True, help="Report title to resolve.")
+    parser.add_argument("--year", type=int, default=None, help="Publication year (optional).")
+    parser.add_argument("--publisher", default=None, help="Publisher (optional).")
+    args = parser.parse_args()
+    return _diagnose(args.title.strip(), args.year, args.publisher)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
