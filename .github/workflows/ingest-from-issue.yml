@@ -45,7 +45,13 @@ jobs:
         id: parse
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
           GITHUB_TOKEN: ${{ github.token }}
+          # Optional, opt-in: only set these to enable the Google fallback for
+          # grey literature the keyless catalogues miss. Unset → that tier is a
+          # no-op; Crossref/OpenAlex still run without any key.
+          GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
+          GOOGLE_SEARCH_CX: ${{ vars.GOOGLE_SEARCH_CX }}
         run: python scripts/parse_ingest_issue.py --workdir .ingest_work
       - name: Comment when nothing to import
         if: steps.parse.outputs.status != 'ingest'

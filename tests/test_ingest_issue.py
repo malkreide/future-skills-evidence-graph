@@ -177,10 +177,40 @@ class MainTests(unittest.TestCase):
         self.assertEqual(entry["year"], 2023)
         self.assertTrue((pii.ROOT / entry["report"]).exists())
 
-    def test_missing_url_skips(self):
-        output = self._run(make_body(plaintext="text but no url"))
+    def test_no_url_and_no_resolution_skips(self):
+        # URL optional now (Option B), but with nothing resolvable and no issue
+        # URL fallback the run still skips with a clear reason.
+        with mock.patch.object(pii, "resolve_url", return_value=None), mock.patch.dict(
+            "os.environ", {"ISSUE_URL": ""}, clear=False
+        ):
+            output = self._run(make_body(plaintext="text but no url anywhere"))
         self.assertIn("status=skip", output)
-        self.assertIn("Quellen-URL", output)
+        self.assertIn("Katalog-Suche", output)
+
+    def test_no_url_resolved_via_catalog(self):
+        resolved = {"url": "https://doi.org/10.1/abc", "via": "crossref", "match": "A title"}
+        with mock.patch.object(pii, "resolve_url", return_value=resolved):
+            output = self._run(
+                make_body(plaintext="Ein Befund zu Zukunftskompetenzen.", year="2023")
+            )
+        self.assertIn("status=ingest", output)
+        manifest = json.loads(
+            (pii.ROOT / self.workdir_name / "manifest.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest[0]["url"], "https://doi.org/10.1/abc")
+        self.assertIn("via Crossref", output)
+
+    def test_no_url_falls_back_to_issue_url(self):
+        with mock.patch.object(pii, "resolve_url", return_value=None), mock.patch.dict(
+            "os.environ", {"ISSUE_URL": "https://github.com/o/r/issues/5"}, clear=False
+        ):
+            output = self._run(make_body(plaintext="Ein Befund ohne URL im Text."))
+        self.assertIn("status=ingest", output)
+        manifest = json.loads(
+            (pii.ROOT / self.workdir_name / "manifest.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest[0]["url"], "https://github.com/o/r/issues/5")
+        self.assertIn("Platzhalter", output)
 
     def test_no_text_skips(self):
         output = self._run(make_body(url="https://x.org/page.html"))

@@ -129,11 +129,11 @@ Issue-Formular  ──(ingest-from-issue.yml)──▶  parse_ingest_issue.py  �
 ```
 
 1. **Einreichen.** Über *New issue → „Bericht einreichen"*
-   (`.github/ISSUE_TEMPLATE/ingest-report.yml`) eine URL angeben und **einen** von
-   drei Inhalten liefern: den **Berichtstext einfügen**, ein **PDF ins
-   Anhang-Feld ziehen** (am Handy über das Anhang-Symbol Datei/Foto wählen) oder
-   – wenn die URL direkt auf ein PDF zeigt – nichts weiter. Das Formular vergibt
-   automatisch das Label `ingest`.
+   (`.github/ISSUE_TEMPLATE/ingest-report.yml`) **einen** von drei Inhalten
+   liefern: den **Berichtstext einfügen**, ein **PDF ins Anhang-Feld ziehen** (am
+   Handy über das Anhang-Symbol Datei/Foto wählen) oder – wenn die URL direkt auf
+   ein PDF zeigt – nichts weiter. Die **URL ist optional** (siehe URL-Auflösung
+   unten). Das Formular vergibt automatisch das Label `ingest`.
 2. **Auflösen.** `scripts/parse_ingest_issue.py` liest den Issue-Text, ermittelt
    die Plaintext-Quelle in der Reihenfolge *eingefügter Text → angehängtes PDF →
    PDF aus der URL*, lädt ein PDF (Größenlimit 25 MB) herunter und extrahiert es
@@ -147,6 +147,30 @@ Issue-Formular  ──(ingest-from-issue.yml)──▶  parse_ingest_issue.py  �
 Das Sicherheitsmodell ist identisch zum `workflow_dispatch`-Pfad: derselbe
 Verbatim-Guard, dieselbe Relevanz-/Dedupe-Filterung, nichts wird automatisch
 aktiv.
+
+### URL-Auflösung (URL-Feld optional)
+
+Damit man beim Datei-Upload nicht zusätzlich die Quellen-URL abtippen muss, ist
+das Feld optional. Fehlt es, ermittelt `scripts/resolve_source_url.py` die URL –
+zweistufig, passend zur backend-losen Architektur:
+
+- **Im Browser (Dashboard-Dropzone).** Schon beim Ablegen einer Datei sucht
+  `site/assets/submit.js` eine URL/DOI **im Dokument** und sonst per **Crossref**
+  (keyless, CORS) anhand des Titels und füllt das Feld als Vorschlag vor.
+- **Server-seitig (Workflow, Option B).** Kommt das Issue ohne URL an, löst
+  `resolve_source_url.py` sie in der Reihenfolge **Dokument → Crossref → OpenAlex
+  → (optional) Google Programmable Search** auf. Ein Katalog-Treffer wird nur
+  über einer Titel-Ähnlichkeitsschwelle und – falls ein Jahr bekannt ist –
+  innerhalb ±1 Jahr übernommen, damit ein unscharfer Titel nie eine falsche URL
+  anhängt. Jeder Netz-Schritt scheitert still und fällt zum nächsten durch.
+
+Die Google-Stufe ist **opt-in** und die einzige, die ein Secret braucht
+(`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX`); ohne diese ist sie ein No-op, und
+Crossref/OpenAlex laufen weiterhin keyless. Findet auch das nichts, setzt der
+Workflow die **Issue-URL als Platzhalter** und weist im Kommentar darauf hin,
+beim Review die echte Quell-URL nachzutragen – das Schema verlangt für den
+Beweispfad eine `url`. Die aufgelöste URL wird im Issue-Kommentar genannt und
+bleibt eine *Kandidaten*-Angabe bis zur menschlichen Prüfung.
 
 ### Dashboard-Dropzone (Komfort-Oberfläche)
 

@@ -23,6 +23,10 @@ When none of these yields text the parser writes no manifest and reports a
 human-readable reason, so the workflow can comment it back on the issue instead
 of failing. The parser performs no LLM call and writes nothing into ``data/``.
 
+The issue form's URL is optional: when it is blank the parser resolves one via
+``resolve_source_url.resolve_url`` (document → Crossref → OpenAlex → optional
+Google), falling back to the issue URL (``ISSUE_URL``) as a flagged placeholder.
+
     ISSUE_BODY="$(...)" python scripts/parse_ingest_issue.py --workdir .ingest_work
 
 Outputs (for the workflow) are written to ``$GITHUB_OUTPUT`` when set, and always
@@ -47,6 +51,7 @@ from typing import Any
 
 from common import ROOT
 from extract_pdf_text import clean_extracted_text, extract_text
+from resolve_source_url import resolve_url
 
 # The issue-form field labels (see .github/ISSUE_TEMPLATE/ingest-report.yml).
 # GitHub renders each field as a "### <label>" section in the issue body, so the
@@ -203,6 +208,43 @@ def parse_year(raw: str) -> int | None:
     return int(match.group(0)) if match else None
 
 
+def determine_url(
+    provided: str,
+    text: str,
+    publisher: str | None,
+    year: int | None,
+    issue_url: str,
+) -> tuple[str, str]:
+    """Resolve the source URL, returning ``(url, human_readable_note)``.
+
+    A URL the submitter typed wins untouched. Otherwise resolve one from the
+    report (`resolve_source_url`: document → Crossref → OpenAlex → optional
+    Google). If that also fails, fall back to the issue URL as provenance so the
+    schema's required ``url`` is satisfied — flagged so a reviewer corrects it.
+    Returns an empty URL only when nothing is available (e.g. a local run with no
+    issue URL), and the caller then skips.
+    """
+    if provided:
+        return provided, "Quellen-URL aus dem Formular übernommen."
+    resolved = resolve_url(text, title=None, year=year, publisher=publisher)
+    if resolved:
+        via = {
+            "document": "aus dem Dokument",
+            "crossref": "via Crossref",
+            "openalex": "via OpenAlex",
+            "google": "via Google-Suche",
+        }.get(resolved["via"], resolved["via"])
+        return resolved["url"], (
+            f"Quellen-URL {via} ermittelt ({resolved['url']}) – bitte beim Review prüfen."
+        )
+    if issue_url:
+        return issue_url, (
+            "Keine Quell-URL gefunden – als Platzhalter die Issue-URL gesetzt; "
+            "bitte beim Review die echte Quell-URL nachtragen."
+        )
+    return "", ""
+
+
 def write_output(github_output: str | None, **fields: str) -> None:
     """Emit key=value lines to ``$GITHUB_OUTPUT`` (if set) and to stdout."""
     for key, value in fields.items():
@@ -241,29 +283,37 @@ def main() -> int:
     workdir.mkdir(parents=True, exist_ok=True)
 
     values = parse_sections(body)
-    url = values.get("url", "").strip()
-    if not url:
-        write_output(
-            github_output,
-            status="skip",
-            reason="Keine Quellen-URL angegeben – diese ist Pflicht.",
-        )
-        return 0
-
     text, reason = resolve_plaintext(values, body, workdir, token)
     if text is None:
         write_output(github_output, status="skip", reason=reason)
         return 0
 
+    publisher = values.get("publisher", "").strip() or None
+    year = parse_year(values.get("year", ""))
+    url, url_note = determine_url(
+        values.get("url", "").strip(),
+        text,
+        publisher,
+        year,
+        os.environ.get("ISSUE_URL", "").strip(),
+    )
+    if not url:
+        write_output(
+            github_output,
+            status="skip",
+            reason=(
+                "Keine Quellen-URL angegeben und keine im Dokument oder per "
+                "Katalog-Suche (Crossref/OpenAlex) gefunden. Bitte eine URL "
+                "eintragen und das Issue erneut mit dem Label `ingest` versehen."
+            ),
+        )
+        return 0
+
     report_path = workdir / "report.txt"
     report_path.write_text(text, encoding="utf-8")
     manifest = [
-        {
-            "report": str(report_path.relative_to(ROOT)),
-            "url": url,
-            "publisher": values.get("publisher", "").strip() or None,
-            "year": parse_year(values.get("year", "")),
-        }
+        {"report": str(report_path.relative_to(ROOT)), "url": url,
+         "publisher": publisher, "year": year}
     ]
     manifest_path = workdir / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
@@ -272,7 +322,7 @@ def main() -> int:
         github_output,
         status="ingest",
         manifest=str(manifest_path.relative_to(ROOT)),
-        reason=reason,
+        reason=f"{reason} {url_note}".strip(),
     )
     return 0
 
