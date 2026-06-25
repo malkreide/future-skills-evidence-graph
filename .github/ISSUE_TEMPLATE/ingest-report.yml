@@ -19,10 +19,12 @@ body:
     id: url
     attributes:
       label: "Quellen-URL"
-      description: "Kanonischer Link zum Bericht (bevorzugt der direkte PDF-Link)."
+      description: "Kanonischer Link zum Bericht (bevorzugt der direkte PDF-Link).
+        Optional: Fehlt sie, versucht der Import die URL automatisch aus dem
+        Dokument oder per Katalog-Suche (Crossref/OpenAlex) zu ermitteln."
       placeholder: "https://www.oecd.org/.../report.pdf"
     validations:
-      required: true
+      required: false
   - type: input
     id: publisher
     attributes:

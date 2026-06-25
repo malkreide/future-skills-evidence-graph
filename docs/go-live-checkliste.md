@@ -38,6 +38,12 @@ Verwandte Dokumente: [../OPERATIONS.md](../OPERATIONS.md) (Runbook),
       siehe [report-import.md](report-import.md)); ohne Provider ist dieser Pfad
       ein No-op. Für das Pflicht-CI **nicht** nötig — das läuft netzwerkfrei
       gegen Fixtures (`AI_PROVIDER=cache`).
+- [ ] *(Optional, nur für die Google-Stufe der URL-Auflösung beim manuellen
+      Import)* `GOOGLE_SEARCH_API_KEY` als **Secret** und `GOOGLE_SEARCH_CX` als
+      **Variable** hinterlegen (Google Programmable Search) – für graue Literatur
+      ohne DOI. Ohne diese bleibt die Google-Stufe ein No-op; die keyless-Suche
+      über Crossref/OpenAlex läuft trotzdem (siehe
+      [report-import.md](report-import.md#url-auflösung-url-feld-optional)).
 
 ## 3. Erster echter Betriebszyklus
 

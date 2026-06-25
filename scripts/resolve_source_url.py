@@ -1,0 +1,247 @@
+"""Resolve a source's canonical URL from a report's text and metadata.
+
+Option B of the title->URL sketch: the server-side counterpart to the dashboard
+dropzone's in-browser lookup (`site/assets/submit.js`). It runs inside the
+`ingest-from-issue` workflow so the issue form's URL field can be **optional** —
+when a submitter gives no URL, this resolves one from the report itself.
+
+Resolution order (first hit wins), each step degrading gracefully to the next:
+
+1. **In the document** — a DOI or URL printed in the report text (cover page,
+   footer, "available at ..."). Deterministic, no network.
+2. **Crossref** — title -> best bibliographic match (keyless).
+3. **OpenAlex** — title -> best work (keyless).
+4. **Google Programmable Search** — only when `GOOGLE_SEARCH_API_KEY` and
+   `GOOGLE_SEARCH_CX` are set (opt-in, the one tier that needs a secret); for the
+   grey literature the keyless catalogues miss.
+
+A catalogue hit is only accepted above a title-similarity threshold and, when a
+year is known, within ±1 year, so a fuzzy title never attaches a wrong URL. Every
+network call fails silent (returns None) so a flaky service just falls through to
+the next step or to no result. Standard library only.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import urllib.parse
+import urllib.request
+from typing import Any
+
+# Title-match acceptance, mirrored from the client (Sørensen-Dice ≥ 0.7).
+TITLE_MATCH_THRESHOLD = 0.7
+HTTP_TIMEOUT = 20
+
+_DOI_RE = re.compile(r"\b10\.\d{4,9}/[^\s\"<>)\]]+", re.I)
+_URL_RE = re.compile(r"https?://[^\s\"<>)\]]+", re.I)
+_ASSET_RE = re.compile(r"\.(png|jpe?g|gif|svg|css|js|woff2?)$", re.I)
+
+
+def _strip(value: str) -> str:
+    """Drop trailing punctuation a URL/DOI often picks up in running text."""
+    return re.sub(r"[).,;:\]]+$", "", value)
+
+
+def find_in_text(text: str, publisher: str | None = None) -> str | None:
+    """Return a DOI/URL printed in *text*, or None (deterministic, no network).
+
+    Mirrors the dashboard's ``detectSourceUrl``: a DOI wins; otherwise the URL
+    whose host matches the publisher, then the most frequent host, then the first.
+    """
+    if not text:
+        return None
+    hay = f"{text[:20000]}\n{text[-8000:]}"
+    doi = _DOI_RE.search(hay)
+    if doi:
+        return f"https://doi.org/{_strip(doi.group(0))}"
+    urls = [_strip(u) for u in _URL_RE.findall(hay)]
+    urls = [u for u in urls if not _ASSET_RE.search(u)]
+    if not urls:
+        return None
+
+    def bare_host(url: str) -> str:
+        try:
+            return (urllib.parse.urlparse(url).hostname or "").removeprefix("www.")
+        except ValueError:
+            return ""
+
+    pub = (publisher or "").strip().lower()
+    if pub:
+        for url in urls:
+            host = bare_host(url)
+            if host and (pub in host or host.split(".")[0] in pub):
+                return url
+    freq: dict[str, int] = {}
+    for url in urls:
+        host = bare_host(url)
+        if host:
+            freq[host] = freq.get(host, 0) + 1
+    top_host = max(freq, key=lambda h: freq[h]) if freq else ""
+    for url in urls:
+        if bare_host(url) == top_host:
+            return url
+    return urls[0]
+
+
+# guess_title scans only the first non-empty lines (the cover); a fixed window so
+# a long document never pulls a "title" out of its body.
+_TITLE_SCAN_LINES = 25
+
+
+def guess_title(text: str) -> str:
+    """Best title guess from cover text: longest titleish line near the top.
+
+    Skips table-of-contents lines (dot leaders, leading page numbers) and lines
+    that are mostly non-letters. Mirrors the client's ``guessTitle``.
+    """
+    lines = [ln.strip() for ln in text.split("\n") if ln.strip()]
+    best = ""
+    for line in lines[:_TITLE_SCAN_LINES]:
+        if len(line) < 15 or len(line) > 200:
+            continue
+        if re.search(r"\.{4,}|^\d+(\s|\.|$)", line):
+            continue
+        letters = len(re.findall(r"[A-Za-zÄÖÜäöüß]", line))
+        if letters < len(line) * 0.5:
+            continue
+        if len(line) > len(best):
+            best = line
+    return best
+
+
+def title_similarity(a: str, b: str) -> float:
+    """Sørensen-Dice over word sets; robust to word order. Mirrors the client."""
+    tokens_a = set(re.findall(r"[a-z0-9äöüß]+", a.lower()))
+    tokens_b = set(re.findall(r"[a-z0-9äöüß]+", b.lower()))
+    if not tokens_a or not tokens_b:
+        return 0.0
+    shared = len(tokens_a & tokens_b)
+    return (2 * shared) / (len(tokens_a) + len(tokens_b))
+
+
+def _http_json(url: str) -> Any | None:
+    """GET *url* as JSON, or None on any failure (graceful, no raise)."""
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "future-skills-evidence-graph-url-resolver",
+            "Accept": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=HTTP_TIMEOUT) as response:
+            return json.load(response)
+    except Exception:  # noqa: BLE001 - any network/parse error → fall through
+        return None
+
+
+def _best_by_title(
+    candidates: list[tuple[str, str, int | None]], query: str, year: int | None
+) -> tuple[str, str] | None:
+    """Pick the best (url, title) from (url, title, year) candidates, or None.
+
+    Accepts only above the similarity threshold and, when *year* is given, within
+    ±1 year. Among the survivors the highest similarity (small bonus for an exact
+    year) wins.
+    """
+    best: tuple[str, str] | None = None
+    best_score = 0.0
+    for url, cand_title, cand_year in candidates:
+        if not url:
+            continue
+        similarity = title_similarity(query, cand_title)
+        if similarity < TITLE_MATCH_THRESHOLD:
+            continue
+        if year and cand_year and abs(cand_year - year) > 1:
+            continue
+        score = similarity + (0.1 if year and cand_year == year else 0.0)
+        if score > best_score:
+            best, best_score = (url, cand_title), score
+    return best
+
+
+def crossref_best(title: str, year: int | None) -> tuple[str, str] | None:
+    """Title -> best Crossref match as (url, matched_title), or None."""
+    params = urllib.parse.urlencode(
+        {"query.bibliographic": title, "rows": "4", "select": "title,DOI,issued,URL"}
+    )
+    data = _http_json(f"https://api.crossref.org/works?{params}")
+    if not data:
+        return None
+    candidates: list[tuple[str, str, int | None]] = []
+    for item in data.get("message", {}).get("items", []):
+        cand_title = (item.get("title") or [""])[0]
+        parts = (
+            item.get("issued", {}).get("date-parts")
+            or item.get("published-print", {}).get("date-parts")
+            or [[None]]
+        )
+        cand_year = parts[0][0] if parts and parts[0] else None
+        url = f"https://doi.org/{item['DOI']}" if item.get("DOI") else item.get("URL")
+        candidates.append((url or "", cand_title, cand_year))
+    return _best_by_title(candidates, title, year)
+
+
+def openalex_best(title: str, year: int | None) -> tuple[str, str] | None:
+    """Title -> best OpenAlex work as (url, matched_title), or None."""
+    params = urllib.parse.urlencode({"search": title, "per_page": "4"})
+    data = _http_json(f"https://api.openalex.org/works?{params}")
+    if not data:
+        return None
+    candidates: list[tuple[str, str, int | None]] = []
+    for work in data.get("results", []):
+        cand_title = work.get("display_name") or ""
+        landing = (work.get("primary_location") or {}).get("landing_page_url")
+        url = work.get("doi") or landing or work.get("id")
+        candidates.append((url or "", cand_title, work.get("publication_year")))
+    return _best_by_title(candidates, title, year)
+
+
+def google_best(title: str) -> str | None:
+    """Title -> first Google Programmable Search hit, or None.
+
+    Opt-in and the only tier needing a secret: a no-op unless both
+    ``GOOGLE_SEARCH_API_KEY`` and ``GOOGLE_SEARCH_CX`` are set. For grey
+    literature the keyless catalogues miss; the human still confirms the URL.
+    """
+    key = os.environ.get("GOOGLE_SEARCH_API_KEY")
+    cx = os.environ.get("GOOGLE_SEARCH_CX")
+    if not key or not cx:
+        return None
+    params = urllib.parse.urlencode({"key": key, "cx": cx, "q": title, "num": "1"})
+    data = _http_json(f"https://www.googleapis.com/customsearch/v1?{params}")
+    if not data:
+        return None
+    items = data.get("items") or []
+    return items[0].get("link") if items else None
+
+
+def resolve_url(
+    text: str,
+    title: str | None = None,
+    year: int | None = None,
+    publisher: str | None = None,
+) -> dict[str, str] | None:
+    """Resolve a source URL from *text*/metadata, or None.
+
+    Returns ``{"url": ..., "via": "document|crossref|openalex|google"}`` (plus
+    ``"match"`` for a catalogue hit's matched title), or None when nothing
+    resolves. See the module docstring for the order and guarantees.
+    """
+    in_document = find_in_text(text, publisher)
+    if in_document:
+        return {"url": in_document, "via": "document"}
+
+    query = (title or guess_title(text)).strip()
+    if len(query) < 8:
+        return None
+    for finder, via in ((crossref_best, "crossref"), (openalex_best, "openalex")):
+        hit = finder(query, year)
+        if hit:
+            return {"url": hit[0], "via": via, "match": hit[1]}
+    google = google_best(query)
+    if google:
+        return {"url": google, "via": "google"}
+    return None
