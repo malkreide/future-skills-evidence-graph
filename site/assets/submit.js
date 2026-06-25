@@ -58,6 +58,55 @@
     els.hint.dataset.kind = kind || "";
   }
 
+  function detectSourceUrl(text, publisher) {
+    // Berichte tragen ihre eigene URL/DOI fast immer im Text (Titelseite,
+    // Fußzeile, „verfügbar unter …"). Wir lesen sie aus dem Dokument statt im
+    // Web zu suchen – das geht offline und ohne Backend. Eine DOI ist am
+    // verlässlichsten; sonst die plausibelste http(s)-URL.
+    if (!text) return "";
+    // Vorder- und Rückseite des Berichts, dort stehen die Links am ehesten.
+    const hay = `${text.slice(0, 20000)}\n${text.slice(-8000)}`;
+    const strip = (value) => value.replace(/[).,;:\]]+$/, "");
+
+    const doi = hay.match(/\b10\.\d{4,9}\/[^\s"<>)\]]+/i);
+    if (doi) return `https://doi.org/${strip(doi[0])}`;
+
+    const urls = (hay.match(/https?:\/\/[^\s"<>)\]]+/gi) || [])
+      .map(strip)
+      .filter((url) => !/\.(png|jpe?g|gif|svg|css|js|woff2?)$/i.test(url));
+    if (!urls.length) return "";
+
+    const hostOf = (url) => {
+      try {
+        return new URL(url).hostname.replace(/^www\./, "");
+      } catch (_) {
+        return "";
+      }
+    };
+    // 1) URL, deren Host zum Herausgeber passt; 2) häufigster Host; 3) erste.
+    const pub = (publisher || "").trim().toLowerCase();
+    if (pub) {
+      const match = urls.find((url) => hostOf(url).includes(pub) || pub.includes(hostOf(url).split(".")[0]));
+      if (match) return match;
+    }
+    const freq = {};
+    for (const url of urls) {
+      const host = hostOf(url);
+      if (host) freq[host] = (freq[host] || 0) + 1;
+    }
+    const topHost = Object.keys(freq).sort((a, b) => freq[b] - freq[a])[0];
+    return urls.find((url) => hostOf(url) === topHost) || urls[0];
+  }
+
+  function maybeAutofillUrl(text) {
+    // Eine vom Nutzer getippte URL nie überschreiben.
+    if (els.url.value.trim()) return;
+    const detected = detectSourceUrl(text, els.publisher.value);
+    if (!detected) return;
+    els.url.value = detected;
+    setHint("URL automatisch aus dem Dokument erkannt – bitte kurz prüfen.", "ok");
+  }
+
   async function extractPdfText(buffer) {
     // pdf.js erst hier laden; Fehler (z. B. offline) sauber nach oben geben.
     let pdfjs;
@@ -101,10 +150,12 @@
         }
         els.text.value = text;
         setFileStatus(`„${file.name}“ eingelesen (${text.length.toLocaleString("de-CH")} Zeichen).`, "ok");
+        maybeAutofillUrl(text);
       } else {
         const text = (await file.text()).trim();
         els.text.value = text;
         setFileStatus(`„${file.name}“ eingelesen (${text.length.toLocaleString("de-CH")} Zeichen).`, "ok");
+        maybeAutofillUrl(text);
       }
     } catch (err) {
       setFileStatus(err.message || "Datei konnte nicht gelesen werden.", "error");
@@ -136,7 +187,12 @@
     const url = els.url.value.trim();
     const text = els.text.value.trim();
     if (!url) {
-      setHint("Bitte eine Quellen-URL angeben (Pflichtfeld).", "error");
+      setHint(
+        text
+          ? "Im Dokument war keine URL/DOI zu finden – bitte die Quellen-URL eintragen (für den Beweispfad nötig)."
+          : "Bitte eine Quellen-URL angeben (Pflichtfeld).",
+        "error"
+      );
       els.url.focus();
       return;
     }
