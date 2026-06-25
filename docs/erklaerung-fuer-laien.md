@@ -78,6 +78,15 @@ Aber – und das ist entscheidend:
 > Die Maschine ist der fleissige **Rechercheassistent**,
 > der Mensch bleibt der **Chefredakteur**.
 
+### Selbst einen Bericht beisteuern
+
+Man muss nicht warten, bis die Maschine etwas findet: Über das Dashboard kann man
+**selbst einen Bericht einreichen** – einfach eine PDF oder einen Text per
+Drag & Drop ablegen (das geht auch bequem am Handy) oder nur einen Link angeben.
+Daraus werden wieder ausschliesslich **Vorschläge** erzeugt, die ein Mensch prüft
+– dieselbe Sorgfalt wie bei der automatischen Suche. So kann jede:r eine wichtige
+Studie einbringen, ohne Programmierkenntnisse und ohne etwas „live" zu schalten.
+
 ---
 
 ## Was sieht man am Ende?

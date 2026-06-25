@@ -31,9 +31,13 @@ Verwandte Dokumente: [../OPERATIONS.md](../OPERATIONS.md) (Runbook),
       übersprungen (die anderen Importer laufen trotzdem — graceful degradation).
 - [ ] `OPENALEX_MAILTO` als **Variable** hinterlegen (höfliche Kontakt-E-Mail für
       den OpenAlex-„polite pool").
-- [ ] *(Nur falls die optionale LLM-Vorbefüllung live genutzt wird)*
-      `ANTHROPIC_API_KEY` als Secret. Für das Pflicht-CI **nicht** nötig — das
-      läuft netzwerkfrei gegen Fixtures (`AI_PROVIDER=cache`).
+- [ ] *(Nur falls die optionale LLM-Vorbefüllung **oder** der manuelle
+      Bericht-Import live genutzt wird)* `ANTHROPIC_API_KEY` als Secret und
+      `AI_MODEL` als Variable hinterlegen. Beide treiben den manuellen
+      Bericht-Import (Dashboard-Dropzone / Issue-Formular / Workflow-Dispatch,
+      siehe [report-import.md](report-import.md)); ohne Provider ist dieser Pfad
+      ein No-op. Für das Pflicht-CI **nicht** nötig — das läuft netzwerkfrei
+      gegen Fixtures (`AI_PROVIDER=cache`).
 
 ## 3. Erster echter Betriebszyklus
 

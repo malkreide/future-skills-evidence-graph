@@ -23,6 +23,7 @@ requires human review through pull requests. Nothing here changes that.
 | Validation | `validate_data.py` | Schema + cross-refs + score drift |
 | Dashboard | `build_site.py` + `deploy-pages.yml` | Auto-deploys on push to `main` |
 | Pipeline | `research-pipeline.yml` | Cron Monday 05:17 UTC + manual dispatch |
+| Manual report intake | `ingest-from-issue.yml` (issue) · `ingest-reports.yml` (dispatch) · `parse_ingest_issue.py` · dashboard `site/einreichen.html` | Off-cycle; same LLM importer + candidate PR; needs `ANTHROPIC_API_KEY` + `AI_MODEL` |
 
 ## One-time setup
 
@@ -88,6 +89,36 @@ In GitHub settings:
    records the corrected positive.
 4. **Merge** the candidate PR.
 5. **Deploy** happens automatically on push to `main` (`deploy-pages.yml`).
+
+## Manual report intake (off-cycle)
+
+Besides the weekly cron, a human can submit an API-less report (OECD / WEF /
+UNESCO) on demand. All three entry points run the **same** LLM importer
+(`ingest_reports.py`) and write into the **same** `research/candidates` PR —
+every source and claim stays `candidate`, behind the same verbatim guard, until
+reviewed.
+
+1. **Dashboard dropzone (easiest, mobile).** The "Bericht einreichen" page
+   (`site/einreichen.html`, linked from the dashboard topbar). Drag-and-drop or
+   pick a PDF / text file, or paste text; a dropped PDF is read **in-browser**
+   (`pdf.js`). On submit it opens a **pre-filled issue** — it holds no token, so
+   the human confirms on GitHub where auth lives. Long extracted text falls back
+   to the clipboard; a bare PDF URL is read server-side.
+2. **Issue form.** New issue → "Bericht einreichen"
+   (`.github/ISSUE_TEMPLATE/ingest-report.yml`): a URL plus pasted text, an
+   attached PDF, or a direct PDF URL. The form auto-applies the `ingest` label.
+3. **Workflow dispatch.** Actions → "Import report candidate (manual)"
+   (`ingest-reports.yml`) with a report path / URL or a manifest — the original
+   path; it expects the plaintext to already be in the repo.
+
+`ingest-from-issue.yml` fires on every `ingest`-labelled issue, resolves the
+input (`parse_ingest_issue.py`, resolution order *pasted text → attached PDF →
+PDF from the URL*, 25 MB download cap), runs the importer, clusters, validates,
+updates the candidate PR, and comments the result — or the human-readable reason
+it found no text — back on the issue. It needs the `ANTHROPIC_API_KEY` secret and
+`AI_MODEL` variable, like the dispatch path; with no provider it is a no-op. From
+there, review the new candidates exactly as in the weekly cycle. Full mechanics
+and the security model: [docs/report-import.md](docs/report-import.md).
 
 ## Verification tests — every cycle
 
