@@ -23,6 +23,12 @@
   // vorausgefuellten Issues; dann via Zwischenablage statt Prefill.
   const PREFILL_TEXT_LIMIT = 5000;
 
+  // Findet sich keine URL/DOI im Dokument, fragen wir Crossref per Titel
+  // (keyless, CORS – laeuft direkt im Browser ohne Backend). Ein Treffer wird
+  // nur als Vorschlag uebernommen, wenn die Titel-Aehnlichkeit hoch genug ist.
+  const CROSSREF_URL = "https://api.crossref.org/works";
+  const TITLE_MATCH_THRESHOLD = 0.7;
+
   const els = {
     url: document.querySelector("#urlInput"),
     publisher: document.querySelector("#publisherInput"),
@@ -98,13 +104,90 @@
     return urls.find((url) => hostOf(url) === topHost) || urls[0];
   }
 
-  function maybeAutofillUrl(text) {
+  function guessTitle(text) {
+    // Beste Titel-Vermutung aus dem Fließtext: die längste „titelartige" Zeile
+    // unter den ersten paar Zeilen (Titelseite), ohne Inhaltsverzeichnis-Zeilen
+    // (Punktführung, führende Seitenzahlen) und mit überwiegend Buchstaben.
+    const lines = text.split("\n").map((line) => line.trim()).filter(Boolean);
+    let best = "";
+    for (const line of lines.slice(0, 25)) {
+      if (line.length < 15 || line.length > 200) continue;
+      if (/\.{4,}|^\d+(\s|\.|$)/.test(line)) continue;
+      const letters = (line.match(/[A-Za-zÄÖÜäöüß]/g) || []).length;
+      if (letters < line.length * 0.5) continue;
+      if (line.length > best.length) best = line;
+    }
+    return best;
+  }
+
+  function titleSimilarity(a, b) {
+    // Wort-Mengen-Ähnlichkeit (Sørensen-Dice); robust gegen Wortreihenfolge.
+    const tokens = (value) => (value.toLowerCase().match(/[a-z0-9äöüß]+/gi) || []);
+    const setA = new Set(tokens(a));
+    const setB = new Set(tokens(b));
+    if (!setA.size || !setB.size) return 0;
+    let shared = 0;
+    for (const word of setA) if (setB.has(word)) shared += 1;
+    return (2 * shared) / (setA.size + setB.size);
+  }
+
+  async function crossrefLookup(title, yearValue) {
+    // Titel -> beste Quelle bei Crossref. Gibt {url, title} nur zurueck, wenn
+    // ein Treffer die Aehnlichkeitsschwelle (und, falls angegeben, das Jahr ±1)
+    // erreicht. Fehler/CORS/offline -> null (still, kein Abbruch).
+    try {
+      const params = new URLSearchParams({
+        "query.bibliographic": title,
+        rows: "4",
+        select: "title,DOI,issued,URL",
+      });
+      const response = await fetch(`${CROSSREF_URL}?${params.toString()}`, {
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) return null;
+      const payload = await response.json();
+      const wantYear = parseInt(yearValue, 10) || null;
+      let best = null;
+      for (const item of payload?.message?.items || []) {
+        const candidate = (item.title && item.title[0]) || "";
+        const similarity = titleSimilarity(title, candidate);
+        if (similarity < TITLE_MATCH_THRESHOLD) continue;
+        const year = item.issued?.["date-parts"]?.[0]?.[0] || null;
+        if (wantYear && year && Math.abs(year - wantYear) > 1) continue;
+        const score = similarity + (wantYear && year === wantYear ? 0.1 : 0);
+        const url = item.DOI ? `https://doi.org/${item.DOI}` : item.URL;
+        if (url && (!best || score > best.score)) best = { url, title: candidate, score };
+      }
+      return best;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function maybeResolveUrl(text, title) {
     // Eine vom Nutzer getippte URL nie überschreiben.
     if (els.url.value.trim()) return;
-    const detected = detectSourceUrl(text, els.publisher.value);
-    if (!detected) return;
-    els.url.value = detected;
-    setHint("URL automatisch aus dem Dokument erkannt – bitte kurz prüfen.", "ok");
+    // 1) URL/DOI direkt aus dem Dokument (offline, sofort).
+    const inDocument = detectSourceUrl(text, els.publisher.value);
+    if (inDocument) {
+      els.url.value = inDocument;
+      setHint("URL automatisch aus dem Dokument erkannt – bitte kurz prüfen.", "ok");
+      return;
+    }
+    // 2) Sonst Titel -> Crossref (Browser-Lookup, keyless).
+    const query = (title || guessTitle(text)).trim();
+    if (query.length < 8) return;
+    setHint("Suche eine passende Quelle (Crossref) …", "busy");
+    const found = await crossrefLookup(query, els.year.value);
+    // Falls der Nutzer in der Zwischenzeit selbst getippt hat: nicht überschreiben.
+    if (els.url.value.trim()) return;
+    if (found) {
+      els.url.value = found.url;
+      const shortTitle = found.title.length > 70 ? `${found.title.slice(0, 70)}…` : found.title;
+      setHint(`Mögliche Quelle via Crossref gefunden („${shortTitle}“) – bitte prüfen.`, "ok");
+    } else {
+      setHint("Keine URL im Dokument und kein eindeutiger Crossref-Treffer – bitte die Quellen-URL eintragen.", "");
+    }
   }
 
   async function extractPdfText(buffer) {
@@ -120,13 +203,20 @@
     }
     pdfjs.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
     const doc = await pdfjs.getDocument({ data: buffer }).promise;
+    let title = "";
+    try {
+      const meta = await doc.getMetadata();
+      title = (meta?.info?.Title || "").trim();
+    } catch (_) {
+      // Metadaten sind optional – ohne Titel fällt der Lookup auf guessTitle zurück.
+    }
     const pages = [];
     for (let i = 1; i <= doc.numPages; i += 1) {
       const page = await doc.getPage(i);
       const content = await page.getTextContent();
       pages.push(content.items.map((item) => item.str).join(" "));
     }
-    return pages.join("\n\n").replace(/[ \t]+\n/g, "\n").trim();
+    return { text: pages.join("\n\n").replace(/[ \t]+\n/g, "\n").trim(), title };
   }
 
   async function handleFile(file) {
@@ -139,7 +229,7 @@
     try {
       if (isPdf) {
         setFileStatus(`Lese „${file.name}“ …`, "busy");
-        const text = await extractPdfText(await file.arrayBuffer());
+        const { text, title } = await extractPdfText(await file.arrayBuffer());
         if (!text) {
           setFileStatus(
             "Aus dem PDF ließ sich kein Text lesen (evtl. ein Scan ohne Textebene). " +
@@ -150,12 +240,12 @@
         }
         els.text.value = text;
         setFileStatus(`„${file.name}“ eingelesen (${text.length.toLocaleString("de-CH")} Zeichen).`, "ok");
-        maybeAutofillUrl(text);
+        await maybeResolveUrl(text, title);
       } else {
         const text = (await file.text()).trim();
         els.text.value = text;
         setFileStatus(`„${file.name}“ eingelesen (${text.length.toLocaleString("de-CH")} Zeichen).`, "ok");
-        maybeAutofillUrl(text);
+        await maybeResolveUrl(text, "");
       }
     } catch (err) {
       setFileStatus(err.message || "Datei konnte nicht gelesen werden.", "error");
