@@ -161,6 +161,42 @@ flowchart TD
   bzw. `--compare-embedding`) *nicht* schlagen – die Heuristik führt auf dem
   Label-Set mit F1 0.92 (Modell 0.86, Embedding `st` 0.76).
 
+### 4a · Manueller Eingang (Mensch reicht selbst ein)
+
+Neben dem wöchentlichen Lauf kann ein Mensch einen Bericht (OECD / WEF / UNESCO
+o. ä.) **jederzeit selbst einreichen** – per Drag & Drop im Dashboard, über ein
+Issue-Formular oder per Workflow-Dispatch. Alle drei Wege münden in **denselben
+Kandidaten-PR und dieselben Guard Rails** wie die Pipeline; nichts wird
+automatisch aktiv.
+
+```mermaid
+flowchart TD
+    DASH["🌐 Dashboard-Dropzone<br/>site/einreichen.html<br/>Drag&Drop · PDF→Text (pdf.js) · mobil"]
+    FORM["📝 Issue-Formular<br/>ingest-report.yml · Label ingest"]
+    DISP["⚙️ workflow_dispatch<br/>ingest-reports.yml"]
+
+    DASH -->|"vorausgefülltes Issue<br/>(kein Token im Browser)"| FORM
+    FORM --> WF["ingest-from-issue.yml<br/>parse_ingest_issue.py<br/>Text · PDF-Anhang · PDF-URL"]
+    DISP --> IMP
+    WF --> IMP["ingest_reports.py (LLM)<br/>verbatim Befund → Claim"]
+    IMP --> CANDPR["Kandidaten im<br/>research/candidates-PR"]
+    CANDPR --> REVIEW2["👤 Menschliche Review<br/>promote_candidate.py"]
+
+    classDef ui fill:#e8f0fe,stroke:#4285f4,color:#1a1a1a;
+    classDef machine fill:#fef7e0,stroke:#f9ab00,color:#1a1a1a;
+    classDef human fill:#e6f4ea,stroke:#34a853,color:#1a1a1a;
+    class DASH,FORM,DISP ui;
+    class WF,IMP,CANDPR machine;
+    class REVIEW2 human;
+```
+
+Der **Verbatim-Guard** gilt auch hier: jede vom LLM vorgeschlagene Aussage muss
+ein wörtliches Zitat des Berichtstexts sein, sonst wird sie verworfen. Die
+Dashboard-Seite hält bewusst **kein Secret** – sie liest die Datei lokal und
+öffnet nur ein vorausgefülltes Issue, das der Mensch bestätigt; die Anmeldung
+übernimmt GitHub. Eine reine PDF-URL wird erst serverseitig (im Workflow)
+gelesen. Details: [report-import.md](report-import.md).
+
 ---
 
 ## 5. Das Vertrauens-Prinzip: Mensch + reproduzierbare Bewertung
@@ -272,4 +308,5 @@ graph TB
 *Verwandte Dokumente:* [README.md](../README.md) ·
 [OPERATIONS.md](../OPERATIONS.md) (Runbook) ·
 [erklaerung-fuer-laien.md](erklaerung-fuer-laien.md) (ohne Technik) ·
+[report-import.md](report-import.md) (manueller Bericht-Import) ·
 [lehrplan21-coverage-methodik.md](lehrplan21-coverage-methodik.md).
