@@ -26,6 +26,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import urllib.error
 import urllib.parse
 import urllib.request
 from typing import Any
@@ -247,6 +248,43 @@ def resolve_url(
     return None
 
 
+def _google_diagnostic(title: str) -> str:
+    """Raw Google call for the smoke test: report HTTP status / error / counts.
+
+    Diagnostic only — unlike ``google_best`` (which fails silent in production)
+    this surfaces *why* Google returned nothing: an HTTP 403 (Custom Search API
+    not enabled or key restricted), 429 (daily quota), or a genuine 0-results.
+    The API key is never printed (only the URL carries it, and the URL is not
+    logged).
+    """
+    key = os.environ.get("GOOGLE_SEARCH_API_KEY")
+    cx = os.environ.get("GOOGLE_SEARCH_CX")
+    if not (key and cx):
+        return "nicht konfiguriert"
+    params = urllib.parse.urlencode({"key": key, "cx": cx, "q": title, "num": "1"})
+    request = urllib.request.Request(
+        f"https://www.googleapis.com/customsearch/v1?{params}",
+        headers={"Accept": "application/json"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=HTTP_TIMEOUT) as response:
+            data = json.load(response)
+        total = data.get("searchInformation", {}).get("totalResults", "?")
+        items = data.get("items") or []
+        first = items[0].get("link") if items else "—"
+        return f"HTTP 200 · totalResults={total} · erster Treffer={first}"
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", "replace")
+        message = ""
+        try:
+            message = json.loads(body).get("error", {}).get("message", "")
+        except (ValueError, AttributeError):
+            message = body[:200]
+        return f"HTTP {exc.code}: {message}"
+    except Exception as exc:  # noqa: BLE001 - report any transport error verbatim
+        return f"Fehler: {exc}"
+
+
 def _diagnose(title: str, year: int | None, publisher: str | None) -> int:
     """Print a per-tier resolution diagnostic for *title*; used by the smoke test.
 
@@ -267,6 +305,10 @@ def _diagnose(title: str, year: int | None, publisher: str | None) -> int:
     if google_configured:
         google = google_best(title)
         print(f"  Google   : {google or '— kein Treffer'}  (konfiguriert)")
+        # When configured but empty, surface the raw API status so a 403/429 vs a
+        # true 0-results is distinguishable.
+        if not google:
+            print(f"  Google-Diagnose : {_google_diagnostic(title)}")
     else:
         print("  Google   : übersprungen — GOOGLE_SEARCH_API_KEY / GOOGLE_SEARCH_CX nicht gesetzt")
 
