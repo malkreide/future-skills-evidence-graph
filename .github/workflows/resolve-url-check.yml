@@ -38,7 +38,9 @@ jobs:
           YEAR: ${{ inputs.year }}
           PUBLISHER: ${{ inputs.publisher }}
           GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
-          GOOGLE_SEARCH_CX: ${{ vars.GOOGLE_SEARCH_CX }}
+          # cx is not sensitive — accept it as a variable OR a secret so it works
+          # wherever it was stored.
+          GOOGLE_SEARCH_CX: ${{ vars.GOOGLE_SEARCH_CX || secrets.GOOGLE_SEARCH_CX }}
         run: |
           python scripts/resolve_source_url.py \
             --title "$TITLE" \
