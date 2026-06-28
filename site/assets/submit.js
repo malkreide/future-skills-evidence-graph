@@ -219,6 +219,12 @@
     return { text: pages.join("\n\n").replace(/[ \t]+\n/g, "\n").trim(), title };
   }
 
+  // Name of the dropped/picked PDF, remembered so onSubmit can steer the user to
+  // attach the original PDF on GitHub. A big report's extracted text does not fit
+  // through a GitHub issue body (~64 KB limit), so the clipboard-paste path is a
+  // dead end for it; attaching the PDF lets the workflow extract it server-side.
+  let droppedPdfName = "";
+
   async function handleFile(file) {
     if (!file) return;
     if (file.size > MAX_FILE_BYTES) {
@@ -239,11 +245,13 @@
           return;
         }
         els.text.value = text;
+        droppedPdfName = file.name;
         setFileStatus(`„${file.name}“ eingelesen (${text.length.toLocaleString("de-CH")} Zeichen).`, "ok");
         await maybeResolveUrl(text, title);
       } else {
         const text = (await file.text()).trim();
         els.text.value = text;
+        droppedPdfName = "";
         setFileStatus(`„${file.name}“ eingelesen (${text.length.toLocaleString("de-CH")} Zeichen).`, "ok");
         await maybeResolveUrl(text, "");
       }
@@ -304,6 +312,18 @@
       setHint("GitHub-Issue geöffnet – dort nur noch absenden.", "ok");
       return;
     }
+    // Großer Bericht aus einem PDF: der Volltext passt nicht in ein Issue (~64 KB).
+    // Statt der Zwischenablage die Original-PDF auf GitHub anhängen lassen – der
+    // Workflow extrahiert sie dann server-seitig.
+    if (droppedPdfName) {
+      window.open(buildIssueUrl({ owner, repo, includeText: false }), "_blank", "noopener");
+      setHint(
+        `Großer Bericht: häng auf der GitHub-Seite die PDF „${droppedPdfName}“ im Feld ` +
+          "„PDF anhängen“ an und sende ab (der Text passt nicht in ein Issue).",
+        "ok"
+      );
+      return;
+    }
     if (text) {
       const copied = await copyText(text);
       window.open(buildIssueUrl({ owner, repo, includeText: false }), "_blank", "noopener");
@@ -345,6 +365,12 @@
     }
   });
   els.file.addEventListener("change", () => handleFile(els.file.files?.[0]));
+  // A manual edit means the textarea is now the source of truth, not the PDF —
+  // so don't steer to attaching the (now-divergent) original PDF. Programmatic
+  // fills (els.text.value = …) do not fire "input", so this only reacts to typing.
+  els.text.addEventListener("input", () => {
+    droppedPdfName = "";
+  });
 
   els.submit.addEventListener("click", onSubmit);
 })();
