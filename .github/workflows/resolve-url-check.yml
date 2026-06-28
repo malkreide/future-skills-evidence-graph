@@ -1,9 +1,9 @@
 name: Resolve URL check (diagnostic)
 
-# Manual smoke test for the source-URL resolver (Option B), especially the
-# optional Google tier: enter a report title and see which tier (document /
-# Crossref / OpenAlex / Google) resolves a URL, and whether the Google
-# credentials are configured. Makes no LLM call, opens no PR, changes no data.
+# Manual smoke test for the source-URL resolver (Option B): enter a report title
+# and see which tier (document / Crossref / OpenAlex / SearXNG / DuckDuckGo /
+# Google) resolves a URL, and whether the optional backends are configured.
+# Makes no LLM call, opens no PR, changes no data.
 on:
   workflow_dispatch:
     inputs:
@@ -30,6 +30,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install the optional open-source search tier (DuckDuckGo)
+        run: pip install ddgs
       - name: Resolve URL for the given title
         # Inputs are passed via env (never interpolated into the shell) to avoid
         # script injection from the title/publisher text.
@@ -37,6 +39,10 @@ jobs:
           TITLE: ${{ inputs.title }}
           YEAR: ${{ inputs.year }}
           PUBLISHER: ${{ inputs.publisher }}
+          # Optional open-web tiers: SEARXNG_URL points at a self-hosted SearXNG;
+          # RESOLVE_OPEN_WEB=1 lifts the credible-domain allowlist.
+          SEARXNG_URL: ${{ vars.SEARXNG_URL }}
+          RESOLVE_OPEN_WEB: ${{ vars.RESOLVE_OPEN_WEB }}
           GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
           # cx is not sensitive — accept it as a variable OR a secret so it works
           # wherever it was stored.

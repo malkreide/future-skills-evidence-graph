@@ -93,15 +93,19 @@ class ResolveUrlTests(unittest.TestCase):
         self.assertEqual(result["url"], "https://doi.org/10.9/oa")
 
     def test_google_gated_by_env(self):
-        # Without keys the Google tier is a no-op → overall None when catalogues miss.
+        # Catalogues + web tiers miss and Google is unconfigured → overall None.
         with mock.patch.object(rsu, "crossref_best", return_value=None), mock.patch.object(
             rsu, "openalex_best", return_value=None
+        ), mock.patch.object(rsu, "searxng_best", return_value=None), mock.patch.object(
+            rsu, "duckduckgo_best", return_value=None
         ), mock.patch.dict("os.environ", {}, clear=True):
             self.assertIsNone(rsu.resolve_url("no link", title="Some grey literature report"))
 
-    def test_google_used_when_configured(self):
+    def test_google_used_as_last_fallback(self):
         with mock.patch.object(rsu, "crossref_best", return_value=None), mock.patch.object(
             rsu, "openalex_best", return_value=None
+        ), mock.patch.object(rsu, "searxng_best", return_value=None), mock.patch.object(
+            rsu, "duckduckgo_best", return_value=None
         ), mock.patch.dict(
             "os.environ", {"GOOGLE_SEARCH_API_KEY": "k", "GOOGLE_SEARCH_CX": "c"}, clear=True
         ), mock.patch.object(
@@ -109,6 +113,58 @@ class ResolveUrlTests(unittest.TestCase):
         ):
             result = rsu.resolve_url("no link", title="Some grey literature report")
         self.assertEqual(result, {"url": "https://oecd.org/report", "via": "google"})
+
+    def test_web_tier_used_before_google(self):
+        # A DuckDuckGo/SearXNG hit wins over the optional Google fallback.
+        with mock.patch.object(rsu, "crossref_best", return_value=None), mock.patch.object(
+            rsu, "openalex_best", return_value=None
+        ), mock.patch.object(
+            rsu, "searxng_best", return_value=("https://weforum.org/report", "Jobs Report")
+        ), mock.patch.object(rsu, "google_best") as google:
+            result = rsu.resolve_url("no link", title="The Future of Jobs Report")
+        self.assertEqual(result["via"], "searxng")
+        self.assertEqual(result["url"], "https://weforum.org/report")
+        google.assert_not_called()
+
+
+class WebSearchTests(unittest.TestCase):
+    OECD = "The Future of Jobs Report 2023"
+
+    def test_host_allowed(self):
+        self.assertTrue(rsu._host_allowed("https://www.weforum.org/reports/x"))
+        self.assertTrue(rsu._host_allowed("https://data.oecd.org/x"))  # subdomain
+        self.assertFalse(rsu._host_allowed("https://random-blog.example.com/x"))
+
+    def test_best_web_result_filters_to_allowlist(self):
+        results = [
+            {"title": self.OECD, "href": "https://random.example.com/jobs"},
+            {"title": self.OECD, "href": "https://www.weforum.org/the-future-of-jobs"},
+        ]
+        with mock.patch.dict("os.environ", {}, clear=True):
+            hit = rsu._best_web_result(results, self.OECD)
+        self.assertEqual(hit[0], "https://www.weforum.org/the-future-of-jobs")
+
+    def test_best_web_result_open_web_allows_any_host(self):
+        results = [{"title": self.OECD, "url": "https://random.example.com/jobs"}]
+        with mock.patch.dict("os.environ", {"RESOLVE_OPEN_WEB": "1"}, clear=True):
+            hit = rsu._best_web_result(results, self.OECD)
+        self.assertEqual(hit[0], "https://random.example.com/jobs")
+
+    def test_best_web_result_rejects_low_similarity(self):
+        results = [{"title": "Totally different topic", "url": "https://oecd.org/x"}]
+        self.assertIsNone(rsu._best_web_result(results, self.OECD))
+
+    def test_searxng_off_without_env(self):
+        with mock.patch.dict("os.environ", {}, clear=True):
+            self.assertIsNone(rsu.searxng_best(self.OECD))
+
+    def test_searxng_uses_instance(self):
+        payload = {"results": [{"title": self.OECD, "url": "https://www.weforum.org/jobs"}]}
+        with mock.patch.dict(
+            "os.environ", {"SEARXNG_URL": "https://searx.example"}, clear=True
+        ), mock.patch.object(rsu, "_http_json", return_value=payload):
+            hit = rsu.searxng_best(self.OECD)
+        self.assertEqual(hit[0], "https://www.weforum.org/jobs")
 
 
 if __name__ == "__main__":

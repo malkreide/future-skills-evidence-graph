@@ -122,12 +122,16 @@ and the security model: [docs/report-import.md](docs/report-import.md).
 
 **URL is optional.** When a submitter gives no source URL,
 `scripts/resolve_source_url.py` resolves one *document → Crossref → OpenAlex →
-(optional) Google*, only accepting a catalogue hit above a title-similarity
-threshold and within ±1 year; otherwise the workflow uses the issue URL as a
-flagged placeholder for the reviewer to correct. The resolved URL is named in the
-issue comment and stays a candidate. The Google tier is opt-in and the only one
-needing a secret (`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX` variable);
-Crossref/OpenAlex run keyless.
+SearXNG → DuckDuckGo → (optional) Google*, only accepting a catalogue hit above a
+title-similarity threshold and within ±1 year; otherwise the workflow uses the
+issue URL as a flagged placeholder for the reviewer to correct. The resolved URL
+is named in the issue comment and stays a candidate. The two open-web tiers are
+open-source and keyless: **DuckDuckGo** (the `ddgs` library, runs out of the box)
+and **SearXNG** (a self-hosted instance via the `SEARXNG_URL` variable). Their
+hits are restricted to the in-code `CREDIBLE_DOMAINS` allowlist unless
+`RESOLVE_OPEN_WEB=1`. Google is now only an optional last fallback
+(`GOOGLE_SEARCH_API_KEY` secret + `GOOGLE_SEARCH_CX`). Verify any of these with the
+**Resolve URL check** workflow (it prints each tier's result).
 
 To verify the resolver (and the Google credentials) without an LLM call or a
 candidate PR, run the **Resolve URL check** workflow (Actions →

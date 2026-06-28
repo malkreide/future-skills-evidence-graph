@@ -50,6 +50,11 @@ jobs:
           # Optional, opt-in: only set these to enable the Google fallback for
           # grey literature the keyless catalogues miss. Unset → that tier is a
           # no-op; Crossref/OpenAlex still run without any key.
+          # Open-source web-search tiers (no key): DuckDuckGo runs out of the box
+          # (ddgs is in requirements-dev); SEARXNG_URL opts into a self-hosted
+          # SearXNG; RESOLVE_OPEN_WEB=1 lifts the credible-domain allowlist.
+          SEARXNG_URL: ${{ vars.SEARXNG_URL }}
+          RESOLVE_OPEN_WEB: ${{ vars.RESOLVE_OPEN_WEB }}
           GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
           # cx is not sensitive — accept it as a variable OR a secret.
           GOOGLE_SEARCH_CX: ${{ vars.GOOGLE_SEARCH_CX || secrets.GOOGLE_SEARCH_CX }}
