@@ -1,0 +1,39 @@
+[
+  {
+    "id": "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a",
+    "title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
+    "authors": [
+      "Stefania Bocconi",
+      "Augusto Chioccariello",
+      "Panagiotis Kampylis",
+      "Valentina Dagien\u0117",
+      "Patricia Wastiau",
+      "Katja Engelhardt",
+      "Jeffrey Earp",
+      "Milena Horvath",
+      "Egl\u0117 Jasut\u0117",
+      "Chiara Malagoli",
+      "Vaida Masiulionyt\u0117-Dagien\u0117",
+      "Gabriel\u0117 Stupurien\u0117",
+      "European Commission, Joint Research Centre (JRC)"
+    ],
+    "year": 2022,
+    "doi": null,
+    "url": "https://doi.org/10.2760/126955",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Stefania Bocconi",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "This JRC report updates and extends the 2016 CompuThink study, providing an overview of how Computational Thinking (CT) skills are integrated into compulsory education curricula across 22 EU Member States and eight non-EU countries. Based on a systematic literature review, a survey of Ministries of Education, online consultations, and nine in-depth case studies, it discusses developments between 2016 and 2021 and offers eleven policy recommendations.",
+    "topics": [
+      "systems thinking"
+    ],
+    "relevance_score": 0.6,
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "audience": "learner"
+  }
+]

@@ -1,0 +1,376 @@
+[
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a",
+    "statement": "At the primary level, commonly adopted pedagogical approaches include playful learning, learning by doing, learning from mistakes, and working in small groups.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"At the primary level, commonly adopted pedagogical approaches include playful learning, learning by doing, learning from mistakes, and working in small groups.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "6-11",
+          "outcome": "Hands-on, playful pedagogical approaches help young learners move from being passive consumers of technology to being creators of digital objects.",
+          "context": "Primary education (ISCED 1) across European case-study countries integrating CT skills.",
+          "evidence_strength": "moderate"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-2",
+    "statement": "At the lower secondary level, approaches focus on fostering problem-solving and logical thinking skills, promoting student autonomy/agency through project-based learning, game-based approaches, pairprogramming, and learning individually.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"At the lower secondary level, approaches focus on fostering problem-solving and logical thinking skills, promoting student autonomy/agency through project-based learning, game-based approaches, pairprogramming, and learning individually.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "11-16",
+          "outcome": "Pedagogical approaches that promote student autonomy support development of problem-solving and logical thinking skills.",
+          "context": "Lower secondary education (ISCED 2) in case-study countries.",
+          "evidence_strength": "moderate"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-3",
+    "statement": "The value of debugging as a strategy is exploited both at primary and lower secondary level to create a culture of learning-through-error, encouraging students to re-evaluate the significance of mistakes as a means for furthering their expertise.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"The value of debugging as a strategy is exploited both at primary and lower secondary level to create a culture of learning-through-error, encouraging students to re-evaluate the significance of mistakes as a means for furthering their expertise.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "6-16",
+          "outcome": "Debugging fosters a culture of learning-through-error that strengthens student expertise.",
+          "context": "Primary and lower secondary education in case-study countries.",
+          "evidence_strength": "low"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-4",
+    "statement": "By controlling robots or constructing programs through a sequence of instructions, learners gradually move from being passive consumers of technology to being creators of digital objects.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"By controlling robots or constructing programs through a sequence of instructions, learners gradually move from being passive consumers of technology to being creators of digital objects.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "6-11",
+          "outcome": "Use of programmable robots and block-based environments shifts learners from passive technology use to active creation.",
+          "context": "Primary-level CT teaching using programmable robots and block-based visual programming environments.",
+          "evidence_strength": "low"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-5",
+    "statement": "Evidence collected from in-depth case studies involving nine European countries shows that basic CS concepts integrated into curricula centre around the relationship between \"Algorithms\" and \"Programming\", addressed at different levels of age-appropriate complexity.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"Evidence collected from in-depth case studies involving nine European countries shows that basic CS concepts integrated into curricula centre around the relationship between \"Algorithms\" and \"Programming\", addressed at different levels of age-appropriate complexity.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "6-16",
+          "outcome": "Basic Computer Science concepts (algorithms and programming) provide the foundation for developing students' CT skills.",
+          "context": "Nine in-depth case studies in European countries (FI, FR, HR, LT, NO, PL, SE, SK, UK-ENG).",
+          "evidence_strength": "moderate"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-6",
+    "statement": "In the initial years of primary school (students aged 5-7), learners' cognitive development with respect to the different facets of Computational Thinking (CT) skills development is best addressed through work on spatial skills and physical computing, e.g., robots.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"In the initial years of primary school (students aged 5-7), learners' cognitive development with respect to the different facets of Computational Thinking (CT) skills development is best addressed through work on spatial skills and physical computing, e.g., robots.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "5-7",
+          "outcome": "Early primary CT development is best supported through spatial skills and physical computing activities.",
+          "context": "Initial years of primary school, drawn from the literature review.",
+          "evidence_strength": "low"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-7",
+    "statement": "Rijke et al. (2018, p. 86) \"Older students were found to do better on the abstraction task than students in the youngest age group. [...] No differences in performance on the decomposition task were found, either between age groups, or between males and females.\"",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"Rijke et al. (2018, p. 86) \"Older students were found to do better on the abstraction task than students in the youngest age group. [...] No differences in performance on the decomposition task were found, either between age groups, or between males and females.\"\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "7-12",
+          "outcome": "Older students outperform younger ones on abstraction tasks, while no age or gender differences were found on decomposition tasks.",
+          "context": "Research study on CT in primary school comparing different age groups.",
+          "evidence_strength": "low"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-8",
+    "statement": "the lack of adequately trained teachers was mentioned most (83 times) and across all education levels.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"the lack of adequately trained teachers was mentioned most (83 times) and across all education levels.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "6-18",
+          "outcome": "Lack of adequately trained teachers is the most frequently cited barrier to integrating CT across education levels.",
+          "context": "Computational Thinking Educational Policy Initiatives (CTEPI) survey across education levels.",
+          "evidence_strength": "moderate"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-9",
+    "statement": "Bower et al. (2017) found evidence that teachers participating in training workshops improve their basic grasp of CT content, pedagogy, and technology in a relatively short time, and (significantly) benefited from heightened confidence in dealing with these areas.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"Bower et al. (2017) found evidence that teachers participating in training workshops improve their basic grasp of CT content, pedagogy, and technology in a relatively short time, and (significantly) benefited from heightened confidence in dealing with these areas.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": null,
+          "outcome": "Training workshops improve teachers' grasp of CT content, pedagogy and technology and raise their confidence.",
+          "context": "Professional development workshops for teachers, from the literature review.",
+          "evidence_strength": "moderate"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-10",
+    "statement": "Sun et al. (2021, p. 355) found that primary school girls have a more positive attitude to STEM, with slightly higher CT skill development rates as well.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"Sun et al. (2021, p. 355) found that primary school girls have a more positive attitude to STEM, with slightly higher CT skill development rates as well.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": "6-11",
+          "outcome": "Primary school girls showed a more positive attitude to STEM and slightly higher CT skill development rates.",
+          "context": "Research study on gender and CT skill development in primary school.",
+          "evidence_strength": "low"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  },
+  {
+    "id": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-11",
+    "statement": "Lamprou and Repenning (2018) report dramatic rises in Swiss teachers' confidence to teach coding and develop CT skills after a 14-week ITE course taken to prepare them for the introduction of these subjects as mandatory for student study.",
+    "source_ids": [
+      "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    ],
+    "text_anchor": "report excerpt: \"Lamprou and Repenning (2018) report dramatic rises in Swiss teachers' confidence to teach coding and develop CT skills after a 14-week ITE course taken to prepare them for the introduction of these subjects as mandatory for student study.\"",
+    "context": "Auto-extracted candidate from report. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "llm_report_finding_extraction",
+    "status": "candidate",
+    "created_at": "2026-06-28",
+    "reviewed_at": null,
+    "assist": {
+      "suggestions": [
+        {
+          "age_range": null,
+          "outcome": "A 14-week initial teacher education course dramatically raised teachers' confidence to teach coding and CT.",
+          "context": "Initial Teacher Education in Switzerland preparing teachers for mandatory CT/coding.",
+          "evidence_strength": "low"
+        }
+      ],
+      "provenance": {
+        "model": "claude-opus-4-8",
+        "prompt_version": "report-import-v1",
+        "created_at": "2026-06-28"
+      }
+    }
+  }
+]
