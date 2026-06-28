@@ -1,0 +1,102 @@
+name: Discover web candidates (manual)
+
+# Manually triggered ONLY. Runs the grey-literature discovery lane
+# (scripts/ingest_websearch.py): a topic query -> candidate web sources the
+# keyless catalogues (OpenAlex / Crossref / ERIC) never surface. It is never part
+# of mandatory CI (see validate.yml) and never runs on a schedule. It writes into
+# the same candidate pull-request branch as the research pipeline; every source
+# stays a candidate until a human reviews it. No claims are minted here.
+#
+# Search is keyless out of the box: DuckDuckGo via the open-source `ddgs` library
+# (installed below), optionally a self-hosted SearXNG (`SEARXNG_URL`), and Google
+# only if its secret is configured. Open search, tiered trust: every hit is kept
+# and labelled trusted / watch / open per data/source_domains.json.
+on:
+  workflow_dispatch:
+    inputs:
+      query:
+        description: "Search query (e.g. 'AI literacy curriculum primary school'). Ignored if manifest is set."
+        required: false
+        default: ""
+      manifest:
+        description: "Path to a JSON array of query strings to run in one batch."
+        required: false
+        default: ""
+      num:
+        description: "Results per query per backend (max 10)."
+        required: false
+        default: "10"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore pending candidates from open pull request branch
+        run: |
+          # Reuse the research pipeline's candidate branch so the discovery
+          # importer deduplicates against candidates already awaiting review.
+          if git fetch origin research/candidates; then
+            for pattern in 'data/sources/candidates-*.json' 'data/claims/candidates-*.json' 'data/skills/candidates-*.json'; do
+              git checkout FETCH_HEAD -- "$pattern" || echo "No pending files for $pattern."
+            done
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        # Minimal: jsonschema for validation, ddgs for the keyless DuckDuckGo tier.
+        # No clustering/LLM here, so the heavier dev deps are not needed.
+        run: pip install jsonschema ddgs
+      - name: Discover web candidate source(s)
+        run: |
+          if [ -n "${MANIFEST}" ]; then
+            python scripts/ingest_websearch.py --manifest "${MANIFEST}" --num "${NUM:-10}"
+          else
+            python scripts/ingest_websearch.py --query "${QUERY}" --num "${NUM:-10}"
+          fi
+        env:
+          QUERY: ${{ inputs.query }}
+          MANIFEST: ${{ inputs.manifest }}
+          NUM: ${{ inputs.num }}
+          # Optional backends: SearXNG (self-hosted, keyless) and Google (paid,
+          # last fallback). DuckDuckGo needs no configuration.
+          SEARXNG_URL: ${{ vars.SEARXNG_URL }}
+          GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
+          GOOGLE_SEARCH_CX: ${{ vars.GOOGLE_SEARCH_CX || secrets.GOOGLE_SEARCH_CX }}
+      - name: Validate candidates
+        run: python scripts/validate_data.py
+      - name: Open or update candidate pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for pattern in "data/sources/candidates-*.json" "data/claims/candidates-*.json" "data/skills/candidates-*.json"; do
+            if compgen -G "$pattern" > /dev/null; then
+              git add -- $pattern
+            fi
+          done
+          if git diff --cached --quiet; then
+            echo "No candidate changes."
+            exit 0
+          fi
+          branch="research/candidates"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Rebuild the candidate branch from the current base, preserving the
+          # pending candidates restored above, then refresh the open pull request.
+          git checkout -B "$branch"
+          git commit -m "chore: add web-search candidates"
+          git push --force origin "$branch"
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --title "chore: add research candidates" \
+              --body "Manual web-search discovery: candidate web sources (source_type web_resource), tagged trusted/watch/open per data/source_domains.json. Everything remains a candidate until reviewed." \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch"
+          else
+            echo "Updated existing pull request for $branch."
+          fi

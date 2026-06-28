@@ -24,6 +24,7 @@ requires human review through pull requests. Nothing here changes that.
 | Dashboard | `build_site.py` + `deploy-pages.yml` | Auto-deploys on push to `main` |
 | Pipeline | `research-pipeline.yml` | Cron Monday 05:17 UTC + manual dispatch |
 | Manual report intake | `ingest-from-issue.yml` (issue) · `ingest-reports.yml` (dispatch) · `parse_ingest_issue.py` · dashboard `site/einreichen.html` | Off-cycle; same LLM importer + candidate PR; needs `ANTHROPIC_API_KEY` + `AI_MODEL` |
+| Web-search discovery | `ingest-websearch.yml` (dispatch) · `ingest_websearch.py` · `data/source_domains.json` | Off-cycle; query → candidate web sources; keyless (DuckDuckGo/`ddgs`); open search, tiered trust |
 
 ## One-time setup
 
@@ -142,9 +143,15 @@ tier's result and whether Google is configured.
 
 `scripts/ingest_websearch.py` is the grey-literature discovery lane: a topic
 query → candidate web sources the keyless catalogues (OpenAlex / Crossref /
-ERIC) never surface. It reuses the same Google Programmable Search credentials
-as the URL resolver (`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX`) and is a
-**no-op** without them.
+ERIC) never surface. It reuses the URL resolver's open-web backends, tried in
+order and aggregated (deduped by URL):
+
+1. **SearXNG** — self-hosted, keyless metasearch (opt-in via `SEARXNG_URL`);
+2. **DuckDuckGo** — the keyless, open-source `ddgs` library (runs out of the box);
+3. **Google** — optional last fallback (`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX`).
+
+It is a **no-op** only when no backend is available (no `ddgs`, no `SEARXNG_URL`,
+no Google secret).
 
 The strategy is **open search, tiered trust**. The search queries the open web —
 nothing relevant is filtered out — and each hit's host is then labelled against
@@ -155,17 +162,27 @@ nothing relevant is filtered out — and each hit's host is then labelled agains
 - everything unlisted is **open**: still kept as a candidate, but marked and
   pushed down with a rank penalty so a reviewer works the curated end first.
 
-The tier is a *label only* — it steers `triage_candidates.py` ordering and lives
-in `assist.provenance`; it never enters `evidence_score` (which keeps its
+The tier list is kept a superset of `resolve_source_url.CREDIBLE_DOMAINS` (the URL
+resolver's allowlist), guarded by a test, so a credible publisher never lands in
+`open`. The tier is a *label only* — it steers `triage_candidates.py` ordering and
+lives in `assist.provenance`; it never enters `evidence_score` (which keeps its
 reproducibility guarantee), and every hit stays `source_type: web_resource`
 (weight 0.25), `status: candidate`. Claims are **not** minted here — they keep
 flowing through the verbatim guard in `extract_claims.py` / `ingest_reports.py`.
 Edit the tier list only through a pull request.
 
-```powershell
-# one query (or repeat --query; or --manifest queries.json)
-python scripts/ingest_websearch.py --query "AI literacy curriculum primary school"
-```
+Two entry points, both writing into the same `research/candidates` PR:
+
+1. **Workflow dispatch.** Actions → "Discover web candidates (manual)"
+   (`ingest-websearch.yml`) with a query (or a manifest of queries). It installs
+   `ddgs`, so DuckDuckGo runs keyless with no setup; `SEARXNG_URL` / Google are
+   picked up if configured.
+2. **Local.**
+   ```powershell
+   pip install ddgs   # keyless DuckDuckGo tier; SearXNG/Google optional
+   # one query (or repeat --query; or --manifest queries.json)
+   python scripts/ingest_websearch.py --query "AI literacy curriculum primary school"
+   ```
 
 New candidates land in `data/sources/candidates-websearch.json`; review them
 exactly as in the weekly cycle. Trusted hits sort to the top of the worksheet,

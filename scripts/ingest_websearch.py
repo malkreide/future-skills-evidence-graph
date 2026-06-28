@@ -1,11 +1,11 @@
 """Discovery web-search importer: a topic query -> candidate web sources.
 
-Unlike resolve_source_url.py — which uses Google to find *one* URL for an
-already-known title — this importer uses the same Google Programmable Search
-plumbing for the opposite direction: a topic query (e.g. "AI literacy
-curriculum primary school") -> a handful of *new* candidate sources the keyless
-catalogues (OpenAlex, Crossref, ERIC) never surface. It is the grey-literature
-discovery lane for the future-skills evidence graph.
+Unlike resolve_source_url.py — which searches for *one* URL of an already-known
+title — this importer searches the opposite direction: a topic query (e.g. "AI
+literacy curriculum primary school") -> a handful of *new* candidate sources the
+keyless catalogues (OpenAlex, Crossref, ERIC) never surface. It is the
+grey-literature discovery lane for the future-skills evidence graph and reuses
+the URL resolver's open-web search backends.
 
 The strategy is **open search, tiered trust**, configured in
 ``data/source_domains.json``:
@@ -20,15 +20,26 @@ The strategy is **open search, tiered trust**, configured in
   keeps its reproducibility guarantee, and every web hit stays source_type
   ``web_resource`` (weight 0.25), the lowest tier.
 
+Search backends, mirroring resolve_source_url.py and tried in order (results
+aggregated, deduped by URL):
+
+1. **SearXNG** — a self-hosted, open-source metasearch instance (opt-in via
+   ``SEARXNG_URL``, no key).
+2. **DuckDuckGo** — the keyless, open-source ``ddgs`` library (runs out of the
+   box; a no-op if the library is absent).
+3. **Google Programmable Search** — optional last fallback, only when
+   ``GOOGLE_SEARCH_API_KEY`` and ``GOOGLE_SEARCH_CX`` are set.
+
 Like every importer here it is candidate-only and human-reviewed: each result
 becomes a ``status='candidate'`` source, deduped repo-wide, never auto-activated.
 Claims are NOT minted here — they keep flowing through extract_claims.py /
 ingest_reports.py from a source's full text, so the verbatim hallucination guard
 is untouched.
 
-Off by default and graceful: with no ``GOOGLE_SEARCH_API_KEY`` /
-``GOOGLE_SEARCH_CX`` the importer is a no-op (writes nothing), and any network
-failure just yields no results for that query. Standard library only.
+Off by default and graceful: with no search backend available (no ``ddgs``, no
+``SEARXNG_URL``, no Google secret) the importer is a no-op (writes nothing), and
+any network failure just yields no results for that query. ``ddgs`` is the only
+non-stdlib dependency, imported lazily and optional.
 """
 
 from __future__ import annotations
@@ -52,14 +63,15 @@ from common import (
     slugify,
 )
 
-# Reuse the exact HTTP-JSON helper resolve_source_url.py uses (graceful, no
-# raise). Imported by name so tests patch ``ingest_websearch._http_json``.
-from resolve_source_url import _http_json
+# Reuse the URL resolver's open-web plumbing: the graceful HTTP-JSON helper, the
+# lazy DuckDuckGo-availability probe. Imported by name so tests can patch
+# ``ingest_websearch._http_json`` / ``ingest_websearch._ddgs_available``.
+from resolve_source_url import _ddgs_available, _http_json
 
 DEFAULT_DOMAINS_PATH = ROOT / "data" / "source_domains.json"
 DEFAULT_OUTPUT = "data/sources/candidates-websearch.json"
 
-# Google Programmable Search returns at most 10 results per request.
+# Results requested per backend per query (Google Programmable Search caps at 10).
 MAX_RESULTS_PER_QUERY = 10
 
 # Only accept a 4-digit year that is plausible for a publication; a web resource
@@ -120,13 +132,69 @@ def host_tier(url: str, config: dict[str, Any]) -> tuple[str, float]:
     return "open", -penalty
 
 
-def search_results(query: str, num: int) -> list[dict[str, str]]:
-    """Open-web search for *query* -> ``[{title, link, snippet}, ...]``.
+def _result(title: Any, link: Any, snippet: Any) -> dict[str, str] | None:
+    """Normalize one backend hit to ``{title, link, snippet}``, or None if thin."""
+    if not link or not title:
+        return None
+    return {"title": str(title), "link": str(link), "snippet": str(snippet or "")}
 
-    Off-by-default and the only tier needing a secret: returns ``[]`` unless both
-    ``GOOGLE_SEARCH_API_KEY`` and ``GOOGLE_SEARCH_CX`` are set, and ``[]`` on any
-    network/parse failure (``_http_json`` never raises). Caps *num* to the
-    Programmable Search per-request maximum.
+
+def searxng_search(query: str, num: int) -> list[dict[str, str]]:
+    """Open-web search via a self-hosted SearXNG instance (opt-in ``SEARXNG_URL``).
+
+    Keyless and open-source. A no-op (``[]``) unless ``SEARXNG_URL`` is set, and
+    ``[]`` on any network/parse failure (``_http_json`` never raises).
+    """
+    base = os.environ.get("SEARXNG_URL")
+    if not base:
+        return []
+    params = urllib.parse.urlencode({"q": query, "format": "json", "language": "en"})
+    data = _http_json(f"{base.rstrip('/')}/search?{params}")
+    if not isinstance(data, dict):
+        return []
+    results: list[dict[str, str]] = []
+    for hit in (data.get("results") or [])[:num]:
+        result = _result(hit.get("title") or hit.get("name"), hit.get("url") or hit.get("href"),
+                         hit.get("content") or hit.get("snippet"))
+        if result:
+            results.append(result)
+    return results
+
+
+def duckduckgo_search(query: str, num: int) -> list[dict[str, str]]:
+    """Open-web search via the keyless, open-source ``ddgs`` library.
+
+    A no-op (``[]``) when the optional library is absent or the request fails, so
+    the tier stays graceful and runs out of the box wherever ``ddgs`` is present.
+    """
+    try:
+        from ddgs import DDGS
+    except ImportError:
+        try:
+            from duckduckgo_search import DDGS  # older package name
+        except ImportError:
+            return []
+    try:
+        with DDGS() as ddgs:
+            hits = list(ddgs.text(query, max_results=num))
+    except Exception:  # noqa: BLE001 - any client/network error → no results
+        return []
+    results: list[dict[str, str]] = []
+    for hit in hits:
+        result = _result(hit.get("title") or hit.get("name"),
+                         hit.get("href") or hit.get("url") or hit.get("link"),
+                         hit.get("body") or hit.get("snippet"))
+        if result:
+            results.append(result)
+    return results
+
+
+def google_search(query: str, num: int) -> list[dict[str, str]]:
+    """Open-web search via Google Programmable Search (optional last fallback).
+
+    A no-op (``[]``) unless both ``GOOGLE_SEARCH_API_KEY`` and ``GOOGLE_SEARCH_CX``
+    are set, and ``[]`` on any network/parse failure. Caps *num* to the API's
+    per-request maximum.
     """
     key = os.environ.get("GOOGLE_SEARCH_API_KEY")
     cx = os.environ.get("GOOGLE_SEARCH_CX")
@@ -139,14 +207,41 @@ def search_results(query: str, num: int) -> list[dict[str, str]]:
         return []
     results: list[dict[str, str]] = []
     for item in data.get("items") or []:
-        link = item.get("link")
-        title = item.get("title")
-        if not link or not title:
-            continue
-        results.append(
-            {"title": str(title), "link": str(link), "snippet": str(item.get("snippet") or "")}
-        )
+        result = _result(item.get("title"), item.get("link"), item.get("snippet"))
+        if result:
+            results.append(result)
     return results
+
+
+def search_backends_available() -> bool:
+    """Whether any search backend can run (SearXNG configured, ddgs present, or Google)."""
+    return bool(
+        os.environ.get("SEARXNG_URL")
+        or _ddgs_available()
+        or (os.environ.get("GOOGLE_SEARCH_API_KEY") and os.environ.get("GOOGLE_SEARCH_CX"))
+    )
+
+
+def search_results(query: str, num: int) -> list[dict[str, str]]:
+    """Open-web search for *query* across all available backends.
+
+    Aggregates SearXNG + DuckDuckGo + Google results (resolver order: open-source
+    and keyless first, paid Google last) and dedupes by URL — so the same page
+    surfaced by two engines counts once. Returns ``[]`` when no backend is
+    available or all fail. Backends are resolved by name at call time so each
+    stays independently patchable.
+    """
+    num = max(1, num)
+    aggregated: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for backend in (searxng_search, duckduckgo_search, google_search):
+        for result in backend(query, num):
+            key = result["link"].strip().casefold()
+            if key in seen:
+                continue
+            seen.add(key)
+            aggregated.append(result)
+    return aggregated
 
 
 def detect_year(*texts: str) -> tuple[int, bool]:
@@ -263,10 +358,13 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    # Off by default: a no-op with a clear message when the search secret is
-    # absent, exactly like the project's other opt-in network features.
-    if not (os.environ.get("GOOGLE_SEARCH_API_KEY") and os.environ.get("GOOGLE_SEARCH_CX")):
-        print("Web search off (GOOGLE_SEARCH_API_KEY / GOOGLE_SEARCH_CX not set); imported no candidates.")
+    # Off by default: a no-op with a clear message when no backend is available,
+    # exactly like the project's other opt-in network features.
+    if not search_backends_available():
+        print(
+            "Web search off (no backend: install ddgs, set SEARXNG_URL, "
+            "or set GOOGLE_SEARCH_API_KEY / GOOGLE_SEARCH_CX); imported no candidates."
+        )
         return 0
 
     try:
