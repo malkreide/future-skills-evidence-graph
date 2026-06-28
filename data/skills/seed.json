@@ -463,7 +463,14 @@
     "supporting_claim_ids": [
       "claim-k12-ai-big-ideas",
       "claim-trustworthy-ai-risk-reasoning",
-      "claim-student-agency-transformative-competencies"
+      "claim-student-agency-transformative-competencies",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-2",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-3",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-4",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-5",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-6",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-7"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -485,10 +492,80 @@
         "date": "2026-06-12",
         "change": "Added topic 'systems thinking'",
         "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.68 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-2 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.7 -> 0.72",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-3 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.72 -> 0.73",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-4 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.73 -> 0.71",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-5 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.71 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-6 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.7 -> 0.69",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-7 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.69 -> 0.68",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-06-28"
   },
   {
     "id": "skill-resilience-adaptability",

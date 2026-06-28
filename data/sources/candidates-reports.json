@@ -23,7 +23,7 @@
     "openalex_id": null,
     "semantic_scholar_id": null,
     "eric_id": null,
-    "publisher": "Stefania Bocconi",
+    "publisher": "European Commission, Joint Research Centre (JRC)",
     "source_type": "policy_report",
     "license": null,
     "abstract": "This JRC report updates and extends the 2016 CompuThink study, providing an overview of how Computational Thinking (CT) skills are integrated into compulsory education curricula across 22 EU Member States and eight non-EU countries. Based on a systematic literature review, a survey of Ministries of Education, online consultations, and nine in-depth case studies, it discusses developments between 2016 and 2021 and offers eleven policy recommendations.",
@@ -31,9 +31,9 @@
       "systems thinking"
     ],
     "relevance_score": 0.6,
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-28",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-28",
     "audience": "learner"
   }
 ]
