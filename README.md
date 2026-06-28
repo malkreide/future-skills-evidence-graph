@@ -10,7 +10,10 @@ Design principle: no skill recommendation without an evidence path.
 > Haltungs-Story – warum ehrliche, auditierbare KI – in
 > [docs/governance-und-haltung.md](docs/governance-und-haltung.md); die
 > Praxisanleitung, wie die Skill-Liste evidenzbasiert erstellt und aktuell
-> gehalten wird, in [docs/tierliste-pflegen.md](docs/tierliste-pflegen.md).
+> gehalten wird, in [docs/tierliste-pflegen.md](docs/tierliste-pflegen.md); wie
+> die vertrauenswürdige Such-Allowlist (Quell-Domains) evidenzbasiert
+> zusammengestellt und gepflegt wird, in
+> [docs/allowlist-pflegen.md](docs/allowlist-pflegen.md).
 
 The project starts as a static, versioned evidence graph. Research automation may create
 candidate sources, claims, or skills, but publication of active skills requires human

@@ -25,6 +25,7 @@ requires human review through pull requests. Nothing here changes that.
 | Pipeline | `research-pipeline.yml` | Cron Monday 05:17 UTC + manual dispatch |
 | Manual report intake | `ingest-from-issue.yml` (issue) · `ingest-reports.yml` (dispatch) · `parse_ingest_issue.py` · dashboard `site/einreichen.html` | Off-cycle; same LLM importer + candidate PR; needs `ANTHROPIC_API_KEY` + `AI_MODEL` |
 | Web-search discovery | `ingest-websearch.yml` (dispatch) · `ingest_websearch.py` · `data/source_domains.json` | Off-cycle; query → candidate web sources; keyless (DuckDuckGo/`ddgs`); open search, tiered trust |
+| Allowlist audit | `audit_domains.py` (`make audit-domains`) | Read-only; mines the review ledger for evidence-backed promotions/reviews of the trust tiers + `CREDIBLE_DOMAINS`; see [docs/allowlist-pflegen.md](docs/allowlist-pflegen.md) |
 
 ## One-time setup
 
@@ -170,6 +171,12 @@ reproducibility guarantee), and every hit stays `source_type: web_resource`
 (weight 0.25), `status: candidate`. Claims are **not** minted here — they keep
 flowing through the verbatim guard in `extract_claims.py` / `ingest_reports.py`.
 Edit the tier list only through a pull request.
+
+Keep that allowlist evidence-based with `make audit-domains`: it mines the
+reviewer's promote/reject ledger and proposes which `open` publishers have earned
+a tier (and a `CREDIBLE_DOMAINS` slot) and which tiered domains only yield
+rejects. Read-only — every change still lands through a PR. Full method in
+[docs/allowlist-pflegen.md](docs/allowlist-pflegen.md).
 
 Two entry points, both writing into the same `research/candidates` PR:
 
