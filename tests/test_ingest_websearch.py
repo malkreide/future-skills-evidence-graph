@@ -1,15 +1,16 @@
 """Tests for scripts/ingest_websearch.py (discovery web search, tiered trust).
 
-No real network: every Google call is patched. These lock in the contract the
-discovery lane relies on — search is open but trust is tiered, the tier is a
-label (never a filter), every hit is a candidate web_resource, and the importer
-is a no-op when the search secret is absent.
+No real network: every backend call is patched or injected. These lock in the
+contract the discovery lane relies on — open search across keyless backends
+(SearXNG + DuckDuckGo, with optional Google), tiered trust as a label (never a
+filter), every hit a candidate web_resource, and a no-op when no backend exists.
 """
 
 from __future__ import annotations
 
 import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -22,7 +23,8 @@ if str(SCRIPTS) not in sys.path:
 from jsonschema import Draft202012Validator, FormatChecker  # noqa: E402
 
 import ingest_websearch as iws  # noqa: E402
-from common import load_json  # noqa: E402
+from common import filter_relevant_sources, load_json  # noqa: E402
+from resolve_source_url import CREDIBLE_DOMAINS  # noqa: E402
 
 CONFIG = {
     "tiers": {
@@ -32,7 +34,25 @@ CONFIG = {
     "open": {"rank_penalty": 0.2},
 }
 
-SECRET_ENV = {"GOOGLE_SEARCH_API_KEY": "k", "GOOGLE_SEARCH_CX": "c"}
+GOOGLE_ENV = {"GOOGLE_SEARCH_API_KEY": "k", "GOOGLE_SEARCH_CX": "c"}
+
+
+def _fake_ddgs(hits):
+    """Build a stand-in ``ddgs`` module whose DDGS().text() yields *hits*."""
+    module = types.ModuleType("ddgs")
+
+    class FakeDDGS:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def text(self, query, max_results):
+            return list(hits)
+
+    module.DDGS = FakeDDGS
+    return module
 
 
 class HostTierTests(unittest.TestCase):
@@ -48,7 +68,6 @@ class HostTierTests(unittest.TestCase):
         self.assertEqual(iws.host_tier("https://random-blog.example/a", CONFIG), ("open", -0.2))
 
     def test_sibling_domain_is_not_a_suffix_match(self):
-        # notoecd.org must not match oecd.org -> stays open.
         self.assertEqual(iws.host_tier("https://notoecd.org/x", CONFIG)[0], "open")
 
 
@@ -62,21 +81,57 @@ class DetectYearTests(unittest.TestCase):
         self.assertGreaterEqual(year, 2024)
 
 
-class SearchResultsTests(unittest.TestCase):
-    def test_no_secret_is_noop(self):
+class BackendTests(unittest.TestCase):
+    def test_searxng_maps_and_is_noop_without_url(self):
         with mock.patch.dict("os.environ", {}, clear=True):
-            self.assertEqual(iws.search_results("ai literacy", 10), [])
-
-    def test_maps_items_and_skips_incomplete(self):
-        payload = {"items": [
-            {"title": "AI literacy in schools", "link": "https://oecd.org/a", "snippet": "s"},
-            {"link": "https://x.org/b"},  # no title -> dropped
+            self.assertEqual(iws.searxng_search("q", 10), [])
+        payload = {"results": [
+            {"title": "AI literacy", "url": "https://oecd.org/a", "content": "snippet"},
+            {"url": "https://x.org/b"},  # no title -> dropped
         ]}
-        with mock.patch.dict("os.environ", SECRET_ENV), \
+        with mock.patch.dict("os.environ", {"SEARXNG_URL": "https://searx.example"}), \
                 mock.patch.object(iws, "_http_json", return_value=payload):
-            results = iws.search_results("ai literacy", 10)
-        self.assertEqual(len(results), 1)
-        self.assertEqual(results[0]["link"], "https://oecd.org/a")
+            results = iws.searxng_search("q", 10)
+        self.assertEqual(results, [{"title": "AI literacy", "link": "https://oecd.org/a", "snippet": "snippet"}])
+
+    def test_google_maps_and_is_noop_without_secret(self):
+        with mock.patch.dict("os.environ", {}, clear=True):
+            self.assertEqual(iws.google_search("q", 10), [])
+        payload = {"items": [{"title": "T", "link": "https://oecd.org/a", "snippet": "s"}]}
+        with mock.patch.dict("os.environ", GOOGLE_ENV), \
+                mock.patch.object(iws, "_http_json", return_value=payload):
+            self.assertEqual(iws.google_search("q", 10),
+                             [{"title": "T", "link": "https://oecd.org/a", "snippet": "s"}])
+
+    def test_duckduckgo_uses_ddgs_library(self):
+        hits = [{"title": "AI literacy", "href": "https://oecd.org/a", "body": "snippet"}]
+        with mock.patch.dict(sys.modules, {"ddgs": _fake_ddgs(hits)}):
+            results = iws.duckduckgo_search("q", 5)
+        self.assertEqual(results, [{"title": "AI literacy", "link": "https://oecd.org/a", "snippet": "snippet"}])
+
+    def test_duckduckgo_noop_without_library(self):
+        # Force the import to fail regardless of whether ddgs is installed.
+        with mock.patch.dict(sys.modules, {"ddgs": None, "duckduckgo_search": None}):
+            self.assertEqual(iws.duckduckgo_search("q", 5), [])
+
+
+class SearchResultsTests(unittest.TestCase):
+    def test_no_backend_is_noop(self):
+        with mock.patch.dict("os.environ", {}, clear=True), \
+                mock.patch.object(iws, "_ddgs_available", return_value=False):
+            self.assertFalse(iws.search_backends_available())
+            self.assertEqual(iws.search_results("q", 10), [])
+
+    def test_aggregates_and_dedupes_by_url_across_backends(self):
+        with mock.patch.object(iws, "searxng_search",
+                               return_value=[{"title": "A", "link": "https://oecd.org/a", "snippet": ""}]), \
+                mock.patch.object(iws, "duckduckgo_search",
+                                  return_value=[{"title": "A2", "link": "https://OECD.org/a", "snippet": ""},
+                                                {"title": "B", "link": "https://x.org/b", "snippet": ""}]), \
+                mock.patch.object(iws, "google_search", return_value=[]):
+            results = iws.search_results("q", 10)
+        # oecd.org/a appears in two backends (case-differing) -> deduped to one.
+        self.assertEqual([r["link"] for r in results], ["https://oecd.org/a", "https://x.org/b"])
 
 
 class BuildSourceTests(unittest.TestCase):
@@ -107,16 +162,15 @@ class BuildSourceTests(unittest.TestCase):
 
 class ImportQueryTests(unittest.TestCase):
     def test_relevant_hits_become_candidates_irrelevant_dropped(self):
-        payload = {"items": [
+        hits = [
             {"title": "AI literacy curriculum for school students",
              "link": "https://oecd.org/ai", "snippet": "teaching AI literacy in the classroom"},
             {"title": "North Sea marine biology survey",
              "link": "https://blog.example/fish", "snippet": "fish populations"},
-        ]}
+        ]
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "candidates-websearch.json"
-            with mock.patch.dict("os.environ", SECRET_ENV), \
-                    mock.patch.object(iws, "_http_json", return_value=payload), \
+            with mock.patch.object(iws, "search_results", return_value=hits), \
                     mock.patch("common.load_records", return_value=[]):
                 appended, relevant, found = iws.import_query("ai literacy", 10, CONFIG, out)
             self.assertEqual(found, 2)
@@ -132,7 +186,6 @@ class ImportQueryTests(unittest.TestCase):
                   "link": "https://www.oecd.org/education/ai", "snippet": "teaching AI literacy to children"}
         source = iws.build_source(result, "q", CONFIG)
         # filter_relevant_sources fills topics/relevance_score/audience authoritatively.
-        from common import filter_relevant_sources
         [enriched] = filter_relevant_sources([source])
         errors = sorted(validator.iter_errors(enriched), key=lambda e: list(e.absolute_path))
         self.assertEqual(errors, [], msg="; ".join(e.message for e in errors))
@@ -147,6 +200,23 @@ class LoadQueriesTests(unittest.TestCase):
         args = mock.Mock(query=None, manifest=None)
         with self.assertRaises(ValueError):
             iws.load_queries(args)
+
+
+class DomainConfigTests(unittest.TestCase):
+    def test_shipped_config_loads_and_tiers_are_disjoint(self):
+        config = iws.load_domain_tiers()
+        trusted = set(config["tiers"]["trusted"]["domains"])
+        watch = set(config["tiers"]["watch"]["domains"])
+        self.assertTrue(trusted and watch)
+        self.assertEqual(trusted & watch, set(), "a domain must not sit in two tiers")
+
+    def test_trusted_plus_watch_covers_credible_domains(self):
+        # Keep the discovery tiers a superset of the URL resolver's allowlist, so a
+        # publisher credible enough to resolve a URL never lands in 'open' here.
+        config = iws.load_domain_tiers()
+        listed = set(config["tiers"]["trusted"]["domains"]) | set(config["tiers"]["watch"]["domains"])
+        missing = CREDIBLE_DOMAINS - listed
+        self.assertEqual(missing, set(), f"CREDIBLE_DOMAINS not tiered: {sorted(missing)}")
 
 
 if __name__ == "__main__":
