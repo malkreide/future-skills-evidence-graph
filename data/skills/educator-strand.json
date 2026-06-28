@@ -66,7 +66,7 @@
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",
-    "evidence_score": 0.54,
+    "evidence_score": 0.59,
     "trend": "growing",
     "topics": [
       "digital competence",
@@ -75,7 +75,9 @@
     ],
     "supporting_claim_ids": [
       "claim-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil",
-      "claim-investigation-of-digital-competencies-and-artificial-intelligence-litera"
+      "claim-investigation-of-digital-competencies-and-artificial-intelligence-litera",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-9",
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-11"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -112,9 +114,29 @@
         "date": "2026-06-24",
         "change": "evidence_score 0.55 -> 0.54",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-9 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.54 -> 0.58",
+        "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "Attached reviewed claim claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-11 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-06-28",
+        "change": "evidence_score 0.58 -> 0.59",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-24",
-    "updated_at": "2026-06-24"
+    "updated_at": "2026-06-28"
   }
 ]
