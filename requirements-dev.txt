@@ -23,3 +23,9 @@ sentence-transformers>=2.2
 # scripts/ingest_reports.py. It is imported lazily and only when actually parsing
 # a PDF; the importer itself takes plaintext and stays standard-library only.
 pypdf>=4.0
+# ddgs (DuckDuckGo search) is the OPTIONAL open-source, keyless web-search tier of
+# the source-URL resolver (scripts/resolve_source_url.py, Option B). It is imported
+# lazily and only when a report has no URL and the keyless catalogues (Crossref/
+# OpenAlex) miss; absent it, that tier is a graceful no-op. The importers and the
+# core resolver stay standard-library only.
+ddgs>=6.0

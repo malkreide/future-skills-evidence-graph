@@ -158,19 +158,37 @@ zweistufig, passend zur backend-losen Architektur:
   `site/assets/submit.js` eine URL/DOI **im Dokument** und sonst per **Crossref**
   (keyless, CORS) anhand des Titels und füllt das Feld als Vorschlag vor.
 - **Server-seitig (Workflow, Option B).** Kommt das Issue ohne URL an, löst
-  `resolve_source_url.py` sie in der Reihenfolge **Dokument → Crossref → OpenAlex
-  → (optional) Google Programmable Search** auf. Ein Katalog-Treffer wird nur
-  über einer Titel-Ähnlichkeitsschwelle und – falls ein Jahr bekannt ist –
-  innerhalb ±1 Jahr übernommen, damit ein unscharfer Titel nie eine falsche URL
-  anhängt. Jeder Netz-Schritt scheitert still und fällt zum nächsten durch.
+  `resolve_source_url.py` sie in dieser Reihenfolge auf:
+  **Dokument → Crossref → OpenAlex → SearXNG → DuckDuckGo → (optional) Google**.
+  Ein Katalog-Treffer (Crossref/OpenAlex) wird nur über einer
+  Titel-Ähnlichkeitsschwelle und – falls ein Jahr bekannt ist – innerhalb ±1 Jahr
+  übernommen, damit ein unscharfer Titel nie eine falsche URL anhängt. Jeder
+  Netz-Schritt scheitert still und fällt zum nächsten durch.
 
-Die Google-Stufe ist **opt-in** und die einzige, die ein Secret braucht
-(`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX`); ohne diese ist sie ein No-op, und
-Crossref/OpenAlex laufen weiterhin keyless. Findet auch das nichts, setzt der
-Workflow die **Issue-URL als Platzhalter** und weist im Kommentar darauf hin,
-beim Review die echte Quell-URL nachzutragen – das Schema verlangt für den
-Beweispfad eine `url`. Die aufgelöste URL wird im Issue-Kommentar genannt und
-bleibt eine *Kandidaten*-Angabe bis zur menschlichen Prüfung.
+**Web-Suche für graue Literatur (quelloffen, keyless).** Berichte ohne DOI
+(OECD/WEF/UNESCO/NFP …) finden die Kataloge oft nicht; dafür gibt es zwei
+quelloffene, kostenlose Web-Such-Stufen ohne Secret:
+
+- **DuckDuckGo** über die Open-Source-Bibliothek `ddgs` – läuft sofort, ohne Key
+  und ohne Hosting (lazy importiert; fehlt sie, ist die Stufe ein No-op).
+- **SearXNG** – eine selbst gehostete, voll quelloffene Meta-Suchmaschine mit
+  JSON-API; aktivierbar per `SEARXNG_URL` (zeigt auf deine Instanz), sonst No-op.
+
+Beide Web-Stufen übernehmen einen Treffer nur, wenn dessen Host auf der im Code
+gepflegten **Allowlist glaubwürdiger Herausgeber** (`CREDIBLE_DOMAINS`) liegt –
+so bleiben die Ergebnisse so quellen-seriös wie früher die 50-Domain-Beschränkung
+der Google-Engine. `RESOLVE_OPEN_WEB=1` hebt die Allowlist auf das offene Web an.
+
+**Google** bleibt nur als **optionaler letzter Fallback** (braucht ein Secret-Paar
+`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX`; ohne ist es ein No-op). Findet auch
+das nichts, setzt der Workflow die **Issue-URL als Platzhalter** und weist im
+Kommentar darauf hin, beim Review die echte Quell-URL nachzutragen – das Schema
+verlangt für den Beweispfad eine `url`. Die aufgelöste URL wird im Issue-Kommentar
+genannt und bleibt eine *Kandidaten*-Angabe bis zur menschlichen Prüfung.
+
+Den ganzen Pfad (welche Stufe was liefert) zeigt der Diagnose-Workflow
+**„Resolve URL check"** (`resolve-url-check.yml`, `workflow_dispatch`): Titel
+eingeben → pro Stufe ein Ergebnis, ohne LLM-Aufruf oder Datenänderung.
 
 ### Dashboard-Dropzone (Komfort-Oberfläche)
 
