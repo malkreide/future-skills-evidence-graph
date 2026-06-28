@@ -299,6 +299,19 @@ def searxng_best(title: str) -> tuple[str, str] | None:
     return _best_web_result(data.get("results", []), title)
 
 
+def _ddgs_available() -> bool:
+    """True when the optional DuckDuckGo library can be imported."""
+    try:
+        import ddgs  # noqa: F401
+        return True
+    except ImportError:
+        try:
+            import duckduckgo_search  # noqa: F401
+            return True
+        except ImportError:
+            return False
+
+
 def duckduckgo_best(title: str) -> tuple[str, str] | None:
     """Title -> best DuckDuckGo hit via the open-source ``ddgs`` library, or None.
 
@@ -415,11 +428,17 @@ def _diagnose(title: str, year: int | None, publisher: str | None) -> int:
         print(f"  SearXNG  : {searxng[0] if searxng else '— kein Treffer'}  ({scope})")
     else:
         print("  SearXNG  : übersprungen — SEARXNG_URL nicht gesetzt")
-    ddg = duckduckgo_best(title)
-    if ddg:
-        print(f"  DuckDuckGo : {ddg[0]}  ({scope})")
+    if not _ddgs_available():
+        print("  DuckDuckGo : übersprungen — Bibliothek 'ddgs' nicht installiert")
     else:
-        print(f"  DuckDuckGo : — kein Treffer / Bibliothek 'ddgs' fehlt  ({scope})")
+        ddg = duckduckgo_best(title)
+        if ddg:
+            print(f"  DuckDuckGo : {ddg[0]}  ({scope})")
+        else:
+            print(
+                "  DuckDuckGo : — kein Treffer (DuckDuckGo ist gelegentlich "
+                f"raten-limitiert; ggf. erneut versuchen)  ({scope})"
+            )
 
     if google_configured:
         google = google_best(title)

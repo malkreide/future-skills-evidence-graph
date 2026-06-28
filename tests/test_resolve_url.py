@@ -154,6 +154,9 @@ class WebSearchTests(unittest.TestCase):
         results = [{"title": "Totally different topic", "url": "https://oecd.org/x"}]
         self.assertIsNone(rsu._best_web_result(results, self.OECD))
 
+    def test_ddgs_available_returns_bool(self):
+        self.assertIsInstance(rsu._ddgs_available(), bool)
+
     def test_searxng_off_without_env(self):
         with mock.patch.dict("os.environ", {}, clear=True):
             self.assertIsNone(rsu.searxng_best(self.OECD))
