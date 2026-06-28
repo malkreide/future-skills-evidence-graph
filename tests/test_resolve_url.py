@@ -133,6 +133,7 @@ class WebSearchTests(unittest.TestCase):
     def test_host_allowed(self):
         self.assertTrue(rsu._host_allowed("https://www.weforum.org/reports/x"))
         self.assertTrue(rsu._host_allowed("https://data.oecd.org/x"))  # subdomain
+        self.assertTrue(rsu._host_allowed("https://www.nfp77.ch/de/synthese"))  # Swiss
         self.assertFalse(rsu._host_allowed("https://random-blog.example.com/x"))
 
     def test_best_web_result_filters_to_allowlist(self):
