@@ -76,6 +76,9 @@ CREDIBLE_DOMAINS = frozenset({
     "worldskills.org", "educationendowmentfoundation.org.uk",
     "learningpolicyinstitute.org", "rti.org", "britishcouncil.org",
     "globalpartnership.org",
+    # Swiss education / research bodies (for Lehrplan-21-anchored reports such as
+    # the NFP 77 "Digitale Transformation" programme).
+    "nfp77.ch", "snf.ch", "admin.ch", "educa.ch", "edk.ch",
 })
 
 
