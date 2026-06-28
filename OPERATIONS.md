@@ -134,6 +134,39 @@ candidate PR, run the **Resolve URL check** workflow (Actions →
 `resolve-url-check.yml`, `workflow_dispatch`) with a report title: it prints each
 tier's result and whether Google is configured.
 
+## Web-search discovery (off-cycle, opt-in)
+
+`scripts/ingest_websearch.py` is the grey-literature discovery lane: a topic
+query → candidate web sources the keyless catalogues (OpenAlex / Crossref /
+ERIC) never surface. It reuses the same Google Programmable Search credentials
+as the URL resolver (`GOOGLE_SEARCH_API_KEY` + `GOOGLE_SEARCH_CX`) and is a
+**no-op** without them.
+
+The strategy is **open search, tiered trust**. The search queries the open web —
+nothing relevant is filtered out — and each hit's host is then labelled against
+`data/source_domains.json`:
+
+- **trusted** (OECD, UNESCO, EDK, KMK, ERIC, …) and **watch** (foundations,
+  NGOs, ed-media) rise in the triage worksheet;
+- everything unlisted is **open**: still kept as a candidate, but marked and
+  pushed down with a rank penalty so a reviewer works the curated end first.
+
+The tier is a *label only* — it steers `triage_candidates.py` ordering and lives
+in `assist.provenance`; it never enters `evidence_score` (which keeps its
+reproducibility guarantee), and every hit stays `source_type: web_resource`
+(weight 0.25), `status: candidate`. Claims are **not** minted here — they keep
+flowing through the verbatim guard in `extract_claims.py` / `ingest_reports.py`.
+Edit the tier list only through a pull request.
+
+```powershell
+# one query (or repeat --query; or --manifest queries.json)
+python scripts/ingest_websearch.py --query "AI literacy curriculum primary school"
+```
+
+New candidates land in `data/sources/candidates-websearch.json`; review them
+exactly as in the weekly cycle. Trusted hits sort to the top of the worksheet,
+`open` hits to the bottom with a `domain_tier` marker.
+
 ## Verification tests — every cycle
 
 Measure these four; they reflect real quality, not just the (small, possibly
