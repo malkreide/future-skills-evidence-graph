@@ -96,6 +96,22 @@ def _review_commands(claim: dict[str, Any], source_rows: list[dict[str, Any]]) -
     return commands
 
 
+def _source_tier(source: dict[str, Any]) -> tuple[str, float]:
+    """Return a web-search source's ``(domain_tier, rank_delta)``, else ("", 0).
+
+    The web-search importer records the trust tier and its numeric rank delta
+    under ``assist.provenance`` (via='websearch'). Non-web candidates (the
+    catalogue importers) carry no tier and sort with a neutral 0 delta, so the
+    worksheet's order for them is unchanged.
+    """
+    assist = source.get("assist")
+    provenance = assist.get("provenance") if isinstance(assist, dict) else None
+    if not isinstance(provenance, dict) or provenance.get("via") != "websearch":
+        return "", 0.0
+    delta = provenance.get("rank_delta", 0.0)
+    return str(provenance.get("domain_tier", "")), float(delta) if isinstance(delta, (int, float)) else 0.0
+
+
 def build_worksheet() -> dict[str, Any]:
     sources = _index_sources()
     open_claims = sorted(
@@ -105,14 +121,20 @@ def build_worksheet() -> dict[str, Any]:
     rows = [_claim_row(claim, sources) for claim in open_claims]
 
     referenced = {row["source_id"] for claim in rows for row in claim["sources"]}
-    orphan_sources = sorted(
-        (
-            {"source_id": src["id"], "title": src.get("title", "")}
-            for src in sources.values()
-            if src.get("status") == "candidate" and src["id"] not in referenced
-        ),
-        key=lambda s: s["source_id"],
-    )
+    orphan_candidates = [
+        src for src in sources.values()
+        if src.get("status") == "candidate" and src["id"] not in referenced
+    ]
+    # Trusted-publisher web hits rise, unlisted "open" hits sink and are clearly
+    # marked, so a reviewer works the curated end of the backlog first. Ties and
+    # non-web candidates keep the prior id ordering (rank_delta 0).
+    orphan_sources = [
+        {**({"domain_tier": tier} if tier else {}), "source_id": src["id"], "title": src.get("title", "")}
+        for src, (tier, _delta) in sorted(
+            ((src, _source_tier(src)) for src in orphan_candidates),
+            key=lambda pair: (-pair[1][1], pair[0]["id"]),
+        )
+    ]
 
     return {
         "_README": (

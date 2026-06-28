@@ -1,0 +1,35 @@
+{
+  "_README": "Curated publisher domain -> trust tier for the web-search importer (scripts/ingest_websearch.py). Tiers steer ONLY the triage worksheet ordering and the provenance label; they NEVER enter evidence_score (score_evidence.py keeps its reproducibility guarantee). Every web hit is still source_type 'web_resource' (weight 0.25) and status 'candidate' awaiting human review. A result host matches a tier when it equals a listed domain or is a subdomain of it (suffix match); anything unlisted is 'open' and kept with a rank penalty and a visible marker. Edit this file only through a pull request, like the rest of the evidence graph.",
+  "tiers": {
+    "trusted": {
+      "rank_boost": 0.15,
+      "domains": [
+        "oecd.org",
+        "unesco.org",
+        "europa.eu",
+        "edk.ch",
+        "kmk.org",
+        "bildungsserver.de",
+        "eric.ed.gov",
+        "nature.com",
+        "springer.com",
+        "tandfonline.com",
+        "weforum.org"
+      ]
+    },
+    "watch": {
+      "rank_boost": 0.0,
+      "domains": [
+        "mozilla.org",
+        "hewlett.org",
+        "bertelsmann-stiftung.de",
+        "stiftung-mercator.de",
+        "edutopia.org",
+        "jisc.ac.uk"
+      ]
+    }
+  },
+  "open": {
+    "rank_penalty": 0.2
+  }
+}
