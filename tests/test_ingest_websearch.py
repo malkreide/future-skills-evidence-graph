@@ -117,8 +117,12 @@ class BackendTests(unittest.TestCase):
 
 class SearchResultsTests(unittest.TestCase):
     def test_no_backend_is_noop(self):
+        # Simulate ddgs absent (it is installed in CI, so patch the backend too,
+        # not just the availability probe) and no SearXNG/Google env: every
+        # backend self-gates to [], so the aggregate is empty.
         with mock.patch.dict("os.environ", {}, clear=True), \
-                mock.patch.object(iws, "_ddgs_available", return_value=False):
+                mock.patch.object(iws, "_ddgs_available", return_value=False), \
+                mock.patch.object(iws, "duckduckgo_search", return_value=[]):
             self.assertFalse(iws.search_backends_available())
             self.assertEqual(iws.search_results("q", 10), [])
 
