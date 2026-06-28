@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record build recall-probe recall-ingest triage train
+.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record build recall-probe recall-ingest triage audit-domains train
 
 install:
 	pip install -r requirements-dev.txt
@@ -48,6 +48,12 @@ recall-ingest:
 # (eval/candidate_triage.json, gitignored). Reads only; promotes nothing.
 triage:
 	python scripts/triage_candidates.py
+
+# Audit the search allowlist against the reviewer's promote/reject ledger:
+# proposes evidence-backed promotions/reviews into eval/domain_audit.json
+# (gitignored). Reads only; changes no allowlist. See docs/allowlist-pflegen.md.
+audit-domains:
+	python scripts/audit_domains.py
 
 train:
 	python scripts/train_relevance.py
