@@ -1,0 +1,10 @@
+{
+  "hash": "7ab962a157c11f4622c5f2ab0878186543a600b84c83ff81388013118f5ef0b9",
+  "kind": "complete",
+  "response": {
+    "age_range": "15-17",
+    "context": "Classroom comparison of simulations versus lectures in 11th-grade physics.",
+    "evidence_strength": "moderate",
+    "outcome": "Interactive simulations deepen conceptual understanding of mechanics."
+  }
+}

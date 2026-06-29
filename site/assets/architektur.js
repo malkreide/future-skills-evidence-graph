@@ -62,7 +62,7 @@ const VIEWS = {
           body:
             "Das wichtigste Präzisions-Werkzeug. Standard ist eine transparente " +
             "Keyword-/Topic-Heuristik (deterministisch, immer der Fallback). " +
-            "Off-Scope-Begriffe und ein Zielgruppen-Tor (nur Alter 6–18) schärfen " +
+            "Off-Scope-Begriffe und ein Zielgruppen-Tor (Alter 0–18) schärfen " +
             "die Treffer. Ein optionales TF-IDF-Modell ist einbaubar, aber " +
             "deaktiviert, weil es die Heuristik im fairen Vergleich nicht schlägt.",
           files: ["scripts/common.py", "scripts/eval_relevance.py", "scripts/train_relevance.py"],

@@ -75,6 +75,18 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Fixed
 
+- **LLM-Prompt-Altersskala auf 0–18 nachgezogen.** Die Extraktions-Prompts in
+  `extract_claims.py` und `ingest_reports.py` nannten weiterhin „6-18" und wiesen
+  das Modell an, Altersbereiche außerhalb davon auf `null` zu setzen — wodurch
+  früh-kindliche Studien (Kindergarten/Vorschule, Lehrplan-21-Zyklus 1) ihren
+  Altersbezug verloren. Die Skala lebt jetzt als gemeinsame Konstante
+  (`common.AGE_SCALE`), und der Prompt *beschreibt* den tatsächlich berichteten
+  Bereich (0–18, frühe Kindheit ausdrücklich eingeschlossen), statt außerhalb
+  liegende Studien zu verwerfen; Scope-Filterung bleibt allein Sache des
+  Relevanz-Tors. Die Prefill-Fixtures wurden offline aus dem bestehenden
+  `_recorded`-Baseline auf den neuen Prompt-Hash umgeschlüsselt; ein
+  `make eval-prefill-record` mit `ANTHROPIC_API_KEY` bleibt als empfohlener
+  Folgeschritt, um die Live-Baseline unter dem neuen Wortlaut aufzufrischen.
 - Dokumentations-Konsistenz: einheitliche Altersangabe (0–18), Entfernung
   veralteter Bestandszahlen aus der Go-Live-Checkliste (jetzt live ermittelt),
   korrigiertes Skript-Label im Architektur-Diagramm.

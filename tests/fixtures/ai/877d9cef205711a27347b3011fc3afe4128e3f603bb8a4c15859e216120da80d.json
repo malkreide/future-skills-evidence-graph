@@ -1,0 +1,10 @@
+{
+  "hash": "877d9cef205711a27347b3011fc3afe4128e3f603bb8a4c15859e216120da80d",
+  "kind": "complete",
+  "response": {
+    "age_range": "12-15",
+    "context": "Two-term comparison of pair programming versus solo work in secondary computing.",
+    "evidence_strength": "moderate",
+    "outcome": "Pair programming improves problem-solving success and confidence."
+  }
+}
