@@ -67,11 +67,12 @@ Dry-Runs. Go-Live verlangt **einen vollständig durchlaufenen, datierten Zyklus*
 
 ## 4. Daten-Abnahme (Inhalt)
 
-- [ ] **Startbestand bestätigen.** Aktuell 13 aktive Skills, 26 reviewte Claims,
-      32 reviewte Quellen. Entscheiden: reicht das als öffentlich kommunizierter
-      Startbestand, oder soll der Kandidaten-Backlog vorher (teilweise) reviewt
-      werden? (`make triage` liefert die Arbeitsliste: 36 offene Kandidaten-Claims,
-      10 verwaiste Kandidaten-Quellen.)
+- [ ] **Startbestand bestätigen.** Den aktuellen Bestand (aktive Skills, reviewte
+      Claims und Quellen) live ermitteln — `make build` baut `data/index.json`, das
+      Dashboard zeigt die Zahlen — und entscheiden: reicht das als öffentlich
+      kommunizierter Startbestand, oder soll der Kandidaten-Backlog vorher
+      (teilweise) reviewt werden? (`make triage` liefert die Arbeitsliste der noch
+      offenen Kandidaten-Claims und verwaisten Kandidaten-Quellen.)
 - [ ] **Evidenzpfad-Stichprobe.** Auf der Live-Seite zwei, drei aktive Skills
       aufklappen und Quelle→Claim→Skill nachvollziehen (Validierung erzwingt das
       bereits, aber ein menschlicher Blick auf die Außenwirkung schadet nicht).
@@ -92,7 +93,7 @@ make install validate test eval build
 ```
 
 - [ ] `validate` → „Validation passed."
-- [ ] `test` → OK (Stand: 77 Tests, 1 skipped ohne optionale Dependency)
+- [ ] `test` → OK (ein Test wird ohne die optionale Dependency übersprungen)
 - [ ] `build` → „Built public/"
 
 Erst wenn alle Haken sitzen, ist der Go-Live-Status erreicht. Offene

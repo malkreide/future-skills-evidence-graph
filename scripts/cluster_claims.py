@@ -79,7 +79,7 @@ def _candidate_skill(topic: str, claim_ids: list[str]) -> dict[str, Any]:
             f"Candidate skill clustered from {len(claim_ids)} candidate claims about "
             f"{topic}. {DEFINITION_PLACEHOLDER_SUFFIX}"
         ),
-        "age_range": "6-18",
+        "age_range": "0-18",
         "status": "candidate",
         "evidence_score": 0.0,
         "trend": "emerging",
@@ -166,7 +166,7 @@ def _embedding_candidate_skill(
             f"Candidate skill clustered from {len(claim_ids)} candidate claims by "
             f"embedding similarity (cosine >= {threshold}). {DEFINITION_PLACEHOLDER_SUFFIX}"
         ),
-        "age_range": "6-18",
+        "age_range": "0-18",
         "status": "candidate",
         "evidence_score": 0.0,
         "trend": "emerging",

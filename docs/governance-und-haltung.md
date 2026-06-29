@@ -27,7 +27,7 @@ Prinzipien sind im Projekt nicht nur behauptet, sondern überprüfbar verankert.
 Im Herzstück des Projekts – dem Filter, der entscheidet, welche
 wissenschaftlichen Quellen überhaupt in Betracht kommen – arbeitet als
 Standardeinstellung eine **transparente, regelbasierte Heuristik**. Sie prüft
-nachvollziehbare Kriterien: Passt das Thema? Geht es um die Altersgruppe 6–18?
+nachvollziehbare Kriterien: Passt das Thema? Geht es um die Altersgruppe 0–18?
 Taucht ein Ausschlussbegriff auf? Jede Entscheidung lässt sich an den getroffenen
 Stichworten ablesen – man kann buchstäblich nachlesen, *weshalb* eine Quelle
 behalten oder verworfen wurde.
