@@ -1137,5 +1137,176 @@
     "status": "reviewed",
     "created_at": "2026-06-23",
     "reviewed_at": "2026-06-24"
+  },
+  {
+    "id": "claim-towards-automating-scientific-review-with-google-s-paper-assistant-tool",
+    "statement": "Artificial intelligence is driving a revolution in scientific discovery, accelerating everything from hypothesis generation to mathematical theorem proving.",
+    "source_ids": [
+      "src-towards-automating-scientific-review-with-google-s-paper-assistant-tool"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Artificial intelligence is driving a revolution in scientific discovery, accelerating everything from hypothesis generation to mathematical theorem proving.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-remittance-blueprint-data-driven-intelligence-for-sri-lanka-abstract",
+    "statement": "These findings highlight the structural dependence of remittances on global economies, emphasizing the need for robust exchange rate policies, skilled migration, and formal financial channels to enhance long-term economic resilience.",
+    "source_ids": [
+      "src-the-remittance-blueprint-data-driven-intelligence-for-sri-lanka"
+    ],
+    "text_anchor": "abstract, sentence 7: \"These findings highlight the structural dependence of remittances on global economies, emphasizing the need for robust exchange rate policies, skilled migration, and formal financial channels to enhance long-term economic resilience.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-enhanced-lesson-study-transforming-teacher-professional-development-a",
+    "statement": "Key themes include AI\u2019s role in real-time feedback, data-driven lesson planning, and improved teacher collaboration.",
+    "source_ids": [
+      "src-ai-enhanced-lesson-study-transforming-teacher-professional-development"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Key themes include AI\u2019s role in real-time feedback, data-driven lesson planning, and improved teacher collaboration.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-uncanny-valley-of-artificial-intelligence-primary-school-students-fears",
+    "statement": "This qualitative study systematically investigates the artificial intelligence (AI) fears of primary school students through the conceptual lens of the \u201cUncanny Valley\u201d theory.",
+    "source_ids": [
+      "src-uncanny-valley-of-artificial-intelligence-primary-school-students-fears"
+    ],
+    "text_anchor": "abstract, sentence 1: \"This qualitative study systematically investigates the artificial intelligence (AI) fears of primary school students through the conceptual lens of the \u201cUncanny Valley\u201d theory.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-the-next-generation-for-gender-equality-a-global-indian-and-k",
+    "statement": "Policy recommendations emphasize gender-sensitive education, digital inclusion, leadership development, legal enforcement, and multi-stakeholder collaboration to create an equitable future for all.",
+    "source_ids": [
+      "src-empowering-the-next-generation-for-gender-equality-a-global-indian-and-k"
+    ],
+    "text_anchor": "abstract, sentence 11: \"Policy recommendations emphasize gender-sensitive education, digital inclusion, leadership development, legal enforcement, and multi-stakeholder collaboration to create an equitable future for all.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-innovations-in-education-and-culture-of-the-21st-century-conceptual-and",
+    "statement": "Furthermore, the war has significantly impacted educational and cultural processes, with innovative educational approaches helping to build mental resilience and adaptability in response to stress and instability.",
+    "source_ids": [
+      "src-innovations-in-education-and-culture-of-the-21st-century-conceptual-and"
+    ],
+    "text_anchor": "abstract, sentence 9: \"Furthermore, the war has significantly impacted educational and cultural processes, with innovative educational approaches helping to build mental resilience and adaptability in response to stress and instability.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-theoretical-and-methodological-basis-for-enhancing-critical-thinking-amo",
+    "statement": "Through a comparative examination of fifteen prominent definitions of critical thinking, the study identifies four major conceptual perspectives: skills-oriented, disposition-oriented, competence-oriented, and integrative-digital.",
+    "source_ids": [
+      "src-theoretical-and-methodological-basis-for-enhancing-critical-thinking-amo"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Through a comparative examination of fifteen prominent definitions of critical thinking, the study identifies four major conceptual perspectives: skills-oriented, disposition-oriented, competence-oriented, and integrative-digital.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-assessing-the-competencies-of-future-early-childhood-educators-abstract",
+    "statement": "Results:The findings revealed that pre-service early childhood educators demonstrated high levels of content, pedagogical, and technological knowledge.Strengths were evident in literacy instruction, inclusive teaching practices, adaptability to learners' needs, collaboration, creativity, professionalism, and technology integration.Respondents also reported high levels of perceived achievement in General, Professional, and Specialization Education courses.However, areas requiring further improvement included Mathematics and Science content mastery, classroom management, addressing learner misconceptions, practical technology application, educational philosophy, and higher-order critical thinking.Significant positive relationships were found between TPACK competencies and perceived achievement across all educational domains, indicating that stronger content, pedagogical, and technological knowledge is associated with higher academic confidence and preparedness.",
+    "source_ids": [
+      "src-assessing-the-competencies-of-future-early-childhood-educators"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Results:The findings revealed that pre-service early childhood educators demonstrated high levels of content, pedagogical, and technological knowledge.Strengths were evident in literacy instruction, inclusive teaching practices, adaptability to learners' needs, collaboration, creativity, professionalism, and technology integration.Respondents also reported high levels of perceived achievement in General, Professional, and Specialization Education courses.However, areas requiring further improvement included Mathematics and Science content mastery, classroom management, addressing learner misconceptions, practical technology application, educational philosophy, and higher-order critical thinking.Significant positive relationships were found between TPACK competencies and perceived achievement across all educational domains, indicating that stronger content, pedagogical, and technological knowledge is associated with higher academic confidence and preparedness.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, creativity, collaboration, resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-implementation-of-coding-and-artificial-intelligence-in-inclusive-ed",
+    "statement": "This study uniquely integrates coding and artificial intelligence within the framework of inclusive education and contextualizes the findings in developing countries, particularly Indonesia, where empirical research on AI- and coding-based inclusive learning remains limited.",
+    "source_ids": [
+      "src-the-implementation-of-coding-and-artificial-intelligence-in-inclusive-ed"
+    ],
+    "text_anchor": "abstract, sentence 10: \"This study uniquely integrates coding and artificial intelligence within the framework of inclusive education and contextualizes the findings in developing countries, particularly Indonesia, where empirical research on AI- and coding-based inclusive learning remains limited.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null
   }
 ]
