@@ -18,9 +18,9 @@
     "topics": [
       "resilience"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -44,9 +44,9 @@
     "topics": [
       "resilience"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -70,9 +70,9 @@
       "ai literacy",
       "digital competence"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -98,9 +98,9 @@
     "topics": [
       "ethics"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.45
   },
   {
@@ -151,9 +151,9 @@
     "topics": [
       "education"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -179,9 +179,9 @@
     "topics": [
       "education"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -204,9 +204,9 @@
     "topics": [
       "systems thinking"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6
   },
   {
@@ -235,9 +235,9 @@
     "topics": [
       "education"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -262,9 +262,9 @@
     "topics": [
       "education"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -292,9 +292,9 @@
     "topics": [
       "collaboration"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-14",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3
   },
   {
@@ -373,9 +373,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-20",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6
   },
   {
@@ -510,9 +510,9 @@
       "collaboration",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-20",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6
   },
   {
@@ -536,9 +536,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-22",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6
   },
   {
@@ -623,9 +623,9 @@
       "ai literacy",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-22",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.75
   },
   {
@@ -674,9 +674,9 @@
       "self-regulation",
       "resilience"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-23",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.9
   },
   {
@@ -749,9 +749,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6,
     "audience": "learner"
   },
@@ -777,9 +777,9 @@
       "collaboration",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.9,
     "audience": "learner"
   },
@@ -806,9 +806,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -832,9 +832,9 @@
       "ai literacy",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.75,
     "audience": "learner"
   },
@@ -857,9 +857,9 @@
     "topics": [
       "collaboration"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -886,9 +886,9 @@
     "topics": [
       "resilience"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.45,
     "audience": "learner"
   },
@@ -912,9 +912,9 @@
       "critical thinking",
       "self-regulation"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6,
     "audience": "educator"
   },
@@ -939,9 +939,9 @@
       "self-regulation",
       "resilience"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.85,
     "audience": "educator"
   },
@@ -970,9 +970,9 @@
       "collaboration",
       "systems thinking"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-29",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 1.0,
     "audience": "educator"
   }

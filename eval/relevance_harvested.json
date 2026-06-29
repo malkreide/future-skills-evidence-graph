@@ -424,6 +424,348 @@
       "decision": "promote_source",
       "harvested_at": "2026-06-28",
       "source_id": "src-reviewing-computational-thinking-in-compulsory-education-state-of-play-a"
+    },
+    {
+      "title": "AI-Enhanced Lesson Study: Transforming Teacher Professional Development",
+      "abstract": "This study examines the integration of Artificial Intelligence (AI) into the Lesson Study (LS) model as an innovative approach to teacher professional development. LS, a collaborative learning model, allows teachers to systematically plan, implement, observe, and refine their teaching practices. Advances in AI offer new opportunities by providing data-driven insights, personalized feedback, and adaptive learning strategies. Through a systematic literature review, this study explores how AI-supported LS enhances teacher education and student learning. Key themes include AI\u2019s role in real-time feedback, data-driven lesson planning, and improved teacher collaboration. Challenges such as digital literacy, ethical concerns, and the need for structured implementation are also discussed. Findings indicate that AI-supported LS optimizes decision-making, fosters reflective teaching, and personalizes student learning. However, effective implementation requires training, institutional support, and integration into existing structures. AI-enhanced LS holds promise for professional development while preserving the model\u2019s collaborative essence..",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-ai-enhanced-lesson-study-transforming-teacher-professional-development"
+    },
+    {
+      "title": "Assessing the competencies of future early childhood educators",
+      "abstract": "Aim: This study assessed the competencies of future early childhood educators by examining their levels of Content, Pedagogical, and Technological Knowledge (TPACK) and their perceived achievement in General, Professional, and Specialization Education courses.It also determined the relationship between TPACK competencies and perceived academic achievement to provide a basis for competency enhancement initiatives in teacher education. Methodology:The study employed a descriptive-correlational quantitative research design.Data were gathered from 111 Bachelor of Early Childhood Education students from first to fourth year levels at the College of Teacher Education, Batangas State University, The National Engineering University, using a validated researcher-made questionnaire and a standardized TPACK instrument with a Cronbach's alpha reliability coefficient of .984.Stratified random sampling was utilized, and data were analyzed using weighted mean, standard deviation, and Pearson's r. Results:The findings revealed that pre-service early childhood educators demonstrated high levels of content, pedagogical, and technological knowledge.Strengths were evident in literacy instruction, inclusive teaching practices, adaptability to learners' needs, collaboration, creativity, professionalism, and technology integration.Respondents also reported high levels of perceived achievement in General, Professional, and Specialization Education courses.However, areas requiring further improvement included Mathematics and Science content mastery, classroom management, addressing learner misconceptions, practical technology application, educational philosophy, and higher-order critical thinking.Significant positive relationships were found between TPACK competencies and perceived achievement across all educational domains, indicating that stronger content, pedagogical, and technological knowledge is associated with higher academic confidence and preparedness. Conclusion:The study concludes that integrated TPACK competencies play a significant role in enhancing the academic readiness and professional preparation of future early childhood educators.The findings underscore the importance of strengthening teacher education curricula through competency-based training programs that promote content mastery, effective pedagogy, technology integration, reflective practice, and lifelong learning to improve educational outcomes and teaching effectiveness.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-assessing-the-competencies-of-future-early-childhood-educators"
+    },
+    {
+      "title": "THE IMPLEMENTATION OF CODING AND ARTIFICIAL INTELLIGENCE IN INCLUSIVE EDUCATION: A SYSTEMATIC LITERATURE REVIEW",
+      "abstract": "The rapid integration of digital technology in education has emphasized the need for learning systems that are not only technologically advanced but also inclusive and equitable. This study aims to systematically review the implementation of coding and artificial intelligence (AI) in inclusive education and to examine their contributions to accessibility, personalization, and learning equity for students with special needs. This study employed a Systematic Literature Review (SLR). A total of 68 publications were identified from Scopus, Springer, DOAJ, Sinta, and Google Scholar databases. After applying inclusion criteria publication between 2019 and 2024, relevance to AI or coding in inclusive education, and methodological rigor 20 studies were selected for in-depth analysis. The selected studies were analyzed thematically using the Universal Design for Learning (UDL) framework as an analytical lens. The findings indicate that AI technologies, including speech-to-text systems, adaptive learning platforms, and image recognition tools, significantly enhance accessibility and personalized learning for students with hearing, visual, and cognitive impairments. Coding activities support the development of computational thinking, creativity, collaboration, and learner autonomy, particularly among students with special educational needs. However, implementation challenges remain, including limited digital infrastructure, insufficient teacher readiness, and a lack of local empirical research in developing countries such as Indonesia. This study uniquely integrates coding and artificial intelligence within the framework of inclusive education and contextualizes the findings in developing countries, particularly Indonesia, where empirical research on AI- and coding-based inclusive learning remains limited. Keywords: Coding, Artificial Intelligence, Inclusive Education, Systematic Literature Review, Universal Design for Learning.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-the-implementation-of-coding-and-artificial-intelligence-in-inclusive-ed"
+    },
+    {
+      "title": "Uncanny Valley of Artificial Intelligence: Primary School Students' Fears of AI Attributing Human Characteristics",
+      "abstract": "This qualitative study systematically investigates the artificial intelligence (AI) fears of primary school students through the conceptual lens of the \u201cUncanny Valley\u201d theory. As AI technologies become increasingly integrated into modern educational environments, understanding their profound psychological impact on young learners is fundamentally crucial. Employing a rigorous grounded theory design, in-depth interviews were conducted with eight students aged 10 to 11 to thoroughly explore their underlying perceptions. The data analysis revealed that students' anxieties regarding AI are primarily concentrated within three distinct themes: omniscience, permanent memory, and autonomous evolution. Findings indicate that students perceive AI not merely as a functional technological tool, but rather as an infallible, human-like competitor. This specific perception triggers profound anxieties concerning severe existential threats, the permanent loss of privacy, and an inevitable loss of human control over technology. Consequently, the study concludes that children experience a unique \u201cUncanny Valley of Mind\u201d; their intense apprehension stems from the hyperrealistic cognitive capabilities of AI rather than its physical appearance. To effectively mitigate these complex anxieties, the study strongly recommends implementing comprehensive, multidimensional AI literacy programmes within schools. These targeted educational interventions must focus on demystifying the statistical nature of AI, highlighting its inherent limitations, and promoting human-centric pedagogical designs that prioritise uniquely human competencies over algorithmic outputs.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-uncanny-valley-of-artificial-intelligence-primary-school-students-fears"
+    },
+    {
+      "title": "Developing AI Literacy in Students",
+      "abstract": "As artificial intelligence (AI) becomes increasingly integrated into daily life, fostering AI literacy is essential to prepare the next generation for a technology-driven world. Understanding AI concepts, ethical challenges, and societal implications enables students to engage critically and responsibly with emerging technologies. By promoting informed awareness and hands-on learning, AI literacy empowers learners to navigate, shape, and contribute to the future workforce and civic life. This foundational knowledge supports equitable access to opportunities in STEM and beyond, helping to close digital divides and promote inclusive innovation. \"Developing AI Literacy in Students\" delves into the multifaceted nature of AI literacy, exploring its key components, pedagogical approaches, and strategies for implementation across diverse educational settings. It emphasizes the importance of equipping students with a comprehensive understanding of AI concepts, ethical considerations, and societal implications. Covering topics such as adaptive education, feedback systems, and tutoring, this book is an excellent resource for educators, faculty, curriculum developers, researchers, teacher educators, policymakers, and more.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-developing-ai-literacy-in-students"
+    },
+    {
+      "title": "Embracing the Future of Artificial Intelligence in the Classroom: The Relevance of AI Literacy, Prompt Engineering, and Critical Thinking in Modern Education",
+      "abstract": "The present discussion examines the transformative impact of Artificial Intelligence (AI) in educational settings, focusing on the necessity for AI literacy, prompt engineering proficiency, and enhanced critical thinking skills. The introduction of AI into education marks a significant departure from conventional teaching methods, offering personalized learning and support for diverse educational requirements, including students with special needs. However, this integration presents challenges, including the need for comprehensive educator training and curriculum adaptation to align with societal structures. AI literacy is identified as crucial, encompassing an understanding of AI technologies and their broader societal impacts. Prompt engineering is highlighted as a key skill for eliciting specific responses from AI systems, thereby enriching educational experiences and promoting critical thinking. There is detailed analysis of strategies for embedding these skills within educational curricula and pedagogical practices. This is discussed through a case-study based on a Swiss university and a narrative literature review, followed by practical suggestions of how to implement AI in the classroom.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-embracing-the-future-of-artificial-intelligence-in-the-classroom-the-rel"
+    },
+    {
+      "title": "Mapping AI Literacy Frameworks: An Analysis of the Evolving Metaphorical Relationships between Students, Teachers, and AI",
+      "abstract": "Rich metaphors abound within the growing AI literacy research landscape, and there is no better place to look for them than within the rapidly proliferating number of AI literacy frameworks. Conceptual metaphors and AI literacy frameworks, which outline the skills, competencies, and dispositions needed to engage critically with AI, complement each other by organizing people's perceptions of this complex technological change and coordinating our actions in response. Through idiographic metaphor analysis, we coded the metaphors in eighteen AI literacy frameworks to uncover the underlying metaphorical relationships between AI, students, and teachers. We highlight the dominant metaphors for each actor: AI-as-tool-transformer-ubiquitary-artefact-threat; student-as-analyst-citizen-creator; and teacher-as-designer-guide. We then discuss the connections between these metaphors and their alignment with dominant educational paradigms. Finally, we discuss three tensions within the metaphors that address blind spots within the current corpus of AI literacy frameworks. We suggest areas for future research that address these tensions and consider our individual and collective capacity in higher education to shape or reject an AI-saturated future.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-mapping-ai-literacy-frameworks-an-analysis-of-the-evolving-metaphorical"
+    },
+    {
+      "title": "Primary and Secondary AI Education: Preparing Children for the Future",
+      "abstract": "As a result of the expedited advancement and expanded application of artificial intelligence (AI) technology, its social and economic impacts become increasingly significant. AI is often counted as one of the major technologies in the \u201cFourth Industrial Revolution\u201d (Wong et al., 2020), which is reshaping the structure and demands of the future labor markets. AI literacy, alongside reading and mathematical skills, constitutes one of the core 21st century competencies (Steinbauer et al., 2021). Hence, it is essential to integrate AI education into the primary and secondary curricula.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-primary-and-secondary-ai-education-preparing-children-for-the-future"
+    },
+    {
+      "title": "Kindergarten Teachers\u2019 Perceptions of AI Literacy Education for Young Children",
+      "abstract": "",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-kindergarten-teachers-perceptions-of-ai-literacy-education-for-young-chi"
+    },
+    {
+      "title": "Leveraging AI to Enhance Children\u2019s Learning: Anchoring Policy and Practice in Equity, AI Literacy, and Ethics for Education Leaders and Teachers",
+      "abstract": "",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-leveraging-ai-to-enhance-children-s-learning-anchoring-policy-and-practi"
+    },
+    {
+      "title": "Integrating AI literacy into teacher education: a critical perspective paper",
+      "abstract": "",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-integrating-ai-literacy-into-teacher-education-a-critical-perspective-pa"
+    },
+    {
+      "title": "Teachers&apos; Use of Generative AI to Support Literacy in 2025",
+      "abstract": "This report aims to update and broaden the understanding of teachers' experiences of teaching reading and writing as the capabilities of generative AI expand and improve. As part of ongoing research considering what it means to be literate in the digital age, the National Literacy Trust have been exploring how generative AI tools might influence, or even redefine, literacy since early 2023. The first reports, published in the summer of 2024, used data from National Literacy Trust's Annual Literacy Survey to explore children, young people and teachers' attitudes and behaviour around using AI to support literacy. This report builds on earlier findings by looking in more detail at teachers' use of AI to support writing and reading, while also exploring frontline perspectives on the benefits and drawbacks of generative AI for literacy to guide future work in this area. When ChatGPT-3 launched in late 2022, early projections around the impact of generative AI focused more on its potential to boost young people's academic progress (such as through more personalised and adaptive learning) than how it might support teachers. More recently (and perhaps reflecting broader concerns around 'screen time'), the discourse has become more nuanced. In early 2025, Education Secretary Bridget Phillipson suggested that, in an educational context, AI was &quot;\u2026 less about how children and young people use technology, and more about how we support staff to use it to deliver a better education for children&quot;. Against a background of these wider debates, in 2025 findings show that the gap between teachers' and young people's use of generative AI has narrowed, although more young people still report using these tools than those who educate them. At the same time, findings indicate increasing concerns about young people's use of AI, from academic integrity to perceptions of the value of developing writing and reading skills in the age of AI.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-teachers-apos-use-of-generative-ai-to-support-literacy-in-2025"
+    },
+    {
+      "title": "An Adaptive Activity Model of DCE: Exploring Educators\u2019 Practices in Resourced-Constrained Primary Schools",
+      "abstract": "This study employs Activity Theory (AT) to examine Digital Citizenship Education (DCE) implementation as an activity system within resource-constrained primary schools. Addressing a persistent policy\u2013practice gap and limited research in early schooling, it explores how teachers in resource-constrained settings understand, enact, and are constrained in their DCE work. A qualitative, abductive case study based predominantly on 12 semi-structured interviews amongst primary school teachers in Cape Town South Africa reveals systemic contradictions within the DCE activity system rooted in digital inequality and infrastructural fragility. Teachers hold largely surface-level, safety-oriented conceptions of DCE, leading to informal, reactive practices that depend on personal moral reasoning and self-directed learning. The paper proposes an Adaptive Activity Model (AAM), which provides a diagnostic framework explaining how infrastructural scarcity forces agents into everyday systems design. The AAM offers transferable insights for guiding IS implementation and designing for resilience in public education systems across digitally unequal context.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-an-adaptive-activity-model-of-dce-exploring-educators-practices-in-resou"
+    },
+    {
+      "title": "Generative AI in Education for SDG 4: Insights from Indonesia and Kazakhstan",
+      "abstract": "The realization of Sustainable Development Goal 4 (SDG 4) increasingly involves the integration of technologies such as Generative AI (GenAI). Nevertheless, its implementation continues to face various challenges. These challenges become more complex because each country has a different level of readiness. This study explores the governance landscape of GenAI implementation in education based on the perspectives of experts from Indonesia and Kazakhstan. The study employs a mixed qualitative design by combining a systematic literature review (SLR) and open-ended questionnaires addressed to experts in Indonesia and Kazakhstan. The findings reveal variations in national readiness, policy priorities, infrastructure conditions and capacity-building requirements between the two countries. From a dynamic capabilities perspective, the study highlights the importance of adaptive governance, digital infrastructure development and educational system transformation in supporting inclusive and equitable SDG 4 outcomes.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-generative-ai-in-education-for-sdg-4-insights-from-indonesia-and-kazakhs"
+    },
+    {
+      "title": "Memory in Motion: AI-Mediated Storytelling Across Languages, Classrooms and Generations",
+      "abstract": "In increasingly multilingual and culturally di verse educational environments, storytelling has emerged as a powerful pedagogical practice for fostering language development, identity expres sion, and cultural continuity. At the same time, advances in artificial intelligence (AI) have trans formed digital storytelling by introducing new possibilities for content generation, translation, and multimodal communication. This paper ex plores the role of AI-mediated storytelling across languages, classrooms, and generations, examin ing how AI can support narrative practices while preserving human creative agency. Drawing on interdisciplinary research in language education, digital storytelling, multilingualism, heritage lan guage learning, and intergenerational memory, the study proposes a conceptual framework that positions AI as a narrative mediator rather than an autonomous storyteller. The discussion highlights the educational potential of AI-sup ported storytelling for enhancing language learn ing, promoting multilingual expression, strength ening cultural identity, and facilitating the trans mission of intergenerational memory. At the same time, it addresses critical ethical concerns related to authorship, bias, transparency, and learner agency. The paper argues that the peda gogical value of AI-mediated storytelling de pends on human-centered instructional design, critical engagement with technology, and the preservation of authentic narrative voice. Ulti mately, AI-mediated storytelling is presented as a collaborative human\u2013machine practice that re connects language, memory, and meaning across linguistic, cultural, and generational boundaries.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-memory-in-motion-ai-mediated-storytelling-across-languages-classrooms-an"
+    },
+    {
+      "title": "The AEWake Model: An AI-Enabled Instructional System for Enhancing Executive Function and Islamic Growth Mindset in Early Learners",
+      "abstract": "In today's era of digital transformation and artificial intelligence, executive function skills and adaptive character are crucial competencies for students to face complex future challenges. Teaching that integrates interactive media based on smart technology with a spiritual values \u200b\u200bapproach is seen as an effective and creative strategy to cultivate these skills from an early age. Although previous research has focused on basic digital literacy, evaluation of the impact of teaching that combines cognitive and spiritual aspects holistically is still limited. This study aims to develop and test the effectiveness of an instructional system based on the AEWake model through a smart puzzle barcode hijaiyah media designed to stimulate executive function while instilling an Islamic Growth Mindset. Using a Research and Development (R&D) method with an adapted development model, the study involved 90 early childhood children as test subjects. Data collection techniques were carried out through structured observations based on the AEWake instrument and digital documentation, which were then analyzed using inferential statistics to measure the media's effectiveness. The results showed that the use of this instructional media had a significant positive impact on improving children's directed attention, self-control, and cognitive flexibility. The findings revealed that digital scaffolding through interactive content was a key variable influencing learning success, while the use of recycled materials was shown to increase sensory comfort without reducing the effectiveness of the technology. It is concluded that the integration of AI-enabled technology and Islamic values \u200b\u200bis able to support sustainable cognitive and character development in the PAUD environment.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-the-aewake-model-an-ai-enabled-instructional-system-for-enhancing-execut"
+    },
+    {
+      "title": "The Heterogeneity of Curiosity: Implications for Education, Academic Performance, and Lifelong Learning \u2013 A Scoping Review",
+      "abstract": "In today\u2019s dynamic and complex world, adaptability, critical thinking, and lifelong learning are essential competencies\u2014among which curiosity is proven to have a central role for overall performance. This scoping review explores the heterogeneous and multidimensional nature of curiosity and its implications in educational contexts and across the lifespan. Drawing on 33 peer-reviewed articles from 2009 to 2024, the review addresses three core research questions: (1) What types of curiosity are measured in relation to academic performance and across which age groups? (2) Is curiosity studied as a distinct construct in educational research? (3) What are the reported implications of curiosity on academic performance, and how can educational environments foster it? The review synthesizes psychological, biological, and pedagogical perspectives, emphasizing curiosity\u2019s role in motivation, cognitive engagement, and overall development. Concerning academic performance six thematic research lines are identified, highlighting a notable gap: curiosity is rarely studied in early childhood despite its foundational influence and only cognitive or epistemic curiosity is in the research focus, while emotional and passive dimensions remain underexplored. The review advocates for rethinking curiosity not only as a cognitive trait but as a key educational competence and promotion of its passive \u2013 effortless and rewarding form, which is underdeveloped. Its strategic inclusion in teacher training, curriculum development, and educational policy is essential for supporting student engagement, academic success, and lifelong learning.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-the-heterogeneity-of-curiosity-implications-for-education-academic-perfo"
+    },
+    {
+      "title": "Empowering the Next Generation for Gender Equality: A Global, Indian and Karnataka Perspective on Building Inclusive and Sustainable Societies",
+      "abstract": "Gender equality has emerged as one of the most significant social, economic, and developmental priorities of the twenty-first century. Despite considerable progress in education, employment, political participation, and legal rights, gender disparities continue to persist across societies worldwide. The challenge is no longer limited to ensuring equal opportunities for women and men; rather, it involves creating inclusive systems that empower future generations to challenge stereotypes, embrace diversity, and contribute to sustainable development. This paper examines the need for empowering the next generation for gender equality through a comprehensive review of literature, global statistical indicators, Indian and Karnataka state-level trends, and illustrative case studies of influential personalities who contributed to gender justice and social transformation. The study adopts a conceptual and descriptive approach by synthesizing insights from international organizations, academic literature, and policy reports. The paper identifies six major dimensions of gender equality: educational equality, economic equality, political equality, social equality, health equality, and digital equality. The findings indicate that while educational access for women has improved significantly, substantial gaps remain in leadership representation, wage parity, political empowerment, and digital inclusion. The study further highlights the evolving understanding of gender equality across generations, from Generation X to Generation Alpha, demonstrating how younger generations increasingly view equality as a fundamental social norm rather than merely a legal or economic issue. The paper argues that empowering the next generation through education, awareness, technology, and value-based socialization is essential for achieving the Sustainable Development Goals (SDGs), particularly SDG 5 on Gender Equality. The study concludes that gender equality is not solely a women's issue but a societal imperative that contributes to economic growth, social cohesion, innovation, and sustainable development. Policy recommendations emphasize gender-sensitive education, digital inclusion, leadership development, legal enforcement, and multi-stakeholder collaboration to create an equitable future for all.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-empowering-the-next-generation-for-gender-equality-a-global-indian-and-k"
+    },
+    {
+      "title": "Innovations in Education and Culture of the 21st Century: Conceptual and Mental Aspects",
+      "abstract": "Aim. The study aimed to examine the impact of innovative transformations in Ukraine's educational and cultural space, focusing on digitalisation and new approaches to education and cultural heritage preservation amidst global and national challenges. Methods. The research employed secondary data analysis from scientific sources, regulations, and reports, alongside a comparative analysis of theoretical approaches to innovation in Ukrainian education and culture, including music. Results. The study highlights the role of digitalisation in preserving cultural heritage, even under resource constraints. It identifies the trend of integrating online platforms and new learning technologies, which have enhanced access to education and increased flexibility. Digitalisation of cultural, particularly musical, monuments and archives has proven effective in preserving national heritage, even during martial law, by ensuring broad public access. Furthermore, the war has significantly impacted educational and cultural processes, with innovative educational approaches helping to build mental resilience and adaptability in response to stress and instability. Conclusions. The study emphasizes the need to integrate global trends into Ukraine's national educational and cultural policies to foster national identity and ensure the country's adaptation to changes. It underscores the importance of new approaches in education and culture to meet societal needs. Originality. The study concludes with recommendations for developing digital technologies in education, promoting inclusiveness, and preserving cultural heritage. These steps will support Ukraine's sustainable development, improve educational and cultural initiatives, and strengthen national identity.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-innovations-in-education-and-culture-of-the-21st-century-conceptual-and"
+    },
+    {
+      "title": "The Remittance Blueprint: Data-driven Intelligence for Sri Lanka",
+      "abstract": "This study analyzes Sri Lankan migration and remittances over 32 years (1994-2025). Using a 384-month harmonized dataset, we apply exploratory data analysis, stationarity corrected time-series modeling (ADF, Johansen, VAR/VECM), and supervised learning. Results reveal remittance inflows are primarily driven by external macroeconomic variables, specifically exchange rate dynamics and global oil prices, rather than domestic indicators. Impulse response analysis confirms the asymmetric impact of currency depreciation and oil price shocks. Predictively, multivariate machine learning models outperform traditional univariate approaches; Ridge Regression achieves a 73.8% accuracy improvement over SARIMA (Annualized RMSE: USD 494.8 Mn). The optimized framework projects 2026 remittances at USD 9,001 million under stable conditions. These findings highlight the structural dependence of remittances on global economies, emphasizing the need for robust exchange rate policies, skilled migration, and formal financial channels to enhance long-term economic resilience.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-the-remittance-blueprint-data-driven-intelligence-for-sri-lanka"
+    },
+    {
+      "title": "THEORETICAL AND METHODOLOGICAL BASIS FOR ENHANCING CRITICAL THINKING AMONG PRE-SERVICE FOREIGN LANGUAGE TEACHERS IN DIGITAL EDUCATIONAL SETTINGS",
+      "abstract": "Abstract. This article explores the conceptual, philosophical, psychological, and pedagogical underpinnings of critical thinking as an essential professional competence for pre-service foreign language teachers within digital educational settings. Integrating insights from Eastern intellectual heritage, Western philosophical thought, and contemporary theories of cognition, the study develops a comprehensive theoretical model for conceptualising critical thinking in teacher education. It argues that the rapid digitalisation of education requires an expanded understanding of critical thinking that extends beyond general cognitive abilities to include critical evaluation of digital and linguocultural information, pedagogical reflection, self-regulated professional decision-making, and responsible instructional practice. Through a comparative examination of fifteen prominent definitions of critical thinking, the study identifies four major conceptual perspectives: skills-oriented, disposition-oriented, competence-oriented, and integrative-digital. Based on this analysis, an original integrative definition is proposed to address the specific professional needs of future foreign language teachers within the context of Uzbekistan's evolving digital education system.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-theoretical-and-methodological-basis-for-enhancing-critical-thinking-amo"
+    },
+    {
+      "title": "Towards Automating Scientific Review with Google's Paper Assistant Tool",
+      "abstract": "Artificial intelligence is driving a revolution in scientific discovery, accelerating everything from hypothesis generation to mathematical theorem proving. However, this rapid acceleration is creating a systemic challenge: traditional human peer review cannot scale to match the influx of AI-assisted science. Ultimately, to resolve this tension, we must also deploy AI to accelerate the verification and review process itself. To frame the discussion around this transition, we propose a taxonomy consisting of four progressive levels of AI-human collaboration in scientific evaluation, and discuss various trade-offs involved with each. As a step toward this future, we introduce the Paper Assistant Tool (PAT), an agentic AI framework built for deep scientific review and verification. PAT ingests full scientific manuscripts and produces a comprehensive evaluation, checking theoretical results, validating experiments, suggesting improvements, and identifying potential flaws. By utilizing inference scaling techniques, PAT is able to identify deeper issues than a single model call alone, achieving a 34% improvement over zero-shot recall on mathematical errors in the SPOT benchmark. Pilot deployments of PAT as a pre-submission tool for authors at two major Computer Science conferences -- STOC and ICML -- demonstrate its ability to identify critical errors and suggest substantive improvements to research papers. By catching errors early, PAT eases the cognitive burden placed on referees, while preserving their control over the outcomes of the review process.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-towards-automating-scientific-review-with-google-s-paper-assistant-tool"
+    },
+    {
+      "title": "A Qualitative Study of Immigration Trauma, Posttraumatic Growth, and the College Experience Among MENA Immigrant Students",
+      "abstract": "Middle Eastern and North African (MENA) immigrant students who are seeking to earn a higher education in the United States have to navigate acculturative stressors and systemic barriers. Prior research has focused primarily on the challenges MENA immigrant students experience without deeply exploring how these students adapt and grow. The focus in this qualitative study was to understand how MENA immigrant college students experience and make meaning of their academic journeys. Semi-structured interviews were used to explore the academic experiences of seven MENA immigrant college students in the United States and assess how acculturative stressors, personal strengths, coping strategies, and resilience factors shaped their academic outcomes. Through a phenomenological approach, data were analyzed using Braun and Clarke\u2019s (2006) thematic analysis. The findings indicated the students entered the college setting already experiencing significant acculturative stressors, including language barriers, cultural adjustment, financial strain, discrimination, and family separation, in addition to institutional challenges like limited guidance and difficulties adjusting to academic institutions in the United States. Participants demonstrated adaptive coping through help-seeking behaviors, determination, self-advocacy, and faith-based practices to support their academic engagement and develop post traumatic growth. The participating MENA immigrant students exhibited an academic trajectory of an initial struggle followed by improved performance, increased confidence, and long-term growth and showed an appreciation for educational opportunities. Implications for this study reflect the need for culturally responsive and preemptive support systems within higher education for MENA immigrant students.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-a-qualitative-study-of-immigration-trauma-posttraumatic-growth-and-the-c"
+    },
+    {
+      "title": "Adaptive Learning Platform for Dyslexic Students",
+      "abstract": "Adaptive learning systems are a significant area of research in personalized education, especially for students with dyslexia, as structured and responsive instructional support can greatly enhance learning outcomes. Many conventional rule-based methodologies are not readily adaptable for personalized instruction or real-time modification. To overcome this limitation, this paper introduces a lightweight adaptive learning system that utilizes a machine learning model to produce instructional recommendations. The system employs a Decision Tree Classifier trained on structured quiz-response features to assess a learner's proficiency and recommend the most appropriate learning stages. The platform is not meant to be a diagnostic tool; instead, it is meant to be a post-identification instructional support system. It has three main parts: an interactive quiz interface, a classification module that groups learners into Beginner, Intermediate, or Advanced levels, and a Flask-based backend that makes predictions and sends them out. The model is still computationally efficient, easy to understand, and good for real-time adaptive learning environments because it only uses quiz performance indicators. When tested on a controlled synthetic dataset, the results were very good, with an overall accuracy of 98.25%. Advanced learners had a class-specific [Formula: see text] score of 99.15%, beginner learners had a score of 95.87%, and intermediate learners had a score of 96.27%. The macro-average precision, recall, and [Formula: see text]-score were 96.93%, 97.32%, and 97.10%, respectively. The weighted averages were all close to 97.00%. These results show that the suggested method is a good and useful way to recommend quiz-based adaptive learning in technology-supported special education settings.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-adaptive-learning-platform-for-dyslexic-students"
+    },
+    {
+      "title": "Design and validation of a universal literacy screening tool for Catalan-speaking children",
+      "abstract": "This study describes the design, development, and piloting of a universal literacy screening tool for Catalan-speaking students (Grades 1\u20134) within a Multi-Tiered System of Support (MTSS) framework. The instrument aims to support early identification of students at risk of reading difficulties through an evidence-based approach aligned with the school curriculum. The development followed a multi-phase process, including theoretical conceptualization, expert validation, and two pilot studies (Pilot 1, n = 178; Pilot 2, n = 336). The instrument assesses phonological awareness, alphabetic knowledge, lexical processes, reading fluency, comprehension, and spelling processes. Psychometric analyses examined item difficulty, point-biserial discrimination, internal consistency (Cronbach's alpha), and convergent validity. Results from Pilot 1 supported item refinement and provided initial evidence of convergent validity with established measures. Subsequently, Pilot 2 showed improved point-biserial item discrimination and high internal consistency ( \u03b1 &amp;gt; .80). Findings indicate that the C-DLec is a reliable and efficient tool for early literacy screening in Catalan educational contexts, supporting data-driven decision-making and prevention of academic difficulties.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-design-and-validation-of-a-universal-literacy-screening-tool-for-catalan"
+    },
+    {
+      "title": "Durable Skills: Enhance Career and Technical Education in the Age of Artificial Intelligence",
+      "abstract": "Job opportunities in the United States are growing, but there are not enough interested or qualified workers to fill them. Artificial Intelligence (AI) is also transforming the future of work, bringing both innovation and uncertainty and emphasizing the growing need to equip students with adaptable, future-ready skills. This report advocates for strengthening career and technical education (CTE) by preparing students with those durable skills for an AI-driven economy. An overview of how AI is rapidly transforming the job market is detailed, followed by an exploration of the current state of CTE in K-12 education. Strategies for CTE practitioners and programs to tackle AI-driven challenges and improve student outcomes are provided in four key areas: (1) Integration of AI Skills--AI is becoming essential across all sectors and job functions, making AI literacy a crucial component of CTE programs; (2) Personalized Learning--Tailoring education to students' career interests ensures they develop the skills most relevant to their future goals; (3) Emphasis on Transferable (Durable) Skills--AI cannot easily replicate problem-solving, communication, critical thinking, and other essential skills, which remain in high demand in the AI age; and (4) Data-Driven Decision-Making--Equipping educators and students with reliable data and insights helps them make informed choices about skill development and program selection. One method to assess students' durable skills for curriculum development and improvement is highlighted--a digital tool called The Tracker. To maximize CTE's impact, increased investment and policy support from both government and industry will also be essential.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-durable-skills-enhance-career-and-technical-education-in-the-age-of-arti"
+    },
+    {
+      "title": "Empowering Student Debugging in Parallel Programming with Execution Traces and Large Language Models",
+      "abstract": "Concurrent programming is a core component of Computer Science curricula, yet remains notoriously difficult for students to master due to its inherent complexity and the nondeterministic nature of concurrency bugs such as deadlocks and race conditions. In this work, we present ParaView, an educational tool designed to help students understand, debug, and correct concurrency issues in parallel programs written in C/C++. ParaView provides transparent execution recording and visualization to make parallel execution observable and comprehensible. We evaluated ParaView through a series of debugging and implementation tasks, with 17 students participating. Results showed a significant improvement in debugging and implementation successes compared to previous course iterations. A student survey confirmed that most participants found ParaView helpful. To further support learning outside the classroom, we explored using Large Language Models (LLMs) to analyze concurrency bugs and suggest fixes. While LLMs were highly effective in identifying bugs and explaining execution traces, the correctness of their bug fixes varied, especially for more complex synchronization patterns. Our findings suggest that recording-visualization tools like ParaView, complemented by artificial intelligence (AI), can improve teaching and learning of concurrent programming.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-empowering-student-debugging-in-parallel-programming-with-execution-trac"
+    },
+    {
+      "title": "HAT-4D: Lifting Monocular Video for 4D Multi-Object Interactions via Human-Agent Collaboration",
+      "abstract": "Extracting dynamic 4D object interactions from massive, in-the-wild monocular videos offers a highly efficient data collection pathway for scaling Embodied AI and training VLAs. However, existing monocular 4D reconstruction methods primarily focus on isolated objects, often failing under the severe occlusions and complex dynamics inherent in multi-object interactions. To bridge this gap, we propose HAT-4D, the first agentic framework designed to reconstruct the 3D geometry, temporal dynamics, and physical interactions of multiple objects from a single video. By integrating VLMs with a multi-level human-in-the-loop feedback mechanism, HAT-4D efficiently resolves depth ambiguities and interaction-induced occlusions during 3D generation and 4D propagation, yielding physically plausible assets without relying on expensive multicamera rigs. As a scalable data engine, HAT-4D facilitates the creation of MVOIK-4D, an open-world benchmark for monocular 4D interaction reconstruction, accompanied by a novel multi-dimensional evaluation protocol focused on physical plausibility and temporal consistency. Extensive experiments demonstrate that HAT-4D achieves SOTA performance on most evaluation metrics, while maintaining competitive semantic alignment. Ablation studies show that introducing a small amount of human feedback improves interaction reconstruction. Moreover, the data produced by HAT-4D effectively improves baseline performance when used for fine-tuning. Our data and code are available at https://lijiaxin0111.github.io/HAT4D/",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-hat-4d-lifting-monocular-video-for-4d-multi-object-interactions-via-huma"
+    },
+    {
+      "title": "Impact of water sanitation and hygiene on quality education in developing countries: a review of theories and indicators",
+      "abstract": "Access to Water, Sanitation and Hygiene (WASH) has increasingly been adopted as a quality determinant of education that affects learning and health outcomes. This study reviews literature on the conceptual synthesis, theory integration, Indicator clarification of the impact of WASH on quality education. A narrative review method was adopted for this study. Desk-based review of literature was used to find and read studies pertaining to the relationship between WASH and educational quality in different culture settings that include developing nations. Three broad theoretical perspectives like ecological system approach, human capital theory, and health belief model have been employed widely in studies examining this link. These studies tend to investigate a battery of variables including infrastructure quality, hygiene behavior, school attendance, gender disparities, and broader socio-economic determinants. This study contributes to knowledge by the development of an integrated variable framework linking WASH inputs to educational outcomes through mediating and moderating conditions. Furthermore, this study will provide literatures on the relationship between WASH and Quality Education for researchers and policy makers towards achieving Sustainable Development Goals 4.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-impact-of-water-sanitation-and-hygiene-on-quality-education-in-developin"
+    },
+    {
+      "title": "Menstrual Hygiene Practices and Associated Factors among Post-Menarche Primary-School Girls in Semi-Rural Indonesia: A Mixed-Methods Study",
+      "abstract": "Introduction: Menstrual hygiene management (MHM) remains a significant public health issue, particularly among primary school girls in low- and middle-income countries. Poor menstrual hygiene is associated with an increased risk of reproductive tract infections and may increase vulnerability to sexually transmitted infections (STIs). In Indonesia, inadequate practices remain common, including in semi-rural areas such as Garut Regency, where limited sanitation and family dynamics influence menstrual health behaviors. Methods: This study used a sequential explanatory mixed-methods design. A total of 83 primary school girls who had experienced menarche were included in the quantitative phase and analyzed using multivariate logistic regression. 21 informants were purposively selected for in-depth interviews based on school variation, knowledge level, maternal support level, and menstrual hygiene practice category. All selected informants completed the interviews, and all completed interviews were included in the thematic analysis Results: High knowledge was strongly associated with good MHM practices (OR = 13.60; 95% CI: 3.38\u201354.71; p &lt; 0.001 ). After adjusting for maternal support and sanitary pad availability, girls with adequate knowledge had 13.6 times higher odds of good menstrual hygiene practices . Qualitative findings suggested that maternal support may facilitate the application of menstrual hygiene knowledge through emotional guidance, practical assistance, and the normalization of menstruation. Conclusion: High knowledge was the only statistically significant factor associated with good MHM practices in the adjusted quantitative model. Maternal support, although not statistically significant in the multivariable analysis, emerged in the qualitative findings as a contextual facilitator that may support the application of menstrual hygiene knowledge in daily practice.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-menstrual-hygiene-practices-and-associated-factors-among-post-menarche-p"
+    },
+    {
+      "title": "Predicting Student Proficiency in Literacy and Numeracy Using Random Forests: An End-to-End Machine Learning Pipeline",
+      "abstract": "Identifying where students stand in literacy and numeracy is harder than it sounds. Tests produce subscale scores that correlate heavily with each other, class distributions are rarely balanced, and field data almost always have gaps. This paper describes a complete machine learning pipeline that tackles those problems head-on and produces two working classifiers\u2014one for literacy, one for numeracy\u2014that assign students to one of three proficiency bands: high, medium, or low. Both models are Random Forests trained on feature sets drawn from standardized assessment instruments, with grade level included as context. We added seven domain-informed interaction features on top of the raw subscale scores, handled a realistic 7% missing-data rate through median imputation, and normalized inputs using pre-fitted StandardScaler parameters. On a 600-sample test set deliberately constructed with boundary noise to mimic real deployment conditions, the literacy model reached 97.00% accuracy and a weighted ROC-AUC of 0.9986. The numeracy model came in at 85.00% accuracy with ROC-AUC of 0.9801\u2014meaningfully lower, for reasons we think are tied to the inherent heterogeneity of mathematical skill. Five-fold stratified cross-validation put numeracy training accuracy at 97.39% \u00b1 0.97%, which is reassuring for stability. Feature importance analysis pointed to raw accuracy as the single strongest literacy predictor (Gini importance 0.3014) and overall numeracy as the top numeracy predictor (0.3066). Beyond the numbers, the main argument here is that interpretable ensemble classifiers, when built carefully with domain knowledge, can serve as useful components in early warning systems\u2014provided the underlying assessment data are sound.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-predicting-student-proficiency-in-literacy-and-numeracy-using-random-for"
+    },
+    {
+      "title": "Pros and Cons of Using Artificial Intelligence in Teaching and Learning English as a Foreign Language at the School Level",
+      "abstract": "\u0639\u0644\u0649 \u0627\u0644\u0631\u063a\u0645 \u0645\u0646 \u0623\u0646 \u0641\u0635\u0648\u0644 \u062a\u0639\u0644\u064a\u0645 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u0643\u0644\u064a\u0632\u064a\u0629 \u064a\u0645\u0643\u0646 \u0623\u0646 \u062a\u0633\u062a\u0641\u064a\u062f \u0645\u0646 \u0627\u0644\u0627\u0628\u062a\u0643\u0627\u0631 \u0627\u0644\u0642\u0648\u064a \u0627\u0644\u0645\u062a\u0645\u062b\u0644 \u0641\u064a \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a\u060c \u0625\u0644\u0627 \u0623\u0646\u0647\u0627 \u0642\u062f \u062a\u0648\u0627\u062c\u0647 \u062a\u062d\u062f\u064a\u0627\u062a \u062c\u062f\u064a\u062f\u0629. \u0648\u062a\u0633\u062a\u0639\u0631\u0636 \u0647\u0630\u0647 \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0627\u0644\u0623\u062f\u0644\u0629 \u0627\u0644\u062d\u062f\u064a\u062b\u0629 \u0644\u0644\u0645\u0648\u0627\u0632\u0646\u0629 \u0628\u064a\u0646 \u0625\u064a\u062c\u0627\u0628\u064a\u0627\u062a \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0627\u0644\u062a\u064a \u062a\u062a\u0636\u0645\u0646 \u0627\u0644\u062a\u063a\u0630\u064a\u0629 \u0627\u0644\u0631\u0627\u062c\u0639\u0629 \u0627\u0644\u0641\u0648\u0631\u064a\u0629 \u0648\u0627\u0644\u0645\u062e\u0635\u0635\u0629 \u060c \u0648\u0625\u062a\u0627\u062d\u0629 \u0627\u0644\u0641\u0631\u0635\u0629 \u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0627\u0644\u0627\u0633\u062a\u0642\u0644\u0627\u0644\u064a\u0629 \u0648\u0628\u064a\u0646 \u0633\u0644\u0628\u064a\u0627\u062a\u0647\u061b \u0648\u062a\u062d\u062f\u064a\u062f\u0627\u064b \u0627\u0639\u062a\u0645\u0627\u062f \u0627\u0644\u0637\u0644\u0628\u0629 \u0639\u0644\u0649 \u0627\u0644\u0645\u0633\u0627\u0639\u062f\u0629\u060c \u0648\u0647\u0648 \u0645\u0627 \u0642\u062f \u064a\u0624\u062f\u064a \u0641\u064a \u0627\u0644\u0646\u0647\u0627\u064a\u0629 \u0625\u0644\u0649 \u0632\u064a\u0627\u062f\u0629 \u0645\u062e\u0627\u0637\u0631 \u0627\u0644\u062e\u0635\u0648\u0635\u064a\u0629 \u0648\u062a\u0642\u0644\u064a\u0635 \u0627\u0644\u062c\u0627\u0646\u0628 \u0627\u0644\u0625\u0646\u0633\u0627\u0646\u064a \u0627\u0644\u0645\u0631\u062a\u0628\u0637 \u0628\u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a. \u0648\u0627\u0633\u062a\u0646\u0627\u062f\u064b\u0627 \u0625\u0644\u0649 \u0623\u0641\u0643\u0627\u0631 \u0645\u0646 \u0627\u0644\u0646\u0638\u0631\u064a\u062a\u064a\u0646 \u0627\u0644\u0628\u0646\u0627\u0626\u064a\u0629 \u0648\u0627\u0644\u0645\u0639\u0631\u0641\u064a\u0629\u060c \u064a\u0639\u0631\u0636 \u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0623\u0646 \u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 \u0644\u0627 \u064a\u0646\u0628\u063a\u064a \u0623\u0646 \u062a\u062d\u0644 \u0645\u062d\u0644 \u0627\u0644\u062a\u0639\u0644\u064a\u0645 \u0627\u0644\u062a\u0642\u0644\u064a\u062f\u064a\u060c \u0628\u0644 \u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u062f\u0627\u0639\u0645\u0629 \u0644\u0647. \u0648\u0641\u064a \u0627\u0644\u062e\u062a\u0627\u0645\u060c \u062a\u062f\u0639\u0648 \u0646\u062a\u0627\u0626\u062c \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0625\u0644\u0649 \u062a\u062d\u0642\u064a\u0642 \u062a\u0648\u0627\u0632\u0646 \u062a\u0639\u0644\u064a\u0645\u064a\u060c \u0648\u062a\u0648\u062c\u0647 \u0627\u0644\u0645\u0639\u0644\u0645\u064a\u0646 \u0644\u062a\u0628\u0646\u064a \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0628\u0645\u0627 \u064a\u0645\u0643\u0646\u0647\u0645 \u0645\u0646 \u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0643\u0641\u0627\u0621\u0629\u060c \u0645\u0639 \u0627\u0644\u062d\u0641\u0627\u0638 \u0641\u064a \u0627\u0644\u0648\u0642\u062a \u0630\u0627\u062a\u0647 \u0648\u0628\u062b\u0628\u0627\u062a \u0639\u0644\u0649 \u0627\u0644\u062c\u0627\u0646\u0628 \u0627\u0644\u0625\u0646\u0633\u0627\u0646\u064a \u0641\u064a \u062a\u0639\u0644\u0645 \u0627\u0644\u0644\u063a\u0629.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-pros-and-cons-of-using-artificial-intelligence-in-teaching-and-learning"
+    },
+    {
+      "title": "Rethinking architectural education post-disaster: an analytical framework for curricular transformation after the 2023 Kahramanmara\u015f earthquakes",
+      "abstract": "T\u00fcrkiye experienced devastating impacts following the 6 February 2023 Kahramanmara\u015f earthquakes, which revealed the urgent need to strengthen the connection between disaster risk management and education policies. Despite the country\u2019s vulnerability to earthquakes, the inclusion of disaster and earthquake related courses in higher education particularly within architecture and interior architecture programs remains insufficient. This study conducts a comparative analysis of the presence and evolution of disaster and earthquake-focused courses in Turkish public and foundation universities between 2022 and 2025. A qualitative multiple case study design was employed, incorporating document analysis and content evaluation through frequency and percentage distributions. The findings indicate a significant quantitative increase in disaster-related education. While only 35 universities offered such courses in 2022, this number increased to 97 by 2025. The total number of related courses expanded from 40 to 140. However, the majority of these courses were elective (88\u201390%) and theoretical (88\u201395%), with limited compulsory or practice-oriented components. The study demonstrates an escalating institutional acknowledgement of disaster awareness within architectural education; nonetheless, it underscores the necessity for more practice\u2011based and compulsory curricular structures to achieve sustainable integration and to more accurately align architectural education with the disaster risk reduction competencies expected in professional practice.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-rethinking-architectural-education-post-disaster-an-analytical-framework"
+    },
+    {
+      "title": "Teaching Innovation Through Location Analytics: Advancing DEI and ESG in Graduate IS Curriculum",
+      "abstract": "This paper presents a teaching innovation that introduces a practical, modular framework integrating Location Analytics (LA) with Diversity, Equity, and Inclusion (DEI) and Environmental, Social, and Governance (ESG) principles in graduate Information Systems (IS) education. Aligned with the Master of Science in Information Systems 2016 Global Competency Model (MSIS 2016 GCM), the framework emphasizes data, technology, business integration, and societal responsibility. It introduces a six-step pedagogical design that covers business understanding, data preparation, spatial analysis, and ethical evaluation, and embeds geospatial thinking and equity-centered reasoning into case-based learning. For IS educators, it offers ready-to-adopt teaching modules, assignments, and case studies that link technical skill development with social impact, aiming to prepare students to use data responsibly and lead with awareness of both business goals and social impact.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-teaching-innovation-through-location-analytics-advancing-dei-and-esg-in"
+    },
+    {
+      "title": "The complexity of co-teaching in the secondary science classroom: a case study",
+      "abstract": "To understand the experience of secondary science co-teachers implementing new science standards, the roles they assume in the classroom, and the degree of parity they exhibit in their work, we examined one pair of co-teachers in a case study via questionnaires, video and audio recorded lessons, and teacher interviews. Specifically, this research addresses the following questions: (1) What roles do secondary science co-teachers assume in the classroom when implementing new science standards? and (2) How do the demands of the new standards affect the experiences of co-teachers? In this pairing, the co-teachers lacked parity, or equal status, due to a lack of preparation for the partnership and the complex content, skills, and knowledge needed to teach the new standards. They also lacked time and structure to plan for teaching throughout the year, resulting in greater role disparity. Each partner's respect for the work of the other did increase over the academic year. There is currently little research about how science standards influence the co-teaching environment, this study is meant to add to this discussion.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-the-complexity-of-co-teaching-in-the-secondary-science-classroom-a-case"
+    },
+    {
+      "title": "The reductionism of pedagogy in the online primary classrooms of COVID-19 lockdowns",
+      "abstract": "COVID-19 lockdowns forced schools into extended periods of remote teaching, reshaping how teachers engaged with pedagogy and students in online contexts. The authors explore the experiences of three primary school teachers in Victorian government schools in Australia, analysed through the lens of the Victorian Teaching and Learning Model, including the nine Practice Principles and ten High Impact Teaching Strategies (HITS). Data were drawn from graduate teacher presentations to pre-service teachers and follow-up interviews. Findings suggest that while teachers relied on explicit teaching, goal setting and structured lessons, opportunities for student collaboration, agency and deep learning were limited. Departmental directives and the prescriptive use of HITS were experienced as reducing teacher autonomy and shifting pedagogy to repetitive, teacher-centred practices. The article concludes with recommendations for teacher education, professional learning and classroom practice. These include strengthening digital fluency, supporting teacher autonomy and rebalancing socio-constructivist approaches to counterbalance prescriptive routines.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-the-reductionism-of-pedagogy-in-the-online-primary-classrooms-of-covid-1"
+    },
+    {
+      "title": "Underestimated Impact: How Analogue Card Games Can Foster Digital and AI Competence among SMEs",
+      "abstract": "Card-based, analogue learning formats are promising low-threshold tools for building digital and artificial intelligence (AI) competence in organizations, particularly small and medium-sized enterprises (SMEs) that hesitate to move from awareness to hands-on adoption. This research-in-progress presents an ongoing evaluation of an AI-focused card game as a human-centered intervention for organizational learning in resource-constrained contexts. Grounded in design science research, the study will test the game in SME settings using moderated gameplay, questionnaires, and focus groups to examine effects on AI awareness, tool knowledge, problem-solving, and perceived workplace integration possibilities. Once completed, it will provide empirically grounded design knowledge on how analogue, gamified approaches can complement digital competence development and foster AI readiness in SMEs.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-underestimated-impact-how-analogue-card-games-can-foster-digital-and-ai"
+    },
+    {
+      "title": "Young people\u2019s perceptions and recommendations for conversational generative artificial intelligence in youth mental health",
+      "abstract": "Conversational generative artificial intelligence agents (or genAI chatbots) could benefit youth mental health, yet young people's perspectives remain underexplored. We examined the Mental health Intelligence Agent (Mia), a genAI chatbot originally designed for professionals in Australian youth services. Following co-design, 32 young people participated in online workshops exploring their perceptions of genAI chatbots in youth mental health and to develop recommendations for reconceptualising Mia for consumers and integrating it into services. Four themes were developed using reflexive thematic analysis: (1) Humanising AI without dehumanising care, (2) I need to know what's under the hood, (3) Right tool, right place, right time?, and (4) Making it mine on safe ground. This study offers insights into young people's attitudes, needs, and requirements regarding genAI chatbots in youth mental health, with key implications for service integration. Additionally, by co-designing system requirements, this work informs the ethics, design, development, implementation, and governance of genAI chatbots in youth mental health contexts.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-06-29",
+      "source_id": "src-young-people-s-perceptions-and-recommendations-for-conversational-genera"
     }
   ]
 }
