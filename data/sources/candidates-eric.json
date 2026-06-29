@@ -149,9 +149,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.45
   },
   {
@@ -174,9 +174,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.45
   },
   {
@@ -278,9 +278,9 @@
       "critical thinking",
       "future skills"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.9
   },
   {
@@ -328,9 +328,9 @@
       "ai literacy",
       "critical thinking"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.9
   },
   {
@@ -488,9 +488,9 @@
       "ai literacy",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-06-15",
-    "reviewed_at": null,
+    "reviewed_at": "2026-06-29",
     "relevance_score": 0.6
   }
 ]

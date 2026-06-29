@@ -1153,9 +1153,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-the-remittance-blueprint-data-driven-intelligence-for-sri-lanka-abstract",
@@ -1172,9 +1172,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-ai-enhanced-lesson-study-transforming-teacher-professional-development-a",
@@ -1191,9 +1191,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-uncanny-valley-of-artificial-intelligence-primary-school-students-fears",
@@ -1210,9 +1210,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-empowering-the-next-generation-for-gender-equality-a-global-indian-and-k",
@@ -1229,9 +1229,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-innovations-in-education-and-culture-of-the-21st-century-conceptual-and",
@@ -1248,9 +1248,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-theoretical-and-methodological-basis-for-enhancing-critical-thinking-amo",
@@ -1267,9 +1267,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-assessing-the-competencies-of-future-early-childhood-educators-abstract",
@@ -1286,9 +1286,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   },
   {
     "id": "claim-the-implementation-of-coding-and-artificial-intelligence-in-inclusive-ed",
@@ -1305,8 +1305,8 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-06-29",
-    "reviewed_at": null
+    "reviewed_at": "2026-06-29"
   }
 ]
