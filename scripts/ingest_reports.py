@@ -37,6 +37,7 @@ from typing import Any
 
 import ai_provider
 from common import (
+    AGE_SCALE,
     ROOT,
     TODAY,
     append_candidate_sources,
@@ -138,7 +139,10 @@ Befund:
   - statement: WOERTLICHES Zitat eines Befund-Satzes aus dem Text (unveraendert).
   - outcome: 1 Satz, welches Lernergebnis/Effekt berichtet wird, oder null.
   - context: 1 Satz zum Setting (Land, Schulstufe, Interventionsart), oder null.
-  - age_range: Altersbereich der Lernenden als "min-max" (6-18-Skala), oder null.
+  - age_range: Tatsaechlich berichteter Altersbereich der Lernenden als "min-max" \
+auf der {age_scale}-Skala (fruehe Kindheit und Kindergarten / Lehrplan-21-Zyklus 1 \
+eingeschlossen), oder null. Ueber {age_scale} hinausreichende Bereiche auf \
+{age_scale} beschneiden.
   - evidence_strength: eine von {{low, moderate, high}}, konservativ; im Zweifel low.'''
 
 
@@ -148,6 +152,7 @@ def report_prompt(text: str, url: str) -> str:
         url=url.strip(),
         text=text.strip(),
         source_types=", ".join(REPORT_SOURCE_TYPES),
+        age_scale=AGE_SCALE,
     )
 
 

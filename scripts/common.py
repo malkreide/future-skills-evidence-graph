@@ -14,6 +14,17 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 TODAY = date.today().isoformat()
 
+# Target age band for the project's evidence scope. The original MVP used 6-18;
+# the scope now spans the whole "Lebenszyklus des Kindes" from early childhood
+# through upper secondary (see CHANGELOG: Scope-Erweiterung auf 0-18), which
+# covers all three Lehrplan-21 Zyklen -- Zyklus 1 begins at Kindergarten (~4 J.),
+# so a 6-year floor would silently drop the youngest band. Both LLM prompts
+# render this band from here, so a future scope change is a one-line edit instead
+# of an edit across every prompt (and a re-recording of every fixture).
+AGE_SCALE_MIN = 0
+AGE_SCALE_MAX = 18
+AGE_SCALE = f"{AGE_SCALE_MIN}-{AGE_SCALE_MAX}"
+
 
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:

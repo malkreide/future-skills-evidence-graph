@@ -26,7 +26,9 @@ transparently shows:
 MVP scope:
 - Audience: parents, teachers, education initiatives, researchers, and
   open-source contributors.
-- Focus: children and adolescents ages 6 to 18.
+- Focus: children and adolescents ages 0 to 18 — early childhood through upper
+  secondary, covering all three Lehrplan 21 cycles (Zyklus 1 begins at
+  Kindergarten, ~age 4).
 - Topics: AI literacy, critical thinking, digital agency, creativity,
   collaboration, self-regulation, ethics, systems thinking, resilience,
   learning-to-learn.

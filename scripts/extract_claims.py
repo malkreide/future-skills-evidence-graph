@@ -18,6 +18,7 @@ from typing import Any
 
 import ai_provider
 from common import (
+    AGE_SCALE,
     ROOT,
     TODAY,
     append_unique_records,
@@ -124,8 +125,11 @@ Bereits extrahierter wörtlicher Befund-Satz (NICHT verändern):
 Erkannte Topics: {topics}
 
 Liefere Vorschläge für die Review-Felder dieses Claims:
-- age_range: Altersbereich der untersuchten Lernenden als "min-max" (6-18-Skala), \
-oder null. Studien außerhalb 6-18 => null.
+- age_range: Tatsächlich berichteter Altersbereich der untersuchten Lernenden \
+als "min-max" auf der {age_scale}-Skala — frühe Kindheit und Kindergarten \
+(Lehrplan-21-Zyklus 1) ausdrücklich eingeschlossen —, oder null, wenn der \
+Abstract kein Alter nennt. Über {age_scale} hinausreichende Bereiche auf \
+{age_scale} beschneiden; reine Erwachsenen-Stichproben => null.
 - outcome: 1 Satz, welches Lernergebnis/Effekt berichtet wird (neutral, ohne \
 Übertreibung), oder null.
 - context: 1 Satz zum Setting (Land, Schulstufe, Interventionsart), oder null.
@@ -143,6 +147,7 @@ def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:
         abstract=abstract.strip(),
         statement=statement.strip(),
         topics=", ".join(topics) if topics else "—",
+        age_scale=AGE_SCALE,
     )
 
 

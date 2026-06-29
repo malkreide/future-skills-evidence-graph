@@ -1,0 +1,10 @@
+{
+  "hash": "850ffc3213300b2c71ec02034df5bee84b8d5b9c009742ddfecdf8dc06a36cbe",
+  "kind": "complete",
+  "response": {
+    "age_range": "12-16",
+    "context": "Eight-week deployment of an AI algebra tutor in secondary schools.",
+    "evidence_strength": "moderate",
+    "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy."
+  }
+}
