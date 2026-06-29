@@ -729,5 +729,251 @@
     "created_at": "2026-06-23",
     "reviewed_at": "2026-06-24",
     "relevance_score": 0.3
+  },
+  {
+    "id": "src-pros-and-cons-of-using-artificial-intelligence-in-teaching-and-learning",
+    "title": "Pros and Cons of Using Artificial Intelligence in Teaching and Learning English as a Foreign Language at the School Level",
+    "authors": [
+      "Arwa Luay Abdulkhaleq"
+    ],
+    "year": 2026,
+    "doi": "10.33899/berj.2026.vol22.iss2.5.64127",
+    "url": "https://openalex.org/W7166453517",
+    "openalex_id": "https://openalex.org/W7166453517",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Ma\u01e7alla\u1e97 ab\u1e25\u0101\u1e6f kulliyya\u1e97 al-tarbiya\u1e97 al-as\u0101siyya\u1e97/Ma\u011falla\u1e97 ab\u1e25\u0101\u1e6f kulliyya\u1e97 al-tarbiya\u1e97 al-as\u0101siyya\u1e97",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "\u0639\u0644\u0649 \u0627\u0644\u0631\u063a\u0645 \u0645\u0646 \u0623\u0646 \u0641\u0635\u0648\u0644 \u062a\u0639\u0644\u064a\u0645 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u0643\u0644\u064a\u0632\u064a\u0629 \u064a\u0645\u0643\u0646 \u0623\u0646 \u062a\u0633\u062a\u0641\u064a\u062f \u0645\u0646 \u0627\u0644\u0627\u0628\u062a\u0643\u0627\u0631 \u0627\u0644\u0642\u0648\u064a \u0627\u0644\u0645\u062a\u0645\u062b\u0644 \u0641\u064a \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a\u060c \u0625\u0644\u0627 \u0623\u0646\u0647\u0627 \u0642\u062f \u062a\u0648\u0627\u062c\u0647 \u062a\u062d\u062f\u064a\u0627\u062a \u062c\u062f\u064a\u062f\u0629. \u0648\u062a\u0633\u062a\u0639\u0631\u0636 \u0647\u0630\u0647 \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0627\u0644\u0623\u062f\u0644\u0629 \u0627\u0644\u062d\u062f\u064a\u062b\u0629 \u0644\u0644\u0645\u0648\u0627\u0632\u0646\u0629 \u0628\u064a\u0646 \u0625\u064a\u062c\u0627\u0628\u064a\u0627\u062a \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0627\u0644\u062a\u064a \u062a\u062a\u0636\u0645\u0646 \u0627\u0644\u062a\u063a\u0630\u064a\u0629 \u0627\u0644\u0631\u0627\u062c\u0639\u0629 \u0627\u0644\u0641\u0648\u0631\u064a\u0629 \u0648\u0627\u0644\u0645\u062e\u0635\u0635\u0629 \u060c \u0648\u0625\u062a\u0627\u062d\u0629 \u0627\u0644\u0641\u0631\u0635\u0629 \u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0627\u0644\u0627\u0633\u062a\u0642\u0644\u0627\u0644\u064a\u0629 \u0648\u0628\u064a\u0646 \u0633\u0644\u0628\u064a\u0627\u062a\u0647\u061b \u0648\u062a\u062d\u062f\u064a\u062f\u0627\u064b \u0627\u0639\u062a\u0645\u0627\u062f \u0627\u0644\u0637\u0644\u0628\u0629 \u0639\u0644\u0649 \u0627\u0644\u0645\u0633\u0627\u0639\u062f\u0629\u060c \u0648\u0647\u0648 \u0645\u0627 \u0642\u062f \u064a\u0624\u062f\u064a \u0641\u064a \u0627\u0644\u0646\u0647\u0627\u064a\u0629 \u0625\u0644\u0649 \u0632\u064a\u0627\u062f\u0629 \u0645\u062e\u0627\u0637\u0631 \u0627\u0644\u062e\u0635\u0648\u0635\u064a\u0629 \u0648\u062a\u0642\u0644\u064a\u0635 \u0627\u0644\u062c\u0627\u0646\u0628 \u0627\u0644\u0625\u0646\u0633\u0627\u0646\u064a \u0627\u0644\u0645\u0631\u062a\u0628\u0637 \u0628\u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a. \u0648\u0627\u0633\u062a\u0646\u0627\u062f\u064b\u0627 \u0625\u0644\u0649 \u0623\u0641\u0643\u0627\u0631 \u0645\u0646 \u0627\u0644\u0646\u0638\u0631\u064a\u062a\u064a\u0646 \u0627\u0644\u0628\u0646\u0627\u0626\u064a\u0629 \u0648\u0627\u0644\u0645\u0639\u0631\u0641\u064a\u0629\u060c \u064a\u0639\u0631\u0636 \u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0623\u0646 \u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 \u0644\u0627 \u064a\u0646\u0628\u063a\u064a \u0623\u0646 \u062a\u062d\u0644 \u0645\u062d\u0644 \u0627\u0644\u062a\u0639\u0644\u064a\u0645 \u0627\u0644\u062a\u0642\u0644\u064a\u062f\u064a\u060c \u0628\u0644 \u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u062f\u0627\u0639\u0645\u0629 \u0644\u0647. \u0648\u0641\u064a \u0627\u0644\u062e\u062a\u0627\u0645\u060c \u062a\u062f\u0639\u0648 \u0646\u062a\u0627\u0626\u062c \u0627\u0644\u062f\u0631\u0627\u0633\u0629 \u0625\u0644\u0649 \u062a\u062d\u0642\u064a\u0642 \u062a\u0648\u0627\u0632\u0646 \u062a\u0639\u0644\u064a\u0645\u064a\u060c \u0648\u062a\u0648\u062c\u0647 \u0627\u0644\u0645\u0639\u0644\u0645\u064a\u0646 \u0644\u062a\u0628\u0646\u064a \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0628\u0645\u0627 \u064a\u0645\u0643\u0646\u0647\u0645 \u0645\u0646 \u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0643\u0641\u0627\u0621\u0629\u060c \u0645\u0639 \u0627\u0644\u062d\u0641\u0627\u0638 \u0641\u064a \u0627\u0644\u0648\u0642\u062a \u0630\u0627\u062a\u0647 \u0648\u0628\u062b\u0628\u0627\u062a \u0639\u0644\u0649 \u0627\u0644\u062c\u0627\u0646\u0628 \u0627\u0644\u0625\u0646\u0633\u0627\u0646\u064a \u0641\u064a \u062a\u0639\u0644\u0645 \u0627\u0644\u0644\u063a\u0629.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-enhanced-lesson-study-transforming-teacher-professional-development",
+    "title": "AI-Enhanced Lesson Study: Transforming Teacher Professional Development",
+    "authors": [
+      "Duygu \u0130lerit\u00fcrk"
+    ],
+    "year": 2026,
+    "doi": "10.15285/maruaebd.1665413",
+    "url": "https://openalex.org/W7166328278",
+    "openalex_id": "https://openalex.org/W7166328278",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "E\u011fitim Bilimleri Dergisi",
+    "source_type": "peer_reviewed_article",
+    "license": "other-oa",
+    "abstract": "This study examines the integration of Artificial Intelligence (AI) into the Lesson Study (LS) model as an innovative approach to teacher professional development. LS, a collaborative learning model, allows teachers to systematically plan, implement, observe, and refine their teaching practices. Advances in AI offer new opportunities by providing data-driven insights, personalized feedback, and adaptive learning strategies. Through a systematic literature review, this study explores how AI-supported LS enhances teacher education and student learning. Key themes include AI\u2019s role in real-time feedback, data-driven lesson planning, and improved teacher collaboration. Challenges such as digital literacy, ethical concerns, and the need for structured implementation are also discussed. Findings indicate that AI-supported LS optimizes decision-making, fosters reflective teaching, and personalizes student learning. However, effective implementation requires training, institutional support, and integration into existing structures. AI-enhanced LS holds promise for professional development while preserving the model\u2019s collaborative essence..",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-adaptive-learning-platform-for-dyslexic-students",
+    "title": "Adaptive Learning Platform for Dyslexic Students",
+    "authors": [
+      "Mandhadi Thanshita Bharathi",
+      "C. Bhavana",
+      "Kammari Srinivas",
+      "Ummity Srinivasa Rao",
+      "Maheswari Subburaj"
+    ],
+    "year": 2026,
+    "doi": "10.1038/s41598-026-57019-x",
+    "url": "https://openalex.org/W7166311979",
+    "openalex_id": "https://openalex.org/W7166311979",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Scientific Reports",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "Adaptive learning systems are a significant area of research in personalized education, especially for students with dyslexia, as structured and responsive instructional support can greatly enhance learning outcomes. Many conventional rule-based methodologies are not readily adaptable for personalized instruction or real-time modification. To overcome this limitation, this paper introduces a lightweight adaptive learning system that utilizes a machine learning model to produce instructional recommendations. The system employs a Decision Tree Classifier trained on structured quiz-response features to assess a learner's proficiency and recommend the most appropriate learning stages. The platform is not meant to be a diagnostic tool; instead, it is meant to be a post-identification instructional support system. It has three main parts: an interactive quiz interface, a classification module that groups learners into Beginner, Intermediate, or Advanced levels, and a Flask-based backend that makes predictions and sends them out. The model is still computationally efficient, easy to understand, and good for real-time adaptive learning environments because it only uses quiz performance indicators. When tested on a controlled synthetic dataset, the results were very good, with an overall accuracy of 98.25%. Advanced learners had a class-specific [Formula: see text] score of 99.15%, beginner learners had a score of 95.87%, and intermediate learners had a score of 96.27%. The macro-average precision, recall, and [Formula: see text]-score were 96.93%, 97.32%, and 97.10%, respectively. The weighted averages were all close to 97.00%. These results show that the suggested method is a good and useful way to recommend quiz-based adaptive learning in technology-supported special education settings.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-uncanny-valley-of-artificial-intelligence-primary-school-students-fears",
+    "title": "Uncanny Valley of Artificial Intelligence: Primary School Students' Fears of AI Attributing Human Characteristics",
+    "authors": [
+      "Muhammet Fatih Do\u011fan"
+    ],
+    "year": 2026,
+    "doi": "10.15285/maruaebd.1744148",
+    "url": "https://openalex.org/W7166335719",
+    "openalex_id": "https://openalex.org/W7166335719",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "E\u011fitim Bilimleri Dergisi",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This qualitative study systematically investigates the artificial intelligence (AI) fears of primary school students through the conceptual lens of the \u201cUncanny Valley\u201d theory. As AI technologies become increasingly integrated into modern educational environments, understanding their profound psychological impact on young learners is fundamentally crucial. Employing a rigorous grounded theory design, in-depth interviews were conducted with eight students aged 10 to 11 to thoroughly explore their underlying perceptions. The data analysis revealed that students' anxieties regarding AI are primarily concentrated within three distinct themes: omniscience, permanent memory, and autonomous evolution. Findings indicate that students perceive AI not merely as a functional technological tool, but rather as an infallible, human-like competitor. This specific perception triggers profound anxieties concerning severe existential threats, the permanent loss of privacy, and an inevitable loss of human control over technology. Consequently, the study concludes that children experience a unique \u201cUncanny Valley of Mind\u201d; their intense apprehension stems from the hyperrealistic cognitive capabilities of AI rather than its physical appearance. To effectively mitigate these complex anxieties, the study strongly recommends implementing comprehensive, multidimensional AI literacy programmes within schools. These targeted educational interventions must focus on demystifying the statistical nature of AI, highlighting its inherent limitations, and promoting human-centric pedagogical designs that prioritise uniquely human competencies over algorithmic outputs.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-empowering-the-next-generation-for-gender-equality-a-global-indian-and-k",
+    "title": "Empowering the Next Generation for Gender Equality: A Global, Indian and Karnataka Perspective on Building Inclusive and Sustainable Societies",
+    "authors": [
+      "Pushpa Hongal"
+    ],
+    "year": 2026,
+    "doi": "10.30574/wjarr.2026.30.3.1752",
+    "url": "https://openalex.org/W7166321424",
+    "openalex_id": "https://openalex.org/W7166321424",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "World Journal of Advanced Research and Reviews",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Gender equality has emerged as one of the most significant social, economic, and developmental priorities of the twenty-first century. Despite considerable progress in education, employment, political participation, and legal rights, gender disparities continue to persist across societies worldwide. The challenge is no longer limited to ensuring equal opportunities for women and men; rather, it involves creating inclusive systems that empower future generations to challenge stereotypes, embrace diversity, and contribute to sustainable development. This paper examines the need for empowering the next generation for gender equality through a comprehensive review of literature, global statistical indicators, Indian and Karnataka state-level trends, and illustrative case studies of influential personalities who contributed to gender justice and social transformation. The study adopts a conceptual and descriptive approach by synthesizing insights from international organizations, academic literature, and policy reports. The paper identifies six major dimensions of gender equality: educational equality, economic equality, political equality, social equality, health equality, and digital equality. The findings indicate that while educational access for women has improved significantly, substantial gaps remain in leadership representation, wage parity, political empowerment, and digital inclusion. The study further highlights the evolving understanding of gender equality across generations, from Generation X to Generation Alpha, demonstrating how younger generations increasingly view equality as a fundamental social norm rather than merely a legal or economic issue. The paper argues that empowering the next generation through education, awareness, technology, and value-based socialization is essential for achieving the Sustainable Development Goals (SDGs), particularly SDG 5 on Gender Equality. The study concludes that gender equality is not solely a women's issue but a societal imperative that contributes to economic growth, social cohesion, innovation, and sustainable development. Policy recommendations emphasize gender-sensitive education, digital inclusion, leadership development, legal enforcement, and multi-stakeholder collaboration to create an equitable future for all.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-innovations-in-education-and-culture-of-the-21st-century-conceptual-and",
+    "title": "Innovations in Education and Culture of the 21st Century: Conceptual and Mental Aspects",
+    "authors": [
+      "\u0412\u0456\u043a\u0442\u043e\u0440\u0456\u044f \u041a\u0430\u0448\u0430\u044e\u043a",
+      "Uliana Hrab",
+      "Nataliia Ivanova",
+      "O. O. Strelbitska",
+      "Nazar Byhaichuk"
+    ],
+    "year": 2026,
+    "doi": "10.15503/jecs2026.1.521.540",
+    "url": "https://openalex.org/W7166293685",
+    "openalex_id": "https://openalex.org/W7166293685",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Education Culture and Society",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Aim. The study aimed to examine the impact of innovative transformations in Ukraine's educational and cultural space, focusing on digitalisation and new approaches to education and cultural heritage preservation amidst global and national challenges. Methods. The research employed secondary data analysis from scientific sources, regulations, and reports, alongside a comparative analysis of theoretical approaches to innovation in Ukrainian education and culture, including music. Results. The study highlights the role of digitalisation in preserving cultural heritage, even under resource constraints. It identifies the trend of integrating online platforms and new learning technologies, which have enhanced access to education and increased flexibility. Digitalisation of cultural, particularly musical, monuments and archives has proven effective in preserving national heritage, even during martial law, by ensuring broad public access. Furthermore, the war has significantly impacted educational and cultural processes, with innovative educational approaches helping to build mental resilience and adaptability in response to stress and instability. Conclusions. The study emphasizes the need to integrate global trends into Ukraine's national educational and cultural policies to foster national identity and ensure the country's adaptation to changes. It underscores the importance of new approaches in education and culture to meet societal needs. Originality. The study concludes with recommendations for developing digital technologies in education, promoting inclusiveness, and preserving cultural heritage. These steps will support Ukraine's sustainable development, improve educational and cultural initiatives, and strengthen national identity.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-theoretical-and-methodological-basis-for-enhancing-critical-thinking-amo",
+    "title": "THEORETICAL AND METHODOLOGICAL BASIS FOR ENHANCING CRITICAL THINKING AMONG PRE-SERVICE FOREIGN LANGUAGE TEACHERS IN DIGITAL EDUCATIONAL SETTINGS",
+    "authors": [
+      "Shuxratjon Ismoiljonov"
+    ],
+    "year": 2026,
+    "doi": "10.47390/ydif-y2026v2i12/n44",
+    "url": "https://openalex.org/W7166338349",
+    "openalex_id": "https://openalex.org/W7166338349",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "YANGI DAVR ILM-FANI INSON UCHUN INNOVATSION G\u2018OYA VA YECHIMLAR",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract. This article explores the conceptual, philosophical, psychological, and pedagogical underpinnings of critical thinking as an essential professional competence for pre-service foreign language teachers within digital educational settings. Integrating insights from Eastern intellectual heritage, Western philosophical thought, and contemporary theories of cognition, the study develops a comprehensive theoretical model for conceptualising critical thinking in teacher education. It argues that the rapid digitalisation of education requires an expanded understanding of critical thinking that extends beyond general cognitive abilities to include critical evaluation of digital and linguocultural information, pedagogical reflection, self-regulated professional decision-making, and responsible instructional practice. Through a comparative examination of fifteen prominent definitions of critical thinking, the study identifies four major conceptual perspectives: skills-oriented, disposition-oriented, competence-oriented, and integrative-digital. Based on this analysis, an original integrative definition is proposed to address the specific professional needs of future foreign language teachers within the context of Uzbekistan's evolving digital education system.",
+    "topics": [
+      "critical thinking",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-assessing-the-competencies-of-future-early-childhood-educators",
+    "title": "Assessing the competencies of future early childhood educators",
+    "authors": [],
+    "year": 2026,
+    "doi": "10.63498/injelps86",
+    "url": "https://openalex.org/W7166378119",
+    "openalex_id": "https://openalex.org/W7166378119",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Education Learning and Pedagogical Sciences (INJELPS)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Aim: This study assessed the competencies of future early childhood educators by examining their levels of Content, Pedagogical, and Technological Knowledge (TPACK) and their perceived achievement in General, Professional, and Specialization Education courses.It also determined the relationship between TPACK competencies and perceived academic achievement to provide a basis for competency enhancement initiatives in teacher education. Methodology:The study employed a descriptive-correlational quantitative research design.Data were gathered from 111 Bachelor of Early Childhood Education students from first to fourth year levels at the College of Teacher Education, Batangas State University, The National Engineering University, using a validated researcher-made questionnaire and a standardized TPACK instrument with a Cronbach's alpha reliability coefficient of .984.Stratified random sampling was utilized, and data were analyzed using weighted mean, standard deviation, and Pearson's r. Results:The findings revealed that pre-service early childhood educators demonstrated high levels of content, pedagogical, and technological knowledge.Strengths were evident in literacy instruction, inclusive teaching practices, adaptability to learners' needs, collaboration, creativity, professionalism, and technology integration.Respondents also reported high levels of perceived achievement in General, Professional, and Specialization Education courses.However, areas requiring further improvement included Mathematics and Science content mastery, classroom management, addressing learner misconceptions, practical technology application, educational philosophy, and higher-order critical thinking.Significant positive relationships were found between TPACK competencies and perceived achievement across all educational domains, indicating that stronger content, pedagogical, and technological knowledge is associated with higher academic confidence and preparedness. Conclusion:The study concludes that integrated TPACK competencies play a significant role in enhancing the academic readiness and professional preparation of future early childhood educators.The findings underscore the importance of strengthening teacher education curricula through competency-based training programs that promote content mastery, effective pedagogy, technology integration, reflective practice, and lifelong learning to improve educational outcomes and teaching effectiveness.",
+    "topics": [
+      "critical thinking",
+      "creativity",
+      "collaboration",
+      "self-regulation",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-implementation-of-coding-and-artificial-intelligence-in-inclusive-ed",
+    "title": "THE IMPLEMENTATION OF CODING AND ARTIFICIAL INTELLIGENCE IN INCLUSIVE EDUCATION: A SYSTEMATIC LITERATURE REVIEW",
+    "authors": [
+      "Laila Alief Rasuliana",
+      "Achmad Imam Agung",
+      "Lilik Anifah",
+      "I.G.P Asto Buditjahjanto"
+    ],
+    "year": 2026,
+    "doi": "10.23969/jp.v11i02.52749",
+    "url": "https://openalex.org/W7166170819",
+    "openalex_id": "https://openalex.org/W7166170819",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Pendas Jurnal Ilmiah Pendidikan Dasar",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The rapid integration of digital technology in education has emphasized the need for learning systems that are not only technologically advanced but also inclusive and equitable. This study aims to systematically review the implementation of coding and artificial intelligence (AI) in inclusive education and to examine their contributions to accessibility, personalization, and learning equity for students with special needs. This study employed a Systematic Literature Review (SLR). A total of 68 publications were identified from Scopus, Springer, DOAJ, Sinta, and Google Scholar databases. After applying inclusion criteria publication between 2019 and 2024, relevance to AI or coding in inclusive education, and methodological rigor 20 studies were selected for in-depth analysis. The selected studies were analyzed thematically using the Universal Design for Learning (UDL) framework as an analytical lens. The findings indicate that AI technologies, including speech-to-text systems, adaptive learning platforms, and image recognition tools, significantly enhance accessibility and personalized learning for students with hearing, visual, and cognitive impairments. Coding activities support the development of computational thinking, creativity, collaboration, and learner autonomy, particularly among students with special educational needs. However, implementation challenges remain, including limited digital infrastructure, insufficient teacher readiness, and a lack of local empirical research in developing countries such as Indonesia. This study uniquely integrates coding and artificial intelligence within the framework of inclusive education and contextualizes the findings in developing countries, particularly Indonesia, where empirical research on AI- and coding-based inclusive learning remains limited. Keywords: Coding, Artificial Intelligence, Inclusive Education, Systematic Literature Review, Universal Design for Learning.",
+    "topics": [
+      "ai literacy",
+      "creativity",
+      "collaboration",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-06-29",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
   }
 ]
