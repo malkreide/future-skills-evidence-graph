@@ -86,7 +86,7 @@ graph TB
         P5["validate_data.py<br/>alles prüfen"]
         P6["build_site.py<br/>Webseite bauen"]
         P7["promote_candidate.py<br/>Freigabe durch Mensch"]
-        P8["eval/train_relevance.py<br/>Relevanzfilter"]
+        P8["train_relevance.py<br/>Relevanzfilter"]
     end
 
     subgraph SITE["🌐 site/ – statisches Dashboard"]
@@ -152,7 +152,7 @@ flowchart TD
 - Standard: ein **transparenter Keyword-/Topic-Heuristik-Filter** (deterministisch,
   ohne Abhängigkeiten, immer der Fallback).
 - Zusätzliche Tore: **Off-Scope-Begriffe** (z. B. Ernährung, Gehalt) und ein
-  **Zielgruppen-Tor** (nur Alter 6–18, keine reinen Hochschul-/Workforce-Paper).
+  **Zielgruppen-Tor** (nur Alter 0–18, keine reinen Hochschul-/Workforce-Paper).
 - Optional und **abschaltbar**: ein trainiertes TF-IDF-+-Logistic-Regression-Modell
   (`models/relevance_model.json`) sowie Embedding-Prototyp-Anker
   (`models/relevance_anchors.json`, real-semantisch via sentence-transformers

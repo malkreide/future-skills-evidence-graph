@@ -39,7 +39,7 @@ undergraduate, college student, workforce, employee, preservice/in-service
 teacher, adult learner …) **and** no school-age audience (`SCHOOL_AGE_KEYWORDS`:
 child, kindergarten, primary/secondary/middle/high school, pupil, adolescent …).
 Unlike the off-scope filter this has no title-anchor exemption: "AI literacy" is
-in scope only for ages 6-18, so a workforce or university AI-literacy paper is
+in scope only for ages 0-18, so a workforce or university AI-literacy paper is
 dropped even though it names the skill in the title. Papers naming both audiences
 (e.g. "secondary students preparing for university") are kept. The first live
 operating cycle showed adult/higher-education papers were the dominant false
@@ -62,7 +62,7 @@ in the set so the comparison against the optional classifiers is honest:
 
 - **Teacher tool-use** — papers whose studied outcome is a *teacher's* own
   adoption of an AI tool (lesson planning, grading, administrative automation),
-  not a future skill cultivated in 6-18 learners. Teachers are a legitimate
+  not a future skill cultivated in 0-18 learners. Teachers are a legitimate
   audience, so a blanket teacher gate would cost recall; the in-service-teacher
   age gate catches some, but generic "teachers" using "ChatGPT/AI" survive.
 - **Disaster/health with a school-age word** — public-health or disaster-safety

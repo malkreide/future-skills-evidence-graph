@@ -294,7 +294,7 @@ AUDIENCE_KEYWORDS = (
 RELEVANCE_THRESHOLD = 0.3
 
 # Curated off-scope vocabulary. These terms mark a source as belonging to a
-# domain outside the MVP scope (AI / future-skills education for ages 6-18):
+# domain outside the MVP scope (AI / future-skills education for ages 0-18):
 # public health and nutrition, environmental and process engineering, labour
 # relations and finance, and audiences other than school-aged learners (clinical
 # patients, university/graduate students, SMEs and workplaces). A candidate is
@@ -330,7 +330,7 @@ OFF_SCOPE_KEYWORDS = (
     "salaries",
     "wages",
     "tax",
-    # audiences outside ages 6-18 / non-education contexts
+    # audiences outside ages 0-18 / non-education contexts
     "trauma",
     "posttraumatic",
     "immigrant",
@@ -361,7 +361,7 @@ OFF_SCOPE_KEYWORDS = (
 )
 
 
-# Audience/age gate. The MVP scope is learners aged 6-18, but "AI literacy" (and
+# Audience/age gate. The MVP scope is learners aged 0-18, but "AI literacy" (and
 # other topics) match regardless of who learns, so post-secondary and workplace
 # papers slip through with a title topic anchor ("AI Literacy for the Workforce",
 # "...in Higher Education", "College Students' AI Literacy"). HIGHER_ED_KEYWORDS
@@ -620,7 +620,7 @@ def is_off_scope(source: dict[str, Any]) -> bool:
 
     Returns True when an OFF_SCOPE_KEYWORDS term appears in the title or abstract
     and no topic keyword matches the title. This discards public-health,
-    environmental, labour-relations and non-6-18-audience papers that match a
+    environmental, labour-relations and non-0-18-audience papers that match a
     topic keyword only in passing, while keeping abstract-only in-scope sources
     that carry no off-scope term.
     """
@@ -641,7 +641,7 @@ def is_adult_audience(source: dict[str, Any]) -> bool:
     True when a HIGHER_ED_KEYWORDS term appears (title or abstract) and no
     SCHOOL_AGE_KEYWORDS term does. Unlike is_off_scope this has no title-anchor
     exemption: naming "AI literacy" in the title does not make a workforce or
-    university paper in scope for ages 6-18. Papers that mention both an adult
+    university paper in scope for ages 0-18. Papers that mention both an adult
     and a school-age audience are kept.
     """
     title = f" {normalize_title(str(source.get('title') or ''))} "
