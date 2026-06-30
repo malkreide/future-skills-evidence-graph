@@ -88,7 +88,11 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # off this whole path is inert and the output is byte-identical to before.
 
 # Versioned so every stored suggestion carries its prompt version in provenance.
-PREFILL_PROMPT_VERSION = "claim-prefill-v1"
+# v2: prompt rewritten in English so the free-text outcome/context suggestions are
+# produced in English, matching the English review-field corpus and the English
+# gold set in eval/claim_prefill_labeled.json. (The German v1 prompt made the live
+# model answer in German, which scored near-zero against the English gold.)
+PREFILL_PROMPT_VERSION = "claim-prefill-v2"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
 # mirrors Anhang A: every field is optional content (null when the abstract does
@@ -110,33 +114,33 @@ PREFILL_SUGGESTION_FIELDS = ("age_range", "outcome", "context", "evidence_streng
 # In-feature prompt, version 1 (docs/ki-weiterentwicklung-plan.md, Anhang A).
 # System and user turn are concatenated into the single prompt the provider
 # takes; the response shape is constrained by PREFILL_OUTPUT_SCHEMA, not prefill.
-PREFILL_PROMPT_TEMPLATE = '''System: Du extrahierst strukturierte Evidenz-Metadaten aus dem Abstract einer \
-bildungswissenschaftlichen Studie. Du erfindest nichts. Wenn der Abstract eine \
-Angabe nicht hergibt, gib für das Feld null zurück. Antworte ausschließlich als \
-JSON nach dem vorgegebenen Schema.
+PREFILL_PROMPT_TEMPLATE = '''System: You extract structured evidence metadata from the abstract of an \
+educational-research study. Invent nothing. If the abstract does not support a \
+value, return null for that field. Respond only as JSON following the given \
+schema, and write every free-text field in English.
 
 User:
 Abstract:
 """{abstract}"""
 
-Bereits extrahierter wörtlicher Befund-Satz (NICHT verändern):
+Already-extracted verbatim finding sentence (DO NOT change):
 """{statement}"""
 
-Erkannte Topics: {topics}
+Detected topics: {topics}
 
-Liefere Vorschläge für die Review-Felder dieses Claims:
-- age_range: Tatsächlich berichteter Altersbereich der untersuchten Lernenden \
-als "min-max" auf der {age_scale}-Skala — frühe Kindheit und Kindergarten \
-(Lehrplan-21-Zyklus 1) ausdrücklich eingeschlossen —, oder null, wenn der \
-Abstract kein Alter nennt. Über {age_scale} hinausreichende Bereiche auf \
-{age_scale} beschneiden; reine Erwachsenen-Stichproben => null.
-- outcome: 1 Satz, welches Lernergebnis/Effekt berichtet wird (neutral, ohne \
-Übertreibung), oder null.
-- context: 1 Satz zum Setting (Land, Schulstufe, Interventionsart), oder null.
-- evidence_strength: eine von {{low, moderate, high}}, konservativ geschätzt aus \
-Studientyp und Stichprobe; im Zweifel low.
+Provide suggestions for this claim's review fields:
+- age_range: The actually reported age range of the studied learners as \
+"min-max" on the {age_scale} scale — early childhood and kindergarten \
+(Lehrplan 21 cycle 1) explicitly included —, or null if the abstract names no \
+age. Clip ranges beyond {age_scale} to {age_scale}; pure adult samples => null.
+- outcome: one sentence, in English, stating which learning outcome/effect is \
+reported (neutral, without exaggeration), or null.
+- context: one sentence, in English, on the setting (country, school level, \
+type of intervention), or null.
+- evidence_strength: one of {{low, moderate, high}}, estimated conservatively \
+from study type and sample; when in doubt, low.
 
-Antwortschema:
+Response schema:
 {{"age_range": string|null, "outcome": string|null, "context": string|null, \
  "evidence_strength": "low"|"moderate"|"high"}}'''
 
