@@ -92,7 +92,11 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # produced in English, matching the English review-field corpus and the English
 # gold set in eval/claim_prefill_labeled.json. (The German v1 prompt made the live
 # model answer in German, which scored near-zero against the English gold.)
-PREFILL_PROMPT_VERSION = "claim-prefill-v2"
+# v3: de-bias the two structured fields against the gold calibration — drop the
+# "estimated conservatively / when in doubt low" wording that pushed the live
+# model one strength notch low, and tell it not to pad the age band to the scale
+# ceiling (the live model over-extended upper ages to 18).
+PREFILL_PROMPT_VERSION = "claim-prefill-v3"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
 # mirrors Anhang A: every field is optional content (null when the abstract does
@@ -132,13 +136,15 @@ Provide suggestions for this claim's review fields:
 - age_range: The actually reported age range of the studied learners as \
 "min-max" on the {age_scale} scale — early childhood and kindergarten \
 (Lehrplan 21 cycle 1) explicitly included —, or null if the abstract names no \
-age. Clip ranges beyond {age_scale} to {age_scale}; pure adult samples => null.
+age. Report the band the study actually concerns; do not pad it to the scale \
+ends. Clip ranges beyond {age_scale} to {age_scale}; pure adult samples => null.
 - outcome: one sentence, in English, stating which learning outcome/effect is \
 reported (neutral, without exaggeration), or null.
 - context: one sentence, in English, on the setting (country, school level, \
 type of intervention), or null.
-- evidence_strength: one of {{low, moderate, high}}, estimated conservatively \
-from study type and sample; when in doubt, low.
+- evidence_strength: one of {{low, moderate, high}}, judged from study type and \
+sample (a single small or non-controlled study => low; a controlled trial or a \
+systematic review/meta-analysis => moderate or high).
 
 Response schema:
 {{"age_range": string|null, "outcome": string|null, "context": string|null, \

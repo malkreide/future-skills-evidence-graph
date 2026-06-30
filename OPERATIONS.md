@@ -322,6 +322,19 @@ after a prompt change (`PREFILL_PROMPT_VERSION`), a model bump (`AI_MODEL`), or
 when growing the golden set; then re-run `make eval-prefill` to confirm the gate
 still passes offline.
 
+**Field scoring (so the live gate is fair, not brittle).** `age_range` is
+matched with a **±1-year boundary tolerance** (the bands must also overlap), so
+`11-18` vs `12-18` counts as agreement while a band padded to the scale ceiling
+(`12-16` vs `12-18`) or a wrong band is still flagged. `evidence_strength` is
+matched by **exact category** — adjacent notches are *not* folded together, so a
+one-level disagreement keeps costing. The prompt (v3) was calibrated to the gold
+to remove two systematic live biases the first English re-record surfaced: it no
+longer asks for a *conservative / when-in-doubt-low* strength (which pushed the
+live model one notch low) and tells the model not to pad the age band to the
+scale ends. The effect of those prompt tweaks is only visible on a **live**
+re-record (the offline gate replays the frozen `_recorded`, so it is unchanged
+at ≈0.95 / 0.94, `evidence_strength` ≈0.84).
+
 ## Guardrails
 
 - Review and merge the `research/candidates` PR promptly so candidates do not
