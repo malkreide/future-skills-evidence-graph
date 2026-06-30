@@ -1,0 +1,113 @@
+name: Re-record claim pre-fill live baseline (manual)
+
+# Manually triggered ONLY. This refreshes the LLM claim pre-fill regression
+# baseline against the LIVE model: it overwrites the '_recorded' suggestions in
+# eval/claim_prefill_labeled.json AND the prompt-hashed fixtures in
+# tests/fixtures/ai/, then opens a candidate pull request with both in lock-step.
+#
+# It calls the real model (AI_PROVIDER=anthropic), which costs money and needs a
+# human to decide when a fresh live baseline is wanted, so it is never part of the
+# mandatory offline CI (validate.yml) and never runs on a schedule. See issue #102
+# and OPERATIONS.md ("Re-recording — where live accuracy is measured").
+on:
+  workflow_dispatch:
+    inputs:
+      min_precision:
+        description: "Overall precision gate."
+        required: false
+        default: "0.8"
+      min_recall:
+        description: "Overall recall gate."
+        required: false
+        default: "0.8"
+      min_evidence_strength_precision:
+        description: "evidence_strength precision gate."
+        required: false
+        default: "0.7"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  record-prefill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Re-record live baseline + gate
+        # --record-live overwrites '_recorded' + fixtures from the live model, then
+        # scores the freshly written fixtures and fails the run if a gate is missed,
+        # so a refused/garbage baseline never gets committed. Output is captured for
+        # the pull-request body (the issue asks for the live accuracy to be recorded).
+        run: |
+          set -o pipefail
+          python scripts/eval_claim_prefill.py --record-live \
+            --min-precision "${MIN_PRECISION}" \
+            --min-recall "${MIN_RECALL}" \
+            --min-evidence-strength-precision "${MIN_ESP}" \
+            | tee /tmp/prefill_live.txt
+        env:
+          AI_PROVIDER: anthropic
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MIN_PRECISION: ${{ inputs.min_precision }}
+          MIN_RECALL: ${{ inputs.min_recall }}
+          MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
+      - name: Confirm offline gate against the freshly recorded fixtures
+        # No live provider here: this reads the committed fixtures only, proving the
+        # offline CI gate (validate.yml path) passes on the new baseline.
+        run: |
+          python scripts/eval_claim_prefill.py \
+            --min-precision "${MIN_PRECISION}" \
+            --min-recall "${MIN_RECALL}" \
+            --min-evidence-strength-precision "${MIN_ESP}"
+        env:
+          MIN_PRECISION: ${{ inputs.min_precision }}
+          MIN_RECALL: ${{ inputs.min_recall }}
+          MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
+      - name: Open or update the baseline pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # '_recorded' and the fixtures are written by the same run and MUST stay
+          # in lock-step, so stage both paths together (-A also stages any fixture
+          # that the new prompt hash made obsolete, leaving no orphan hash files).
+          git add -A -- eval/claim_prefill_labeled.json tests/fixtures/ai
+          if git diff --cached --quiet; then
+            echo "Live baseline unchanged; nothing to commit."
+            exit 0
+          fi
+          branch="chore/prefill-live-rerecord"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git commit -m "chore: re-record claim pre-fill live baseline (#102)"
+          git push --force origin "$branch"
+          {
+            echo "Refreshed the LLM claim pre-fill regression baseline against the live model (issue #102)."
+            echo
+            echo "\`_recorded\` (eval/claim_prefill_labeled.json) and the prompt-hashed fixtures"
+            echo "(tests/fixtures/ai/) were rewritten together by the same \`--record-live\` run, so"
+            echo "they stay in lock-step. CI gate confirmed offline against the new fixtures."
+            echo
+            echo "## Live accuracy (this run)"
+            echo
+            echo '```'
+            cat /tmp/prefill_live.txt
+            echo '```'
+          } > /tmp/pr_body.md
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --title "chore: re-record claim pre-fill live baseline (#102)" \
+              --body-file /tmp/pr_body.md \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch"
+          else
+            gh pr edit "$branch" --body-file /tmp/pr_body.md
+            echo "Updated existing pull request for $branch."
+          fi
