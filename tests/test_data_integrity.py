@@ -1969,5 +1969,41 @@ class CandidateTriageTests(unittest.TestCase):
         self.assertEqual(before, after)
 
 
+class PrefillScoringTests(unittest.TestCase):
+    """The pre-fill eval's field matching: age tolerance, exact strength."""
+
+    def test_age_range_tolerates_one_year_boundaries(self) -> None:
+        import eval_claim_prefill as ev
+
+        # Within +/-1 on each end (and overlapping) counts as agreement.
+        self.assertTrue(ev._values_match("age_range", "12-18", "11-18"))
+        self.assertTrue(ev._values_match("age_range", "10-14", "11-14"))
+        self.assertTrue(ev._values_match("age_range", "4-6", "3-6"))
+        self.assertTrue(ev._values_match("age_range", "12-15", "13-16"))
+
+    def test_age_range_flags_larger_gaps_and_disjoint_bands(self) -> None:
+        import eval_claim_prefill as ev
+
+        # Off by two on a boundary (e.g. padding the upper age to the scale max)
+        # is still a miss, as is a band that does not overlap at all.
+        self.assertFalse(ev._values_match("age_range", "12-16", "12-18"))
+        self.assertFalse(ev._values_match("age_range", "14-18", "12-18"))
+        self.assertFalse(ev._values_match("age_range", "5-8", "12-15"))
+
+    def test_age_range_exact_still_matches(self) -> None:
+        import eval_claim_prefill as ev
+
+        self.assertTrue(ev._values_match("age_range", "6-12", "6-12"))
+
+    def test_evidence_strength_stays_exact(self) -> None:
+        import eval_claim_prefill as ev
+
+        self.assertTrue(ev._values_match("evidence_strength", "moderate", "moderate"))
+        # Adjacent categories are NOT folded together: a one-notch disagreement
+        # remains a miss, so the strength metric keeps its bite.
+        self.assertFalse(ev._values_match("evidence_strength", "high", "moderate"))
+        self.assertFalse(ev._values_match("evidence_strength", "moderate", "low"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -10,7 +10,8 @@ hand-curated gold values, reporting precision-style metrics:
 - precision per field: of the fields the model proposed a value for, how many
   match gold (a wrong suggestion costs reviewer trust, so this is the headline);
 - recall per field: of the gold values present, how many the model recovered;
-- exact match for age_range / evidence_strength, token-overlap for the free-text
+- age_range is matched with a ±1-year boundary tolerance (overlap required),
+  evidence_strength by exact category, token-overlap for the free-text
   outcome / context fields.
 
     python scripts/eval_claim_prefill.py                      # offline report
@@ -61,18 +62,52 @@ EVAL_PATH = ROOT / "eval" / "claim_prefill_labeled.json"
 # match exactly. A suggestion and a gold value count as agreeing on a text field
 # when their Jaccard token overlap reaches this floor.
 TEXT_FIELDS = ("outcome", "context")
-EXACT_FIELDS = ("age_range", "evidence_strength")
+EXACT_FIELDS = ("evidence_strength",)
 TEXT_MATCH_THRESHOLD = 0.5
 
+# age_range is scored with a small numeric tolerance rather than exact-string
+# match: an age band is inherently fuzzy by roughly a year (grade boundaries,
+# "primary"/"lower secondary" conventions), so '11-18' vs '12-18' is agreement,
+# not a total miss. Both endpoints must land within this many years AND the two
+# intervals must overlap, so a genuine mismatch (e.g. the model padding to the
+# scale ceiling, or a wrong band entirely) is still flagged.
+AGE_BOUNDARY_TOLERANCE = 1
+
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
+_AGE_RE = re.compile(r"\d+")
 
 
 def _tokens(text: str) -> set[str]:
     return set(_TOKEN_RE.findall(text.lower()))
 
 
+def _parse_age_range(value: Any) -> tuple[int, int] | None:
+    """Parse an 'min-max' age band into an (min, max) int pair, or None.
+
+    A single number is treated as a zero-width band. Returns None when no digits
+    are present so the caller can fall back to exact-string comparison.
+    """
+    nums = [int(n) for n in _AGE_RE.findall(str(value))]
+    if not nums:
+        return None
+    lo, hi = min(nums), max(nums)
+    return lo, hi
+
+
+def _age_ranges_match(gold: Any, predicted: Any) -> bool:
+    """Whether two age bands agree within AGE_BOUNDARY_TOLERANCE and overlap."""
+    g, p = _parse_age_range(gold), _parse_age_range(predicted)
+    if g is None or p is None:
+        return str(gold).strip().casefold() == str(predicted).strip().casefold()
+    overlaps = g[0] <= p[1] and p[0] <= g[1]
+    within = abs(g[0] - p[0]) <= AGE_BOUNDARY_TOLERANCE and abs(g[1] - p[1]) <= AGE_BOUNDARY_TOLERANCE
+    return overlaps and within
+
+
 def _values_match(field_name: str, gold: Any, predicted: Any) -> bool:
     """Whether a predicted value agrees with gold for *field_name* (both non-null)."""
+    if field_name == "age_range":
+        return _age_ranges_match(gold, predicted)
     if field_name in EXACT_FIELDS:
         return str(gold).strip().casefold() == str(predicted).strip().casefold()
     gold_tokens, pred_tokens = _tokens(str(gold)), _tokens(str(predicted))
