@@ -1,0 +1,10 @@
+{
+  "hash": "afee47c484fb3e6379159f33eefb3bc5f5b6cf38e00b41acbc355241ac23ecec",
+  "kind": "complete",
+  "response": {
+    "age_range": "10-18",
+    "context": "Review of spaced retrieval practice across school subjects and ages.",
+    "evidence_strength": "high",
+    "outcome": "Spaced retrieval practice reliably improves long-term retention over massed study."
+  }
+}

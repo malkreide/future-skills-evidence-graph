@@ -1,0 +1,10 @@
+{
+  "hash": "cab0a0c9e6057063cc7742b0fe1488282cb029fd4dc04bf4c6cbc9723f3619be",
+  "kind": "complete",
+  "response": {
+    "age_range": null,
+    "context": "Analysis of completion patterns in an adult-professional university MOOC.",
+    "evidence_strength": "low",
+    "outcome": "Weekly goal-setting raises MOOC module completion."
+  }
+}

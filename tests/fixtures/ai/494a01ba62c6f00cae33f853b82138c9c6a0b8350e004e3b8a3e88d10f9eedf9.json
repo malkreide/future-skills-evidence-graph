@@ -1,0 +1,10 @@
+{
+  "hash": "494a01ba62c6f00cae33f853b82138c9c6a0b8350e004e3b8a3e88d10f9eedf9",
+  "kind": "complete",
+  "response": {
+    "age_range": "12-15",
+    "context": "Seven-week deployment of an AI code-feedback tool in lower-secondary computing.",
+    "evidence_strength": "moderate",
+    "outcome": "An AI code-feedback tool speeds debugging and increases working submissions."
+  }
+}
