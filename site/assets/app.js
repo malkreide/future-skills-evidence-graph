@@ -25,6 +25,7 @@ const els = {
   metricCandidate: document.querySelector("#metricCandidate"),
   lp21CycleFilter: document.querySelector("#lp21CycleFilter"),
   lp21Radar: document.querySelector("#lp21Radar"),
+  radarTooltip: document.querySelector("#radarTooltip"),
   lp21TableBody: document.querySelector("#lp21TableBody"),
   lp21Average: document.querySelector("#lp21Average"),
   lp21GapCount: document.querySelector("#lp21GapCount"),
@@ -130,6 +131,7 @@ function themeColors() {
     green: read("--green", "#1f7a5d"),
     text: read("--text", "#1e2524"),
     muted: read("--muted", "#65706d"),
+    surface: read("--surface", "#ffffff"),
   };
 }
 
@@ -246,8 +248,28 @@ function gapClass(label) {
   return "gap-high";
 }
 
-function radarLabel(skill) {
-  return skill.short_label || skill.name.slice(0, 12);
+// Greedy word-wrap for the full skill names drawn around the radar. Long names
+// spill onto up to `maxLines` lines; any remainder is folded into the last line.
+function wrapLabel(text, maxChars = 15, maxLines = 3) {
+  const words = String(text || "").split(/\s+/).filter(Boolean);
+  const lines = [];
+  let current = "";
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+    if (current && candidate.length > maxChars) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = candidate;
+    }
+  }
+  if (current) lines.push(current);
+  if (lines.length > maxLines) {
+    const head = lines.slice(0, maxLines - 1);
+    head.push(lines.slice(maxLines - 1).join(" "));
+    return head;
+  }
+  return lines;
 }
 
 function currentAudience() {
@@ -521,6 +543,10 @@ function describeRadar(mappings, skillMap) {
   return `Netzdiagramm: Future Evidence gegen LP21-Abdeckung für ${mappings.length} Future Skills (${names}). Durchschnittliche LP21-Abdeckung ${average.toFixed(1)} von 3. Detaildaten in der Tabelle darunter.`;
 }
 
+// Geometry + data for the currently drawn radar, kept so pointer events can
+// hit-test axes and repaint with a highlight without recomputing from scratch.
+let radarState = null;
+
 function drawRadar(mappings, skillMap) {
   const canvas = els.lp21Radar;
   const colors = themeColors();
@@ -533,10 +559,13 @@ function drawRadar(mappings, skillMap) {
 
   canvas.width = width * dpr;
   canvas.height = height * dpr;
-  context.setTransform(dpr, 0, 0, dpr, 0, 0);
-  context.clearRect(0, 0, width, height);
+
+  hideRadarTooltip();
 
   if (!mappings.length) {
+    radarState = null;
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    context.clearRect(0, 0, width, height);
     context.fillStyle = colors.muted;
     context.font = "14px sans-serif";
     context.textAlign = "center";
@@ -544,94 +573,207 @@ function drawRadar(mappings, skillMap) {
     return;
   }
 
-  const centerX = width / 2;
-  const centerY = height / 2 + 8;
-  const radius = Math.min(width, height) * 0.33;
   const maxValue = 3;
-  const entries = mappings.map((mapping) => {
+  const center = { x: width / 2, y: height / 2 + 6 };
+  const radius = Math.min(width, height) * 0.3;
+
+  const axes = mappings.map((mapping, index) => {
     const skill = skillMap.get(mapping.skill_id);
+    const angle = (Math.PI * 2 * index) / mappings.length - Math.PI / 2;
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+    const evidenceScore = Number(skill.evidence_score || 0);
+    const coverageScore = Number(mapping.coverage_score || 0);
+    const evidenceR = (Math.min(evidenceScore * maxValue, maxValue) / maxValue) * radius;
+    const coverageR = (Math.min(coverageScore, maxValue) / maxValue) * radius;
     return {
-      label: radarLabel(skill),
-      evidence: Number(skill.evidence_score || 0) * 3,
-      lp21: Number(mapping.coverage_score || 0),
+      index,
+      angle,
+      cos,
+      sin,
+      skill,
+      mapping,
+      evidenceScore,
+      coverageScore,
+      lines: wrapLabel(skill.name),
+      axisEnd: { x: center.x + cos * radius, y: center.y + sin * radius },
+      labelAnchor: { x: center.x + cos * (radius + 16), y: center.y + sin * (radius + 16) },
+      evidencePoint: { x: center.x + cos * evidenceR, y: center.y + sin * evidenceR },
+      lp21Point: { x: center.x + cos * coverageR, y: center.y + sin * coverageR },
     };
   });
 
-  context.lineWidth = 1;
-  for (let level = 1; level <= 3; level += 1) {
-    drawRadarPolygon(
-      context,
-      entries.map(() => level),
-      entries,
-      centerX,
-      centerY,
-      radius,
-      maxValue,
-      colors.line,
-      "transparent"
-    );
-  }
-
-  entries.forEach((entry, index) => {
-    const angle = (Math.PI * 2 * index) / entries.length - Math.PI / 2;
-    const x = centerX + Math.cos(angle) * radius;
-    const y = centerY + Math.sin(angle) * radius;
-    context.beginPath();
-    context.moveTo(centerX, centerY);
-    context.lineTo(x, y);
-    context.strokeStyle = colors.line;
-    context.stroke();
-
-    context.fillStyle = colors.text;
-    context.font = "12px sans-serif";
-    context.textAlign = x < centerX - 12 ? "right" : x > centerX + 12 ? "left" : "center";
-    context.textBaseline = y < centerY ? "bottom" : "top";
-    context.fillText(entry.label, x + Math.sign(x - centerX) * 8, y + Math.sign(y - centerY) * 8);
-  });
-
-  drawRadarPolygon(
-    context,
-    entries.map((entry) => entry.evidence),
-    entries,
-    centerX,
-    centerY,
-    radius,
-    maxValue,
-    colors.blue,
-    withAlpha(colors.blue, 0.16)
-  );
-  drawRadarPolygon(
-    context,
-    entries.map((entry) => entry.lp21),
-    entries,
-    centerX,
-    centerY,
-    radius,
-    maxValue,
-    colors.green,
-    withAlpha(colors.green, 0.18)
-  );
+  radarState = { canvas, context, dpr, width, height, center, radius, maxValue, colors, axes, hovered: null };
+  paintRadar();
 }
 
-function drawRadarPolygon(context, values, entries, centerX, centerY, radius, maxValue, stroke, fill) {
+function fillRadarPolygon(context, points, stroke, fill, lineWidth) {
   context.beginPath();
-  values.forEach((value, index) => {
-    const angle = (Math.PI * 2 * index) / entries.length - Math.PI / 2;
-    const pointRadius = (Math.min(value, maxValue) / maxValue) * radius;
-    const x = centerX + Math.cos(angle) * pointRadius;
-    const y = centerY + Math.sin(angle) * pointRadius;
-    if (index === 0) {
-      context.moveTo(x, y);
-    } else {
-      context.lineTo(x, y);
-    }
-  });
+  points.forEach((point, index) => (index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y)));
   context.closePath();
   context.fillStyle = fill;
   context.strokeStyle = stroke;
-  context.lineWidth = 2;
+  context.lineWidth = lineWidth;
   context.fill();
   context.stroke();
+}
+
+function drawRadarMarker(context, point, color, hot, colors) {
+  context.beginPath();
+  context.arc(point.x, point.y, hot ? 6 : 3.2, 0, Math.PI * 2);
+  context.fillStyle = color;
+  context.fill();
+  if (hot) {
+    context.lineWidth = 2;
+    context.strokeStyle = colors.surface;
+    context.stroke();
+  }
+}
+
+function drawRadarLabel(context, axis, center, colors, hot) {
+  const lineHeight = 13;
+  context.font = hot ? "700 12px Inter, sans-serif" : "11px Inter, sans-serif";
+  context.fillStyle = hot ? colors.text : colors.muted;
+  context.textAlign =
+    axis.labelAnchor.x < center.x - 14 ? "right" : axis.labelAnchor.x > center.x + 14 ? "left" : "center";
+  context.textBaseline = "middle";
+  const startY = axis.labelAnchor.y - ((axis.lines.length - 1) / 2) * lineHeight;
+  axis.lines.forEach((line, i) => context.fillText(line, axis.labelAnchor.x, startY + i * lineHeight));
+}
+
+function paintRadar() {
+  const state = radarState;
+  if (!state) return;
+  const { context, dpr, width, height, center, radius, maxValue, colors, axes, hovered } = state;
+
+  context.setTransform(dpr, 0, 0, dpr, 0, 0);
+  context.clearRect(0, 0, width, height);
+
+  // Concentric grid rings.
+  context.lineWidth = 1;
+  for (let level = 1; level <= maxValue; level += 1) {
+    context.beginPath();
+    axes.forEach((axis, i) => {
+      const r = (level / maxValue) * radius;
+      const x = center.x + axis.cos * r;
+      const y = center.y + axis.sin * r;
+      i ? context.lineTo(x, y) : context.moveTo(x, y);
+    });
+    context.closePath();
+    context.strokeStyle = colors.line;
+    context.stroke();
+  }
+
+  // Spokes + written-out labels; the hovered axis is emphasised.
+  axes.forEach((axis) => {
+    const hot = axis.index === hovered;
+    context.beginPath();
+    context.moveTo(center.x, center.y);
+    context.lineTo(axis.axisEnd.x, axis.axisEnd.y);
+    context.strokeStyle = hot ? colors.text : colors.line;
+    context.lineWidth = hot ? 2 : 1;
+    context.stroke();
+    drawRadarLabel(context, axis, center, colors, hot);
+  });
+
+  fillRadarPolygon(context, axes.map((a) => a.evidencePoint), colors.blue, withAlpha(colors.blue, 0.16), 2);
+  fillRadarPolygon(context, axes.map((a) => a.lp21Point), colors.green, withAlpha(colors.green, 0.2), 2);
+
+  axes.forEach((axis) => {
+    const hot = axis.index === hovered;
+    drawRadarMarker(context, axis.lp21Point, colors.green, hot, colors);
+    drawRadarMarker(context, axis.evidencePoint, colors.blue, hot, colors);
+  });
+}
+
+function nearestRadarAxis(px, py) {
+  const state = radarState;
+  if (!state) return null;
+  const dx = px - state.center.x;
+  const dy = py - state.center.y;
+  if (Math.hypot(dx, dy) > state.radius * 1.4) return null;
+  const angle = Math.atan2(dy, dx);
+  let best = null;
+  let bestDelta = Infinity;
+  for (const axis of state.axes) {
+    const delta = Math.abs(Math.atan2(Math.sin(angle - axis.angle), Math.cos(angle - axis.angle)));
+    if (delta < bestDelta) {
+      bestDelta = delta;
+      best = axis.index;
+    }
+  }
+  return best;
+}
+
+function handleRadarMove(event) {
+  const state = radarState;
+  if (!state) return;
+  const rect = state.canvas.getBoundingClientRect();
+  const idx = nearestRadarAxis(event.clientX - rect.left, event.clientY - rect.top);
+  const changed = idx !== state.hovered;
+  if (changed) {
+    state.hovered = idx;
+    paintRadar();
+  }
+  if (idx == null) {
+    state.canvas.style.cursor = "default";
+    hideRadarTooltip();
+    return;
+  }
+  state.canvas.style.cursor = "pointer";
+  // Rebuild the tooltip content only when the skill changes; reposition always.
+  if (changed) showRadarTooltip(state.axes[idx]);
+  positionRadarTooltip(event);
+}
+
+function handleRadarLeave() {
+  const state = radarState;
+  if (state && state.hovered != null) {
+    state.hovered = null;
+    paintRadar();
+  }
+  hideRadarTooltip();
+}
+
+function showRadarTooltip(axis) {
+  const tooltip = els.radarTooltip;
+  if (!tooltip) return;
+  const cycles = (axis.mapping.cycles || []).join(", ") || "–";
+  const area = axis.mapping.curriculum_area || axis.mapping.framework || "–";
+  tooltip.innerHTML =
+    `<strong>${axis.skill.name}</strong>` +
+    `<span class="rt-sub">${axis.skill.short_label} · Alter ${axis.skill.age_range}</span>` +
+    "<dl>" +
+    `<div><dt>Future Evidence</dt><dd class="rt-evidence">${axis.evidenceScore.toFixed(2)} / 1</dd></div>` +
+    `<div><dt>LP21-Abdeckung</dt><dd class="rt-coverage">${axis.coverageScore.toFixed(1)} / 3</dd></div>` +
+    `<div><dt>Einschätzung</dt><dd>${axis.mapping.coverage_label || "–"}</dd></div>` +
+    `<div><dt>Zyklen</dt><dd>${cycles}</dd></div>` +
+    `<div><dt>LP21-Bezug</dt><dd>${area}</dd></div>` +
+    "</dl>";
+  tooltip.classList.add("is-visible");
+  tooltip.setAttribute("aria-hidden", "false");
+}
+
+function positionRadarTooltip(event) {
+  const tooltip = els.radarTooltip;
+  const stage = tooltip.parentElement;
+  const stageRect = stage.getBoundingClientRect();
+  const width = tooltip.offsetWidth;
+  const height = tooltip.offsetHeight;
+  let left = event.clientX - stageRect.left + 16;
+  let top = event.clientY - stageRect.top + 16;
+  if (left + width > stageRect.width) left = event.clientX - stageRect.left - width - 16;
+  if (left < 4) left = 4;
+  if (top + height > stageRect.height) top = Math.max(4, stageRect.height - height - 4);
+  tooltip.style.left = `${left}px`;
+  tooltip.style.top = `${top}px`;
+}
+
+function hideRadarTooltip() {
+  const tooltip = els.radarTooltip;
+  if (!tooltip) return;
+  tooltip.classList.remove("is-visible");
+  tooltip.setAttribute("aria-hidden", "true");
 }
 
 function renderDetail() {
@@ -823,6 +965,13 @@ if (els.themeToggle) {
     setTheme(next);
     renderLp21Comparison();
   });
+}
+
+if (els.lp21Radar) {
+  els.lp21Radar.addEventListener("mousemove", handleRadarMove);
+  els.lp21Radar.addEventListener("mouseleave", handleRadarLeave);
+  // Touch: a tap selects the nearest skill and shows its context.
+  els.lp21Radar.addEventListener("click", handleRadarMove);
 }
 
 window.addEventListener("resize", () => renderLp21Comparison());

@@ -12,6 +12,16 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Added
+
+- **Interaktives Netzdiagramm als Zentrum der Seite.** Das Lehrplan-21-Radar ist
+  größer und prominenter, die Achsen tragen die vollständig ausgeschriebenen
+  Skill-Namen (statt Kürzel). Beim Überfahren wird die betreffende Achse
+  hervorgehoben (fette Beschriftung, vergrößerte Datenpunkte) und ein Tooltip zeigt
+  Kontext: Future-Evidence-Score, LP21-Abdeckung (/3), Einschätzung, Zyklen und den
+  Lehrplan-21-Bezug. Tippen funktioniert auf Touch-Geräten; die Tabelle bleibt die
+  barrierefreie Alternative.
+
 ### Changed
 
 - **Dashboard-Filter korrigiert.** Der Status „Deprecated“ heißt in der Oberfläche
