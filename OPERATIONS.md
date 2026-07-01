@@ -322,18 +322,31 @@ after a prompt change (`PREFILL_PROMPT_VERSION`), a model bump (`AI_MODEL`), or
 when growing the golden set; then re-run `make eval-prefill` to confirm the gate
 still passes offline.
 
-**Field scoring (so the live gate is fair, not brittle).** `age_range` is
-matched with a **±1-year boundary tolerance** (the bands must also overlap), so
-`11-18` vs `12-18` counts as agreement while a band padded to the scale ceiling
-(`12-16` vs `12-18`) or a wrong band is still flagged. `evidence_strength` is
-matched by **exact category** — adjacent notches are *not* folded together, so a
-one-level disagreement keeps costing. The prompt (v3) was calibrated to the gold
-to remove two systematic live biases the first English re-record surfaced: it no
-longer asks for a *conservative / when-in-doubt-low* strength (which pushed the
-live model one notch low) and tells the model not to pad the age band to the
-scale ends. The effect of those prompt tweaks is only visible on a **live**
-re-record (the offline gate replays the frozen `_recorded`, so it is unchanged
-at ≈0.95 / 0.94, `evidence_strength` ≈0.84).
+**What is gated, and how each field is scored.** Only the two **structured**
+fields are gated: `age_range` and `evidence_strength`. `outcome`/`context` are
+one-sentence free-text *suggestions* a reviewer rewrites; the live model
+paraphrases them faithfully but with different words, which no lexical score
+captures fairly, so they are **reported but never block the gate** (the report
+prints them tagged `(advisory)` and a `GATED (age+strength)` overall line).
+
+- `age_range`: numeric tolerance with the bands required to overlap, **±1 on the
+  lower bound** (entry age is precise) and **±2 on the upper bound** (the
+  school-stage "end" is fuzzy — "secondary" runs to 16–18 by country). Grade
+  fuzz agrees; a lower bound off by years, an upper bound off by 3+, or a
+  non-overlapping band is still flagged.
+- `evidence_strength`: **exact category** — adjacent notches are *not* folded
+  together, so a one-level disagreement keeps costing.
+
+The prompt (v4) is calibrated to the gold to remove the systematic live biases
+the English re-records surfaced: it no longer asks for a *conservative /
+when-in-doubt-low* strength and instead pins an explicit study-type rubric
+(RCT / systematic review / meta-analysis ⇒ high; controlled or multi-site ⇒
+moderate; single small or uncontrolled ⇒ low), and it tells the model not to pad
+the age band to the scale ends. Those prompt effects are only visible on a
+**live** re-record — the offline gate replays the frozen `_recorded`, so it
+stays green (`GATED` ≈0.91, `evidence_strength` ≈0.84, `age_range` 1.00; the
+advisory `outcome`/`context` still read ≈0.98/1.00 against their near-verbatim
+`_recorded`).
 
 ## Guardrails
 

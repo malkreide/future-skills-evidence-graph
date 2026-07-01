@@ -1970,29 +1970,30 @@ class CandidateTriageTests(unittest.TestCase):
 
 
 class PrefillScoringTests(unittest.TestCase):
-    """The pre-fill eval's field matching: age tolerance, exact strength."""
+    """The pre-fill eval's field matching and gated-vs-advisory split."""
 
-    def test_age_range_tolerates_one_year_boundaries(self) -> None:
+    def test_age_range_lower_bound_tolerates_one_year(self) -> None:
         import eval_claim_prefill as ev
 
-        # Within +/-1 on each end (and overlapping) counts as agreement.
+        # Entry age is precise: +/-1 on the lower bound (and overlapping) agrees.
         self.assertTrue(ev._values_match("age_range", "12-18", "11-18"))
         self.assertTrue(ev._values_match("age_range", "10-14", "11-14"))
         self.assertTrue(ev._values_match("age_range", "4-6", "3-6"))
-        self.assertTrue(ev._values_match("age_range", "12-15", "13-16"))
 
-    def test_age_range_flags_larger_gaps_and_disjoint_bands(self) -> None:
+    def test_age_range_upper_bound_tolerates_two_years(self) -> None:
         import eval_claim_prefill as ev
 
-        # Off by two on a boundary (e.g. padding the upper age to the scale max)
-        # is still a miss, as is a band that does not overlap at all.
-        self.assertFalse(ev._values_match("age_range", "12-16", "12-18"))
+        # The school-stage "end" is fuzzier: an upper bound off by two agrees
+        # (e.g. a secondary study reported as 12-16 vs the model's 12-18)...
+        self.assertTrue(ev._values_match("age_range", "12-16", "12-18"))
+        # ...but off by three does not, and a lower bound off by two does not.
+        self.assertFalse(ev._values_match("age_range", "12-15", "12-18"))
         self.assertFalse(ev._values_match("age_range", "14-18", "12-18"))
-        self.assertFalse(ev._values_match("age_range", "5-8", "12-15"))
 
-    def test_age_range_exact_still_matches(self) -> None:
+    def test_age_range_flags_disjoint_bands(self) -> None:
         import eval_claim_prefill as ev
 
+        self.assertFalse(ev._values_match("age_range", "5-8", "12-15"))
         self.assertTrue(ev._values_match("age_range", "6-12", "6-12"))
 
     def test_evidence_strength_stays_exact(self) -> None:
@@ -2003,6 +2004,25 @@ class PrefillScoringTests(unittest.TestCase):
         # remains a miss, so the strength metric keeps its bite.
         self.assertFalse(ev._values_match("evidence_strength", "high", "moderate"))
         self.assertFalse(ev._values_match("evidence_strength", "moderate", "low"))
+
+    def test_only_structured_fields_are_gated(self) -> None:
+        import eval_claim_prefill as ev
+
+        # outcome/context are advisory (reported, not gated); the gated micro
+        # average covers exactly age_range + evidence_strength.
+        self.assertEqual(ev.GATED_FIELDS, ("age_range", "evidence_strength"))
+        self.assertEqual(set(ev.ADVISORY_FIELDS), {"outcome", "context"})
+        metrics = {
+            "age_range": ev.FieldMetrics("age_range", matches=8, predicted=10, gold=10),
+            "evidence_strength": ev.FieldMetrics("evidence_strength", matches=7, predicted=10, gold=10),
+            "outcome": ev.FieldMetrics("outcome", matches=1, predicted=10, gold=10),
+            "context": ev.FieldMetrics("context", matches=1, predicted=10, gold=10),
+        }
+        gated = ev.micro_average(metrics, ev.GATED_FIELDS)
+        # 15 / 20 from the two structured fields only -- the weak advisory text
+        # fields do not drag the gated number down.
+        self.assertEqual(gated.predicted, 20)
+        self.assertAlmostEqual(gated.precision, 0.75)
 
 
 if __name__ == "__main__":

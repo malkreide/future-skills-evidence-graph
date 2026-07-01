@@ -1,0 +1,10 @@
+{
+  "hash": "ef19531a78c41e7c10bb5b635b2b7077f7c98d8527efcbaae5fbfad199d9e929",
+  "kind": "complete",
+  "response": {
+    "age_range": "14-18",
+    "context": "Six-week data literacy module with high-school students.",
+    "evidence_strength": "low",
+    "outcome": "A data literacy module improves chart interpretation, especially for low-numeracy students."
+  }
+}

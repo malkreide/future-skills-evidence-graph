@@ -96,7 +96,11 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # "estimated conservatively / when in doubt low" wording that pushed the live
 # model one strength notch low, and tell it not to pad the age band to the scale
 # ceiling (the live model over-extended upper ages to 18).
-PREFILL_PROMPT_VERSION = "claim-prefill-v3"
+# v4: the first English live run showed evidence_strength still one notch below
+# gold, so pin an explicit study-type rubric (RCT / systematic review / meta-
+# analysis => high; controlled or multi-site => moderate; single small or
+# uncontrolled => low) that matches how the gold set was labeled.
+PREFILL_PROMPT_VERSION = "claim-prefill-v4"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
 # mirrors Anhang A: every field is optional content (null when the abstract does
@@ -143,8 +147,9 @@ reported (neutral, without exaggeration), or null.
 - context: one sentence, in English, on the setting (country, school level, \
 type of intervention), or null.
 - evidence_strength: one of {{low, moderate, high}}, judged from study type and \
-sample (a single small or non-controlled study => low; a controlled trial or a \
-systematic review/meta-analysis => moderate or high).
+sample: a randomised controlled trial, systematic review or meta-analysis => \
+high; a controlled, quasi-experimental or multi-site study => moderate; a single \
+small, uncontrolled, descriptive or design/working-paper study => low.
 
 Response schema:
 {{"age_range": string|null, "outcome": string|null, "context": string|null, \

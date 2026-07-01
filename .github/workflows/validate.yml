@@ -21,7 +21,8 @@ jobs:
       - name: Evaluate LLM claim pre-fill (offline, fixtures)
         run: >-
           python scripts/eval_claim_prefill.py
-          --min-precision 0.8 --min-recall 0.8 --min-evidence-strength-precision 0.7
+          --min-precision 0.8 --min-recall 0.8
+          --min-evidence-strength-precision 0.7 --min-age-range-precision 0.8
       - name: Build static dashboard
         run: python scripts/build_site.py
 
