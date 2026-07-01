@@ -1,0 +1,10 @@
+{
+  "hash": "aeb0fe779b1e607ea7f1305af0d9e917416548650ccaab293c3f6f823a4fcdc8",
+  "kind": "complete",
+  "response": {
+    "age_range": "15-18",
+    "context": "Classroom comparison of an AR anatomy app versus a textbook in upper-secondary biology.",
+    "evidence_strength": "low",
+    "outcome": "An AR anatomy app raises engagement but not knowledge over a textbook."
+  }
+}

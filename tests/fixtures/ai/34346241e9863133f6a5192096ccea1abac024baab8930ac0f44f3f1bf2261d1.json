@@ -1,0 +1,10 @@
+{
+  "hash": "34346241e9863133f6a5192096ccea1abac024baab8930ac0f44f3f1bf2261d1",
+  "kind": "complete",
+  "response": {
+    "age_range": "14-18",
+    "context": "Study of automated essay feedback with high-school writers.",
+    "evidence_strength": "moderate",
+    "outcome": "Automated feedback leads to more substantive revision and higher essay quality."
+  }
+}

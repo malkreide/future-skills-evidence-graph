@@ -1,0 +1,10 @@
+{
+  "hash": "8f933a63f9ec19671a7eaecbeddae08315610fe95f600f7d9905b146e66457be",
+  "kind": "complete",
+  "response": {
+    "age_range": "7-10",
+    "context": "Small non-randomised quasi-experiment of music training with primary children.",
+    "evidence_strength": "moderate",
+    "outcome": "Music training yields modest working-memory and inhibitory-control gains."
+  }
+}
