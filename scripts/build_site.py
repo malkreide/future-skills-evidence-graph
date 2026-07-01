@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import os
+import re
 import shutil
 import stat
 from datetime import UTC, datetime
@@ -9,6 +11,28 @@ from pathlib import Path
 
 from common import ROOT, load_records, write_json
 from validate_data import validate_repository
+
+# Matches local CSS/JS references in the HTML, e.g. src="./assets/app.js".
+# External URLs and data: URIs never match because they lack an assets/ segment.
+_ASSET_REF = re.compile(r'(src|href)="((?:\.?/)?assets/[^"?]+\.(?:css|js))"')
+
+
+def _fingerprint_assets(output: Path) -> None:
+    """Append a content hash query to local asset links so browsers refetch them
+    after a change. Without this, the unversioned styles.css / app.js can stay
+    cached and mix with freshly deployed HTML, breaking the layout."""
+
+    def replace(match: re.Match[str]) -> str:
+        attribute, ref = match.group(1), match.group(2)
+        asset = output / "assets" / ref.split("assets/", 1)[1]
+        try:
+            digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:10]
+        except OSError:
+            return match.group(0)
+        return f'{attribute}="{ref}?v={digest}"'
+
+    for page in output.glob("*.html"):
+        page.write_text(_ASSET_REF.sub(replace, page.read_text(encoding="utf-8")), encoding="utf-8")
 
 
 def build_index() -> dict[str, object]:
@@ -47,6 +71,7 @@ def build_site(output: Path) -> None:
             shutil.copytree(item, target)
         else:
             shutil.copy2(item, target)
+    _fingerprint_assets(output)
     write_json(output / "data" / "index.json", build_index())
 
 

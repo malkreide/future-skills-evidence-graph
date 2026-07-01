@@ -190,5 +190,20 @@
 
   els.refresh.addEventListener("click", loadPipeline);
   loadGenerated();
-  loadPipeline();
+
+  // The operational panel is collapsed by default, so defer the GitHub API
+  // calls until an operator actually opens it. This keeps the page quiet for
+  // catalog users and avoids burning the anonymous API rate limit on load.
+  const panel = document.querySelector("#pipelinePanel");
+  if (panel) {
+    let loaded = false;
+    panel.addEventListener("toggle", () => {
+      if (panel.open && !loaded) {
+        loaded = true;
+        loadPipeline();
+      }
+    });
+  } else {
+    loadPipeline();
+  }
 })();

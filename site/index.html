@@ -48,7 +48,11 @@
             aria-label="Dunkles Design einschalten"
             aria-pressed="false"
           >
-            <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+              </svg>
+            </span>
             <span class="theme-toggle-text">Dunkel</span>
           </button>
         </nav>
@@ -138,43 +142,6 @@
         </button>
       </section>
 
-      <section class="pipeline" aria-label="Pipeline und Jobs">
-        <div class="comparison-header">
-          <div>
-            <p class="eyebrow">Betrieb</p>
-            <h2>Pipeline &amp; Jobs</h2>
-          </div>
-          <div class="pipeline-actions">
-            <span id="pipelineUpdated" class="pipeline-updated"></span>
-            <button id="pipelineRefresh" type="button" class="pipeline-refresh">Aktualisieren</button>
-          </div>
-        </div>
-
-        <div class="pipeline-grid">
-          <section class="pipeline-col" aria-label="Letzte Jobs">
-            <div class="section-heading">
-              <h3>Letzte Jobs (GitHub Actions)</h3>
-              <span id="jobCount">–</span>
-            </div>
-            <div id="jobList" class="pipeline-list">
-              <p class="pipeline-hint">Jobs werden geladen …</p>
-            </div>
-          </section>
-
-          <section class="pipeline-col" aria-label="Anstehende Reviews">
-            <div class="section-heading">
-              <h3>Anstehend (offene Pull Requests)</h3>
-              <span id="prCount">–</span>
-            </div>
-            <div id="prList" class="pipeline-list">
-              <p class="pipeline-hint">Pull Requests werden geladen …</p>
-            </div>
-          </section>
-        </div>
-
-        <p class="pipeline-foot">Datenstand des Dashboards: <span id="dataGeneratedAt">–</span></p>
-      </section>
-
       <section class="lp21-comparison" aria-label="Lehrplan 21 Vergleich">
         <div class="comparison-header">
           <div>
@@ -260,6 +227,50 @@
           </div>
         </article>
       </section>
+
+      <details class="ops-panel" id="pipelinePanel" aria-label="Pipeline und Jobs">
+        <summary class="ops-summary">
+          <span class="ops-summary-text">
+            <span class="eyebrow">Betrieb</span>
+            <span class="ops-title">Pipeline &amp; Jobs</span>
+          </span>
+          <span class="ops-summary-meta">
+            <span id="pipelineUpdated" class="pipeline-updated"></span>
+            <span class="ops-caret" aria-hidden="true"></span>
+          </span>
+        </summary>
+
+        <div class="ops-body">
+          <div class="ops-body-actions">
+            <p class="pipeline-hint">Betriebsdaten aus GitHub Actions – für Betreiber, nicht für die Katalog-Nutzung nötig.</p>
+            <button id="pipelineRefresh" type="button" class="pipeline-refresh">Aktualisieren</button>
+          </div>
+
+          <div class="pipeline-grid">
+            <section class="pipeline-col" aria-label="Letzte Jobs">
+              <div class="section-heading">
+                <h3>Letzte Jobs (GitHub Actions)</h3>
+                <span id="jobCount">–</span>
+              </div>
+              <div id="jobList" class="pipeline-list">
+                <p class="pipeline-hint">Jobs werden geladen …</p>
+              </div>
+            </section>
+
+            <section class="pipeline-col" aria-label="Anstehende Reviews">
+              <div class="section-heading">
+                <h3>Anstehend (offene Pull Requests)</h3>
+                <span id="prCount">–</span>
+              </div>
+              <div id="prList" class="pipeline-list">
+                <p class="pipeline-hint">Pull Requests werden geladen …</p>
+              </div>
+            </section>
+          </div>
+
+          <p class="pipeline-foot">Datenstand des Dashboards: <span id="dataGeneratedAt">–</span></p>
+        </div>
+      </details>
     </main>
 
     <script src="./assets/app.js"></script>

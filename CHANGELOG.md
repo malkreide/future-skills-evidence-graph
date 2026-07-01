@@ -14,6 +14,16 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Dashboard-UX: Cache-Busting, Betriebs-Panel unten & einklappbar, klarere
+  Bedienelemente.** Statische Assets (`styles.css`, `app.js`, …) erhalten beim
+  Build einen Inhalts-Hash (`?v=…`), damit Browser nach einem Update nicht altes
+  CSS/JS mit neuem HTML mischen. Das Betriebs-Panel „Pipeline & Jobs“ steht jetzt
+  als eingeklapptes `<details>` am Seitenende und lädt seine GitHub-API-Daten erst
+  beim Öffnen (schont das anonyme Rate-Limit). Die Kennzahl-Kachel „Skills“ ist
+  nicht länger irreführend als aktiver Filter markiert; Schnellfilter mit Zählwert
+  0 (z. B. „Kandidaten“) sind deaktiviert statt in eine leere Liste zu führen. Der
+  Dark-Mode-Umschalter nutzt ein eindeutiges SVG-Icon statt eines Emojis.
+
 - **Dashboard-UX: Kennzahl-Schnellfilter und Tastaturnavigation.** Die Kacheln
   „Skills“ und „Kandidaten“ wirken als umschaltbare Status-Schnellfilter
   (`aria-pressed`, teilbar über die URL); die Skill-Liste lässt sich mit den

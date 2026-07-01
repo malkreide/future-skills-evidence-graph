@@ -170,8 +170,13 @@ select {
 }
 
 .theme-toggle-icon {
-  font-size: 15px;
+  align-items: center;
+  display: inline-flex;
   line-height: 1;
+}
+
+.theme-toggle-icon svg {
+  display: block;
 }
 
 .shell {
@@ -323,8 +328,17 @@ select {
   top: 12px;
 }
 
-.metric-filter:hover {
+.metric-filter:hover:not(:disabled) {
   border-color: var(--blue);
+}
+
+.metric-filter:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.metric-filter:disabled::after {
+  content: "";
 }
 
 .metric-filter[aria-pressed="true"] {
@@ -349,14 +363,89 @@ select {
   margin: 2px 0 0;
 }
 
-.lp21-comparison,
-.pipeline {
+.lp21-comparison {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
   margin-bottom: 16px;
   padding: clamp(16px, 3vw, 24px);
+}
+
+/* Operational panel: de-emphasized, collapsed by default, at the very bottom.
+   It carries CI/PR telemetry for operators, not catalog content for learners. */
+.ops-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.ops-summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  list-style: none;
+  padding: 14px clamp(16px, 3vw, 24px);
+}
+
+.ops-summary::-webkit-details-marker {
+  display: none;
+}
+
+.ops-summary:hover .ops-title {
+  color: var(--blue);
+}
+
+.ops-summary-text {
+  display: grid;
+  gap: 2px;
+}
+
+.ops-title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.ops-summary-meta {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.ops-caret {
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  display: inline-block;
+  height: 8px;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  width: 8px;
+}
+
+.ops-panel[open] .ops-caret {
+  transform: rotate(-135deg);
+}
+
+.ops-body {
+  border-top: 1px solid var(--line);
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.ops-body-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.ops-body-actions .pipeline-hint {
+  margin: 0;
+  max-width: 60ch;
 }
 
 .pipeline-actions {
