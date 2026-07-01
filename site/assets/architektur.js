@@ -39,6 +39,31 @@ const VIEWS = {
         },
       },
       {
+        id: "websearch", type: "external", x: 30, y: 24, w: 300, h: 72,
+        title: "Web-Suche (grau, manuell)", sub: "SearXNG · DuckDuckGo · opt. Google",
+        detail: {
+          body:
+            "Eine separate, nur manuell ausgelöste Grau-Literatur-Lane: eine " +
+            "Topic-Suchanfrage findet neue Kandidaten-Quellen, welche die " +
+            "schlüssellosen Kataloge nie zeigen. Strategie ist offene Suche mit " +
+            "gestuftem Trust – die Trust-Stufe (trusted/watch/open) ist ein Label " +
+            "für die Triage-Reihenfolge, kein Filter, und fließt NICHT in den " +
+            "evidence_score. audit_domains.py leitet die Stufen evidenzbasiert " +
+            "aus den Review-Entscheidungen ab.",
+          files: [
+            "scripts/ingest_websearch.py",
+            "scripts/resolve_source_url.py",
+            "scripts/audit_domains.py",
+            "data/source_domains.json",
+            ".github/workflows/ingest-websearch.yml",
+          ],
+          rules: [
+            "Nur workflow_dispatch (kein Wochenlauf); jede Fundstelle bleibt Kandidat, source_type web_resource (niedrigstes Gewicht).",
+            "Mintet keine Claims – die entstehen weiter verbatim über extract_claims.py / ingest_reports.py.",
+          ],
+        },
+      },
+      {
         id: "ingest", type: "process", x: 24, y: 168, w: 168, h: 64,
         title: "Import", sub: "ingest_*.py",
         detail: {
@@ -101,6 +126,20 @@ const VIEWS = {
             "er offen ist, hängen spätere Läufe an denselben Branch an, statt Duplikate zu öffnen.",
           files: [".github/workflows/research-pipeline.yml"],
           rules: ["Der automatische Pfad veröffentlicht nie aktive Skills."],
+        },
+      },
+      {
+        id: "triage", type: "process", x: 640, y: 300, w: 210, h: 60,
+        title: "Kandidaten-Triage", sub: "triage_candidates.py",
+        detail: {
+          body:
+            "Bündelt den offenen Kandidaten-Rückstand zu einem einzigen, " +
+            "geordneten Review-Arbeitsblatt (verbatim-Aussage, Topics, " +
+            "Quelle(n), optionale LLM-assist-Vorschläge) samt den exakten " +
+            "promote_candidate.py-Befehlen. Schreibt nichts nach data/ und " +
+            "promotet nichts.",
+          files: ["scripts/triage_candidates.py"],
+          rules: ["Nur eine Lesehilfe – die Entscheidung bleibt vollständig beim Menschen."],
         },
       },
       {
@@ -202,12 +241,14 @@ const VIEWS = {
     ],
     edges: [
       { from: "apis", to: "ingest" },
+      { from: "websearch", to: "dedupe", label: "graue Lit." },
       { from: "ingest", to: "dedupe" },
       { from: "dedupe", to: "filter" },
       { from: "filter", to: "extract" },
       { from: "extract", to: "cluster" },
       { from: "cluster", to: "pr" },
-      { from: "pr", to: "review" },
+      { from: "pr", to: "triage" },
+      { from: "triage", to: "review" },
       { from: "review", to: "sources", label: "promote-source" },
       { from: "review", to: "claims", label: "reviewed" },
       { from: "review", to: "skills", label: "active" },

@@ -87,6 +87,8 @@ graph TB
         P6["build_site.py<br/>Webseite bauen"]
         P7["promote_candidate.py<br/>Freigabe durch Mensch"]
         P8["train_relevance.py<br/>Relevanzfilter"]
+        P9["ingest_websearch.py<br/>Grau-Literatur-Suche"]
+        P10["triage_candidates.py<br/>Review-Arbeitsblatt"]
     end
 
     subgraph SITE["🌐 site/ – statisches Dashboard"]
@@ -110,8 +112,14 @@ graph TB
     classDef data fill:#e8f0fe,stroke:#4285f4,color:#1a1a1a;
     classDef proc fill:#e6f4ea,stroke:#34a853,color:#1a1a1a;
     class DATA,D1,D2,D3,D4 data;
-    class SCRIPTS,P1,P2,P3,P4,P5,P6,P7,P8 proc;
+    class SCRIPTS,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10 proc;
 ```
+
+Nur `validate.yml` läuft verpflichtend bei jedem Push. Der Wochenlauf
+(`research-pipeline.yml`) wird durch **manuell ausgelöste** Workflows ergänzt:
+`ingest-websearch.yml` (Grau-Literatur-Suche), `ingest-from-issue.yml` und
+`ingest-reports.yml` (Bericht-Import), `resolve-url-check.yml`
+(URL-Auflösungs-Diagnose) und `eval-prefill-record.yml` (LLM-Prefill-Baseline).
 
 ---
 
@@ -128,6 +136,8 @@ flowchart TD
         OA[OpenAlex] & CR[Crossref] & SS[Semantic Scholar] & AX[arXiv] & ER[ERIC]
     end
 
+    WEB["🔎 Web-Suche (manuell)<br/>ingest_websearch.py<br/>SearXNG · DuckDuckGo"] --> DEDUP
+
     ING --> DEDUP[deduplicate_sources.py<br/>Dubletten entfernen]
     DEDUP --> FILTER{2 · Relevanzfilter<br/>Topic-Match? Schul-Zielgruppe?<br/>kein Off-Scope-Begriff?}
 
@@ -137,13 +147,14 @@ flowchart TD
     EXTRACT --> CLUSTER[6 · cluster_claims.py<br/>Claims → Kandidaten-Skills]
     CLUSTER --> PR[8 · Pull Request<br/>research/candidates Branch]
 
-    PR --> REVIEW{👤 Mensch prüft<br/>promote_candidate.py}
+    PR --> TRIAGE[triage_candidates.py<br/>Review-Arbeitsblatt]
+    TRIAGE --> REVIEW{👤 Mensch prüft<br/>promote_candidate.py}
     REVIEW -->|freigeben| ACTIVE[✅ aktiver Skill<br/>+ Relevanz-Label geerntet]
     REVIEW -->|ablehnen| REJECT[🚫 rejected / deprecated]
 
     classDef machine fill:#fef7e0,stroke:#f9ab00,color:#1a1a1a;
     classDef human fill:#e6f4ea,stroke:#34a853,color:#1a1a1a;
-    class ING,DEDUP,FILTER,EXTRACT,CLUSTER,PR machine;
+    class ING,DEDUP,FILTER,EXTRACT,CLUSTER,PR,WEB,TRIAGE machine;
     class REVIEW,ACTIVE human;
 ```
 
@@ -197,6 +208,23 @@ Dashboard-Seite hält bewusst **kein Secret** – sie liest die Datei lokal und
 übernimmt GitHub. Eine reine PDF-URL wird erst serverseitig (im Workflow)
 gelesen. Details: [report-import.md](report-import.md).
 
+### 4b · Web-Suche (graue Literatur, manuell)
+
+Neben den fünf Katalog-APIs gibt es eine **nur manuell ausgelöste** Discovery-Lane
+für graue Literatur: `scripts/ingest_websearch.py` (Workflow `ingest-websearch.yml`,
+nur `workflow_dispatch`) stellt eine Topic-Suchanfrage an offene Backends
+(SearXNG, keyless DuckDuckGo, optional Google) und legt Treffer als
+Kandidaten-Quellen an – genau jene, die die schlüssellosen Kataloge nie zeigen.
+Die Strategie ist **offene Suche, gestufter Trust** (`data/source_domains.json`):
+jede Fundstelle bekommt eine Trust-Stufe (`trusted`/`watch`/`open`), aber die
+Stufe ist nur ein **Label** für die Triage-Reihenfolge – sie ist kein Filter und
+fließt **nicht** in den `evidence_score`. Web-Treffer bleiben
+`source_type: web_resource` (niedrigstes Gewicht) und minten **keine** Claims;
+diese entstehen weiterhin verbatim über `extract_claims.py` /
+`ingest_reports.py`. `scripts/audit_domains.py` (`make audit-domains`) leitet aus
+den Review-Entscheidungen evidenzbasiert ab, welche Domains eine Trust-Stufe
+verdienen (siehe [allowlist-pflegen.md](allowlist-pflegen.md)).
+
 ---
 
 ## 5. Das Vertrauens-Prinzip: Mensch + reproduzierbare Bewertung
@@ -226,6 +254,13 @@ Die **menschliche Freigabe** (`promote_candidate.py`) ist das zweite Prinzip: Si
 verweigert die Freigabe, solange maschinelle Platzhalter übrig sind, erzwingt,
 dass aktive Skills nur auf geprüften Claims ruhen, berechnet die Scores neu und
 re-validiert – und schreibt nichts, falls eine Prüfung fehlschlägt.
+
+Damit der Mensch den offenen Kandidaten-Rückstand überblickt, bündelt
+`scripts/triage_candidates.py` alle offenen Kandidaten zu einem geordneten
+Review-Arbeitsblatt (verbatim-Aussage, Topics, Quelle(n), optionale
+LLM-`assist`-Vorschläge) samt den exakten `promote_candidate.py`-Befehlen. Es
+schreibt nichts nach `data/` und promotet nichts – es ist reine Lesehilfe vor der
+menschlichen Entscheidung.
 
 ---
 
@@ -268,6 +303,7 @@ Vergleichs mit Radar-Chart, Zyklus-Filter, Abdeckungstabelle und Lücken-Labels.
 | **Reproduzierbare Scores statt Handnoten** | Niemand kann eine Lieblingskompetenz „hochstufen"; das Vertrauenssignal ist nachrechenbar. |
 | **Heuristik als Default, Modell optional** | Transparenz und Auditierbarkeit vor Black-Box; das Modell wird nur aktiv, wenn es messbar besser ist. |
 | **Graceful Degradation der Importer** | Fällt eine Quelle aus, laufen die anderen weiter – der wöchentliche Lauf bricht nicht ab. |
+| **Offene Web-Suche, gestufter Trust (Label statt Filter)** | Graue Literatur wird gefunden (guter Recall), aber Domain-Vertrauen ordnet nur die Triage-Reihenfolge – es verzerrt nie den reproduzierbaren `evidence_score`. |
 
 ---
 
@@ -276,13 +312,16 @@ Vergleichs mit Radar-Chart, Zyklus-Filter, Abdeckungstabelle und Lücken-Labels.
 ```mermaid
 graph TB
     EXT["🌍 Externe Quellen-APIs<br/>OpenAlex · Crossref · S2 · arXiv · ERIC"]
+    WEBSRC["🔎 Web-Suche (manuell)<br/>graue Literatur"]
     EXT --> PIPE
+    WEBSRC --> PIPE
 
     subgraph AUTO["🤖 Automatisierung (schlägt vor)"]
         PIPE["Import → Filter → Extraktion → Clustering"] --> CAND["Kandidaten im PR"]
+        CAND --> TRIAGE["🗂️ Triage-Arbeitsblatt<br/>(triage_candidates.py)"]
     end
 
-    CAND --> HUMAN["👤 Menschliche Review<br/>(promote_candidate.py)"]
+    TRIAGE --> HUMAN["👤 Menschliche Review<br/>(promote_candidate.py)"]
 
     subgraph GRAPH["📦 Evidenz-Graph (versioniert in data/)"]
         SRC2[Sources] --> CLM2[Claims] --> SKL2[Skills] --> FWK2[Frameworks]
@@ -297,8 +336,8 @@ graph TB
     classDef auto fill:#fef7e0,stroke:#f9ab00,color:#1a1a1a;
     classDef graph fill:#e8f0fe,stroke:#4285f4,color:#1a1a1a;
     classDef human fill:#e6f4ea,stroke:#34a853,color:#1a1a1a;
-    class EXT ext;
-    class PIPE,CAND auto;
+    class EXT,WEBSRC ext;
+    class PIPE,CAND,TRIAGE auto;
     class SRC2,CLM2,SKL2,FWK2 graph;
     class HUMAN,VALID human;
 ```
