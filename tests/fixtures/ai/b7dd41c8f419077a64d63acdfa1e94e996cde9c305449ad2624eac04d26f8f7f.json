@@ -2,9 +2,9 @@
   "hash": "b7dd41c8f419077a64d63acdfa1e94e996cde9c305449ad2624eac04d26f8f7f",
   "kind": "complete",
   "response": {
-    "age_range": "11-14",
-    "context": "Comparison of guided inquiry and direct instruction in lower-secondary biology.",
+    "age_range": "12-15",
+    "context": "Lower-secondary biology classrooms comparing guided-inquiry lessons with direct instruction.",
     "evidence_strength": "moderate",
-    "outcome": "Guided inquiry improves long-term retention of biology concepts."
+    "outcome": "Students in the guided-inquiry condition retained more conceptual knowledge after six months than those receiving direct instruction, and engagement measures also favoured inquiry."
   }
 }

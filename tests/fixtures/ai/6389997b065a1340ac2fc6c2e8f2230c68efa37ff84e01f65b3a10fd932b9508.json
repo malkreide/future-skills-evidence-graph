@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "15-18",
-    "context": "Classroom comparison of an AR anatomy app versus a textbook in upper-secondary biology.",
+    "context": "Upper-secondary biology classes comparing an augmented-reality anatomy app with a textbook, across three classes.",
     "evidence_strength": "low",
-    "outcome": "An AR anatomy app raises engagement but not knowledge over a textbook."
+    "outcome": "Students using the augmented-reality app were more engaged, but post-test anatomy knowledge did not differ from the textbook condition."
   }
 }

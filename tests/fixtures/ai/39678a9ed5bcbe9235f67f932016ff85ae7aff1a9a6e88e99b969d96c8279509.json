@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "6-7",
-    "context": "Term-long comparison of tablet versus paper handwriting instruction for first graders.",
-    "evidence_strength": "low",
-    "outcome": "Tablet and paper handwriting instruction improve legibility equally."
+    "context": "First-grade classroom study comparing tablet-based and paper-based handwriting instruction over a term with 60 children.",
+    "evidence_strength": "moderate",
+    "outcome": "Both tablet-based and paper-based handwriting instruction improved legibility, with no significant difference between the two conditions."
   }
 }

@@ -2,9 +2,9 @@
   "hash": "92a6e368f29a0ce8ef96e633581db92501009516c70d9886ad2f88843ca212a1",
   "kind": "complete",
   "response": {
-    "age_range": null,
-    "context": "Four-week trial of a digital fractions game with upper-primary pupils.",
+    "age_range": "9-12",
+    "context": "A four-week trial with 110 upper-primary pupils comparing a fraction-focused digital game to worksheet-based instruction.",
     "evidence_strength": "moderate",
-    "outcome": "A fractions game improves conceptual understanding over worksheets."
+    "outcome": "Pupils using the digital game showed stronger conceptual understanding of fractions than those using worksheets."
   }
 }

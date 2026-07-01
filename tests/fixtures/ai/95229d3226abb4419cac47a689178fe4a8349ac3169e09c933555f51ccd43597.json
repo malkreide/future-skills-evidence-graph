@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "12-18",
-    "context": "Quasi-experimental design-thinking unit in secondary cohorts.",
+    "context": "Quasi-experimental study with two secondary school cohorts following a design-thinking unit.",
     "evidence_strength": "moderate",
-    "outcome": "A design-thinking unit increases originality and feasibility of student solutions."
+    "outcome": "The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric."
   }
 }

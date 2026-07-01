@@ -2,9 +2,9 @@
   "hash": "772a5513465c1852c9651e1b4ffa7b0b95ab1ae9faa5b15dce3d52cc22e7ab92",
   "kind": "complete",
   "response": {
-    "age_range": "13-17",
-    "context": "Class-randomised trial of an inoculation game against misinformation in secondary students.",
+    "age_range": "12-18",
+    "context": "A randomised trial with secondary school classes assigned to an inoculation 'prebunking' game or a control condition.",
     "evidence_strength": "high",
-    "outcome": "A prebunking game improves detection of misinformation techniques, with gains persisting two weeks."
+    "outcome": "Students improved at identifying manipulation techniques in headlines, with gains persisting two weeks later."
   }
 }

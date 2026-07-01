@@ -3,7 +3,7 @@
   "kind": "complete",
   "response": {
     "age_range": null,
-    "context": "Working paper describing the design of a language-practice chatbot.",
+    "context": "Working paper describing the architecture and planned classroom integration of a conversational chatbot for language practice.",
     "evidence_strength": "low",
     "outcome": null
   }

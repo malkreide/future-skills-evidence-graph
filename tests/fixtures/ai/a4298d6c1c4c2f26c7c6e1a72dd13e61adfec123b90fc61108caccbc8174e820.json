@@ -2,9 +2,9 @@
   "hash": "a4298d6c1c4c2f26c7c6e1a72dd13e61adfec123b90fc61108caccbc8174e820",
   "kind": "complete",
   "response": {
-    "age_range": "9-12",
-    "context": "Single-case multiple-baseline study of a self-monitoring tool with inattentive primary students.",
+    "age_range": "6-12",
+    "context": "Primary school students with attention difficulties used a tablet-based self-monitoring intervention.",
     "evidence_strength": "low",
-    "outcome": "A self-monitoring tool reduces off-task behaviour and increases independent work."
+    "outcome": "Students reduced off-task behaviour and completed more independent work when using the tablet self-monitoring tool."
   }
 }

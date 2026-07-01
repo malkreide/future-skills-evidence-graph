@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "15-18",
-    "context": "Non-randomised flipped-classroom implementation in upper-secondary chemistry.",
+    "context": "Upper-secondary chemistry classroom implementing a flipped-classroom instructional model.",
     "evidence_strength": "low",
-    "outcome": "A flipped classroom increases in-class practice and exam scores in chemistry."
+    "outcome": "Students completed more in-class practice and achieved higher exam scores than in the previous traditional year."
   }
 }
