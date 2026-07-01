@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": null,
-    "context": "Analysis of completion patterns in an adult-professional university MOOC.",
+    "context": "University MOOC for adult professionals aged 22-55.",
     "evidence_strength": "low",
-    "outcome": "Weekly goal-setting raises MOOC module completion."
+    "outcome": "Learners who set weekly goals completed more modules."
   }
 }

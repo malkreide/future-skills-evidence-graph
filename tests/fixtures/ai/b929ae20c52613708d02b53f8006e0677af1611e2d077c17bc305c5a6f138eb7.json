@@ -2,9 +2,9 @@
   "hash": "b929ae20c52613708d02b53f8006e0677af1611e2d077c17bc305c5a6f138eb7",
   "kind": "complete",
   "response": {
-    "age_range": "14-18",
-    "context": "Pre-post trial of a budgeting simulation game with secondary students.",
-    "evidence_strength": "moderate",
-    "outcome": "A budgeting game improves students' budgeting knowledge and money confidence."
+    "age_range": "12-18",
+    "context": "A budgeting simulation game intervention trialled with 180 secondary school students to teach personal finance.",
+    "evidence_strength": "low",
+    "outcome": "Students improved their budgeting knowledge and reported greater confidence in managing money."
   }
 }

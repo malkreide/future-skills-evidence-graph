@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "11-14",
-    "context": "Matched-school comparison of a cyber-safety curriculum in middle schools.",
+    "context": "A cyber-safety curriculum delivered to middle-school students across eleven schools, evaluated via a matched-school comparison.",
     "evidence_strength": "moderate",
-    "outcome": "A cyber-safety curriculum reduces risky online disclosures and improves password practices."
+    "outcome": "Students who completed the curriculum reported fewer risky online disclosures and better password practices at a two-month follow-up."
   }
 }

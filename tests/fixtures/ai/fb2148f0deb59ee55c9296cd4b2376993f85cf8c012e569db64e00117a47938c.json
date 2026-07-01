@@ -2,9 +2,9 @@
   "hash": "fb2148f0deb59ee55c9296cd4b2376993f85cf8c012e569db64e00117a47938c",
   "kind": "complete",
   "response": {
-    "age_range": "12-16",
-    "context": "Eight-week deployment of an AI algebra tutor in secondary schools.",
+    "age_range": "12-18",
+    "context": "Eight-week deployment of an adaptive AI tutoring system for algebra practice with 310 secondary students, compared to a worksheet control group.",
     "evidence_strength": "moderate",
-    "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy."
+    "outcome": "Students using the adaptive AI tutor solved more algebra problems correctly than a worksheet control group, with the largest gains among initially struggling students."
   }
 }

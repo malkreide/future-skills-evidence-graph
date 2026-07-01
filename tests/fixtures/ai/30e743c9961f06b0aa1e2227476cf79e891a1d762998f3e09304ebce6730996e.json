@@ -2,9 +2,9 @@
   "hash": "30e743c9961f06b0aa1e2227476cf79e891a1d762998f3e09304ebce6730996e",
   "kind": "complete",
   "response": {
-    "age_range": "12-16",
-    "context": "Uncontrolled test of a VR perspective-taking experience with secondary students.",
+    "age_range": "12-18",
+    "context": "Secondary school setting using a virtual-reality perspective-taking experience to foster empathy.",
     "evidence_strength": "low",
-    "outcome": "A VR perspective-taking experience raises immediate self-reported empathy, with durability untested."
+    "outcome": "Students reported higher empathy immediately after the intervention, but no longer-term effect was measured."
   }
 }

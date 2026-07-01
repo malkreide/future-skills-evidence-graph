@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "6-12",
-    "context": "Year-long study of translanguaging in bilingual primary science classrooms.",
-    "evidence_strength": "moderate",
-    "outcome": "Translanguaging pedagogy improves bilingual pupils' content understanding and participation."
+    "context": "Bilingual primary school classrooms studied over a school year using translanguaging pedagogy, with teacher logs and content assessments.",
+    "evidence_strength": "low",
+    "outcome": "Pupils permitted to use both languages showed better understanding of science content and greater participation."
   }
 }

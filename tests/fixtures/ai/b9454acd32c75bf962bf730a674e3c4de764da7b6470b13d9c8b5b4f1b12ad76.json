@@ -2,9 +2,9 @@
   "hash": "b9454acd32c75bf962bf730a674e3c4de764da7b6470b13d9c8b5b4f1b12ad76",
   "kind": "complete",
   "response": {
-    "age_range": "6-8",
-    "context": "Waitlist-controlled SEL program in early primary classrooms.",
+    "age_range": "5-8",
+    "context": "A classroom-based social-emotional learning intervention for early primary children, evaluated against a waitlist control.",
     "evidence_strength": "moderate",
-    "outcome": "A social-emotional learning program improves emotional regulation and reduces conflicts."
+    "outcome": "Children in the program showed improved emotional regulation and fewer conflicts based on teacher ratings."
   }
 }

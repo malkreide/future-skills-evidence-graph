@@ -2,9 +2,9 @@
   "hash": "741752a5de73d4948f4d1c73f7aa91a97aa0d1ad0f605ce7739f2b7d861d8e1f",
   "kind": "complete",
   "response": {
-    "age_range": "7-11",
-    "context": "Four-week trial of a gamified vocabulary app with primary language learners.",
+    "age_range": "6-12",
+    "context": "A four-week trial with 120 primary-school English-language learners comparing a gamified vocabulary app to flashcards.",
     "evidence_strength": "moderate",
-    "outcome": "A gamified app improves vocabulary learning and retention over flashcards."
+    "outcome": "Children using the gamified app learned and retained more vocabulary than those using flashcards."
   }
 }
