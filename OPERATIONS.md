@@ -322,12 +322,23 @@ after a prompt change (`PREFILL_PROMPT_VERSION`), a model bump (`AI_MODEL`), or
 when growing the golden set; then re-run `make eval-prefill` to confirm the gate
 still passes offline.
 
-**What is gated, and how each field is scored.** Only the two **structured**
-fields are gated: `age_range` and `evidence_strength`. `outcome`/`context` are
-one-sentence free-text *suggestions* a reviewer rewrites; the live model
-paraphrases them faithfully but with different words, which no lexical score
-captures fairly, so they are **reported but never block the gate** (the report
-prints them tagged `(advisory)` and a `GATED (age+strength)` overall line).
+**What is gated, and how each field is scored.** The gate is on **precision** of
+the two **structured** fields: `age_range` and `evidence_strength`. `outcome`/
+`context` are one-sentence free-text *suggestions* a reviewer rewrites; the live
+model paraphrases them faithfully but with different words, which no lexical
+score captures fairly, so they are **reported but never block the gate** (the
+report prints them tagged `(advisory)` and a `GATED (age+strength)` overall line).
+
+**Recall is reported, not gated.** Precision — "when the model proposes a value,
+is it right?" — is the metric that protects reviewer trust, so that is what the
+gate enforces (`--min-precision`, `--min-age-range-precision`,
+`--min-evidence-strength-precision`). Recall is printed but **not** a hard gate:
+the pre-fill only *suggests*, so a safe abstention (null on an age-silent
+abstract) just means the reviewer fills that field by hand — it should not fail
+the run. Live re-records also showed recall cannot reach ~0.8 without the model
+over-widening age bands to "recall" more, which *lowers* precision — a
+precision/recall trade-off where precision is the one worth keeping. (`--min-recall`
+still exists on the script for ad-hoc checks; CI just doesn't pass it.)
 
 - `age_range`: numeric tolerance with the bands required to overlap, **±1 on the
   lower bound** (entry age is precise) and **±2 on the upper bound** (the

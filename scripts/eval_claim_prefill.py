@@ -355,7 +355,9 @@ def main() -> int:
     )
     parser.add_argument(
         "--min-recall", type=float, default=None,
-        help="Gate on the gated-overall recall (age_range + evidence_strength only).",
+        help="Optional gate on gated-overall recall. Off by default (CI does not "
+        "pass it): recall is reported, not gated -- precision protects the reviewer, "
+        "and safe abstention should not fail the run. Available for ad-hoc checks.",
     )
     parser.add_argument(
         "--min-evidence-strength-precision",
