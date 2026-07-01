@@ -160,17 +160,20 @@
 
         <div class="comparison-grid">
           <figure class="radar-panel" aria-label="Spinnennetz-Diagramm">
-            <canvas
-              id="lp21Radar"
-              width="720"
-              height="460"
-              role="img"
-              aria-label="Netzdiagramm wird geladen."
-            ></canvas>
+            <div class="radar-stage">
+              <canvas
+                id="lp21Radar"
+                width="880"
+                height="620"
+                role="img"
+                aria-label="Netzdiagramm wird geladen."
+              ></canvas>
+              <div id="radarTooltip" class="radar-tooltip" role="status" aria-hidden="true"></div>
+            </div>
             <figcaption class="legend">
               <span><i class="legend-evidence"></i> Future Evidence</span>
               <span><i class="legend-lp21"></i> LP21-Abdeckung</span>
-              <span class="legend-note">Details in der Tabelle unten</span>
+              <span class="legend-note">Über einen Skill fahren für Details · vollständige Werte in der Tabelle unten</span>
             </figcaption>
           </figure>
 
