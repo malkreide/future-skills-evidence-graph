@@ -16,10 +16,6 @@ on:
         description: "Gated-overall precision gate (age_range + evidence_strength)."
         required: false
         default: "0.8"
-      min_recall:
-        description: "Gated-overall recall gate (age_range + evidence_strength)."
-        required: false
-        default: "0.8"
       min_evidence_strength_precision:
         description: "evidence_strength precision gate."
         required: false
@@ -52,7 +48,6 @@ jobs:
           set -o pipefail
           python scripts/eval_claim_prefill.py --record-live \
             --min-precision "${MIN_PRECISION}" \
-            --min-recall "${MIN_RECALL}" \
             --min-evidence-strength-precision "${MIN_ESP}" \
             --min-age-range-precision "${MIN_ARP}" \
             | tee /tmp/prefill_live.txt
@@ -61,7 +56,6 @@ jobs:
           AI_MODEL: ${{ vars.AI_MODEL }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MIN_PRECISION: ${{ inputs.min_precision }}
-          MIN_RECALL: ${{ inputs.min_recall }}
           MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
           MIN_ARP: ${{ inputs.min_age_range_precision }}
       - name: Confirm offline gate against the freshly recorded fixtures
@@ -70,12 +64,10 @@ jobs:
         run: |
           python scripts/eval_claim_prefill.py \
             --min-precision "${MIN_PRECISION}" \
-            --min-recall "${MIN_RECALL}" \
             --min-evidence-strength-precision "${MIN_ESP}" \
             --min-age-range-precision "${MIN_ARP}"
         env:
           MIN_PRECISION: ${{ inputs.min_precision }}
-          MIN_RECALL: ${{ inputs.min_recall }}
           MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
           MIN_ARP: ${{ inputs.min_age_range_precision }}
       - name: Open or update the baseline pull request

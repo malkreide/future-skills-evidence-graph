@@ -1,0 +1,10 @@
+{
+  "hash": "af4353b42d0c33b20cddf8a0b42a03518a05061390402a0541a5ede398da0958",
+  "kind": "complete",
+  "response": {
+    "age_range": "12-18",
+    "context": "Review of peer-tutoring programs in secondary mathematics.",
+    "evidence_strength": "moderate",
+    "outcome": "Peer tutoring yields small-to-moderate achievement gains for tutors and tutees."
+  }
+}
