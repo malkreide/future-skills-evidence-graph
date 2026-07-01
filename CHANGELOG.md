@@ -12,6 +12,15 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **Dashboard-Filter korrigiert.** Der Status „Deprecated“ heißt in der Oberfläche
+  jetzt „Veraltet“. Die Perspektive listet „Alle“ zuerst (neuer Standard, konsistent
+  mit „Status“ und „Alter“), gefolgt von Lernende und Lehrende. Der „Alter“-Filter
+  bietet statt willkürlicher Altersbänder die drei Lehrplan-21-Zyklen (Zyklus 1 = 4–8 J.,
+  Zyklus 2 = 8–12 J., Zyklus 3 = 12–15 J.); ein Skill zählt zu einem Zyklus, wenn seine
+  Altersspanne die Zyklus-Spanne überlappt.
+
 ### Added
 
 - **Dashboard-UX: Cache-Busting, Betriebs-Panel unten & einklappbar, klarere

@@ -44,11 +44,15 @@ let focusSelectedCard = false;
 const FILTER_DEFAULTS = {
   search: "",
   status: "all",
-  audience: "learner",
+  audience: "all",
   age: "all",
   score: "0",
   cycle: "all",
 };
+
+// Lehrplan-21-Zyklen als Altersspannen (Kindergarten–Sek I). Ein Skill zählt zu
+// einem Zyklus, wenn seine age_range-Spanne die Zyklus-Spanne überlappt.
+const LP21_CYCLE_AGES = { z1: [4, 8], z2: [8, 12], z3: [12, 15] };
 
 // Maps URL query parameters to their controls so filter state is shareable and
 // survives a page reload.
@@ -93,7 +97,21 @@ function normalize(value) {
 }
 
 function statusLabel(status) {
-  return status === "active" ? "Aktiv" : status === "candidate" ? "Kandidat" : "Deprecated";
+  return status === "active" ? "Aktiv" : status === "candidate" ? "Kandidat" : "Veraltet";
+}
+
+function parseAgeRange(value) {
+  const match = String(value || "").match(/^(\d+)\s*-\s*(\d+)$/);
+  return match ? [Number(match[1]), Number(match[2])] : null;
+}
+
+// True when the skill's age band overlaps the selected Lehrplan-21 cycle.
+function ageMatchesCycle(ageRange, cycleKey) {
+  if (cycleKey === "all") return true;
+  const span = LP21_CYCLE_AGES[cycleKey];
+  const range = parseAgeRange(ageRange);
+  if (!span || !range) return false;
+  return range[0] <= span[1] && range[1] >= span[0];
 }
 
 function scoreLabel(score) {
@@ -261,7 +279,7 @@ function filteredSkills() {
       return !query || haystack.includes(query);
     })
     .filter((skill) => status === "all" || skill.status === status)
-    .filter((skill) => age === "all" || skill.age_range === age)
+    .filter((skill) => ageMatchesCycle(skill.age_range, age))
     .filter((skill) => Number(skill.evidence_score || 0) >= score)
     .sort((a, b) => Number(b.evidence_score || 0) - Number(a.evidence_score || 0));
 }
