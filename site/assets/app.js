@@ -126,6 +126,11 @@ function withAlpha(color, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
+const MOON_SVG =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
+const SUN_SVG =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+
 function setTheme(theme) {
   const dark = theme === "dark";
   document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
@@ -139,7 +144,8 @@ function setTheme(theme) {
     els.themeToggle.setAttribute("aria-label", dark ? "Helles Design einschalten" : "Dunkles Design einschalten");
     const icon = els.themeToggle.querySelector(".theme-toggle-icon");
     const text = els.themeToggle.querySelector(".theme-toggle-text");
-    if (icon) icon.textContent = dark ? "☀️" : "🌙";
+    // Show the icon of the mode you would switch *to*.
+    if (icon) icon.innerHTML = dark ? SUN_SVG : MOON_SVG;
     if (text) text.textContent = dark ? "Hell" : "Dunkel";
   }
 }
@@ -260,14 +266,23 @@ function filteredSkills() {
     .sort((a, b) => Number(b.evidence_score || 0) - Number(a.evidence_score || 0));
 }
 
+function statusCount(status) {
+  return status === "all" ? state.skills.length : state.skills.filter((skill) => skill.status === status).length;
+}
+
 function renderMetrics() {
   els.metricSkills.textContent = state.skills.length;
   els.metricClaims.textContent = state.claims.length;
   els.metricSources.textContent = state.sources.length;
-  els.metricCandidate.textContent = state.skills.filter((skill) => skill.status === "candidate").length;
-  // A metric shortcut counts as "on" when the status filter already matches it.
+  els.metricCandidate.textContent = statusCount("candidate");
   for (const button of els.metricFilters) {
-    button.setAttribute("aria-pressed", String(els.statusFilter.value === button.dataset.status));
+    const target = button.dataset.status;
+    // "all" is the default, not a narrowing filter, so its tile never reads as
+    // active; a shortcut that would yield zero results is disabled instead of
+    // sending the user to an empty list.
+    const active = target !== "all" && els.statusFilter.value === target;
+    button.setAttribute("aria-pressed", String(active));
+    button.disabled = statusCount(target) === 0;
   }
 }
 
