@@ -13,17 +13,21 @@ on:
   workflow_dispatch:
     inputs:
       min_precision:
-        description: "Overall precision gate."
+        description: "Gated-overall precision gate (age_range + evidence_strength)."
         required: false
         default: "0.8"
       min_recall:
-        description: "Overall recall gate."
+        description: "Gated-overall recall gate (age_range + evidence_strength)."
         required: false
         default: "0.8"
       min_evidence_strength_precision:
         description: "evidence_strength precision gate."
         required: false
         default: "0.7"
+      min_age_range_precision:
+        description: "age_range precision gate."
+        required: false
+        default: "0.8"
 
 permissions:
   contents: write
@@ -50,6 +54,7 @@ jobs:
             --min-precision "${MIN_PRECISION}" \
             --min-recall "${MIN_RECALL}" \
             --min-evidence-strength-precision "${MIN_ESP}" \
+            --min-age-range-precision "${MIN_ARP}" \
             | tee /tmp/prefill_live.txt
         env:
           AI_PROVIDER: anthropic
@@ -58,6 +63,7 @@ jobs:
           MIN_PRECISION: ${{ inputs.min_precision }}
           MIN_RECALL: ${{ inputs.min_recall }}
           MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
+          MIN_ARP: ${{ inputs.min_age_range_precision }}
       - name: Confirm offline gate against the freshly recorded fixtures
         # No live provider here: this reads the committed fixtures only, proving the
         # offline CI gate (validate.yml path) passes on the new baseline.
@@ -65,11 +71,13 @@ jobs:
           python scripts/eval_claim_prefill.py \
             --min-precision "${MIN_PRECISION}" \
             --min-recall "${MIN_RECALL}" \
-            --min-evidence-strength-precision "${MIN_ESP}"
+            --min-evidence-strength-precision "${MIN_ESP}" \
+            --min-age-range-precision "${MIN_ARP}"
         env:
           MIN_PRECISION: ${{ inputs.min_precision }}
           MIN_RECALL: ${{ inputs.min_recall }}
           MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
+          MIN_ARP: ${{ inputs.min_age_range_precision }}
       - name: Open or update the baseline pull request
         env:
           GH_TOKEN: ${{ github.token }}
