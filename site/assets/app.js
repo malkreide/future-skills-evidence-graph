@@ -248,6 +248,13 @@ function gapClass(label) {
   return "gap-high";
 }
 
+// The data files are ASCII-encoded by convention (see
+// docs/lehrplan21-coverage-methodik.md), so the stored coverage_label keeps the
+// umlaut-free spelling. Map it to correct German for display only.
+function coverageLabelText(label) {
+  return label === "Zukunftsluecke" ? "Zukunftslücke" : label || "–";
+}
+
 // Greedy word-wrap for the full skill names drawn around the radar. Long names
 // spill onto up to `maxLines` lines; any remainder is folded into the last line.
 function wrapLabel(text, maxChars = 15, maxLines = 3) {
@@ -508,7 +515,7 @@ function renderLp21Comparison() {
 
     const gapCell = document.createElement("td");
     gapCell.className = gapClass(label);
-    gapCell.innerHTML = `<strong>${label}</strong><br><small>${(mapping.cycles || []).join(", ")}</small>`;
+    gapCell.innerHTML = `<strong>${coverageLabelText(label)}</strong><br><small>${(mapping.cycles || []).join(", ")}</small>`;
 
     const curriculumCell = document.createElement("td");
     const link = document.createElement("a");
@@ -746,7 +753,7 @@ function showRadarTooltip(axis) {
     "<dl>" +
     `<div><dt>Future Evidence</dt><dd class="rt-evidence">${axis.evidenceScore.toFixed(2)} / 1</dd></div>` +
     `<div><dt>LP21-Abdeckung</dt><dd class="rt-coverage">${axis.coverageScore.toFixed(1)} / 3</dd></div>` +
-    `<div><dt>Einschätzung</dt><dd>${axis.mapping.coverage_label || "–"}</dd></div>` +
+    `<div><dt>Einschätzung</dt><dd>${coverageLabelText(axis.mapping.coverage_label)}</dd></div>` +
     `<div><dt>Zyklen</dt><dd>${cycles}</dd></div>` +
     `<div><dt>LP21-Bezug</dt><dd>${area}</dd></div>` +
     "</dl>";
