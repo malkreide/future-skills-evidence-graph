@@ -100,7 +100,11 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # gold, so pin an explicit study-type rubric (RCT / systematic review / meta-
 # analysis => high; controlled or multi-site => moderate; single small or
 # uncontrolled => low) that matches how the gold set was labeled.
-PREFILL_PROMPT_VERSION = "claim-prefill-v4"
+# v5: v4 fixed strength but age_range recall lagged because the model returned
+# null whenever an abstract named a school stage ("primary", "secondary",
+# "preschool", "11th grade") without explicit ages, while the gold maps the stage
+# to its typical band. Tell the model to do that mapping instead of abstaining.
+PREFILL_PROMPT_VERSION = "claim-prefill-v5"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
 # mirrors Anhang A: every field is optional content (null when the abstract does
@@ -137,11 +141,15 @@ Already-extracted verbatim finding sentence (DO NOT change):
 Detected topics: {topics}
 
 Provide suggestions for this claim's review fields:
-- age_range: The actually reported age range of the studied learners as \
-"min-max" on the {age_scale} scale — early childhood and kindergarten \
-(Lehrplan 21 cycle 1) explicitly included —, or null if the abstract names no \
-age. Report the band the study actually concerns; do not pad it to the scale \
-ends. Clip ranges beyond {age_scale} to {age_scale}; pure adult samples => null.
+- age_range: The age range of the studied learners as "min-max" on the \
+{age_scale} scale — early childhood and kindergarten (Lehrplan 21 cycle 1) \
+explicitly included. If the abstract gives explicit ages, use them. If it names \
+a school stage or grade instead (e.g. preschool, primary, lower/upper secondary, \
+"first graders", "11th grade") but no exact ages, map that stage to its typical \
+age band rather than returning null. Report the band the study actually \
+concerns; do not pad it to the scale ends. Clip ranges beyond {age_scale} to \
+{age_scale}. Return null only when neither ages nor a school stage are given; \
+pure adult samples => null.
 - outcome: one sentence, in English, stating which learning outcome/effect is \
 reported (neutral, without exaggeration), or null.
 - context: one sentence, in English, on the setting (country, school level, \
