@@ -29,6 +29,31 @@ const els = {
   lp21Average: document.querySelector("#lp21Average"),
   lp21GapCount: document.querySelector("#lp21GapCount"),
   lp21MappingCount: document.querySelector("#lp21MappingCount"),
+  resetFilters: document.querySelector("#resetFilters"),
+  filterSummary: document.querySelector("#filterSummary"),
+  themeToggle: document.querySelector("#themeToggle"),
+};
+
+// Default values for every filter control. Used to detect whether any filter is
+// active (to enable the reset button) and to restore the pristine view.
+const FILTER_DEFAULTS = {
+  search: "",
+  status: "all",
+  audience: "learner",
+  age: "all",
+  score: "0",
+  cycle: "all",
+};
+
+// Maps URL query parameters to their controls so filter state is shareable and
+// survives a page reload.
+const URL_PARAM_MAP = {
+  q: "searchInput",
+  status: "statusFilter",
+  audience: "audienceFilter",
+  age: "ageFilter",
+  score: "scoreFilter",
+  cycle: "lp21CycleFilter",
 };
 
 async function fetchJson(path) {
@@ -51,7 +76,7 @@ async function loadData() {
       // a local repository checkout serves it one level up.
     }
   }
-  throw new Error("data/index.json fehlt. Erst `python scripts/build_site.py` ausfuehren und `public/` serven.");
+  throw new Error("data/index.json fehlt. Erst `python scripts/build_site.py` ausführen und `public/` serven.");
 }
 
 function byId(records) {
@@ -68,6 +93,114 @@ function statusLabel(status) {
 
 function scoreLabel(score) {
   return Number(score || 0).toFixed(2);
+}
+
+const prefersReducedMotion =
+  window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function themeColors() {
+  const styles = getComputedStyle(document.documentElement);
+  const read = (name, fallback) => (styles.getPropertyValue(name).trim() || fallback);
+  return {
+    line: read("--line", "#d8e0dc"),
+    blue: read("--blue", "#315f9f"),
+    green: read("--green", "#1f7a5d"),
+    text: read("--text", "#1e2524"),
+    muted: read("--muted", "#65706d"),
+  };
+}
+
+// Turns a #rrggbb value into an rgba() string so the radar fills stay legible in
+// both the light and dark themes.
+function withAlpha(color, alpha) {
+  const hex = color.replace("#", "");
+  if (hex.length !== 6) return color;
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function setTheme(theme) {
+  const dark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  try {
+    localStorage.setItem("fseg-theme", dark ? "dark" : "light");
+  } catch (_) {
+    // Storage may be unavailable (private mode); the toggle still works per session.
+  }
+  if (els.themeToggle) {
+    els.themeToggle.setAttribute("aria-pressed", String(dark));
+    els.themeToggle.setAttribute("aria-label", dark ? "Helles Design einschalten" : "Dunkles Design einschalten");
+    const icon = els.themeToggle.querySelector(".theme-toggle-icon");
+    const text = els.themeToggle.querySelector(".theme-toggle-text");
+    if (icon) icon.textContent = dark ? "☀️" : "🌙";
+    if (text) text.textContent = dark ? "Hell" : "Dunkel";
+  }
+}
+
+function currentControlValues() {
+  return {
+    search: els.searchInput.value.trim(),
+    status: els.statusFilter.value,
+    audience: currentAudience(),
+    age: els.ageFilter.value,
+    score: els.scoreFilter.value,
+    cycle: els.lp21CycleFilter ? els.lp21CycleFilter.value : "all",
+  };
+}
+
+function activeFilterCount() {
+  const values = currentControlValues();
+  return Object.keys(FILTER_DEFAULTS).filter((key) => String(values[key]) !== FILTER_DEFAULTS[key]).length;
+}
+
+function updateFilterControls() {
+  const active = activeFilterCount();
+  if (els.resetFilters) els.resetFilters.disabled = active === 0;
+}
+
+function resetFilters() {
+  els.searchInput.value = FILTER_DEFAULTS.search;
+  els.statusFilter.value = FILTER_DEFAULTS.status;
+  els.audienceFilter.value = FILTER_DEFAULTS.audience;
+  els.ageFilter.value = FILTER_DEFAULTS.age;
+  els.scoreFilter.value = FILTER_DEFAULTS.score;
+  if (els.lp21CycleFilter) els.lp21CycleFilter.value = FILTER_DEFAULTS.cycle;
+  render();
+}
+
+// Reads filter + selection state from the URL so a shared link reopens the same
+// view. Unknown or malformed values fall back to the control defaults.
+function applyStateFromUrl() {
+  const params = new URLSearchParams(location.search);
+  for (const [param, elKey] of Object.entries(URL_PARAM_MAP)) {
+    const control = els[elKey];
+    if (!control || !params.has(param)) continue;
+    const value = params.get(param);
+    if (control.tagName === "SELECT") {
+      if ([...control.options].some((option) => option.value === value)) control.value = value;
+    } else {
+      control.value = value;
+    }
+  }
+  const skill = params.get("skill");
+  if (skill) state.selectedSkillId = skill;
+}
+
+function syncStateToUrl() {
+  const values = currentControlValues();
+  const params = new URLSearchParams();
+  if (values.search) params.set("q", values.search);
+  if (values.status !== FILTER_DEFAULTS.status) params.set("status", values.status);
+  if (values.audience !== FILTER_DEFAULTS.audience) params.set("audience", values.audience);
+  if (values.age !== FILTER_DEFAULTS.age) params.set("age", values.age);
+  if (String(values.score) !== FILTER_DEFAULTS.score) params.set("score", values.score);
+  if (values.cycle !== FILTER_DEFAULTS.cycle) params.set("cycle", values.cycle);
+  if (state.selectedSkillId) params.set("skill", state.selectedSkillId);
+  const query = params.toString();
+  const next = query ? `${location.pathname}?${query}` : location.pathname;
+  window.history.replaceState(null, "", next);
 }
 
 function lp21Mappings() {
@@ -129,9 +262,32 @@ function renderMetrics() {
   els.metricCandidate.textContent = state.skills.filter((skill) => skill.status === "candidate").length;
 }
 
+function updateFilterSummary(shown) {
+  if (!els.filterSummary) return;
+  const total = state.skills.length;
+  const active = activeFilterCount();
+  if (!active) {
+    els.filterSummary.textContent = `${total} Skills`;
+    return;
+  }
+  const filterWord = active === 1 ? "Filter" : "Filter";
+  els.filterSummary.textContent = `${shown} von ${total} Skills · ${active} ${filterWord} aktiv`;
+}
+
+function selectSkill(id) {
+  state.selectedSkillId = id;
+  render();
+  // On narrow screens the detail sits far below the list; bring it into view so
+  // the tap has a visible effect.
+  if (window.matchMedia("(max-width: 920px)").matches && els.detailPane) {
+    els.detailPane.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+  }
+}
+
 function renderSkillList() {
   const skills = filteredSkills();
   els.resultCount.textContent = String(skills.length);
+  updateFilterSummary(skills.length);
   els.skillList.replaceChildren();
 
   if (!skills.length) {
@@ -147,13 +303,12 @@ function renderSkillList() {
   }
 
   for (const skill of skills) {
+    const selected = skill.id === state.selectedSkillId;
     const button = document.createElement("button");
-    button.className = `skill-card ${skill.id === state.selectedSkillId ? "is-selected" : ""}`;
+    button.className = `skill-card ${selected ? "is-selected" : ""}`;
     button.type = "button";
-    button.addEventListener("click", () => {
-      state.selectedSkillId = skill.id;
-      render();
-    });
+    button.setAttribute("aria-pressed", String(selected));
+    button.addEventListener("click", () => selectSkill(skill.id));
 
     const title = document.createElement("h3");
     title.textContent = skill.name;
@@ -209,7 +364,7 @@ function renderLp21Comparison() {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 6;
-    cell.textContent = "Lehrplan 21 gilt fuer Lernende; Lehrende sind am UNESCO AI Competency Framework for Teachers verankert.";
+    cell.textContent = "Lehrplan 21 gilt für Lernende; Lehrende sind am UNESCO AI Competency Framework for Teachers verankert.";
     row.append(cell);
     els.lp21TableBody.append(row);
     drawRadar([], skillMap);
@@ -234,7 +389,7 @@ function renderLp21Comparison() {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 6;
-    cell.textContent = "Keine Lehrplan-21-Mappings fuer diesen Filter.";
+    cell.textContent = "Keine Lehrplan-21-Mappings für diesen Filter.";
     row.append(cell);
     els.lp21TableBody.append(row);
     drawRadar([], skillMap);
@@ -281,8 +436,23 @@ function renderLp21Comparison() {
   drawRadar(mappings, skillMap);
 }
 
+function describeRadar(mappings, skillMap) {
+  if (!mappings.length) {
+    return "Netzdiagramm ohne Daten: keine Lehrplan-21-Mappings für den aktuellen Filter.";
+  }
+  const average =
+    mappings.reduce((sum, mapping) => sum + Number(mapping.coverage_score || 0), 0) / mappings.length;
+  const names = mappings
+    .map((mapping) => (skillMap.get(mapping.skill_id) || {}).name)
+    .filter(Boolean)
+    .join(", ");
+  return `Netzdiagramm: Future Evidence gegen LP21-Abdeckung für ${mappings.length} Future Skills (${names}). Durchschnittliche LP21-Abdeckung ${average.toFixed(1)} von 3. Detaildaten in der Tabelle darunter.`;
+}
+
 function drawRadar(mappings, skillMap) {
   const canvas = els.lp21Radar;
+  const colors = themeColors();
+  canvas.setAttribute("aria-label", describeRadar(mappings, skillMap));
   const context = canvas.getContext("2d");
   const rect = canvas.getBoundingClientRect();
   const width = Math.max(320, Math.floor(rect.width || canvas.width));
@@ -295,10 +465,10 @@ function drawRadar(mappings, skillMap) {
   context.clearRect(0, 0, width, height);
 
   if (!mappings.length) {
-    context.fillStyle = "#65706d";
+    context.fillStyle = colors.muted;
     context.font = "14px sans-serif";
     context.textAlign = "center";
-    context.fillText("Keine Daten fuer diesen Zyklus", width / 2, height / 2);
+    context.fillText("Keine Daten für diesen Zyklus", width / 2, height / 2);
     return;
   }
 
@@ -325,7 +495,7 @@ function drawRadar(mappings, skillMap) {
       centerY,
       radius,
       maxValue,
-      "#d8e0dc",
+      colors.line,
       "transparent"
     );
   }
@@ -337,10 +507,10 @@ function drawRadar(mappings, skillMap) {
     context.beginPath();
     context.moveTo(centerX, centerY);
     context.lineTo(x, y);
-    context.strokeStyle = "#d8e0dc";
+    context.strokeStyle = colors.line;
     context.stroke();
 
-    context.fillStyle = "#1e2524";
+    context.fillStyle = colors.text;
     context.font = "12px sans-serif";
     context.textAlign = x < centerX - 12 ? "right" : x > centerX + 12 ? "left" : "center";
     context.textBaseline = y < centerY ? "bottom" : "top";
@@ -355,8 +525,8 @@ function drawRadar(mappings, skillMap) {
     centerY,
     radius,
     maxValue,
-    "#315f9f",
-    "rgba(49, 95, 159, 0.16)"
+    colors.blue,
+    withAlpha(colors.blue, 0.16)
   );
   drawRadarPolygon(
     context,
@@ -366,8 +536,8 @@ function drawRadar(mappings, skillMap) {
     centerY,
     radius,
     maxValue,
-    "#1f7a5d",
-    "rgba(31, 122, 93, 0.18)"
+    colors.green,
+    withAlpha(colors.green, 0.18)
   );
 }
 
@@ -398,7 +568,7 @@ function renderDetail() {
   const skill = state.skills.find((item) => item.id === state.selectedSkillId);
 
   if (!skill) {
-    els.detailPane.innerHTML = "<div class=\"empty-state\"><h2>Kein Skill ausgewaehlt</h2></div>";
+    els.detailPane.innerHTML = "<div class=\"empty-state\"><h2>Kein Skill ausgewählt</h2></div>";
     return;
   }
 
@@ -503,7 +673,7 @@ function renderDetail() {
 
   const changePanel = document.createElement("section");
   changePanel.className = "panel";
-  changePanel.innerHTML = "<h3>Aenderungen</h3>";
+  changePanel.innerHTML = "<h3>Änderungen</h3>";
   for (const change of skill.change_log || []) {
     const item = document.createElement("div");
     item.className = "change";
@@ -521,20 +691,35 @@ function renderDetail() {
 }
 
 function render() {
-  els.scoreValue.textContent = scoreLabel(els.scoreFilter.value);
+  const score = scoreLabel(els.scoreFilter.value);
+  els.scoreValue.textContent = score;
+  els.scoreFilter.setAttribute("aria-valuetext", `Mindestens ${score} Evidenz`);
   state.selectedCycle = els.lp21CycleFilter ? els.lp21CycleFilter.value : "all";
   if (els.ageFilter) {
     // Age bands describe learners, so the control is inert for the educator view.
     els.ageFilter.disabled = currentAudience() === "educator";
   }
+  updateFilterControls();
   renderMetrics();
   renderLp21Comparison();
   renderSkillList();
   renderDetail();
+  syncStateToUrl();
 }
 
+function debounce(fn, delay) {
+  let handle;
+  return (...args) => {
+    clearTimeout(handle);
+    handle = setTimeout(() => fn(...args), delay);
+  };
+}
+
+// Typing filters the whole list, so debounce it to avoid re-rendering on every
+// keystroke; the other controls fire discrete changes and update immediately.
+const debouncedRender = debounce(render, 200);
+els.searchInput.addEventListener("input", debouncedRender);
 for (const control of [
-  els.searchInput,
   els.statusFilter,
   els.audienceFilter,
   els.ageFilter,
@@ -544,7 +729,21 @@ for (const control of [
   if (control) control.addEventListener("input", render);
 }
 
+if (els.resetFilters) els.resetFilters.addEventListener("click", resetFilters);
+
+if (els.themeToggle) {
+  // Reflect the theme applied by the pre-paint script, then toggle on click.
+  setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  els.themeToggle.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    setTheme(next);
+    renderLp21Comparison();
+  });
+}
+
 window.addEventListener("resize", () => renderLp21Comparison());
+
+applyStateFromUrl();
 
 loadData()
   .then((payload) => {

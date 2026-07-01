@@ -14,6 +14,15 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Dashboard-UX: teilbarer Zustand, Dark Mode, Barrierefreiheit.** Filter- und
+  Auswahlzustand werden in die URL geschrieben (teilbare, reload-feste Ansichten);
+  neuer „Filter zurücksetzen“-Button mit aktiver Trefferzusammenfassung; Umschalter
+  für ein dunkles Design (folgt der Systemeinstellung, merkt die Wahl). Zugänglichkeit
+  verbessert durch Skip-Link, sichtbare Fokus-Ringe, `aria-pressed` auf Skill-Karten,
+  eine Textbeschreibung des Netzdiagramms (`role="img"`) samt Tabellen-Alternative,
+  `prefers-reduced-motion`-Respekt und eine entzerrte (debounced) Suche. Deutsche
+  Oberflächentexte auf konsistente Umlaute korrigiert.
+
 - **Evidenz-Graph als Fundament.** Versioniertes, datei-basiertes Datenmodell
   (`Source → Claim → Skill → FrameworkMapping`) mit JSON-Schemas (`schemas/`),
   Validierung der Belegketten (`scripts/validate_data.py`) und statischem

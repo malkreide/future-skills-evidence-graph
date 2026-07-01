@@ -83,7 +83,7 @@
   function renderJobs(runs) {
     els.jobCount.textContent = String(runs.length);
     if (!runs.length) {
-      emptyHint(els.jobList, "Keine Job-Laeufe gefunden.");
+      emptyHint(els.jobList, "Keine Job-Läufe gefunden.");
       return;
     }
     els.jobList.replaceChildren();
@@ -177,8 +177,8 @@
     } catch (error) {
       const rateLimited = error.status === 403;
       const text = rateLimited
-        ? "GitHub-API-Limit erreicht. Bitte spaeter erneut aktualisieren."
-        : `Live-Status nicht verfuegbar (${error.message}).`;
+        ? "GitHub-API-Limit erreicht. Bitte später erneut aktualisieren."
+        : `Live-Status nicht verfügbar (${error.message}).`;
       emptyHint(els.jobList, text);
       emptyHint(els.prList, `Status direkt auf GitHub ansehen: github.com/${owner}/${repo}/actions`);
       els.jobCount.textContent = "–";
