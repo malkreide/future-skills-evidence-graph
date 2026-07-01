@@ -32,6 +32,7 @@ from common import (  # noqa: E402
     filter_new_claims,
     filter_new_sources,
     filter_relevant_sources,
+    heuristic_keep,
     is_adult_audience,
     is_educator_audience,
     is_off_scope,
@@ -625,43 +626,71 @@ class DataIntegrityTests(unittest.TestCase):
         kept = filter_relevant_sources([dict(audience_only), dict(topic_match)])
         self.assertEqual([source["title"] for source in kept], [topic_match["title"]])
 
-    def test_off_scope_drops_incidental_matches_keeps_anchored(self) -> None:
-        # An off-scope term plus only an incidental abstract topic match is
-        # discarded, but the same off-scope term is tolerated when the future
-        # skill is named in the title (a genuine topic anchor).
-        incidental = {
+    def test_off_scope_title_is_decisive_abstract_is_exempted(self) -> None:
+        # An off-scope term only in the ABSTRACT is tolerated when the future
+        # skill is named in the title (a genuine topic anchor). The same term in
+        # the TITLE is decisive: the paper is about that off-domain subject, so a
+        # co-occurring skill word does not rescue it -- this is the fix for the
+        # disaster/health false-positive class (a school audience plus a skill
+        # word in the title of a hygiene/nutrition/disaster paper).
+        incidental = {  # off-scope in abstract, no title topic -> off scope
             "title": "The Relationship between Student Health and Academic Performance",
             "abstract": "We examine the complexity of nutrition, fitness and obesity in pupils.",
         }
-        anchored = {
-            "title": "AI literacy and nutrition: teaching pupils about data",
-            "abstract": "An artificial intelligence literacy unit that also covers nutrition.",
+        abstract_anchored = {  # off-scope only in abstract, topic in title -> kept
+            "title": "AI literacy for school pupils: teaching about data",
+            "abstract": "An artificial intelligence literacy unit that also mentions nutrition.",
+        }
+        title_offscope = {  # off-scope in title, even with a skill word -> off scope
+            "title": "Nutrition, hygiene and self-regulation among primary school pupils",
+            "abstract": "A school health promotion program.",
         }
         clean = {
             "title": "Computational thinking in primary computing education",
             "abstract": "A systems thinking curriculum for school children.",
         }
         self.assertTrue(is_off_scope(incidental))
-        self.assertFalse(is_off_scope(anchored))
+        self.assertFalse(is_off_scope(abstract_anchored))
+        self.assertTrue(is_off_scope(title_offscope))
         self.assertFalse(is_off_scope(clean))
-        kept = filter_relevant_sources([dict(incidental), dict(anchored), dict(clean)])
+        kept = filter_relevant_sources(
+            [dict(incidental), dict(abstract_anchored), dict(title_offscope), dict(clean)]
+        )
         self.assertEqual(
-            [source["title"] for source in kept], [anchored["title"], clean["title"]]
+            [source["title"] for source in kept],
+            [abstract_anchored["title"], clean["title"]],
         )
 
     def test_relevance_heuristic_meets_measured_floor(self) -> None:
         # Guards the keyword classifier against regressions using the labeled
-        # eval set. The set now includes the residual hard false-positive classes
-        # tracked in OPERATIONS.md (teacher tool-use, disaster/health papers that
-        # carry a school-age word plus a topic in the title), which the keyword
-        # heuristic keeps. Measured at threshold 0.3 the heuristic holds
-        # precision 0.86 / recall 1.00; the floors sit below those with margin.
+        # eval set, which includes the previously-residual hard false-positive
+        # classes (teacher tool-use, disaster/health papers that carry a
+        # school-age word plus a topic in the title). Those are now handled
+        # (is_teacher_tooluse and the title-decisive off-scope rule), so at
+        # threshold 0.3 the heuristic measures precision 1.00 / recall 1.00; the
+        # floors sit below those with margin so added examples can dip a little.
         import eval_relevance
 
         examples = eval_relevance.load_examples()
         metrics = eval_relevance.evaluate(examples, RELEVANCE_THRESHOLD)
-        self.assertGreaterEqual(metrics.precision, 0.80, "relevance precision regressed")
+        self.assertGreaterEqual(metrics.precision, 0.90, "relevance precision regressed")
         self.assertGreaterEqual(metrics.recall, 0.95, "relevance recall regressed")
+
+    def test_hard_false_positive_classes_are_dropped(self) -> None:
+        # Regression guard for the two hard FP classes fixed under issue #63:
+        # every labeled hard_case (all off-scope) must be dropped by the heuristic.
+        import eval_relevance
+
+        examples = eval_relevance.load_examples()
+        hard = [e for e in examples if e.get("origin") == "hard_case"]
+        self.assertTrue(hard, "no hard_case examples present to guard")
+        for example in hard:
+            self.assertFalse(example["relevant"], f"hard_case should be off-scope: {example['title']}")
+            score, topics = score_relevance(example)
+            self.assertFalse(
+                heuristic_keep(example, score, topics),
+                f"hard false positive kept: {example['title']}",
+            )
 
     def test_attach_claim_validates_targets(self) -> None:
         from argparse import Namespace
