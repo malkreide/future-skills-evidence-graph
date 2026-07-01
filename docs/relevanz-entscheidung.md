@@ -47,28 +47,36 @@ positive, so this gate is the highest-value precision lever.
 
 The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
 set (87 examples: real candidates from the live runs and live API queries across the
-sources, clear anchor cases, plus the residual **hard false-positive classes**
-described below) and `scripts/eval_relevance.py` reports precision/recall/F1 and
-sweeps thresholds, so the filter's behavior is measured. On this set the heuristic
-holds measured **precision 0.86 at recall 1.00** (F1 0.92): no relevant source is
-dropped, and the only false positives are the deliberately added hard cases.
+sources, clear anchor cases, plus the **hard false-positive classes** described
+below) and `scripts/eval_relevance.py` reports precision/recall/F1 and sweeps
+thresholds, so the filter's behavior is measured. On this set the heuristic holds
+measured **precision 1.00 at recall 1.00** (F1 1.00): no relevant source is
+dropped and no off-scope source is kept, including the hard cases.
 `test_relevance_heuristic_meets_measured_floor` guards against regressions
-(precision ≥ 0.80, recall ≥ 0.95, with margin below the measured values).
+(precision ≥ 0.90, recall ≥ 0.95, with margin below the measured values), and
+`test_hard_false_positive_classes_are_dropped` pins the specific fix.
 
-Until recently the labeled set held precision 1.00 / recall 1.00, but that was
-optimistic: it contained no examples of the residual false-positive classes the
-heuristic is known to miss on **fresh** live data. Those classes are now labeled
-in the set so the comparison against the optional classifiers is honest:
+The two classes below were the residual false positives on **fresh** live data.
+They are labeled in the set (`origin: hard_case`, all off-scope), and each now has
+a dedicated rule so the heuristic drops them (previously it held precision 0.86 by
+keeping them):
 
 - **Teacher tool-use** — papers whose studied outcome is a *teacher's* own
-  adoption of an AI tool (lesson planning, grading, administrative automation),
-  not a future skill cultivated in 0-18 learners. Teachers are a legitimate
-  audience, so a blanket teacher gate would cost recall; the in-service-teacher
-  age gate catches some, but generic "teachers" using "ChatGPT/AI" survive.
+  adoption of an AI tool (lesson planning, grading, administrative automation,
+  quiz generation), not a future skill cultivated in 0-18 learners. Teachers are a
+  legitimate audience, so a blanket teacher gate would cost recall; instead
+  `is_teacher_tooluse` drops a source only when a teacher/educator **subject** is
+  paired with a productivity/tool-use marker (`EDUCATOR_OFF_KEYWORDS`) **and** no
+  strong teacher-education phrase is present — so genuine educator-competence work
+  still rides the educator lane, and a learner paper that merely says "automated
+  feedback" (no teacher subject) is untouched.
 - **Disaster/health with a school-age word** — public-health or disaster-safety
   papers (WASH, nutrition, earthquake preparedness) that name a future-skill topic
-  and a school-age audience in the title. The off-scope title-anchor exemption is
-  designed to keep abstract-only in-scope papers, and it also keeps these.
+  and a school-age audience in the title. The off-scope title-anchor exemption
+  keeps abstract-only in-scope papers, so it stays — but an off-scope term in the
+  **title** is now decisive (`is_off_scope`): a hygiene/nutrition/disaster paper is
+  *about* that off-domain subject, so the co-occurring skill word no longer rescues
+  it. (`disaster`/`earthquake` were added to `OFF_SCOPE_KEYWORDS`.)
 
 The per-cycle live-precision history lives in [OPERATIONS.md](../OPERATIONS.md).
 
@@ -123,8 +131,8 @@ higher-education faculty paper, a teacher grading/workload tool). On it the lane
 holds **precision 1.00 / recall 1.00**: every positive is recovered and tagged
 `educator`, and neither guard-negative leaks onto the lane. Run it with
 `python scripts/eval_relevance.py --educator-lane`. Adding the lane leaves the
-learner heuristic's measured floor unchanged (still P 0.86 / R 1.00 / F1 0.92 on
-the 87-example set), and `test_educator_lane_*` guards both the recovery and the
+learner heuristic's measured floor unchanged (P 1.00 / R 1.00 / F1 1.00 on the
+87-example set), and `test_educator_lane_*` guards both the recovery and the
 guards against regression.
 
 ## Optional trained relevance classifier
@@ -145,10 +153,10 @@ held-out data, and we report that honestly. `python scripts/eval_relevance.py
 --compare-model` runs a fair stratified cross-validation: the heuristic needs no
 training and is scored on each test fold directly, while the model is retrained on the
 train folds and scored on the held-out fold; both report pooled precision/recall/F1.
-On the current 87-example set the heuristic reaches **F1 0.92** (P 0.86 / R 1.00),
+On the current 87-example set the heuristic reaches **F1 1.00** (P 1.00 / R 1.00),
 and the model lands at **F1 0.86** (P 0.92 / R 0.80) — it does **not** beat the
-baseline on held-out F1. The model trades recall for precision (it correctly
-rejects some of the hard false-positive cases but also drops genuine positives),
+baseline on held-out F1. The model trades recall for precision (it rejects some
+cases the heuristic now handles directly, but also drops genuine positives),
 so **the heuristic stays the default and active decision**; the model ships
 disabled for a larger, less separable future label set.
 
@@ -201,13 +209,13 @@ scored directly, pooled P/R/F1, honest `VERDICT`). The honest result on the curr
 
 | Signal | P | R | F1 | Verdict |
 | --- | --- | --- | --- | --- |
-| Heuristic (baseline) | 0.86 | 1.00 | **0.92** | active default |
+| Heuristic (baseline) | 1.00 | 1.00 | **1.00** | active default |
 | Embedding anchors, `st` (all-MiniLM-L6-v2) | 0.64 | 0.93 | 0.76 | does **not** beat baseline |
 | Embedding anchors, `local` (hashing) | 0.62 | 0.67 | 0.65 | does **not** beat baseline |
 
 The real semantic embedding (`st`, F1 0.76) is a clear step up from the local hashing
 embedding (F1 0.65) and recovers more of the hard cases on recall, but it is noisier on
-precision and still lands **well below the keyword heuristic** (F1 0.92), which is
+precision and still lands **well below the keyword heuristic** (F1 1.00), which is
 already well separated on this small, keyword-shaped set. So **the heuristic stays the
 default and active decision** and the anchors ship disabled. The verdict is recorded
 honestly here rather than activated; activation would require a positive `VERDICT`.
@@ -216,9 +224,9 @@ honestly here rather than activated; activation would require a positive `VERDIC
 
 | Modus (`RELEVANCE_CLASSIFIER`) | Artefakt | Status | Warum |
 | --- | --- | --- | --- |
-| `heuristic` (Default) | — | **aktiv** | Transparent, deterministisch, dependency-frei; auf dem Label-Set klar führend (F1 0.92). |
-| `model` | `models/relevance_model.json` | deaktiviert | Schlägt die Heuristik im fairen Held-out-Vergleich nicht (F1 0.86 < 0.92). |
-| `embedding` | `models/relevance_anchors.json` | deaktiviert | Echtes Semantik-Embedding (`st`, all-MiniLM-L6-v2, F1 0.76) schlägt das lokale Hashing (F1 0.65), bleibt aber klar unter der Heuristik (F1 0.92). |
+| `heuristic` (Default) | — | **aktiv** | Transparent, deterministisch, dependency-frei; auf dem Label-Set klar führend (F1 1.00). |
+| `model` | `models/relevance_model.json` | deaktiviert | Schlägt die Heuristik im fairen Held-out-Vergleich nicht (F1 0.86 < 1.00). |
+| `embedding` | `models/relevance_anchors.json` | deaktiviert | Echtes Semantik-Embedding (`st`, all-MiniLM-L6-v2, F1 0.76) schlägt das lokale Hashing (F1 0.65), bleibt aber klar unter der Heuristik (F1 1.00). |
 
 **Aktivierungsregel.** Ein optionaler Modus wird nur dann scharf geschaltet, wenn
 er die Heuristik auf Held-out-Daten **messbar schlägt** (positives `VERDICT` aus

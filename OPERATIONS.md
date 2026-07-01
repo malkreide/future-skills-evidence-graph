@@ -236,7 +236,7 @@ The `st` provider is the real semantic embedding (sentence-transformers
 `all-MiniLM-L6-v2`); it replays committed vectors from `tests/fixtures/embeddings/`
 offline, and only imports the package to embed a text not yet cached. `local` is the
 dependency-free hashing embedding. The current honest verdict (87-example set):
-heuristic F1 0.92, `st` anchors F1 0.76, `local` anchors F1 0.65 — neither beats the
+heuristic F1 1.00, `st` anchors F1 0.76, `local` anchors F1 0.65 — neither beats the
 heuristic, so it stays the active default (see
 [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md)).
 
@@ -399,15 +399,22 @@ Added `physical education / physical activity / physical fitness` and
 examples (still precision 1.00 / recall 1.00; model still does not beat the
 heuristic on held-out CV).
 
-**Remaining fresh-data false-positive classes** (harder, not yet addressed):
-teacher tool-use (teachers are a legitimate audience, so a blanket teacher gate
-would cost recall), and disaster/health papers that name a school-age audience
-and a topic in the title (off-scope title-anchor exemption keeps them). These
-are now **labeled in `eval/relevance_labeled.json`** (`origin: hard_case`) so the
-measured numbers are honest: they drop the heuristic from a saturated 1.00 to
-precision 0.86 / recall 1.00. Neither the trained model nor the embedding anchors
-(local hashing or the real semantic `st`) beats the heuristic on these yet — they
-are candidates for a classifier once the harvested label set grows.
+**Fresh-data false-positive classes (addressed).** Two classes were labeled in
+`eval/relevance_labeled.json` (`origin: hard_case`) and each now has a targeted
+rule (issue #63):
+
+- **Teacher tool-use** (teachers are a legitimate audience, so a blanket teacher
+  gate would cost recall) → `is_teacher_tooluse` drops a source only when a
+  teacher/educator subject is paired with a productivity/tool-use marker
+  (`EDUCATOR_OFF_KEYWORDS`) and no strong teacher-education phrase is present.
+- **Disaster/health papers** that name a school-age audience and a topic in the
+  title → an off-scope term in the **title** is now decisive in `is_off_scope`
+  (the abstract-only title-anchor exemption stays); `disaster`/`earthquake` were
+  added to `OFF_SCOPE_KEYWORDS`.
+
+The heuristic now measures **precision 1.00 / recall 1.00** on the 87-example set
+(was 0.86 / 1.00), and the model still does not beat it on held-out CV (F1 0.86 ≤
+1.00). `test_hard_false_positive_classes_are_dropped` guards the fix.
 
 ### Improvement applied: automated educator lane
 
@@ -422,7 +429,7 @@ is measured against its **own** set, `eval/relevance_educator.json` (separate fr
 the learner labels so it never perturbs the heuristic baseline or the classifier
 training inputs): **precision 1.00 / recall 1.00** on the real educator-strand
 positives plus educator-shaped guard negatives. Run `make eval-educator`; the
-learner floor is unchanged (P 0.86 / R 1.00). See
+learner floor is P 1.00 / R 1.00. See
 [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
 
 **Educator strand deepened (preservice-teacher cases).** Two preservice/future-

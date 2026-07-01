@@ -330,6 +330,13 @@ OFF_SCOPE_KEYWORDS = (
     "clinical",
     "patients",
     "disease",
+    # natural-disaster / emergency-preparedness domain (a disaster paper that
+    # names a school audience and a skill word -- "resilience", "critical
+    # thinking" -- in its title is still a disaster paper, not a future-skill one)
+    "disaster",
+    "disasters",
+    "earthquake",
+    "earthquakes",
     # environment / process engineering / agriculture
     "refinery",
     "refineries",
@@ -629,21 +636,25 @@ def _title_topic_match(source: dict[str, Any]) -> bool:
 def is_off_scope(source: dict[str, Any]) -> bool:
     """Whether a source hits an off-scope term without a genuine topic anchor.
 
-    Returns True when an OFF_SCOPE_KEYWORDS term appears in the title or abstract
-    and no topic keyword matches the title. This discards public-health,
-    environmental, labour-relations and non-0-18-audience papers that match a
-    topic keyword only in passing, while keeping abstract-only in-scope sources
-    that carry no off-scope term.
+    An off-scope term in the TITLE is decisive: the paper is *about* that
+    off-domain subject (a disaster/health/hygiene study), so the co-occurring
+    skill word -- "resilience", "critical thinking", "self-regulation" -- is
+    incidental and does not rescue it. This is the fix for the hard false-positive
+    class of disaster/health papers that name a school audience and a skill word
+    in the title (docs/relevanz-entscheidung.md).
+
+    An off-scope term only in the ABSTRACT keeps the title-anchor exemption: a
+    genuine in-scope paper names the future skill it studies in its title, so an
+    abstract-only off-scope mention is treated as incidental when the title
+    carries a topic. This preserves abstract-only in-scope sources.
     """
     title = f" {normalize_title(str(source.get('title') or ''))} "
     abstract = f" {normalize_title(str(source.get('abstract') or ''))} "
-    has_off_scope = any(
-        _contains(title, keyword) or _contains(abstract, keyword)
-        for keyword in OFF_SCOPE_KEYWORDS
-    )
-    if not has_off_scope:
-        return False
-    return not _title_topic_match(source)
+    if any(_contains(title, keyword) for keyword in OFF_SCOPE_KEYWORDS):
+        return True
+    if any(_contains(abstract, keyword) for keyword in OFF_SCOPE_KEYWORDS):
+        return not _title_topic_match(source)
+    return False
 
 
 def is_adult_audience(source: dict[str, Any]) -> bool:
@@ -697,6 +708,30 @@ def is_educator_audience(source: dict[str, Any]) -> bool:
     return text_has(EDUCATOR_SUBJECT_KEYWORDS) and text_has(EDUCATOR_CONTEXT_KEYWORDS)
 
 
+def is_teacher_tooluse(source: dict[str, Any]) -> bool:
+    """Whether a source is teacher-productivity tool-use (an off-scope class).
+
+    True when a teacher/educator SUBJECT is paired with a productivity/tool-use
+    marker (EDUCATOR_OFF_KEYWORDS: lesson planning, grading, administrative
+    automation, quiz generation). Such a paper is about a teacher adopting an AI
+    tool to reduce their own workload -- neither a learner future skill nor an
+    educator competence -- so it is dropped rather than merely held off the
+    educator lane, where it was the tracked learner-lane false positive
+    (docs/relevanz-entscheidung.md). Genuine teacher education/competence work
+    (EDUCATOR_STRONG_KEYWORDS) is exempt, so "teacher training" evidence that
+    happens to mention lesson planning still rides the educator lane.
+    """
+    title = f" {normalize_title(str(source.get('title') or ''))} "
+    abstract = f" {normalize_title(str(source.get('abstract') or ''))} "
+
+    def text_has(keywords: tuple[str, ...]) -> bool:
+        return any(_contains(title, kw) or _contains(abstract, kw) for kw in keywords)
+
+    if text_has(EDUCATOR_STRONG_KEYWORDS):
+        return False
+    return text_has(EDUCATOR_SUBJECT_KEYWORDS) and text_has(EDUCATOR_OFF_KEYWORDS)
+
+
 def classify_audience(source: dict[str, Any]) -> str:
     """The relevance lane a kept source belongs to: "educator" or "learner".
 
@@ -734,6 +769,10 @@ def heuristic_keep(
     if not topics or score < min_relevance:
         return False
     if is_off_scope(source):
+        return False
+    # Teacher-productivity tool-use (a teacher subject + workload/admin automation)
+    # is neither a learner future skill nor an educator competence -- drop it.
+    if is_teacher_tooluse(source):
         return False
     # Educator lane: a topic-anchored, in-scope source about an educator's own
     # competence is kept even though it names an adult audience the learner gate
