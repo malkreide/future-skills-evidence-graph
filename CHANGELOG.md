@@ -14,6 +14,11 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Dashboard-UX: Kennzahl-Schnellfilter und Tastaturnavigation.** Die Kacheln
+  „Skills“ und „Kandidaten“ wirken als umschaltbare Status-Schnellfilter
+  (`aria-pressed`, teilbar über die URL); die Skill-Liste lässt sich mit den
+  Pfeiltasten sowie `Home`/`End` bedienen – Fokus und Auswahl wandern gemeinsam.
+
 - **Dashboard-UX: teilbarer Zustand, Dark Mode, Barrierefreiheit.** Filter- und
   Auswahlzustand werden in die URL geschrieben (teilbare, reload-feste Ansichten);
   neuer „Filter zurücksetzen“-Button mit aktiver Trefferzusammenfassung; Umschalter

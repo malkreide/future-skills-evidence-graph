@@ -32,7 +32,12 @@ const els = {
   resetFilters: document.querySelector("#resetFilters"),
   filterSummary: document.querySelector("#filterSummary"),
   themeToggle: document.querySelector("#themeToggle"),
+  metricFilters: [...document.querySelectorAll(".metric-filter")],
 };
+
+// When keyboard navigation moves the selection, the list is re-rendered, so we
+// remember to move focus onto the freshly built selected card afterwards.
+let focusSelectedCard = false;
 
 // Default values for every filter control. Used to detect whether any filter is
 // active (to enable the reset button) and to restore the pristine view.
@@ -260,6 +265,10 @@ function renderMetrics() {
   els.metricClaims.textContent = state.claims.length;
   els.metricSources.textContent = state.sources.length;
   els.metricCandidate.textContent = state.skills.filter((skill) => skill.status === "candidate").length;
+  // A metric shortcut counts as "on" when the status filter already matches it.
+  for (const button of els.metricFilters) {
+    button.setAttribute("aria-pressed", String(els.statusFilter.value === button.dataset.status));
+  }
 }
 
 function updateFilterSummary(shown) {
@@ -274,14 +283,34 @@ function updateFilterSummary(shown) {
   els.filterSummary.textContent = `${shown} von ${total} Skills · ${active} ${filterWord} aktiv`;
 }
 
-function selectSkill(id) {
+function selectSkill(id, { scroll = true } = {}) {
   state.selectedSkillId = id;
   render();
   // On narrow screens the detail sits far below the list; bring it into view so
-  // the tap has a visible effect.
-  if (window.matchMedia("(max-width: 920px)").matches && els.detailPane) {
+  // the tap has a visible effect. Skipped for keyboard navigation, which keeps
+  // focus (and the viewport) on the list.
+  if (scroll && window.matchMedia("(max-width: 920px)").matches && els.detailPane) {
     els.detailPane.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
   }
+}
+
+// Arrow / Home / End move the selection through the visible skill cards, so the
+// list is operable without a pointer.
+function handleSkillListKeydown(event) {
+  const keys = ["ArrowDown", "ArrowUp", "Home", "End"];
+  if (!keys.includes(event.key)) return;
+  const cards = [...els.skillList.querySelectorAll(".skill-card")];
+  if (!cards.length) return;
+  const current = cards.indexOf(document.activeElement);
+  let next;
+  if (event.key === "Home") next = 0;
+  else if (event.key === "End") next = cards.length - 1;
+  else if (current === -1) next = 0;
+  else next = current + (event.key === "ArrowDown" ? 1 : -1);
+  if (next < 0 || next >= cards.length) return;
+  event.preventDefault();
+  focusSelectedCard = true;
+  selectSkill(cards[next].dataset.skillId, { scroll: false });
 }
 
 function renderSkillList() {
@@ -302,13 +331,16 @@ function renderSkillList() {
     state.selectedSkillId = skills[0].id;
   }
 
+  let selectedButton = null;
   for (const skill of skills) {
     const selected = skill.id === state.selectedSkillId;
     const button = document.createElement("button");
     button.className = `skill-card ${selected ? "is-selected" : ""}`;
     button.type = "button";
+    button.dataset.skillId = skill.id;
     button.setAttribute("aria-pressed", String(selected));
     button.addEventListener("click", () => selectSkill(skill.id));
+    if (selected) selectedButton = button;
 
     const title = document.createElement("h3");
     title.textContent = skill.name;
@@ -325,6 +357,13 @@ function renderSkillList() {
     button.append(title, description, meta);
     els.skillList.append(button);
   }
+
+  // Restore focus onto the selected card after a keyboard-driven re-render.
+  if (focusSelectedCard && selectedButton) {
+    selectedButton.focus();
+    selectedButton.scrollIntoView({ block: "nearest" });
+  }
+  focusSelectedCard = false;
 }
 
 function pill(text, className = "") {
@@ -730,6 +769,18 @@ for (const control of [
 }
 
 if (els.resetFilters) els.resetFilters.addEventListener("click", resetFilters);
+
+els.skillList.addEventListener("keydown", handleSkillListKeydown);
+
+// Metric shortcuts jump the status filter. Clicking an already-active shortcut
+// clears it back to "all", so the tiles toggle.
+for (const button of els.metricFilters) {
+  button.addEventListener("click", () => {
+    const target = button.dataset.status;
+    els.statusFilter.value = els.statusFilter.value === target ? "all" : target;
+    render();
+  });
+}
 
 if (els.themeToggle) {
   // Reflect the theme applied by the pre-paint script, then toggle on click.

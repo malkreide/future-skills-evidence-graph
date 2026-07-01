@@ -295,11 +295,47 @@ select {
   margin-bottom: 16px;
 }
 
-.metrics div {
+.metrics .metric,
+.metrics .metric-filter {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
+  color: inherit;
+  font: inherit;
   padding: 14px 16px;
+  text-align: left;
+}
+
+.metric-filter {
+  cursor: pointer;
+  position: relative;
+}
+
+.metric-filter::after {
+  color: var(--muted);
+  content: "Filter";
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  position: absolute;
+  right: 12px;
+  text-transform: uppercase;
+  top: 12px;
+}
+
+.metric-filter:hover {
+  border-color: var(--blue);
+}
+
+.metric-filter[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--green) 10%, var(--surface));
+  border-color: var(--green);
+  box-shadow: inset 3px 0 0 var(--green);
+}
+
+.metric-filter[aria-pressed="true"]::after {
+  color: var(--green);
+  content: "aktiv";
 }
 
 .metrics span {
