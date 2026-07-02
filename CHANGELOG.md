@@ -22,6 +22,14 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   Lehrplan-21-Bezug. Tippen funktioniert auf Touch-Geräten; die Tabelle bleibt die
   barrierefreie Alternative.
 
+### Fixed
+
+- **`coverage_label` wird mit korrektem Umlaut angezeigt.** Das Dashboard zeigt
+  „Zukunftslücke“ statt der gespeicherten ASCII-Schreibweise „Zukunftsluecke“ (in
+  Tabelle und Radar-Tooltip). Die Datendateien bleiben bewusst ASCII-kodiert (siehe
+  `docs/lehrplan21-coverage-methodik.md`); die Korrektur erfolgt rein in der Anzeige,
+  Schema, Validierung und Ableitungslogik bleiben unberührt.
+
 ### Changed
 
 - **Dashboard-Filter korrigiert.** Der Status „Deprecated“ heißt in der Oberfläche
