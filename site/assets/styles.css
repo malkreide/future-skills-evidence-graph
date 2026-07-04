@@ -259,10 +259,20 @@ select {
   gap: 14px;
 }
 
+/* Shared header for every top-level block so the sections read as consistent,
+   clearly separated units. */
+.section-head {
+  margin-bottom: 14px;
+}
+
+.section-head h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
 .toolbar {
   display: grid;
   gap: 12px;
-  margin-bottom: 14px;
 }
 
 .toolbar-fields {
@@ -365,12 +375,11 @@ select {
 
 .metrics {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-bottom: 16px;
 }
 
 .metrics .metric,
 .metrics .metric-filter {
-  background: var(--surface);
+  background: var(--surface-2);
   border: 1px solid var(--line);
   border-radius: 8px;
   color: inherit;
@@ -431,7 +440,8 @@ select {
   margin: 2px 0 0;
 }
 
-.lp21-comparison {
+.lp21-comparison,
+.panel-section {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;

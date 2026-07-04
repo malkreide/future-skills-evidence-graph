@@ -63,6 +63,7 @@
     <main class="shell">
       <section class="intro" aria-label="Über dieses Dashboard">
         <div class="intro-lead">
+          <p class="eyebrow">Über dieses Dashboard</p>
           <h2>Ein belegbarer Katalog von Zukunftskompetenzen</h2>
           <p>
             Der Future Skills Evidence Graph sammelt Kompetenzen, die Menschen – vor allem in der Bildung –
@@ -105,7 +106,12 @@
         </div>
       </section>
 
-      <section class="toolbar" aria-label="Filter und Suche">
+      <section class="panel-section" aria-label="Filter und Suche">
+        <div class="section-head">
+          <p class="eyebrow">Auswahl</p>
+          <h2>Filter &amp; Suche</h2>
+        </div>
+        <div class="toolbar">
         <div class="toolbar-fields">
           <label>
             Suche
@@ -164,25 +170,32 @@
           <p id="filterSummary" class="filter-summary" role="status" aria-live="polite"></p>
           <button id="resetFilters" type="button" class="ghost-button" disabled>Filter zurücksetzen</button>
         </div>
+        </div>
       </section>
 
-      <section class="metrics" aria-label="Kennzahlen">
-        <button type="button" class="metric-filter" data-status="all" aria-pressed="false" title="Alle Skills anzeigen">
-          <span id="metricSkills">0</span>
-          <p>Skills</p>
-        </button>
-        <div class="metric">
-          <span id="metricClaims">0</span>
-          <p>Claims</p>
+      <section class="panel-section" aria-label="Kennzahlen">
+        <div class="section-head">
+          <p class="eyebrow">Überblick</p>
+          <h2>Bestand im Katalog</h2>
         </div>
-        <div class="metric">
-          <span id="metricSources">0</span>
-          <p>Quellen</p>
+        <div class="metrics">
+          <button type="button" class="metric-filter" data-status="all" aria-pressed="false" title="Alle Skills anzeigen">
+            <span id="metricSkills">0</span>
+            <p>Skills</p>
+          </button>
+          <div class="metric">
+            <span id="metricClaims">0</span>
+            <p>Claims</p>
+          </div>
+          <div class="metric">
+            <span id="metricSources">0</span>
+            <p>Quellen</p>
+          </div>
+          <button type="button" class="metric-filter" data-status="candidate" aria-pressed="false" title="Nur Kandidaten anzeigen">
+            <span id="metricCandidate">0</span>
+            <p>Kandidaten</p>
+          </button>
         </div>
-        <button type="button" class="metric-filter" data-status="candidate" aria-pressed="false" title="Nur Kandidaten anzeigen">
-          <span id="metricCandidate">0</span>
-          <p>Kandidaten</p>
-        </button>
       </section>
 
       <section class="lp21-comparison" aria-label="Lehrplan 21 Vergleich">
