@@ -185,6 +185,74 @@ select {
   padding: 22px clamp(14px, 3vw, 32px) 40px;
 }
 
+.intro {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.intro-lead {
+  border-left: 4px solid var(--green);
+  margin-bottom: 18px;
+  padding-left: 16px;
+}
+
+.intro-lead h2 {
+  font-size: clamp(18px, 2.4vw, 22px);
+  margin: 0 0 6px;
+}
+
+.intro-lead p {
+  color: var(--muted);
+  margin: 0;
+  max-width: 90ch;
+}
+
+.intro-cards {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.intro-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.intro-card p:not(.eyebrow):not(.evidence-chain) {
+  color: var(--text);
+  font-size: 14px;
+  margin: 0;
+}
+
+.evidence-chain {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.chain-node {
+  background: color-mix(in srgb, var(--green) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--green) 35%, var(--line));
+  border-radius: 999px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.chain-arrow {
+  color: var(--muted);
+  font-weight: 800;
+}
+
 .metrics,
 .workspace {
   display: grid;
@@ -1064,7 +1132,8 @@ select {
   .workspace,
   .comparison-grid,
   .pipeline-grid,
-  .detail-grid {
+  .detail-grid,
+  .intro-cards {
     grid-template-columns: 1fr;
   }
 
