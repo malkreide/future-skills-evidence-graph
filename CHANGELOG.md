@@ -12,6 +12,14 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Dark Mode: Skill-Karten nicht mehr weiß.** Der Kartenhintergrund war fest auf
+  ein Hellweiß verdrahtet (`#fbfcfb`) und folgte dem Theme nicht; er nutzt jetzt
+  `var(--surface-2)`. Zusätzlich nutzt der Gegenbeleg-Rand jetzt `var(--red)` statt
+  einer festen Farbe. Ein CSS-Audit bestätigt: keine weiteren hartkodierten Farben
+  außerhalb der Theme-Definitionen – der gesamte Inhalt folgt jetzt dem Modus.
+
 ### Changed
 
 - **Klarere Seitenstruktur: alle Blöcke als einheitliche Karten.** Filterleiste und
