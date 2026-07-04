@@ -12,6 +12,15 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **Klarere Seitenstruktur: alle Blöcke als einheitliche Karten.** Filterleiste und
+  Kennzahlen „schwebten“ bisher ohne Container und Titel auf dem Hintergrund, während
+  andere Abschnitte Karten waren. Jetzt ist jeder Top-Level-Block eine Karte mit
+  einheitlichem Kopf (Eyebrow + Überschrift): „Auswahl / Filter & Suche“,
+  „Überblick / Bestand im Katalog“ usw. Die Kennzahl-Kacheln heben sich innerhalb der
+  Karte über eine dezente Hintergrundfläche ab.
+
 ### Added
 
 - **Erklär-Abschnitt oben auf dem Dashboard.** Ein kompaktes Intro erklärt neuen
