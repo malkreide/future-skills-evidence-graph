@@ -14,6 +14,12 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Erklär-Abschnitt oben auf dem Dashboard.** Ein kompaktes Intro erklärt neuen
+  Besuchenden direkt, was die Lösung ist, ihr Ziel und ihre Funktionsweise – in drei
+  Karten (Die Lösung / Das Ziel / So funktioniert's) plus einer kleinen Evidenzkette
+  (Quelle → Aussage → Skill → Lehrplan 21). Formuliert in der Projekt-Stimme aus
+  `docs/erklaerung-fuer-laien.md`; theme-fähig und responsiv.
+
 - **Interaktives Netzdiagramm als Zentrum der Seite.** Das Lehrplan-21-Radar ist
   größer und prominenter, die Achsen tragen die vollständig ausgeschriebenen
   Skill-Namen (statt Kürzel). Beim Überfahren wird die betreffende Achse
