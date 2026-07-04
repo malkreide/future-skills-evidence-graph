@@ -951,7 +951,7 @@ select {
 }
 
 .skill-card {
-  background: #fbfcfb;
+  background: var(--surface-2);
   border: 1px solid var(--line);
   border-radius: 8px;
   cursor: pointer;
@@ -1082,7 +1082,7 @@ select {
 }
 
 .claim-contradicting {
-  border-left-color: #b3543c;
+  border-left-color: var(--red);
 }
 
 .claim p {
