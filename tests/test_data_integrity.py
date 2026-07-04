@@ -36,6 +36,7 @@ from common import (  # noqa: E402
     is_adult_audience,
     is_educator_audience,
     is_off_scope,
+    is_title_duplicate,
     load_json,
     load_records,
     load_relevance_anchors,
@@ -43,6 +44,7 @@ from common import (  # noqa: E402
     normalize_title,
     relevance_classifier_mode,
     score_relevance,
+    title_similarity,
     write_json,
 )
 from extract_claims import (  # noqa: E402
@@ -348,6 +350,77 @@ class DataIntegrityTests(unittest.TestCase):
             self.assertEqual(append_candidate_sources(existing, []), [])
             self.assertEqual(existing.stat().st_mtime_ns, before)
             self.assertEqual(load_json(existing), records)
+
+    def test_is_title_duplicate_matches_preprint_and_publication(self) -> None:
+        # Same work, different DOI, lightly reworded title, publication a year
+        # later than the preprint: the exact identity/title-year keys miss it,
+        # the fuzzy title + year window catches it.
+        preprint = {
+            "title": "Deep Learning for AI Literacy in Primary Schools",
+            "doi": "10.1000/preprint",
+            "year": 2022,
+        }
+        publication = {
+            "title": "Deep Learning for AI Literacy in Primary Schools: A Study",
+            "doi": "10.1000/published",
+            "year": 2023,
+        }
+        self.assertTrue(is_title_duplicate(preprint, publication))
+
+    def test_is_title_duplicate_respects_year_window(self) -> None:
+        # An identical title years apart is treated as a distinct work, not a
+        # duplicate, so a re-issue outside the window is kept for review.
+        first = {"title": "AI literacy for children", "year": 2015}
+        much_later = {"title": "AI literacy for children", "year": 2024}
+        self.assertFalse(is_title_duplicate(first, much_later))
+
+    def test_is_title_duplicate_keeps_distinct_similar_titles(self) -> None:
+        # Superficially similar but genuinely different works stay separate.
+        computational = {"title": "Computational thinking in early education", "year": 2023}
+        critical = {"title": "Critical thinking in early education", "year": 2023}
+        self.assertLess(
+            title_similarity(computational["title"], critical["title"]), 0.92
+        )
+        self.assertFalse(is_title_duplicate(computational, critical))
+
+    def test_filter_new_sources_drops_fuzzy_title_duplicate(self) -> None:
+        # A candidate whose title closely matches an already-stored source (within
+        # the year window) is dropped even though its url/doi are new.
+        first = load_records("sources")[0]
+        candidates = [
+            {
+                "id": "src-fuzzy-dup",
+                "title": f"{first['title']} (v2)",
+                "url": "https://example.test/fuzzy-dup",
+                "year": first.get("year", 2024),
+            }
+        ]
+        self.assertEqual(filter_new_sources(candidates), [])
+
+    def test_append_candidate_sources_drops_fuzzy_title_duplicate(self) -> None:
+        week_one = [
+            {
+                "id": "src-preprint",
+                "title": "Generative AI tutoring for secondary school students in mathematics",
+                "url": "https://example.test/preprint",
+                "year": 2023,
+            }
+        ]
+        week_two = [
+            # Same work, published version: different url, reworded title, +1 year.
+            {
+                "id": "src-published",
+                "title": "Generative AI tutoring for secondary school students in mathematics revised",
+                "url": "https://example.test/published",
+                "year": 2024,
+            }
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "candidates-fuzzy.json"
+            write_json(path, week_one)
+            appended = append_candidate_sources(path, week_two)
+            self.assertEqual(appended, [])
+            self.assertEqual([r["id"] for r in load_json(path)], ["src-preprint"])
 
     def test_claim_extraction_uses_verbatim_text_anchor(self) -> None:
         source = {

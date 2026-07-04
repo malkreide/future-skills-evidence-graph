@@ -12,6 +12,21 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **Dublettenerkennung erkennt jetzt auch Titelvarianten.** Bisher wurden Quellen
+  nur über eine starke Kennung (DOI/OpenAlex/Semantic-Scholar/ERIC-ID/URL) oder
+  über normalisierten Titel+Jahr als Dublette erkannt — Preprint und publizierte
+  Fassung mit unterschiedlicher DOI und leicht geändertem Titel rutschten doppelt
+  durch. Ergänzt wurde ein deterministischer **Titel-Ähnlichkeits-Abgleich**
+  (`is_title_duplicate`, `difflib`, ohne neue Abhängigkeit): Titel ab einer hohen
+  Ähnlichkeitsschwelle innerhalb eines Ein-Jahres-Fensters gelten als dieselbe
+  Arbeit. Der Abgleich läuft in `filter_new_sources` und beim Anhängen
+  (`append_candidate_sources`), greift also in jedem Importer (wöchentlich, Web,
+  Bericht-Import). Das Audit `deduplicate_sources.py` meldet solche Beinah-Dubletten
+  zusätzlich zur Prüfung. Schwelle bewusst hoch, Jahresfenster schmal, damit echte,
+  nur ähnlich betitelte Arbeiten nicht fälschlich zusammengeführt werden.
+
 ### Fixed
 
 - **Dark Mode: Skill-Karten nicht mehr weiß.** Der Kartenhintergrund war fest auf
