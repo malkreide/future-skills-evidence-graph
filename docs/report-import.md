@@ -69,6 +69,11 @@ PDF  ──(extract_pdf_text.py, optional)──▶  plaintext  ──(ingest_re
 - **Relevance + dedupe.** Sources pass the same keyword relevance filter
   (`filter_relevant_sources`) and deduplication as every other importer. Across a
   batch run, later reports deduplicate against the earlier ones' appends.
+  Deduplication matches on a strong identifier (DOI/OpenAlex/Semantic Scholar/ERIC
+  id/URL) or normalized title+year, and — for the case those exact keys miss — a
+  **fuzzy title pass** (`is_title_duplicate`): titles at or above a high similarity
+  threshold within a one-year window count as the same work, so a preprint and its
+  published version, a re-issue, or a lightly reworded title do not slip in twice.
 - **No provider, no-op.** With `AI_PROVIDER=none` (the default) the importer reads
   nothing, calls nothing, and writes nothing.
 

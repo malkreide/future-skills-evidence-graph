@@ -138,7 +138,7 @@ flowchart TD
 
     WEB["🔎 Web-Suche (manuell)<br/>ingest_websearch.py<br/>SearXNG · DuckDuckGo"] --> DEDUP
 
-    ING --> DEDUP[deduplicate_sources.py<br/>Dubletten entfernen]
+    ING --> DEDUP["Dubletten entfernen<br/>ID/DOI · Titel+Jahr<br/>+ Titel-Ähnlichkeit (Preprint/Publikation)"]
     DEDUP --> FILTER{2 · Relevanzfilter<br/>Topic-Match? Schul-Zielgruppe?<br/>kein Off-Scope-Begriff?}
 
     FILTER -->|nein| DROP[❌ verworfen]

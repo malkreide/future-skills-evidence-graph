@@ -6,6 +6,7 @@ import os
 import re
 import sys
 from datetime import date
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
@@ -84,6 +85,50 @@ def source_title_key(source: dict[str, Any]) -> str:
     return f"{normalize_title(str(source.get('title', '')))}::{year}"
 
 
+# Two sources with different strong identifiers (DOI/URL) can still be the same
+# work -- a preprint and its published version, a translation, or a re-issue with
+# a lightly reworded title. The exact-identity keys above miss those, so a fuzzy
+# title pass catches them: titles at or above TITLE_SIMILARITY_THRESHOLD (after
+# normalize_title) count as the same work when their years fall within
+# TITLE_SIMILARITY_YEAR_WINDOW. The threshold is deliberately high and the year
+# window narrow so genuinely distinct works with similar titles are not merged --
+# at worst a real duplicate slips through, never a distinct source silently
+# dropped. Matching stays deterministic and dependency-free (difflib).
+TITLE_SIMILARITY_THRESHOLD = 0.92
+TITLE_SIMILARITY_YEAR_WINDOW = 1
+
+
+def title_similarity(left: str, right: str) -> float:
+    """Similarity in [0, 1] of two titles after normalization; 0 if either is empty."""
+    left_norm = normalize_title(str(left))
+    right_norm = normalize_title(str(right))
+    if not left_norm or not right_norm:
+        return 0.0
+    return SequenceMatcher(None, left_norm, right_norm).ratio()
+
+
+def is_title_duplicate(
+    candidate: dict[str, Any],
+    existing: dict[str, Any],
+    threshold: float = TITLE_SIMILARITY_THRESHOLD,
+    year_window: int = TITLE_SIMILARITY_YEAR_WINDOW,
+) -> bool:
+    """True when two sources look like the same work by fuzzy title plus close year.
+
+    A high title similarity alone is not enough: when both records carry a year
+    they must fall within *year_window* of each other, so a preprint and its
+    next-year publication still match while two distinct same-titled works years
+    apart do not. A missing year on either side falls back to the title alone.
+    """
+    if title_similarity(candidate.get("title", ""), existing.get("title", "")) < threshold:
+        return False
+    candidate_year = candidate.get("year")
+    existing_year = existing.get("year")
+    if isinstance(candidate_year, int) and isinstance(existing_year, int):
+        return abs(candidate_year - existing_year) <= year_window
+    return True
+
+
 def source_is_valid_candidate(source: dict[str, Any]) -> bool:
     return bool(
         source.get("title")
@@ -102,6 +147,10 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
         known.add(source_title_key(source))
         used_ids.add(str(source.get("id", "")))
     seen: set[str] = set()
+    # Records to fuzzy-compare each candidate against: everything already in the
+    # repo plus the candidates kept earlier in this same batch, so an incoming
+    # preprint/publication pair also dedupes within one run.
+    kept_records: list[dict[str, Any]] = list(existing)
     new_records: list[dict[str, Any]] = []
     for source in candidates:
         if not source_is_valid_candidate(source):
@@ -109,6 +158,8 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
         identity = source_identity(source)
         title_key = source_title_key(source)
         if identity in known or title_key in known or identity in seen or title_key in seen:
+            continue
+        if any(is_title_duplicate(source, other) for other in kept_records):
             continue
         base_id = str(source.get("id", "src-record"))
         source_id = base_id
@@ -120,6 +171,7 @@ def filter_new_sources(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]
         used_ids.add(source_id)
         seen.add(identity)
         seen.add(title_key)
+        kept_records.append(source)
         new_records.append(source)
     return new_records
 
@@ -128,6 +180,7 @@ def append_unique_records(
     path: Path,
     new_records: list[dict[str, Any]],
     identities: Callable[[dict[str, Any]], list[str]],
+    fuzzy_match: Callable[[dict[str, Any], dict[str, Any]], bool] | None = None,
 ) -> list[dict[str, Any]]:
     """Append candidate records to *path* instead of rewriting it.
 
@@ -137,6 +190,11 @@ def append_unique_records(
     nothing new is appended the file is left untouched — in particular, a
     run without results creates no empty file that automation would stage
     and turn into a noise pull request. Returns the appended records.
+
+    *fuzzy_match*, when given, is a second, exact-miss guard: a record is also
+    skipped when it fuzzy-matches any record already in the file or appended
+    earlier in this call. Sources pass ``is_title_duplicate`` here so a
+    preprint/publication pair with different identifiers still dedupes on append.
     """
     existing: list[dict[str, Any]] = []
     if path.exists():
@@ -149,10 +207,15 @@ def append_unique_records(
     for record in existing:
         known.update(identities(record))
         used_ids.add(str(record.get("id", "")))
+    # Records to fuzzy-compare against: what is already in the file plus what this
+    # call has appended so far.
+    kept_records: list[dict[str, Any]] = list(existing)
     appended: list[dict[str, Any]] = []
     for record in new_records:
         record_identities = identities(record)
         if any(identity in known for identity in record_identities):
+            continue
+        if fuzzy_match is not None and any(fuzzy_match(record, other) for other in kept_records):
             continue
         base_id = str(record.get("id", "record"))
         record_id = base_id
@@ -163,6 +226,7 @@ def append_unique_records(
         record["id"] = record_id
         used_ids.add(record_id)
         known.update(record_identities)
+        kept_records.append(record)
         appended.append(record)
     if appended:
         write_json(path, existing + appended)
@@ -170,11 +234,12 @@ def append_unique_records(
 
 
 def append_candidate_sources(path: Path, new_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Append source candidates, deduplicated by identity and title/year."""
+    """Append source candidates, deduplicated by identity, title/year, and fuzzy title."""
     return append_unique_records(
         path,
         new_records,
         lambda source: [source_identity(source), source_title_key(source)],
+        fuzzy_match=is_title_duplicate,
     )
 
 
