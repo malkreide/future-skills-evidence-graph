@@ -59,6 +59,57 @@ def load_records(kind: str) -> list[dict[str, Any]]:
     return records
 
 
+# The weekly source importers used to hard-code a single query string in the
+# workflow YAML, so broadening the harvest meant editing CI. The query set now
+# lives in a versioned, human-editable config file (config/research_queries.json)
+# with an env override for one-off manual runs, resolved by load_research_queries.
+DEFAULT_RESEARCH_QUERIES = ["AI literacy education children future skills"]
+RESEARCH_QUERIES_PATH = ROOT / "config" / "research_queries.json"
+RESEARCH_QUERIES_ENV = "RESEARCH_QUERIES"
+
+
+def dedupe_queries(candidates: Iterable[str]) -> list[str]:
+    """Trim/collapse whitespace, drop blanks, and de-dupe while preserving order."""
+    seen: set[str] = set()
+    cleaned: list[str] = []
+    for candidate in candidates:
+        text = " ".join(str(candidate).split())
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        cleaned.append(text)
+    return cleaned
+
+
+def load_research_queries() -> list[str]:
+    """Ordered, de-duplicated research queries for the weekly source importers.
+
+    Resolution order, falling through to the next level when one yields nothing
+    usable so the pipeline never runs without a query:
+
+    1. The ``RESEARCH_QUERIES`` env var (newline- or comma-separated) — lets a
+       manual ``workflow_dispatch`` override the set for a single run.
+    2. ``config/research_queries.json`` (a JSON array of strings) — the versioned,
+       editable default the scheduled run uses. Malformed content is ignored.
+    3. ``DEFAULT_RESEARCH_QUERIES`` — the built-in fallback.
+    """
+    raw_env = os.getenv(RESEARCH_QUERIES_ENV)
+    if raw_env:
+        queries = dedupe_queries(re.split(r"[\n,]", raw_env))
+        if queries:
+            return queries
+    if RESEARCH_QUERIES_PATH.exists():
+        try:
+            payload = load_json(RESEARCH_QUERIES_PATH)
+        except (OSError, ValueError):
+            payload = None
+        if isinstance(payload, list):
+            queries = dedupe_queries(entry for entry in payload if isinstance(entry, str))
+            if queries:
+                return queries
+    return list(DEFAULT_RESEARCH_QUERIES)
+
+
 def normalize_title(title: str) -> str:
     normalized = title.casefold()
     normalized = re.sub(r"[^a-z0-9]+", " ", normalized)

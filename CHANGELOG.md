@@ -14,6 +14,18 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Changed
 
+- **Wöchentliche Suchabfrage ist jetzt konfigurierbar statt fest verdrahtet.**
+  Bisher stand die eine Suchabfrage (`"AI literacy education children future
+  skills"`) hart in `research-pipeline.yml`, für jeden der fünf Importer wiederholt
+  — den Suchraum zu ändern hieß, die CI-Datei zu bearbeiten. Die Abfragen liegen
+  jetzt in der versionierten, editierbaren `config/research_queries.json` (JSON-Liste
+  von Strings). Jeder Importer akzeptiert `--query` mehrfach und läuft ohne Angabe
+  über alle konfigurierten Abfragen (dedupliziert über Abfragen hinweg), aufgelöst
+  von `load_research_queries` mit der Reihenfolge **`RESEARCH_QUERIES`-Env →
+  Config-Datei → eingebauter Standard**. Ein manueller `workflow_dispatch`-Lauf kann
+  die Menge über den neuen `queries`-Input (zeilen- oder kommagetrennt) für einen
+  Lauf überschreiben. Der Suchraum lässt sich damit erweitern oder umlenken, ohne
+  Code zu ändern; der Pipeline geht nie die Abfrage aus.
 - **Dublettenerkennung erkennt jetzt auch Titelvarianten.** Bisher wurden Quellen
   nur über eine starke Kennung (DOI/OpenAlex/Semantic-Scholar/ERIC-ID/URL) oder
   über normalisierten Titel+Jahr als Dublette erkannt — Preprint und publizierte

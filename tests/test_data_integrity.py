@@ -23,11 +23,13 @@ from cluster_claims import (  # noqa: E402
     cluster_skills,
 )
 from common import (  # noqa: E402
+    DEFAULT_RESEARCH_QUERIES,
     RELEVANCE_MODEL_PATH,
     RELEVANCE_THRESHOLD,
     append_candidate_sources,
     classify_audience,
     decide_relevance,
+    dedupe_queries,
     fetch_or_warn,
     filter_new_claims,
     filter_new_sources,
@@ -39,6 +41,7 @@ from common import (  # noqa: E402
     is_title_duplicate,
     load_json,
     load_records,
+    load_research_queries,
     load_relevance_anchors,
     load_relevance_model,
     normalize_title,
@@ -421,6 +424,63 @@ class DataIntegrityTests(unittest.TestCase):
             appended = append_candidate_sources(path, week_two)
             self.assertEqual(appended, [])
             self.assertEqual([r["id"] for r in load_json(path)], ["src-preprint"])
+
+    def test_dedupe_queries_trims_blanks_and_duplicates(self) -> None:
+        self.assertEqual(
+            dedupe_queries(["  AI  literacy ", "AI literacy", "", "  ", "robotics"]),
+            ["AI literacy", "robotics"],
+        )
+
+    def test_load_research_queries_env_override(self) -> None:
+        import os
+
+        import common
+
+        # Newline- and comma-separated, with a blank and a duplicate to clean.
+        with mock.patch.dict(
+            os.environ, {"RESEARCH_QUERIES": "first query\nsecond query, first query\n"}
+        ):
+            self.assertEqual(
+                common.load_research_queries(), ["first query", "second query"]
+            )
+
+    def test_load_research_queries_reads_config_file(self) -> None:
+        import os
+
+        import common
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "research_queries.json"
+            write_json(path, ["alpha topic", "beta topic", "alpha topic"])
+            with mock.patch.dict(os.environ, {}, clear=False), mock.patch.object(
+                common, "RESEARCH_QUERIES_PATH", path
+            ):
+                os.environ.pop("RESEARCH_QUERIES", None)
+                self.assertEqual(
+                    common.load_research_queries(), ["alpha topic", "beta topic"]
+                )
+
+    def test_load_research_queries_falls_back_to_default(self) -> None:
+        import os
+
+        import common
+
+        missing = Path(tempfile.gettempdir()) / "no_such_research_queries.json"
+        with mock.patch.dict(os.environ, {}, clear=False), mock.patch.object(
+            common, "RESEARCH_QUERIES_PATH", missing
+        ):
+            os.environ.pop("RESEARCH_QUERIES", None)
+            self.assertEqual(common.load_research_queries(), DEFAULT_RESEARCH_QUERIES)
+
+    def test_configured_research_queries_are_valid(self) -> None:
+        # The versioned config file must be a non-empty list of non-blank strings,
+        # so the weekly importers always have at least one usable query.
+        import common
+
+        payload = load_json(common.RESEARCH_QUERIES_PATH)
+        self.assertIsInstance(payload, list)
+        self.assertTrue(payload)
+        self.assertTrue(all(isinstance(q, str) and q.strip() for q in payload))
 
     def test_claim_extraction_uses_verbatim_text_anchor(self) -> None:
         source = {

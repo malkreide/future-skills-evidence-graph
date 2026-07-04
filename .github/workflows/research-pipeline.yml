@@ -2,6 +2,11 @@ name: Research candidate import
 
 on:
   workflow_dispatch:
+    inputs:
+      queries:
+        description: "Optional search queries for this run (one per line or comma-separated). Empty uses config/research_queries.json."
+        required: false
+        type: string
   schedule:
     - cron: "17 5 * * 1"
 
@@ -12,6 +17,10 @@ permissions:
 jobs:
   import-candidates:
     runs-on: ubuntu-latest
+    # Empty on the scheduled run, so the importers fall back to the versioned
+    # config/research_queries.json; a manual dispatch can override the set here.
+    env:
+      RESEARCH_QUERIES: ${{ github.event.inputs.queries }}
     steps:
       - uses: actions/checkout@v4
       - name: Restore pending candidates from open pull request branch
@@ -32,7 +41,6 @@ jobs:
       - name: Import OpenAlex candidates
         run: >
           python scripts/ingest_openalex.py
-          --query "AI literacy education children future skills"
           --limit 20
           --output data/sources/candidates-openalex.json
           --mailto "${OPENALEX_MAILTO}"
@@ -41,13 +49,11 @@ jobs:
       - name: Import Crossref candidates
         run: >
           python scripts/ingest_crossref.py
-          --query "AI literacy education children future skills"
           --limit 20
           --output data/sources/candidates-crossref.json
       - name: Import Semantic Scholar candidates
         run: >
           python scripts/ingest_semantic_scholar.py
-          --query "AI literacy education children future skills"
           --limit 20
           --output data/sources/candidates-semantic-scholar.json
         env:
@@ -55,13 +61,11 @@ jobs:
       - name: Import arXiv candidates
         run: >
           python scripts/ingest_arxiv.py
-          --query "AI literacy education children future skills"
           --limit 20
           --output data/sources/candidates-arxiv.json
       - name: Import ERIC candidates
         run: >
           python scripts/ingest_eric.py
-          --query "AI literacy education children future skills"
           --limit 20
           --output data/sources/candidates-eric.json
       - name: Extract candidate claims

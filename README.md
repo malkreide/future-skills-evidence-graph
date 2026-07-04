@@ -105,8 +105,16 @@ project live for the first time is a separate, mostly configurative checklist:
 [docs/go-live-checkliste.md](docs/go-live-checkliste.md).
 
 The weekly research workflow runs source importers for curated queries across
-OpenAlex, Crossref, Semantic Scholar, arXiv, and ERIC, extracts
-candidate claims from the new sources' abstracts (`scripts/extract_claims.py`),
+OpenAlex, Crossref, Semantic Scholar, arXiv, and ERIC. The query set is no longer
+hard-coded in the workflow: it lives in the versioned, human-editable
+`config/research_queries.json` (a JSON array of query strings), so broadening or
+retargeting the harvest is a data edit, not a CI change. Each importer runs every
+configured query and deduplicates across them; adding a query needs no code. A
+manual `workflow_dispatch` run can override the set for one run via its `queries`
+input (one per line or comma-separated), and the `RESEARCH_QUERIES` environment
+variable does the same locally — both fall back to the config file, which falls
+back to a built-in default, so the pipeline never runs query-less. The importers
+extract candidate claims from the new sources' abstracts (`scripts/extract_claims.py`),
 clusters those claims into candidate skills (`scripts/cluster_claims.py`), and opens
 a candidate pull request. While that pull request stays unmerged, later runs append
 to its `research/candidates` branch instead of opening duplicates. The automated
