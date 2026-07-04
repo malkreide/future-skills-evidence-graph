@@ -10,9 +10,11 @@ from common import (
     ROOT,
     TODAY,
     append_candidate_sources,
+    dedupe_queries,
     fetch_or_warn,
     filter_new_sources,
     filter_relevant_sources,
+    load_research_queries,
     slugify,
 )
 
@@ -83,20 +85,29 @@ def convert(work: dict[str, Any]) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Import candidate source metadata from OpenAlex.")
-    parser.add_argument("--query", required=True)
+    parser.add_argument(
+        "--query",
+        action="append",
+        help="A search query (repeatable). Omit to use config/research_queries.json "
+        "or the RESEARCH_QUERIES override.",
+    )
     parser.add_argument("--limit", type=int, default=25)
     parser.add_argument("--output", default="data/sources/candidates-openalex.json")
     parser.add_argument("--mailto", default=None)
     parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
     args = parser.parse_args()
 
-    works = fetch_or_warn("OpenAlex", lambda: fetch(args.query, args.limit, args.mailto))
+    queries = dedupe_queries(args.query) if args.query else load_research_queries()
+    works: list[dict[str, Any]] = []
+    for query in queries:
+        works.extend(fetch_or_warn("OpenAlex", lambda q=query: fetch(q, args.limit, args.mailto)))
     candidates = [convert(work) for work in works]
     relevant = filter_relevant_sources(candidates, args.min_relevance)
     new_records = filter_new_sources(relevant)
     appended = append_candidate_sources(ROOT / args.output, new_records)
     print(
         f"Appended {len(appended)} new OpenAlex candidates to {args.output} "
+        f"from {len(queries)} quer{'y' if len(queries) == 1 else 'ies'} "
         f"({len(candidates) - len(relevant)} filtered as irrelevant)"
     )
     return 0

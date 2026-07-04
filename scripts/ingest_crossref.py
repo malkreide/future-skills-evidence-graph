@@ -10,9 +10,11 @@ from common import (
     ROOT,
     TODAY,
     append_candidate_sources,
+    dedupe_queries,
     fetch_or_warn,
     filter_new_sources,
     filter_relevant_sources,
+    load_research_queries,
     slugify,
 )
 
@@ -76,19 +78,28 @@ def convert(item: dict[str, Any]) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Import candidate source metadata from Crossref.")
-    parser.add_argument("--query", required=True)
+    parser.add_argument(
+        "--query",
+        action="append",
+        help="A search query (repeatable). Omit to use config/research_queries.json "
+        "or the RESEARCH_QUERIES override.",
+    )
     parser.add_argument("--limit", type=int, default=25)
     parser.add_argument("--output", default="data/sources/candidates-crossref.json")
     parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
     args = parser.parse_args()
 
-    items = fetch_or_warn("Crossref", lambda: fetch(args.query, args.limit))
+    queries = dedupe_queries(args.query) if args.query else load_research_queries()
+    items: list[dict[str, Any]] = []
+    for query in queries:
+        items.extend(fetch_or_warn("Crossref", lambda q=query: fetch(q, args.limit)))
     candidates = [convert(item) for item in items]
     relevant = filter_relevant_sources(candidates, args.min_relevance)
     new_records = filter_new_sources(relevant)
     appended = append_candidate_sources(ROOT / args.output, new_records)
     print(
         f"Appended {len(appended)} new Crossref candidates to {args.output} "
+        f"from {len(queries)} quer{'y' if len(queries) == 1 else 'ies'} "
         f"({len(candidates) - len(relevant)} filtered as irrelevant)"
     )
     return 0
