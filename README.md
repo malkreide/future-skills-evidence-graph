@@ -52,6 +52,11 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/public/`. The dashboard reads all data from the
 generated `data/index.json`, so rerun `build_site.py` after changing data files.
+The shipped index is slimmed for transport: fields the dashboard never renders
+(source abstracts, `assist` blocks) are stripped at build time — the versioned
+records in `data/` keep every field. The index is still a single file the
+client loads whole; splitting it into shards is deliberately deferred until the
+catalog approaches ~5,000 sources.
 
 ## Data model
 
@@ -168,9 +173,10 @@ Imported candidates pass a **relevance filter** (`scripts/common.py`) before
 deduplication. The default is a transparent keyword/topic heuristic: a candidate
 must match at least one MVP topic, score at or above the threshold, clear a curated
 off-scope term list, and pass an audience/age gate that keeps only the ages 0-18
-learner audience. The vocabulary is **bilingual (English + German)**, including
-Swiss Lehrplan-21 school-stage terms, so German-language sources (EDK, KMK, PH
-publications) pass the automated pipeline like English ones. Running alongside that learner lane, an **educator lane** keeps
+learner audience. The vocabulary is **multilingual (English, German, French,
+Italian)**, including the school-stage terms of all three Swiss curricula
+(Lehrplan 21, Plan d'études romand, Piano di studio), so sources in every Swiss
+school language pass the automated pipeline like English ones. Running alongside that learner lane, an **educator lane** keeps
 the topic-anchored evidence about a school educator's own competence that the
 adult-audience gate would otherwise drop, tagging each survivor `audience`
 (`learner` or `educator`); its higher-education and teacher-tool-use guards keep

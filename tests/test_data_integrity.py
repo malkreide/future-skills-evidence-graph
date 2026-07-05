@@ -608,6 +608,26 @@ class DataIntegrityTests(unittest.TestCase):
         abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
         self.assertIsNone(best_claim_sentence(abstract))
 
+    def test_dashboard_index_ships_without_bulk_fields(self) -> None:
+        # The client downloads and parses the WHOLE index on every visit;
+        # abstracts and assist blocks are never rendered and dominated the
+        # payload. They must stay out of the shipped index — while everything
+        # the dashboard actually reads stays in.
+        from build_site import build_index
+
+        index = build_index()
+        for source in index["sources"]:
+            self.assertNotIn("abstract", source)
+            self.assertNotIn("assist", source)
+            for needed in ("id", "title", "url", "publisher", "source_type"):
+                self.assertIn(needed, source)
+        for claim in index["claims"]:
+            self.assertNotIn("assist", claim)
+            for needed in ("id", "statement", "evidence_strength", "evidence_type", "text_anchor"):
+                self.assertIn(needed, claim)
+        # The canonical records keep every field — only the transport slims.
+        self.assertTrue(any(src.get("abstract") for src in load_records("sources")))
+
     def test_run_importer_pipeline_end_to_end(self) -> None:
         # The five importers now share one main() (common.run_importer). Wire a
         # fake fetch/convert through it: an in-scope record must land in the
@@ -1021,6 +1041,30 @@ class DataIntegrityTests(unittest.TestCase):
                 kept,
                 example["relevant"],
                 f"German example misclassified: {example['title']}",
+            )
+
+    def test_french_italian_sources_pass_the_multilingual_filter(self) -> None:
+        # The other two Swiss school languages: Plan d'études romand (FR) and
+        # Piano di studio (IT) sources must classify exactly like the German
+        # ones — positives kept (incl. educator lane), negatives dropped
+        # (higher-ed étudiants/studenti universitari, economics, school PE).
+        import eval_relevance
+
+        examples = eval_relevance.load_examples()
+        tagged = [
+            e for e in examples
+            if str(e.get("note", "")).startswith(("[fr]", "[it]"))
+        ]
+        self.assertGreaterEqual(len(tagged), 12, "French/Italian eval examples missing")
+        self.assertTrue(any(e["relevant"] for e in tagged))
+        self.assertTrue(any(not e["relevant"] for e in tagged))
+        for example in tagged:
+            score, topics = score_relevance(example)
+            kept = heuristic_keep(example, score, topics)
+            self.assertEqual(
+                kept,
+                example["relevant"],
+                f"French/Italian example misclassified: {example['title']}",
             )
 
     def test_normalize_title_folds_german_diacritics(self) -> None:

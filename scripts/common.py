@@ -444,13 +444,13 @@ def lp21_coverage_label(score: float) -> str:
 # Topic vocabulary derived from the MVP scope in MASTER_PROMPT.md. Keys become
 # the candidate's topics; keyword variants are matched against title and abstract.
 #
-# The vocabulary is BILINGUAL (English + German): the project is anchored to
-# Lehrplan 21, so German-language primary sources (EDK, KMK, PH publications,
-# SNF studies) must be able to pass the automated pipeline. Keywords are written
-# in natural spelling — normalize_title folds umlauts (ä→a, ü→u, ß→ss) on both
-# sides of the match, so "künstliche intelligenz" also matches "kuenstliche"-free
-# text after normalization. German nouns are inflected; the common case forms
-# are listed explicitly because matching is exact-phrase, not stemmed.
+# The vocabulary is MULTILINGUAL (English, German, French, Italian): the
+# project is anchored to Swiss curricula — Lehrplan 21 (DE), Plan d'études
+# romand (FR) and Piano di studio (IT) — so sources in all Swiss school
+# languages must be able to pass the automated pipeline. Keywords are written
+# in natural spelling — normalize_title folds diacritics (ä→a, é→e, ç→c, ß→ss)
+# on both sides of the match. Nouns are inflected; the common case forms are
+# listed explicitly because matching is exact-phrase, not stemmed.
 TOPIC_KEYWORDS = {
     "ai literacy": (
         "ai literacy",
@@ -472,6 +472,17 @@ TOPIC_KEYWORDS = {
         "generativer ki",
         "sprachmodell",
         "sprachmodelle",
+        "intelligence artificielle",
+        "littératie en ia",
+        "compétence en ia",
+        "compétences en ia",
+        "apprentissage automatique",
+        "ia générative",
+        "intelligenza artificiale",
+        "alfabetizzazione all'ia",
+        "competenza in ia",
+        "apprendimento automatico",
+        "ia generativa",
     ),
     "critical thinking": (
         "critical thinking",
@@ -485,6 +496,13 @@ TOPIC_KEYWORDS = {
         "desinformation",
         "fehlinformation",
         "faktencheck",
+        "pensée critique",
+        "esprit critique",
+        "désinformation",
+        "vérification des faits",
+        "pensiero critico",
+        "disinformazione",
+        "verifica dei fatti",
     ),
     "digital competence": (
         "digital competence",
@@ -500,12 +518,24 @@ TOPIC_KEYWORDS = {
         "medienkompetenz",
         "medienkompetenzen",
         "medienbildung",
+        "compétence numérique",
+        "compétences numériques",
+        "littératie numérique",
+        "culture numérique",
+        "éducation aux médias",
+        "competenza digitale",
+        "competenze digitali",
+        "alfabetizzazione digitale",
+        "educazione ai media",
     ),
     "data literacy": (
         "data literacy",
         "data science education",
         "datenkompetenz",
         "datenkompetenzen",
+        "littératie des données",
+        "culture des données",
+        "alfabetizzazione ai dati",
     ),
     "creativity": (
         "creativity",
@@ -515,6 +545,10 @@ TOPIC_KEYWORDS = {
         "kreatives denken",
         "kreativem denken",
         "kreatives problemlösen",
+        "créativité",
+        "pensée créative",
+        "creatività",
+        "pensiero creativo",
     ),
     "collaboration": (
         "collaboration",
@@ -527,6 +561,10 @@ TOPIC_KEYWORDS = {
         "kollaborativen lernens",
         "kooperatives lernen",
         "kooperativen lernens",
+        "travail d'équipe",
+        "apprentissage coopératif",
+        "collaborazione",
+        "apprendimento cooperativo",
     ),
     "self-regulation": (
         "self-regulated",
@@ -541,6 +579,15 @@ TOPIC_KEYWORDS = {
         "lernen lernen",
         "lebenslanges lernen",
         "lebenslangen lernens",
+        "autorégulation",
+        "apprentissage autorégulé",
+        "métacognition",
+        "apprendre à apprendre",
+        "apprentissage tout au long de la vie",
+        "autoregolazione",
+        "metacognizione",
+        "imparare a imparare",
+        "apprendimento permanente",
     ),
     "ethics": (
         "ethics",
@@ -555,6 +602,13 @@ TOPIC_KEYWORDS = {
         "ethischer",
         "verantwortungsvolle ki",
         "datenschutz",
+        "éthique",
+        "éthiques",
+        "protection des données",
+        "etica",
+        "etico",
+        "etiche",
+        "protezione dei dati",
     ),
     "systems thinking": (
         "systems thinking",
@@ -562,12 +616,20 @@ TOPIC_KEYWORDS = {
         "systemdenken",
         "systemisches denken",
         "informatisches denken",
+        "pensée systémique",
+        "pensée informatique",
+        "pensiero sistemico",
+        "pensiero computazionale",
     ),
     "resilience": (
         "resilience",
         "adaptability",
         "resilienz",
         "anpassungsfähigkeit",
+        "résilience",
+        "adaptabilité",
+        "resilienza",
+        "adattabilità",
     ),
     "future skills": (
         "future skills",
@@ -581,6 +643,11 @@ TOPIC_KEYWORDS = {
         "kompetenzen des 21 jahrhunderts",
         "überfachliche kompetenzen",
         "überfachlichen kompetenzen",
+        "compétences du futur",
+        "compétences du 21e siècle",
+        "compétences transversales",
+        "competenze del futuro",
+        "competenze trasversali",
     ),
 }
 
@@ -620,6 +687,34 @@ AUDIENCE_KEYWORDS = (
     "lernende",
     "lernenden",
     "klassenzimmer",
+    # French / Italian (see the multilingual note on TOPIC_KEYWORDS). "élève"
+    # implies school in French (tertiary is "étudiant"), like "alunni" in
+    # Italian — both double as school-age markers below.
+    "enfant",
+    "enfants",
+    "élève",
+    "élèves",
+    "école",
+    "écoles",
+    "scolaire",
+    "scolaires",
+    "enseignant",
+    "enseignante",
+    "enseignants",
+    "classe",
+    "plan d'études",
+    "bambino",
+    "bambini",
+    "alunno",
+    "alunni",
+    "studenti",
+    "scuola",
+    "scuole",
+    "scolastico",
+    "scolastica",
+    "insegnante",
+    "insegnanti",
+    "piano di studio",
 )
 
 # Default minimum relevance for imported candidates: at least one topic match
@@ -720,6 +815,26 @@ OFF_SCOPE_KEYWORDS = (
     "pandemie",
     "sportunterricht",
     "bewegungsförderung",
+    # French / Italian equivalents of the classes above; reactive like the rest.
+    "clinique",
+    "cliniques",
+    "salaires",
+    "impôts",
+    "entreprise",
+    "entreprises",
+    "pandémie",
+    "éducation physique",
+    "nutrizione",
+    "clinico",
+    "clinica",
+    "pazienti",
+    "agricoltura",
+    "salari",
+    "tasse",
+    "imprese",
+    "aziende",
+    "pandemia",
+    "educazione fisica",
 )
 
 
@@ -775,6 +890,23 @@ HIGHER_ED_KEYWORDS = (
     "berufstätigen",
     "arbeitnehmende",
     "arbeitnehmer",
+    # French: "étudiants" marks tertiary (school pupils are "élèves").
+    "université",
+    "universités",
+    "universitaire",
+    "universitaires",
+    "enseignement supérieur",
+    "étudiant",
+    "étudiants",
+    "étudiantes",
+    "formation des adultes",
+    # Italian: "studenti universitari" marks tertiary (school is "alunni").
+    "università",
+    "universitario",
+    "universitaria",
+    "istruzione superiore",
+    "studenti universitari",
+    "formazione degli adulti",
 )
 SCHOOL_AGE_KEYWORDS = (
     "child",
@@ -842,6 +974,33 @@ SCHOOL_AGE_KEYWORDS = (
     "berufsbildung",
     "berufsschule",
     "berufsschulen",
+    # French / Swiss-romand school stages (Plan d'études romand).
+    "enfant",
+    "enfants",
+    "école primaire",
+    "école enfantine",
+    "maternelle",
+    "école obligatoire",
+    "cycle d'orientation",
+    "élève",
+    "élèves",
+    "gymnase",
+    "lycée",
+    "adolescents",
+    "plan d'études romand",
+    # Italian / Ticino school stages (Piano di studio).
+    "bambino",
+    "bambini",
+    "scuola primaria",
+    "scuola elementare",
+    "scuola dell'infanzia",
+    "scuola media",
+    "scuola secondaria",
+    "scuola dell'obbligo",
+    "alunno",
+    "alunni",
+    "liceo",
+    "adolescenti",
 )
 
 
@@ -920,6 +1079,24 @@ EDUCATOR_STRONG_KEYWORDS = (
     "angehende lehrkräfte",
     "lehramtsstudierende",
     "lehramtsstudierenden",
+    # French: the haute école pédagogique trains SCHOOL teachers (exempt from
+    # the higher-ed guard like German Lehrerbildung).
+    "formation des enseignants",
+    "formation des enseignantes",
+    "formation initiale des enseignants",
+    "formation continue des enseignants",
+    "haute école pédagogique",
+    "hautes écoles pédagogiques",
+    "futurs enseignants",
+    "futures enseignantes",
+    "compétences des enseignants",
+    # Italian.
+    "formazione degli insegnanti",
+    "formazione dei docenti",
+    "formazione continua degli insegnanti",
+    "futuri insegnanti",
+    "competenze degli insegnanti",
+    "alta scuola pedagogica",
 )
 EDUCATOR_SUBJECT_KEYWORDS = (
     "teacher",
@@ -934,6 +1111,14 @@ EDUCATOR_SUBJECT_KEYWORDS = (
     "lehrkräften",
     "lehrer",
     "lehrerinnen",
+    "enseignant",
+    "enseignants",
+    "enseignante",
+    "enseignantes",
+    "insegnante",
+    "insegnanti",
+    "docente",
+    "docenti",
 )
 EDUCATOR_CONTEXT_KEYWORDS = (
     "professional development",
@@ -970,6 +1155,24 @@ EDUCATOR_CONTEXT_KEYWORDS = (
     "didaktische",
     "didaktischen",
     "professionalisierung",
+    "formation continue",
+    "développement professionnel",
+    "compétence",
+    "compétences",
+    "pédagogie",
+    "pédagogique",
+    "didactique",
+    "professionnalisation",
+    "formazione continua",
+    "sviluppo professionale",
+    "competenza",
+    "competenze",
+    "pedagogia",
+    "pedagogico",
+    "pedagogica",
+    "didattica",
+    "didattico",
+    "professionalizzazione",
 )
 # Teacher PRODUCTIVITY / tool-use is the educator's adoption of an AI tool to
 # reduce their own workload (lesson planning, grading, administrative
@@ -1017,6 +1220,15 @@ HIGHER_ED_TEACHING_KEYWORDS = (
     "universitäten",
     "studierende",
     "studierenden",
+    "université",
+    "universités",
+    "universitaire",
+    "enseignement supérieur",
+    "étudiants",
+    "università",
+    "universitario",
+    "istruzione superiore",
+    "studenti universitari",
 )
 
 
