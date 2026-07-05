@@ -113,7 +113,10 @@ reviewed.
    (`ingest-reports.yml`) with a report path / URL or a manifest — the original
    path; it expects the plaintext to already be in the repo.
 
-`ingest-from-issue.yml` fires on every `ingest`-labelled issue, resolves the
+`ingest-from-issue.yml` fires on every `ingest`-labelled issue **from a repo
+owner/member/collaborator**; external submissions wait (with an explanatory
+comment) until a maintainer adds the `ingest-approved` label, so strangers
+cannot spend LLM budget unreviewed. It resolves the
 input (`parse_ingest_issue.py`, resolution order *pasted text → attached PDF →
 PDF from the URL*, 25 MB download cap), runs the importer, clusters, validates,
 updates the candidate PR, and comments the result — or the human-readable reason

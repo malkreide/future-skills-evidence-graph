@@ -149,6 +149,15 @@ Issue-Formular  ──(ingest-from-issue.yml)──▶  parse_ingest_issue.py  �
    wie unten auf und **kommentiert das Ergebnis (oder den Grund) zurück ins
    Issue**. Es bleibt alles `status=candidate` bis zur Review.
 
+**Freigabe-Schranke (Kosten-/Missbrauchsschutz).** Der LLM-Import ist ein
+bezahlter API-Aufruf, deshalb startet er nur automatisch, wenn das Issue von
+einer Person aus dem Repo stammt (Owner/Member/Collaborator). Einreichungen von
+allen anderen bleiben liegen und bekommen einen Hinweis-Kommentar; ein
+Maintainer gibt sie frei, indem er das Label `ingest-approved` setzt (Labels
+kann nur setzen, wer Triage-Rechte hat). Ein erneuter Lauf wird ebenfalls über
+das Label ausgelöst — Bearbeiten des Issue-Texts startet bewusst **keinen**
+neuen Import.
+
 Das Sicherheitsmodell ist identisch zum `workflow_dispatch`-Pfad: derselbe
 Verbatim-Guard, dieselbe Relevanz-/Dedupe-Filterung, nichts wird automatisch
 aktiv.
