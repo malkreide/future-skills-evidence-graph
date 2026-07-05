@@ -19,6 +19,7 @@ requires human review through pull requests. Nothing here changes that.
 | Claim extraction | `extract_claims.py` | Verbatim finding sentences + text anchors (up to 3 per abstract — breadth feeds the skill score); skips methodology; abbreviation-safe sentence split |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
 | Review | `promote_candidate.py {claim,skill,reject,reject-source,promote-source,attach-claim,reopen}` | Promotes to reviewed/active; `reject-source` harvests a negative label; `reopen` flips a rejected record back to candidate |
+| Review per PR-Kommentar | `review-command.yml` · `run_review_command.py` | Browser-only review: maintainer slash-commands on the candidate PR run the same `promote_candidate.py` (all gates unchanged); commits back to the PR branch |
 | Scoring | `score_evidence.py` | Recomputed automatically on promotion; drift-guarded by validation |
 | Validation | `validate_data.py` | Schema + cross-refs + score drift |
 | Dashboard | `build_site.py` + `deploy-pages.yml` | Auto-deploys on push to `main` |
@@ -92,6 +93,26 @@ In GitHub settings:
    records the corrected positive.
 4. **Merge** the candidate PR.
 5. **Deploy** happens automatically on push to `main` (`deploy-pages.yml`).
+
+### Review from the browser (no local setup)
+
+Every command in step 3 can also be run **as a comment on the candidate pull
+request** — for reviewers without a local clone/Python. Comment one command per
+line, either in slash form or copied verbatim from the triage worksheet:
+
+```text
+/promote-source src-abc --year 2024
+/claim clm-xyz --context "..." --age-range "12-18" --outcome "..." --evidence-type systematic_review --evidence-strength moderate --supports skill-ai-literacy
+python scripts/promote_candidate.py reject clm-uvw
+```
+
+`review-command.yml` runs them through the **same** `promote_candidate.py` —
+placeholder blockade, reviewed-evidence invariant, score recompute and
+re-validation all apply unchanged — commits the result to the PR branch and
+comments the per-command outcome back. Guardrails: only
+owner/member/collaborator comments run anything, the body is never shell-
+interpolated (env + argv allow-list), and fork or closed PRs are refused. The
+merge decision (step 4) stays a human click either way.
 
 ## Manual report intake (off-cycle)
 
