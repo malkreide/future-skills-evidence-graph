@@ -1012,6 +1012,66 @@ class DataIntegrityTests(unittest.TestCase):
             finally:
                 pc.HARVEST_PATH = original
 
+    def test_refilter_flags_stale_candidates_against_current_vocabulary(self) -> None:
+        # The filter only runs at ingest time; refilter_candidates re-checks the
+        # OPEN backlog after a vocabulary change. The MENA-immigrant case is the
+        # documented stale candidate: ingested under an older vocabulary, dropped
+        # by today's off-scope terms.
+        import refilter_candidates as rc
+
+        stale = {
+            "id": "src-stale",
+            "status": "candidate",
+            "title": "Immigration Trauma and Resilience Among Immigrant College Students",
+            "abstract": "Acculturative stress among immigrant students in higher education.",
+        }
+        fresh = {
+            "id": "src-fresh",
+            "status": "candidate",
+            "title": "AI literacy in primary school classrooms",
+            "abstract": "Pupils develop critical thinking about AI systems.",
+        }
+        reviewed = {
+            "id": "src-reviewed",
+            "status": "reviewed",
+            "title": "Immigration Trauma and Posttraumatic Growth",
+        }
+        with mock.patch.object(rc, "load_records", return_value=[stale, fresh, reviewed]):
+            worksheet = rc.build_worksheet()
+        self.assertEqual(worksheet["open_candidate_sources"], 2, "reviewed must be ignored")
+        flagged = worksheet["flagged"]
+        self.assertEqual([row["source_id"] for row in flagged], ["src-stale"])
+        self.assertEqual(flagged[0]["reason"], "off_scope")
+        self.assertIn("reject-source src-stale", flagged[0]["command"])
+
+    def test_refilter_drop_reason_mirrors_heuristic_keep(self) -> None:
+        # Every source must agree between the live decision (heuristic_keep) and
+        # the refilter's explanation: reason None <=> kept. Exercise one source
+        # per rule branch, including the educator-lane rescue.
+        import refilter_candidates as rc
+
+        cases = [
+            {"title": "Quarterly refinery throughput report", "abstract": ""},
+            {"title": "AI literacy for the workforce", "abstract": "Employees upskill."},
+            {
+                "title": "Teacher professional development for AI literacy instruction",
+                "abstract": "In-service teachers build competence to teach AI literacy.",
+            },
+            {
+                "title": "Critical thinking in primary school",
+                "abstract": "Pupils practice reasoning about misinformation.",
+            },
+        ]
+        for source in cases:
+            score, topics = score_relevance(source)
+            kept = heuristic_keep(source, score, topics)
+            reason = rc.drop_reason(source)
+            self.assertEqual(
+                reason is None,
+                kept,
+                f"drop_reason and heuristic_keep disagree for: {source['title']} ({reason})",
+            )
+
     def test_candidate_without_year_is_kept_not_silently_dropped(self) -> None:
         # An otherwise-valid source whose API record has no publication year
         # used to arrive as year=0 and vanish in source_is_valid_candidate.

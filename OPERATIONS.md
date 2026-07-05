@@ -250,6 +250,12 @@ Triggers → actions:
   `eval/relevance_labeled.json`; re-measure with `eval_relevance.py`.
 - **False negative seen** (recall probe) → add the missing keyword to
   `TOPIC_KEYWORDS`; re-measure.
+- **After any vocabulary change** → `make refilter`: re-checks the OPEN
+  candidate backlog against the new vocabulary and lists the candidates the
+  current heuristic would drop (with drop reason + ready `reject-source`
+  command, `eval/candidate_refilter.json`). The filter only runs at ingest
+  time, so without this pass stale candidates linger that today's filter
+  would refuse. Read-only — the reviewer decides each row.
 - **Grow the eval set** with fresh examples not used to tune the filter, to keep
   the precision estimate honest.
 - **Model beats heuristic** (`--compare-model` says so) → `train_relevance.py`,
