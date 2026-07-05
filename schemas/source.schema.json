@@ -18,7 +18,12 @@
     "id": { "type": "string", "pattern": "^src-[a-z0-9-]+$" },
     "title": { "type": "string", "minLength": 3 },
     "authors": { "type": "array", "items": { "type": "string" } },
-    "year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+    "year": {
+      "type": ["integer", "null"],
+      "minimum": 1900,
+      "maximum": 2100,
+      "description": "null only while status=candidate (source arrived without a publication year); promote-source requires the reviewer to supply the real year."
+    },
     "doi": { "type": ["string", "null"] },
     "url": { "type": "string", "format": "uri" },
     "openalex_id": { "type": ["string", "null"] },

@@ -22,6 +22,7 @@ from cluster_claims import (  # noqa: E402
     cluster_method,
     cluster_skills,
 )
+from common import source_is_valid_candidate  # noqa: E402
 from common import (  # noqa: E402
     DEFAULT_RESEARCH_QUERIES,
     RELEVANCE_MODEL_PATH,
@@ -242,11 +243,17 @@ class DataIntegrityTests(unittest.TestCase):
         import eval_relevance
 
         examples = eval_relevance.load_educator_examples()
-        self.assertTrue(examples, "educator-lane labeled set should be present")
+        # A meaningful floor needs a set that is not trivially memorizable: the
+        # original 7-example set with a 0.99 assertion was effectively "all 7
+        # correct" — memorization, not measurement.
+        self.assertGreaterEqual(len(examples), 25, "educator-lane set too small to measure")
         lane = eval_relevance.educator_lane_report(examples, RELEVANCE_THRESHOLD)
         self.assertEqual(lane["leaked"], [], "off-scope example leaked onto the educator lane")
-        self.assertGreaterEqual(lane["precision"], 0.99)
-        self.assertGreaterEqual(lane["recall"], 0.99)
+        # Measured 1.00/1.00 on the 26-example set; the floor sits below with
+        # margin so future examples may dip without breaking the build (the
+        # measured value lives in OPERATIONS.md, the floor guards regressions).
+        self.assertGreaterEqual(lane["precision"], 0.85)
+        self.assertGreaterEqual(lane["recall"], 0.85)
 
     def test_relevance_scoring_separates_scope_from_noise(self) -> None:
         relevant = {
@@ -601,6 +608,97 @@ class DataIntegrityTests(unittest.TestCase):
         abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
         self.assertIsNone(best_claim_sentence(abstract))
 
+    def test_ingester_converts_survive_broken_api_payloads(self) -> None:
+        # The importers' only outage guard is fetch_or_warn's except clause; an
+        # AttributeError inside convert() (live APIs DO send explicit nulls for
+        # nested fields) aborted the whole pipeline run. Every convert must
+        # tolerate an empty record and null-riddled nested fields.
+        import ingest_crossref
+        import ingest_eric
+        import ingest_openalex
+        import ingest_semantic_scholar
+
+        broken_by_module = {
+            ingest_openalex: [
+                {},
+                {"authorships": [None, {"author": None}], "primary_location": None, "doi": None},
+            ],
+            ingest_semantic_scholar: [
+                {},
+                {"authors": [None, {"name": None}], "externalIds": None, "publicationTypes": None},
+            ],
+            ingest_crossref: [
+                {},
+                {"title": [], "author": [None, {"given": None, "family": None}], "issued": None},
+            ],
+            ingest_eric: [
+                {},
+                {"author": None, "description": None, "publicationdateyear": None},
+            ],
+        }
+        for module, payloads in broken_by_module.items():
+            for payload in payloads:
+                record = module.convert(payload)
+                self.assertTrue(record["title"], f"{module.__name__} lost the title fallback")
+                self.assertIsInstance(record["authors"], list)
+                year = record["year"]
+                self.assertTrue(year is None or isinstance(year, int))
+
+    def test_sentence_split_survives_abbreviations(self) -> None:
+        # "e.g." must not end a sentence: before the abbreviation-safe split the
+        # anchor's sentence number pointed at the wrong sentence.
+        from extract_claims import split_sentences
+
+        text = (
+            "AI literacy is taught in schools (e.g. primary schools) across Europe. "
+            "Results show significant gains in critical thinking among pupils."
+        )
+        sentences = split_sentences(text)
+        self.assertEqual(len(sentences), 2)
+        self.assertIn("(e.g. primary schools)", sentences[0])
+        self.assertTrue(sentences[1].startswith("Results show"))
+        # German abbreviations from the bilingual sources.
+        german = (
+            "Die Studie untersucht KI-Kompetenz in Schulen, z. B. in der Primarstufe. "
+            "Die Ergebnisse zeigen deutliche Zuwächse bei Schülerinnen und Schülern."
+        )
+        self.assertEqual(len(split_sentences(german)), 2)
+        # A genuine sentence end after a word merely ENDING in an abbreviation
+        # ("develop." contains "p.") must still split.
+        tricky = (
+            "The programme helped every pupil develop. "
+            "Results show gains in AI literacy across all classrooms observed."
+        )
+        self.assertEqual(len(split_sentences(tricky)), 2)
+
+    def test_multiple_findings_yield_multiple_claims(self) -> None:
+        # An abstract with several finding sentences yields several claims (the
+        # skill score rewards breadth), each verbatim with its own anchor and a
+        # distinct id; methodology sentences still never become claims.
+        from extract_claims import MAX_CLAIMS_PER_SOURCE, claims_from_source
+
+        source = {
+            "id": "src-multi",
+            "source_type": "peer_reviewed_article",
+            "abstract": (
+                "We conducted a survey with a sample of 300 pupils about AI literacy. "
+                "Results show that AI literacy instruction improves critical thinking among pupils. "
+                "Findings suggest that collaboration in the classroom enhances digital competence. "
+                "The study finds that self-regulation training promotes lifelong learning in schools."
+            ),
+        }
+        claims = claims_from_source(source)
+        self.assertEqual(len(claims), MAX_CLAIMS_PER_SOURCE)
+        statements = [claim["statement"] for claim in claims]
+        self.assertEqual(len(set(statements)), len(statements))
+        self.assertEqual(len({claim["id"] for claim in claims}), len(claims))
+        for claim in claims:
+            self.assertIn(claim["statement"], source["abstract"])
+            self.assertIn(claim["statement"], claim["text_anchor"])
+            self.assertNotIn("sample of", claim["statement"])
+        # The single-best wrapper stays consistent with the ranked head.
+        self.assertEqual(claim_from_source(source)["statement"], statements[0])
+
     def test_filter_new_claims_drops_known_statements(self) -> None:
         existing = load_records("claims")[0]
         duplicate = {
@@ -827,6 +925,41 @@ class DataIntegrityTests(unittest.TestCase):
                 f"hard false positive kept: {example['title']}",
             )
 
+    def test_german_sources_pass_the_bilingual_filter(self) -> None:
+        # Regression guard for the German blind spot: the project is anchored to
+        # Lehrplan 21, yet before the bilingual keyword layer a German EDK/KMK/
+        # PH-style abstract scored 0.0 and was silently dropped. The labeled set
+        # now carries German examples (notes tagged "[de]"); every one of them
+        # must be classified correctly — positives kept (incl. the educator lane
+        # and Sek-II vocational learners), negatives dropped (German higher-ed,
+        # workplace, health, teacher tool-use).
+        import eval_relevance
+
+        examples = eval_relevance.load_examples()
+        german = [e for e in examples if str(e.get("note", "")).startswith("[de]")]
+        self.assertGreaterEqual(len(german), 20, "German eval examples missing")
+        self.assertTrue(any(e["relevant"] for e in german))
+        self.assertTrue(any(not e["relevant"] for e in german))
+        for example in german:
+            score, topics = score_relevance(example)
+            kept = heuristic_keep(example, score, topics)
+            self.assertEqual(
+                kept,
+                example["relevant"],
+                f"German example misclassified: {example['title']}",
+            )
+
+    def test_normalize_title_folds_german_diacritics(self) -> None:
+        # Umlauts must map to their base letters (not vanish), and ß to ss, so
+        # German keywords and titles normalize consistently on both sides.
+        self.assertEqual(
+            normalize_title("Förderung der KI-Kompetenz bei Schülerinnen"),
+            "forderung der ki kompetenz bei schulerinnen",
+        )
+        self.assertEqual(normalize_title("Straße"), "strasse")
+        # The gender star splits the token; the stem keyword still matches.
+        self.assertEqual(normalize_title("Schüler*innen"), "schuler innen")
+
     def test_attach_claim_validates_targets(self) -> None:
         from argparse import Namespace
 
@@ -975,6 +1108,112 @@ class DataIntegrityTests(unittest.TestCase):
                 self.assertIn("SELECTION BIAS", payload["_README"])
             finally:
                 pc.HARVEST_PATH = original
+
+    def test_refilter_flags_stale_candidates_against_current_vocabulary(self) -> None:
+        # The filter only runs at ingest time; refilter_candidates re-checks the
+        # OPEN backlog after a vocabulary change. The MENA-immigrant case is the
+        # documented stale candidate: ingested under an older vocabulary, dropped
+        # by today's off-scope terms.
+        import refilter_candidates as rc
+
+        stale = {
+            "id": "src-stale",
+            "status": "candidate",
+            "title": "Immigration Trauma and Resilience Among Immigrant College Students",
+            "abstract": "Acculturative stress among immigrant students in higher education.",
+        }
+        fresh = {
+            "id": "src-fresh",
+            "status": "candidate",
+            "title": "AI literacy in primary school classrooms",
+            "abstract": "Pupils develop critical thinking about AI systems.",
+        }
+        reviewed = {
+            "id": "src-reviewed",
+            "status": "reviewed",
+            "title": "Immigration Trauma and Posttraumatic Growth",
+        }
+        with mock.patch.object(rc, "load_records", return_value=[stale, fresh, reviewed]):
+            worksheet = rc.build_worksheet()
+        self.assertEqual(worksheet["open_candidate_sources"], 2, "reviewed must be ignored")
+        flagged = worksheet["flagged"]
+        self.assertEqual([row["source_id"] for row in flagged], ["src-stale"])
+        self.assertEqual(flagged[0]["reason"], "off_scope")
+        self.assertIn("reject-source src-stale", flagged[0]["command"])
+
+    def test_refilter_drop_reason_mirrors_heuristic_keep(self) -> None:
+        # Every source must agree between the live decision (heuristic_keep) and
+        # the refilter's explanation: reason None <=> kept. Exercise one source
+        # per rule branch, including the educator-lane rescue.
+        import refilter_candidates as rc
+
+        cases = [
+            {"title": "Quarterly refinery throughput report", "abstract": ""},
+            {"title": "AI literacy for the workforce", "abstract": "Employees upskill."},
+            {
+                "title": "Teacher professional development for AI literacy instruction",
+                "abstract": "In-service teachers build competence to teach AI literacy.",
+            },
+            {
+                "title": "Critical thinking in primary school",
+                "abstract": "Pupils practice reasoning about misinformation.",
+            },
+        ]
+        for source in cases:
+            score, topics = score_relevance(source)
+            kept = heuristic_keep(source, score, topics)
+            reason = rc.drop_reason(source)
+            self.assertEqual(
+                reason is None,
+                kept,
+                f"drop_reason and heuristic_keep disagree for: {source['title']} ({reason})",
+            )
+
+    def test_candidate_without_year_is_kept_not_silently_dropped(self) -> None:
+        # An otherwise-valid source whose API record has no publication year
+        # used to arrive as year=0 and vanish in source_is_valid_candidate.
+        # year=None is now a legal CANDIDATE state.
+        base = {"title": "AI literacy in primary school", "url": "https://x.org/p"}
+        self.assertTrue(source_is_valid_candidate({**base, "year": None}))
+        self.assertTrue(source_is_valid_candidate({**base, "year": 2024}))
+        # 0 (and anything outside 1900-2100) stays invalid — the old sentinel
+        # must not sneak back in as a "real" year.
+        self.assertFalse(source_is_valid_candidate({**base, "year": 0}))
+        self.assertFalse(source_is_valid_candidate({**base, "year": 1500}))
+
+    def test_promote_source_requires_a_year(self) -> None:
+        # A reviewed source is part of the evidence path: promotion must refuse
+        # a year-less candidate unless the reviewer supplies --year.
+        from argparse import Namespace
+
+        import promote_candidate as pc
+
+        source = {
+            "id": "src-no-year",
+            "title": "AI literacy in primary school",
+            "year": None,
+            "source_type": "peer_reviewed_article",
+            "publisher": "Test",
+            "url": "https://x.org/p",
+            "topics": ["ai literacy"],
+            "status": "candidate",
+            "created_at": "2026-01-01",
+        }
+        written: list = []
+        with mock.patch.object(
+            pc, "find_record", return_value=(Path("unused.json"), [source], source)
+        ), mock.patch.object(pc, "write_json", lambda path, records: written.append(records)), \
+                mock.patch.object(pc, "record_relevance_labels", lambda batch: len(batch)):
+            errors = pc.promote_source(Namespace(id="src-no-year", year=None))
+            self.assertTrue(any("no publication year" in e for e in errors))
+            self.assertEqual(source["status"], "candidate", "must not review without a year")
+            self.assertEqual(written, [])
+
+            errors = pc.promote_source(Namespace(id="src-no-year", year=2023))
+            self.assertEqual(errors, [])
+            self.assertEqual(source["year"], 2023)
+            self.assertEqual(source["status"], "reviewed")
+            self.assertEqual(len(written), 1)
 
     def test_promoted_claim_harvests_positive_per_source(self) -> None:
         # promote_claim's success maps the claim to a positive label for each of

@@ -51,6 +51,9 @@ def _claim_row(claim: dict[str, Any], sources: dict[str, dict[str, Any]]) -> dic
                 # learner), so a reviewer can route educator-competence evidence
                 # to an educator skill instead of re-opening it by hand.
                 "audience": (src or {}).get("audience", "learner") if src else "learner",
+                # None when the importer found no publication year; the
+                # promote-source command below then needs --year.
+                "year": (src or {}).get("year") if src else None,
             }
         )
     assist = claim.get("assist", {}).get("suggestions") if isinstance(claim.get("assist"), dict) else None
@@ -81,7 +84,12 @@ def _review_commands(claim: dict[str, Any], source_rows: list[dict[str, Any]]) -
     claim_id = claim["id"]
     commands = [
         "# in-scope source -> reviewed + POSITIVE relevance label (run per source first):",
-        *[f"python scripts/promote_candidate.py promote-source {row['source_id']}" for row in source_rows],
+        *[
+            "python scripts/promote_candidate.py promote-source "
+            + row["source_id"]
+            + ("" if row.get("year") is not None else " --year <yyyy>  # candidate has no year")
+            for row in source_rows
+        ],
         "# good claim -> reviewed (fill the real review fields, link a skill):",
         (
             f"python scripts/promote_candidate.py claim {claim_id} "

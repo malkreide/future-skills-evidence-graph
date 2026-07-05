@@ -493,6 +493,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Mark a source reviewed (in scope); harvests a 'relevant' label.",
     )
     promote_src.add_argument("id")
+    promote_src.add_argument(
+        "--year",
+        type=int,
+        default=None,
+        help="Publication year (required when the candidate arrived without one).",
+    )
 
     attach = sub.add_parser(
         "attach-claim",
@@ -520,6 +526,15 @@ def promote_source(args: argparse.Namespace) -> list[str]:
     if found is None:
         return [f"source {args.id} not found in data/sources/"]
     _, records, source = found
+    if getattr(args, "year", None) is not None:
+        source["year"] = args.year
+    if source.get("year") is None:
+        # Candidates may carry year=None (the importer found no publication
+        # year), but a REVIEWED source is part of the evidence path and must be
+        # fully identified — the reviewer supplies the year at promotion time.
+        return [
+            f"source {args.id} has no publication year; pass --year <yyyy> to set it during promotion"
+        ]
     source["status"] = "reviewed"
     source["reviewed_at"] = TODAY
     errors = _schema_errors("sources", source)

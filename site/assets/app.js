@@ -461,7 +461,7 @@ function sourceLink(source) {
   link.rel = "noreferrer";
   link.textContent = source.title;
   const meta = document.createElement("small");
-  meta.textContent = `${source.publisher} - ${source.year} - ${source.source_type}`;
+  meta.textContent = `${source.publisher} - ${source.year ?? "Jahr unbekannt"} - ${source.source_type}`;
   wrapper.append(link, meta);
   return wrapper;
 }

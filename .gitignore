@@ -19,6 +19,9 @@ eval/recall_probe.json
 # transient candidate-backlog review worksheet (regenerated each run)
 eval/candidate_triage.json
 
+# transient vocabulary re-check worksheet (regenerated each run)
+eval/candidate_refilter.json
+
 # transient search-allowlist health worksheet (regenerated each run)
 eval/domain_audit.json
 

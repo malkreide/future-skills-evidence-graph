@@ -64,7 +64,7 @@ def convert(doc: dict[str, Any]) -> dict[str, Any]:
         "id": slugify(title, "src"),
         "title": title,
         "authors": list(authors or []),
-        "year": int(year) if isinstance(year, (int, str)) and str(year).isdigit() else 0,
+        "year": int(year) if isinstance(year, (int, str)) and str(year).isdigit() else None,
         "doi": None,
         "url": url,
         "openalex_id": None,

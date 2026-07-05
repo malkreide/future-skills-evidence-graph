@@ -34,6 +34,44 @@ from common import (
 SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+")
 MIN_SENTENCE_LENGTH = 40
 
+# Up to this many finding sentences per abstract become separate candidate
+# claims. One abstract often reports several independent findings, and skill
+# scoring explicitly rewards breadth — extracting only the single best sentence
+# threw that evidence away. Kept small so review effort stays bounded.
+MAX_CLAIMS_PER_SOURCE = 3
+
+# Abbreviations whose trailing period must NOT end a sentence. Without this,
+# "schools (e.g. primary schools). Results show ..." split after "e.g." and the
+# text anchor pointed at the wrong sentence number. Matched case-insensitively;
+# the German set covers the bilingual vocabulary's sources.
+_ABBREVIATIONS = (
+    "e.g.", "i.e.", "et al.", "cf.", "vs.", "approx.", "ca.", "resp.",
+    "no.", "vol.", "fig.", "figs.", "ed.", "eds.", "pp.", "p.", "st.",
+    "dr.", "prof.", "u.s.", "u.k.",
+    "z. b.", "z.b.", "u. a.", "u.a.", "d. h.", "d.h.", "bzw.", "bspw.",
+    "inkl.", "evtl.", "ggf.", "sog.", "usw.", "etc.",
+)
+# The lookbehind keeps the match anchored to a token start, so "p." never
+# swallows the genuine sentence end of "develop." or "st." that of "first.".
+_ABBREVIATION_PATTERN = re.compile(
+    "(?<![a-zA-Z])(" + "|".join(re.escape(abbr) for abbr in _ABBREVIATIONS) + ")",
+    re.IGNORECASE,
+)
+_DOT_SENTINEL = "\x00"
+
+
+def split_sentences(text: str) -> list[str]:
+    """Split *text* into sentences without breaking after known abbreviations.
+
+    The abbreviation periods are masked before the boundary split and restored
+    afterwards, so the returned sentences stay verbatim substrings (modulo the
+    whitespace collapse the caller applies).
+    """
+    masked = _ABBREVIATION_PATTERN.sub(
+        lambda match: match.group(0).replace(".", _DOT_SENTINEL), text
+    )
+    return [part.replace(_DOT_SENTINEL, ".") for part in SENTENCE_SPLIT.split(masked)]
+
 # Cues that mark a sentence as reporting a finding/conclusion (preferred) or as
 # describing methodology/structure/aims (avoided). Among the topic-matching
 # sentences, a finding sentence is chosen over a neutral one, and a neutral one
@@ -219,8 +257,10 @@ def sentence_tier(sentence: str) -> int:
     return 0
 
 
-def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
-    """Pick the best claim sentence as (index, sentence, topics).
+def top_claim_sentences(
+    abstract: str, limit: int = MAX_CLAIMS_PER_SOURCE
+) -> list[tuple[int, str, list[str]]]:
+    """Rank claim sentences, best first, as up to *limit* (index, sentence, topics).
 
     Among sentences that match a topic and meet MIN_SENTENCE_LENGTH, a finding
     sentence is preferred over a neutral one (see FINDING_CUES); within a tier
@@ -229,10 +269,12 @@ def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
     "this paper introduces a six-step design") are never emitted as claims:
     they are not evidence statements, so such a source yields no claim and a
     reviewer can author one by hand if the paper merits it. Sentences without
-    a topic match are likewise never picked.
+    a topic match are likewise never picked. An abstract reporting several
+    independent findings yields several candidate claims (skill scoring rewards
+    breadth), each with its own verbatim text anchor.
     """
-    best: tuple[tuple[int, float, int], int, str, list[str]] | None = None
-    for index, raw in enumerate(SENTENCE_SPLIT.split(abstract)):
+    ranked: list[tuple[tuple[int, float, int], int, str, list[str]]] = []
+    for index, raw in enumerate(split_sentences(abstract)):
         sentence = " ".join(raw.split())
         if len(sentence) < MIN_SENTENCE_LENGTH:
             continue
@@ -242,21 +284,38 @@ def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
         tier = sentence_tier(sentence)
         if tier < 0:
             continue
-        key = (tier, score, -index)
-        if best is None or key > best[0]:
-            best = (key, index, sentence, topics)
-    if best is None:
-        return None
-    return best[1], best[2], best[3]
+        ranked.append(((tier, score, -index), index, sentence, topics))
+    ranked.sort(key=lambda entry: entry[0], reverse=True)
+    return [(index, sentence, topics) for _, index, sentence, topics in ranked[:limit]]
+
+
+def best_claim_sentence(abstract: str) -> tuple[int, str, list[str]] | None:
+    """Pick the single best claim sentence (the head of top_claim_sentences)."""
+    picked = top_claim_sentences(abstract, limit=1)
+    return picked[0] if picked else None
+
+
+def claims_from_source(source: dict[str, Any]) -> list[dict[str, Any]]:
+    """All candidate claims for *source*, best finding first (may be empty)."""
+    abstract = source.get("abstract")
+    if not isinstance(abstract, str) or not abstract.strip():
+        return []
+    return [
+        claim
+        for picked in top_claim_sentences(abstract)
+        if (claim := _build_claim(source, abstract, picked)) is not None
+    ]
 
 
 def claim_from_source(source: dict[str, Any]) -> dict[str, Any] | None:
-    abstract = source.get("abstract")
-    if not isinstance(abstract, str) or not abstract.strip():
-        return None
-    picked = best_claim_sentence(abstract)
-    if picked is None:
-        return None
+    """The single best candidate claim for *source*, or None."""
+    claims = claims_from_source(source)
+    return claims[0] if claims else None
+
+
+def _build_claim(
+    source: dict[str, Any], abstract: str, picked: tuple[int, str, list[str]]
+) -> dict[str, Any] | None:
     index, sentence, topics = picked
     source_id = str(source.get("id", "unknown-source"))
     claim: dict[str, Any] = {
@@ -321,14 +380,20 @@ def main() -> int:
         sources.extend(record for record in payload if isinstance(record, dict))
 
     candidates = [source for source in sources if source.get("status") == "candidate"]
-    extracted = [claim for claim in map(claim_from_source, candidates) if claim]
+    extracted: list[dict[str, Any]] = []
+    sources_without_claim = 0
+    for source in candidates:
+        claims = claims_from_source(source)
+        if not claims:
+            sources_without_claim += 1
+        extracted.extend(claims)
     new_claims = filter_new_claims(extracted)
     appended = append_unique_records(
         ROOT / args.output, new_claims, lambda claim: [claim_statement_key(claim)]
     )
     print(
         f"Appended {len(appended)} new candidate claims to {args.output} "
-        f"({len(candidates) - len(extracted)} candidate sources without an extractable claim)"
+        f"({sources_without_claim} candidate sources without an extractable claim)"
     )
     return 0
 
