@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import os
@@ -360,6 +361,71 @@ def fetch_or_warn(
 def env_or_none(name: str) -> str | None:
     value = os.getenv(name)
     return value if value else None
+
+
+def run_importer(
+    label: str,
+    fetch: Callable[..., list[Any]],
+    convert: Callable[[Any], dict[str, Any]],
+    default_output: str,
+    *,
+    configure_parser: Callable[[argparse.ArgumentParser], None] | None = None,
+    fetch_kwargs: Callable[[argparse.Namespace], dict[str, Any]] | None = None,
+    argv: list[str] | None = None,
+) -> int:
+    """The shared main() of every catalogue importer (query → filter → append).
+
+    The five importers (OpenAlex, Crossref, Semantic Scholar, arXiv, ERIC)
+    differ only in how they *fetch* and *convert*; the argument surface, query
+    loop, graceful degradation, relevance filter, dedupe and append were five
+    near-identical copies — every filter change had to be applied five times.
+    This helper owns that pipeline once. Per-source extras hook in via
+    *configure_parser* (additional CLI flags, e.g. OpenAlex --mailto) and
+    *fetch_kwargs* (extra fetch() keyword arguments derived from the parsed
+    args or the environment, e.g. the Semantic Scholar API key). *argv* exists
+    for tests.
+
+    Harvest depth: fetch() is called once per query with --limit as the page
+    size — the importers deliberately do NOT paginate, so --limit (default 25)
+    caps the weekly harvest per query and source. Deeper harvests are a
+    --limit bump, not a hidden loop.
+    """
+    parser = argparse.ArgumentParser(
+        description=f"Import candidate source metadata from {label}."
+    )
+    parser.add_argument(
+        "--query",
+        action="append",
+        help="A search query (repeatable). Omit to use config/research_queries.json "
+        "or the RESEARCH_QUERIES override.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=25,
+        help="Max results per query (single page; the importers do not paginate).",
+    )
+    parser.add_argument("--output", default=default_output)
+    parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
+    if configure_parser is not None:
+        configure_parser(parser)
+    args = parser.parse_args(argv)
+
+    queries = dedupe_queries(args.query) if args.query else load_research_queries()
+    extra = fetch_kwargs(args) if fetch_kwargs is not None else {}
+    items: list[Any] = []
+    for query in queries:
+        items.extend(fetch_or_warn(label, lambda q=query: fetch(q, args.limit, **extra)))
+    candidates = [convert(item) for item in items]
+    relevant = filter_relevant_sources(candidates, args.min_relevance)
+    new_records = filter_new_sources(relevant)
+    appended = append_candidate_sources(ROOT / args.output, new_records)
+    print(
+        f"Appended {len(appended)} new {label} candidates to {args.output} "
+        f"from {len(queries)} quer{'y' if len(queries) == 1 else 'ies'} "
+        f"({len(candidates) - len(relevant)} filtered as irrelevant)"
+    )
+    return 0
 
 
 def lp21_coverage_label(score: float) -> str:

@@ -608,6 +608,80 @@ class DataIntegrityTests(unittest.TestCase):
         abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
         self.assertIsNone(best_claim_sentence(abstract))
 
+    def test_run_importer_pipeline_end_to_end(self) -> None:
+        # The five importers now share one main() (common.run_importer). Wire a
+        # fake fetch/convert through it: an in-scope record must land in the
+        # output file, an off-scope record must be filtered, fetch_kwargs and
+        # configure_parser must reach fetch, and a second run must not
+        # duplicate the record.
+        import io
+        from contextlib import redirect_stdout
+
+        from common import run_importer
+
+        nonce = "runimporter-e2e"
+        raw_items = [
+            {"kind": "keep"},
+            {"kind": "drop"},
+        ]
+        seen_kwargs: list[dict] = []
+
+        def fake_fetch(query, limit, flavor=None):
+            seen_kwargs.append({"query": query, "limit": limit, "flavor": flavor})
+            return raw_items
+
+        def fake_convert(item):
+            keep = item["kind"] == "keep"
+            return {
+                "id": f"src-{nonce}-{item['kind']}",
+                "title": (
+                    f"AI literacy for primary school pupils {nonce}"
+                    if keep
+                    else f"Quarterly refinery throughput report {nonce}"
+                ),
+                "authors": [],
+                "year": 2024,
+                "doi": None,
+                "url": f"https://example.org/{nonce}/{item['kind']}",
+                "openalex_id": None,
+                "semantic_scholar_id": None,
+                "eric_id": None,
+                "publisher": "Test",
+                "source_type": "peer_reviewed_article",
+                "license": None,
+                "abstract": "Pupils in primary school build AI literacy." if keep else "Refinery data.",
+                "topics": ["education"],
+                "status": "candidate",
+                "created_at": "2026-01-01",
+                "reviewed_at": None,
+            }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "candidates-fake.json"
+            argv = ["--query", "test query", "--limit", "7",
+                    "--output", str(output), "--flavor", "vanilla"]
+            for _ in range(2):  # second run must dedupe, not duplicate
+                buffer = io.StringIO()
+                with redirect_stdout(buffer):
+                    code = run_importer(
+                        "FakeSource",
+                        fake_fetch,
+                        fake_convert,
+                        "unused-default.json",
+                        configure_parser=lambda p: p.add_argument("--flavor", default=None),
+                        fetch_kwargs=lambda args: {"flavor": args.flavor},
+                        argv=argv,
+                    )
+                self.assertEqual(code, 0)
+                self.assertIn("FakeSource", buffer.getvalue())
+            written = load_json(output)
+            self.assertEqual(len(written), 1, "keep-record once, drop-record never")
+            self.assertIn(nonce, written[0]["title"])
+            self.assertIn("primary school", written[0]["title"])
+            self.assertEqual(
+                seen_kwargs[0], {"query": "test query", "limit": 7, "flavor": "vanilla"}
+            )
+
     def test_ingester_converts_survive_broken_api_payloads(self) -> None:
         # The importers' only outage guard is fetch_or_warn's except clause; an
         # AttributeError inside convert() (live APIs DO send explicit nulls for

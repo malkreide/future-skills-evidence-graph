@@ -1,22 +1,11 @@
 from __future__ import annotations
 
-import argparse
+import json
 import urllib.parse
 import urllib.request
 from typing import Any
 
-from common import (
-    RELEVANCE_THRESHOLD,
-    ROOT,
-    TODAY,
-    append_candidate_sources,
-    dedupe_queries,
-    fetch_or_warn,
-    filter_new_sources,
-    filter_relevant_sources,
-    load_research_queries,
-    slugify,
-)
+from common import TODAY, run_importer, slugify
 
 
 BASE_URL = "https://api.openalex.org/works"
@@ -43,7 +32,7 @@ def fetch(query: str, limit: int, mailto: str | None = None) -> list[dict[str, A
         params["mailto"] = mailto
     url = f"{BASE_URL}?{urllib.parse.urlencode(params)}"
     with urllib.request.urlopen(url, timeout=30) as response:
-        payload = __import__("json").load(response)
+        payload = json.load(response)
     return list(payload.get("results", []))
 
 
@@ -86,33 +75,16 @@ def convert(work: dict[str, Any]) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Import candidate source metadata from OpenAlex.")
-    parser.add_argument(
-        "--query",
-        action="append",
-        help="A search query (repeatable). Omit to use config/research_queries.json "
-        "or the RESEARCH_QUERIES override.",
+    return run_importer(
+        "OpenAlex",
+        fetch,
+        convert,
+        "data/sources/candidates-openalex.json",
+        configure_parser=lambda parser: parser.add_argument(
+            "--mailto", default=None, help="Polite contact email for the OpenAlex API."
+        ),
+        fetch_kwargs=lambda args: {"mailto": args.mailto},
     )
-    parser.add_argument("--limit", type=int, default=25)
-    parser.add_argument("--output", default="data/sources/candidates-openalex.json")
-    parser.add_argument("--mailto", default=None)
-    parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
-    args = parser.parse_args()
-
-    queries = dedupe_queries(args.query) if args.query else load_research_queries()
-    works: list[dict[str, Any]] = []
-    for query in queries:
-        works.extend(fetch_or_warn("OpenAlex", lambda q=query: fetch(q, args.limit, args.mailto)))
-    candidates = [convert(work) for work in works]
-    relevant = filter_relevant_sources(candidates, args.min_relevance)
-    new_records = filter_new_sources(relevant)
-    appended = append_candidate_sources(ROOT / args.output, new_records)
-    print(
-        f"Appended {len(appended)} new OpenAlex candidates to {args.output} "
-        f"from {len(queries)} quer{'y' if len(queries) == 1 else 'ies'} "
-        f"({len(candidates) - len(relevant)} filtered as irrelevant)"
-    )
-    return 0
 
 
 if __name__ == "__main__":

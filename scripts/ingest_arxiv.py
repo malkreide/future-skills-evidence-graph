@@ -1,23 +1,11 @@
 from __future__ import annotations
 
-import argparse
 import urllib.parse
 import urllib.request
 from typing import Any
 from xml.etree import ElementTree
 
-from common import (
-    RELEVANCE_THRESHOLD,
-    ROOT,
-    TODAY,
-    append_candidate_sources,
-    dedupe_queries,
-    fetch_or_warn,
-    filter_new_sources,
-    filter_relevant_sources,
-    load_research_queries,
-    slugify,
-)
+from common import TODAY, run_importer, slugify
 
 
 BASE_URL = "http://export.arxiv.org/api/query"
@@ -84,32 +72,7 @@ def convert(entry: Any) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Import candidate source metadata from arXiv.")
-    parser.add_argument(
-        "--query",
-        action="append",
-        help="A search query (repeatable). Omit to use config/research_queries.json "
-        "or the RESEARCH_QUERIES override.",
-    )
-    parser.add_argument("--limit", type=int, default=25)
-    parser.add_argument("--output", default="data/sources/candidates-arxiv.json")
-    parser.add_argument("--min-relevance", type=float, default=RELEVANCE_THRESHOLD)
-    args = parser.parse_args()
-
-    queries = dedupe_queries(args.query) if args.query else load_research_queries()
-    entries: list[dict[str, Any]] = []
-    for query in queries:
-        entries.extend(fetch_or_warn("arXiv", lambda q=query: fetch(q, args.limit)))
-    candidates = [convert(entry) for entry in entries]
-    relevant = filter_relevant_sources(candidates, args.min_relevance)
-    new_records = filter_new_sources(relevant)
-    appended = append_candidate_sources(ROOT / args.output, new_records)
-    print(
-        f"Appended {len(appended)} new arXiv candidates to {args.output} "
-        f"from {len(queries)} quer{'y' if len(queries) == 1 else 'ies'} "
-        f"({len(candidates) - len(relevant)} filtered as irrelevant)"
-    )
-    return 0
+    return run_importer("arXiv", fetch, convert, "data/sources/candidates-arxiv.json")
 
 
 if __name__ == "__main__":

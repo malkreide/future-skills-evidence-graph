@@ -14,7 +14,7 @@ requires human review through pull requests. Nothing here changes that.
 
 | Stage | Script / Workflow | Notes |
 | --- | --- | --- |
-| Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | Each degrades gracefully on outage (`fetch_or_warn`). Crossref ingests no abstracts (JATS-only, sparse), so its sources never yield automatic claims — metadata only |
+| Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | One shared pipeline (`common.run_importer`; per source only `fetch`/`convert` differ). Each degrades gracefully on outage (`fetch_or_warn`); single page of `--limit` (25) results per query — no pagination. Crossref ingests no abstracts (JATS-only, sparse), so its sources never yield automatic claims — metadata only |
 | Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate; vocabulary is bilingual (English + German, incl. Swiss LP21 school-stage terms) |
 | Claim extraction | `extract_claims.py` | Verbatim finding sentences + text anchors (up to 3 per abstract — breadth feeds the skill score); skips methodology; abbreviation-safe sentence split |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
