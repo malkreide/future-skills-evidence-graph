@@ -66,7 +66,7 @@ def convert(work: dict[str, Any]) -> dict[str, Any]:
         "id": slugify(title, "src"),
         "title": title,
         "authors": authors,
-        "year": work.get("publication_year") or 0,
+        "year": work.get("publication_year") or None,
         "doi": doi,
         "url": work.get("id") or work.get("doi") or "",
         "openalex_id": work.get("id"),

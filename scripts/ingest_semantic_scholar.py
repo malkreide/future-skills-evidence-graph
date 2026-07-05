@@ -46,7 +46,7 @@ def convert(paper: dict[str, Any]) -> dict[str, Any]:
         "id": slugify(title, "src"),
         "title": title,
         "authors": [author.get("name") for author in paper.get("authors", []) if author.get("name")],
-        "year": paper.get("year") or 0,
+        "year": paper.get("year") or None,
         "doi": doi,
         "url": paper.get("url") or (f"https://doi.org/{doi}" if doi else ""),
         "openalex_id": None,

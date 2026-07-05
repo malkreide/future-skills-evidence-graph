@@ -53,7 +53,7 @@ def _html_url(entry: Any) -> str:
 def convert(entry: Any) -> dict[str, Any]:
     title = _text(entry, f"{ATOM}title") or "Untitled arXiv work"
     published = _text(entry, f"{ATOM}published")
-    year = int(published[:4]) if published[:4].isdigit() else 0
+    year = int(published[:4]) if published[:4].isdigit() else None
     authors = [
         " ".join(name.text.split())
         for author in entry.findall(f"{ATOM}author")

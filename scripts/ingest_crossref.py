@@ -30,13 +30,15 @@ def fetch(query: str, rows: int) -> list[dict[str, Any]]:
     return list(payload.get("message", {}).get("items", []))
 
 
-def _year(item: dict[str, Any]) -> int:
+def _year(item: dict[str, Any]) -> int | None:
     parts = (item.get("published-print") or item.get("published-online") or item.get("issued") or {}).get(
         "date-parts", []
     )
-    if parts and parts[0]:
+    if parts and parts[0] and parts[0][0]:
         return int(parts[0][0])
-    return 0
+    # None, not 0: a zero year used to fail source_is_valid_candidate and the
+    # candidate vanished silently; None is allowed until promote-source.
+    return None
 
 
 def _authors(item: dict[str, Any]) -> list[str]:

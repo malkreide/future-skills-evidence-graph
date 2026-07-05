@@ -73,7 +73,8 @@ In GitHub settings:
    python scripts/promote_candidate.py reject <claim-id>
    # Off-scope source → off-scope + harvests a NEGATIVE relevance label:
    python scripts/promote_candidate.py reject-source <source-id>
-   # In-scope source → reviewed + harvests a POSITIVE relevance label:
+   # In-scope source → reviewed + harvests a POSITIVE relevance label
+   # (--year <yyyy> is required when the candidate arrived without a year):
    python scripts/promote_candidate.py promote-source <source-id>
    # Fold a reviewed claim into a skill's evidence (recomputes the score):
    python scripts/promote_candidate.py attach-claim <skill-id> --claim <claim-id>

@@ -188,11 +188,15 @@ def is_title_duplicate(
 
 
 def source_is_valid_candidate(source: dict[str, Any]) -> bool:
+    # A missing year (None) is allowed for CANDIDATES: an otherwise relevant
+    # source without a publication_year used to arrive as year=0 and was
+    # silently discarded here. The reviewer supplies the real year at
+    # promote-source time — a source cannot become reviewed with year=None.
+    year = source.get("year")
     return bool(
         source.get("title")
         and source.get("url")
-        and isinstance(source.get("year"), int)
-        and 1900 <= source.get("year") <= 2100
+        and (year is None or (isinstance(year, int) and 1900 <= year <= 2100))
     )
 
 

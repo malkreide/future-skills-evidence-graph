@@ -22,6 +22,7 @@ from cluster_claims import (  # noqa: E402
     cluster_method,
     cluster_skills,
 )
+from common import source_is_valid_candidate  # noqa: E402
 from common import (  # noqa: E402
     DEFAULT_RESEARCH_QUERIES,
     RELEVANCE_MODEL_PATH,
@@ -1010,6 +1011,52 @@ class DataIntegrityTests(unittest.TestCase):
                 self.assertIn("SELECTION BIAS", payload["_README"])
             finally:
                 pc.HARVEST_PATH = original
+
+    def test_candidate_without_year_is_kept_not_silently_dropped(self) -> None:
+        # An otherwise-valid source whose API record has no publication year
+        # used to arrive as year=0 and vanish in source_is_valid_candidate.
+        # year=None is now a legal CANDIDATE state.
+        base = {"title": "AI literacy in primary school", "url": "https://x.org/p"}
+        self.assertTrue(source_is_valid_candidate({**base, "year": None}))
+        self.assertTrue(source_is_valid_candidate({**base, "year": 2024}))
+        # 0 (and anything outside 1900-2100) stays invalid — the old sentinel
+        # must not sneak back in as a "real" year.
+        self.assertFalse(source_is_valid_candidate({**base, "year": 0}))
+        self.assertFalse(source_is_valid_candidate({**base, "year": 1500}))
+
+    def test_promote_source_requires_a_year(self) -> None:
+        # A reviewed source is part of the evidence path: promotion must refuse
+        # a year-less candidate unless the reviewer supplies --year.
+        from argparse import Namespace
+
+        import promote_candidate as pc
+
+        source = {
+            "id": "src-no-year",
+            "title": "AI literacy in primary school",
+            "year": None,
+            "source_type": "peer_reviewed_article",
+            "publisher": "Test",
+            "url": "https://x.org/p",
+            "topics": ["ai literacy"],
+            "status": "candidate",
+            "created_at": "2026-01-01",
+        }
+        written: list = []
+        with mock.patch.object(
+            pc, "find_record", return_value=(Path("unused.json"), [source], source)
+        ), mock.patch.object(pc, "write_json", lambda path, records: written.append(records)), \
+                mock.patch.object(pc, "record_relevance_labels", lambda batch: len(batch)):
+            errors = pc.promote_source(Namespace(id="src-no-year", year=None))
+            self.assertTrue(any("no publication year" in e for e in errors))
+            self.assertEqual(source["status"], "candidate", "must not review without a year")
+            self.assertEqual(written, [])
+
+            errors = pc.promote_source(Namespace(id="src-no-year", year=2023))
+            self.assertEqual(errors, [])
+            self.assertEqual(source["year"], 2023)
+            self.assertEqual(source["status"], "reviewed")
+            self.assertEqual(len(written), 1)
 
     def test_promoted_claim_harvests_positive_per_source(self) -> None:
         # promote_claim's success maps the claim to a positive label for each of
