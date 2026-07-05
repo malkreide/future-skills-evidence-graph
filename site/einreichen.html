@@ -6,6 +6,19 @@
     <title>Bericht einreichen · Future Skills Evidence Graph</title>
     <link rel="stylesheet" href="./assets/styles.css" />
     <link rel="stylesheet" href="./assets/submit.css" />
+    <script>
+      // Set the colour theme before first paint to avoid a flash of the wrong
+      // theme. Explicit user choice wins over the OS preference.
+      (function () {
+        try {
+          var stored = localStorage.getItem("fseg-theme");
+          var theme = stored || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
   </head>
   <body>
     <header class="topbar">
@@ -14,7 +27,23 @@
         <h1>Bericht einreichen</h1>
       </div>
       <div class="topbar-right">
-        <a class="nav-link" href="./index.html">← Zum Dashboard</a>
+        <nav class="topbar-nav" aria-label="Bereiche">
+          <a class="nav-link" href="./index.html">← Zum Dashboard</a>
+          <button
+            id="themeToggle"
+            type="button"
+            class="theme-toggle"
+            aria-label="Dunkles Design einschalten"
+            aria-pressed="false"
+          >
+            <span class="theme-toggle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+              </svg>
+            </span>
+            <span class="theme-toggle-text">Dunkel</span>
+          </button>
+        </nav>
         <div class="principle">Keine Skill-Empfehlung ohne Evidenzpfad</div>
       </div>
     </header>
@@ -92,6 +121,7 @@
       </section>
     </main>
 
+    <script src="./assets/theme.js"></script>
     <script src="./assets/submit.js"></script>
   </body>
 </html>
