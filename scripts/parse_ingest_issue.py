@@ -40,11 +40,14 @@ mirrored to stdout:
 from __future__ import annotations
 
 import argparse
+import ipaddress
 import json
 import os
 import re
+import socket
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -133,21 +136,70 @@ def is_pdf_url(url: str) -> bool:
     return path.endswith(".pdf")
 
 
+def assert_public_http_url(url: str) -> None:
+    """Reject *url* unless it is plain http(s) to a publicly routed host.
+
+    The URL comes straight out of an issue body, i.e. from an arbitrary GitHub
+    account — without this check the runner could be pointed at cloud metadata
+    endpoints or hosts on its internal network (SSRF). Every DNS answer for the
+    host must be a public address; scheme and port are pinned to standard web.
+    Raises ``RuntimeError`` with a human-readable reason.
+    """
+    parsed = urllib.parse.urlsplit(url)
+    if parsed.scheme not in ("http", "https"):
+        raise RuntimeError(f"Nur http(s)-URLs werden geladen, nicht: {url}")
+    if not parsed.hostname:
+        raise RuntimeError(f"URL ohne Hostnamen: {url}")
+    if parsed.port not in (None, 80, 443):
+        raise RuntimeError(f"Nur die Standard-Ports 80/443 werden geladen: {url}")
+    try:
+        infos = socket.getaddrinfo(parsed.hostname, parsed.port or 443, proto=socket.IPPROTO_TCP)
+    except OSError as exc:
+        raise RuntimeError(f"Hostname nicht auflösbar ({parsed.hostname}): {exc}") from exc
+    for info in infos:
+        address = ipaddress.ip_address(info[4][0])
+        if not address.is_global:
+            raise RuntimeError(
+                f"URL zeigt auf eine nicht-öffentliche Adresse ({parsed.hostname} → "
+                f"{address}) und wird nicht geladen."
+            )
+
+
+class _SafeRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Re-check every redirect hop against :func:`assert_public_http_url`.
+
+    A public URL may 302 to an internal one; urllib follows redirects silently,
+    so each hop is validated and the redirected request is rebuilt WITHOUT the
+    original headers — the GitHub token must never travel to a redirect target
+    off github.com.
+    """
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: N803
+        assert_public_http_url(newurl)
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected is not None and "github.com" not in newurl:
+            redirected.headers.pop("Authorization", None)
+        return redirected
+
+
 def download(url: str, dest: Path, token: str | None) -> None:
     """Download *url* to *dest*, sending the GitHub token for private assets.
 
     Raises ``RuntimeError`` with a human-readable message on any failure or when
     the response exceeds :data:`MAX_DOWNLOAD_BYTES`, so the caller can surface it
-    as an issue comment rather than a stack trace.
+    as an issue comment rather than a stack trace. The URL (and every redirect
+    hop) must point at a public web host — see :func:`assert_public_http_url`.
     """
+    assert_public_http_url(url)
     headers = {"User-Agent": "future-skills-evidence-graph-ingest"}
     # github.com attachment URLs for a private repo need auth; a public asset
     # ignores the header, so sending it is always safe.
     if token and "github.com" in url:
         headers["Authorization"] = f"Bearer {token}"
     request = urllib.request.Request(url, headers=headers)
+    opener = urllib.request.build_opener(_SafeRedirectHandler)
     try:
-        with urllib.request.urlopen(request, timeout=DOWNLOAD_TIMEOUT_SECONDS) as response:
+        with opener.open(request, timeout=DOWNLOAD_TIMEOUT_SECONDS) as response:
             data = response.read(MAX_DOWNLOAD_BYTES + 1)
     except (urllib.error.URLError, urllib.error.HTTPError, OSError) as exc:
         raise RuntimeError(f"Download fehlgeschlagen ({url}): {exc}") from exc
