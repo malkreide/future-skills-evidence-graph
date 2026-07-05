@@ -1,0 +1,19 @@
+# Keeps the exactly-pinned dependencies current: requirements-dev.txt uses
+# `==` pins and the workflows pin action tags, so updates arrive as reviewable
+# pull requests instead of floating into externally triggerable CI runs.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      python-deps:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]

@@ -40,6 +40,73 @@ def make_body(url="", publisher="", year="", plaintext="", attachment="") -> str
     )
 
 
+def _addrinfo(ip: str):
+    """A minimal getaddrinfo result resolving to *ip*."""
+    import socket
+
+    return [(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, "", (ip, 443))]
+
+
+class PublicUrlGuardTests(unittest.TestCase):
+    """The PDF URL comes from an arbitrary issue body, so the downloader must
+    refuse anything that is not plain http(s) to a publicly routed host (SSRF)."""
+
+    def test_public_host_passes(self):
+        with mock.patch("socket.getaddrinfo", return_value=_addrinfo("93.184.216.34")):
+            pii.assert_public_http_url("https://example.org/report.pdf")  # no raise
+
+    def test_private_loopback_linklocal_and_metadata_are_rejected(self):
+        for ip in ("10.1.2.3", "192.168.0.5", "172.16.9.9", "127.0.0.1",
+                   "169.254.169.254", "0.0.0.0"):
+            with mock.patch("socket.getaddrinfo", return_value=_addrinfo(ip)):
+                with self.assertRaises(RuntimeError, msg=ip):
+                    pii.assert_public_http_url("https://internal.host/x.pdf")
+
+    def test_one_private_answer_among_public_ones_rejects(self):
+        # DNS may return several records; a single internal one must veto.
+        answers = _addrinfo("93.184.216.34") + _addrinfo("10.0.0.7")
+        with mock.patch("socket.getaddrinfo", return_value=answers):
+            with self.assertRaises(RuntimeError):
+                pii.assert_public_http_url("https://mixed.host/x.pdf")
+
+    def test_non_http_scheme_and_odd_port_are_rejected(self):
+        with self.assertRaises(RuntimeError):
+            pii.assert_public_http_url("ftp://example.org/x.pdf")
+        with self.assertRaises(RuntimeError):
+            pii.assert_public_http_url("file:///etc/passwd")
+        with self.assertRaises(RuntimeError):
+            pii.assert_public_http_url("https://example.org:8080/x.pdf")
+
+    def test_unresolvable_host_becomes_runtime_error(self):
+        with mock.patch("socket.getaddrinfo", side_effect=OSError("no such host")):
+            with self.assertRaises(RuntimeError):
+                pii.assert_public_http_url("https://does-not-exist.example/x.pdf")
+
+    def test_download_checks_url_before_opening(self):
+        # The guard fires before any connection is attempted.
+        with mock.patch("socket.getaddrinfo", return_value=_addrinfo("127.0.0.1")):
+            with mock.patch("urllib.request.build_opener") as opener:
+                with self.assertRaises(RuntimeError):
+                    pii.download("https://internal/x.pdf", Path("/tmp/x.pdf"), None)
+                opener.return_value.open.assert_not_called()
+
+    def test_redirect_off_github_drops_authorization(self):
+        handler = pii._SafeRedirectHandler()
+        request = mock.Mock()
+        redirected = mock.Mock()
+        redirected.headers = {"Authorization": "Bearer secret"}
+        with mock.patch.object(pii, "assert_public_http_url") as guard, mock.patch.object(
+            pii.urllib.request.HTTPRedirectHandler,
+            "redirect_request",
+            return_value=redirected,
+        ):
+            result = handler.redirect_request(
+                request, None, 302, "Found", {}, "https://elsewhere.org/x.pdf"
+            )
+        guard.assert_called_once_with("https://elsewhere.org/x.pdf")
+        self.assertNotIn("Authorization", result.headers)
+
+
 class ParseSectionsTests(unittest.TestCase):
     def test_maps_labels_to_keys_and_blanks_no_response(self):
         body = make_body(url="https://example.org/r.pdf", publisher="OECD")

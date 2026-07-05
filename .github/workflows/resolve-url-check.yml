@@ -31,7 +31,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install the optional open-source search tier (DuckDuckGo)
-        run: pip install ddgs
+        # Same pin as requirements-dev.txt — no floating installs in CI.
+        run: pip install ddgs==9.14.4
       - name: Resolve URL for the given title
         # Inputs are passed via env (never interpolated into the shell) to avoid
         # script injection from the title/publisher text.

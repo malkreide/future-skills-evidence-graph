@@ -435,11 +435,28 @@ function pill(text, className = "") {
   return span;
 }
 
+// Data fields land in the DOM via textContent everywhere; these two helpers
+// close the remaining holes. escapeHtml is for the few template-built blocks,
+// setSafeHref refuses non-web URL schemes (javascript: etc.) so a hostile
+// candidate URL can never become an executable link.
+function escapeHtml(value) {
+  const div = document.createElement("div");
+  div.textContent = String(value ?? "");
+  return div.innerHTML;
+}
+
+function setSafeHref(link, url) {
+  const value = String(url || "").trim();
+  if (/^(https?:|doi:)/i.test(value)) {
+    link.href = value;
+  }
+}
+
 function sourceLink(source) {
   const wrapper = document.createElement("div");
   wrapper.className = "source";
   const link = document.createElement("a");
-  link.href = source.url;
+  setSafeHref(link, source.url);
   link.target = "_blank";
   link.rel = "noreferrer";
   link.textContent = source.title;
@@ -505,7 +522,11 @@ function renderLp21Comparison() {
     const label = mapping.coverage_label;
 
     const skillCell = document.createElement("td");
-    skillCell.innerHTML = `<strong>${skill.name}</strong><br><small>${skill.age_range}</small>`;
+    const skillName = document.createElement("strong");
+    skillName.textContent = skill.name;
+    const skillAge = document.createElement("small");
+    skillAge.textContent = skill.age_range;
+    skillCell.append(skillName, document.createElement("br"), skillAge);
 
     const evidenceCell = document.createElement("td");
     evidenceCell.textContent = evidenceScore.toFixed(2);
@@ -515,11 +536,15 @@ function renderLp21Comparison() {
 
     const gapCell = document.createElement("td");
     gapCell.className = gapClass(label);
-    gapCell.innerHTML = `<strong>${coverageLabelText(label)}</strong><br><small>${(mapping.cycles || []).join(", ")}</small>`;
+    const gapLabel = document.createElement("strong");
+    gapLabel.textContent = coverageLabelText(label);
+    const gapCycles = document.createElement("small");
+    gapCycles.textContent = (mapping.cycles || []).join(", ");
+    gapCell.append(gapLabel, document.createElement("br"), gapCycles);
 
     const curriculumCell = document.createElement("td");
     const link = document.createElement("a");
-    link.href = mapping.framework_url;
+    setSafeHref(link, mapping.framework_url);
     link.target = "_blank";
     link.rel = "noreferrer";
     link.textContent = mapping.curriculum_area || mapping.framework;
@@ -748,14 +773,14 @@ function showRadarTooltip(axis) {
   const cycles = (axis.mapping.cycles || []).join(", ") || "–";
   const area = axis.mapping.curriculum_area || axis.mapping.framework || "–";
   tooltip.innerHTML =
-    `<strong>${axis.skill.name}</strong>` +
-    `<span class="rt-sub">${axis.skill.short_label} · Alter ${axis.skill.age_range}</span>` +
+    `<strong>${escapeHtml(axis.skill.name)}</strong>` +
+    `<span class="rt-sub">${escapeHtml(axis.skill.short_label)} · Alter ${escapeHtml(axis.skill.age_range)}</span>` +
     "<dl>" +
     `<div><dt>Future Evidence</dt><dd class="rt-evidence">${axis.evidenceScore.toFixed(2)} / 1</dd></div>` +
     `<div><dt>LP21-Abdeckung</dt><dd class="rt-coverage">${axis.coverageScore.toFixed(1)} / 3</dd></div>` +
-    `<div><dt>Einschätzung</dt><dd>${coverageLabelText(axis.mapping.coverage_label)}</dd></div>` +
-    `<div><dt>Zyklen</dt><dd>${cycles}</dd></div>` +
-    `<div><dt>LP21-Bezug</dt><dd>${area}</dd></div>` +
+    `<div><dt>Einschätzung</dt><dd>${escapeHtml(coverageLabelText(axis.mapping.coverage_label))}</dd></div>` +
+    `<div><dt>Zyklen</dt><dd>${escapeHtml(cycles)}</dd></div>` +
+    `<div><dt>LP21-Bezug</dt><dd>${escapeHtml(area)}</dd></div>` +
     "</dl>";
   tooltip.classList.add("is-visible");
   tooltip.setAttribute("aria-hidden", "false");
@@ -873,7 +898,7 @@ function renderDetail() {
     const item = document.createElement("div");
     item.className = "source";
     const name = document.createElement("a");
-    name.href = mapping.framework_url;
+    setSafeHref(name, mapping.framework_url);
     name.target = "_blank";
     name.rel = "noreferrer";
     name.textContent = mapping.framework;
@@ -994,5 +1019,5 @@ loadData()
     render();
   })
   .catch((error) => {
-    els.detailPane.innerHTML = `<div class="empty-state"><h2>Daten konnten nicht geladen werden</h2><p>${error.message}</p></div>`;
+    els.detailPane.innerHTML = `<div class="empty-state"><h2>Daten konnten nicht geladen werden</h2><p>${escapeHtml(error.message)}</p></div>`;
   });

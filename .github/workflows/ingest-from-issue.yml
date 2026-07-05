@@ -6,25 +6,60 @@ name: Import report from issue (manual)
 # attached PDF / PDF URL into plaintext and runs the SAME LLM report importer and
 # candidate-PR path as the manual ingest-reports workflow. Like everything else,
 # it only ever produces candidates for human review; nothing is auto-activated.
+#
+# Abuse/cost control: the LLM import (a paid API call) only runs for issues
+# filed by the repository's own people (owner/member/collaborator). Anyone else
+# can still submit — their issue gets a comment and waits until a maintainer
+# adds the `ingest-approved` label, which re-fires this workflow via `labeled`.
+# The `edited` trigger is deliberately absent: every body edit would re-run the
+# paid import; re-triggering is a maintainer action (re-adding a label) instead.
 on:
   issues:
-    types: [opened, labeled, edited]
+    types: [opened, labeled]
 
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
+# No top-level grant: each job declares only what it needs.
+permissions: {}
 
-# An edit while a run is in flight should supersede it, not race it.
+# A re-trigger while a run is in flight should supersede it, not race it.
 concurrency:
   group: ingest-issue-${{ github.event.issue.number }}
   cancel-in-progress: true
 
 jobs:
-  import-from-issue:
-    # Only the report-intake issues, and only once they carry the `ingest` label.
-    if: contains(github.event.issue.labels.*.name, 'ingest')
+  # External submissions are welcome but must not spend API budget unreviewed:
+  # tell the submitter a maintainer will approve, exactly once (on open).
+  request-approval:
+    if: >-
+      github.event.action == 'opened' &&
+      contains(github.event.issue.labels.*.name, 'ingest') &&
+      !contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.issue.author_association) &&
+      !contains(github.event.issue.labels.*.name, 'ingest-approved')
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Comment that a maintainer must approve the import
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --repo "$REPO" \
+            --body "Danke für die Einreichung! Der automatische Import (LLM-Auswertung) startet, sobald ein Maintainer das Label \`ingest-approved\` setzt. Bis dahin passiert nichts — das Issue geht nicht verloren."
+
+  import-from-issue:
+    # Only the report-intake issues (the `ingest` label), and only when the
+    # author is repo-trusted OR a maintainer has added `ingest-approved`.
+    # Labels are maintainer-controlled, so the approval label cannot be
+    # self-served by the submitter.
+    if: >-
+      contains(github.event.issue.labels.*.name, 'ingest') &&
+      (contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.issue.author_association) ||
+       contains(github.event.issue.labels.*.name, 'ingest-approved'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
       - name: Restore pending candidates from open pull request branch

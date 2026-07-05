@@ -29,6 +29,7 @@ proposes nothing and writes no files.
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 import unicodedata
@@ -66,6 +67,14 @@ REPORT_PROMPT_VERSION = "report-import-v1"
 # A proposed claim statement shorter than this is dropped as too thin to be an
 # evidence statement, matching extract_claims.MIN_SENTENCE_LENGTH.
 MIN_PASSAGE_LENGTH = 40
+
+# Hard cap on how much report text is sent to the model. The issue intake
+# accepts PDFs up to 25 MB, whose extracted text would otherwise reach the API
+# in full — an unbounded, submitter-controlled input-token bill. Only the
+# PROMPT is capped: the verbatim guard still checks statements against the
+# complete text, so nothing about candidate integrity changes. Overridable for
+# operators via MAX_REPORT_CHARS.
+MAX_REPORT_CHARS = int(os.environ.get("MAX_REPORT_CHARS", 150_000))
 
 # Report source types the model may pick from; anything else (or null) falls
 # back to policy_report, the dominant case for OECD / WEF / UNESCO output.
@@ -146,6 +155,26 @@ eingeschlossen), oder null. Ueber {age_scale} hinausreichende Bereiche auf \
   - evidence_strength: eine von {{low, moderate, high}}, konservativ; im Zweifel low.'''
 
 
+def truncate_report_text(text: str, limit: int | None = None) -> str:
+    """Return *text* capped at *limit* characters for the LLM prompt.
+
+    The cut lands on the last sentence/paragraph boundary inside the limit (so
+    the model never sees a half sentence it might quote), falling back to a
+    hard cut when no boundary exists. Text at or under the limit is returned
+    unchanged. *limit* defaults to the module's MAX_REPORT_CHARS at call time,
+    so an operator override stays effective.
+    """
+    if limit is None:
+        limit = MAX_REPORT_CHARS
+    if len(text) <= limit:
+        return text
+    head = text[:limit]
+    boundary = max(head.rfind(". "), head.rfind(".\n"), head.rfind("\n\n"))
+    if boundary > 0:
+        head = head[: boundary + 1]
+    return head
+
+
 def report_prompt(text: str, url: str) -> str:
     """Render the versioned report-import prompt for *text*/*url*."""
     return REPORT_PROMPT_TEMPLATE.format(
@@ -166,7 +195,16 @@ def propose_report(text: str, url: str) -> dict[str, Any] | None:
     # Off by default: skip even building the prompt so the path is fully inert.
     if ai_provider.ai_provider() == "none":
         return None
-    result = ai_provider.complete(report_prompt(text, url), schema=REPORT_OUTPUT_SCHEMA)
+    # Cost cap: only the prompt is truncated; the verbatim guard downstream
+    # still verifies every statement against the FULL report text.
+    prompt_text = truncate_report_text(text)
+    if len(prompt_text) < len(text):
+        print(
+            f"Report text truncated for the LLM prompt: {len(text)} -> "
+            f"{len(prompt_text)} chars (cap {MAX_REPORT_CHARS}); findings beyond "
+            "the cap are not extracted automatically."
+        )
+    result = ai_provider.complete(report_prompt(prompt_text, url), schema=REPORT_OUTPUT_SCHEMA)
     if not isinstance(result, dict):
         return None
     return result
