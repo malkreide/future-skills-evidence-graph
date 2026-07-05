@@ -52,6 +52,11 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/public/`. The dashboard reads all data from the
 generated `data/index.json`, so rerun `build_site.py` after changing data files.
+The shipped index is slimmed for transport: fields the dashboard never renders
+(source abstracts, `assist` blocks) are stripped at build time — the versioned
+records in `data/` keep every field. The index is still a single file the
+client loads whole; splitting it into shards is deliberately deferred until the
+catalog approaches ~5,000 sources.
 
 ## Data model
 

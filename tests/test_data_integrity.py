@@ -608,6 +608,26 @@ class DataIntegrityTests(unittest.TestCase):
         abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
         self.assertIsNone(best_claim_sentence(abstract))
 
+    def test_dashboard_index_ships_without_bulk_fields(self) -> None:
+        # The client downloads and parses the WHOLE index on every visit;
+        # abstracts and assist blocks are never rendered and dominated the
+        # payload. They must stay out of the shipped index — while everything
+        # the dashboard actually reads stays in.
+        from build_site import build_index
+
+        index = build_index()
+        for source in index["sources"]:
+            self.assertNotIn("abstract", source)
+            self.assertNotIn("assist", source)
+            for needed in ("id", "title", "url", "publisher", "source_type"):
+                self.assertIn(needed, source)
+        for claim in index["claims"]:
+            self.assertNotIn("assist", claim)
+            for needed in ("id", "statement", "evidence_strength", "evidence_type", "text_anchor"):
+                self.assertIn(needed, claim)
+        # The canonical records keep every field — only the transport slims.
+        self.assertTrue(any(src.get("abstract") for src in load_records("sources")))
+
     def test_run_importer_pipeline_end_to_end(self) -> None:
         # The five importers now share one main() (common.run_importer). Wire a
         # fake fetch/convert through it: an in-scope record must land in the

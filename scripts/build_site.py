@@ -35,11 +35,29 @@ def _fingerprint_assets(output: Path) -> None:
         page.write_text(_ASSET_REF.sub(replace, page.read_text(encoding="utf-8")), encoding="utf-8")
 
 
+# Fields the dashboard never renders, stripped from the shipped index. The
+# abstracts dominate the payload (the client downloads and parses the WHOLE
+# index on every visit), and the assist blocks are reviewer-only provenance.
+# The versioned files in data/ keep every field — this trims the transport,
+# not the record. site/assets/app.js reads: sources(title, url, publisher,
+# year, source_type), claims(statement, evidence_*, text_anchor, *_skill_ids),
+# skills(everything), frameworks(everything).
+_DROPPED_SOURCE_FIELDS = ("abstract", "assist")
+_DROPPED_CLAIM_FIELDS = ("assist",)
+
+
+def _slim(records: list[dict], dropped: tuple[str, ...]) -> list[dict]:
+    return [
+        {key: value for key, value in record.items() if key not in dropped}
+        for record in records
+    ]
+
+
 def build_index() -> dict[str, object]:
     return {
         "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
-        "sources": load_records("sources"),
-        "claims": load_records("claims"),
+        "sources": _slim(load_records("sources"), _DROPPED_SOURCE_FIELDS),
+        "claims": _slim(load_records("claims"), _DROPPED_CLAIM_FIELDS),
         "skills": load_records("skills"),
         "frameworks": load_records("frameworks"),
     }
