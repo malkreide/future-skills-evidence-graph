@@ -14,9 +14,9 @@ requires human review through pull requests. Nothing here changes that.
 
 | Stage | Script / Workflow | Notes |
 | --- | --- | --- |
-| Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | Each degrades gracefully on outage (`fetch_or_warn`) |
+| Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | Each degrades gracefully on outage (`fetch_or_warn`). Crossref ingests no abstracts (JATS-only, sparse), so its sources never yield automatic claims — metadata only |
 | Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate; vocabulary is bilingual (English + German, incl. Swiss LP21 school-stage terms) |
-| Claim extraction | `extract_claims.py` | Verbatim finding sentence + text anchor; skips methodology |
+| Claim extraction | `extract_claims.py` | Verbatim finding sentences + text anchors (up to 3 per abstract — breadth feeds the skill score); skips methodology; abbreviation-safe sentence split |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
 | Review | `promote_candidate.py {claim,skill,reject,reject-source,promote-source,attach-claim,reopen}` | Promotes to reviewed/active; `reject-source` harvests a negative label; `reopen` flips a rejected record back to candidate |
 | Scoring | `score_evidence.py` | Recomputed automatically on promotion; drift-guarded by validation |

@@ -70,6 +70,12 @@ def convert(item: dict[str, Any]) -> dict[str, Any]:
         "publisher": item.get("publisher") or "Crossref",
         "source_type": source_type,
         "license": None,
+        # Crossref's abstract field is JATS XML and only sparsely populated, so
+        # it is not ingested. KNOWN CONSEQUENCE: Crossref sources contribute
+        # metadata only and NEVER yield automatic claims — extract_claims
+        # requires an abstract (no claim without a verbatim text anchor). A
+        # reviewer authors claims for a Crossref source by hand when it merits
+        # them. Documented in OPERATIONS.md (components table).
         "abstract": None,
         "topics": ["education"],
         "status": "candidate",

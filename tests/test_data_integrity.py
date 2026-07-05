@@ -602,6 +602,61 @@ class DataIntegrityTests(unittest.TestCase):
         abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
         self.assertIsNone(best_claim_sentence(abstract))
 
+    def test_sentence_split_survives_abbreviations(self) -> None:
+        # "e.g." must not end a sentence: before the abbreviation-safe split the
+        # anchor's sentence number pointed at the wrong sentence.
+        from extract_claims import split_sentences
+
+        text = (
+            "AI literacy is taught in schools (e.g. primary schools) across Europe. "
+            "Results show significant gains in critical thinking among pupils."
+        )
+        sentences = split_sentences(text)
+        self.assertEqual(len(sentences), 2)
+        self.assertIn("(e.g. primary schools)", sentences[0])
+        self.assertTrue(sentences[1].startswith("Results show"))
+        # German abbreviations from the bilingual sources.
+        german = (
+            "Die Studie untersucht KI-Kompetenz in Schulen, z. B. in der Primarstufe. "
+            "Die Ergebnisse zeigen deutliche Zuwächse bei Schülerinnen und Schülern."
+        )
+        self.assertEqual(len(split_sentences(german)), 2)
+        # A genuine sentence end after a word merely ENDING in an abbreviation
+        # ("develop." contains "p.") must still split.
+        tricky = (
+            "The programme helped every pupil develop. "
+            "Results show gains in AI literacy across all classrooms observed."
+        )
+        self.assertEqual(len(split_sentences(tricky)), 2)
+
+    def test_multiple_findings_yield_multiple_claims(self) -> None:
+        # An abstract with several finding sentences yields several claims (the
+        # skill score rewards breadth), each verbatim with its own anchor and a
+        # distinct id; methodology sentences still never become claims.
+        from extract_claims import MAX_CLAIMS_PER_SOURCE, claims_from_source
+
+        source = {
+            "id": "src-multi",
+            "source_type": "peer_reviewed_article",
+            "abstract": (
+                "We conducted a survey with a sample of 300 pupils about AI literacy. "
+                "Results show that AI literacy instruction improves critical thinking among pupils. "
+                "Findings suggest that collaboration in the classroom enhances digital competence. "
+                "The study finds that self-regulation training promotes lifelong learning in schools."
+            ),
+        }
+        claims = claims_from_source(source)
+        self.assertEqual(len(claims), MAX_CLAIMS_PER_SOURCE)
+        statements = [claim["statement"] for claim in claims]
+        self.assertEqual(len(set(statements)), len(statements))
+        self.assertEqual(len({claim["id"] for claim in claims}), len(claims))
+        for claim in claims:
+            self.assertIn(claim["statement"], source["abstract"])
+            self.assertIn(claim["statement"], claim["text_anchor"])
+            self.assertNotIn("sample of", claim["statement"])
+        # The single-best wrapper stays consistent with the ranked head.
+        self.assertEqual(claim_from_source(source)["statement"], statements[0])
+
     def test_filter_new_claims_drops_known_statements(self) -> None:
         existing = load_records("claims")[0]
         duplicate = {
