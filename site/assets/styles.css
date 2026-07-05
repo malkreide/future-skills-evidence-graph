@@ -248,6 +248,15 @@ select {
   padding: 10px 14px;
 }
 
+/* The canonical English original shown under a translated definition. */
+.definition-original {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: italic;
+  margin: 6px 0 0;
+  max-width: 90ch;
+}
+
 /* Inline explanation of the evidence score, right where the score is shown. */
 .score-info {
   border-left: 3px solid var(--line);

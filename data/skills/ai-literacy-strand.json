@@ -2,8 +2,10 @@
   {
     "id": "skill-ai-foundational-concepts",
     "name": "AI Foundational Concepts",
+    "name_de": "KI-Grundkonzepte",
     "short_label": "KI-Konzepte",
     "definition": "Ability to explain in age-appropriate terms how AI and machine-learning systems take in data, learn patterns, make predictions, and where the limits of machine intelligence lie.",
+    "definition_de": "Fähigkeit, altersgerecht zu erklären, wie KI- und Machine-Learning-Systeme Daten aufnehmen, Muster lernen und Vorhersagen treffen – und wo die Grenzen maschineller Intelligenz liegen.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -92,8 +94,10 @@
   {
     "id": "skill-ai-everyday-recognition",
     "name": "Everyday AI Recognition",
+    "name_de": "KI im Alltag erkennen",
     "short_label": "Alltag-KI",
     "definition": "Ability to recognize where AI and algorithms operate in everyday tools - search, recommendations, voice assistants, smart devices - and to question how they shape what we see and do.",
+    "definition_de": "Fähigkeit zu erkennen, wo KI und Algorithmen in Alltagswerkzeugen wirken – Suche, Empfehlungen, Sprachassistenten, smarte Geräte – und zu hinterfragen, wie sie prägen, was wir sehen und tun.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -148,8 +152,10 @@
   {
     "id": "skill-generative-ai-literacy",
     "name": "Generative AI Literacy",
+    "name_de": "Kompetenz im Umgang mit generativer KI",
     "short_label": "GenKI",
     "definition": "Ability to use generative AI tools effectively while understanding how they produce content, verifying their outputs, protecting personal data, and recognizing bias and limits.",
+    "definition_de": "Fähigkeit, generative KI-Werkzeuge wirksam zu nutzen und dabei zu verstehen, wie sie Inhalte erzeugen – ihre Ausgaben zu überprüfen, persönliche Daten zu schützen und Verzerrungen wie Grenzen zu erkennen.",
     "age_range": "13-18",
     "audience": "learner",
     "status": "active",

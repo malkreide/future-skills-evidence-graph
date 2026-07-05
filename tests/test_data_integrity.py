@@ -1109,6 +1109,23 @@ class DataIntegrityTests(unittest.TestCase):
             finally:
                 pc.HARVEST_PATH = original
 
+    def test_active_skills_carry_german_display_fields(self) -> None:
+        # The dashboard's audience is German-speaking (Lehrplan-21 anchoring);
+        # every ACTIVE skill ships a German display name and definition
+        # (name_de/definition_de, EN stays the canonical reviewed text).
+        # Candidates may stay English until promotion.
+        for skill in load_records("skills"):
+            if skill.get("status") != "active":
+                continue
+            self.assertTrue(
+                str(skill.get("name_de", "")).strip(),
+                f"active skill {skill['id']} lacks name_de",
+            )
+            self.assertTrue(
+                str(skill.get("definition_de", "")).strip(),
+                f"active skill {skill['id']} lacks definition_de",
+            )
+
     def test_refilter_flags_stale_candidates_against_current_vocabulary(self) -> None:
         # The filter only runs at ingest time; refilter_candidates re-checks the
         # OPEN backlog after a vocabulary change. The MENA-immigrant case is the

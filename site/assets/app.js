@@ -305,7 +305,9 @@ function buildSearchIndex() {
   for (const skill of state.skills) {
     const parts = [
       skill.name,
+      skill.name_de || "",
       skill.definition,
+      skill.definition_de || "",
       skill.age_range,
       skill.status,
       ...(skill.topics || []),
@@ -443,9 +445,9 @@ function renderSkillList() {
     if (selected) selectedButton = button;
 
     const title = document.createElement("h3");
-    title.textContent = skill.name;
+    title.textContent = skillName(skill);
     const description = document.createElement("p");
-    description.textContent = skill.definition;
+    description.textContent = skillDefinition(skill);
     const meta = document.createElement("div");
     meta.className = "card-meta";
     meta.append(
@@ -503,6 +505,17 @@ const LABELS_DE = {
 
 function labelDe(value) {
   return LABELS_DE[value] || value;
+}
+
+// Editorial skill fields carry an optional German translation (name_de /
+// definition_de, maintained at review time). The German UI prefers them and
+// falls back to English so untranslated candidates stay fully readable.
+function skillName(skill) {
+  return skill.name_de || skill.name;
+}
+
+function skillDefinition(skill) {
+  return skill.definition_de || skill.definition;
 }
 
 // mapping_strength shares tokens with evidence_strength ("strong"/"moderate")
@@ -604,11 +617,11 @@ function renderLp21Comparison() {
     const label = mapping.coverage_label;
 
     const skillCell = document.createElement("td");
-    const skillName = document.createElement("strong");
-    skillName.textContent = skill.name;
+    const skillNameEl = document.createElement("strong");
+    skillNameEl.textContent = skillName(skill);
     const skillAge = document.createElement("small");
     skillAge.textContent = skill.age_range;
-    skillCell.append(skillName, document.createElement("br"), skillAge);
+    skillCell.append(skillNameEl, document.createElement("br"), skillAge);
 
     const evidenceCell = document.createElement("td");
     evidenceCell.textContent = evidenceScore.toFixed(2);
@@ -709,7 +722,7 @@ function drawRadar(mappings, skillMap) {
       mapping,
       evidenceScore,
       coverageScore,
-      lines: wrapLabel(skill.name),
+      lines: wrapLabel(skillName(skill)),
       axisEnd: { x: center.x + cos * radius, y: center.y + sin * radius },
       labelAnchor: { x: center.x + cos * (radius + 16), y: center.y + sin * (radius + 16) },
       evidencePoint: { x: center.x + cos * evidenceR, y: center.y + sin * evidenceR },
@@ -855,7 +868,7 @@ function showRadarTooltip(axis) {
   const cycles = (axis.mapping.cycles || []).join(", ") || "–";
   const area = axis.mapping.curriculum_area || axis.mapping.framework || "–";
   tooltip.innerHTML =
-    `<strong>${escapeHtml(axis.skill.name)}</strong>` +
+    `<strong>${escapeHtml(skillName(axis.skill))}</strong>` +
     `<span class="rt-sub">${escapeHtml(axis.skill.short_label)} · Alter ${escapeHtml(axis.skill.age_range)}</span>` +
     "<dl>" +
     `<div><dt>Future Evidence</dt><dd class="rt-evidence">${axis.evidenceScore.toFixed(2)} / 1</dd></div>` +
@@ -919,12 +932,20 @@ function renderDetail() {
   const header = document.createElement("header");
   header.className = "detail-header";
   const title = document.createElement("h2");
-  title.textContent = skill.name;
+  title.textContent = skillName(skill);
   const definition = document.createElement("p");
   definition.className = "definition";
-  definition.textContent = skill.definition;
+  definition.textContent = skillDefinition(skill);
   const tags = document.createElement("div");
   tags.className = "tag-row";
+  // The English fields are the canonical reviewed text; when a German
+  // translation is shown, keep the original visible for transparency.
+  let original = null;
+  if (skill.definition_de) {
+    original = document.createElement("p");
+    original.className = "definition-original";
+    original.textContent = `Original (EN): ${skill.name} — ${skill.definition}`;
+  }
   tags.append(
     pill(statusLabel(skill.status), skill.status),
     pill(`Evidenz ${scoreLabel(skill.evidence_score)}`, "score"),
@@ -949,7 +970,7 @@ function renderDetail() {
   scoreLink.rel = "noreferrer";
   scoreLink.textContent = "Ausführliche Erklärung für Laien →";
   scoreInfo.append(scoreSummary, scoreText, scoreLink);
-  header.append(title, definition, tags, scoreInfo);
+  header.append(title, definition, ...(original ? [original] : []), tags, scoreInfo);
 
   const grid = document.createElement("div");
   grid.className = "detail-grid";
