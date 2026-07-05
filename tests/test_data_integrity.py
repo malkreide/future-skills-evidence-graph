@@ -827,6 +827,41 @@ class DataIntegrityTests(unittest.TestCase):
                 f"hard false positive kept: {example['title']}",
             )
 
+    def test_german_sources_pass_the_bilingual_filter(self) -> None:
+        # Regression guard for the German blind spot: the project is anchored to
+        # Lehrplan 21, yet before the bilingual keyword layer a German EDK/KMK/
+        # PH-style abstract scored 0.0 and was silently dropped. The labeled set
+        # now carries German examples (notes tagged "[de]"); every one of them
+        # must be classified correctly — positives kept (incl. the educator lane
+        # and Sek-II vocational learners), negatives dropped (German higher-ed,
+        # workplace, health, teacher tool-use).
+        import eval_relevance
+
+        examples = eval_relevance.load_examples()
+        german = [e for e in examples if str(e.get("note", "")).startswith("[de]")]
+        self.assertGreaterEqual(len(german), 20, "German eval examples missing")
+        self.assertTrue(any(e["relevant"] for e in german))
+        self.assertTrue(any(not e["relevant"] for e in german))
+        for example in german:
+            score, topics = score_relevance(example)
+            kept = heuristic_keep(example, score, topics)
+            self.assertEqual(
+                kept,
+                example["relevant"],
+                f"German example misclassified: {example['title']}",
+            )
+
+    def test_normalize_title_folds_german_diacritics(self) -> None:
+        # Umlauts must map to their base letters (not vanish), and ß to ss, so
+        # German keywords and titles normalize consistently on both sides.
+        self.assertEqual(
+            normalize_title("Förderung der KI-Kompetenz bei Schülerinnen"),
+            "forderung der ki kompetenz bei schulerinnen",
+        )
+        self.assertEqual(normalize_title("Straße"), "strasse")
+        # The gender star splits the token; the stem keyword still matches.
+        self.assertEqual(normalize_title("Schüler*innen"), "schuler innen")
+
     def test_attach_claim_validates_targets(self) -> None:
         from argparse import Namespace
 

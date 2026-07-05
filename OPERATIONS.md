@@ -15,7 +15,7 @@ requires human review through pull requests. Nothing here changes that.
 | Stage | Script / Workflow | Notes |
 | --- | --- | --- |
 | Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | Each degrades gracefully on outage (`fetch_or_warn`) |
-| Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate |
+| Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate; vocabulary is bilingual (English + German, incl. Swiss LP21 school-stage terms) |
 | Claim extraction | `extract_claims.py` | Verbatim finding sentence + text anchor; skips methodology |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
 | Review | `promote_candidate.py {claim,skill,reject,reject-source,promote-source,attach-claim,reopen}` | Promotes to reviewed/active; `reject-source` harvests a negative label; `reopen` flips a rejected record back to candidate |
@@ -238,10 +238,10 @@ EMBEDDING_PROVIDER=local python scripts/eval_relevance.py --compare-embedding  #
 The `st` provider is the real semantic embedding (sentence-transformers
 `all-MiniLM-L6-v2`); it replays committed vectors from `tests/fixtures/embeddings/`
 offline, and only imports the package to embed a text not yet cached. `local` is the
-dependency-free hashing embedding. The current honest verdict (87-example set):
-heuristic F1 1.00, `st` anchors F1 0.76, `local` anchors F1 0.65 — neither beats the
-heuristic, so it stays the active default (see
-[docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md)).
+dependency-free hashing embedding. The current honest verdict (109-example set,
+including the German cases): heuristic F1 1.00, model F1 0.75, `st` anchors F1
+0.76, `local` anchors F1 0.59 — none beats the heuristic, so it stays the active
+default (see [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md)).
 
 Triggers → actions:
 - **False positive seen** → `reject-source`; add the domain to `OFF_SCOPE_KEYWORDS`
@@ -446,6 +446,26 @@ skill now rests on two supporting claims: `skill-educator-ai-pedagogy` (0.46 →
 second low-strength claim below the prior mean). Both studies are also added to
 `eval/relevance_educator.json` (the Investigation case exercises the
 higher-education guard's preservice exemption).
+
+### Improvement applied: bilingual (German) keyword layer
+
+The keyword vocabulary was English-only while the project is anchored to
+Lehrplan 21 — a German EDK/KMK/PH-style abstract scored 0.0 and was silently
+dropped, so German-language primary sources could never pass the automated
+pipeline. Two changes closed the gap: `normalize_title` now folds diacritics to
+base letters (before, "Schülerinnen" normalized to "sch lerinnen" and no German
+keyword could match), and every vocabulary carries German equivalents — topics,
+audience, Swiss school stages (Primarstufe, Volksschule, Zyklus 1–3, Sek-II
+Berufsbildung so vocational learners do not trip the adult gate), the higher-ed
+gate, off-scope terms, and the educator lane. The eval set grew 87 → 109 with 22
+German cases (12 positives incl. educator lane and Sek-II vocational, 10
+negatives incl. German higher-ed/workplace/health/tool-use);
+`test_german_sources_pass_the_bilingual_filter` pins every classification. The
+heuristic measures P 1.00 / R 1.00 on the grown set; the retried model (F1 0.75)
+and embedding anchors (`st` 0.76 after the documented re-embed, `local` 0.59)
+still do not beat it. Known limits: no stemming (rare inflections surface via
+the recall probe) and no French/Italian yet. Details:
+[docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
 
 ### First evidence folded into the graph
 

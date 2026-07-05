@@ -158,7 +158,9 @@ Imported candidates pass a **relevance filter** (`scripts/common.py`) before
 deduplication. The default is a transparent keyword/topic heuristic: a candidate
 must match at least one MVP topic, score at or above the threshold, clear a curated
 off-scope term list, and pass an audience/age gate that keeps only the ages 0-18
-learner audience. Running alongside that learner lane, an **educator lane** keeps
+learner audience. The vocabulary is **bilingual (English + German)**, including
+Swiss Lehrplan-21 school-stage terms, so German-language sources (EDK, KMK, PH
+publications) pass the automated pipeline like English ones. Running alongside that learner lane, an **educator lane** keeps
 the topic-anchored evidence about a school educator's own competence that the
 adult-audience gate would otherwise drop, tagging each survivor `audience`
 (`learner` or `educator`); its higher-education and teacher-tool-use guards keep

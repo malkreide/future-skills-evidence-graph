@@ -5,6 +5,7 @@ import math
 import os
 import re
 import sys
+import unicodedata
 from datetime import date
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -111,7 +112,13 @@ def load_research_queries() -> list[str]:
 
 
 def normalize_title(title: str) -> str:
+    # Casefold first (ß -> ss), then strip diacritics via NFKD so accented
+    # letters keep their base character instead of vanishing: without this,
+    # "Schülerinnen" became "sch lerinnen" and no German keyword could ever
+    # match — the relevance filter was structurally blind to German sources.
     normalized = title.casefold()
+    normalized = unicodedata.normalize("NFKD", normalized)
+    normalized = "".join(ch for ch in normalized if not unicodedata.combining(ch))
     normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
     normalized = re.sub(r"\s+", " ", normalized).strip()
     return normalized
@@ -366,6 +373,14 @@ def lp21_coverage_label(score: float) -> str:
 
 # Topic vocabulary derived from the MVP scope in MASTER_PROMPT.md. Keys become
 # the candidate's topics; keyword variants are matched against title and abstract.
+#
+# The vocabulary is BILINGUAL (English + German): the project is anchored to
+# Lehrplan 21, so German-language primary sources (EDK, KMK, PH publications,
+# SNF studies) must be able to pass the automated pipeline. Keywords are written
+# in natural spelling — normalize_title folds umlauts (ä→a, ü→u, ß→ss) on both
+# sides of the match, so "künstliche intelligenz" also matches "kuenstliche"-free
+# text after normalization. German nouns are inflected; the common case forms
+# are listed explicitly because matching is exact-phrase, not stemmed.
 TOPIC_KEYWORDS = {
     "ai literacy": (
         "ai literacy",
@@ -375,28 +390,127 @@ TOPIC_KEYWORDS = {
         "generative ai",
         "large language model",
         "chatgpt",
+        "ki kompetenz",
+        "ki kompetenzen",
+        "ki bildung",
+        "ki grundbildung",
+        "künstliche intelligenz",
+        "künstlicher intelligenz",
+        "maschinelles lernen",
+        "maschinellem lernen",
+        "generative ki",
+        "generativer ki",
+        "sprachmodell",
+        "sprachmodelle",
     ),
-    "critical thinking": ("critical thinking", "epistemic", "misinformation", "fact checking"),
-    "digital competence": ("digital competence", "digital literacy", "digital skills", "media literacy"),
-    "data literacy": ("data literacy", "data science education"),
-    "creativity": ("creativity", "creative thinking", "creative problem solving"),
-    "collaboration": ("collaboration", "collaborative", "teamwork", "cooperative learning"),
+    "critical thinking": (
+        "critical thinking",
+        "epistemic",
+        "misinformation",
+        "fact checking",
+        "kritisches denken",
+        "kritischen denkens",
+        "kritischem denken",
+        "kritische denken",
+        "desinformation",
+        "fehlinformation",
+        "faktencheck",
+    ),
+    "digital competence": (
+        "digital competence",
+        "digital literacy",
+        "digital skills",
+        "media literacy",
+        "digitale kompetenz",
+        "digitale kompetenzen",
+        "digitalen kompetenzen",
+        "digitaler kompetenzen",
+        "digitale bildung",
+        "digitale grundbildung",
+        "medienkompetenz",
+        "medienkompetenzen",
+        "medienbildung",
+    ),
+    "data literacy": (
+        "data literacy",
+        "data science education",
+        "datenkompetenz",
+        "datenkompetenzen",
+    ),
+    "creativity": (
+        "creativity",
+        "creative thinking",
+        "creative problem solving",
+        "kreativität",
+        "kreatives denken",
+        "kreativem denken",
+        "kreatives problemlösen",
+    ),
+    "collaboration": (
+        "collaboration",
+        "collaborative",
+        "teamwork",
+        "cooperative learning",
+        "zusammenarbeit",
+        "kollaboration",
+        "kollaboratives lernen",
+        "kollaborativen lernens",
+        "kooperatives lernen",
+        "kooperativen lernens",
+    ),
     "self-regulation": (
         "self-regulated",
         "self-regulation",
         "metacognition",
         "learning to learn",
         "lifelong learning",
+        "selbstregulation",
+        "selbstreguliertes lernen",
+        "selbstregulierten lernens",
+        "metakognition",
+        "lernen lernen",
+        "lebenslanges lernen",
+        "lebenslangen lernens",
     ),
-    "ethics": ("ethics", "ethical", "responsible ai", "privacy", "fairness"),
-    "systems thinking": ("systems thinking", "computational thinking"),
-    "resilience": ("resilience", "adaptability"),
+    "ethics": (
+        "ethics",
+        "ethical",
+        "responsible ai",
+        "privacy",
+        "fairness",
+        "ethik",
+        "ethisch",
+        "ethische",
+        "ethischen",
+        "ethischer",
+        "verantwortungsvolle ki",
+        "datenschutz",
+    ),
+    "systems thinking": (
+        "systems thinking",
+        "computational thinking",
+        "systemdenken",
+        "systemisches denken",
+        "informatisches denken",
+    ),
+    "resilience": (
+        "resilience",
+        "adaptability",
+        "resilienz",
+        "anpassungsfähigkeit",
+    ),
     "future skills": (
         "future skills",
         "21st century skills",
         "twenty-first century skills",
         "future of work",
         "key competencies",
+        "zukunftskompetenz",
+        "zukunftskompetenzen",
+        "schlüsselkompetenzen",
+        "kompetenzen des 21 jahrhunderts",
+        "überfachliche kompetenzen",
+        "überfachlichen kompetenzen",
     ),
 }
 
@@ -414,6 +528,28 @@ AUDIENCE_KEYWORDS = (
     "classroom",
     "curriculum",
     "learner",
+    # German (see the bilingual note on TOPIC_KEYWORDS). "schüler" normalizes
+    # to "schuler" and also covers the first token of "Schüler*innen".
+    "kind",
+    "kinder",
+    "kindern",
+    "jugendliche",
+    "jugendlichen",
+    "schüler",
+    "schülerinnen",
+    "schülern",
+    "schule",
+    "schulen",
+    "unterricht",
+    "bildung",
+    "lehrplan",
+    "lehrperson",
+    "lehrpersonen",
+    "lehrkraft",
+    "lehrkräfte",
+    "lernende",
+    "lernenden",
+    "klassenzimmer",
 )
 
 # Default minimum relevance for imported candidates: at least one topic match
@@ -492,6 +628,28 @@ OFF_SCOPE_KEYWORDS = (
     "eap",
     "efl",
     "esl",
+    # German equivalents of the classes above (health, engineering/agriculture,
+    # labour/finance, workplace, pandemic logistics, PE). Reactive like the
+    # English list: grown from observed false positives, not exhaustive.
+    "ernährung",
+    "klinisch",
+    "klinische",
+    "patienten",
+    "patientinnen",
+    "katastrophe",
+    "katastrophen",
+    "erdbeben",
+    "landwirtschaft",
+    "gehalt",
+    "gehälter",
+    "löhne",
+    "steuern",
+    "arbeitsplatz",
+    "unternehmen",
+    "betriebe",
+    "pandemie",
+    "sportunterricht",
+    "bewegungsförderung",
 )
 
 
@@ -532,6 +690,21 @@ HIGHER_ED_KEYWORDS = (
     "adult learner",
     "adult learners",
     "adult education",
+    # German. Deliberately NOT "weiterbildung" (too broad — teacher PD lives
+    # there and belongs to the educator lane, not the adult gate).
+    "hochschule",
+    "hochschulen",
+    "universität",
+    "universitäten",
+    "studierende",
+    "studierenden",
+    "studenten",
+    "studentinnen",
+    "erwachsenenbildung",
+    "berufstätige",
+    "berufstätigen",
+    "arbeitnehmende",
+    "arbeitnehmer",
 )
 SCHOOL_AGE_KEYWORDS = (
     "child",
@@ -571,6 +744,34 @@ SCHOOL_AGE_KEYWORDS = (
     "schoolchildren",
     "young learner",
     "young learners",
+    # German / Swiss school stages (Lehrplan 21 anchoring). "berufsbildung" /
+    # "berufsschule" mark Sek-II vocational learners (ages ~15-18, in scope) so
+    # a German "college"-like term does not trip the adult gate.
+    "kind",
+    "kinder",
+    "kindern",
+    "vorschule",
+    "frühe kindheit",
+    "primarstufe",
+    "primarschule",
+    "grundschule",
+    "volksschule",
+    "sekundarstufe",
+    "sekundarschule",
+    "mittelschule",
+    "oberstufe",
+    "gymnasium",
+    "gymnasien",
+    "schulkinder",
+    "schülerinnen und schüler",
+    "jugendliche",
+    "jugendlichen",
+    "zyklus 1",
+    "zyklus 2",
+    "zyklus 3",
+    "berufsbildung",
+    "berufsschule",
+    "berufsschulen",
 )
 
 
@@ -631,6 +832,24 @@ EDUCATOR_STRONG_KEYWORDS = (
     "teacher readiness",
     "teaching ai literacy",
     "teachers ai literacy",
+    # German: teacher education/PD phrases that on their own denote a school
+    # educator's competence as the subject (see the bilingual note above).
+    "lehrerbildung",
+    "lehrerinnenbildung",
+    "lehrpersonenbildung",
+    "lehrerausbildung",
+    "lehrerfortbildung",
+    "lehrerweiterbildung",
+    "lehrpersonenfortbildung",
+    "lehrpersonenweiterbildung",
+    "lehrerkompetenz",
+    "lehrerkompetenzen",
+    "kompetenzen von lehrpersonen",
+    "kompetenzen von lehrkräften",
+    "angehende lehrpersonen",
+    "angehende lehrkräfte",
+    "lehramtsstudierende",
+    "lehramtsstudierenden",
 )
 EDUCATOR_SUBJECT_KEYWORDS = (
     "teacher",
@@ -638,6 +857,13 @@ EDUCATOR_SUBJECT_KEYWORDS = (
     "educator",
     "educators",
     "teaching staff",
+    "lehrperson",
+    "lehrpersonen",
+    "lehrkraft",
+    "lehrkräfte",
+    "lehrkräften",
+    "lehrer",
+    "lehrerinnen",
 )
 EDUCATOR_CONTEXT_KEYWORDS = (
     "professional development",
@@ -661,6 +887,19 @@ EDUCATOR_CONTEXT_KEYWORDS = (
     "professional learning community",
     "tpack",
     "pedagogical content knowledge",
+    "fortbildung",
+    "weiterbildung",
+    "kompetenz",
+    "kompetenzen",
+    "pädagogik",
+    "pädagogisch",
+    "pädagogische",
+    "pädagogischen",
+    "didaktik",
+    "didaktisch",
+    "didaktische",
+    "didaktischen",
+    "professionalisierung",
 )
 # Teacher PRODUCTIVITY / tool-use is the educator's adoption of an AI tool to
 # reduce their own workload (lesson planning, grading, administrative
@@ -701,6 +940,13 @@ HIGHER_ED_TEACHING_KEYWORDS = (
     "graduate student",
     "graduate students",
     "faculty",
+    "hochschule",
+    "hochschulen",
+    "hochschuldidaktik",
+    "universität",
+    "universitäten",
+    "studierende",
+    "studierenden",
 )
 
 
