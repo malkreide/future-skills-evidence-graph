@@ -63,8 +63,10 @@ from extract_claims import (  # noqa: E402
     suggest_claim_fields,
 )
 from extract_pdf_text import clean_extracted_text  # noqa: E402
+import ingest_reports  # noqa: E402
 from ingest_reports import (  # noqa: E402
     MIN_PASSAGE_LENGTH,
+    truncate_report_text,
     REPORT_OUTPUT_SCHEMA,
     REPORT_PROMPT_VERSION,
     build_claims,
@@ -1702,6 +1704,55 @@ class ClaimPrefillAssistTests(unittest.TestCase):
         # With the reviewer-supplied skill link the gate finally clears.
         claim["supports_skill_ids"] = ["skill-x"]
         self.assertEqual(claim_review_errors(claim, skill_ids, source_ids), [])
+
+
+class ReportTruncationTests(unittest.TestCase):
+    """The LLM prompt is cost-capped: a submitter-controlled 25 MB PDF must not
+    reach the paid API in full. Only the prompt is cut — the verbatim guard
+    keeps checking statements against the complete text."""
+
+    def test_text_at_or_under_limit_is_unchanged(self) -> None:
+        text = "One finding. Another finding."
+        self.assertEqual(truncate_report_text(text, limit=100), text)
+        self.assertEqual(truncate_report_text(text, limit=len(text)), text)
+
+    def test_over_limit_cuts_on_a_sentence_boundary(self) -> None:
+        text = "First sentence stands alone. Second sentence follows here. Tail"
+        capped = truncate_report_text(text, limit=40)
+        self.assertEqual(capped, "First sentence stands alone.")
+        # Never a half sentence the model could quote from mid-air.
+        self.assertTrue(capped.endswith("."))
+
+    def test_over_limit_without_boundary_hard_cuts(self) -> None:
+        text = "x" * 500
+        self.assertEqual(truncate_report_text(text, limit=100), "x" * 100)
+
+    def test_prompt_is_capped_but_guard_sees_full_text(self) -> None:
+        # A finding sentence placed BEYOND the cap: the prompt must not contain
+        # it, yet the verbatim guard (which gets the full text) still accepts it.
+        beyond = (
+            "Learners in primary school gain measurable digital competence "
+            "from sustained classroom practice."
+        )
+        text = ("Filler sentence for padding. " * 50) + beyond
+        with mock.patch.object(ingest_reports, "MAX_REPORT_CHARS", 200):
+            capped = truncate_report_text(text, limit=200)
+            self.assertNotIn(beyond, capped)
+            captured: dict[str, str] = {}
+
+            def fake_complete(prompt: str, *, schema: object = None) -> None:
+                captured["prompt"] = prompt
+                return None
+
+            with mock.patch.object(
+                ingest_reports.ai_provider, "ai_provider", return_value="anthropic"
+            ), mock.patch.object(
+                ingest_reports.ai_provider, "complete", side_effect=fake_complete
+            ):
+                propose_report(text, "https://example.org/report.pdf")
+            self.assertNotIn(beyond, captured["prompt"])
+        # The guard verifies against the FULL text, so the passage stays valid.
+        self.assertEqual(verbatim_passage(beyond, text), beyond)
 
 
 class ReportImportTests(unittest.TestCase):
