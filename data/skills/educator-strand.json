@@ -2,8 +2,10 @@
   {
     "id": "skill-educator-ai-pedagogy",
     "name": "Teaching AI Literacy",
+    "name_de": "KI-Kompetenz unterrichten",
     "short_label": "KI-Didaktik",
     "definition": "Educators' competence to design and deliver age-appropriate AI-literacy instruction for school learners - selecting tools, pedagogies and activities that make AI concepts learnable in primary and secondary classrooms.",
+    "definition_de": "Kompetenz von Lehrpersonen, altersgerechten KI-Unterricht für Schülerinnen und Schüler zu gestalten und durchzuführen – Werkzeuge, Didaktik und Aktivitäten so zu wählen, dass KI-Konzepte in Primar- und Sekundarklassen lernbar werden.",
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",
@@ -61,8 +63,10 @@
   {
     "id": "skill-educator-digital-competence",
     "name": "Educator Digital and AI Competence",
+    "name_de": "Digitale und KI-Kompetenz von Lehrpersonen",
     "short_label": "Digital-LK",
     "definition": "Educators' own digital and AI literacy - the foundational technological competence teachers need to use AI tools responsibly and integrate tech-driven pedagogy into school teaching.",
+    "definition_de": "Die eigene Digital- und KI-Kompetenz von Lehrpersonen – die technologische Grundkompetenz, um KI-Werkzeuge verantwortungsvoll zu nutzen und technologiegestützte Didaktik in den Schulunterricht zu integrieren.",
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",

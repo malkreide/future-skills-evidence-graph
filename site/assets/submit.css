@@ -95,7 +95,8 @@
 }
 
 .dropzone.is-dragover {
-  background: #e7f4ee;
+  /* Theme-aware: a fixed light green flashed bright in dark mode. */
+  background: color-mix(in srgb, var(--green) 14%, var(--surface));
   border-color: var(--green);
 }
 

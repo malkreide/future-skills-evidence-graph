@@ -57,7 +57,12 @@ generated `data/index.json`, so rerun `build_site.py` after changing data files.
 
 - `Source`: bibliographic or policy source metadata.
 - `Claim`: structured evidence statement extracted from a source.
-- `Skill`: reviewed or candidate future-skill profile. An optional `audience`
+- `Skill`: reviewed or candidate future-skill profile. The editorial display
+  fields carry an optional German translation (`name_de`, `definition_de`): the
+  dashboard prefers them and falls back to English, active skills ship both
+  (guarded by a test), and claims stay verbatim in their source language —
+  only editorial text translates. `promote_candidate.py skill` accepts
+  `--name-de` / `--definition-de`. An optional `audience`
   field separates the two perspectives the catalog tracks: `learner` (default —
   the future skills of learners aged 0-18, anchored to Lehrplan 21 and learner
   frameworks) and `educator` (the competencies of the teachers who enable them,

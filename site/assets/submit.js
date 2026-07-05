@@ -64,6 +64,21 @@
     els.hint.dataset.kind = kind || "";
   }
 
+  function openIssuePage(url, hintText) {
+    // Popup blockers can silently swallow window.open; leave a clickable
+    // fallback link in the hint so the flow never dead-ends.
+    const opened = window.open(url, "_blank", "noopener");
+    setHint(hintText, "ok");
+    if (!opened) {
+      const link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = " Kein Tab aufgegangen? Hier klicken, um das GitHub-Issue zu öffnen.";
+      els.hint.append(link);
+    }
+  }
+
   function detectSourceUrl(text, publisher) {
     // Berichte tragen ihre eigene URL/DOI fast immer im Text (Titelseite,
     // Fußzeile, „verfügbar unter …"). Wir lesen sie aus dem Dokument statt im
@@ -308,36 +323,38 @@
     // Zwischenablage und Hinweis. Ohne Text (reine PDF-URL) faellt der
     // Server-Pfad ohnehin auf das URL-PDF zurueck.
     if (text && text.length <= PREFILL_TEXT_LIMIT) {
-      window.open(buildIssueUrl({ owner, repo, includeText: true }), "_blank", "noopener");
-      setHint("GitHub-Issue geöffnet – dort nur noch absenden.", "ok");
+      openIssuePage(
+        buildIssueUrl({ owner, repo, includeText: true }),
+        "GitHub-Issue geöffnet – dort nur noch absenden."
+      );
       return;
     }
     // Großer Bericht aus einem PDF: der Volltext passt nicht in ein Issue (~64 KB).
     // Statt der Zwischenablage die Original-PDF auf GitHub anhängen lassen – der
     // Workflow extrahiert sie dann server-seitig.
     if (droppedPdfName) {
-      window.open(buildIssueUrl({ owner, repo, includeText: false }), "_blank", "noopener");
-      setHint(
+      openIssuePage(
+        buildIssueUrl({ owner, repo, includeText: false }),
         `Großer Bericht: häng auf der GitHub-Seite die PDF „${droppedPdfName}“ im Feld ` +
-          "„PDF anhängen“ an und sende ab (der Text passt nicht in ein Issue).",
-        "ok"
+          "„PDF anhängen“ an und sende ab (der Text passt nicht in ein Issue)."
       );
       return;
     }
     if (text) {
       const copied = await copyText(text);
-      window.open(buildIssueUrl({ owner, repo, includeText: false }), "_blank", "noopener");
-      setHint(
+      openIssuePage(
+        buildIssueUrl({ owner, repo, includeText: false }),
         copied
           ? "Text ist lang – er liegt in der Zwischenablage. Auf der GitHub-Seite ins Textfeld einfügen und absenden."
-          : "Text ist lang – bitte oben kopieren und auf der GitHub-Seite ins Textfeld einfügen.",
-        "ok"
+          : "Text ist lang – bitte oben kopieren und auf der GitHub-Seite ins Textfeld einfügen."
       );
       return;
     }
     // Nur PDF-URL, kein Text.
-    window.open(buildIssueUrl({ owner, repo, includeText: false }), "_blank", "noopener");
-    setHint("GitHub-Issue geöffnet – die PDF-URL wird beim Import gelesen.", "ok");
+    openIssuePage(
+      buildIssueUrl({ owner, repo, includeText: false }),
+      "GitHub-Issue geöffnet – die PDF-URL wird beim Import gelesen."
+    );
   }
 
   // Drag & Drop

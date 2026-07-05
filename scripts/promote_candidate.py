@@ -361,10 +361,14 @@ def promote_skill(args: argparse.Namespace) -> list[str]:
 
     if args.name is not None:
         skill["name"] = args.name
+    if getattr(args, "name_de", None) is not None:
+        skill["name_de"] = args.name_de
     if args.short_label is not None:
         skill["short_label"] = args.short_label
     if args.definition is not None:
         skill["definition"] = args.definition
+    if getattr(args, "definition_de", None) is not None:
+        skill["definition_de"] = args.definition_de
     if args.age_range is not None:
         skill["age_range"] = args.age_range
     if args.trend is not None:
@@ -464,8 +468,10 @@ def _build_parser() -> argparse.ArgumentParser:
     skill = sub.add_parser("skill", help="Promote a candidate skill to active.")
     skill.add_argument("id")
     skill.add_argument("--name")
+    skill.add_argument("--name-de", help="German display name (dashboard prefers it, EN fallback).")
     skill.add_argument("--short-label")
     skill.add_argument("--definition")
+    skill.add_argument("--definition-de", help="German display definition (see --name-de).")
     skill.add_argument("--age-range")
     skill.add_argument("--trend", choices=["emerging", "growing", "stable", "declining"])
     skill.add_argument("--topics", nargs="*")

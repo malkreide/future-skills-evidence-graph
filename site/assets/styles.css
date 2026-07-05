@@ -211,6 +211,78 @@ select {
   max-width: 90ch;
 }
 
+.intro-lead .intro-more {
+  margin-top: 8px;
+}
+
+.intro-more a {
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.intro-more a:hover,
+.intro-more a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Shared note style for method disclaimers and the noscript fallback. */
+.method-note,
+.noscript-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 10px 0 0;
+  max-width: 90ch;
+}
+
+.method-note a,
+.noscript-note a {
+  color: var(--green);
+}
+
+.noscript-note {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 12px;
+  padding: 10px 14px;
+}
+
+/* The canonical English original shown under a translated definition. */
+.definition-original {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: italic;
+  margin: 6px 0 0;
+  max-width: 90ch;
+}
+
+/* Inline explanation of the evidence score, right where the score is shown. */
+.score-info {
+  border-left: 3px solid var(--line);
+  margin-top: 10px;
+  padding-left: 12px;
+}
+
+.score-info summary {
+  color: var(--green);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.score-info p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0;
+  max-width: 80ch;
+}
+
+.score-info a {
+  color: var(--green);
+  font-size: 13px;
+}
+
 .intro-cards {
   display: grid;
   gap: 14px;

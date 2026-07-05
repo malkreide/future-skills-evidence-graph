@@ -1,0 +1,124 @@
+name: Review command from PR comment
+
+# Browser-based review: a maintainer comments slash-commands on the candidate
+# pull request (e.g. `/promote-source src-x --year 2024`, `/claim clm-y ...`,
+# or a line copied verbatim from the triage worksheet) and this workflow runs
+# them through the SAME promote_candidate.py used locally — every gate
+# (placeholder blockade, reviewed-evidence invariant, re-validation, score
+# recompute) applies unchanged. It removes the local-Python requirement from
+# reviewing, not the human decision.
+#
+# Security model (mirrors ingest-from-issue.yml):
+# - Only OWNER/MEMBER/COLLABORATOR comments run anything; everyone else is
+#   ignored silently (no budget/abuse surface, no comment spam).
+# - The comment body reaches the parser only via an environment variable —
+#   never interpolated into a shell line.
+# - The parser allow-lists promote_candidate subcommands and execs an argv
+#   list (no shell); promote_candidate takes no filesystem-path arguments.
+# - Only same-repo PR branches are checked out and pushed; fork PRs are
+#   refused with a comment.
+on:
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+concurrency:
+  group: review-command-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  run-review-command:
+    # A PR comment (issues without pull_request are skipped), from a
+    # repo-trusted author, that contains at least one slash command line.
+    if: >-
+      github.event.issue.pull_request &&
+      contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association) &&
+      (contains(github.event.comment.body, '/promote-source') ||
+       contains(github.event.comment.body, '/reject-source') ||
+       contains(github.event.comment.body, '/claim') ||
+       contains(github.event.comment.body, '/skill') ||
+       contains(github.event.comment.body, '/reject') ||
+       contains(github.event.comment.body, '/attach-claim') ||
+       contains(github.event.comment.body, '/reopen') ||
+       contains(github.event.comment.body, 'scripts/promote_candidate.py'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve and check out the pull request branch
+        id: branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          head_ref="$(gh pr view "$PR_NUMBER" --json headRefName --jq .headRefName)"
+          same_repo="$(gh pr view "$PR_NUMBER" --json isCrossRepository --jq '.isCrossRepository | not')"
+          state="$(gh pr view "$PR_NUMBER" --json state --jq .state)"
+          echo "head_ref=$head_ref" >> "$GITHUB_OUTPUT"
+          echo "same_repo=$same_repo" >> "$GITHUB_OUTPUT"
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+          if [ "$same_repo" = "true" ] && [ "$state" = "OPEN" ]; then
+            git fetch origin "$head_ref"
+            git checkout "$head_ref"
+          fi
+      - name: Refuse fork or closed pull requests
+        if: steps.branch.outputs.same_repo != 'true' || steps.branch.outputs.state != 'OPEN'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh pr comment "$PR_NUMBER" --body "⚠️ Review-Kommandos laufen nur auf offenen Pull Requests aus diesem Repository (kein Fork)."
+          exit 0
+      - uses: actions/setup-python@v5
+        if: steps.branch.outputs.same_repo == 'true' && steps.branch.outputs.state == 'OPEN'
+        with:
+          python-version: "3.12"
+      - name: Install dev dependencies
+        if: steps.branch.outputs.same_repo == 'true' && steps.branch.outputs.state == 'OPEN'
+        run: pip install -r requirements-dev.txt
+      - name: Run the review command(s)
+        if: steps.branch.outputs.same_repo == 'true' && steps.branch.outputs.state == 'OPEN'
+        id: review
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: python scripts/run_review_command.py
+      - name: Commit and push review decisions
+        if: steps.review.outputs.status == 'ran'
+        id: push
+        env:
+          PR_NUMBER: ${{ github.event.issue.number }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          HEAD_REF: ${{ steps.branch.outputs.head_ref }}
+        run: |
+          git add data/ eval/
+          if git diff --cached --quiet; then
+            echo "result=Keine Datenänderung (Kommando ohne Wirkung oder abgewiesen)." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python scripts/validate_data.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "review: apply ${COMMENT_AUTHOR}'s decisions from PR #${PR_NUMBER} comment"
+          git push origin "$HEAD_REF"
+          echo "result=Entscheidungen committet und auf \`$HEAD_REF\` gepusht." >> "$GITHUB_OUTPUT"
+      - name: Comment the result on the pull request
+        if: steps.review.outputs.status == 'ran'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          SUMMARY: ${{ steps.review.outputs.summary }}
+          PUSH_RESULT: ${{ steps.push.outputs.result }}
+          FAILURES: ${{ steps.review.outputs.failures }}
+        run: |
+          {
+            echo "### Review-Kommandos ausgeführt (Fehlschläge: ${FAILURES})"
+            echo
+            echo "${SUMMARY}"
+            echo
+            echo "_${PUSH_RESULT}_"
+          } > comment.md
+          gh pr comment "$PR_NUMBER" --body-file comment.md

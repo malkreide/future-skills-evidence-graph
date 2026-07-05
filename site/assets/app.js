@@ -287,6 +287,50 @@ function skillAudience(skill) {
   return skill.audience || "learner";
 }
 
+// Search text per skill across its whole evidence path: the search field
+// promises "Skill, Thema, Quelle", so claim statements and source titles/
+// publishers must be findable too ("OECD" has to hit the skills it supports).
+// Rebuilt lazily and invalidated on data load; the catalog is small enough to
+// concatenate everything.
+let searchIndex = null;
+
+function invalidateSearchIndex() {
+  searchIndex = null;
+}
+
+function buildSearchIndex() {
+  const claimMap = byId(state.claims);
+  const sourceMap = byId(state.sources);
+  const index = new Map();
+  for (const skill of state.skills) {
+    const parts = [
+      skill.name,
+      skill.name_de || "",
+      skill.definition,
+      skill.definition_de || "",
+      skill.age_range,
+      skill.status,
+      ...(skill.topics || []),
+    ];
+    const claimIds = [
+      ...(skill.supporting_claim_ids || []),
+      ...(skill.contradicting_claim_ids || []),
+    ];
+    for (const claimId of claimIds) {
+      const claim = claimMap.get(claimId);
+      if (!claim) continue;
+      parts.push(claim.statement || "");
+      for (const sourceId of claim.source_ids || []) {
+        const source = sourceMap.get(sourceId);
+        if (!source) continue;
+        parts.push(source.title || "", source.publisher || "");
+      }
+    }
+    index.set(skill.id, normalize(parts.join(" ")));
+  }
+  return index;
+}
+
 function filteredSkills() {
   const query = normalize(els.searchInput.value);
   const status = els.statusFilter.value;
@@ -294,18 +338,14 @@ function filteredSkills() {
   // The age bands describe learners; they never apply when viewing educators.
   const age = audience === "educator" ? "all" : els.ageFilter.value;
   const score = Number(els.scoreFilter.value);
+  if (query && !searchIndex) searchIndex = buildSearchIndex();
 
   return state.skills
     .filter((skill) => audience === "all" || skillAudience(skill) === audience)
     .filter((skill) => {
-      const haystack = normalize([
-        skill.name,
-        skill.definition,
-        skill.age_range,
-        skill.status,
-        ...(skill.topics || []),
-      ].join(" "));
-      return !query || haystack.includes(query);
+      if (!query) return true;
+      const haystack = searchIndex.get(skill.id) || "";
+      return haystack.includes(query);
     })
     .filter((skill) => status === "all" || skill.status === status)
     .filter((skill) => ageMatchesCycle(skill.age_range, age))
@@ -405,9 +445,9 @@ function renderSkillList() {
     if (selected) selectedButton = button;
 
     const title = document.createElement("h3");
-    title.textContent = skill.name;
+    title.textContent = skillName(skill);
     const description = document.createElement("p");
-    description.textContent = skill.definition;
+    description.textContent = skillDefinition(skill);
     const meta = document.createElement("div");
     meta.className = "card-meta";
     meta.append(
@@ -433,6 +473,61 @@ function pill(text, className = "") {
   span.className = `pill ${className}`.trim();
   span.textContent = text;
   return span;
+}
+
+// German display labels for the raw enum codes stored in the data model. The
+// stored values stay English (they are the schema vocabulary); only the
+// DISPLAY translates, so a lay reader never sees "moderate - systematic_review".
+// Unknown values fall through untranslated rather than hiding data.
+const LABELS_DE = {
+  // evidence_strength (claims)
+  low: "schwache Evidenz",
+  moderate: "mittlere Evidenz",
+  strong: "starke Evidenz",
+  high: "starke Evidenz",
+  // evidence_type (claims)
+  framework_synthesis: "Framework-Synthese",
+  policy_synthesis: "Policy-Synthese",
+  empirical_study: "Empirische Studie",
+  systematic_review: "Systematisches Review",
+  conceptual_review: "Konzeptionelle Übersicht",
+  labor_market_forecast: "Arbeitsmarkt-Prognose",
+  expert_consensus: "Experten-Konsens",
+  // source_type (sources)
+  framework: "Framework",
+  policy_report: "Policy-Bericht",
+  peer_reviewed_article: "Begutachteter Artikel",
+  working_paper: "Working Paper",
+  book: "Buch",
+  dataset: "Datensatz",
+  web_resource: "Web-Ressource",
+};
+
+function labelDe(value) {
+  return LABELS_DE[value] || value;
+}
+
+// Editorial skill fields carry an optional German translation (name_de /
+// definition_de, maintained at review time). The German UI prefers them and
+// falls back to English so untranslated candidates stay fully readable.
+function skillName(skill) {
+  return skill.name_de || skill.name;
+}
+
+function skillDefinition(skill) {
+  return skill.definition_de || skill.definition;
+}
+
+// mapping_strength shares tokens with evidence_strength ("strong"/"moderate")
+// but means the fit between skill and framework, so it gets its own wording.
+const MAPPING_STRENGTH_DE = {
+  weak: "schwache Zuordnung",
+  moderate: "mittlere Zuordnung",
+  strong: "starke Zuordnung",
+};
+
+function mappingStrengthDe(value) {
+  return MAPPING_STRENGTH_DE[value] || value;
 }
 
 // Data fields land in the DOM via textContent everywhere; these two helpers
@@ -461,7 +556,7 @@ function sourceLink(source) {
   link.rel = "noreferrer";
   link.textContent = source.title;
   const meta = document.createElement("small");
-  meta.textContent = `${source.publisher} - ${source.year ?? "Jahr unbekannt"} - ${source.source_type}`;
+  meta.textContent = `${source.publisher} - ${source.year ?? "Jahr unbekannt"} - ${labelDe(source.source_type)}`;
   wrapper.append(link, meta);
   return wrapper;
 }
@@ -522,11 +617,11 @@ function renderLp21Comparison() {
     const label = mapping.coverage_label;
 
     const skillCell = document.createElement("td");
-    const skillName = document.createElement("strong");
-    skillName.textContent = skill.name;
+    const skillNameEl = document.createElement("strong");
+    skillNameEl.textContent = skillName(skill);
     const skillAge = document.createElement("small");
     skillAge.textContent = skill.age_range;
-    skillCell.append(skillName, document.createElement("br"), skillAge);
+    skillCell.append(skillNameEl, document.createElement("br"), skillAge);
 
     const evidenceCell = document.createElement("td");
     evidenceCell.textContent = evidenceScore.toFixed(2);
@@ -627,7 +722,7 @@ function drawRadar(mappings, skillMap) {
       mapping,
       evidenceScore,
       coverageScore,
-      lines: wrapLabel(skill.name),
+      lines: wrapLabel(skillName(skill)),
       axisEnd: { x: center.x + cos * radius, y: center.y + sin * radius },
       labelAnchor: { x: center.x + cos * (radius + 16), y: center.y + sin * (radius + 16) },
       evidencePoint: { x: center.x + cos * evidenceR, y: center.y + sin * evidenceR },
@@ -773,7 +868,7 @@ function showRadarTooltip(axis) {
   const cycles = (axis.mapping.cycles || []).join(", ") || "–";
   const area = axis.mapping.curriculum_area || axis.mapping.framework || "–";
   tooltip.innerHTML =
-    `<strong>${escapeHtml(axis.skill.name)}</strong>` +
+    `<strong>${escapeHtml(skillName(axis.skill))}</strong>` +
     `<span class="rt-sub">${escapeHtml(axis.skill.short_label)} · Alter ${escapeHtml(axis.skill.age_range)}</span>` +
     "<dl>" +
     `<div><dt>Future Evidence</dt><dd class="rt-evidence">${axis.evidenceScore.toFixed(2)} / 1</dd></div>` +
@@ -837,19 +932,45 @@ function renderDetail() {
   const header = document.createElement("header");
   header.className = "detail-header";
   const title = document.createElement("h2");
-  title.textContent = skill.name;
+  title.textContent = skillName(skill);
   const definition = document.createElement("p");
   definition.className = "definition";
-  definition.textContent = skill.definition;
+  definition.textContent = skillDefinition(skill);
   const tags = document.createElement("div");
   tags.className = "tag-row";
+  // The English fields are the canonical reviewed text; when a German
+  // translation is shown, keep the original visible for transparency.
+  let original = null;
+  if (skill.definition_de) {
+    original = document.createElement("p");
+    original.className = "definition-original";
+    original.textContent = `Original (EN): ${skill.name} — ${skill.definition}`;
+  }
   tags.append(
     pill(statusLabel(skill.status), skill.status),
     pill(`Evidenz ${scoreLabel(skill.evidence_score)}`, "score"),
     pill(`Alter ${skill.age_range}`),
     pill(`Trend ${skill.trend}`)
   );
-  header.append(title, definition, tags);
+  // The score is meaningless to a lay reader without its derivation; explain
+  // it where it is shown instead of only in the docs.
+  const scoreInfo = document.createElement("details");
+  scoreInfo.className = "score-info";
+  const scoreSummary = document.createElement("summary");
+  scoreSummary.textContent = "Wie entsteht der Evidenz-Score?";
+  const scoreText = document.createElement("p");
+  scoreText.textContent =
+    "Jede geprüfte Aussage erhält einen Wert aus Quellenqualität (60 %) und Belegstärke (40 %). " +
+    "Der Skill-Score ist der Mittelwert der stützenden Aussagen, leicht erhöht bei mehreren " +
+    "unabhängigen Belegen (Breite) und gesenkt bei Gegenbelegen. Er ist reproduzierbar berechnet, " +
+    "kein redaktionelles Urteil.";
+  const scoreLink = document.createElement("a");
+  scoreLink.href = "https://github.com/malkreide/future-skills-evidence-graph/blob/main/docs/erklaerung-fuer-laien.md";
+  scoreLink.target = "_blank";
+  scoreLink.rel = "noreferrer";
+  scoreLink.textContent = "Ausführliche Erklärung für Laien →";
+  scoreInfo.append(scoreSummary, scoreText, scoreLink);
+  header.append(title, definition, ...(original ? [original] : []), tags, scoreInfo);
 
   const grid = document.createElement("div");
   grid.className = "detail-grid";
@@ -863,7 +984,7 @@ function renderDetail() {
     const statement = document.createElement("p");
     statement.textContent = claim.statement;
     const meta = document.createElement("small");
-    meta.textContent = `${claim.evidence_strength} - ${claim.evidence_type} - ${claim.text_anchor}`;
+    meta.textContent = `${labelDe(claim.evidence_strength)} - ${labelDe(claim.evidence_type)} - ${claim.text_anchor}`;
     claimEl.append(statement, meta);
     evidencePanel.append(claimEl);
   }
@@ -877,7 +998,7 @@ function renderDetail() {
       const statement = document.createElement("p");
       statement.textContent = claim.statement;
       const meta = document.createElement("small");
-      meta.textContent = `${claim.evidence_strength} - ${claim.evidence_type} - ${claim.text_anchor}`;
+      meta.textContent = `${labelDe(claim.evidence_strength)} - ${labelDe(claim.evidence_type)} - ${claim.text_anchor}`;
       claimEl.append(statement, meta);
       evidencePanel.append(claimEl);
     }
@@ -903,7 +1024,7 @@ function renderDetail() {
     name.rel = "noreferrer";
     name.textContent = mapping.framework;
     const meta = document.createElement("small");
-    meta.textContent = `${mapping.mapping_strength} - ${mapping.competency}${
+    meta.textContent = `${mappingStrengthDe(mapping.mapping_strength)} - ${mapping.competency}${
       mapping.coverage_score ? ` - LP21 ${Number(mapping.coverage_score).toFixed(1)} / 3` : ""
     }`;
     item.append(name, meta);
@@ -1016,6 +1137,7 @@ loadData()
     state.claims = payload.claims || [];
     state.skills = payload.skills || [];
     state.frameworks = payload.frameworks || [];
+    invalidateSearchIndex();
     render();
   })
   .catch((error) => {

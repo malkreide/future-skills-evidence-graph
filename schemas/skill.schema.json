@@ -20,8 +20,18 @@
   "properties": {
     "id": { "type": "string", "pattern": "^skill-[a-z0-9-]+$" },
     "name": { "type": "string", "minLength": 3 },
+    "name_de": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Optional German display name. The dashboard prefers it over 'name' and falls back to English when absent. Editorial field, maintained at review time."
+    },
     "short_label": { "type": "string", "minLength": 1, "maxLength": 12 },
     "definition": { "type": "string", "minLength": 12 },
+    "definition_de": {
+      "type": "string",
+      "minLength": 12,
+      "description": "Optional German display definition (see name_de). Claims stay verbatim in their source language; only these editorial fields translate."
+    },
     "age_range": { "type": "string" },
     "audience": { "type": "string", "enum": ["learner", "educator"] },
     "status": { "type": "string", "enum": ["candidate", "active", "deprecated"] },

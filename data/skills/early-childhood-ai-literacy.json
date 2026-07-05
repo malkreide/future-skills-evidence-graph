@@ -2,8 +2,10 @@
   {
     "id": "skill-early-childhood-ai-literacy",
     "name": "Early Childhood AI Literacy",
+    "name_de": "Frühkindliche KI-Kompetenz",
     "short_label": "Vorschul-KI",
     "definition": "Ability of young children in the pre-primary years (ages 0-6) to encounter and make sense of basic AI concepts - recognising that AI systems learn from data and make simple predictions - through age-appropriate, playful and creative activities.",
+    "definition_de": "Fähigkeit junger Kinder im Vorschulalter (0–6 Jahre), grundlegenden KI-Konzepten zu begegnen und sie zu begreifen – etwa dass KI-Systeme aus Daten lernen und einfache Vorhersagen treffen – über altersgerechte, spielerische und kreative Aktivitäten.",
     "age_range": "0-6",
     "audience": "learner",
     "status": "active",
