@@ -49,10 +49,12 @@ def fetch(query: str, limit: int, mailto: str | None = None) -> list[dict[str, A
 
 def convert(work: dict[str, Any]) -> dict[str, Any]:
     title = work.get("display_name") or "Untitled OpenAlex work"
+    # The API serializes missing values as explicit nulls, so every nested
+    # access guards against None — one null authorship must not abort the run.
     authors = [
-        authorship.get("author", {}).get("display_name")
-        for authorship in work.get("authorships", [])
-        if authorship.get("author", {}).get("display_name")
+        name
+        for authorship in (work.get("authorships") or [])
+        if (name := ((authorship or {}).get("author") or {}).get("display_name"))
     ]
     host = (work.get("primary_location") or {}).get("source") or {}
     doi = work.get("doi")

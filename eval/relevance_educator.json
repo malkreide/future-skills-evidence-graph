@@ -3,7 +3,7 @@
   "examples": [
     {
       "title": "Professional Development for Teachers in AI Literacy Education: Teaching Machine Learning to Senior Primary and Junior Secondary Students",
-      "abstract": ": This paper presents a study focused on equipping in-service teachers\u2019 skills of delivering courses on teaching machine learning concepts to senior primary and junior secondary school students. The pedagogical design of this study was based on the neuroscience-informed Attention-Engagement-Error-feedback-Reflection (AEER) framework. This study involved 36 in-service teachers from Hong Kong primary and secondary schools. We developed a model supported by Workshops, Discussions, and Resources (WDR) within the framework of Technological Pedagogical Content Knowledge (TPACK) to design the teacher professional development program. The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools. Furthermore, the workshops notably improved teachers\u2019 perceptions of their TPACK abilities.",
+      "abstract": ": This paper presents a study focused on equipping in-service teachers’ skills of delivering courses on teaching machine learning concepts to senior primary and junior secondary school students. The pedagogical design of this study was based on the neuroscience-informed Attention-Engagement-Error-feedback-Reflection (AEER) framework. This study involved 36 in-service teachers from Hong Kong primary and secondary schools. We developed a model supported by Workshops, Discussions, and Resources (WDR) within the framework of Technological Pedagogical Content Knowledge (TPACK) to design the teacher professional development program. The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools. Furthermore, the workshops notably improved teachers’ perceptions of their TPACK abilities.",
       "relevant": true,
       "audience": "educator",
       "origin": "educator_strand",
@@ -11,7 +11,7 @@
     },
     {
       "title": "Survey on Digital Literacy, AI in Education and Tech-Driven Pedagogy Skills among Secondary School Educators",
-      "abstract": "This present study explored the teachers\u2019 digital literacy, artificial intelligence in education and tech-driven pedagogy in teaching learning process in secondary schools and succeeds in understanding the overview levels of secondary school educators\u2019 digital literacy, using AI in education and integrating techno pedagogy to prepare the future generation. A sample of 125 government secondary school teachers\u2019 responses were collected. Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes. It suggested that the educators\u2019 digital literacy paved a way to prepare the future generations to cope with rapid technology development and for 21st century skills.",
+      "abstract": "This present study explored the teachers’ digital literacy, artificial intelligence in education and tech-driven pedagogy in teaching learning process in secondary schools and succeeds in understanding the overview levels of secondary school educators’ digital literacy, using AI in education and integrating techno pedagogy to prepare the future generation. A sample of 125 government secondary school teachers’ responses were collected. Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes. It suggested that the educators’ digital literacy paved a way to prepare the future generations to cope with rapid technology development and for 21st century skills.",
       "relevant": true,
       "audience": "educator",
       "origin": "educator_strand",
@@ -54,6 +54,151 @@
       "relevant": false,
       "origin": "editorial",
       "note": "Educator-shaped but out of scope: teacher productivity tool-use (grading/marking/workload automation), not a teaching competence. The lane's tool-use guard rejects it."
+    },
+    {
+      "title": "Teacher Training for Data Literacy Instruction in Secondary Schools",
+      "abstract": "This teacher training programme develops secondary teachers' competence to teach data literacy. Post-training observations show more confident instruction.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (teacher training) + data literacy topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "In-Service Teacher Professional Development on Digital Competence",
+      "abstract": "A year-long professional development course for in-service teachers targets their digital competence for classroom teaching.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrases (in-service teacher, professional development).",
+      "origin": "editorial"
+    },
+    {
+      "title": "Trainee Teachers' AI Literacy and Pedagogical Content Knowledge",
+      "abstract": "We assess trainee teachers' AI literacy and how it interacts with their pedagogical content knowledge during school placements.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (trainee teachers) + AI literacy topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Teacher Candidates Learn to Teach Computational Thinking",
+      "abstract": "The study follows teacher candidates as they build competence in teaching computational thinking in primary classrooms.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (teacher candidates) + systems thinking topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Educator Competencies for Media Literacy Education",
+      "abstract": "A Delphi study defines the educator competencies needed to teach media literacy across school levels.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (educator competencies) + media literacy topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Building Teacher Readiness for AI Literacy Curricula in Middle Schools",
+      "abstract": "The intervention builds teacher readiness to deliver a middle-school AI literacy curriculum through coaching and co-teaching cycles.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (teacher readiness) + AI literacy topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Teacher Professional Development in Critical Thinking Instruction",
+      "abstract": "Teachers participating in sustained professional development improve their competence in critical thinking instruction.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (teacher professional development) + critical thinking topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Lehrerfortbildung zur KI-Kompetenz: Wirkungen auf den Unterricht",
+      "abstract": "Die Lehrerfortbildung staerkt die KI-Kompetenz von Lehrpersonen der Sekundarstufe; beobachtete Unterrichtsqualitaet und didaktische Sicherheit steigen.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "[de] Strong phrase (Lehrerfortbildung) + KI-Kompetenz topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Professionalisierung von Lehrpersonen für den Umgang mit generativer KI",
+      "abstract": "Das Weiterbildungsprogramm professionalisiert Lehrpersonen im didaktischen Umgang mit generativer KI im Unterricht.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "[de] Educator subject (Lehrpersonen) + context (Professionalisierung/didaktisch) + topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "KI-Kompetenz von Lehramtsstudierenden im Praxissemester",
+      "abstract": "Die Studie erfasst, wie Lehramtsstudierende im Praxissemester KI-Kompetenz fuer den spaeteren Schulunterricht aufbauen.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "[de] Strong phrase (Lehramtsstudierende): university-trained but produces school teachers.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Angehende Lehrpersonen und Datenkompetenz: Eine Interventionsstudie",
+      "abstract": "Angehende Lehrpersonen durchlaufen ein Modul zur Datenkompetenz; die Faehigkeit, Datenprojekte im Unterricht anzuleiten, verbessert sich.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "[de] Strong phrase (angehende Lehrpersonen) + Datenkompetenz topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Teacher Educators' Competence in Teaching About Misinformation",
+      "abstract": "The study maps teacher educators' competence to prepare future teachers for misinformation and fact checking topics in school.",
+      "relevant": true,
+      "audience": "educator",
+      "note": "Strong phrase (teacher educator) + critical thinking topic.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Faculty Development for Data Literacy in University Teaching",
+      "abstract": "A faculty development initiative supports university instructors teaching data literacy to undergraduates.",
+      "relevant": false,
+      "note": "Higher-education teaching guard: faculty/university/undergraduates.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Hochschuldidaktik: KI-Kompetenz von Dozierenden an Universitäten",
+      "abstract": "Das hochschuldidaktische Programm foerdert die KI-Kompetenz von Dozierenden in der universitaeren Lehre mit Studierenden.",
+      "relevant": false,
+      "note": "[de] Higher-ed teaching (Hochschuldidaktik/Universitaeten/Studierende); Dozierende are not school educators.",
+      "origin": "editorial"
+    },
+    {
+      "title": "A ChatGPT Lesson Planning Assistant Reduces Teacher Workload",
+      "abstract": "Teachers use a ChatGPT assistant for lesson planning; the tool reduces planning workload and automates routine preparation.",
+      "relevant": false,
+      "note": "Teacher tool-use (lesson planning/workload/automation) - the tracked FP class.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Automatisierte Korrektur entlastet Lehrkräfte bei Prüfungen",
+      "abstract": "Das KI-System uebernimmt administrative Arbeit: Es korrigiert Pruefungen automatisch und reduziert den Aufwand der Lehrkraefte bei der Bewertung von Machine-Learning-Aufgaben.",
+      "relevant": false,
+      "note": "[de] Teacher tool-use: Lehrkraefte subject + administrative/automation markers, no competence development.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Corporate Trainers' Digital Competence in Adult Education Programs",
+      "abstract": "The survey measures corporate trainers' digital competence in workplace adult education programs for employees.",
+      "relevant": false,
+      "note": "Adult education/workforce; trainers are not school educators.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Weiterbildung von Berufstätigen zu digitalen Kompetenzen",
+      "abstract": "Das Programm vermittelt Berufstaetigen digitale Kompetenzen fuer den Arbeitsplatz in Unternehmen.",
+      "relevant": false,
+      "note": "[de] Adult/workforce continuing education, no educator subject.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Graduate Teaching Assistants' AI Literacy at a Research University",
+      "abstract": "We examine graduate students working as teaching assistants and their AI literacy in university courses for undergraduates.",
+      "relevant": false,
+      "note": "Higher-education teaching context (graduate students/university/undergraduates).",
+      "origin": "editorial"
     }
   ]
 }

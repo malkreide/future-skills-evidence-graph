@@ -243,11 +243,17 @@ class DataIntegrityTests(unittest.TestCase):
         import eval_relevance
 
         examples = eval_relevance.load_educator_examples()
-        self.assertTrue(examples, "educator-lane labeled set should be present")
+        # A meaningful floor needs a set that is not trivially memorizable: the
+        # original 7-example set with a 0.99 assertion was effectively "all 7
+        # correct" — memorization, not measurement.
+        self.assertGreaterEqual(len(examples), 25, "educator-lane set too small to measure")
         lane = eval_relevance.educator_lane_report(examples, RELEVANCE_THRESHOLD)
         self.assertEqual(lane["leaked"], [], "off-scope example leaked onto the educator lane")
-        self.assertGreaterEqual(lane["precision"], 0.99)
-        self.assertGreaterEqual(lane["recall"], 0.99)
+        # Measured 1.00/1.00 on the 26-example set; the floor sits below with
+        # margin so future examples may dip without breaking the build (the
+        # measured value lives in OPERATIONS.md, the floor guards regressions).
+        self.assertGreaterEqual(lane["precision"], 0.85)
+        self.assertGreaterEqual(lane["recall"], 0.85)
 
     def test_relevance_scoring_separates_scope_from_noise(self) -> None:
         relevant = {
@@ -601,6 +607,42 @@ class DataIntegrityTests(unittest.TestCase):
         # claim is emitted rather than a "we used interviews" pseudo-claim.
         abstract = "We used semi-structured interviews to explore AI literacy among students in schools."
         self.assertIsNone(best_claim_sentence(abstract))
+
+    def test_ingester_converts_survive_broken_api_payloads(self) -> None:
+        # The importers' only outage guard is fetch_or_warn's except clause; an
+        # AttributeError inside convert() (live APIs DO send explicit nulls for
+        # nested fields) aborted the whole pipeline run. Every convert must
+        # tolerate an empty record and null-riddled nested fields.
+        import ingest_crossref
+        import ingest_eric
+        import ingest_openalex
+        import ingest_semantic_scholar
+
+        broken_by_module = {
+            ingest_openalex: [
+                {},
+                {"authorships": [None, {"author": None}], "primary_location": None, "doi": None},
+            ],
+            ingest_semantic_scholar: [
+                {},
+                {"authors": [None, {"name": None}], "externalIds": None, "publicationTypes": None},
+            ],
+            ingest_crossref: [
+                {},
+                {"title": [], "author": [None, {"given": None, "family": None}], "issued": None},
+            ],
+            ingest_eric: [
+                {},
+                {"author": None, "description": None, "publicationdateyear": None},
+            ],
+        }
+        for module, payloads in broken_by_module.items():
+            for payload in payloads:
+                record = module.convert(payload)
+                self.assertTrue(record["title"], f"{module.__name__} lost the title fallback")
+                self.assertIsInstance(record["authors"], list)
+                year = record["year"]
+                self.assertTrue(year is None or isinstance(year, int))
 
     def test_sentence_split_survives_abbreviations(self) -> None:
         # "e.g." must not end a sentence: before the abbreviation-safe split the

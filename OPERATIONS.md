@@ -437,8 +437,12 @@ filtered source. The educator lane (`is_educator_audience`, run inside
 the lane precise (pure teacher tool-use stays the learner-lane FP class above). It
 is measured against its **own** set, `eval/relevance_educator.json` (separate from
 the learner labels so it never perturbs the heuristic baseline or the classifier
-training inputs): **precision 1.00 / recall 1.00** on the real educator-strand
-positives plus educator-shaped guard negatives. Run `make eval-educator`; the
+training inputs): **precision 1.00 / recall 1.00** on 26 examples — the real
+educator-strand positives plus editorial positives (incl. German cases) and
+educator-shaped guard negatives (faculty development, teacher tool-use,
+adult/corporate training). The regression floor is deliberately 0.85/0.85, below
+the measured value: on a small set a 0.99 assertion is memorization, not
+measurement. Run `make eval-educator`; the
 learner floor is P 1.00 / R 1.00. See
 [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
 

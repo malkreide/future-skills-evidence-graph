@@ -45,7 +45,13 @@ def convert(paper: dict[str, Any]) -> dict[str, Any]:
     return {
         "id": slugify(title, "src"),
         "title": title,
-        "authors": [author.get("name") for author in paper.get("authors", []) if author.get("name")],
+        # Explicit nulls appear in live payloads; a null author entry must not
+        # abort the run.
+        "authors": [
+            name
+            for author in (paper.get("authors") or [])
+            if (name := (author or {}).get("name"))
+        ],
         "year": paper.get("year") or None,
         "doi": doi,
         "url": paper.get("url") or (f"https://doi.org/{doi}" if doi else ""),

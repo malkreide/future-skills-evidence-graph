@@ -43,8 +43,10 @@ def _year(item: dict[str, Any]) -> int | None:
 
 def _authors(item: dict[str, Any]) -> list[str]:
     authors = []
-    for author in item.get("author", []):
-        parts = [author.get("given"), author.get("family")]
+    # Explicit nulls appear in live payloads; a null author entry must not
+    # abort the run.
+    for author in item.get("author") or []:
+        parts = [(author or {}).get("given"), (author or {}).get("family")]
         name = " ".join(part for part in parts if part)
         if name:
             authors.append(name)
