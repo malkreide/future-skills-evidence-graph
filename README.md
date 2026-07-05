@@ -133,7 +133,12 @@ yields no auto-claim. The workflow does not publish active skills automatically.
 
 Each importer degrades gracefully: if one source is rate-limited or unreachable,
 it logs a warning and contributes no candidates that run, so the other importers
-and the downstream extraction and clustering still complete.
+and the downstream extraction and clustering still complete. The five importers
+share one pipeline (`common.run_importer`): per source only `fetch()` and
+`convert()` differ, so a filter or argument change lands in one place. Harvest
+depth is deliberately bounded: each importer fetches a **single page of
+`--limit` results (default 25) per query and source** — no pagination; a deeper
+harvest is a `--limit` bump in the workflow, not a hidden loop.
 
 The master prompt also lists OECD, WEF, UNESCO, and EU DigComp as preferred
 sources. OECD, WEF, and UNESCO publish reports without a public bibliographic
