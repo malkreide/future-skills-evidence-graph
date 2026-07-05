@@ -1,15 +1,18 @@
-jsonschema>=4.21
+# Versions are pinned EXACTLY (==): several workflows are triggerable from
+# outside the repo, so CI must never silently pull a fresh (or compromised)
+# release. Dependabot (.github/dependabot.yml) proposes updates as PRs.
+jsonschema==4.26.0
 # scikit-learn is only needed to TRAIN the optional relevance classifier
 # (scripts/train_relevance.py) and to run the fair model-vs-heuristic comparison
 # in scripts/eval_relevance.py --compare-model. The importers and the runtime
 # relevance decision stay standard-library only: the trained model is consulted
 # from a JSON artifact (models/relevance_model.json) with stdlib math.
-scikit-learn>=1.4
+scikit-learn==1.9.0
 # anthropic is a pure dev/live dependency for the OPTIONAL AI features
 # (scripts/ai_provider.py). It is imported lazily and only when AI_PROVIDER=anthropic;
 # when AI_PROVIDER is in {none, cache} (the default and the test/CI mode) the import
 # path stays standard-library only and this package is never imported.
-anthropic>=0.40
+anthropic==0.116.0
 # sentence-transformers is a pure dev/live dependency for the OPTIONAL semantic
 # embedding provider (EMBEDDING_PROVIDER=st in scripts/ai_provider.py). It is
 # imported lazily and ONLY to fill an embedding-cache miss when building anchors
@@ -17,15 +20,15 @@ anthropic>=0.40
 # with EMBEDDING_PROVIDER in {none, local} (the default and CI mode) nothing here
 # is imported, and EMBEDDING_PROVIDER=st replays committed vectors from
 # tests/fixtures/embeddings/ offline, so the importers stay standard-library only.
-sentence-transformers>=2.2
+sentence-transformers==5.6.0
 # pypdf is only needed by the OPTIONAL PDF->plaintext helper
 # (scripts/extract_pdf_text.py), which an operator runs to prepare a report for
 # scripts/ingest_reports.py. It is imported lazily and only when actually parsing
 # a PDF; the importer itself takes plaintext and stays standard-library only.
-pypdf>=4.0
+pypdf==6.14.2
 # ddgs (DuckDuckGo search) is the OPTIONAL open-source, keyless web-search tier of
 # the source-URL resolver (scripts/resolve_source_url.py, Option B). It is imported
 # lazily and only when a report has no URL and the keyless catalogues (Crossref/
 # OpenAlex) miss; absent it, that tier is a graceful no-op. The importers and the
 # core resolver stay standard-library only.
-ddgs>=6.0
+ddgs==9.14.4

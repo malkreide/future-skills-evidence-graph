@@ -51,7 +51,8 @@ jobs:
       - name: Install dependencies
         # Minimal: jsonschema for validation, ddgs for the keyless DuckDuckGo tier.
         # No clustering/LLM here, so the heavier dev deps are not needed.
-        run: pip install jsonschema ddgs
+        # Same pins as requirements-dev.txt — no floating installs in CI.
+        run: pip install jsonschema==4.26.0 ddgs==9.14.4
       - name: Discover web candidate source(s)
         run: |
           if [ -n "${MANIFEST}" ]; then
