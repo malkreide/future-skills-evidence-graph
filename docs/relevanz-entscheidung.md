@@ -46,9 +46,10 @@ operating cycle showed adult/higher-education papers were the dominant false
 positive, so this gate is the highest-value precision lever.
 
 The design is data-driven, not guessed: `eval/relevance_labeled.json` is a labeled
-set (109 examples: real candidates from the live runs and live API queries across the
+set (122 examples: real candidates from the live runs and live API queries across the
 sources, clear anchor cases, the **hard false-positive classes** described
-below, plus **German-language cases** — see the bilingual layer below) and
+below, plus **German, French and Italian cases** — see the multilingual layer
+below) and
 `scripts/eval_relevance.py` reports precision/recall/F1 and sweeps
 thresholds, so the filter's behavior is measured. On this set the heuristic holds
 measured **precision 1.00 at recall 1.00** (F1 1.00): no relevant source is
@@ -79,7 +80,7 @@ keeping them):
   *about* that off-domain subject, so the co-occurring skill word no longer rescues
   it. (`disaster`/`earthquake` were added to `OFF_SCOPE_KEYWORDS`.)
 
-## Zweisprachiger Keyword-Layer (Deutsch)
+## Mehrsprachiger Keyword-Layer (Deutsch, Französisch, Italienisch)
 
 Das Projekt ist am Lehrplan 21 verankert, aber alle Keyword-Listen waren rein
 englisch — ein deutschsprachiger EDK-/KMK-/PH-Abstract („Förderung von
@@ -105,14 +106,23 @@ schließen die Lücke:
    Kompetenz/Didaktik-Kontext). Da Phrasen exakt gematcht werden (kein
    Stemming), sind gängige Flexionsformen explizit gelistet.
 
-Das Eval-Set trägt dafür 22 deutsche Beispiele (Notes mit `[de]` markiert):
-12 Positive (inkl. Educator-Lane und Sek-II-Berufsbildung) und 10 Negative
-(deutsche Higher-Ed-, Arbeitswelt-, Gesundheits- und Teacher-Tool-Use-Fälle).
-`test_german_sources_pass_the_bilingual_filter` pinnt jede einzelne
-Klassifikation; `test_normalize_title_folds_german_diacritics` die
-Normalisierung. Grenze bleibt: kein Stemming (seltene Flexionsformen können
-fehlen — der Recall-Probe-Mechanismus deckt sie auf), und Französisch/
-Italienisch (PER, Piano di studio) sind weiterhin offen.
+Die beiden anderen Schweizer Schulsprachen folgen demselben Muster:
+**Französisch** (Plan d'études romand — élèves/école als Schul-Marker,
+étudiants/université als Higher-Ed-Marker, haute école pédagogique als
+Educator-Strong-Phrase) und **Italienisch** (Piano di studio — alunni/scuola
+vs. studenti universitari, formazione degli insegnanti). Die Unterscheidung
+élève↔étudiant bzw. alunni↔studenti universitari trägt dabei das
+Audience-Gate.
+
+Das Eval-Set trägt dafür 22 deutsche (`[de]`), 7 französische (`[fr]`) und 6
+italienische (`[it]`) Beispiele — Positive inkl. Educator-Lane, Negative aus
+Higher-Ed-, Arbeitswelt-, Gesundheits- und Tool-Use-Klassen.
+`test_german_sources_pass_the_bilingual_filter` und
+`test_french_italian_sources_pass_the_multilingual_filter` pinnen jede
+einzelne Klassifikation; `test_normalize_title_folds_german_diacritics` die
+Normalisierung (die auch é→e, ç→c faltet). Grenze bleibt: kein Stemming —
+seltene Flexionsformen können fehlen; der Recall-Probe-Mechanismus deckt sie
+auf.
 
 The per-cycle live-precision history lives in [OPERATIONS.md](../OPERATIONS.md).
 
@@ -189,9 +199,10 @@ held-out data, and we report that honestly. `python scripts/eval_relevance.py
 --compare-model` runs a fair stratified cross-validation: the heuristic needs no
 training and is scored on each test fold directly, while the model is retrained on the
 train folds and scored on the held-out fold; both report pooled precision/recall/F1.
-On the current 109-example set (now including the German cases) the heuristic
-reaches **F1 1.00** (P 1.00 / R 1.00), and the model lands at **F1 0.75**
-(P 0.74 / R 0.76) — it does **not** beat the baseline on held-out F1. The model trades recall for precision (it rejects some
+On the current 122-example set (including the German, French and Italian
+cases) the heuristic reaches **F1 1.00** (P 1.00 / R 1.00), and the model
+lands at **F1 0.68** (P 0.67 / R 0.69) — it does **not** beat the baseline on
+held-out F1. The model trades recall for precision (it rejects some
 cases the heuristic now handles directly, but also drops genuine positives),
 so **the heuristic stays the default and active decision**; the model ships
 disabled for a larger, less separable future label set.
@@ -241,16 +252,16 @@ The anchors are wired in only after a **measured win**.
 `EMBEDDING_PROVIDER=st python scripts/eval_relevance.py --compare-embedding` runs the
 same fair stratified cross-validation (anchors rebuilt on the train folds, heuristic
 scored directly, pooled P/R/F1, honest `VERDICT`). The honest result on the current
-109-example set (including the German cases):
+122-example set (including the German, French and Italian cases):
 
 | Signal | P | R | F1 | Verdict |
 | --- | --- | --- | --- | --- |
 | Heuristic (baseline) | 1.00 | 1.00 | **1.00** | active default |
-| Embedding anchors, `st` (all-MiniLM-L6-v2) | 0.66 | 0.90 | 0.76 | does **not** beat baseline |
-| Embedding anchors, `local` (hashing) | 0.58 | 0.60 | 0.59 | does **not** beat baseline |
+| Embedding anchors, `st` (all-MiniLM-L6-v2) | 0.68 | 0.86 | 0.76 | does **not** beat baseline |
+| Embedding anchors, `local` (hashing) | 0.68 | 0.69 | 0.69 | does **not** beat baseline |
 
 The real semantic embedding (`st`, F1 0.76) is a clear step up from the local hashing
-embedding (F1 0.59) and recovers more of the hard cases on recall, but it is noisier on
+embedding (F1 0.69) and recovers more of the hard cases on recall, but it is noisier on
 precision and still lands **well below the keyword heuristic** (F1 1.00), which is
 already well separated on this small, keyword-shaped set. So **the heuristic stays the
 default and active decision** and the anchors ship disabled. The verdict is recorded
@@ -261,8 +272,8 @@ honestly here rather than activated; activation would require a positive `VERDIC
 | Modus (`RELEVANCE_CLASSIFIER`) | Artefakt | Status | Warum |
 | --- | --- | --- | --- |
 | `heuristic` (Default) | — | **aktiv** | Transparent, deterministisch, dependency-frei; auf dem Label-Set klar führend (F1 1.00). |
-| `model` | `models/relevance_model.json` | deaktiviert | Schlägt die Heuristik im fairen Held-out-Vergleich nicht (F1 0.75 < 1.00 auf dem 109er-Set). |
-| `embedding` | `models/relevance_anchors.json` | deaktiviert | Echtes Semantik-Embedding (`st`, all-MiniLM-L6-v2, F1 0.76) schlägt das lokale Hashing (F1 0.59), bleibt aber klar unter der Heuristik (F1 1.00). |
+| `model` | `models/relevance_model.json` | deaktiviert | Schlägt die Heuristik im fairen Held-out-Vergleich nicht (F1 0.68 < 1.00 auf dem 122er-Set). |
+| `embedding` | `models/relevance_anchors.json` | deaktiviert | Echtes Semantik-Embedding (`st`, all-MiniLM-L6-v2, F1 0.76) schlägt das lokale Hashing (F1 0.69), bleibt aber klar unter der Heuristik (F1 1.00). |
 
 **Aktivierungsregel.** Ein optionaler Modus wird nur dann scharf geschaltet, wenn
 er die Heuristik auf Held-out-Daten **messbar schlägt** (positives `VERDICT` aus

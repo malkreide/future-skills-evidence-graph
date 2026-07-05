@@ -15,7 +15,7 @@ requires human review through pull requests. Nothing here changes that.
 | Stage | Script / Workflow | Notes |
 | --- | --- | --- |
 | Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | One shared pipeline (`common.run_importer`; per source only `fetch`/`convert` differ). Each degrades gracefully on outage (`fetch_or_warn`); single page of `--limit` (25) results per query — no pagination. Crossref ingests no abstracts (JATS-only, sparse), so its sources never yield automatic claims — metadata only |
-| Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate; vocabulary is bilingual (English + German, incl. Swiss LP21 school-stage terms) |
+| Relevance filter | `common.filter_relevant_sources` | Topic match required; off-scope filter; threshold 0.3; tags `audience` and runs the educator lane (`is_educator_audience`) alongside the learner gate; vocabulary is multilingual (English, German, French, Italian — all Swiss school languages, incl. LP21/PER/Piano-di-studio stage terms) |
 | Claim extraction | `extract_claims.py` | Verbatim finding sentences + text anchors (up to 3 per abstract — breadth feeds the skill score); skips methodology; abbreviation-safe sentence split |
 | Clustering | `cluster_claims.py` | Proposes candidate skills for uncovered topics |
 | Review | `promote_candidate.py {claim,skill,reject,reject-source,promote-source,attach-claim,reopen}` | Promotes to reviewed/active; `reject-source` harvests a negative label; `reopen` flips a rejected record back to candidate |
@@ -260,10 +260,11 @@ EMBEDDING_PROVIDER=local python scripts/eval_relevance.py --compare-embedding  #
 The `st` provider is the real semantic embedding (sentence-transformers
 `all-MiniLM-L6-v2`); it replays committed vectors from `tests/fixtures/embeddings/`
 offline, and only imports the package to embed a text not yet cached. `local` is the
-dependency-free hashing embedding. The current honest verdict (109-example set,
-including the German cases): heuristic F1 1.00, model F1 0.75, `st` anchors F1
-0.76, `local` anchors F1 0.59 — none beats the heuristic, so it stays the active
-default (see [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md)).
+dependency-free hashing embedding. The current honest verdict (122-example set,
+including the German, French and Italian cases): heuristic F1 1.00, model F1
+0.68, `st` anchors F1 0.76, `local` anchors F1 0.69 — none beats the heuristic,
+so it stays the active default (see
+[docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md)).
 
 Triggers → actions:
 - **False positive seen** → `reject-source`; add the domain to `OFF_SCOPE_KEYWORDS`
@@ -479,7 +480,7 @@ second low-strength claim below the prior mean). Both studies are also added to
 `eval/relevance_educator.json` (the Investigation case exercises the
 higher-education guard's preservice exemption).
 
-### Improvement applied: bilingual (German) keyword layer
+### Improvement applied: multilingual (German, then French/Italian) keyword layer
 
 The keyword vocabulary was English-only while the project is anchored to
 Lehrplan 21 — a German EDK/KMK/PH-style abstract scored 0.0 and was silently
@@ -495,8 +496,11 @@ negatives incl. German higher-ed/workplace/health/tool-use);
 `test_german_sources_pass_the_bilingual_filter` pins every classification. The
 heuristic measures P 1.00 / R 1.00 on the grown set; the retried model (F1 0.75)
 and embedding anchors (`st` 0.76 after the documented re-embed, `local` 0.59)
-still do not beat it. Known limits: no stemming (rare inflections surface via
-the recall probe) and no French/Italian yet. Details:
+still do not beat it. French and Italian followed in a second pass (Plan
+d'études romand / Piano di studio anchoring; élève↔étudiant and
+alunni↔studenti universitari carry the audience gate; eval set 109 → 122 with
+13 FR/IT cases, still P 1.00 / R 1.00). Known limit: no stemming (rare
+inflections surface via the recall probe). Details:
 [docs/relevanz-entscheidung.md](docs/relevanz-entscheidung.md).
 
 ### First evidence folded into the graph

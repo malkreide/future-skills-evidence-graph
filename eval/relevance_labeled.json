@@ -1,5 +1,5 @@
 {
-  "_README": "Labeled relevance evaluation set for scripts/eval_relevance.py. Labels are editorial judgments per the MVP scope (AI / future-skills education for children and adolescents aged 6-18). 'live_run'/'live_api' examples are real candidates from the live pipeline runs and source queries; 'editorial' examples are clear anchor cases; 'hard_case' examples are the residual false-positive classes tracked in OPERATIONS.md (teacher tool-use, and disaster/health papers that carry a school-age word plus a topic in the title) which the keyword heuristic still keeps -- deliberately included so the comparison against the optional classifiers is honest. German-language examples (notes tagged '[de]') anchor the bilingual keyword layer: the project is Lehrplan-21-anchored, so the filter must pass German EDK/KMK/PH-style sources and reject German off-scope classes (higher education, workplace, health, teacher tool-use).",
+  "_README": "Labeled relevance evaluation set for scripts/eval_relevance.py. Labels are editorial judgments per the MVP scope (AI / future-skills education for children and adolescents aged 6-18). 'live_run'/'live_api' examples are real candidates from the live pipeline runs and source queries; 'editorial' examples are clear anchor cases; 'hard_case' examples are the residual false-positive classes tracked in OPERATIONS.md (teacher tool-use, and disaster/health papers that carry a school-age word plus a topic in the title) which the keyword heuristic still keeps -- deliberately included so the comparison against the optional classifiers is honest. German-language examples (notes tagged '[de]') anchor the bilingual keyword layer: the project is Lehrplan-21-anchored, so the filter must pass German EDK/KMK/PH-style sources and reject German off-scope classes (higher education, workplace, health, teacher tool-use). French/Italian examples (notes tagged '[fr]'/'[it]') anchor the other two Swiss school languages (Plan d'études romand, Piano di studio) the same way the '[de]' cases anchor Lehrplan 21.",
   "examples": [
     {
       "title": "A Qualitative Study of Immigration Trauma, Posttraumatic Growth, and the College Experience Among MENA Immigrant Students",
@@ -762,6 +762,97 @@
       "abstract": "Die Analyse schätzt die Auswirkungen künstlicher Intelligenz auf Löhne und Beschäftigung. Betrachtet werden Arbeitnehmende verschiedener Branchen.",
       "relevant": false,
       "note": "[de] German negative: labour-market economics of AI, no learners.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Développer la pensée critique face à l'intelligence artificielle chez les élèves du primaire",
+      "abstract": "Une étude d'intervention dans des écoles primaires romandes montre que les élèves améliorent leur esprit critique face aux contenus générés par l'intelligence artificielle.",
+      "relevant": true,
+      "note": "[fr] Primary-school AI/critical-thinking intervention (PER context).",
+      "origin": "editorial"
+    },
+    {
+      "title": "Éducation aux médias et désinformation au cycle d'orientation",
+      "abstract": "L'étude évalue un programme d'éducation aux médias au cycle d'orientation; les élèves identifient mieux la désinformation en ligne.",
+      "relevant": true,
+      "note": "[fr] Media literacy / misinformation, lower-secondary (cycle d'orientation).",
+      "origin": "editorial"
+    },
+    {
+      "title": "Compétences numériques des enfants à l'école obligatoire: le plan d'études romand en pratique",
+      "abstract": "Le rapport analyse comment les compétences numériques du plan d'études romand sont enseignées à l'école obligatoire.",
+      "relevant": true,
+      "note": "[fr] Digital competence anchored to the Plan d'études romand.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Formation continue des enseignants à la didactique de l'intelligence artificielle",
+      "abstract": "Une formation continue des enseignants du secondaire développe leurs compétences pédagogiques pour enseigner l'intelligence artificielle en classe.",
+      "relevant": true,
+      "note": "[fr] Educator lane: in-service teacher PD on AI didactics.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Alfabetizzazione digitale e pensiero critico nella scuola media",
+      "abstract": "Uno studio con alunni della scuola media in Ticino mostra che un percorso di alfabetizzazione digitale rafforza il pensiero critico verso i contenuti online.",
+      "relevant": true,
+      "note": "[it] Digital literacy + critical thinking, scuola media (Piano di studio context).",
+      "origin": "editorial"
+    },
+    {
+      "title": "Intelligenza artificiale nella scuola primaria: un percorso di alfabetizzazione per bambini",
+      "abstract": "Il progetto introduce concetti di intelligenza artificiale nella scuola primaria; i bambini imparano come i sistemi apprendono dai dati.",
+      "relevant": true,
+      "note": "[it] AI literacy, primary school children.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Formazione degli insegnanti sulle competenze digitali per la scuola dell'obbligo",
+      "abstract": "Il programma di formazione degli insegnanti sviluppa le competenze digitali e didattiche dei docenti della scuola dell'obbligo.",
+      "relevant": true,
+      "note": "[it] Educator lane: teacher education on digital competence for compulsory school.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Compétences numériques des étudiants à l'université: une enquête romande",
+      "abstract": "L'enquête mesure les compétences numériques des étudiants de l'enseignement supérieur dans les universités romandes.",
+      "relevant": false,
+      "note": "[fr] Higher-education students (étudiants/université) — adult audience.",
+      "origin": "editorial"
+    },
+    {
+      "title": "L'intelligence artificielle dans les entreprises: effets sur les salaires",
+      "abstract": "L'analyse estime les effets de l'intelligence artificielle sur les salaires dans les entreprises suisses.",
+      "relevant": false,
+      "note": "[fr] Labour-market economics (entreprises/salaires), no learners.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Éducation physique et santé à l'école primaire: un programme romand",
+      "abstract": "Le programme combine éducation physique et promotion de la santé à l'école primaire; les résultats portent sur l'activité physique des enfants.",
+      "relevant": false,
+      "note": "[fr] School PE/health promotion — school audience but off-scope domain.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Intelligenza artificiale per la previsione dei salari nelle imprese",
+      "abstract": "Un'analisi economica applica l'apprendimento automatico alla previsione dei salari nelle imprese e aziende italiane.",
+      "relevant": false,
+      "note": "[it] Economics/ML application (imprese/salari), no education scope.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Competenze digitali degli studenti universitari: un'indagine nazionale",
+      "abstract": "L'indagine misura le competenze digitali degli studenti universitari nell'istruzione superiore.",
+      "relevant": false,
+      "note": "[it] Higher-education students — adult audience.",
+      "origin": "editorial"
+    },
+    {
+      "title": "Educazione fisica nella scuola primaria: effetti sulla salute dei bambini",
+      "abstract": "Lo studio valuta un programma di educazione fisica nella scuola primaria; gli esiti riguardano il peso corporeo e l'attività fisica.",
+      "relevant": false,
+      "note": "[it] School PE/health — off-scope domain despite school audience.",
       "origin": "editorial"
     }
   ]

@@ -1043,6 +1043,30 @@ class DataIntegrityTests(unittest.TestCase):
                 f"German example misclassified: {example['title']}",
             )
 
+    def test_french_italian_sources_pass_the_multilingual_filter(self) -> None:
+        # The other two Swiss school languages: Plan d'études romand (FR) and
+        # Piano di studio (IT) sources must classify exactly like the German
+        # ones — positives kept (incl. educator lane), negatives dropped
+        # (higher-ed étudiants/studenti universitari, economics, school PE).
+        import eval_relevance
+
+        examples = eval_relevance.load_examples()
+        tagged = [
+            e for e in examples
+            if str(e.get("note", "")).startswith(("[fr]", "[it]"))
+        ]
+        self.assertGreaterEqual(len(tagged), 12, "French/Italian eval examples missing")
+        self.assertTrue(any(e["relevant"] for e in tagged))
+        self.assertTrue(any(not e["relevant"] for e in tagged))
+        for example in tagged:
+            score, topics = score_relevance(example)
+            kept = heuristic_keep(example, score, topics)
+            self.assertEqual(
+                kept,
+                example["relevant"],
+                f"French/Italian example misclassified: {example['title']}",
+            )
+
     def test_normalize_title_folds_german_diacritics(self) -> None:
         # Umlauts must map to their base letters (not vanish), and ß to ss, so
         # German keywords and titles normalize consistently on both sides.
