@@ -975,5 +975,173 @@
     "reviewed_at": "2026-06-29",
     "relevance_score": 1.0,
     "audience": "educator"
+  },
+  {
+    "id": "src-lt-b-gt-technology-enhanced-language-learning-in-multilingual-environmen",
+    "title": "&lt;b&gt;Technology-Enhanced Language Learning in Multilingual Environments: A Linguistic Review of Socio-Pedagogical and Neurolinguistic Frameworks &lt;/b&gt;",
+    "authors": [
+      "Aigerim Bogenbayeva",
+      "Fauziya Orazbayeva",
+      "Aitzhamal Rauandina",
+      "Zhazira Kumisbekova",
+      "Meruyert Imankulova"
+    ],
+    "year": 2026,
+    "doi": "10.46328/ijtes.8805",
+    "url": "https://openalex.org/W7167238707",
+    "openalex_id": "https://openalex.org/W7167238707",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Technology in Education and Science",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-sa",
+    "abstract": "This research is a qualitative systematic review examining technology-enhanced Kazakh language teaching in multilingual educational environments through socio-pedagogical and neurolinguistic frameworks. In this context, the Web of Science (WoS) and Scopus databases were searched within the framework of the PRISMA protocol; of the 449 studies identified, 32 studies published from 2015 onward were included in the analysis because they met the inclusion criteria. The findings are presented around four research questions. First, it was determined that social media tools and digital platforms reinforce students' Kazakh language use practices and facilitate identity repositioning. Regarding the second research question, gamification, artificial intelligence-based dialogue systems, and personalized learning models were found to have positive effects on language outcomes, although these effects vary according to the type of tool and pedagogical context. The TPACK framework stands out as a determining variable in teacher-student interaction and the effectiveness of scaffolding strategies. In addition, the number of direct studies using neurolinguistic methods is very limited; indirect findings obtained through cognitive lexicology and personalized learning environments provide a strong basis for future research in this field. Future research is recommended to use neuroimaging methods and longitudinal designs, conduct multilingual systematic reviews that include publications in Kazakh and Russian, integrate TPACK into teacher training, and include user-experience evaluations in technology-based tools.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-do-we-align-parents-and-teachers-perceptions-of-dual-language-learners-s",
+    "title": "Do We Align? Parents\u2019 and Teachers\u2019 Perceptions of Dual Language Learners\u2019 Social Competence in Preschool",
+    "authors": [
+      "Jun Wang",
+      "Eun Hye Hur",
+      "Lieny Jeon"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s10643-026-02295-5",
+    "url": "https://openalex.org/W7167334128",
+    "openalex_id": "https://openalex.org/W7167334128",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Early Childhood Education Journal",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract Understanding dual language learners\u2019 (DLLs\u2019) social competence across home and school settings is essential to provide tailored support. This qualitative study, using data collected from three early care programs, examined parents\u2019 and teachers\u2019 perceptions of DLLs\u2019 social competence and explored the challenges and resources needed to foster this social competence. Participants observed that DLLs often behave differently across home and school settings, which is likely shaped by sociocultural and linguistic factors. Findings also revealed both shared and divergent perspectives among parents and teachers regarding DLLs\u2019 social competence, likely influenced by their cultural backgrounds and life experiences. The findings of this study underscore the complexity of DLLs\u2019 social functioning in culturally and linguistically diverse environments. Notably, although monolingual children were not the focus of this study, some teacher participants raised broader concerns about how all children navigate culturally and linguistically diverse environments, highlighting the importance of supporting both DLLs and monolingual children\u2019s interactions in multilingual settings. Policy and practices should focus on collaborative, multi-level efforts to support DLLs\u2019 social competence, from equipping teachers and families with shared strategies to ensuring that schools and systems provide relevant resources that meet the diverse needs of DLLs, families, and teachers. Within these efforts, family child care providers may particularly benefit from more structured professional development and systemic support to effectively foster DLLs\u2019 social competence.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo",
+    "title": "Research on China\u2019s level and inequality of SWB based on digital transformation of public services",
+    "authors": [
+      "Mi Xu",
+      "Dongmei Mu",
+      "Daifu Yang"
+    ],
+    "year": 2026,
+    "doi": "10.1057/s41599-026-08203-x",
+    "url": "https://openalex.org/W7167364765",
+    "openalex_id": "https://openalex.org/W7167364765",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Humanities and Social Sciences Communications",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract As digital transformation accelerates globally, studies of its impact on citizens\u2019 subjective well-being (SWB) and inequality remain limited. This study constructs a provincial-level measure of digital investment in basic public services by applying machine learning and text analysis to over 70,000 government procurement contracts from the China Government Procurement Network. By merging this measure with more than 80,000 individual observations from the China Family Panel Studies (CFPS, 2014\u20132022), this study examines how the digital transformation of public services affects citizens\u2019 SWB and its distribution. The results show that this transformation enhances citizens\u2019 SWB, particularly via healthcare and education. Mechanism tests reveal that digital transformation promotes SWB primarily by reducing household service expenditures and lowering social policy insecurity. However, Recentred Influence Function regression shows that this transformation has also generated SWB inequality, and dimension-specific estimates further reveal that education and social security widen disparities, whereas healthcare and culture help reduce them. Further mechanism analysis indicates that differences in digital literacy underlie this divergence. Groups with higher digital literacy benefit disproportionately from the digital transformation of education and social security, thereby exacerbating SWB gaps, whereas healthcare and culture show no significant differences in group benefits and are more inclusive of digitally disadvantaged populations, thus narrowing overall inequality. These findings underscore the limited gains for digitally disadvantaged groups and reveal the social differentiation risks of digital development, emphasizing that future digital governance must balance efficiency improvements with inclusive protections.",
+    "topics": [
+      "ai literacy",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st",
+    "title": "Intergenerational AI Literacy as Public Digital Infrastructure: A Case Study of Kerala\u2019s Sarvam AI Mayam Initiative",
+    "authors": [
+      "Aswin K.P.",
+      "Caroline V. T.",
+      "Amal George",
+      "Anumol Charly"
+    ],
+    "year": 2026,
+    "doi": "10.38124/ijisrt/26jun1547",
+    "url": "https://openalex.org/W7167262995",
+    "openalex_id": "https://openalex.org/W7167262995",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Innovative Science and Research Technology (IJISRT)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc",
+    "abstract": "The swift expansion of Generative Artificial Intelligence (AI) has created a significant \"digital wisdom gap\" between tech-savvy youth and elder generations, rendering the latter susceptible to advanced synthetic threats. This case study assesses the \"Sarvam AI Mayam\" initiative\u2014India's most extensive systematic AI literacy campaign\u2014executed by the Kerala Infrastructure and Technology for Education (KITE). Initiated in early 2026, the project employs an innovative Reverse Mentoring Model, wherein 2,200 \"Little KITEs\" IT club units enable roughly 600,000 parents through targeted instruction. The research examines the project's dual-objective educational framework: improving Functional Utility and fostering Defensive Resilience. Parents are instructed in practical AI uses, such as real-time language translation, AIenhanced photo restoration, and tailored educational assistance through the 'Samagra Plus' platform. Simultaneously, the defensive curriculum tackles significant security concerns, equipping parents with precise strategies to recognise deep fake videos, voice cloning, and AI-generated disinformation. A crucial element of this project is its compliance with the Information Technology (Intermediary Guidelines) Amendment Rules 2026, which require prompt removal of deep fake information. By incorporating these legal norms into grassroots teaching, the program converts the family into a legally aware entity adept at navigating the AI-driven digital economy. The paper emphasises how this strategy enhances household financial resilience by reducing the danger of AI-driven financial scams from a socio-economic standpoint. Ultimately, the \"Sarvam AI Mayam\" initiative serves as a global benchmark for democratizing AI knowledge, demonstrating that intergenerational learning and public-school infrastructure can effectively bridge the digital divide and defend a society against the threats of the algorithmic age.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-extracurricular-activities-and-academic-performance-a-systematic-review",
+    "title": "Extracurricular Activities and Academic Performance: A Systematic Review with a Focus on AI and Machine-Learning Applications in Education",
+    "authors": [
+      "Aspa Alexaki",
+      "Dimitrios Michalopoulos",
+      "Dimitris Papadopoulos",
+      "Konstantinos C. Giotopoulos"
+    ],
+    "year": 2026,
+    "doi": "10.3390/educsci16071067",
+    "url": "https://openalex.org/W7167261175",
+    "openalex_id": "https://openalex.org/W7167261175",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Education Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Extracurricular activities (ECAs) are widely recognized as contributors to holistic student development, although the nature and magnitude of their associations with academic performance remain context-dependent across educational levels. At the same time, artificial intelligence and machine learning are increasingly used in many educational settings, while variables that are not directly related to academic content, such as participation in extracurricular activities, are very rarely used. The present review is a systematic literature review conducted according to the PRISMA 2020 framework. It consisted of 30 empirical studies published between 2010 and 2025 which examined the relationship between ECAs and academic performance, with focused attention on studies that incorporated AI and ML techniques. The majority of the studies, across all education levels, reported neutral to positive associations between ECAs and academic performance metrics, such as grades, test scores, and engagement indicators. The evidence suggests that moderate involvement in ECAs generally does not harm academic performance, while excessive involvement can generate time conflicts that undermine study. A substantial proportion of the studies reviewed (12 of 30, or 40%) applied AI or ML methods to predict academic outcomes. These studies reported improvements in predictive accuracy when ECA-related variables were included, though performance metrics varied widely across algorithms, datasets, and outcome measures, precluding direct comparison. Overall, the findings suggest that ECAs complement student development, with effects contingent on activity type, intensity, and educational context. Future research should prioritize longitudinal designs, standardized ECA measurement, and interpretable AI models that support transparent and equitable decision-making. Longitudinal studies are needed to clarify the temporal sequence of associations between ECA participation and academic outcomes, and to assess equity of access.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed",
+    "title": "Numerical and thematic trends and developments of chatbot research in education: bibliometric analysis and systematic review",
+    "authors": [
+      "Wael Alsayed",
+      "Fahad Al-Hafdi"
+    ],
+    "year": 2026,
+    "doi": "10.1057/s41599-026-07833-5",
+    "url": "https://openalex.org/W7167265407",
+    "openalex_id": "https://openalex.org/W7167265407",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Humanities and Social Sciences Communications",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "With the tremendous development of artificial intelligence and machine learning technologies, chatbots have gained commonly in many fields, including education. Chatbots can be used in education to provide continuous support, enhance interaction and participation processes, and support self-learning and collaborative learning. The current study came in response to the lack of scientific reviews that provide an integrated view of the descriptive and analytical structure of research on the use of chatbots in education. This paper presented a bibliometric analysis (BA) of a total of (313) documents during the period 2016\u20132023 extracted from the Web of Science database. The reason is to determine publication trends, analyze citations, identify collaborative networks, analyze relationships, and future trends, using Biblioshiny in the R environment and VOSviewer. The study also provided a systematic review (SLR) with a total of (30) documents to find the main topics of the most influential studies. This is because the most important studies focused on the learning outcomes of using chatbots, the effectiveness of chatbots in learning a second language, limitations and precautions for using chatbots, using ChatGPT models, and the roles of teachers in using chatbots.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]

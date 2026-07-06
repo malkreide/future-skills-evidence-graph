@@ -294,5 +294,36 @@
     "reviewed_at": "2026-06-29",
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-beyond-adam-soap-and-muon-for-faster-label-efficient-training-of-machine",
+    "title": "Beyond Adam: SOAP and Muon for Faster, Label-Efficient Training of Machine Learning Interatomic Potentials",
+    "authors": [
+      "Gil Harari",
+      "Yoel Zimmermann",
+      "Ola Tangen Kulseng",
+      "Laura Zichi",
+      "Chuin Wei Tan",
+      "Marc L. Descoteaux",
+      "Boris Kozinsky"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2607.02499v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Machine learning interatomic potentials (MLIPs) have become a hallmark of AI for scientific simulation. While efforts on new architectures and datasets have led to increasingly accurate and general models, the choice of optimizer for training has largely remained unexplored, defaulting to Adam and its variants in the community. Here, we implement and systematically compare a class of recently proposed matrix-structured optimizers, including Muon, SOAP, and the hybrid SOAP-Muon, for training NequIP and Allegro MLIP models. We find that these optimizers can substantially outperform Adam in both convergence speed and final accuracy. SOAP and SOAP-Muon emerge as robust and consistently strong methods, while Muon only provides partial gains relative to Adam. The improvements are particularly pronounced under partial force supervision. Our results indicate that optimizer choice is an overlooked yet impactful design axis for MLIPs.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
