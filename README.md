@@ -169,6 +169,16 @@ single framework document, not a search source (it already appears in
 `data/frameworks/`), and enters through the manual source-suggestion governance
 template.
 
+An **optional Telegram integration** mirrors the pipeline into a chat and adds a
+mobile submission channel — serverless, staying GitHub-first: workflows notify
+the configured chat about weekly research results, report imports, new issues,
+and failures (`scripts/telegram_notify.py`, a no-op without the secrets), and a
+polling workflow (`telegram-intake.yml`) turns messages from allow-listed chats
+(a direct PDF link, an attached PDF, or pasted report text) into the same
+"Bericht einreichen" issue the form produces — one shared import and review
+path, candidates only. Setup and security model:
+[docs/telegram-integration.md](docs/telegram-integration.md).
+
 Imported candidates pass a **relevance filter** (`scripts/common.py`) before
 deduplication. The default is a transparent keyword/topic heuristic: a candidate
 must match at least one MVP topic, score at or above the threshold, clear a curated
@@ -263,6 +273,10 @@ Optional environment variables:
 
 - `SEMANTIC_SCHOLAR_API_KEY`: raises Semantic Scholar rate limits.
 - `OPENALEX_MAILTO`: polite contact email appended to OpenAlex requests.
+- `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID`: enable the optional Telegram
+  notifications and chat intake (plus optional `TELEGRAM_ALLOWED_CHAT_IDS` and
+  `TELEGRAM_GITHUB_TOKEN`); unset, every Telegram step is a no-op. See
+  [docs/telegram-integration.md](docs/telegram-integration.md).
 - `RELEVANCE_CLASSIFIER`: `heuristic` (default) keeps the deterministic keyword
   filter; `model` opts into the trained classifier (`models/relevance_model.json`);
   `embedding` opts into the embedding anchors (`models/relevance_anchors.json`, also

@@ -75,6 +75,7 @@ jobs:
       - name: Validate candidates
         run: python scripts/validate_data.py
       - name: Open or update candidate pull request
+        id: pr
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -85,8 +86,10 @@ jobs:
           done
           if git diff --cached --quiet; then
             echo "No candidate changes."
+            echo "summary=Keine neuen Kandidaten in diesem Lauf." >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          changed="$(git diff --cached --name-only | wc -l | tr -d ' ')"
           branch="research/candidates"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -96,13 +99,36 @@ jobs:
           git checkout -B "$branch"
           git commit -m "chore: add research candidates"
           git push --force origin "$branch"
-          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
-            gh pr create \
+          url="$(gh pr list --head "$branch" --state open --json url --jq '.[0].url')"
+          if [ -z "$url" ]; then
+            url="$(gh pr create \
               --title "chore: add research candidates" \
               --body "Automated candidate import: sources, claims extracted from their abstracts, and clustered candidate skills. Everything remains a candidate until reviewed." \
               --base "${GITHUB_REF_NAME}" \
-              --head "$branch"
+              --head "$branch")"
           else
             echo "Updated existing pull request for $branch."
           fi
+          echo "summary=Neue Kandidaten gefunden (${changed} Datei(en) aktualisiert). Review-PR: ${url}" >> "$GITHUB_OUTPUT"
+      # Optional Telegram mirror (docs/telegram-integration.md): the notify
+      # script is a no-op without the secrets and never fails the pipeline.
+      - name: Telegram notification (result)
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SUMMARY: ${{ steps.pr.outputs.summary }}
+        run: >
+          python3 scripts/telegram_notify.py
+          --title "🔎 Wöchentliche Recherche abgeschlossen"
+          --text "${SUMMARY}"
+      - name: Telegram notification (failure)
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: >
+          python3 scripts/telegram_notify.py
+          --title "⚠️ Recherche-Pipeline fehlgeschlagen"
+          --text "Details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 

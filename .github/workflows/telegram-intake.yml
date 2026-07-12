@@ -1,0 +1,72 @@
+name: Telegram intake
+
+# Inbound half of the OPTIONAL Telegram integration (docs/telegram-integration.md):
+# polls the Bot API on a schedule (serverless — no webhook endpoint) and turns
+# each authorized chat message into a "Bericht einreichen" issue, i.e. the SAME
+# intake path as the issue form. Without the TELEGRAM_BOT_TOKEN secret every run
+# is a seconds-cheap no-op; repos without a bot can also simply disable this
+# workflow in the Actions UI.
+on:
+  schedule:
+    # Polling latency is the price of staying serverless: a chat submission is
+    # picked up within ~30 minutes. "Jetzt abholen" = run this workflow manually.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+# No top-level grant: the job declares only what it needs.
+permissions: {}
+
+# Two overlapping polls would double-process the same updates (the offset is
+# only advanced once per run), so runs queue instead of racing.
+concurrency:
+  group: telegram-intake
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      # Secrets are not readable in job-level `if:` conditions, so a first
+      # step decides and everything else keys off its output — an unconfigured
+      # repo pays a few seconds per scheduled run, nothing more.
+      - name: Check whether Telegram is configured
+        id: config
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [ -n "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "TELEGRAM_BOT_TOKEN ist nicht gesetzt – Intake übersprungen."
+          fi
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        if: steps.config.outputs.enabled == 'true'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        if: steps.config.outputs.enabled == 'true'
+        with:
+          python-version: "3.12"
+      - name: Install PDF extraction dependency
+        if: steps.config.outputs.enabled == 'true'
+        # Only pypdf is needed (for PDF attachments); the pin comes from
+        # requirements-dev.txt so this stays a single source of truth without
+        # installing the full (heavy) dev stack every 30 minutes.
+        run: pip install "$(grep -E '^pypdf==' requirements-dev.txt)"
+      - name: Poll Telegram and file intake issues
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Optional: additional chats allowed to submit (comma-separated);
+          # empty falls back to TELEGRAM_CHAT_ID.
+          TELEGRAM_ALLOWED_CHAT_IDS: ${{ secrets.TELEGRAM_ALLOWED_CHAT_IDS }}
+          # Optional fine-grained PAT (issues: read/write). With it, created
+          # issues fire the ingest-from-issue workflow automatically; with the
+          # default token GitHub's recursion guard suppresses that trigger and
+          # a maintainer re-sets the `ingest-approved` label to start the
+          # import (the chat reply says which case applies).
+          TELEGRAM_GITHUB_TOKEN: ${{ secrets.TELEGRAM_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/telegram_intake.py

@@ -1,0 +1,43 @@
+name: Telegram notify (issues)
+
+# Outbound half of the OPTIONAL Telegram integration
+# (docs/telegram-integration.md): mirrors every newly opened issue into the
+# configured chat. Pipeline results and failures are notified from within the
+# research/ingest workflows themselves; this workflow only covers issues,
+# which have no other hook. Without the Telegram secrets the notify script is
+# a no-op, so this costs unconfigured repos a few seconds per issue.
+on:
+  issues:
+    types: [opened, reopened]
+
+# telegram_notify.py talks only to the Telegram API; no GitHub grant needed.
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Send Telegram notification
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Issue title and author are attacker-controlled text: they enter
+          # via env (never shell interpolation) and the notify script sends
+          # plain text (no parse mode), so they cannot inject formatting.
+          ISSUE_ACTION: ${{ github.event.action }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        # The script is standard-library only, so the runner's python3
+        # suffices — no setup-python, no pip install.
+        run: |
+          case "${ISSUE_ACTION}" in
+            reopened) VERB="wieder geöffnet" ;;
+            *) VERB="eröffnet" ;;
+          esac
+          python3 scripts/telegram_notify.py \
+            --title "📌 Issue ${VERB}: #${ISSUE_NUMBER} ${ISSUE_TITLE}" \
+            --line "Von: ${ISSUE_AUTHOR}" \
+            --text "${ISSUE_URL}"
