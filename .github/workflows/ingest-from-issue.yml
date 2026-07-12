@@ -156,3 +156,38 @@ jobs:
         run: |
           gh issue comment "${{ github.event.issue.number }}" \
             --body "✅ Import gelaufen. ${PARSE_REASON} ${PR_RESULT}"
+      # Optional Telegram mirror (docs/telegram-integration.md): the notify
+      # script is a no-op without the secrets and never fails the workflow.
+      - name: Telegram notification (result)
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          STATUS: ${{ steps.parse.outputs.status }}
+          REASON: ${{ steps.parse.outputs.reason }}
+          PR_RESULT: ${{ steps.pr.outputs.result }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          if [ "$STATUS" = "ingest" ]; then
+            python3 scripts/telegram_notify.py \
+              --title "📄 Bericht-Import gelaufen (Issue #${ISSUE_NUMBER})" \
+              --line "${REASON}" \
+              --line "${PR_RESULT}" \
+              --text "${ISSUE_URL}"
+          else
+            python3 scripts/telegram_notify.py \
+              --title "📄 Bericht-Import übersprungen (Issue #${ISSUE_NUMBER})" \
+              --line "${REASON}" \
+              --text "${ISSUE_URL}"
+          fi
+      - name: Telegram notification (failure)
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: >
+          python3 scripts/telegram_notify.py
+          --title "⚠️ Bericht-Import fehlgeschlagen (Issue #${ISSUE_NUMBER})"
+          --text "Details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

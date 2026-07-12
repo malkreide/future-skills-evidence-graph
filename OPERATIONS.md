@@ -134,6 +134,13 @@ reviewed.
 3. **Workflow dispatch.** Actions → "Import report candidate (manual)"
    (`ingest-reports.yml`) with a report path / URL or a manifest — the original
    path; it expects the plaintext to already be in the repo.
+4. **Telegram bot (optional).** A message to the configured bot — a direct PDF
+   link, an attached PDF, or pasted report text — is translated by the polling
+   `telegram-intake.yml` workflow into the SAME issue-form intake (entry
+   point 2), so it flows through the identical import and review path. The bot
+   also mirrors pipeline results, new issues, and failures into the chat.
+   Setup, security model (chat allowlist = LLM-budget control), and limits:
+   [docs/telegram-integration.md](docs/telegram-integration.md).
 
 `ingest-from-issue.yml` fires on every `ingest`-labelled issue **from a repo
 owner/member/collaborator**; external submissions wait (with an explanatory

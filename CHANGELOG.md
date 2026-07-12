@@ -12,6 +12,25 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Added
+
+- **Optionale Telegram-Integration: Benachrichtigungen + Einreichen per Chat.**
+  Das Projekt lässt sich jetzt vom Messenger aus begleiten, ohne die
+  GitHub-first-Architektur zu verlassen (serverlos, kein Webhook): Workflows
+  melden das Ergebnis der wöchentlichen Recherche (inkl. Kandidaten-PR-Link),
+  jeden Bericht-Import, jedes neu eröffnete Issue und Pipeline-Fehlschläge in
+  den konfigurierten Chat (`scripts/telegram_notify.py` — Best-Effort, bricht
+  nie einen Workflow ab). Umgekehrt pollt `telegram-intake.yml` alle 30 Minuten
+  die Bot API und übersetzt Nachrichten aus allowgelisteten Chats — direkter
+  PDF-Link, angehängtes PDF (im Runner extrahiert, kein Telegram-Token im
+  Issue) oder eingefügter Berichtstext — in dasselbe „Bericht
+  einreichen“-Issue wie das Formular; ein Import-Pfad, ein Review-Pfad, nur
+  Kandidaten. Dazu `/status` (Bestand im Katalog) und `/hilfe`. Ohne die
+  `TELEGRAM_*`-Secrets ist alles ein No-op. Sicherheitsmodell (Chat-Allowlist
+  als Budget-Kontrolle, `ingest-approved` als übertragene
+  Vertrauensentscheidung) und Einrichtung:
+  [docs/telegram-integration.md](docs/telegram-integration.md).
+
 ### Changed
 
 - **Wöchentliche Suchabfrage ist jetzt konfigurierbar statt fest verdrahtet.**

@@ -44,6 +44,13 @@ Verwandte Dokumente: [../OPERATIONS.md](../OPERATIONS.md) (Runbook),
       ohne DOI. Ohne diese bleibt die Google-Stufe ein No-op; die keyless-Suche
       über Crossref/OpenAlex läuft trotzdem (siehe
       [report-import.md](report-import.md#url-auflösung-url-feld-optional)).
+- [ ] *(Optional, nur falls die Telegram-Integration genutzt wird)*
+      `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` als **Secrets** hinterlegen
+      (Benachrichtigungen + Einreichen per Chat); empfohlen zusätzlich
+      `TELEGRAM_GITHUB_TOKEN` (fine-grained PAT, Issues read/write), damit der
+      Import einer Chat-Einreichung automatisch startet. Ohne diese Secrets
+      sind alle Telegram-Schritte No-ops (siehe
+      [telegram-integration.md](telegram-integration.md)).
 
 ## 3. Erster echter Betriebszyklus
 
