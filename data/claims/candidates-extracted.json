@@ -1308,5 +1308,252 @@
     "status": "rejected",
     "created_at": "2026-06-29",
     "reviewed_at": "2026-06-29"
+  },
+  {
+    "id": "claim-beyond-adam-soap-and-muon-for-faster-label-efficient-training-of-machine",
+    "statement": "Machine learning interatomic potentials (MLIPs) have become a hallmark of AI for scientific simulation.",
+    "source_ids": [
+      "src-beyond-adam-soap-and-muon-for-faster-label-efficient-training-of-machine"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Machine learning interatomic potentials (MLIPs) have become a hallmark of AI for scientific simulation.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-lt-b-gt-technology-enhanced-language-learning-in-multilingual-environmen",
+    "statement": "Regarding the second research question, gamification, artificial intelligence-based dialogue systems, and personalized learning models were found to have positive effects on language outcomes, although these effects vary according to the type of tool and pedagogical context.",
+    "source_ids": [
+      "src-lt-b-gt-technology-enhanced-language-learning-in-multilingual-environmen"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Regarding the second research question, gamification, artificial intelligence-based dialogue systems, and personalized learning models were found to have positive effects on language outcomes, although these effects vary according to the type of tool and pedagogical context.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-do-we-align-parents-and-teachers-perceptions-of-dual-language-learners-s",
+    "statement": "Policy and practices should focus on collaborative, multi-level efforts to support DLLs\u2019 social competence, from equipping teachers and families with shared strategies to ensuring that schools and systems provide relevant resources that meet the diverse needs of DLLs, families, and teachers.",
+    "source_ids": [
+      "src-do-we-align-parents-and-teachers-perceptions-of-dual-language-learners-s"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Policy and practices should focus on collaborative, multi-level efforts to support DLLs\u2019 social competence, from equipping teachers and families with shared strategies to ensuring that schools and systems provide relevant resources that meet the diverse needs of DLLs, families, and teachers.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo",
+    "statement": "Groups with higher digital literacy benefit disproportionately from the digital transformation of education and social security, thereby exacerbating SWB gaps, whereas healthcare and culture show no significant differences in group benefits and are more inclusive of digitally disadvantaged populations, thus narrowing overall inequality.",
+    "source_ids": [
+      "src-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Groups with higher digital literacy benefit disproportionately from the digital transformation of education and social security, thereby exacerbating SWB gaps, whereas healthcare and culture show no significant differences in group benefits and are more inclusive of digitally disadvantaged populations, thus narrowing overall inequality.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo-2",
+    "statement": "Further mechanism analysis indicates that differences in digital literacy underlie this divergence.",
+    "source_ids": [
+      "src-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Further mechanism analysis indicates that differences in digital literacy underlie this divergence.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo-3",
+    "statement": "This study constructs a provincial-level measure of digital investment in basic public services by applying machine learning and text analysis to over 70,000 government procurement contracts from the China Government Procurement Network.",
+    "source_ids": [
+      "src-research-on-china-s-level-and-inequality-of-swb-based-on-digital-transfo"
+    ],
+    "text_anchor": "abstract, sentence 2: \"This study constructs a provincial-level measure of digital investment in basic public services by applying machine learning and text analysis to over 70,000 government procurement contracts from the China Government Procurement Network.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st",
+    "statement": "The swift expansion of Generative Artificial Intelligence (AI) has created a significant \"digital wisdom gap\" between tech-savvy youth and elder generations, rendering the latter susceptible to advanced synthetic threats.",
+    "source_ids": [
+      "src-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The swift expansion of Generative Artificial Intelligence (AI) has created a significant \"digital wisdom gap\" between tech-savvy youth and elder generations, rendering the latter susceptible to advanced synthetic threats.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st-2",
+    "statement": "The paper emphasises how this strategy enhances household financial resilience by reducing the danger of AI-driven financial scams from a socio-economic standpoint.",
+    "source_ids": [
+      "src-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st"
+    ],
+    "text_anchor": "abstract, sentence 9: \"The paper emphasises how this strategy enhances household financial resilience by reducing the danger of AI-driven financial scams from a socio-economic standpoint.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st-3",
+    "statement": "The research examines the project's dual-objective educational framework: improving Functional Utility and fostering Defensive Resilience.",
+    "source_ids": [
+      "src-intergenerational-ai-literacy-as-public-digital-infrastructure-a-case-st"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The research examines the project's dual-objective educational framework: improving Functional Utility and fostering Defensive Resilience.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-extracurricular-activities-and-academic-performance-a-systematic-review",
+    "statement": "At the same time, artificial intelligence and machine learning are increasingly used in many educational settings, while variables that are not directly related to academic content, such as participation in extracurricular activities, are very rarely used.",
+    "source_ids": [
+      "src-extracurricular-activities-and-academic-performance-a-systematic-review"
+    ],
+    "text_anchor": "abstract, sentence 2: \"At the same time, artificial intelligence and machine learning are increasingly used in many educational settings, while variables that are not directly related to academic content, such as participation in extracurricular activities, are very rarely used.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed",
+    "statement": "With the tremendous development of artificial intelligence and machine learning technologies, chatbots have gained commonly in many fields, including education.",
+    "source_ids": [
+      "src-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed"
+    ],
+    "text_anchor": "abstract, sentence 1: \"With the tremendous development of artificial intelligence and machine learning technologies, chatbots have gained commonly in many fields, including education.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed-2",
+    "statement": "Chatbots can be used in education to provide continuous support, enhance interaction and participation processes, and support self-learning and collaborative learning.",
+    "source_ids": [
+      "src-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Chatbots can be used in education to provide continuous support, enhance interaction and participation processes, and support self-learning and collaborative learning.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed-3",
+    "statement": "The reason is to determine publication trends, analyze citations, identify collaborative networks, analyze relationships, and future trends, using Biblioshiny in the R environment and VOSviewer.",
+    "source_ids": [
+      "src-numerical-and-thematic-trends-and-developments-of-chatbot-research-in-ed"
+    ],
+    "text_anchor": "abstract, sentence 5: \"The reason is to determine publication trends, analyze citations, identify collaborative networks, analyze relationships, and future trends, using Biblioshiny in the R environment and VOSviewer.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-06",
+    "reviewed_at": null
   }
 ]
