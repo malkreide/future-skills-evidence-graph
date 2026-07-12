@@ -78,8 +78,17 @@ Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 30 Min)── teleg
 2. **Chat-ID ermitteln:** Dem neuen Bot eine Nachricht schicken (oder ihn in
    eine private Gruppe einladen und dort schreiben), dann im Browser
    `https://api.telegram.org/bot<TOKEN>/getUpdates` öffnen — im JSON steht
-   `message.chat.id` (bei Gruppen negativ).
-3. **Secrets im Repository hinterlegen** (Settings → Secrets and variables →
+   `message.chat.id` (bei Gruppen negativ, das Minuszeichen gehört dazu). In
+   der URL sind `<` `>` Platzhalter-Klammern: es steht nur der nackte Token
+   hinter dem Präfix `bot`.
+3. **Nur bei Nutzung in einer Gruppe:** Bots sehen in Gruppen standardmäßig
+   **keine normalen Nachrichten**, nur Befehle („Privacy Mode“) — das
+   Einreichen per PDF-Link, Anhang oder Text funktioniert aus einer Gruppe
+   also erst, wenn der Privacy Mode abgeschaltet ist: bei BotFather
+   `/setprivacy` → Bot wählen → `Disable`; danach den Bot einmal aus der
+   Gruppe entfernen und neu hinzufügen, damit die Einstellung greift. Im
+   1:1-Chat mit dem Bot ist nichts davon nötig.
+4. **Secrets im Repository hinterlegen** (Settings → Secrets and variables →
    Actions):
    - `TELEGRAM_BOT_TOKEN` — der Token aus Schritt 1.
    - `TELEGRAM_CHAT_ID` — Ziel-Chat für Benachrichtigungen; dient zugleich als
@@ -93,9 +102,30 @@ Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 30 Min)── teleg
      der Import einer Telegram-Einreichung also erst, wenn ein Maintainer im
      Issue das Label `ingest-approved` neu setzt. Mit PAT startet er
      automatisch. Die Chat-Antwort sagt jeweils, welcher Fall gilt.
-4. Fertig. Kein Workflow muss aktiviert werden; ohne Secrets bleiben alle
+5. Fertig. Kein Workflow muss aktiviert werden; ohne Secrets bleiben alle
    Telegram-Schritte No-ops. Wer den 30-Minuten-Poll gar nicht will, kann
    `Telegram intake` in der Actions-Oberfläche deaktivieren.
+
+### Fehlerbehebung bei der Einrichtung
+
+- **`getUpdates` liefert 404 „Not Found“:** Die URL zeigt auf keinen gültigen
+  Bot. Fast immer fehlt das Präfix `bot` direkt vor dem Token
+  (`…/bot123456:AAH…/getUpdates`), die Platzhalter-Klammern `<` `>` wurden
+  mitkopiert, oder der Token ist unvollständig (er enthält einen Doppelpunkt
+  und wird beim Kopieren gern abgeschnitten). Schnelltest mit derselben
+  URL-Struktur: `…/getMe` — antwortet es mit `"ok":true`, stimmen Token und
+  Format. Zur Not zeigt BotFather den Token per `/token` erneut an.
+- **`getUpdates` liefert `"ok":true,"result":[]`:** Kein Fehler — es warten
+  schlicht keine Nachrichten. Entweder wurde dem Bot noch nichts geschickt
+  (Achtung: an den eigenen Bot schreiben, nicht an @BotFather), die Nachricht
+  ist älter als ~24 h (Updates verfallen), sie ging in einer Gruppe mit
+  aktivem Privacy Mode unter (Schritt 3) — **oder die Secrets sind schon
+  gesetzt und der `Telegram intake`-Workflow hat die Updates bereits
+  abgeholt.** In letzterem Fall steht die gesuchte Chat-ID im Log des letzten
+  Workflow-Laufs: eine noch nicht allowgelistete Absender-ID erscheint dort
+  als `ignoriert (Chat <ID> nicht autorisiert)`.
+- **Sofort testen statt bis zu 30 Minuten warten:** Actions →
+  `Telegram intake` → „Run workflow“ holt wartende Nachrichten sofort ab.
 
 ## Sicherheits- und Kostenmodell
 
