@@ -6,7 +6,10 @@ Design principle: no skill recommendation without an evidence path.
 
 > 🇩🇪 **Deutschsprachiger Einstieg:** Worum es geht, ohne Technik, steht in
 > [docs/erklaerung-fuer-laien.md](docs/erklaerung-fuer-laien.md); die technische
-> Architektur in [docs/architektur.md](docs/architektur.md); die Governance- und
+> Architektur in [docs/architektur.md](docs/architektur.md); die zwei
+> Ausbaustufen des Projekts – deterministischer Vor-KI-Kern (Default) und
+> optionale KI-Erweiterung – in [docs/versionen.md](docs/versionen.md); die
+> Governance- und
 > Haltungs-Story – warum ehrliche, auditierbare KI – in
 > [docs/governance-und-haltung.md](docs/governance-und-haltung.md); die
 > Praxisanleitung, wie die Skill-Liste evidenzbasiert erstellt und aktuell
