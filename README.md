@@ -179,7 +179,9 @@ and failures (`scripts/telegram_notify.py`, a no-op without the secrets), and a
 polling workflow (`telegram-intake.yml`) turns messages from allow-listed chats
 (a direct PDF link, an attached PDF, or pasted report text) into the same
 "Bericht einreichen" issue the form produces — one shared import and review
-path, candidates only. Setup and security model:
+path, candidates only. Read-only chat commands render the dashboard's data as
+text (`/status`, `/skills`, `/skill <term>`, `/lp21`) and `/dashboard` links
+the interactive view. Setup and security model:
 [docs/telegram-integration.md](docs/telegram-integration.md).
 
 Imported candidates pass a **relevance filter** (`scripts/common.py`) before

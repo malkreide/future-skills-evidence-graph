@@ -41,9 +41,27 @@ meist kein frei ladbares PDF); der Bot antwortet dann mit einer Anleitung
 statt ein leeres Issue zu erzeugen. Wie überall entstehen **nur Kandidaten**;
 aktiv wird nichts ohne menschliches Review im Kandidaten-PR.
 
-**Befehle:**
+**Befehle (Dashboard-Abfragen im Chat):**
+
+Die Befehle lesen dieselben versionierten Daten, aus denen das Dashboard
+gebaut wird, und geben sie als Text wieder — nur lesend, nichts davon kann
+etwas verändern. Antworten kommen im Polling-Takt (bis ~30 Min, sofort per
+manuellem Dispatch); die immer aktuelle, interaktive Sicht bleibt das
+Dashboard selbst.
 
 - `/status` — Bestand im Katalog (Quellen/Claims/Skills nach Status).
+- `/skills` — Top-Skills nach Evidenz-Score, mit Status und Claim-Anzahl
+  (die Skill-Karten des Dashboards als Liste).
+- `/skill <suchbegriff>` — ein Skill im Detail: Definition, Evidenz-Score,
+  unterstützende/widersprechende Claims, Framework-Zuordnungen inkl.
+  Lehrplan-21-Abdeckung. Sucht in Name (de/en), Kürzel und ID; ein exakter
+  Name gewinnt, sonst listet der Bot die Treffer zum Eingrenzen.
+- `/lp21` — der Lehrplan-21-Vergleich als Zusammenfassung: durchschnittliche
+  Abdeckung und alle Skills aufsteigend (größte Lücken zuerst), mit dem
+  Hinweis, dass die Werte redaktionelle Einzelurteile sind.
+- `/dashboard` — Link zum interaktiven Dashboard als antippbarer Button
+  (URL abgeleitet aus dem Repository; `DASHBOARD_URL`-Variable übersteuert,
+  z. B. für eine eigene Domain).
 - `/hilfe`, `/help`, `/start` — Kurzanleitung.
 
 ## Wie es funktioniert (serverlos)

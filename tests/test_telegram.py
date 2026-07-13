@@ -71,7 +71,7 @@ class AllowedChatIdsTests(unittest.TestCase):
 class ClassifyMessageTests(unittest.TestCase):
     def test_command_with_bot_suffix(self):
         action = ti.classify_message({"text": "/status@evidence_bot"})
-        self.assertEqual(action, {"kind": "command", "name": "status"})
+        self.assertEqual(action, {"kind": "command", "name": "status", "args": ""})
 
     def test_pdf_url_is_a_submission(self):
         action = ti.classify_message({"text": "Bitte: https://oecd.org/report.pdf"})
@@ -158,8 +158,10 @@ class FakeClient(ti.TelegramClient):
         self.sent: list[tuple[Any, str]] = []
         self.acknowledged: int | None = None
 
-    def send_message(self, chat_id, text, reply_to=None):  # noqa: D102
+    def send_message(self, chat_id, text, reply_to=None, url_button=None):  # noqa: D102
         self.sent.append((chat_id, text))
+        self.buttons = getattr(self, "buttons", [])
+        self.buttons.append(url_button)
 
     def acknowledge(self, last_update_id):  # noqa: D102
         self.acknowledged = last_update_id
@@ -267,6 +269,165 @@ class ProcessUpdateTests(unittest.TestCase):
         self.assertIn("Befundtext.", body)
         # The token-bearing Telegram file URL must never reach the issue.
         self.assertNotIn("api.telegram.org", body)
+
+
+SKILLS = [
+    {
+        "id": "skill-ai-literacy",
+        "name": "AI Literacy",
+        "name_de": "KI-Kompetenz",
+        "short_label": "AI",
+        "status": "active",
+        "evidence_score": 0.78,
+        "age_range": "6-18",
+        "audience": "learner",
+        "trend": "growing",
+        "definition_de": "KI verstehen und hinterfragen.",
+        "supporting_claim_ids": ["c1", "c2"],
+        "contradicting_claim_ids": [],
+    },
+    {
+        "id": "skill-old",
+        "name": "Old Skill",
+        "status": "deprecated",
+        "evidence_score": 0.9,
+        "supporting_claim_ids": [],
+    },
+    {
+        "id": "skill-data-literacy",
+        "name": "Data Literacy",
+        "name_de": "Datenkompetenz",
+        "status": "candidate",
+        "evidence_score": 0.4,
+        "supporting_claim_ids": ["c3"],
+    },
+    {
+        "id": "skill-early-ai-literacy",
+        "name": "Early Childhood AI Literacy",
+        "name_de": "Frühkindliche KI-Kompetenz",
+        "status": "candidate",
+        "evidence_score": 0.3,
+        "supporting_claim_ids": [],
+    },
+]
+
+FRAMEWORKS = [
+    {
+        "skill_id": "skill-ai-literacy",
+        "framework": "Lehrplan 21",
+        "competency": "Medien und Informatik",
+        "coverage_score": 1.6,
+        "coverage_label": "Zukunftsluecke",
+        "cycles": ["Zyklus 2", "Zyklus 3"],
+    },
+    {
+        "skill_id": "skill-data-literacy",
+        "framework": "Lehrplan 21",
+        "competency": "NMG / MI",
+        "coverage_score": 2.6,
+        "coverage_label": "gut abgedeckt",
+        "cycles": ["Zyklus 2"],
+    },
+]
+
+
+def _records(kind):
+    return {"skills": SKILLS, "frameworks": FRAMEWORKS}[kind]
+
+
+class DashboardQueryTests(unittest.TestCase):
+    """The read-only chat views over the same records the dashboard renders."""
+
+    def test_skills_text_sorts_by_score_and_hides_deprecated(self):
+        with mock.patch.object(ti, "load_records", side_effect=_records):
+            text = ti.skills_text()
+        self.assertNotIn("Old Skill", text)
+        self.assertLess(text.index("KI-Kompetenz"), text.index("Datenkompetenz"))
+        self.assertIn("0.78", text)
+        self.assertIn("2 Claims", text)
+
+    def test_skill_detail_shows_facts_definition_and_lp21_mapping(self):
+        with mock.patch.object(ti, "load_records", side_effect=_records):
+            text = ti.skill_detail_text("ki-kompetenz")
+        self.assertIn("KI-Kompetenz (AI Literacy)", text)
+        self.assertIn("Status: aktiv", text)
+        self.assertIn("KI verstehen und hinterfragen.", text)
+        self.assertIn("2 unterstützende, 0 widersprechende", text)
+        # The stored ASCII label renders with its umlaut, like on the dashboard.
+        self.assertIn("1.6/3 (Zukunftslücke; Zyklus 2, Zyklus 3)", text)
+
+    def test_exact_name_beats_substring_hits(self):
+        # "KI-Kompetenz" is a substring of "Frühkindliche KI-Kompetenz", but a
+        # name typed straight from the /skills list must resolve uniquely.
+        with mock.patch.object(ti, "load_records", side_effect=_records):
+            text = ti.skill_detail_text("KI-Kompetenz")
+        self.assertIn("KI-Kompetenz (AI Literacy)", text)
+        self.assertNotIn("Mehrere Treffer", text)
+
+    def test_skill_detail_handles_empty_missing_and_ambiguous_queries(self):
+        with mock.patch.object(ti, "load_records", side_effect=_records):
+            self.assertIn("Suchbegriff", ti.skill_detail_text(""))
+            self.assertIn("Kein Skill passt", ti.skill_detail_text("quantenphysik"))
+            ambiguous = ti.skill_detail_text("literacy")
+            self.assertIn("Mehrere Treffer", ambiguous)
+            self.assertIn("KI-Kompetenz", ambiguous)
+
+    def test_lp21_text_averages_and_lists_gaps_first(self):
+        with mock.patch.object(ti, "load_records", side_effect=_records):
+            text = ti.lp21_text()
+        self.assertIn("Ø 2.1/3", text)  # (1.6 + 2.6) / 2
+        self.assertLess(text.index("KI-Kompetenz"), text.index("Datenkompetenz"))
+        self.assertIn("Zukunftslücke", text)
+
+    def test_dashboard_url_prefers_override_then_derives_from_repo(self):
+        with mock.patch.dict(os.environ, {"DASHBOARD_URL": "https://example.org/d/"}, clear=True):
+            self.assertEqual(ti.dashboard_url(), "https://example.org/d/")
+        with mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "owner/repo"}, clear=True):
+            self.assertEqual(ti.dashboard_url(), "https://owner.github.io/repo/")
+        with mock.patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(ti.dashboard_url(), "")
+
+    def test_command_routing_answers_queries_and_dashboard_button(self):
+        client = FakeClient()
+        workdir = Path(__file__).parent
+
+        def update(text):
+            return {"update_id": 1, "message": {"message_id": 2, "chat": {"id": 1}, "text": text}}
+
+        env = {"GITHUB_REPOSITORY": "owner/repo"}
+        with mock.patch.dict(os.environ, env, clear=True):
+            with mock.patch.object(ti, "load_records", side_effect=_records):
+                ti.process_update(update("/skills"), client, {"1"}, "owner/repo", workdir)
+                ti.process_update(update("/skill KI-Kompetenz"), client, {"1"}, "owner/repo", workdir)
+                ti.process_update(update("/lp21"), client, {"1"}, "owner/repo", workdir)
+            ti.process_update(update("/dashboard"), client, {"1"}, "owner/repo", workdir)
+        self.assertIn("Top-Skills", client.sent[0][1])
+        self.assertIn("KI-Kompetenz (AI Literacy)", client.sent[1][1])
+        self.assertIn("Lehrplan-21-Abdeckung", client.sent[2][1])
+        self.assertIn("owner.github.io/repo", client.sent[3][1])
+        self.assertEqual(client.buttons[3], ("Dashboard öffnen", "https://owner.github.io/repo/"))
+
+    def test_query_error_becomes_a_chat_reply(self):
+        client = FakeClient()
+        update = {"update_id": 1, "message": {"message_id": 2, "chat": {"id": 1}, "text": "/skills"}}
+        with mock.patch.object(ti, "load_records", side_effect=ValueError("kaputte Datei")):
+            outcome = ti.process_update(update, client, {"1"}, "owner/repo", Path(__file__).parent)
+        self.assertEqual(outcome, "Befehl /skills beantwortet")
+        self.assertIn("Abfrage fehlgeschlagen", client.sent[0][1])
+
+
+class SendMessageLimitTests(unittest.TestCase):
+    def test_long_text_is_truncated_and_button_attached(self):
+        client = ti.TelegramClient("t")
+        with mock.patch.object(client, "_request") as request:
+            client.send_message(1, "x" * 10_000, url_button=("Öffnen", "https://x"))
+        params = request.call_args.args[1]
+        self.assertLessEqual(len(params["text"]), tn.MAX_MESSAGE_CHARS)
+        self.assertTrue(params["text"].endswith(tn.TRUNCATION_MARKER))
+        self.assertEqual(
+            params["reply_markup"],
+            {"inline_keyboard": [[{"text": "Öffnen", "url": "https://x"}]]},
+        )
 
 
 class StatusTextTests(unittest.TestCase):
