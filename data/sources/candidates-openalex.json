@@ -1143,5 +1143,187 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-artificial-intelligence-in-facilitating-superwood-utilizatio",
+    "title": "The role of artificial intelligence in facilitating superwood utilization among furniture craft producers for sustainable smart manufacturing",
+    "authors": [
+      "Damian Kanayochukwu Ogbu",
+      "Arinzechukwu Victor Okanya",
+      "Onyekachi Kevin Attah"
+    ],
+    "year": 2026,
+    "doi": "10.1038/s41598-026-61799-7",
+    "url": "https://openalex.org/W7168049717",
+    "openalex_id": "https://openalex.org/W7168049717",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Scientific Reports",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Despite the demonstrated potential of superwood materials (engineered or modified wood products, such as densified, thermally modified, or cross-laminated timber, that exhibit enhanced strength, dimensional stability, and resource efficiency relative to conventional timber) and artificial intelligence (AI) to advance sustainable manufacturing, their adoption remains negligible among artisanal furniture producers in resource-constrained developing economies. This study investigates whether and how AI can facilitate superwood utilization within Nigeria's furniture artisan sector, a context characterized by rising timber scarcity, environmental pressure, and limited technological integration. A convergent parallel mixed-methods design was employed, comprising a survey of 196 furniture artisans and in-depth interviews with 30 practitioners across South-East Nigeria, analyzed using the Technology Acceptance Model (TAM) and thematic analysis. Quantitative results revealed low awareness of superwood (34.2%) and AI (45.4%), with substantive AI understanding only 7.7%. Knowledge deficits constituted the most severe barrier (mean > 4.3), followed by financial constraints and infrastructure limitations. Structural equation modeling confirmed TAM relationships: perceived usefulness strongly predicted attitude and behavioural intention, while perceived ease of use remained low (superwood M = 2.87, AI M = 2.65), indicating that anticipated complexity hinders adoption. Qualitative findings elaborated on economic pressures, cultural attachment to traditional hardwoods, cooperative procurement preferences, and unreliable electricity/internet as enabling conditions. In response, the study developed the Contextually Appropriate Framework for AI-Facilitated Superwood Utilization (CAFAISU), integrating knowledge ecosystems, phased technology implementation, financial accessibility mechanisms, sociocultural integration, and infrastructure support. Overall, the findings indicate that AI may serve as a facilitating mechanism particularly through design optimization, mobile-based knowledge dissemination, and cooperative procurement but only once foundational knowledge, financial, infrastructural, and cultural barriers are addressed. Realizing this potential requires targeted, multipronged interventions that address these deficits simultaneously, beginning with the knowledge and infrastructure foundations on which subsequent technology adoption depends.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ritual-communication-custom-and-reflective-tolerance-in-the-tengger-ngad",
+    "title": "Ritual communication, custom, and reflective tolerance in the Tengger Ngadas indigenous community of East Java, Indonesia",
+    "authors": [
+      "Budi Suprapto"
+    ],
+    "year": 2026,
+    "doi": "10.1016/j.ssaho.2026.103213",
+    "url": "https://openalex.org/W7168027606",
+    "openalex_id": "https://openalex.org/W7168027606",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Social Sciences & Humanities Open",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Social tolerance is a fundamental but fragile condition in religiously diverse societies such as Indonesia, where formal policies and interfaith forums have not fully prevented recurrent conflicts and everyday intolerance. This article asks how an indigenous community sustains social tolerance not primarily through state regulation or doctrinal teaching, but through ritual communication embedded in customary practices. Focusing on the Tengger Ngadas indigenous community in East Java, we examine how ritual communication, custom, and social education interact to cultivate what Forst calls \u201creflective tolerance. Using an interpretive ethnographic approach, we conducted long-term fieldwork in Ngadas, including participant observation of major rituals ( Kasadha, Karo, Entas-entas, Barikan ) and everyday mutual-help traditions ( gentenan, sayan, cecelukan ), as well as in-depth interviews with customary and religious leaders and other community members. Data were analysed using Miles et al.\u2019s interactive model, combined with iterative, emic\u2013etic interpretation and member checking. Ethical procedures included informed consent, anonymization of sensitive narratives, and continuous reflexive scrutiny of the researcher's positionality. The findings show that ritual communication in Ngadas works on three interconnected dimensions: religious (collective effervescence and shared sacred narratives), cultural (custom as a moral grammar and value filter), and educational (experiential social learning across generations). Nonverbal participation in rituals functions as a public, non-discursive communication system that renews collective identity and regulates potential tensions between religious groups. At the same time, participation is shaped by social expectations and power relations, revealing both inclusive and ambivalent aspects of ritual as a mechanism of tolerance. Conceptually, the article proposes a model of \u201critual communication for reflective tolerance\u201d in which ritual acts as a mediation space, custom operates as a value filter, and everyday social education serves as a transmission mechanism. This model refines Carey's ritual communication paradigm by integrating Durkheim's collective effervescence, Geertz's symbolic systems, and Forst's theory of tolerance within a specific indigenous context. Practically, the study offers a locally grounded reference for character education and interfaith dialogue programs in Indonesia and comparable plural societies.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-generative-artificial-intelligence-formative-epistemic-injustice-and-edu",
+    "title": "Generative Artificial Intelligence, Formative Epistemic Injustice, and Educators\u2019 Solutions",
+    "authors": [
+      "Spencer J. Smith"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s11217-026-10100-4",
+    "url": "https://openalex.org/W7168035877",
+    "openalex_id": "https://openalex.org/W7168035877",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Studies in Philosophy and Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract The advent of generative Artificial Intelligence (GenAI) has forced educators to contend with its presence in schools, classrooms, and student work. In this paper, I investigate the epistemic consequences of using GenAI in literacy learning. Using the concept of formative epistemic injustice, I argue a wrong is done to students when instructors encourage students to farm out learning tasks to GenAI; specifically, formative epistemic injustice is done to students when they are told to use GenAI. Using the example of writing studies, I show how many of the tasks students and educators are most likely to assign to GenAI when writing are some of the most educative, resulting in formative epistemic injustice when GenAI is used. Recognizing the staying power of GenAI in education and schooling, I sketch out ways to mitigate the mal-formative effects of the use of GenAI in writing classrooms.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-exploring-the-implementation-of-the-pepper-social-robot-in-formal-educat",
+    "title": "Exploring the implementation of the pepper social robot in formal education: a scoping review",
+    "authors": [
+      "Rosabel Mart\u00ednez-Roig",
+      "Mar\u00eda Aragon\u00e9s-Gonz\u00e1lez",
+      "Miguel Cazorla"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s44322-026-00072-1",
+    "url": "https://openalex.org/W7168033832",
+    "openalex_id": "https://openalex.org/W7168033832",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of New Approaches in Educational Research",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract The incorporation of social robots into formal education has attracted growing research interest in recent years. This study presents a scoping review of the use of the Pepper social robot in formal educational contexts. The aim is to map documented forms of implementation, analyse the methodological designs employed and identify patterns in the reported findings. A search was conducted in Scopus, Web of Science, ERIC-Proquest and Dialnet, covering peer-reviewed publications between 2014 and 2026 (1 March). After applying the inclusion and exclusion criteria and following the PRISMA-ScR guidelines, 13 empirical studies were selected. The analysis reveals a concentration of research in primary education and a predominance of qualitative approaches with small sample sizes. Pepper is primarily used to support tutoring activities, collaborative learning and mediation in inclusive educational settings, and its operation requires constant teacher supervision. The reported benefits include increased motivation, engagement and development of social skills. The main limitations are associated with technical constraints, insufficient curricular integration and a lack of longitudinal research. The evidence indicates that the observed effects depend largely on instructional design and teacher mediation. The literature suggests that the pedagogical dimension is a determining factor in the robot\u2019s educational implementation.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-interactive-digital-narrative-design-for-education-and-advocacy",
+    "title": "Interactive digital narrative design for education and advocacy",
+    "authors": [
+      "Obiajulu Nwosisi"
+    ],
+    "year": 2026,
+    "doi": "10.14288/1.0453201",
+    "url": "https://openalex.org/W7167919448",
+    "openalex_id": "https://openalex.org/W7167919448",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "cIRcle (University of British Columbia)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "In recent years, interest has grown in the use of interactive digital narratives (IDNs) as tools for education and social transformation, raising the question of how interactivity can extend the narrative-change approach to education, social change, and advocacy. While existing scholarship has largely focused on evaluating interactive digital narratives for their effectiveness in teaching content or influencing behavior, limited research articulates formal design principles for their construction. Through critical analysis of existing literature, IDNs, and the development of three original IDN works, this research investigates how interactive digital narratives can be intentionally designed to shape cognitive, behavioral, and affective change. Using a research-creation methodology, the study draws on theories from game design, narrative psychology, learning sciences, systems thinking, and theatre studies. The findings are synthesized into a formal design framework for educational and persuasive IDNs. This framework offers practical guidance for narrative change practitioners, campaigners, and educators seeking to design interactive experiences with transformative intent.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-translating-climate-research-into-children-s-books-science-communication",
+    "title": "Translating climate research into children's books: science communication learning in an undergraduate geoscience course",
+    "authors": [
+      "Siobhan L. Fathel",
+      "Emily Frey",
+      "Rhylee Gangestad"
+    ],
+    "year": 2026,
+    "doi": "10.5194/egusphere-2026-3618",
+    "url": "https://openalex.org/W7167939490",
+    "openalex_id": "https://openalex.org/W7167939490",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OpenAlex",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract. This study evaluates a children\u2019s book assignment in an upper-level undergraduate climate science course in which students translated peer-reviewed climate research into illustrated books for young audiences. The project examined whether this format supported science communication skills, audience awareness, and sustainability competencies often underdeveloped in content-heavy science courses, while also exploring students\u2019 experiences with generative AI tools for image creation. A mixed-methods design was implemented across two cohorts of EENV-242: Climate and Global Change at Susquehanna University. Pre- and post-project surveys measured changes in student understanding, confidence, and engagement, and were analyzed using descriptive statistics, independent-samples t-tests, and Cohen\u2019s d. Student reflections were analyzed thematically to identify patterns in learning, communication challenges, audience awareness, and AI use. The largest gains were in science communication, particularly students\u2019 confidence creating visuals that communicate science and combining text and images to tell a compelling story. These effects were statistically significant and replicated across cohorts. Agreement that storytelling effectively communicates complex scientific topics also increased, while climate attitude and understanding items showed ceiling effects due to high pre-project scores. Reflections most often emphasized audience awareness and translation decisions, suggesting that students were not simply simplifying climate science but rebuilding explanations around the needs of young readers. AI tool use appeared less frequently, suggesting that image generation functioned as a normalized part of the creative process rather than the central learning outcome. Together, these findings suggest that children\u2019s book assignments can help students practice the difficult work of translating complex science for non-specialist audiences, while providing a widely applicable framework for audience-centered communication across climate, geoscience, and other STEM courses.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-causes-of-barriers-to-academic-accessibility-to-students-that-school-lea",
+    "title": "Causes of Barriers to Academic Accessibility to Students that School Leaders Perceive in Ward Secondary Schools within Morogoro Municipality, Tanzania",
+    "authors": [
+      "Ritha Rugalabamu Kinimi"
+    ],
+    "year": 2026,
+    "doi": "10.9734/ajess/2026/v52i73194",
+    "url": "https://openalex.org/W7167929589",
+    "openalex_id": "https://openalex.org/W7167929589",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Asian Journal of Education and Social Studies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examined the causes of barriers to academic accessibility for students, as perceived by school leaders in ward secondary schools within Morogoro Municipality, Tanzania. The study was guided by Adams\u2019 Equity Theory, which explains how fairness and motivation influence students\u2019 academic participation and outcomes. A mixed-methods approach was used to collect, analyse and interpret data from 30 respondents, comprising school leaders and ward education officers. Quantitative data were collected through questionnaires, while qualitative data were gathered through interviews and analysed thematically. The findings indicated that students\u2019 academic accessibility was constrained by several interrelated factors, including long distances from home to school, limited access to academic resources, inadequate technological and digital tools, insufficient awareness of academic practices, delayed policy updates, and a mismatch between school policies and students\u2019 learning needs. The study also found that limited parent-school communication, inadequate feedback from parents and students, and insufficient support for flexible learning contributed to barriers in ward secondary schools. The qualitative findings supported the quantitative results by showing that resource shortages, distance, policy implementation gaps and limited stakeholder involvement continued to affect students\u2019 academic participation. The study concludes that improving academic accessibility requires coordinated efforts from schools, communities, government authorities and policymakers. It recommends further research on practical measures for reducing barriers to academic accessibility among students in ward secondary schools.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-13",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]
