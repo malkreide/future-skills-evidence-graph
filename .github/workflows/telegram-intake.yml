@@ -69,4 +69,7 @@ jobs:
           # import (the chat reply says which case applies).
           TELEGRAM_GITHUB_TOKEN: ${{ secrets.TELEGRAM_GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
+          # Optional: overrides the /dashboard link (e.g. a custom domain);
+          # empty derives the standard GitHub-Pages URL from the repository.
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
         run: python scripts/telegram_intake.py

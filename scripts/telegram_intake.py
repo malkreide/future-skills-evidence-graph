@@ -18,8 +18,12 @@ What a chat member can do:
   issue), pasted into the form's text field.
 - Paste **report text** (at least :data:`MIN_REPORT_CHARS` characters) → issue
   with that text.
-- ``/status`` → current catalog counts; ``/hilfe`` (or ``/help``, ``/start``)
-  → usage help.
+- Read-only dashboard queries: ``/status`` (catalog counts), ``/skills`` (top
+  skills by evidence score), ``/skill <term>`` (one skill in detail),
+  ``/lp21`` (Lehrplan 21 coverage summary), ``/dashboard`` (link button);
+  ``/hilfe`` (or ``/help``, ``/start``) → usage help. These read the same
+  versioned records the dashboard is built from — answers arrive with the
+  polling cadence, the always-current interactive view stays the dashboard.
 
 Security model:
 
@@ -57,7 +61,7 @@ from typing import Any
 
 from common import load_records
 from extract_pdf_text import extract_text
-from telegram_notify import API_BASE, redact_token
+from telegram_notify import API_BASE, MAX_MESSAGE_CHARS, TRUNCATION_MARKER, redact_token
 
 REQUEST_TIMEOUT_SECONDS = 30
 
@@ -83,7 +87,13 @@ HELP_TEXT = (
     f"• Oder den Berichtstext als Nachricht einfügen (mind. {MIN_REPORT_CHARS} Zeichen)\n"
     "Daraus entsteht ein GitHub-Issue mit Label `ingest`; der Import erzeugt nur "
     "Kandidaten – aktiv wird nichts ohne menschliches Review.\n"
-    "Befehle: /status – Bestand im Katalog · /hilfe – diese Hilfe"
+    "Befehle:\n"
+    "/status – Bestand im Katalog\n"
+    "/skills – Top-Skills nach Evidenz-Score\n"
+    "/skill <suchbegriff> – ein Skill im Detail\n"
+    "/lp21 – Lehrplan-21-Abdeckung im Überblick\n"
+    "/dashboard – Link zum interaktiven Dashboard\n"
+    "/hilfe – diese Hilfe"
 )
 
 GUIDANCE_TEXT = (
@@ -137,7 +147,17 @@ class TelegramClient:
         """Confirm all updates up to *last_update_id* (Telegram-side state)."""
         self._request("getUpdates", {"offset": last_update_id + 1, "timeout": 0, "limit": 1})
 
-    def send_message(self, chat_id: int | str, text: str, reply_to: int | None = None) -> None:
+    def send_message(
+        self,
+        chat_id: int | str,
+        text: str,
+        reply_to: int | None = None,
+        url_button: tuple[str, str] | None = None,
+    ) -> None:
+        # Telegram rejects messages over its hard limit; truncating beats
+        # dropping a long /skills or /lp21 answer entirely.
+        if len(text) > MAX_MESSAGE_CHARS:
+            text = text[: MAX_MESSAGE_CHARS - len(TRUNCATION_MARKER)] + TRUNCATION_MARKER
         params: dict[str, Any] = {
             "chat_id": chat_id,
             "text": text,
@@ -148,6 +168,9 @@ class TelegramClient:
                 "message_id": reply_to,
                 "allow_sending_without_reply": True,
             }
+        if url_button is not None:
+            label, url = url_button
+            params["reply_markup"] = {"inline_keyboard": [[{"text": label, "url": url}]]}
         self._request("sendMessage", params)
 
     def download_document(self, file_id: str, dest: Path) -> None:
@@ -214,8 +237,9 @@ def classify_message(message: dict[str, Any]) -> dict[str, Any]:
     text = (message.get("text") or message.get("caption") or "").strip()
 
     if text.startswith("/"):
-        name = text.split()[0].split("@", 1)[0].lstrip("/").lower()
-        return {"kind": "command", "name": name}
+        head, _, rest = text.partition(" ")
+        name = head.split("@", 1)[0].lstrip("/").lower()
+        return {"kind": "command", "name": name, "args": rest.strip()}
 
     document = message.get("document")
     pdf_document = document if document and is_pdf_document(document) else None
@@ -328,6 +352,169 @@ def status_text() -> str:
     return "\n".join(lines)
 
 
+# --- Read-only dashboard queries -------------------------------------------
+#
+# These render the SAME versioned records the dashboard is built from
+# (build_site.py reads data/ too), as plain chat text. They read only; the
+# interactive, always-current view stays the dashboard itself (/dashboard).
+
+STATUS_DE = {"active": "aktiv", "candidate": "Kandidat", "deprecated": "veraltet"}
+AUDIENCE_DE = {"learner": "Lernende", "educator": "Lehrende"}
+TREND_DE = {"growing": "wachsend", "stable": "stabil", "declining": "rückläufig"}
+SKILLS_LIMIT = 12
+
+
+def display_coverage_label(label: str) -> str:
+    """The stored ASCII label, displayed with its umlaut (like the dashboard)."""
+    return label.replace("Zukunftsluecke", "Zukunftslücke")
+
+
+def skill_display_name(skill: dict[str, Any]) -> str:
+    """German name first, English fallback — the dashboard's display rule."""
+    return (skill.get("name_de") or skill.get("name") or skill.get("id", "?")).strip()
+
+
+def dashboard_url() -> str:
+    """The published dashboard URL, or empty when it cannot be derived.
+
+    ``DASHBOARD_URL`` overrides (e.g. a custom domain); otherwise the standard
+    GitHub-Pages URL is derived from ``GITHUB_REPOSITORY`` — the deploy
+    workflow publishes ``public/`` as the site root.
+    """
+    override = os.environ.get("DASHBOARD_URL", "").strip()
+    if override:
+        return override
+    repo = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if "/" in repo:
+        owner, name = repo.split("/", 1)
+        return f"https://{owner}.github.io/{name}/"
+    return ""
+
+
+def skills_text() -> str:
+    """Top skills by evidence score, for the ``/skills`` command."""
+    skills = [s for s in load_records("skills") if s.get("status") != "deprecated"]
+    if not skills:
+        return "Noch keine Skills im Katalog."
+    skills.sort(key=lambda s: s.get("evidence_score") or 0.0, reverse=True)
+    lines = [f"Top-Skills nach Evidenz-Score ({min(len(skills), SKILLS_LIMIT)} von {len(skills)}):"]
+    for rank, skill in enumerate(skills[:SKILLS_LIMIT], start=1):
+        status = STATUS_DE.get(skill.get("status", ""), skill.get("status", "?"))
+        claims = len(skill.get("supporting_claim_ids") or [])
+        lines.append(
+            f"{rank}. {skill_display_name(skill)} – Score "
+            f"{skill.get('evidence_score') or 0.0:.2f} · {status} · {claims} Claims"
+        )
+    lines.append("Details: /skill <suchbegriff> · interaktiv: /dashboard")
+    return "\n".join(lines)
+
+
+def matching_skills(query: str) -> list[dict[str, Any]]:
+    """Skills whose name (de/en), id, or short label contains *query*."""
+    needle = query.casefold()
+    matches = []
+    for skill in load_records("skills"):
+        # The id is matched without its uniform "skill-" prefix — otherwise a
+        # query like "KI" would match EVERY skill (s-KI-ll).
+        haystack = " ".join(
+            (
+                str(skill.get("name", "")),
+                str(skill.get("name_de", "")),
+                str(skill.get("short_label", "")),
+                str(skill.get("id", "")).removeprefix("skill-"),
+            )
+        ).casefold()
+        if needle in haystack:
+            matches.append(skill)
+    # An exact name wins over substring hits: "/skill KI-Kompetenz" (typed
+    # straight from the /skills list) must not be "ambiguous" just because
+    # other skills contain that name as a substring.
+    exact = [
+        skill
+        for skill in matches
+        if needle
+        in {
+            str(skill.get("name", "")).casefold(),
+            str(skill.get("name_de", "")).casefold(),
+            str(skill.get("short_label", "")).casefold(),
+            str(skill.get("id", "")).removeprefix("skill-").casefold(),
+        }
+    ]
+    return exact if exact else matches
+
+
+def skill_detail_text(query: str) -> str:
+    """One skill in detail, for the ``/skill <term>`` command."""
+    query = query.strip()
+    if not query:
+        return "Bitte einen Suchbegriff angeben, z. B. `/skill KI`. Die Liste zeigt /skills."
+    matches = matching_skills(query)
+    if not matches:
+        return f"Kein Skill passt zu „{query}“. Die Liste zeigt /skills."
+    if len(matches) > 1:
+        names = "\n".join(f"• {skill_display_name(s)}" for s in matches[:10])
+        return f"Mehrere Treffer für „{query}“ – bitte eingrenzen:\n{names}"
+
+    skill = matches[0]
+    name = skill_display_name(skill)
+    english = (skill.get("name") or "").strip()
+    if english and english != name:
+        name = f"{name} ({english})"
+    status = STATUS_DE.get(skill.get("status", ""), skill.get("status", "?"))
+    facts = [f"Status: {status}", f"Evidenz-Score: {skill.get('evidence_score') or 0.0:.2f}"]
+    if skill.get("age_range"):
+        facts.append(f"Alter: {skill['age_range']}")
+    facts.append(f"Perspektive: {AUDIENCE_DE.get(skill.get('audience', 'learner'), skill.get('audience'))}")
+    if skill.get("trend"):
+        facts.append(f"Trend: {TREND_DE.get(skill['trend'], skill['trend'])}")
+
+    lines = [name, " · ".join(facts)]
+    definition = (skill.get("definition_de") or skill.get("definition") or "").strip()
+    if definition:
+        lines.append(definition)
+    supporting = len(skill.get("supporting_claim_ids") or [])
+    contradicting = len(skill.get("contradicting_claim_ids") or [])
+    lines.append(f"Evidenz: {supporting} unterstützende, {contradicting} widersprechende Claims")
+
+    mappings = [m for m in load_records("frameworks") if m.get("skill_id") == skill.get("id")]
+    for mapping in mappings:
+        entry = f"• {mapping.get('framework', '?')}: {mapping.get('competency', '?')}"
+        if mapping.get("coverage_score") is not None:
+            label = display_coverage_label(mapping.get("coverage_label", ""))
+            cycles = ", ".join(mapping.get("cycles") or [])
+            entry += f" — Abdeckung {mapping['coverage_score']}/3 ({label}"
+            entry += f"; {cycles})" if cycles else ")"
+        lines.append(entry)
+    return "\n".join(lines)
+
+
+def lp21_text() -> str:
+    """Lehrplan 21 coverage summary, for the ``/lp21`` command."""
+    mappings = [
+        m
+        for m in load_records("frameworks")
+        if m.get("framework") == "Lehrplan 21" and m.get("coverage_score") is not None
+    ]
+    if not mappings:
+        return "Noch keine Lehrplan-21-Abdeckungswerte im Katalog."
+    names = {s.get("id"): skill_display_name(s) for s in load_records("skills")}
+    average = sum(m["coverage_score"] for m in mappings) / len(mappings)
+    # Ascending: the dashboard's headline question is where the gaps are.
+    mappings.sort(key=lambda m: m["coverage_score"])
+    lines = [f"Lehrplan-21-Abdeckung (Ø {average:.1f}/3, kleinste zuerst):"]
+    for mapping in mappings:
+        label = display_coverage_label(mapping.get("coverage_label", ""))
+        lines.append(
+            f"• {names.get(mapping.get('skill_id'), mapping.get('skill_id', '?'))}: "
+            f"{mapping['coverage_score']}/3 ({label})"
+        )
+    lines.append(
+        "Die Werte sind redaktionelle Einzelurteile (Methodik: "
+        "docs/lehrplan21-coverage-methodik.md). Radar & Details: /dashboard"
+    )
+    return "\n".join(lines)
+
+
 def handle_submission(
     submission: dict[str, Any], client: TelegramClient, repo: str, workdir: Path
 ) -> str:
@@ -398,11 +585,40 @@ def process_update(
     action = classify_message(message)
     message_id = message.get("message_id")
     if action["kind"] == "command":
-        if action["name"] == "status":
-            client.send_message(chat_id, status_text(), reply_to=message_id)
-            return "Befehl /status beantwortet"
+        name = action["name"]
+        queries = {
+            "status": lambda: status_text(),
+            "skills": lambda: skills_text(),
+            "skill": lambda: skill_detail_text(action.get("args", "")),
+            "lp21": lambda: lp21_text(),
+        }
+        if name in queries:
+            try:
+                reply = queries[name]()
+            except Exception as exc:  # a data problem must become a chat reply
+                reply = f"Abfrage fehlgeschlagen: {exc}"
+            client.send_message(chat_id, reply, reply_to=message_id)
+            return f"Befehl /{name} beantwortet"
+        if name == "dashboard":
+            url = dashboard_url()
+            if url:
+                client.send_message(
+                    chat_id,
+                    f"Das interaktive Dashboard (Skills, Evidenz-Scores, "
+                    f"Lehrplan-21-Radar):\n{url}",
+                    reply_to=message_id,
+                    url_button=("Dashboard öffnen", url),
+                )
+            else:
+                client.send_message(
+                    chat_id,
+                    "Keine Dashboard-URL konfiguriert (DASHBOARD_URL oder "
+                    "GITHUB_REPOSITORY fehlt im Workflow-Umfeld).",
+                    reply_to=message_id,
+                )
+            return "Befehl /dashboard beantwortet"
         client.send_message(chat_id, HELP_TEXT, reply_to=message_id)
-        return f"Befehl /{action['name']} mit Hilfe beantwortet"
+        return f"Befehl /{name} mit Hilfe beantwortet"
     if action["kind"] == "guidance":
         client.send_message(chat_id, GUIDANCE_TEXT, reply_to=message_id)
         return "Hinweis gesendet (kein verwertbarer Inhalt)"

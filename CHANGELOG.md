@@ -14,6 +14,19 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Telegram: Dashboard-Abfragen als Chat-Befehle.** Der Intake-Bot beantwortet
+  jetzt Lese-Befehle aus denselben versionierten Daten, aus denen das Dashboard
+  gebaut wird: `/skills` (Top-Skills nach Evidenz-Score, mit Status und
+  Claim-Anzahl), `/skill <suchbegriff>` (ein Skill im Detail: Definition,
+  Evidenz, Framework-Zuordnungen inkl. LP21-Abdeckung; exakter Name gewinnt,
+  sonst Treffer-Liste zum Eingrenzen), `/lp21` (durchschnittliche
+  Lehrplan-21-Abdeckung und alle Skills aufsteigend — größte Lücken zuerst)
+  und `/dashboard` (Link-Button zum interaktiven Dashboard; URL aus dem
+  Repository abgeleitet, per `DASHBOARD_URL`-Variable übersteuerbar). Alles
+  rein lesend; Antworten kommen im Polling-Takt, die interaktive Echtzeit-Sicht
+  bleibt bewusst das Dashboard selbst. Lange Antworten werden am
+  Telegram-Limit gekürzt statt verworfen.
+
 - **Versions-Dokumentation: deterministischer Kern vs. KI-Erweiterung.** Neue
   Seite [docs/versionen.md](docs/versionen.md) hält die zwei Ausbaustufen des
   Projekts fest: Version 1, der vollständig LLM-freie, deterministische Kern —
