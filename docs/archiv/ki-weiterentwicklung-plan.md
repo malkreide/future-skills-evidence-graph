@@ -3,9 +3,12 @@
 > **Archiviert — historisches Planungsdokument.** Die hier beschriebenen Pakete
 > P0–P4 sind vollständig umgesetzt. Der gelebte Stand wird in
 > [../../README.md](../../README.md) und [../architektur.md](../architektur.md)
-> dokumentiert; dieses Dokument ist keine Spezifikation mehr, sondern ein
-> Nachweis, *was* gebaut wurde und *warum*. Offene Weiterentwicklungen werden als
-> GitHub-Issues geführt.
+> dokumentiert; die Gegenüberstellung der beiden Ausbaustufen —
+> deterministischer Vor-KI-Kern (Default) und KI-Erweiterung — samt Abbildung
+> der Pakete P0–P4 auf den heutigen Code steht in
+> [../versionen.md](../versionen.md). Dieses Dokument ist keine Spezifikation
+> mehr, sondern ein Nachweis, *was* gebaut wurde und *warum*. Offene
+> Weiterentwicklungen werden als GitHub-Issues geführt.
 
 *Schritt-für-Schritt-Plan in eigenständig lieferbaren Paketen – mit Tests und
 fertigen Umsetzungs-Prompts.*

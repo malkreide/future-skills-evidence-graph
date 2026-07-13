@@ -14,6 +14,17 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Versions-Dokumentation: deterministischer Kern vs. KI-Erweiterung.** Neue
+  Seite [docs/versionen.md](docs/versionen.md) hält die zwei Ausbaustufen des
+  Projekts fest: Version 1, der vollständig LLM-freie, deterministische Kern —
+  bis heute der Default und nicht als Git-Stand, sondern als Konfiguration
+  konserviert (`AI_PROVIDER=none` ⇒ byte-identisches Verhalten) — und
+  Version 2, die opt-in KI-Schicht. Der archivierte Umsetzungsplan
+  ([docs/archiv/ki-weiterentwicklung-plan.md](docs/archiv/ki-weiterentwicklung-plan.md))
+  ist integriert: seine Pakete P0–P4 sind auf den heutigen Code, die Flags und
+  den Aktivierungsstatus abgebildet, seine Leitplanken als „Vertrag zwischen
+  den Versionen“ zusammengefasst. Verlinkt aus README und dem Archiv-Dokument.
+
 - **Optionale Telegram-Integration: Benachrichtigungen + Einreichen per Chat.**
   Das Projekt lässt sich jetzt vom Messenger aus begleiten, ohne die
   GitHub-first-Architektur zu verlassen (serverlos, kein Webhook): Workflows
