@@ -53,11 +53,12 @@
   padding: 0 18px;
 }
 
-.arch-tab:hover,
-.arch-tab:focus-visible {
+.arch-tab:hover {
   border-color: var(--green);
-  outline: none;
 }
+/* Kein outline:none auf :focus-visible — das globale 2px-Fokus-Outline
+   (styles.css) bleibt so auch auf den Ansicht-Tabs sichtbar und ist klar
+   vom grünen Aktiv-Zustand unterscheidbar. [A11Y-002] */
 
 .arch-tab.is-active {
   background: #e7f4ee;
