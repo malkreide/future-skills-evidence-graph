@@ -1,0 +1,53 @@
+# Live-Verifikation der Rest-Vorbehalte — GitHub Pages, 2026-07-18
+# URL: https://malkreide.github.io/future-skills-evidence-graph/
+
+## PERF-005 — Kompression + Cache-Header (curl gegen Live-Pages)
+### /
+  HTTP/2 200 
+  etag: W/"6a5be31d-3a2d"
+  cache-control: max-age=600
+  content-encoding: gzip
+  content-length: 4417
+### /assets/styles.css
+  HTTP/2 200 
+  etag: W/"6a5be31d-4e7b"
+  cache-control: max-age=600
+  content-encoding: gzip
+  content-length: 4442
+### /assets/app.js
+  HTTP/2 200 
+  etag: W/"6a5be31d-a83e"
+  cache-control: max-age=600
+  content-encoding: gzip
+  content-length: 13080
+### /data/index.json
+  HTTP/2 200 
+  etag: W/"6a5be31d-50e2a"
+  cache-control: max-age=600
+  content-encoding: gzip
+  content-length: 53584
+### /data/meta.json
+  HTTP/2 200 
+  etag: "6a5be31d-2d"
+  cache-control: max-age=600
+  content-length: 45
+
+## 304-Revalidierung (konditionaler GET mit If-None-Match)
+  /assets/styles.css  If-None-Match="6a5be31d-4e7b"  ->  HTTP 304
+  /data/index.json  If-None-Match="6a5be31d-50e2a"  ->  HTTP 304
+
+## index.json Groesse: gzip vs. unkomprimiert
+  gzip: 53584 B | unkomprimiert: 331306 B | Faktor: 6.1x
+
+## PERF-001/006 — Netzwerk-Timing (curl, warm, via Agent-Proxy)
+  /  TTFB=0.175324s total=0.175392s transfer=4417B
+  /assets/styles.css  TTFB=0.205473s total=0.205561s transfer=4442B
+  /assets/app.js  TTFB=0.187477s total=0.188655s transfer=13080B
+  /data/index.json  TTFB=0.156395s total=0.163333s transfer=53584B
+
+## 404-Status (eigene Seite unter unbekanntem Pfad)
+  /nicht-existiert-xyz -> HTTP 404 (Body = eigene 404.html)
+
+# Hinweis: Browser-gemessene LCP via Playwright war nicht moeglich —
+# der Agent-Proxy resettet Chromium-Verbindungen zu externen Hosts (ERR_CONNECTION_RESET).
+# curl (CA-Bundle) belegt Timing/Header stellvertretend.
