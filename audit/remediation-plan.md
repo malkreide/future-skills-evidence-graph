@@ -9,18 +9,21 @@
 - Nach jedem Fix: Checkbox abhaken, Finding-Status auf `in-remediation`
 - `accepted-risk` nur mit Begründung im Finding
 
-## Welle 1 — Release-Blocker (alle high, Effort S) — bringt den Score über ~90
+## Welle 1 — Release-Blocker (alle high, Effort S) — ✅ umgesetzt & browser-verifiziert 2026-07-18
 
-- [ ] **A11Y-002** Fokus-Indikator (high, S) — [Finding](findings/2026-07-18-A11Y-002.md)
-      Erster Schritt: in `architektur.css:56-60` das `outline: none` auf `.arch-tab:focus-visible`
-      entfernen; in `submit.css:65-70` den 25%-Outline durch `2px solid var(--focus)` ersetzen.
-- [ ] **A11Y-004** Skip-Link (high, S) — [Finding](findings/2026-07-18-A11Y-004.md)
-      Erster Schritt: den `.skip-link` aus `index.html:41` in `einreichen.html` und
-      `architektur.html` einsetzen, Ziel-`id` auf `<main>` (`tabindex="-1"`).
-- [ ] **A11Y-006** Formular-Fehlerzuordnung (high, S–M) — [Finding](findings/2026-07-18-A11Y-006.md)
-      Erster Schritt: `#urlInput` um `required`/`aria-required`/`aria-describedby` ergänzen,
-      in `submit.js onSubmit()` bei Fehler `aria-invalid="true"` setzen + Hint referenzieren.
-      ⚠ Gemeinsam mit USE-005 umsetzen (dieselben URL-/Jahr-Felder).
+- [x] **A11Y-002** Fokus-Indikator (high, S) — [Finding](findings/2026-07-18-A11Y-002.md)
+      `architektur.css`: `outline:none` auf `.arch-tab:focus-visible` entfernt; `submit.css`:
+      Fokusring auf `2px solid var(--focus)`. Verifiziert: arch-Tab & URL-Feld fokussiert →
+      `solid 2px rgb(49,95,159)`. Commit `0ce25fe`.
+- [x] **A11Y-004** Skip-Link (high, S) — [Finding](findings/2026-07-18-A11Y-004.md)
+      Skip-Link + `<main id="hauptinhalt" tabindex="-1">` auf `einreichen.html` und
+      `architektur.html`. Verifiziert: Skip-Link auf allen 3 Seiten, Ziel fokussierbar.
+      Commit `af90407`.
+- [x] **A11Y-006** Formular-Fehlerzuordnung (high, S–M) — [Finding](findings/2026-07-18-A11Y-006.md)
+      `#urlInput` mit `required`/`aria-required`/`aria-describedby`; `submit.js` setzt bei
+      Fehler `aria-invalid="true"` + `aria-describedby="urlHint submitHint"`, Reset bei
+      gültiger Eingabe. Verifiziert im Browser. Commit `fa227c0`.
+      ⚠ Rest von USE-005 (Jahr-Constraint, `<form>`, Inline-URL-Prüfung) bleibt offen für Welle 2.
 
 ## Welle 2 — Restliche medium
 

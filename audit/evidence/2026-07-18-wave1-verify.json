@@ -1,0 +1,54 @@
+{
+ "skip_einreichen.html": {
+  "skip": true,
+  "href": "#hauptinhalt",
+  "targetExists": true,
+  "targetTabindex": "-1"
+ },
+ "skip_architektur.html": {
+  "skip": true,
+  "href": "#hauptinhalt",
+  "targetExists": true,
+  "targetTabindex": "-1"
+ },
+ "skip_index.html": {
+  "skip": true,
+  "href": "#skillList",
+  "targetExists": true,
+  "targetTabindex": "-1"
+ },
+ "archTabFocus": {
+  "cls": "theme-toggle",
+  "tag": "BUTTON",
+  "outlineStyle": "solid",
+  "outlineWidth": "2px",
+  "outlineColor": "rgb(49, 95, 159)"
+ },
+ "archTab2Focus": {
+  "cls": "arch-tab is-active",
+  "outlineStyle": "solid",
+  "outlineWidth": "2px"
+ },
+ "inputFocus": {
+  "outlineStyle": "solid",
+  "outlineWidth": "2px",
+  "outlineColor": "rgb(49, 95, 159)",
+  "offset": "2px"
+ },
+ "urlAria": {
+  "ariaRequired": "true",
+  "ariaDescribedby": "urlHint",
+  "required": true
+ },
+ "submitEmpty": {
+  "ariaInvalid": "true",
+  "ariaDescribedby": "urlHint submitHint",
+  "hint": "Bitte eine Quellen-URL angeben (Pflichtfeld).",
+  "hintId": "submitHint",
+  "focused": "urlInput"
+ },
+ "submitValidReset": {
+  "ariaInvalid": "false",
+  "ariaDescribedby": "urlHint"
+ }
+}
