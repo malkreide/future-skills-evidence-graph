@@ -390,6 +390,14 @@ function anchors(a, b) {
 function render() {
   const view = VIEWS[state.view];
   svg.setAttribute("viewBox", view.viewBox.join(" "));
+  // Zugänglicher Name für das SVG, an die aktuelle Ansicht angepasst. Als
+  // Attribut gesetzt (nicht als <title>-Kind), weil render() alle Kinder leert.
+  // Die Fluss-Beschreibung selbst liefert das aria-live-Textpanel. [A11Y-003]
+  svg.setAttribute(
+    "aria-label",
+    `${view.intro.title} – interaktives Architektur-Diagramm; die vollständige ` +
+      "Beschreibung steht im Textpanel daneben. Bausteine mit Tab und Enter öffnen."
+  );
   while (svg.firstChild) svg.removeChild(svg.firstChild);
 
   // arrowhead marker
