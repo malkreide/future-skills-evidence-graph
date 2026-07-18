@@ -67,7 +67,9 @@ const URL_PARAM_MAP = {
 };
 
 async function fetchJson(path) {
-  const response = await fetch(path, { cache: "no-store" });
+  // no-cache statt no-store: mit ETag revalidieren (304 beim Zweitbesuch)
+  // statt das groesste Asset jedesmal voll neu zu laden. [PERF-005]
+  const response = await fetch(path, { cache: "no-cache" });
   if (!response.ok) {
     throw new Error(`Could not load ${path}`);
   }

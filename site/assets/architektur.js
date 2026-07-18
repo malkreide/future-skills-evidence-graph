@@ -541,7 +541,8 @@ for (const t of tabs) {
 // ---------------------------------------------------------------------------
 
 async function fetchJson(path) {
-  const response = await fetch(path, { cache: "no-store" });
+  // no-cache: mit ETag revalidieren statt voll neu laden. [PERF-005]
+  const response = await fetch(path, { cache: "no-cache" });
   if (!response.ok) throw new Error(`Could not load ${path}`);
   return response.json();
 }
