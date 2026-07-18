@@ -163,6 +163,7 @@ class TelegramClient:
         text: str,
         reply_to: int | None = None,
         url_button: tuple[str, str] | None = None,
+        as_web_app: bool = False,
     ) -> None:
         # Telegram rejects messages over its hard limit; truncating beats
         # dropping a long /skills or /lp21 answer entirely.
@@ -180,7 +181,16 @@ class TelegramClient:
             }
         if url_button is not None:
             label, url = url_button
-            params["reply_markup"] = {"inline_keyboard": [[{"text": label, "url": url}]]}
+            # A web_app button opens the page as a full-screen Telegram Mini
+            # App instead of the in-app browser. Telegram only accepts it in
+            # PRIVATE chats — callers pass as_web_app=False for groups, where
+            # a plain URL button is the only valid form.
+            button: dict[str, Any] = {"text": label}
+            if as_web_app:
+                button["web_app"] = {"url": url}
+            else:
+                button["url"] = url
+            params["reply_markup"] = {"inline_keyboard": [[button]]}
         self._request("sendMessage", params)
 
     def download_document(self, file_id: str, dest: Path) -> None:
@@ -612,12 +622,16 @@ def process_update(
         if name == "dashboard":
             url = dashboard_url()
             if url:
+                # In a private chat the button opens the dashboard as a
+                # full-screen Mini App; groups only accept plain URL buttons.
+                is_private = message.get("chat", {}).get("type") == "private"
                 client.send_message(
                     chat_id,
                     f"Das interaktive Dashboard (Skills, Evidenz-Scores, "
                     f"Lehrplan-21-Radar):\n{url}",
                     reply_to=message_id,
                     url_button=("Dashboard öffnen", url),
+                    as_web_app=is_private,
                 )
             else:
                 client.send_message(

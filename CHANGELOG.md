@@ -12,7 +12,16 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
-### Added
+### Changed
+
+- **Telegram: `/dashboard` öffnet im Privat-Chat als Mini App.** Der Button in
+  der `/dashboard`-Antwort ist im Privat-Chat jetzt ein `web_app`-Button —
+  das Dashboard öffnet sich bildschirmfüllend in Telegram statt im
+  In-App-Browser. In Gruppen bleibt es beim normalen Link-Button, weil die
+  Bot API Web-App-Buttons nur in Privat-Chats akzeptiert (eine
+  Gruppen-Nachricht mit `web_app`-Button würde komplett abgelehnt). Die Doku
+  beschreibt zusätzlich den codefreien Weg, das Dashboard als dauerhaften
+  Menü-Button des Bots zu hinterlegen (BotFather → Menu Button).
 
 - **Telegram: Echtzeit-Modus per Webhook-Relay + dichterer Poll-Takt.** Der
   Intake-Workflow beherrscht jetzt zwei Zustellwege bei identischer Logik:

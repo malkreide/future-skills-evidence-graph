@@ -60,9 +60,14 @@ immer aktuelle, interaktive Sicht bleibt das Dashboard selbst.
 - `/lp21` — der Lehrplan-21-Vergleich als Zusammenfassung: durchschnittliche
   Abdeckung und alle Skills aufsteigend (größte Lücken zuerst), mit dem
   Hinweis, dass die Werte redaktionelle Einzelurteile sind.
-- `/dashboard` — Link zum interaktiven Dashboard als antippbarer Button
-  (URL abgeleitet aus dem Repository; `DASHBOARD_URL`-Variable übersteuert,
-  z. B. für eine eigene Domain).
+- `/dashboard` — das interaktive Dashboard als antippbarer Button. Im
+  **Privat-Chat** öffnet er das Dashboard bildschirmfüllend als Telegram
+  Mini App (Web App), in **Gruppen** als normaler Link im In-App-Browser —
+  Telegram erlaubt Web-App-Buttons nur in Privat-Chats. Die URL wird aus dem
+  Repository abgeleitet; die `DASHBOARD_URL`-Variable übersteuert sie, z. B.
+  für eine eigene Domain. Tipp: Zusätzlich lässt sich das Dashboard ohne
+  Code als dauerhafter **Menü-Button** des Bots hinterlegen (BotFather →
+  `/mybots` → Bot Settings → Menu Button → Dashboard-URL eintragen).
 - `/hilfe`, `/help`, `/start` — Kurzanleitung.
 
 ## Wie es funktioniert (serverlos)
