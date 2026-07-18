@@ -1,9 +1,19 @@
 """Telegram intake: turn chat messages into report-import issues (poll-based).
 
 This is the inbound half of the optional Telegram integration (the outbound
-half is ``telegram_notify.py``). The project stays GitHub-first and serverless:
-no webhook endpoint exists. Instead, a scheduled workflow polls the Bot API
-(``getUpdates``) and translates each authorized chat message into the SAME
+half is ``telegram_notify.py``). The project stays GitHub-first: all logic
+runs here, in Actions, in two delivery modes —
+
+- **Pull (default):** a scheduled workflow polls the Bot API (``getUpdates``);
+  no webhook endpoint exists, fully serverless.
+- **Push (optional real-time):** a Telegram webhook delivers each update to
+  the minimal Cloudflare relay (``relay/telegram-webhook-relay.js``), which
+  only re-dispatches this workflow with the update as the ``TELEGRAM_UPDATE``
+  input — replies then arrive in seconds. While a webhook is set, Telegram
+  answers ``getUpdates`` with 409; the scheduled poll detects that and no-ops,
+  so both triggers can stay enabled at once.
+
+Each authorized chat message is translated into the SAME
 mobile-friendly intake the project already has — a "Bericht einreichen" issue
 (label ``ingest``) whose body uses the exact issue-form field headings, so
 ``parse_ingest_issue.py`` and the ``ingest-from-issue`` workflow process a
@@ -36,7 +46,7 @@ Security model:
 - Updates are acknowledged (offset advanced) BEFORE processing: a crash mid-run
   then loses at most one poll's messages — which the per-message error reply
   and the workflow-failure notification surface — instead of re-filing
-  duplicate issues every 30 minutes.
+  duplicate issues on every poll.
 
 State lives entirely at Telegram (unconfirmed updates are kept ~24h), so the
 poller needs no state file and writes nothing into the repository.
@@ -650,7 +660,35 @@ def main() -> int:
 
     repo = os.environ.get("GITHUB_REPOSITORY", "").strip()
     client = TelegramClient(token)
-    updates = client.get_updates()
+
+    # Push mode: the webhook relay dispatched this run with exactly one
+    # update. No getUpdates, no acknowledge — Telegram considers a webhook
+    # update delivered once the relay answered 200.
+    raw_update = os.environ.get("TELEGRAM_UPDATE", "").strip()
+    if raw_update:
+        try:
+            update = json.loads(raw_update)
+        except ValueError as exc:
+            print(f"TELEGRAM_UPDATE ist kein gültiges JSON: {exc}")
+            return 1
+        with tempfile.TemporaryDirectory(prefix="telegram-intake-") as tmp:
+            try:
+                outcome = process_update(update, client, allowed, repo, Path(tmp))
+            except RuntimeError as exc:
+                print(f"Update {update.get('update_id')}: FEHLER: {exc}")
+                return 1
+        print(f"Update {update.get('update_id')}: {outcome} (Push-Modus)")
+        return 0
+
+    try:
+        updates = client.get_updates()
+    except RuntimeError as exc:
+        # With a webhook set (push mode), Telegram rejects getUpdates with
+        # 409 Conflict — the scheduled poll then has nothing to do.
+        if "409" in str(exc):
+            print("Webhook-Modus aktiv (getUpdates → 409) – Polling übersprungen.")
+            return 0
+        raise
     if not updates:
         print("Keine neuen Nachrichten.")
         return 0

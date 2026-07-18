@@ -14,6 +14,23 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Telegram: Echtzeit-Modus per Webhook-Relay + dichterer Poll-Takt.** Der
+  Intake-Workflow beherrscht jetzt zwei Zustellwege bei identischer Logik:
+  Pull wie bisher (Poll-Takt von 30 auf **10 Minuten** verkürzt — im
+  öffentlichen Repo kostenlos), und optional **Push**: ein minimaler,
+  zustandsloser Cloudflare Worker (`relay/telegram-webhook-relay.js`) nimmt
+  Telegrams Webhook entgegen, prüft das Webhook-Secret und löst nur den
+  Intake-Workflow per `workflow_dispatch` aus, das Update als Input — Antworten
+  kommen damit in ~15–40 s statt Minuten, während Allowlist, Befehle und
+  Issue-Erstellung unverändert in GitHub Actions laufen. Bei gesetztem Webhook
+  beantwortet Telegram `getUpdates` mit 409; der Poll erkennt das und
+  überspringt sich, beide Trigger bleiben also gefahrlos aktiv. Push-Läufe
+  gruppieren ihre Concurrency per `update_id`, damit GitHubs
+  Ein-wartender-Lauf-Regel keine Nachricht verwirft; scheitert der Dispatch,
+  antwortet das Relay mit 502 und Telegram stellt erneut zu. Rückbau jederzeit
+  per `deleteWebhook`. Einrichtung:
+  [docs/telegram-integration.md](docs/telegram-integration.md).
+
 - **Telegram: Dashboard-Abfragen als Chat-Befehle.** Der Intake-Bot beantwortet
   jetzt Lese-Befehle aus denselben versionierten Daten, aus denen das Dashboard
   gebaut wird: `/skills` (Top-Skills nach Evidenz-Score, mit Status und
