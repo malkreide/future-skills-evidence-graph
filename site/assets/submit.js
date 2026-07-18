@@ -300,6 +300,11 @@
     const url = els.url.value.trim();
     const text = els.text.value.trim();
     if (!url) {
+      // Fehler dem Feld programmatisch zuordnen: aria-invalid markiert das Feld,
+      // aria-describedby verweist auf die (per aria-live angekuendigte) Meldung,
+      // damit Screenreader den Grund am Feld finden. [A11Y-006]
+      els.url.setAttribute("aria-invalid", "true");
+      els.url.setAttribute("aria-describedby", "urlHint submitHint");
       setHint(
         text
           ? "Im Dokument war keine URL/DOI zu finden – bitte die Quellen-URL eintragen (für den Beweispfad nötig)."
@@ -309,6 +314,9 @@
       els.url.focus();
       return;
     }
+    // Gueltige URL: Fehlerzustand zuruecksetzen.
+    els.url.setAttribute("aria-invalid", "false");
+    els.url.setAttribute("aria-describedby", "urlHint");
     const looksLikePdfUrl = /\.pdf($|[?#])/i.test(url);
     if (!text && !looksLikePdfUrl) {
       setHint(

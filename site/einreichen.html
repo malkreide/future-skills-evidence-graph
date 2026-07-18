@@ -67,10 +67,11 @@
       <section class="submit-card" aria-label="Einreichungsformular">
         <div class="submit-fields">
           <label>
-            Quellen-URL <span class="req">*</span>
-            <input id="urlInput" type="url" inputmode="url"
+            Quellen-URL <span class="req" aria-hidden="true">*</span>
+            <input id="urlInput" type="url" inputmode="url" required aria-required="true"
+                   aria-describedby="urlHint"
                    placeholder="https://www.oecd.org/.../report.pdf" />
-            <small class="field-hint">Wird beim Ablegen einer Datei automatisch aus
+            <small id="urlHint" class="field-hint">Wird beim Ablegen einer Datei automatisch aus
               dem Dokument oder per Crossref-Titelsuche erkannt – nur prüfen.
               Nötig für den Beweispfad.</small>
           </label>
