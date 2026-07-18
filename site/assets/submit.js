@@ -317,6 +317,22 @@
     // Gueltige URL: Fehlerzustand zuruecksetzen.
     els.url.setAttribute("aria-invalid", "false");
     els.url.setAttribute("aria-describedby", "urlHint");
+    // Inline-Praevention vor dem Oeffnen des Issues: URL-Wohlgeformtheit und
+    // Jahr-Format pruefen, statt eine kaputte Eingabe ins Issue zu tragen. [USE-005]
+    try {
+      new URL(url);
+    } catch (_) {
+      els.url.setAttribute("aria-invalid", "true");
+      setHint("Die Quellen-URL ist nicht wohlgeformt (z. B. https://… oder eine DOI-URL).", "error");
+      els.url.focus();
+      return;
+    }
+    const yearValue = els.year.value.trim();
+    if (yearValue && !/^(19|20)\d{2}$/.test(yearValue)) {
+      setHint("Bitte eine vierstellige Jahreszahl angeben (z. B. 2023) – oder das Feld leer lassen.", "error");
+      els.year.focus();
+      return;
+    }
     const looksLikePdfUrl = /\.pdf($|[?#])/i.test(url);
     if (!text && !looksLikePdfUrl) {
       setHint(
@@ -396,6 +412,18 @@
   els.text.addEventListener("input", () => {
     droppedPdfName = "";
   });
+
+  // Enter in einem der einzeiligen Felder loest das Absenden aus (nicht im
+  // Textarea, wo Enter Zeilenumbrueche macht). [USE-005]
+  for (const field of [els.url, els.publisher, els.year]) {
+    if (!field) continue;
+    field.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSubmit();
+      }
+    });
+  }
 
   els.submit.addEventListener("click", onSubmit);
 })();
