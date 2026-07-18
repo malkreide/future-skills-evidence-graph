@@ -1,0 +1,1225 @@
+{
+ "index": {
+  "hydration": {
+   "visibility": "visible",
+   "skillCards": 16,
+   "metricSkills": "16",
+   "lp21Rows": 14,
+   "detailFilled": true,
+   "radarLabel": "Netzdiagramm: Future Evidence gegen LP21-Abdeckung"
+  },
+  "themeToggleWorks": true,
+  "structure": {
+   "lang": "de",
+   "title": "Future Skills Evidence Graph",
+   "h1count": 1,
+   "headings": [
+    "H1:Future Skills Evidence Graph",
+    "H2:Ein belegbarer Katalog von Zukunftskompetenze",
+    "H2:Filter & Suche",
+    "H2:Bestand im Katalog",
+    "H2:Lehrplan 21 Vergleich",
+    "H2:Skills",
+    "H3:KI-Kompetenz",
+    "H3:KI-Grundkonzepte",
+    "H3:Ethische Technikurteilskraft",
+    "H3:Selbstreguliertes Lernen",
+    "H3:Kompetenz im Umgang mit generativer KI",
+    "H3:Systemdenken",
+    "H3:Digital- und Medienkompetenz",
+    "H3:Datenkompetenz",
+    "H3:Kreatives Problemlösen",
+    "H3:Resilienz und Anpassungsfähigkeit",
+    "H3:KI im Alltag erkennen",
+    "H3:Kritisches Denken und epistemische Wachsamkei",
+    "H3:Digitale und KI-Kompetenz von Lehrpersonen",
+    "H3:Frühkindliche KI-Kompetenz",
+    "H3:Kollaboratives Problemlösen",
+    "H3:KI-Kompetenz unterrichten",
+    "H2:KI-Kompetenz",
+    "H3:Evidenzpfad",
+    "H3:Unsicherheit",
+    "H3:Framework-Mappings",
+    "H3:Quellen",
+    "H3:Änderungen",
+    "H3:Letzte Jobs (GitHub Actions)",
+    "H3:Anstehend (offene Pull Requests)"
+   ],
+   "landmarks": {
+    "main": 1,
+    "nav": 1,
+    "header": 2,
+    "footer": 0
+   },
+   "hasSkipLink": true,
+   "iconBtns": [],
+   "imgsNoAlt": 0,
+   "canvasLabel": {
+    "ariaLabel": "Netzdiagramm: Future Evidence gegen LP21-Abdeckung für 14 Fu",
+    "role": "img",
+    "tabindex": null
+   }
+  },
+  "contrastLight": [
+   {
+    "sel": ".eyebrow",
+    "found": true,
+    "text": "Open Evidence Catalog",
+    "ratio": 5.25,
+    "color": "rgb(31, 122, 93)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".principle",
+    "found": true,
+    "text": "Keine Skill-Empfehlung ohne Evidenzpfad",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "14px",
+    "weight": "400"
+   },
+   {
+    "sel": ".field-hint",
+    "found": true,
+    "text": "Evidenz-Score von 0 (keine) bis 1 (stark",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "11px",
+    "weight": "600"
+   },
+   {
+    "sel": ".pill",
+    "found": true,
+    "text": "Aktiv",
+    "ratio": 5.25,
+    "color": "rgb(31, 122, 93)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".metrics p",
+    "found": true,
+    "text": "Skills",
+    "ratio": 5.36,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(238,244,240)",
+    "size": "16px",
+    "weight": "400"
+   },
+   {
+    "sel": ".method-note",
+    "found": true,
+    "text": "Die Abdeckungswerte (0–3) sind redaktion",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".filter-summary",
+    "found": true,
+    "text": "16 Skills",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".nav-link",
+    "found": true,
+    "text": "Bericht einreichen →",
+    "ratio": 6.43,
+    "color": "rgb(49, 95, 159)",
+    "bg": "rgb(255,255,255)",
+    "size": "14px",
+    "weight": "700"
+   },
+   {
+    "sel": ".legend-note",
+    "found": true,
+    "text": "Über einen Skill fahren für Details · vo",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".mapping-table th",
+    "found": true,
+    "text": "Future Skill",
+    "ratio": 5.36,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(238,244,240)",
+    "size": "12px",
+    "weight": "700"
+   },
+   {
+    "sel": ".skill-card p",
+    "found": true,
+    "text": "Fähigkeit, KI-Systeme zu verstehen, zu n",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".definition",
+    "found": true,
+    "text": "Fähigkeit, KI-Systeme zu verstehen, zu n",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "17px",
+    "weight": "400"
+   },
+   {
+    "sel": ".intro-lead p",
+    "found": true,
+    "text": "Über dieses Dashboard",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".chain-node",
+    "found": true,
+    "text": "Quelle",
+    "ratio": 5.25,
+    "color": "rgb(31, 122, 93)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": "#scoreValue",
+    "found": true,
+    "text": "0.00",
+    "ratio": 15.61,
+    "color": "rgb(30, 37, 36)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "800"
+   },
+   {
+    "sel": ".pipeline-hint",
+    "found": true,
+    "text": "Betriebsdaten aus GitHub Actions – für B",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".coverage-bar",
+    "found": true,
+    "text": "",
+    "ratio": 14,
+    "color": "rgb(30, 37, 36)",
+    "bg": "rgb(238,244,240)",
+    "size": "14px",
+    "weight": "400"
+   }
+  ],
+  "contrastDark": [
+   {
+    "sel": ".eyebrow",
+    "found": true,
+    "text": "Open Evidence Catalog",
+    "ratio": 6.79,
+    "color": "rgb(79, 184, 148)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".principle",
+    "found": true,
+    "text": "Keine Skill-Empfehlung ohne Evidenzpfad",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "14px",
+    "weight": "400"
+   },
+   {
+    "sel": ".field-hint",
+    "found": true,
+    "text": "Evidenz-Score von 0 (keine) bis 1 (stark",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "11px",
+    "weight": "600"
+   },
+   {
+    "sel": ".pill",
+    "found": true,
+    "text": "Aktiv",
+    "ratio": 6.79,
+    "color": "rgb(79, 184, 148)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".metrics p",
+    "found": true,
+    "text": "Skills",
+    "ratio": 6.43,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(31,44,38)",
+    "size": "16px",
+    "weight": "400"
+   },
+   {
+    "sel": ".method-note",
+    "found": true,
+    "text": "Die Abdeckungswerte (0–3) sind redaktion",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".filter-summary",
+    "found": true,
+    "text": "16 Skills",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".nav-link",
+    "found": true,
+    "text": "Bericht einreichen →",
+    "ratio": 7.26,
+    "color": "rgb(134, 174, 230)",
+    "bg": "rgb(22,33,29)",
+    "size": "14px",
+    "weight": "700"
+   },
+   {
+    "sel": ".legend-note",
+    "found": true,
+    "text": "Über einen Skill fahren für Details · vo",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".mapping-table th",
+    "found": true,
+    "text": "Future Skill",
+    "ratio": 6.43,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(31,44,38)",
+    "size": "12px",
+    "weight": "700"
+   },
+   {
+    "sel": ".skill-card p",
+    "found": true,
+    "text": "Fähigkeit, KI-Systeme zu verstehen, zu n",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".definition",
+    "found": true,
+    "text": "Fähigkeit, KI-Systeme zu verstehen, zu n",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "17px",
+    "weight": "400"
+   },
+   {
+    "sel": ".intro-lead p",
+    "found": true,
+    "text": "Über dieses Dashboard",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".chain-node",
+    "found": true,
+    "text": "Quelle",
+    "ratio": 6.79,
+    "color": "rgb(79, 184, 148)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": "#scoreValue",
+    "found": true,
+    "text": "0.00",
+    "ratio": 14.16,
+    "color": "rgb(232, 239, 235)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "800"
+   },
+   {
+    "sel": ".pipeline-hint",
+    "found": true,
+    "text": "Betriebsdaten aus GitHub Actions – für B",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".coverage-bar",
+    "found": true,
+    "text": "",
+    "ratio": 12.43,
+    "color": "rgb(232, 239, 235)",
+    "bg": "rgb(31,44,38)",
+    "size": "14px",
+    "weight": "400"
+   }
+  ],
+  "reflow": {
+   "scrollW": 320,
+   "clientW": 320,
+   "horizontalScroll": false
+  },
+  "targets": [
+   {
+    "sel": "#themeToggle",
+    "w": 99,
+    "h": 34,
+    "text": "Dunkel"
+   },
+   {
+    "sel": ".metric-filter",
+    "w": 313,
+    "h": 90,
+    "text": "16\n            Skill"
+   },
+   {
+    "sel": ".metric-filter",
+    "w": 313,
+    "h": 90,
+    "text": "0\n            Kandid"
+   },
+   {
+    "sel": ".ghost-button",
+    "w": 204,
+    "h": 38,
+    "text": "Filter zurücksetzen"
+   },
+   {
+    "sel": ".nav-link",
+    "w": 162,
+    "h": 20,
+    "text": "Bericht einreichen →"
+   },
+   {
+    "sel": ".nav-link",
+    "w": 178,
+    "h": 20,
+    "text": "Architektur ansehen "
+   },
+   {
+    "sel": "select",
+    "w": 313,
+    "h": 42,
+    "text": "Alle\n              A"
+   },
+   {
+    "sel": "select",
+    "w": 313,
+    "h": 42,
+    "text": "Alle\n              L"
+   },
+   {
+    "sel": "select",
+    "w": 313,
+    "h": 42,
+    "text": "Alle Zyklen\n        "
+   },
+   {
+    "sel": "select",
+    "w": 313,
+    "h": 42,
+    "text": "Alle Zyklen\n        "
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 182,
+    "text": "KI-KompetenzFähigkei"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 182,
+    "text": "KI-GrundkonzepteFähi"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 182,
+    "text": "Ethische Technikurte"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 163,
+    "text": "Selbstreguliertes Le"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 204,
+    "text": "Kompetenz im Umgang "
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 163,
+    "text": "SystemdenkenFähigkei"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 163,
+    "text": "Digital- und Medienk"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 182,
+    "text": "DatenkompetenzFähigk"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 144,
+    "text": "Kreatives Problemlös"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 185,
+    "text": "Resilienz und Anpass"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 182,
+    "text": "KI im Alltag erkenne"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 204,
+    "text": "Kritisches Denken un"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 223,
+    "text": "Digitale und KI-Komp"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 201,
+    "text": "Frühkindliche KI-Kom"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 163,
+    "text": "Kollaboratives Probl"
+   },
+   {
+    "sel": ".skill-card",
+    "w": 317,
+    "h": 220,
+    "text": "KI-Kompetenz unterri"
+   },
+   {
+    "sel": "input[type=search]",
+    "w": 313,
+    "h": 42,
+    "text": ""
+   },
+   {
+    "sel": ".theme-toggle",
+    "w": 99,
+    "h": 34,
+    "text": "Dunkel"
+   }
+  ],
+  "focus": [
+   {
+    "tag": "A",
+    "cls": "skip-link",
+    "text": "Zum Inhalt springen",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "A",
+    "cls": "nav-link",
+    "text": "Bericht einreichen →",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "A",
+    "cls": "nav-link",
+    "text": "Architektur ansehen →",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "theme-toggle",
+    "text": "Dunkel",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "A",
+    "cls": "",
+    "text": "Ausführliche Erklärung fü",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "INPUT",
+    "cls": "",
+    "text": "",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "SELECT",
+    "cls": "",
+    "text": "Alle\n              Aktiv\n",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "SELECT",
+    "cls": "",
+    "text": "Alle\n              Lernen",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "SELECT",
+    "cls": "",
+    "text": "Alle Zyklen\n             ",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "INPUT",
+    "cls": "",
+    "text": "",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   }
+  ],
+  "cwv": {
+   "lcp": 44,
+   "cls": 0,
+   "domContentLoaded": 35,
+   "transferKB": 716,
+   "biggest": [
+    {
+     "n": "index.json",
+     "kb": 324
+    },
+    {
+     "n": "index.json",
+     "kb": 324
+    },
+    {
+     "n": "app.js?v=0e5d02d4fc",
+     "kb": 42
+    },
+    {
+     "n": "styles.css?v=5bee0a8d30",
+     "kb": 20
+    },
+    {
+     "n": "status.js?v=c6882ac734",
+     "kb": 7
+    }
+   ],
+   "resourceCount": 5
+  }
+ },
+ "einreichen": {
+  "structure": {
+   "lang": "de",
+   "title": "Bericht einreichen · Future Skills Evidence Graph",
+   "h1count": 1,
+   "headings": [
+    "H1:Bericht einreichen",
+    "H2:Wie es weitergeht"
+   ],
+   "landmarks": {
+    "main": 1,
+    "nav": 1,
+    "header": 1,
+    "footer": 0
+   },
+   "hasSkipLink": false,
+   "iconBtns": [],
+   "imgsNoAlt": 0,
+   "canvasLabel": null
+  },
+  "formFields": [
+   {
+    "id": "urlInput",
+    "type": "url",
+    "labelled": true,
+    "autocomplete": null,
+    "ariaLabel": null
+   },
+   {
+    "id": "publisherInput",
+    "type": "text",
+    "labelled": true,
+    "autocomplete": null,
+    "ariaLabel": null
+   },
+   {
+    "id": "yearInput",
+    "type": "text",
+    "labelled": true,
+    "autocomplete": null,
+    "ariaLabel": null
+   },
+   {
+    "id": "fileInput",
+    "type": "file",
+    "labelled": false,
+    "autocomplete": null,
+    "ariaLabel": null
+   },
+   {
+    "id": "textInput",
+    "type": "textarea",
+    "labelled": true,
+    "autocomplete": null,
+    "ariaLabel": null
+   }
+  ],
+  "dropzone": {
+   "role": "button",
+   "tabindex": "0",
+   "ariaLabel": "Datei hierher ziehen oder zum Auswählen tippen"
+  },
+  "isForm": false,
+  "submitValidation": {
+   "hint": "Bitte eine Quellen-URL angeben (Pflichtfeld).",
+   "hintLive": "polite",
+   "focused": "urlInput"
+  },
+  "contrastLight": [
+   {
+    "sel": ".field-hint",
+    "found": true,
+    "text": "Wird beim Ablegen einer Datei automatisc",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "400"
+   },
+   {
+    "sel": ".submit-hint",
+    "found": true,
+    "text": "Bitte eine Quellen-URL angeben (Pflichtf",
+    "ratio": 6.25,
+    "color": "rgb(164, 63, 63)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".dropzone-sub",
+    "found": true,
+    "text": "oder tippen zum Auswählen · oder Text un",
+    "ratio": 5.36,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(238,244,240)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".submit-fineprint",
+    "found": true,
+    "text": "Bei einem großen PDF passt der Volltext ",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".req",
+    "found": true,
+    "text": "*",
+    "ratio": 6.25,
+    "color": "rgb(164, 63, 63)",
+    "bg": "rgb(255,255,255)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".submit-note li",
+    "found": true,
+    "text": "Du bestätigst das vorausgefüllte Issue a",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "16px",
+    "weight": "400"
+   },
+   {
+    "sel": ".eyebrow",
+    "found": true,
+    "text": "Manueller Eingang",
+    "ratio": 5.25,
+    "color": "rgb(31, 122, 93)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "800"
+   }
+  ],
+  "contrastDark": [
+   {
+    "sel": ".field-hint",
+    "found": true,
+    "text": "Wird beim Ablegen einer Datei automatisc",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "400"
+   },
+   {
+    "sel": ".submit-hint",
+    "found": true,
+    "text": "Bitte eine Quellen-URL angeben (Pflichtf",
+    "ratio": 6.57,
+    "color": "rgb(229, 138, 138)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".dropzone-sub",
+    "found": true,
+    "text": "oder tippen zum Auswählen · oder Text un",
+    "ratio": 6.43,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(31,44,38)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".submit-fineprint",
+    "found": true,
+    "text": "Bei einem großen PDF passt der Volltext ",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".req",
+    "found": true,
+    "text": "*",
+    "ratio": 6.57,
+    "color": "rgb(229, 138, 138)",
+    "bg": "rgb(22,33,29)",
+    "size": "13px",
+    "weight": "700"
+   },
+   {
+    "sel": ".submit-note li",
+    "found": true,
+    "text": "Du bestätigst das vorausgefüllte Issue a",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "16px",
+    "weight": "400"
+   },
+   {
+    "sel": ".eyebrow",
+    "found": true,
+    "text": "Manueller Eingang",
+    "ratio": 6.79,
+    "color": "rgb(79, 184, 148)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "800"
+   }
+  ],
+  "reflow": {
+   "scrollW": 320,
+   "clientW": 320,
+   "horizontalScroll": false
+  },
+  "focus": [
+   {
+    "tag": "A",
+    "cls": "nav-link",
+    "text": "← Zum Dashboard",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "theme-toggle",
+    "text": "Dunkel",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "INPUT",
+    "cls": "",
+    "text": "",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgba(49, 95, 159, 0.25)"
+   },
+   {
+    "tag": "INPUT",
+    "cls": "",
+    "text": "",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgba(49, 95, 159, 0.25)"
+   },
+   {
+    "tag": "INPUT",
+    "cls": "",
+    "text": "",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgba(49, 95, 159, 0.25)"
+   },
+   {
+    "tag": "DIV",
+    "cls": "dropzone",
+    "text": "PDF oder Textdatei hierhe",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgba(49, 95, 159, 0.25)"
+   },
+   {
+    "tag": "TEXTAREA",
+    "cls": "",
+    "text": "",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgba(49, 95, 159, 0.25)"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "submit-btn",
+    "text": "Auf GitHub einreichen",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "BODY",
+    "cls": "",
+    "text": "Manueller Eingang\n       ",
+    "outlineStyle": "none",
+    "outlineWidth": "0px",
+    "outlineColor": "rgb(30, 37, 36)"
+   },
+   {
+    "tag": "A",
+    "cls": "nav-link",
+    "text": "← Zum Dashboard",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   }
+  ]
+ },
+ "architektur": {
+  "structure": {
+   "lang": "de",
+   "title": "Architektur · Future Skills Evidence Graph",
+   "h1count": 1,
+   "headings": [
+    "H1:Future Skills Evidence Graph",
+    "H2:Von der Quelle zur Empfehlung",
+    "H3:Klick auf einen Baustein"
+   ],
+   "landmarks": {
+    "main": 1,
+    "nav": 1,
+    "header": 1,
+    "footer": 0
+   },
+   "hasSkipLink": false,
+   "iconBtns": [],
+   "imgsNoAlt": 0,
+   "canvasLabel": null
+  },
+  "hydration": {
+   "svgNodes": 18,
+   "metricSkills": "16",
+   "svgHasName": {
+    "role": "group",
+    "ariaLabel": null,
+    "title": false
+   }
+  },
+  "tabs": {
+   "tabs": [
+    {
+     "role": "tab",
+     "selected": "true",
+     "controls": null
+    },
+    {
+     "role": "tab",
+     "selected": "false",
+     "controls": null
+    }
+   ],
+   "tablistFound": true,
+   "tabpanels": 0
+  },
+  "svgNodeKeyboard": {
+   "tabindex": "0",
+   "role": "button",
+   "ariaLabel": "Externe Quellen-APIs"
+  },
+  "contrastLight": [
+   {
+    "sel": ".eyebrow",
+    "found": true,
+    "text": "Architektur",
+    "ratio": 5.25,
+    "color": "rgb(31, 122, 93)",
+    "bg": "rgb(255,255,255)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".arch-intro p",
+    "found": true,
+    "text": "Diese Seite zeigt interaktiv, wie die Lö",
+    "ratio": 5.97,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(255,255,255)",
+    "size": "16px",
+    "weight": "400"
+   },
+   {
+    "sel": ".arch-footnote",
+    "found": true,
+    "text": "Statisch erzeugt aus data/ über build_si",
+    "ratio": 5.61,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(247,248,246)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".metrics p",
+    "found": true,
+    "text": "Skills",
+    "ratio": 5.61,
+    "color": "rgb(90, 102, 99)",
+    "bg": "rgb(247,248,246)",
+    "size": "16px",
+    "weight": "400"
+   }
+  ],
+  "contrastDark": [
+   {
+    "sel": ".eyebrow",
+    "found": true,
+    "text": "Architektur",
+    "ratio": 6.79,
+    "color": "rgb(79, 184, 148)",
+    "bg": "rgb(22,33,29)",
+    "size": "12px",
+    "weight": "800"
+   },
+   {
+    "sel": ".arch-intro p",
+    "found": true,
+    "text": "Diese Seite zeigt interaktiv, wie die Lö",
+    "ratio": 7.33,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(22,33,29)",
+    "size": "16px",
+    "weight": "400"
+   },
+   {
+    "sel": ".arch-footnote",
+    "found": true,
+    "text": "Statisch erzeugt aus data/ über build_si",
+    "ratio": 8.13,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(15,22,19)",
+    "size": "13px",
+    "weight": "400"
+   },
+   {
+    "sel": ".metrics p",
+    "found": true,
+    "text": "Skills",
+    "ratio": 8.13,
+    "color": "rgb(161, 176, 170)",
+    "bg": "rgb(15,22,19)",
+    "size": "16px",
+    "weight": "400"
+   }
+  ],
+  "reflow": {
+   "scrollW": 322,
+   "clientW": 320,
+   "horizontalScroll": false
+  },
+  "focus": [
+   {
+    "tag": "A",
+    "cls": "nav-link",
+    "text": "← Zurück zum Dashboard",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "theme-toggle",
+    "text": "Dunkel",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "arch-tab is-active",
+    "text": "Systemfluss",
+    "outlineStyle": "none",
+    "outlineWidth": "0px",
+    "outlineColor": "rgb(31, 122, 93)"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "arch-tab",
+    "text": "Datenmodell",
+    "outlineStyle": "none",
+    "outlineWidth": "0px",
+    "outlineColor": "rgb(90, 102, 99)"
+   },
+   {
+    "tag": "g",
+    "cls": "[object SVGAnimatedString]",
+    "text": "Externe Quellen-APIsOpenA",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "g",
+    "cls": "[object SVGAnimatedString]",
+    "text": "Web-Suche (grau, manuell)",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "g",
+    "cls": "[object SVGAnimatedString]",
+    "text": "Importingest_*.py",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "g",
+    "cls": "[object SVGAnimatedString]",
+    "text": "Deduplizierendeduplicate_",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "g",
+    "cls": "[object SVGAnimatedString]",
+    "text": "RelevanzfilterTopic · Zie",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   },
+   {
+    "tag": "g",
+    "cls": "[object SVGAnimatedString]",
+    "text": "Claims extrahierenextract",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(49, 95, 159)"
+   }
+  ],
+  "svgTextContrast": {
+   "title": {
+    "fill": "rgb(30, 37, 36)"
+   },
+   "sub": {
+    "fill": "rgb(90, 102, 99)"
+   }
+  }
+ }
+}
