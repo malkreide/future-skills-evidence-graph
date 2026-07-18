@@ -17,13 +17,13 @@ profile:
   # Behördenbezug, auf "none" ändern → A11Y-Severities eine Stufe niedriger.
   compliance: eCH-0059
   viewports: [mobile, desktop]
-  baseline_report: none         # Erst-Audit
+  baseline_report: audit/reports/2026-07-18-re-audit.md  # Phase C (Re-Audit)
 
 audit_meta:
   catalog_version: 0.1.1
   skill_version: ux-audit (main @ 9bc719c)
-  last_audit: 2026-07-18
-  last_score: 79
+  last_audit: 2026-07-18 (Re-Audit / Phase C)
+  last_score: 100  # vorher 79; alle 9 Findings closed, keine Regression
   journeys:
     - "Startseite → Filter/Suche → Skill-Detail (Evidenzpfad)"
     - "Startseite → Lehrplan-21-Vergleich (Radar + Tabelle, Zyklus-Filter)"

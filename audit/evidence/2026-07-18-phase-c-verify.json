@@ -1,0 +1,90 @@
+{
+ "fixes": {
+  "A11Y-002_archtab": {
+   "cls": "arch-tab is-active",
+   "outline": "solid 2px"
+  },
+  "A11Y-002_input": "solid 2px rgb(49, 95, 159)",
+  "A11Y-003": {
+   "role": "group",
+   "named": true,
+   "nodes": 18
+  },
+  "A11Y-004_skiplinks": {
+   "index.html": true,
+   "einreichen.html": true,
+   "architektur.html": true
+  },
+  "A11Y-006": {
+   "req": "true",
+   "desc": "urlHint"
+  },
+  "A11Y-006_err": {
+   "inv": "true",
+   "desc": "urlHint submitHint",
+   "focus": "urlInput"
+  },
+  "USE-005_year": {
+   "hint": "Bitte eine vierstellige Jahres",
+   "focus": "yearInput"
+  },
+  "USE-005_valid": {
+   "changed": true,
+   "hint": "GitHub-Issue geöffnet – die PDF-URL wird"
+  },
+  "USE-009": {
+   "h1": "Diese Seite gibt es nicht",
+   "home": true
+  },
+  "PERF-004_fetches": {
+   "index": 1,
+   "meta": 1
+  }
+ },
+ "regression": {
+  "A11Y-005_contrast_light": {
+   "navLink": 6.43,
+   "muted": 5.97,
+   "eyebrow": 5.25
+  },
+  "A11Y-005_contrast_dark": {
+   "navLink": 7.26,
+   "muted": 7.33
+  },
+  "A11Y-008_reflow": {
+   "index.html": {
+    "hScroll": false,
+    "sw": 320
+   },
+   "einreichen.html": {
+    "hScroll": false,
+    "sw": 320
+   },
+   "architektur.html": {
+    "hScroll": false,
+    "sw": 322
+   }
+  },
+  "USE-008_topbar": {
+   "overflow": false,
+   "navlinkH": 44
+  },
+  "A11Y-001_hydrate": {
+   "skillCards": 16,
+   "lp21Rows": 14
+  },
+  "USE-001_status": {
+   "summary": "0 von 16 Skills · 1 Filter aktiv",
+   "live": "polite"
+  },
+  "USE-001_generatedAt": "18.7.2026, 20:24:22",
+  "PERF_cwv": {
+   "cls": 0,
+   "lcp": 48
+  }
+ },
+ "consoleErrors": [
+  "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+  "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+ ]
+}
