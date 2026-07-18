@@ -159,10 +159,14 @@ class FakeClient(ti.TelegramClient):
         self.sent: list[tuple[Any, str]] = []
         self.acknowledged: int | None = None
 
-    def send_message(self, chat_id, text, reply_to=None, url_button=None):  # noqa: D102
+    def send_message(  # noqa: D102
+        self, chat_id, text, reply_to=None, url_button=None, as_web_app=False
+    ):
         self.sent.append((chat_id, text))
         self.buttons = getattr(self, "buttons", [])
         self.buttons.append(url_button)
+        self.web_app_flags = getattr(self, "web_app_flags", [])
+        self.web_app_flags.append(as_web_app)
 
     def acknowledge(self, last_update_id):  # noqa: D102
         self.acknowledged = last_update_id
@@ -408,6 +412,26 @@ class DashboardQueryTests(unittest.TestCase):
         self.assertIn("owner.github.io/repo", client.sent[3][1])
         self.assertEqual(client.buttons[3], ("Dashboard öffnen", "https://owner.github.io/repo/"))
 
+    def test_dashboard_button_is_web_app_only_in_private_chats(self):
+        client = FakeClient()
+        workdir = Path(__file__).parent
+
+        def update(chat_type):
+            return {
+                "update_id": 1,
+                "message": {
+                    "message_id": 2,
+                    "chat": {"id": 1, "type": chat_type},
+                    "text": "/dashboard",
+                },
+            }
+
+        with mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "owner/repo"}, clear=True):
+            ti.process_update(update("private"), client, {"1"}, "owner/repo", workdir)
+            # Telegram rejects web_app inline buttons outside private chats.
+            ti.process_update(update("supergroup"), client, {"1"}, "owner/repo", workdir)
+        self.assertEqual(client.web_app_flags, [True, False])
+
     def test_query_error_becomes_a_chat_reply(self):
         client = FakeClient()
         update = {"update_id": 1, "message": {"message_id": 2, "chat": {"id": 1}, "text": "/skills"}}
@@ -428,6 +452,16 @@ class SendMessageLimitTests(unittest.TestCase):
         self.assertEqual(
             params["reply_markup"],
             {"inline_keyboard": [[{"text": "Öffnen", "url": "https://x"}]]},
+        )
+
+    def test_web_app_button_uses_web_app_field_instead_of_url(self):
+        client = ti.TelegramClient("t")
+        with mock.patch.object(client, "_request") as request:
+            client.send_message(1, "Hi", url_button=("Öffnen", "https://x"), as_web_app=True)
+        params = request.call_args.args[1]
+        self.assertEqual(
+            params["reply_markup"],
+            {"inline_keyboard": [[{"text": "Öffnen", "web_app": {"url": "https://x"}}]]},
         )
 
 
