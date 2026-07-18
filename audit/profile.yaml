@@ -1,0 +1,31 @@
+# ux-audit Profil — Future Skills Evidence Graph
+# Erstellt: 2026-07-18 (Erst-Audit, Phase A)
+# Werte aus Repo + gebautem Site-Output abgeleitet.
+
+profile:
+  name: future-skills-evidence-graph
+  # Deploytes Dashboard (GitHub Pages). Begangen wurde ein lokal aus scripts/build_site.py
+  # erzeugter, bit-identischer Spiegel von public/ (siehe reports §9, Abweichungen).
+  solution_url: https://malkreide.github.io/future-skills-evidence-graph/
+  repo_path: .
+  app_type: dashboard
+  target_audience: public
+  languages: [de]
+  interaction: forms            # einreichen.html ist ein Eingabeformular
+  # Annahme: öffentlich zugängliches Bildungs-/Verwaltungsnahes Werkzeug (Lehrplan-21-Bezug).
+  # Setzt die A11Y-Latte auf eCH-0059 (WCAG 2.1 AA). Ist das Projekt rein privat ohne
+  # Behördenbezug, auf "none" ändern → A11Y-Severities eine Stufe niedriger.
+  compliance: eCH-0059
+  viewports: [mobile, desktop]
+  baseline_report: none         # Erst-Audit
+
+audit_meta:
+  catalog_version: 0.1.1
+  skill_version: ux-audit (main @ 9bc719c)
+  last_audit: 2026-07-18
+  last_score: 79
+  journeys:
+    - "Startseite → Filter/Suche → Skill-Detail (Evidenzpfad)"
+    - "Startseite → Lehrplan-21-Vergleich (Radar + Tabelle, Zyklus-Filter)"
+    - "Bericht einreichen: Datei/Text → Validierung → GitHub-Issue"
+    - "Architektur: Tab-Wechsel → Baustein anklicken → Detail"
