@@ -5,7 +5,9 @@
 (() => {
   const FALLBACK_OWNER = "malkreide";
   const FALLBACK_REPO = "future-skills-evidence-graph";
-  const DATA_INDEX_PATHS = ["./data/index.json", "../data/index.json"];
+  // Nur der Datenstand (generated_at) — aus der winzigen meta.json statt der
+  // vollen index.json, die app.js ohnehin laedt. [PERF-004]
+  const DATA_META_PATHS = ["./data/meta.json", "../data/meta.json"];
 
   const els = {
     jobList: document.querySelector("#jobList"),
@@ -150,9 +152,9 @@
   }
 
   async function loadGenerated() {
-    for (const path of DATA_INDEX_PATHS) {
+    for (const path of DATA_META_PATHS) {
       try {
-        const payload = await fetch(path, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null));
+        const payload = await fetch(path, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null));
         if (payload?.generated_at) {
           els.generatedAt.textContent = new Date(payload.generated_at).toLocaleString("de-CH");
           return;

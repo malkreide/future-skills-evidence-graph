@@ -140,9 +140,12 @@ select {
 }
 
 .nav-link {
+  align-items: center;
   color: var(--blue);
+  display: inline-flex;
   font-size: 14px;
   font-weight: 700;
+  min-height: 44px; /* WCAG 2.5.8 Touch-Zielgrösse [A11Y-010] */
   text-decoration: none;
 }
 

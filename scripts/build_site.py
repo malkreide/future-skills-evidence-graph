@@ -90,7 +90,12 @@ def build_site(output: Path) -> None:
         else:
             shutil.copy2(item, target)
     _fingerprint_assets(output)
-    write_json(output / "data" / "index.json", build_index())
+    index = build_index()
+    write_json(output / "data" / "index.json", index)
+    # Winzige Meta-Datei nur mit generated_at, damit das Status-Panel den
+    # Datenstand anzeigen kann, ohne die ganze (~324 KB) index.json erneut zu
+    # laden. [PERF-004]
+    write_json(output / "data" / "meta.json", {"generated_at": index["generated_at"]})
 
 
 def main() -> int:

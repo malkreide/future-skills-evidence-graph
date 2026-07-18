@@ -1,0 +1,47 @@
+{
+ "svgFlow": {
+  "role": "group",
+  "aria": "Von der Quelle zur Empfehlung – interaktives Architektu",
+  "nodesReachable": 18
+ },
+ "svgModel": {
+  "aria": "Die Beweiskette als Graph – interaktives"
+ },
+ "navHeights": [
+  {
+   "t": "Bericht einreichen",
+   "h": 44
+  },
+  {
+   "t": "Architektur ansehe",
+   "h": 44
+  }
+ ],
+ "yearAttrs": {
+  "pattern": "(19|20)\\d{2}",
+  "maxlength": "4",
+  "describedby": "yearHint"
+ },
+ "badYear": {
+  "hint": "Bitte eine vierstellige Jahreszahl angeben (z. B. 2023) – oder das Feld leer lassen.",
+  "focused": "yearInput"
+ },
+ "badUrl": {
+  "hint": "Die Quellen-URL ist nicht wohlgeformt (z",
+  "ariaInvalid": "true",
+  "focused": "urlInput"
+ },
+ "enterSubmit": {
+  "hint": "Bitte eine Quellen-URL angeben (Pflichtf",
+  "ariaInvalid": "true"
+ },
+ "notfound": {
+  "h1": "Diese Seite gibt es nicht",
+  "homeHref": "/",
+  "styled": "1px"
+ },
+ "fetches": {
+  "indexJson": 1,
+  "metaJson": 1
+ }
+}

@@ -81,7 +81,10 @@
           </label>
           <label>
             Erscheinungsjahr
-            <input id="yearInput" type="text" inputmode="numeric" placeholder="2023" />
+            <input id="yearInput" type="text" inputmode="numeric" maxlength="4"
+                   pattern="(19|20)\d{2}" title="Vierstellige Jahreszahl, z. B. 2023"
+                   aria-describedby="yearHint" placeholder="2023" />
+            <small id="yearHint" class="field-hint">Vierstellig, z. B. 2023 – optional.</small>
           </label>
         </div>
 

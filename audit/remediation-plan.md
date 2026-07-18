@@ -25,23 +25,29 @@
       gültiger Eingabe. Verifiziert im Browser. Commit `fa227c0`.
       ⚠ Rest von USE-005 (Jahr-Constraint, `<form>`, Inline-URL-Prüfung) bleibt offen für Welle 2.
 
-## Welle 2 — Restliche medium
+## Welle 2 — Restliche medium — ✅ umgesetzt & browser-verifiziert 2026-07-18
 
-- [ ] **USE-005** Inline-Validierung + Jahr-Constraint (medium, S) — [Finding](findings/2026-07-18-USE-005.md)
-      Block in `<form>` heben, `pattern` aufs Jahr, URL vor Issue-Öffnen prüfen.
-- [ ] **A11Y-003** Architektur-SVG benennen (medium, S) — [Finding](findings/2026-07-18-A11Y-003.md)
-      `<title>`/`<desc>` + `aria-labelledby` auf `#archSvg`, im View-Wechsel mitschreiben.
-- [ ] **A11Y-010** Nav-Link-Zielgrösse (medium, S) — [Finding](findings/2026-07-18-A11Y-010.md)
-      `.nav-link` in `styles.css:142` auf `min-height: 44px` (padding-block) heben.
-- [ ] **USE-009** Eigene 404-Seite (medium, S) — [Finding](findings/2026-07-18-USE-009.md)
-      `site/404.html` im Site-Stil anlegen, in `build_site.py` nach `public/` kopieren.
-- [ ] **PERF-004** index.json nicht doppelt laden (medium, S–M) — [Finding](findings/2026-07-18-PERF-004.md)
-      `status.js loadGenerated()` nicht die volle JSON erneut laden lassen.
+- [x] **USE-005** Inline-Validierung + Jahr-Constraint (medium, S) — [Finding](findings/2026-07-18-USE-005.md)
+      Jahr-`pattern`, URL-Wohlgeformtheit (`new URL`) + Enter-zum-Absenden. Bewusst
+      **kein** `<form>`-Umbau (würde A11Y-006-Fehlerfluss durch native Bubbles ersetzen).
+      Verifiziert: `19`→Hint+Fokus, kaputte URL→`aria-invalid`. Commit `564900b`.
+- [x] **A11Y-003** Architektur-SVG benennen (medium, S) — [Finding](findings/2026-07-18-A11Y-003.md)
+      `aria-label` auf `#archSvg` je Ansicht in `render()` (statt `<title>`-Kind, das
+      render() leert); role=group bleibt → Knoten weiter tastaturreichbar. Commit `3c2846f`.
+- [x] **A11Y-010** Nav-Link-Zielgrösse (medium, S) — [Finding](findings/2026-07-18-A11Y-010.md)
+      `.nav-link` inline-flex + `min-height: 44px`. Verifiziert: 44px @375. Commit `86c9818`.
+- [x] **USE-009** Eigene 404-Seite (medium, S) — [Finding](findings/2026-07-18-USE-009.md)
+      `site/404.html` (Styles inline, path-robust); `build_site.py` kopiert `site/` ohnehin
+      komplett. Commit `b37e3be`.
+- [x] **PERF-004** index.json nicht doppelt laden (medium, S–M) — [Finding](findings/2026-07-18-PERF-004.md)
+      Build schreibt `data/meta.json` (nur `generated_at`); `status.js` liest das.
+      Verifiziert: `index.json` nur noch 1× auf der Startseite. Commit `0d59aa1`.
 
-## Welle 3 — low / Polish
+## Welle 3 — low / Polish — ✅ umgesetzt 2026-07-18
 
-- [ ] **PERF-005** `no-cache` statt `no-store` für Katalog-Fetch (low, S) — [Finding](findings/2026-07-18-PERF-005.md)
-      + manuelle Prüfung der Prod-Cache-/Kompressions-Header auf der Live-URL.
+- [x] **PERF-005** `no-cache` statt `no-store` für Katalog-Fetch (low, S) — [Finding](findings/2026-07-18-PERF-005.md)
+      `app.js`/`architektur.js`/`status.js` laden mit `cache: "no-cache"` (ETag-Revalidierung).
+      Commit `366410e`. ⚠ Prod-Cache-/Kompressions-Header weiter manuell auf der Live-URL prüfen.
 
 ## Nicht angegangen (accepted-risk)
 
