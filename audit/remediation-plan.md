@@ -3,6 +3,10 @@
 **Basis:** [Audit-Report 2026-07-18](reports/2026-07-18-audit.md) · Score: **79/100**
 (26/26 verifiziert) · Ziel: **≥ 90, null offene critical/high**
 
+> ✅ **Abgeschlossen 2026-07-18.** Alle 3 Wellen umgesetzt; Re-Audit (Phase C) bestätigt
+> alle 9 Findings `closed`, keine Regression. Neuer Score **100/100** →
+> [Re-Audit-Report](reports/2026-07-18-re-audit.md).
+
 ## Spielregeln
 
 - Ein Finding = ein Commit, Message-Format: `fix(<kategorie>): <beschreibung> [<CHECK-ID>]`
