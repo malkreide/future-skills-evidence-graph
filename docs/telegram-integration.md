@@ -45,9 +45,10 @@ aktiv wird nichts ohne menschliches Review im Kandidaten-PR.
 
 Die Befehle lesen dieselben versionierten Daten, aus denen das Dashboard
 gebaut wird, und geben sie als Text wieder — nur lesend, nichts davon kann
-etwas verändern. Antworten kommen im Polling-Takt (bis ~30 Min, sofort per
-manuellem Dispatch); die immer aktuelle, interaktive Sicht bleibt das
-Dashboard selbst.
+etwas verändern. Antworten kommen im Standard-Modus im Polling-Takt (bis
+~10 Min, sofort per manuellem Dispatch), mit dem optionalen
+[Echtzeit-Relay](#echtzeit-modus-optional-webhook-relay) in Sekunden; die
+immer aktuelle, interaktive Sicht bleibt das Dashboard selbst.
 
 - `/status` — Bestand im Katalog (Quellen/Claims/Skills nach Status).
 - `/skills` — Top-Skills nach Evidenz-Score, mit Status und Claim-Anzahl
@@ -67,7 +68,8 @@ Dashboard selbst.
 ## Wie es funktioniert (serverlos)
 
 ```
-Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 30 Min)── telegram-intake.yml
+Pull (Standard):  Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 10 Min)── telegram-intake.yml
+Push (optional):  Chat ──(Webhook)──▶ Cloudflare-Relay ──(workflow_dispatch)──▶ telegram-intake.yml
                                         │
                                         ▼
                      „Bericht einreichen“-Issue (Label ingest + ingest-approved)
@@ -76,9 +78,11 @@ Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 30 Min)── teleg
                      ingest-from-issue.yml → Kandidaten-PR → menschliches Review
 ```
 
-- `telegram-intake.yml` pollt die Bot API alle 30 Minuten (plus manuell per
+- `telegram-intake.yml` pollt die Bot API alle 10 Minuten (plus manuell per
   `workflow_dispatch` für „jetzt abholen“). Die Latenz ist der Preis dafür,
-  dass kein Server betrieben werden muss.
+  dass kein Server betrieben werden muss — wer Antworten in Sekunden will,
+  aktiviert den [Echtzeit-Modus](#echtzeit-modus-optional-webhook-relay)
+  weiter unten; die gesamte Logik bleibt auch dann hier im Repository.
 - Der Update-Zeiger (Offset) lebt vollständig bei Telegram (unbestätigte
   Updates bleiben dort ~24 h); der Poller schreibt nichts ins Repository.
   Bestätigt wird **vor** der Verarbeitung: ein Absturz mitten im Lauf erzeugt
@@ -142,8 +146,59 @@ Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 30 Min)── teleg
   abgeholt.** In letzterem Fall steht die gesuchte Chat-ID im Log des letzten
   Workflow-Laufs: eine noch nicht allowgelistete Absender-ID erscheint dort
   als `ignoriert (Chat <ID> nicht autorisiert)`.
-- **Sofort testen statt bis zu 30 Minuten warten:** Actions →
+- **Sofort testen statt auf den Poll warten:** Actions →
   `Telegram intake` → „Run workflow“ holt wartende Nachrichten sofort ab.
+
+## Echtzeit-Modus (optional): Webhook-Relay
+
+Der Standard-Modus pollt alle 10 Minuten. Wer **Antworten in Sekunden** will
+(~15–40 s inkl. Runner-Start), schaltet auf Push um: Telegram liefert jedes
+Update per Webhook an einen minimalen [Cloudflare
+Worker](https://workers.cloudflare.com/) (kostenloses Kontingent reicht
+locker), und der tut genau eines — er löst `telegram-intake.yml` per
+`workflow_dispatch` aus und reicht das Update als Input durch. **Alle Logik
+(Allowlist, Befehle, Issue-Erstellung) bleibt im Repository und läuft in
+GitHub Actions**; der Worker ist zustandslose Zustellung. Das ist der bewusst
+kleine Schritt außerhalb von GitHub; wer ihn nicht gehen will, bleibt einfach
+beim Poll-Modus.
+
+Einrichtung:
+
+1. **Worker anlegen:** Bei Cloudflare (kostenloses Konto) einen neuen Worker
+   erstellen und den Inhalt von
+   [`relay/telegram-webhook-relay.js`](../relay/telegram-webhook-relay.js)
+   einfügen (Dashboard-Editor genügt, kein Tooling nötig). Die Worker-URL
+   notieren (`https://<name>.<account>.workers.dev`).
+2. **Worker-Secrets setzen** (Worker → Settings → Variables and Secrets):
+   - `WEBHOOK_SECRET` — ein frei gewähltes, langes Secret (z. B. aus einem
+     Passwortmanager); gleich auch bei Telegram angegeben (Schritt 3).
+   - `GITHUB_PAT` — fine-grained PAT, nur dieses Repository, Berechtigung
+     **Actions: Read and write** (das ist ein *anderes* Recht als das
+     Issues-PAT aus der Grundeinrichtung; ein gemeinsames PAT mit beiden
+     Rechten geht auch).
+   - `GITHUB_REPOSITORY` — z. B. `malkreide/future-skills-evidence-graph`.
+   - optional `GITHUB_BRANCH` — Standard `main`.
+3. **Webhook bei Telegram registrieren** (Token, Worker-URL und Secret
+   einsetzen):
+
+   ```
+   https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<worker-url>&secret_token=<WEBHOOK_SECRET>
+   ```
+
+   Prüfen mit `…/getWebhookInfo`. Ab jetzt beantwortet Telegram `getUpdates`
+   mit 409 — der 10-Minuten-Poll erkennt das und überspringt sich selbst;
+   beide Trigger können also aktiv bleiben.
+4. **Zurück zum Poll-Modus** jederzeit per `…/deleteWebhook` — der nächste
+   Poll übernimmt wieder, nichts weiter nötig.
+
+Sicherheitsnotizen: Der Worker weist Requests ohne passendes
+`X-Telegram-Bot-Api-Secret-Token` ab (nur Telegram kennt das Secret), und die
+Chat-Allowlist wird unverändert im Intake-Skript geprüft — das Relay kann sie
+nicht umgehen. Schlägt der Dispatch fehl (GitHub-Ausfall, PAT abgelaufen),
+antwortet der Worker mit 502 und Telegram wiederholt die Zustellung; das
+Update geht nicht verloren. Jeder Push-Lauf verarbeitet genau ein Update und
+gruppiert seine Concurrency per `update_id`, damit GitHubs
+„ein wartender Lauf pro Gruppe“-Regel keine Nachricht verwirft.
 
 ## Sicherheits- und Kostenmodell
 
@@ -167,8 +222,9 @@ Chat ──(Bot API)──▶ getUpdates ◀──(Poll alle 30 Min)── teleg
 
 ## Grenzen
 
-- Polling-Latenz bis ~30 Minuten (sofortiges Abholen: `Telegram intake`
-  manuell dispatchen).
+- Polling-Latenz bis ~10 Minuten im Standard-Modus (sofortiges Abholen:
+  `Telegram intake` manuell dispatchen); Antworten in Sekunden liefert der
+  optionale [Echtzeit-Modus](#echtzeit-modus-optional-webhook-relay).
 - PDF-Anhänge maximal 20 MB (Bot-API-Limit); größere Berichte als Text
   einfügen oder den direkten PDF-Link senden.
 - Sehr lange Texte werden für das Issue auf ~60 000 Zeichen gekürzt

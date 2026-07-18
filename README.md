@@ -181,7 +181,10 @@ polling workflow (`telegram-intake.yml`) turns messages from allow-listed chats
 "Bericht einreichen" issue the form produces — one shared import and review
 path, candidates only. Read-only chat commands render the dashboard's data as
 text (`/status`, `/skills`, `/skill <term>`, `/lp21`) and `/dashboard` links
-the interactive view. Setup and security model:
+the interactive view. Replies arrive with the ~10-minute poll by default; an
+optional push mode (a minimal Cloudflare relay, `relay/`, that only
+re-dispatches the same workflow per webhook) brings them down to seconds
+while all logic stays in Actions. Setup and security model:
 [docs/telegram-integration.md](docs/telegram-integration.md).
 
 Imported candidates pass a **relevance filter** (`scripts/common.py`) before

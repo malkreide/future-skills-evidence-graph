@@ -9,6 +9,7 @@ one import path.
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 import tempfile
@@ -428,6 +429,42 @@ class SendMessageLimitTests(unittest.TestCase):
             params["reply_markup"],
             {"inline_keyboard": [[{"text": "Öffnen", "url": "https://x"}]]},
         )
+
+
+class PushModeTests(unittest.TestCase):
+    """The webhook-relay path: one dispatched update, no getUpdates, no ack."""
+
+    BASE_ENV = {"TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "1"}
+
+    def _run_main(self, extra_env):
+        fake = FakeClient()
+        with mock.patch.dict(os.environ, {**self.BASE_ENV, **extra_env}, clear=True):
+            with mock.patch.object(ti, "TelegramClient", return_value=fake):
+                code = ti.main()
+        return code, fake
+
+    def test_dispatched_update_is_processed_without_polling(self):
+        update = {"update_id": 7, "message": {"message_id": 2, "chat": {"id": 1}, "text": "/hilfe"}}
+        code, fake = self._run_main({"TELEGRAM_UPDATE": json.dumps(update)})
+        self.assertEqual(code, 0)
+        self.assertEqual(len(fake.sent), 1)
+        # Webhook delivery is confirmed by the relay's HTTP 200, never here.
+        self.assertIsNone(fake.acknowledged)
+
+    def test_malformed_dispatch_input_fails_the_run(self):
+        code, fake = self._run_main({"TELEGRAM_UPDATE": "kein json"})
+        self.assertEqual(code, 1)
+        self.assertEqual(fake.sent, [])
+
+    def test_poll_no_ops_cleanly_while_webhook_is_active(self):
+        fake = FakeClient()
+        fake.get_updates = mock.Mock(
+            side_effect=RuntimeError("getUpdates abgelehnt: HTTP Error 409: Conflict")
+        )
+        with mock.patch.dict(os.environ, self.BASE_ENV, clear=True):
+            with mock.patch.object(ti, "TelegramClient", return_value=fake):
+                self.assertEqual(ti.main(), 0)
+        self.assertEqual(fake.sent, [])
 
 
 class StatusTextTests(unittest.TestCase):
