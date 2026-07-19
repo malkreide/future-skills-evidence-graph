@@ -12,7 +12,7 @@ scikit-learn==1.9.0
 # (scripts/ai_provider.py). It is imported lazily and only when AI_PROVIDER=anthropic;
 # when AI_PROVIDER is in {none, cache} (the default and the test/CI mode) the import
 # path stays standard-library only and this package is never imported.
-anthropic==0.116.0
+anthropic==0.117.0
 # sentence-transformers is a pure dev/live dependency for the OPTIONAL semantic
 # embedding provider (EMBEDDING_PROVIDER=st in scripts/ai_provider.py). It is
 # imported lazily and ONLY to fill an embedding-cache miss when building anchors
