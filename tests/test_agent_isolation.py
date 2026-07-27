@@ -1,0 +1,264 @@
+"""The isolation contract for the counter-evidence agent lane.
+
+docs/gegenevidenz-lane.md promises the lane can be deleted without the core
+noticing. A promise in prose decays; these tests are the enforcement:
+
+- `scripts/` must never import from `agents/` — the dependency runs one way, so
+  the core keeps working (and keeps passing CI) with `agents/` absent entirely;
+- LangGraph must not leak into `requirements-dev.txt`, because the regular CI
+  installs only that file — which is what proves the core does not need it;
+- the agent must never import a `langchain-*` provider binding, because routing
+  every model call through `ai_provider` is what preserves fixture replay and
+  lets the lane inherit the core's providers;
+- the lane must emit candidates only, and never write an active record.
+
+These run in the normal suite and need neither LangGraph nor a network.
+"""
+
+from __future__ import annotations
+
+import ast
+import io
+import sys
+import unittest
+from contextlib import redirect_stderr
+from pathlib import Path
+from unittest import mock
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = ROOT / "scripts"
+AGENTS_DIR = ROOT / "agents"
+
+
+def imported_modules(path: Path) -> set[str]:
+    """Top-level module names imported by *path*, from its AST (nothing executed)."""
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    names: set[str] = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            names.update(alias.name.split(".")[0] for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module and node.level == 0:
+            names.add(node.module.split(".")[0])
+    return names
+
+
+class DependencyDirectionTest(unittest.TestCase):
+    """agents/ may use scripts/. scripts/ may never use agents/."""
+
+    def agent_module_names(self) -> set[str]:
+        return {path.stem for path in AGENTS_DIR.glob("*.py")} | {"agents"}
+
+    def test_no_core_script_imports_an_agent_module(self) -> None:
+        forbidden = self.agent_module_names()
+        offenders = []
+        for path in sorted(SCRIPTS_DIR.glob("*.py")):
+            leaked = imported_modules(path) & forbidden
+            if leaked:
+                offenders.append(f"{path.name} imports {sorted(leaked)}")
+        self.assertEqual(
+            offenders,
+            [],
+            "scripts/ must not depend on agents/ — the lane has to stay deletable:\n"
+            + "\n".join(offenders),
+        )
+
+    def test_core_test_suite_does_not_require_langgraph(self) -> None:
+        """CI installs requirements-dev.txt only; nothing there may need langgraph."""
+        for path in sorted(SCRIPTS_DIR.glob("*.py")):
+            with self.subTest(script=path.name):
+                self.assertNotIn("langgraph", imported_modules(path))
+
+    def test_core_still_imports_with_agents_removed(self) -> None:
+        """Simulate a deleted lane: importing the core must not notice."""
+        removed = {name for name in sys.modules if name.startswith("counter_evidence")}
+        for name in removed:
+            sys.modules.pop(name, None)
+        import importlib
+
+        for module in ("common", "ai_provider", "extract_claims", "validate_data"):
+            with self.subTest(module=module):
+                self.assertIsNotNone(importlib.import_module(module))
+
+
+class RequirementsSeparationTest(unittest.TestCase):
+    def read(self, name: str) -> str:
+        return (ROOT / name).read_text(encoding="utf-8")
+
+    def test_langgraph_is_not_in_the_core_requirements(self) -> None:
+        core = [
+            line.strip()
+            for line in self.read("requirements-dev.txt").splitlines()
+            if line.strip() and not line.strip().startswith("#")
+        ]
+        self.assertNotIn("langgraph", " ".join(core).lower())
+
+    def test_agent_requirements_exist_and_are_pinned(self) -> None:
+        lines = [
+            line.strip()
+            for line in self.read("requirements-agents.txt").splitlines()
+            if line.strip() and not line.strip().startswith("#")
+        ]
+        self.assertTrue(lines, "requirements-agents.txt should pin the lane's deps")
+        for line in lines:
+            with self.subTest(requirement=line):
+                # Same supply-chain rule as requirements-dev.txt: exact pins only.
+                self.assertIn("==", line)
+
+
+class NoProviderBindingTest(unittest.TestCase):
+    """LangGraph is a state machine here, not an LLM client."""
+
+    def test_agent_uses_ai_provider_and_no_langchain_binding(self) -> None:
+        for path in sorted(AGENTS_DIR.glob("*.py")):
+            with self.subTest(agent=path.name):
+                imports = imported_modules(path)
+                self.assertIn(
+                    "ai_provider",
+                    imports,
+                    "model calls must route through ai_provider, or fixture replay breaks",
+                )
+                leaked = {name for name in imports if name.startswith("langchain")}
+                self.assertEqual(
+                    leaked,
+                    set(),
+                    f"{path.name} imports {sorted(leaked)}; a provider binding would "
+                    "bypass the fixture cache and re-introduce the dependency tree the "
+                    "project deliberately avoids",
+                )
+
+    def test_agent_requirements_carry_no_langchain_integration_package(self) -> None:
+        text = (ROOT / "requirements-agents.txt").read_text(encoding="utf-8")
+        active = [
+            line.strip().lower()
+            for line in text.splitlines()
+            if line.strip() and not line.strip().startswith("#")
+        ]
+        for line in active:
+            with self.subTest(requirement=line):
+                self.assertFalse(
+                    line.startswith("langchain"),
+                    "the lane needs no langchain integration package",
+                )
+
+
+class CandidatesOnlyTest(unittest.TestCase):
+    """The lane proposes; a human promotes. Nothing it emits may be active."""
+
+    def agent_source(self) -> str:
+        return (AGENTS_DIR / "counter_evidence.py").read_text(encoding="utf-8")
+
+    def test_emitted_claims_are_candidates(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        import counter_evidence as ce
+
+        state = ce.initial_state(
+            {"id": "skill-x", "name": "X", "definition": "d", "status": "active"}
+        )
+        state["findings"] = [
+            {
+                "source": {"id": "src-x", "title": "t", "abstract": "a"},
+                "quote": "No significant difference was observed.",
+                "reason": "null result",
+            }
+        ]
+        claim = ce.to_candidate_claims(state)[0]
+        self.assertEqual(claim["status"], "candidate")
+        self.assertIsNone(claim["reviewed_at"])
+        self.assertEqual(claim["evidence_strength"], "low")
+        # The contradiction is recorded; the supporting side stays untouched.
+        self.assertEqual(claim["contradicts_skill_ids"], ["skill-x"])
+        self.assertEqual(claim["supports_skill_ids"], [])
+        # And the statement is the verbatim quote, with an anchor naming it.
+        self.assertEqual(claim["statement"], "No significant difference was observed.")
+        self.assertIn(claim["statement"], claim["text_anchor"])
+
+    def test_only_active_skills_are_challenged(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        self.assertIsNone(ce.active_skill("skill-does-not-exist"))
+
+    def test_query_budget_holds_against_an_overeager_model(self) -> None:
+        """A bound the model is merely asked to respect is not a bound.
+
+        Checked by behaviour, not by grepping the prompt: hand propose_queries a
+        model that returns far more queries than the budget and assert the code
+        truncates it.
+        """
+        sys.path.insert(0, str(AGENTS_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        import ai_provider
+        import counter_evidence as ce
+
+        flood = {"queries": [f"query {index}" for index in range(50)]}
+        state = ce.initial_state({"id": "s", "name": "N", "definition": "d"})
+        with mock.patch.object(ai_provider, "ai_provider", return_value="cache"), \
+                mock.patch.object(ai_provider, "complete", return_value=flood):
+            result = ce.propose_queries(state)
+        self.assertLessEqual(len(result["queries_used"]), ce.MAX_QUERIES)
+
+    def test_a_query_is_never_repeated(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        import ai_provider
+        import counter_evidence as ce
+
+        state = ce.initial_state({"id": "s", "name": "N", "definition": "d"})
+        state["queries_used"] = ["already tried"]
+        with mock.patch.object(ai_provider, "ai_provider", return_value="cache"), \
+                mock.patch.object(
+                    ai_provider, "complete",
+                    return_value={"queries": ["already tried", "already tried"]}):
+            result = ce.propose_queries(state)
+        self.assertEqual(result["pending_queries"], [])
+        self.assertEqual(result["queries_used"], ["already tried"])
+
+    def test_the_graph_stops_at_every_hard_limit(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        base = ce.initial_state({"id": "s", "name": "N", "definition": "d"})
+        self.assertEqual(ce.should_continue(base), "continue")
+        for field, value in (
+            ("rounds", ce.MAX_ROUNDS),
+            ("barren_rounds", ce.MAX_BARREN_ROUNDS),
+            ("exhausted", True),
+        ):
+            with self.subTest(limit=field):
+                state = dict(base)
+                state[field] = value
+                self.assertEqual(ce.should_continue(state), "stop")
+        exhausted_budget = dict(base)
+        exhausted_budget["queries_used"] = ["q"] * ce.MAX_QUERIES
+        self.assertEqual(ce.should_continue(exhausted_budget), "stop")
+
+    def test_a_non_verbatim_quote_is_discarded(self) -> None:
+        """No claim without a verifiable text anchor — the rule holds here too."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        import ai_provider
+        import counter_evidence as ce
+        import ingest_openalex
+
+        abstract = "The programme produced no measurable change in transfer performance."
+        state = ce.initial_state({"id": "s", "name": "N", "definition": "d"})
+        state["pending_queries"] = ["q"]
+        paraphrase = {
+            "contradicts": True,
+            "quote": "There was no measurable change.",  # plausible, NOT verbatim
+            "reason": "null result",
+        }
+        with mock.patch.object(ai_provider, "ai_provider", return_value="cache"), \
+                mock.patch.object(ai_provider, "complete", return_value=paraphrase), \
+                mock.patch.object(ingest_openalex, "fetch", lambda q, n: [{"id": "W"}]), \
+                mock.patch.object(
+                    ingest_openalex, "convert",
+                    lambda w: {"id": "src-x", "title": "T", "abstract": abstract}), \
+                redirect_stderr(io.StringIO()):
+            result = ce.search_and_assess(state)
+        self.assertEqual(result["findings"], [])
+
+
+if __name__ == "__main__":
+    unittest.main()

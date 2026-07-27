@@ -1,0 +1,86 @@
+name: counter-evidence
+
+# Manual only, never scheduled. A lane that hunts for contradictions every week
+# unprompted produces review load without an occasion — and the catalogue's
+# review capacity is the scarce resource, not search. See
+# docs/gegenevidenz-lane.md ("Was die Lane nicht darf").
+on:
+  workflow_dispatch:
+    inputs:
+      skill:
+        description: "Active skill id to challenge (e.g. skill-systems-thinking)"
+        required: true
+        type: string
+      dry_run:
+        description: "Report findings without writing any candidate claim"
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  counter-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      # Both files, because the lane uses the core's helpers. The regular
+      # validate workflow installs ONLY requirements-dev.txt, which is what
+      # proves the core does not need langgraph.
+      - name: Install dependencies
+        run: |
+          pip install -r requirements-dev.txt
+          pip install -r requirements-agents.txt
+
+      - name: Search for counter-evidence
+        env:
+          AI_PROVIDER: anthropic
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENALEX_MAILTO: ${{ secrets.OPENALEX_MAILTO }}
+        run: |
+          python agents/counter_evidence.py \
+            --skill "${{ inputs.skill }}" \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      # Candidates only, and validated before they can reach a pull request —
+      # the same gate every importer passes.
+      - name: Validate the repository
+        if: ${{ !inputs.dry_run }}
+        run: python scripts/validate_data.py
+
+      # Same mechanism as the weekly research pipeline (gh, no third-party
+      # action), so both candidate lanes behave identically for a reviewer.
+      - name: Open a review pull request
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SKILL: ${{ inputs.skill }}
+        run: |
+          set -euo pipefail
+          git add data/claims agents/runs
+          if git diff --cached --quiet; then
+            echo "No counter-evidence candidates in this run; nothing to review."
+            exit 0
+          fi
+          branch="research/counter-evidence"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git commit -m "research: counter-evidence candidates for ${SKILL}"
+          git push --force origin "$branch"
+          url="$(gh pr list --head "$branch" --state open --json url --jq '.[0].url')"
+          if [ -z "$url" ]; then
+            gh pr create \
+              --title "Counter-evidence candidates: ${SKILL}" \
+              --body "Candidate counter-evidence produced by the agentic lane (\`agents/counter_evidence.py\`, see docs/gegenevidenz-lane.md). **Everything here is a candidate.** Each claim's statement is a verbatim quote whose presence in the source abstract was verified before the claim was created; the review fields are placeholders. Promote with scripts/promote_candidate.py after checking the quote against the source. The run log under \`agents/runs/\` records which queries were asked, how many sources were examined, and why the graph stopped — the agent is not reproducible the way the core pipeline is, so it is auditable instead." \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch"
+          else
+            echo "Updated existing pull request: $url"
+          fi
