@@ -28,6 +28,17 @@ AGE_SCALE_MIN = 0
 AGE_SCALE_MAX = 18
 AGE_SCALE = f"{AGE_SCALE_MIN}-{AGE_SCALE_MAX}"
 
+# The one evidence-strength vocabulary, mirroring schemas/claim.schema.json.
+# It used to be spelled twice: the claim schema and promote_candidate.py said
+# {low, moderate, strong}, while both LLM prompts and their JSON Schemas asked
+# the model for {low, moderate, high}. A reviewer who accepted the strongest
+# suggestion therefore got a value the data model rejects. Every prompt now
+# renders the vocabulary from here, the same way AGE_SCALE is rendered, and
+# test_claim_prefill_scoring.py asserts this list still equals the schema's --
+# so the two can no longer drift apart silently.
+EVIDENCE_STRENGTH_VALUES = ("low", "moderate", "strong")
+EVIDENCE_STRENGTH_LIST = ", ".join(EVIDENCE_STRENGTH_VALUES)
+
 
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:

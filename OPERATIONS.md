@@ -343,6 +343,18 @@ gate, which is unchanged.
 
 ### Re-recording — where live accuracy is measured
 
+> **Outstanding for v7.** The v7 fixtures were produced by *migrating* the v6
+> recordings (`high` → `strong`), not by calling the model: the same judgement
+> under the name the data model accepts, which is why every metric is unchanged
+> after the switch. That keeps the offline regression valid as a drift check,
+> but two v7 changes are **unmeasured** until someone re-records — the new
+> abstention permission for `evidence_strength`, and the reworded strength
+> rubric. Run `make eval-prefill-record` with a live key, then
+> `make eval-prefill` once with `sentence-transformers` installed to mint
+> embedding vectors for the changed texts, and commit
+> `eval/claim_prefill_labeled.json`, `tests/fixtures/ai/` and
+> `tests/fixtures/embeddings/` together.
+
 Live accuracy is measured only when you re-record against the real model:
 
 ```bash
@@ -431,15 +443,41 @@ still exists on the script for ad-hoc checks; CI just doesn't pass it.)
 - `evidence_strength`: **exact category** — adjacent notches are *not* folded
   together, so a one-level disagreement keeps costing.
 
-The prompt (v6) is calibrated to the gold to remove the systematic live biases
+The prompt (v7) is calibrated to the gold to remove the systematic live biases
 the English re-records surfaced: it no longer asks for a *conservative /
 when-in-doubt-low* strength and instead pins an explicit study-type rubric
-(RCT / systematic review / meta-analysis ⇒ high; controlled or multi-site ⇒
+(RCT / systematic review / meta-analysis ⇒ strong; controlled or multi-site ⇒
 moderate; single small or uncontrolled ⇒ low), and it tells the model not to pad
 the age band to the scale ends. v5 additionally tried mapping a named school
 stage to a typical age band to lift recall; the live run showed it backfired
 (broad stage bands where the gold has the study's narrower one, `age_range`
 precision 0.94 → 0.82), so v6 reverted that part.
+
+**One evidence-strength vocabulary (v7).** The prompts and their JSON Schemas
+used to ask for `{low, moderate, high}` while `schemas/claim.schema.json` and
+`promote_candidate.py` use `{low, moderate, strong}`; a mapping in
+`promote_candidate.py` papered over the gap on acceptance, but the assist block
+a reviewer reads still showed a value the data model does not know, and the
+golden set measured in the wrong vocabulary. Both prompts now render the
+vocabulary from `common.EVIDENCE_STRENGTH_VALUES` (the way `AGE_SCALE` is
+rendered), `tests/test_claim_prefill_scoring.py` asserts it still equals the
+schema's enum, and the `"high" → "strong"` map survives only as pre-v7 legacy
+compatibility.
+
+**`evidence_strength` may now abstain (v7).** On the golden set it proposed a
+value 50/50 — it never once said "I can't tell". A model that always guesses a
+strength is exactly the reviewer-trust risk the gate exists to catch, so v7
+names `null` as the right answer when the abstract does not reveal the study
+type or sample. **This change is unmeasured until the next `--record-live` run**
+(see below).
+
+**Why `age_range` recall stays at 0.77.** Of its 8 recall misses, *none* names an
+age in the abstract — they read "across grade levels", "across subjects and
+school ages", "two primary cohorts", while the gold label derives a band from
+the school stage. Recovering them means inferring age from a stage name, which
+is precisely what v5 did and what cost precision 0.94 → 0.82. 0.77 is therefore
+the ceiling under this gold definition, and it is a property of the golden set,
+not a model weakness. Leave the age wording alone.
 
 Those prompt effects are only visible on a **live** re-record — the offline gate
 replays the frozen `_recorded`. Current offline regression, measured:

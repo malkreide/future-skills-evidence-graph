@@ -1,0 +1,10 @@
+{
+  "hash": "4fccd1636b5f98ec401ec91271706afdb75b3e01401b468a15e2809e288c1fa1",
+  "kind": "complete",
+  "response": {
+    "age_range": "11-18",
+    "context": "A one-semester block-based programming intervention with secondary school students in Germany.",
+    "evidence_strength": "strong",
+    "outcome": "Students in the treatment group achieved significantly higher computational thinking scores than the control group."
+  }
+}

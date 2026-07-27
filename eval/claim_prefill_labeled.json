@@ -1,6 +1,6 @@
 {
-  "_README": "Golden set for the LLM claim pre-fill (P1). Each example holds the extractor inputs (abstract, statement, topics) and the hand-curated 'gold' review fields a human would accept. '_recorded' is the model suggestion last captured for the SAME prompt: `scripts/eval_claim_prefill.py --record-live` (AI_PROVIDER=anthropic) overwrites it from a real call AND reports live accuracy vs gold; `scripts/eval_claim_prefill.py --write-fixtures` replays it into tests/fixtures/ai/ so CI runs offline and deterministically (AI_PROVIDER=cache). The offline eval therefore measures a REGRESSION of the recorded outputs against gold, not a fresh live call -- '_recorded' deliberately diverges from 'gold' on the harder cases so the numbers stay honest. evidence_strength uses the prompt vocabulary low|moderate|high (Anhang A); null means the abstract does not support that field. DO NOT wire these into data/ -- they are an evaluation artifact only.",
-  "prompt_version": "claim-prefill-v1",
+  "_README": "Golden set for the LLM claim pre-fill (P1). Each example holds the extractor inputs (abstract, statement, topics) and the hand-curated 'gold' review fields a human would accept. '_recorded' is the model suggestion last captured for the SAME prompt: `scripts/eval_claim_prefill.py --record-live` (AI_PROVIDER=anthropic) overwrites it from a real call AND reports live accuracy vs gold; `scripts/eval_claim_prefill.py --write-fixtures` replays it into tests/fixtures/ai/ so CI runs offline and deterministically (AI_PROVIDER=cache). The offline eval therefore measures a REGRESSION of the recorded outputs against gold, not a fresh live call -- '_recorded' deliberately diverges from 'gold' on the harder cases so the numbers stay honest. evidence_strength uses the claim schema's vocabulary low|moderate|strong (schemas/claim.schema.json), rendered into the prompt from common.EVIDENCE_STRENGTH_VALUES; null means the abstract does not support that field. DO NOT wire these into data/ -- they are an evaluation artifact only. NOTE (v7): the 'high' -> 'strong' switch was a VOCABULARY migration of the existing recordings, not a fresh live measurement -- the same judgement under the name the data model accepts. v7 also newly permits evidence_strength=null when the abstract does not reveal the study type, and THAT change is untested until the next --record-live run. The offline regression stays valid as a drift check; live v7 accuracy is unmeasured.",
+  "prompt_version": "claim-prefill-v7",
   "examples": [
     {
       "id": "prefill-ai-literacy-primary",
@@ -9,7 +9,7 @@
       "statement": "We find that structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs.",
       "topics": ["ai literacy", "critical thinking"],
       "gold": {"age_range": "6-12", "outcome": "Pupils become better at critically evaluating machine-generated outputs.", "context": "Systematic review of AI literacy lessons in European primary school classrooms.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "6-12", "outcome": "Structured AI literacy lessons improved pupils' ability to critically evaluate machine-generated outputs.", "context": "Synthesis of 18 classroom studies of AI literacy instruction in European primary schools.", "evidence_strength": "high"}
+      "_recorded": {"age_range": "6-12", "outcome": "Structured AI literacy lessons improved pupils' ability to critically evaluate machine-generated outputs.", "context": "Synthesis of 18 classroom studies of AI literacy instruction in European primary schools.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-coding-secondary-rct",
@@ -17,8 +17,8 @@
       "abstract": "A randomised controlled trial with 240 secondary students in Germany evaluated a block-based programming curriculum. Students in the treatment group showed significantly higher computational thinking scores than controls. The intervention ran for one semester.",
       "statement": "Students in the treatment group showed significantly higher computational thinking scores than controls.",
       "topics": ["computational thinking", "programming"],
-      "gold": {"age_range": "12-18", "outcome": "Block-based programming raises computational thinking scores.", "context": "One-semester randomised controlled trial in German secondary schools.", "evidence_strength": "high"},
-      "_recorded": {"age_range": "11-18", "outcome": "Students in the treatment group achieved significantly higher computational thinking scores than the control group.", "context": "A one-semester block-based programming intervention with secondary school students in Germany.", "evidence_strength": "high"}
+      "gold": {"age_range": "12-18", "outcome": "Block-based programming raises computational thinking scores.", "context": "One-semester randomised controlled trial in German secondary schools.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": "11-18", "outcome": "Students in the treatment group achieved significantly higher computational thinking scores than the control group.", "context": "A one-semester block-based programming intervention with secondary school students in Germany.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-collaboration-middle",
@@ -45,7 +45,7 @@
       "statement": "The evidence suggests that explicit goal-setting and self-monitoring routines modestly improve task persistence.",
       "topics": ["self-regulation", "metacognition"],
       "gold": {"age_range": "6-12", "outcome": "Goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of self-regulated learning interventions in elementary schools.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "6-12", "outcome": "Explicit goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of 32 studies on self-regulated learning interventions for elementary pupils.", "evidence_strength": "high"}
+      "_recorded": {"age_range": "6-12", "outcome": "Explicit goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of 32 studies on self-regulated learning interventions for elementary pupils.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-creativity-design",
@@ -80,8 +80,8 @@
       "abstract": "A systematic review of reciprocal teaching examined its effect on reading comprehension in upper-primary classrooms. Results show consistent, moderate improvements in comprehension across 21 studies. The approach was robust to different text genres.",
       "statement": "Results show consistent, moderate improvements in comprehension across 21 studies.",
       "topics": ["reading comprehension", "literacy"],
-      "gold": {"age_range": "9-12", "outcome": "Reciprocal teaching consistently and moderately improves reading comprehension.", "context": "Systematic review of reciprocal teaching in upper-primary classrooms.", "evidence_strength": "high"},
-      "_recorded": {"age_range": "9-12", "outcome": "Reciprocal teaching produced consistent, moderate improvements in reading comprehension.", "context": "Systematic review of reciprocal teaching interventions in upper-primary classrooms across 21 studies.", "evidence_strength": "high"}
+      "gold": {"age_range": "9-12", "outcome": "Reciprocal teaching consistently and moderately improves reading comprehension.", "context": "Systematic review of reciprocal teaching in upper-primary classrooms.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": "9-12", "outcome": "Reciprocal teaching produced consistent, moderate improvements in reading comprehension.", "context": "Systematic review of reciprocal teaching interventions in upper-primary classrooms across 21 studies.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-ai-tutor-math",
@@ -89,7 +89,7 @@
       "abstract": "An adaptive AI tutoring system was deployed for algebra practice with 310 secondary students over eight weeks. Students using the tutor solved more problems correctly than a worksheet control group. Gains were largest among initially struggling students.",
       "statement": "Students using the tutor solved more problems correctly than a worksheet control group.",
       "topics": ["intelligent tutoring", "mathematics"],
-      "gold": {"age_range": "12-16", "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy.", "context": "Eight-week deployment of an AI algebra tutor in secondary schools.", "evidence_strength": "high"},
+      "gold": {"age_range": "12-16", "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy.", "context": "Eight-week deployment of an AI algebra tutor in secondary schools.", "evidence_strength": "strong"},
       "_recorded": {"age_range": "12-18", "outcome": "Students using the adaptive AI tutor solved more algebra problems correctly than a worksheet control group, with the largest gains among initially struggling students.", "context": "Eight-week deployment of an adaptive AI tutoring system for algebra practice with 310 secondary students, compared to a worksheet control group.", "evidence_strength": "moderate"}
     },
     {
@@ -144,7 +144,7 @@
       "statement": "Findings indicate small-to-moderate gains in achievement for both tutors and tutees.",
       "topics": ["peer tutoring", "mathematics"],
       "gold": {"age_range": "12-18", "outcome": "Peer tutoring yields small-to-moderate achievement gains for tutors and tutees.", "context": "Review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "12-18", "outcome": "Peer tutoring is associated with small-to-moderate achievement gains for both tutors and tutees, with stronger effects in structured, well-monitored programs.", "context": "A review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "high"}
+      "_recorded": {"age_range": "12-18", "outcome": "Peer tutoring is associated with small-to-moderate achievement gains for both tutors and tutees, with stronger effects in structured, well-monitored programs.", "context": "A review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-handwriting-tablet",
@@ -215,8 +215,8 @@
       "abstract": "A systematic review of 28 trials examined systematic synthetic phonics in the first years of formal schooling. The evidence consistently shows improved word reading and decoding accuracy. Effects were robust across languages with transparent orthographies.",
       "statement": "The evidence consistently shows improved word reading and decoding accuracy.",
       "topics": ["reading comprehension", "literacy"],
-      "gold": {"age_range": "5-7", "outcome": "Systematic synthetic phonics improves early word reading and decoding.", "context": "Systematic review of synthetic phonics trials in the first years of schooling.", "evidence_strength": "high"},
-      "_recorded": {"age_range": "4-7", "outcome": "Systematic synthetic phonics is associated with improved word reading and decoding accuracy.", "context": "Systematic review of 28 trials on systematic synthetic phonics instruction during the first years of formal schooling, across languages with transparent orthographies.", "evidence_strength": "high"}
+      "gold": {"age_range": "5-7", "outcome": "Systematic synthetic phonics improves early word reading and decoding.", "context": "Systematic review of synthetic phonics trials in the first years of schooling.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": "4-7", "outcome": "Systematic synthetic phonics is associated with improved word reading and decoding accuracy.", "context": "Systematic review of 28 trials on systematic synthetic phonics instruction during the first years of formal schooling, across languages with transparent orthographies.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-cyber-safety-middle",
@@ -278,8 +278,8 @@
       "abstract": "This systematic review synthesised studies of academic acceleration for high-ability students. Across the evidence, accelerated students achieved more without social-emotional harm. The review covered both grade-skipping and subject acceleration.",
       "statement": "Across the evidence, accelerated students achieved more without social-emotional harm.",
       "topics": ["motivation", "mathematics"],
-      "gold": {"age_range": "8-16", "outcome": "Acceleration raises achievement for high-ability students without social-emotional harm.", "context": "Systematic review of grade-skipping and subject acceleration for gifted students.", "evidence_strength": "high"},
-      "_recorded": {"age_range": null, "outcome": "Accelerated high-ability students showed higher academic achievement with no adverse social-emotional effects.", "context": "Systematic review of academic acceleration (grade-skipping and subject acceleration) for high-ability students.", "evidence_strength": "high"}
+      "gold": {"age_range": "8-16", "outcome": "Acceleration raises achievement for high-ability students without social-emotional harm.", "context": "Systematic review of grade-skipping and subject acceleration for gifted students.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": null, "outcome": "Accelerated high-ability students showed higher academic achievement with no adverse social-emotional effects.", "context": "Systematic review of academic acceleration (grade-skipping and subject acceleration) for high-ability students.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-outdoor-science",
@@ -296,8 +296,8 @@
       "abstract": "A review of spaced retrieval practice in schools analysed its effect on durable learning. Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study. The benefit held across subjects and school ages.",
       "statement": "Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study.",
       "topics": ["metacognition", "self-regulation"],
-      "gold": {"age_range": "10-18", "outcome": "Spaced retrieval practice reliably improves long-term retention over massed study.", "context": "Review of spaced retrieval practice across school subjects and ages.", "evidence_strength": "high"},
-      "_recorded": {"age_range": null, "outcome": "Distributing retrieval practice over time reliably improves long-term retention compared with massed study.", "context": "A review of spaced retrieval practice in schools, spanning multiple subjects and school ages.", "evidence_strength": "high"}
+      "gold": {"age_range": "10-18", "outcome": "Spaced retrieval practice reliably improves long-term retention over massed study.", "context": "Review of spaced retrieval practice across school subjects and ages.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": null, "outcome": "Distributing retrieval practice over time reliably improves long-term retention compared with massed study.", "context": "A review of spaced retrieval practice in schools, spanning multiple subjects and school ages.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-translanguaging-bilingual",
@@ -323,8 +323,8 @@
       "abstract": "An inoculation 'prebunking' game was tested with secondary students to build resistance to misinformation. Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later. The trial randomised classes to game or control.",
       "statement": "Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later.",
       "topics": ["media literacy", "critical thinking"],
-      "gold": {"age_range": "13-17", "outcome": "A prebunking game improves detection of misinformation techniques, with gains persisting two weeks.", "context": "Class-randomised trial of an inoculation game against misinformation in secondary students.", "evidence_strength": "high"},
-      "_recorded": {"age_range": "12-18", "outcome": "Students improved at identifying manipulation techniques in headlines, with gains persisting two weeks later.", "context": "A randomised trial with secondary school classes assigned to an inoculation 'prebunking' game or a control condition.", "evidence_strength": "high"}
+      "gold": {"age_range": "13-17", "outcome": "A prebunking game improves detection of misinformation techniques, with gains persisting two weeks.", "context": "Class-randomised trial of an inoculation game against misinformation in secondary students.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": "12-18", "outcome": "Students improved at identifying manipulation techniques in headlines, with gains persisting two weeks later.", "context": "A randomised trial with secondary school classes assigned to an inoculation 'prebunking' game or a control condition.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-chatbot-design-null",
@@ -341,8 +341,8 @@
       "abstract": "A synthesis of classroom formative-assessment studies examined effects on attainment. The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels. Effects were larger when feedback was specific and actionable.",
       "statement": "The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels.",
       "topics": ["feedback", "self-regulation"],
-      "gold": {"age_range": "6-18", "outcome": "Frequent feedback-rich formative assessment raises achievement across grades.", "context": "Synthesis of classroom formative-assessment studies across grade levels.", "evidence_strength": "high"},
-      "_recorded": {"age_range": null, "outcome": "Frequent, feedback-rich formative assessment is reported to raise student achievement, with larger effects when feedback is specific and actionable.", "context": "A synthesis of classroom formative-assessment studies conducted across grade levels.", "evidence_strength": "high"}
+      "gold": {"age_range": "6-18", "outcome": "Frequent feedback-rich formative assessment raises achievement across grades.", "context": "Synthesis of classroom formative-assessment studies across grade levels.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": null, "outcome": "Frequent, feedback-rich formative assessment is reported to raise student achievement, with larger effects when feedback is specific and actionable.", "context": "A synthesis of classroom formative-assessment studies conducted across grade levels.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-game-fractions",
@@ -386,8 +386,8 @@
       "abstract": "A review examined mother-tongue-based instruction in the early grades of multilingual countries. The evidence shows that initial literacy in the home language improves early reading outcomes. Transfer to the second language was also supported.",
       "statement": "The evidence shows that initial literacy in the home language improves early reading outcomes.",
       "topics": ["literacy", "language learning"],
-      "gold": {"age_range": "6-9", "outcome": "Mother-tongue-based early instruction improves early reading outcomes.", "context": "Review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "high"},
-      "_recorded": {"age_range": "5-8", "outcome": "Initial literacy in the home language is associated with improved early reading outcomes, with supported transfer to the second language.", "context": "A review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "high"}
+      "gold": {"age_range": "6-9", "outcome": "Mother-tongue-based early instruction improves early reading outcomes.", "context": "Review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": "5-8", "outcome": "Initial literacy in the home language is associated with improved early reading outcomes, with supported transfer to the second language.", "context": "A review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-worked-examples-math",
@@ -395,8 +395,8 @@
       "abstract": "A randomised study compared worked examples with conventional problem-solving for teaching algebra. Students given worked examples learned more efficiently and scored higher on a delayed test. The trial involved 200 lower-secondary students.",
       "statement": "Students given worked examples learned more efficiently and scored higher on a delayed test.",
       "topics": ["mathematics", "metacognition"],
-      "gold": {"age_range": "13-16", "outcome": "Worked examples improve learning efficiency and delayed-test performance in algebra.", "context": "Randomised comparison of worked examples versus problem-solving in lower-secondary algebra.", "evidence_strength": "high"},
-      "_recorded": {"age_range": "12-15", "outcome": "Students taught with worked examples learned more efficiently and achieved higher scores on a delayed test than those using conventional problem-solving.", "context": "A randomised trial with 200 lower-secondary students comparing worked examples with conventional problem-solving for teaching algebra.", "evidence_strength": "high"}
+      "gold": {"age_range": "13-16", "outcome": "Worked examples improve learning efficiency and delayed-test performance in algebra.", "context": "Randomised comparison of worked examples versus problem-solving in lower-secondary algebra.", "evidence_strength": "strong"},
+      "_recorded": {"age_range": "12-15", "outcome": "Students taught with worked examples learned more efficiently and achieved higher scores on a delayed test than those using conventional problem-solving.", "context": "A randomised trial with 200 lower-secondary students comparing worked examples with conventional problem-solving for teaching algebra.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-vr-empathy",
@@ -432,7 +432,7 @@
       "statement": "Children in the program showed improved sustained attention on a standardised task.",
       "topics": ["self-regulation", "social-emotional learning"],
       "gold": {"age_range": "8-11", "outcome": "A mindfulness program improves children's sustained attention.", "context": "Cluster-randomised evaluation of a classroom mindfulness program in primary schools.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": null, "outcome": "Children participating in the mindfulness program showed improved sustained attention on a standardised task.", "context": "A cluster-randomised classroom mindfulness intervention conducted over eight weeks across twelve classes in primary schools.", "evidence_strength": "high"}
+      "_recorded": {"age_range": null, "outcome": "Children participating in the mindfulness program showed improved sustained attention on a standardised task.", "context": "A cluster-randomised classroom mindfulness intervention conducted over eight weeks across twelve classes in primary schools.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-adult-digital-literacy",

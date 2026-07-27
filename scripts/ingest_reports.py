@@ -39,6 +39,8 @@ from typing import Any
 import ai_provider
 from common import (
     AGE_SCALE,
+    EVIDENCE_STRENGTH_LIST,
+    EVIDENCE_STRENGTH_VALUES,
     ROOT,
     TODAY,
     append_candidate_sources,
@@ -62,7 +64,7 @@ from extract_claims import (
 
 # Versioned so every proposed source/claim carries its prompt version in
 # provenance, like the claim pre-fill in extract_claims.py.
-REPORT_PROMPT_VERSION = "report-import-v1"
+REPORT_PROMPT_VERSION = "report-import-v2"
 
 # A proposed claim statement shorter than this is dropped as too thin to be an
 # evidence statement, matching extract_claims.MIN_SENTENCE_LENGTH.
@@ -111,7 +113,7 @@ REPORT_OUTPUT_SCHEMA: dict[str, Any] = {
                     "outcome": {"type": ["string", "null"]},
                     "context": {"type": ["string", "null"]},
                     "age_range": {"type": ["string", "null"]},
-                    "evidence_strength": {"enum": ["low", "moderate", "high", None]},
+                    "evidence_strength": {"enum": [*EVIDENCE_STRENGTH_VALUES, None]},
                 },
             },
         },
@@ -152,7 +154,7 @@ Befund:
 auf der {age_scale}-Skala (fruehe Kindheit und Kindergarten / Lehrplan-21-Zyklus 1 \
 eingeschlossen), oder null. Ueber {age_scale} hinausreichende Bereiche auf \
 {age_scale} beschneiden.
-  - evidence_strength: eine von {{low, moderate, high}}, konservativ; im Zweifel low.'''
+  - evidence_strength: eine von {{{strength_values}}}, konservativ; im Zweifel low.'''
 
 
 def truncate_report_text(text: str, limit: int | None = None) -> str:
@@ -182,6 +184,7 @@ def report_prompt(text: str, url: str) -> str:
         text=text.strip(),
         source_types=", ".join(REPORT_SOURCE_TYPES),
         age_scale=AGE_SCALE,
+        strength_values=EVIDENCE_STRENGTH_LIST,
     )
 
 

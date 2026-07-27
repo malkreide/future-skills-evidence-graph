@@ -1,0 +1,10 @@
+{
+  "hash": "2f5502f8181a4b3a53febe9147006ffa8edd9eb3d037654ff26b887f69f4fdaa",
+  "kind": "complete",
+  "response": {
+    "age_range": "12-15",
+    "context": "A randomised trial with 200 lower-secondary students comparing worked examples with conventional problem-solving for teaching algebra.",
+    "evidence_strength": "strong",
+    "outcome": "Students taught with worked examples learned more efficiently and achieved higher scores on a delayed test than those using conventional problem-solving."
+  }
+}

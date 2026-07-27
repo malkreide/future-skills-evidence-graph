@@ -28,6 +28,7 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import ai_provider  # noqa: E402
+import common  # noqa: E402
 import eval_claim_prefill as ecp  # noqa: E402
 
 
@@ -104,6 +105,41 @@ class EmbeddingAvailabilityTest(unittest.TestCase):
         examples = ecp.load_examples()
         with mock.patch.object(ai_provider, "embed", return_value=[PARAPHRASE_A]):
             self.assertIsNone(ecp.load_embeddings(examples))
+
+
+class EvidenceStrengthVocabularyTest(unittest.TestCase):
+    """One vocabulary, everywhere.
+
+    The prompts used to ask for {low, moderate, high} while the data model
+    accepted {low, moderate, strong}, so the strongest suggestion named a value
+    the schema does not know. These tests pin every spelling to the schema.
+    """
+
+    def schema_values(self) -> list[str]:
+        schema = ecp.load_json(ROOT / "schemas" / "claim.schema.json")
+        return schema["properties"]["evidence_strength"]["enum"]
+
+    def test_constant_matches_the_claim_schema(self) -> None:
+        self.assertEqual(list(common.EVIDENCE_STRENGTH_VALUES), self.schema_values())
+
+    def test_prefill_schema_offers_exactly_those_values_plus_null(self) -> None:
+        enum = ecp.PREFILL_OUTPUT_SCHEMA["properties"]["evidence_strength"]["enum"]
+        self.assertEqual(enum, [*self.schema_values(), None])
+
+    def test_prompt_never_names_a_value_the_data_model_rejects(self) -> None:
+        prompt = ecp.prefill_prompt("An abstract.", "A finding sentence.", ["ai literacy"])
+        self.assertIn("strong", prompt)
+        # 'high' must not appear as a strength option any more. It may only
+        # survive inside unrelated words ('high-ability'), so check word-bounded.
+        self.assertNotRegex(prompt, r"\bhigh\b")
+
+    def test_golden_set_uses_the_schema_vocabulary(self) -> None:
+        allowed = set(self.schema_values()) | {None}
+        for example in ecp.load_examples():
+            for key in ("gold", "_recorded"):
+                value = (example.get(key) or {}).get("evidence_strength")
+                with self.subTest(example=example["id"], field=key):
+                    self.assertIn(value, allowed)
 
 
 class EmbeddingFixtureCoverageTest(unittest.TestCase):

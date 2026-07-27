@@ -1,0 +1,10 @@
+{
+  "hash": "0d6ef90b61d6a207646ef752d165b3760a48480e1a7012c99e03e2c13029b67b",
+  "kind": "complete",
+  "response": {
+    "age_range": "14-18",
+    "context": "A six-week data literacy module delivered to 95 high-school students.",
+    "evidence_strength": "low",
+    "outcome": "Students' post-test scores in interpreting charts and detecting misleading statistics improved, with the largest gains among students with low prior numeracy."
+  }
+}

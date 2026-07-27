@@ -29,7 +29,15 @@ from pathlib import Path
 from typing import Any, Callable
 
 from cluster_claims import DEFINITION_PLACEHOLDER_SUFFIX
-from common import ROOT, TODAY, iter_json_files, load_json, normalize_title, write_json
+from common import (
+    EVIDENCE_STRENGTH_VALUES,
+    ROOT,
+    TODAY,
+    iter_json_files,
+    load_json,
+    normalize_title,
+    write_json,
+)
 from extract_claims import (
     AGE_RANGE_PLACEHOLDER,
     CONTEXT_PLACEHOLDER_SUFFIX,
@@ -41,15 +49,16 @@ from validate_data import _load_validators, validate_repository
 
 AGE_RANGE_PLACEHOLDERS = {AGE_RANGE_PLACEHOLDER.casefold(), "todo", "tbd", ""}
 
-# The pre-fill prompt (Anhang A) proposes evidence_strength as low|moderate|high,
-# but the claim schema's vocabulary is low|moderate|strong. Map on acceptance so
-# an adopted suggestion lands as a valid start value; unknown values pass through
-# untouched so the schema gate still catches anything out of range.
+# Legacy compatibility only. The prompts used to ask for low|moderate|high while
+# the claim schema said low|moderate|strong, and this map papered over the gap on
+# acceptance. Since prompt v7 both sides render from common.EVIDENCE_STRENGTH_VALUES,
+# so a fresh suggestion already arrives as 'strong' and needs no translation.
+# The 'high' entry stays for assist blocks recorded before v7 (none in data/ today,
+# but an open branch or an old candidate PR may still carry one). Unknown values
+# pass through untouched so the schema gate still catches anything out of range.
 STRENGTH_SUGGESTION_TO_CLAIM = {
-    "low": "low",
-    "moderate": "moderate",
-    "high": "strong",
-    "strong": "strong",
+    **{value: value for value in EVIDENCE_STRENGTH_VALUES},
+    "high": "strong",  # pre-v7 recordings
 }
 
 # Review fields a suggestion can pre-fill, mapped to the claim key they populate.
@@ -451,7 +460,7 @@ def _build_parser() -> argparse.ArgumentParser:
             "expert_consensus",
         ],
     )
-    claim.add_argument("--evidence-strength", choices=["low", "moderate", "strong"])
+    claim.add_argument("--evidence-strength", choices=list(EVIDENCE_STRENGTH_VALUES))
     claim.add_argument("--supports", nargs="*")
     claim.add_argument("--contradicts", nargs="*")
     claim.add_argument(

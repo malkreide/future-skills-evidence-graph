@@ -1,0 +1,10 @@
+{
+  "hash": "b7ef04551d52a7dbf3342096d9f11f07c1bd38f3371387773f3274ce91850db9",
+  "kind": "complete",
+  "response": {
+    "age_range": null,
+    "context": "An all-girls coding club held weekly over a school year in an underserved school district.",
+    "evidence_strength": "low",
+    "outcome": "Participants reported higher coding self-efficacy and greater interest in computing careers."
+  }
+}

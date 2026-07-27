@@ -19,6 +19,8 @@ from typing import Any
 import ai_provider
 from common import (
     AGE_SCALE,
+    EVIDENCE_STRENGTH_LIST,
+    EVIDENCE_STRENGTH_VALUES,
     ROOT,
     TODAY,
     append_unique_records,
@@ -146,11 +148,26 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # longer hard-gated (precision is the reviewer-trust metric; see
 # eval_claim_prefill.py and OPERATIONS "Re-recording"), so safe abstention no
 # longer costs, and keeping the band precise matters more.
-PREFILL_PROMPT_VERSION = "claim-prefill-v6"
+# v7: two changes, neither of them about age.
+#   (a) The strength vocabulary was WRONG. The prompt and its schema asked for
+#       {low, moderate, high}, but the claim schema and promote_candidate.py
+#       only accept {low, moderate, strong} -- so the top suggestion named a
+#       value a reviewer could not actually enter. Both now render from
+#       common.EVIDENCE_STRENGTH_VALUES, the single vocabulary.
+#   (b) evidence_strength never abstained (50/50 proposed on the golden set): a
+#       model that always guesses a strength is exactly the reviewer-trust risk
+#       the gate exists to catch. The prompt now names null as the right answer
+#       when the abstract does not reveal the study type.
+# age_range wording is deliberately untouched: of its 8 recall misses, none name
+# an age in the abstract ("across grade levels", "across school ages", "two
+# primary cohorts"), so recovering them means inferring a band from a stage name
+# -- which is what v5 did, and it cost precision 0.94 -> 0.82.
+PREFILL_PROMPT_VERSION = "claim-prefill-v7"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
 # mirrors Anhang A: every field is optional content (null when the abstract does
-# not support it); evidence_strength uses the {low, moderate, high} vocabulary.
+# not support it); evidence_strength uses the claim schema's vocabulary, so the
+# model can never propose a value promote_candidate.py would refuse.
 PREFILL_OUTPUT_SCHEMA: dict[str, Any] = {
     "type": "object",
     "additionalProperties": False,
@@ -159,7 +176,7 @@ PREFILL_OUTPUT_SCHEMA: dict[str, Any] = {
         "age_range": {"type": ["string", "null"]},
         "outcome": {"type": ["string", "null"]},
         "context": {"type": ["string", "null"]},
-        "evidence_strength": {"enum": ["low", "moderate", "high", None]},
+        "evidence_strength": {"enum": [*EVIDENCE_STRENGTH_VALUES, None]},
     },
 }
 
@@ -192,14 +209,16 @@ ends. Clip ranges beyond {age_scale} to {age_scale}; pure adult samples => null.
 reported (neutral, without exaggeration), or null.
 - context: one sentence, in English, on the setting (country, school level, \
 type of intervention), or null.
-- evidence_strength: one of {{low, moderate, high}}, judged from study type and \
+- evidence_strength: one of {{{strength_values}}}, judged from study type and \
 sample: a randomised controlled trial, systematic review or meta-analysis => \
-high; a controlled, quasi-experimental or multi-site study => moderate; a single \
-small, uncontrolled, descriptive or design/working-paper study => low.
+strong; a controlled, quasi-experimental or multi-site study => moderate; a \
+single small, uncontrolled, descriptive or design/working-paper study => low. \
+Return null if the abstract does not reveal the study type or sample — guessing \
+a strength misleads the reviewer, abstaining does not.
 
 Response schema:
 {{"age_range": string|null, "outcome": string|null, "context": string|null, \
- "evidence_strength": "low"|"moderate"|"high"}}'''
+ "evidence_strength": {strength_schema}|null}}'''
 
 
 def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:
@@ -209,6 +228,8 @@ def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:
         statement=statement.strip(),
         topics=", ".join(topics) if topics else "—",
         age_scale=AGE_SCALE,
+        strength_values=EVIDENCE_STRENGTH_LIST,
+        strength_schema="|".join(f'"{value}"' for value in EVIDENCE_STRENGTH_VALUES),
     )
 
 
