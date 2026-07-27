@@ -321,6 +321,57 @@ weakens the gate: fields the model left null stay placeholders and still block
 promotion, a reviewed claim still needs a `--supports`/`--contradicts` skill
 link, and every explicit flag overrides the suggestion.
 
+### Choosing a provider (and why there is no framework here)
+
+`AI_PROVIDER` accepts `none` (default) | `anthropic` | `openai` | `ollama` |
+`cache`. Each live provider has its own ~40-line adapter in `ai_provider.py`
+rather than a shared abstraction, because the one thing they genuinely differ on
+is exactly what an abstraction would have to hide — how a JSON Schema is
+attached to the request:
+
+| provider | schema goes in | determinism | package |
+| --- | --- | --- | --- |
+| `anthropic` | `output_config.format` | `effort="low"` (temperature is rejected) | `anthropic` |
+| `openai` | `response_format.json_schema` (`strict`) | `temperature=0` | `openai` |
+| `ollama` | `format` (the schema itself) | `options.temperature=0` | **none** — stdlib HTTP |
+
+`ollama` is deliberately package-free: it talks to a local server over `urllib`,
+so the keyless option a contributor without an API budget can run costs
+`requirements-dev.txt` nothing. Adding a provider is one adapter plus one
+registry entry, and changes nothing for the others. That is the concrete reason
+this project does not need an LLM framework to serve several providers.
+
+**Cache keys are namespaced by the answering provider.** The key used to be
+`{kind, model, prompt, schema}`, so two providers serving the same model id
+would have collided and silently replayed each other's answers. Anthropic keeps
+the historic key shape — changing it would invalidate the 50 committed fixtures
+for no benefit — and every other provider is namespaced by name. `cache` mode
+replays `AI_CACHE_PROVIDER`'s recordings (default `anthropic`).
+
+**Which provider to use is a measurement, not a preference.**
+
+```bash
+make compare-providers          # offline, one column per provider
+AI_PROVIDER=openai python scripts/compare_providers.py \
+  --record openai --model openai=gpt-4o     # record a challenger, then compare
+```
+
+The comparison always scores through `cache` mode, so it can never spend money
+or vary between runs; recording is a separate, explicit step.
+
+**Activation rule.** A provider replaces `anthropic` only when it beats it on
+`GATED` precision (the micro-average of `age_range` + `evidence_strength`) by
+more than **0.02** — smaller than that is noise on a 50-example set — *and* does
+not lose more than **0.05** on either structured field individually, because an
+average can hide a collapse in one field. Ties go to the incumbent: switching
+costs a re-record of every fixture. A provider that merely matches is still
+worth knowing about — it means the pipeline is not vendor-locked — but it is not
+a reason to switch. `tests/test_ai_providers.py` pins this rule, including the
+two ways a comparison flatters a challenger.
+
+Today only `anthropic` has recordings, so the table shows one column and says
+so. That is the expected state until someone records a challenger.
+
 ### Optional skill-link suggestion (separate call)
 
 A claim only becomes `reviewed` once it links at least one skill, which is the

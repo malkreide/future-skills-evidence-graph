@@ -15,11 +15,24 @@ the standard library. The design mirrors the rest of the project:
   SDK, a network error, a refusal, malformed output) logs a warning to stderr and
   yields an empty/None result. Nothing here raises into the pipeline.
 
+- **One adapter per provider, no shared abstraction.** Providers differ on
+  exactly one thing that matters here — how a JSON Schema is attached to the
+  request — which is precisely what a common shim would have to hide. Each
+  adapter is ~40 lines and independent, so adding one changes nothing for the
+  others. This is why the project needs no LLM framework to serve several
+  providers.
+
 Env flags
 ---------
-``AI_PROVIDER``      ``none`` (default) | ``anthropic`` | ``cache``
-``AI_MODEL``         model id for completions (default ``claude-opus-4-8``)
+``AI_PROVIDER``      ``none`` (default) | ``anthropic`` | ``openai`` | ``ollama``
+                       | ``cache``
+``AI_MODEL``         model id for completions (default ``claude-opus-4-8``, an
+                       Anthropic id — set it when using another provider)
+``AI_CACHE_PROVIDER``whose recordings ``cache`` replays (default ``anthropic``)
 ``ANTHROPIC_API_KEY``read by the anthropic SDK when ``AI_PROVIDER=anthropic``
+``OPENAI_API_KEY``   read by the openai SDK when ``AI_PROVIDER=openai``
+``OLLAMA_HOST``      local ollama server (default ``http://localhost:11434``);
+                       keyless and stdlib-only, no package required
 ``EMBEDDING_PROVIDER`` ``none`` (default) | ``local`` | ``st`` — a SEPARATE path,
                        because Anthropic has no embeddings API.
 ``ST_EMBED_MODEL``   sentence-transformers model id for ``EMBEDDING_PROVIDER=st``
@@ -51,6 +64,37 @@ TODAY = date.today().isoformat()
 # Default to the latest, most capable Claude model. Overridable via AI_MODEL.
 DEFAULT_MODEL = "claude-opus-4-8"
 
+# Provider names. Anthropic is the incumbent and the one the committed fixtures
+# were recorded from; the others exist so a provider choice can be MEASURED
+# rather than assumed (see scripts/compare_providers.py).
+ANTHROPIC = "anthropic"
+OPENAI = "openai"
+OLLAMA = "ollama"
+NONE = "none"
+CACHE = "cache"
+
+# Providers that actually call out. Each has its own small adapter below rather
+# than a shared abstraction, because the one thing they genuinely differ on --
+# how a JSON Schema is attached to the request -- is exactly what an abstraction
+# would have to paper over:
+#
+#   anthropic  output_config={"format": {"type": "json_schema", "schema": ...}}
+#   openai     response_format={"type": "json_schema", "json_schema": {...}}
+#   ollama     format=<the schema itself>
+#
+# Roughly forty lines each. That is the whole reason this project does not need
+# a framework to talk to several providers.
+LIVE_PROVIDERS = (ANTHROPIC, OPENAI, OLLAMA)
+
+# Where ollama listens when nothing says otherwise. Keyless and local, which is
+# why it is the provider a contributor without an API budget can actually run.
+OLLAMA_DEFAULT_HOST = "http://localhost:11434"
+
+# A local model on modest hardware is slow; without a ceiling a hung server
+# would stall an importer indefinitely. On timeout the adapter raises, complete()
+# warns and returns None, and the pipeline continues without a suggestion.
+OLLAMA_TIMEOUT_SECONDS = 180
+
 # Dimensionality of the dependency-free local embedding (see _local_embedding).
 EMBED_DIM = 256
 
@@ -63,13 +107,28 @@ ST_DEFAULT_MODEL = "all-MiniLM-L6-v2"
 
 
 def ai_provider() -> str:
-    """Active completion provider: ``none`` (default), ``anthropic`` or ``cache``."""
+    """Active completion provider: ``none`` (default), a live provider, or ``cache``."""
     return (os.getenv("AI_PROVIDER") or "none").strip().lower()
 
 
 def ai_model() -> str:
-    """Model id for completions (default ``claude-opus-4-8``)."""
+    """Model id for completions (default ``claude-opus-4-8``).
+
+    Note the default belongs to Anthropic; when running another provider, set
+    ``AI_MODEL`` to one of its model ids (see LIVE_PROVIDERS).
+    """
     return (os.getenv("AI_MODEL") or DEFAULT_MODEL).strip()
+
+
+def cache_provider() -> str:
+    """Whose recordings ``AI_PROVIDER=cache`` replays (default ``anthropic``).
+
+    The fixture cache is keyed by the provider that PRODUCED a response, so
+    replaying needs to name one. Anthropic is the default because it is what the
+    committed fixtures were recorded from; point this at another provider to
+    replay that provider's recordings instead.
+    """
+    return (os.getenv("AI_CACHE_PROVIDER") or ANTHROPIC).strip().lower()
 
 
 def embedding_provider() -> str:
@@ -107,6 +166,27 @@ def _cache_path(payload: dict[str, Any]) -> Path:
     return CACHE_DIR / f"{_request_hash(payload)}.json"
 
 
+def request_payload(
+    *, kind: str, model: str, prompt: str, schema: dict[str, Any] | None, provider: str
+) -> dict[str, Any]:
+    """The cache key for one request, namespaced by the answering provider.
+
+    The key used to be ``{kind, model, prompt, schema}`` with no provider in it.
+    That was fine while Anthropic was the only one, but two providers serving the
+    same model id (``gpt-4o`` via OpenAI and via a gateway, say) would collide and
+    silently replay each other's answers.
+
+    Anthropic deliberately keeps the historic key shape — adding a field would
+    change every hash and invalidate the 50 committed fixtures for no benefit —
+    and every other provider is namespaced by name. So the migration costs
+    nothing today and cannot collide tomorrow.
+    """
+    payload: dict[str, Any] = {"kind": kind, "model": model, "prompt": prompt, "schema": schema}
+    if provider != ANTHROPIC:
+        payload["provider"] = provider
+    return payload
+
+
 def cache_read(payload: dict[str, Any]) -> Any | None:
     """Return the stored response for *payload*, or None on a miss/unreadable entry."""
     path = _cache_path(payload)
@@ -141,24 +221,29 @@ def cache_write(payload: dict[str, Any], response: Any) -> None:
 def complete(prompt: str, *, schema: dict[str, Any] | None = None) -> dict[str, Any] | None:
     """Return a structured completion for *prompt*, or None when AI is off/unavailable.
 
-    Determinism and the request surface follow the Opus 4.8 constraints: the
-    JSON shape is constrained via ``output_config.format`` (a JSON Schema),
-    determinism comes from ``output_config.effort='low'`` (NOT temperature, which
-    is rejected on Opus 4.8), and there is NO assistant prefill (also rejected).
-    A safety refusal (``stop_reason == 'refusal'``) yields None.
+    Every provider is asked for the same thing: one JSON object matching *schema*,
+    as deterministically as that provider allows. How the schema is attached and
+    how determinism is requested differ per provider and live in the adapters.
 
     - ``none`` (default): returns None — identical to having no AI at all.
-    - ``cache``: read-only fixture replay; a miss warns and returns None.
-    - ``anthropic``: live call via the official SDK, result cached for replay.
+    - ``cache``: read-only fixture replay of ``AI_CACHE_PROVIDER``'s recordings
+      (default ``anthropic``); a miss warns and returns None.
+    - ``anthropic`` | ``openai`` | ``ollama``: live call, result cached for replay.
+
+    Failure is uniform: a missing SDK, a network error, a refusal or malformed
+    output all warn and yield None, so no provider can abort the pipeline.
     """
     provider = ai_provider()
-    if provider == "none":
+    if provider == NONE:
         return None
 
     model = ai_model()
-    payload = {"kind": "complete", "model": model, "prompt": prompt, "schema": schema}
 
-    if provider == "cache":
+    if provider == CACHE:
+        payload = request_payload(
+            kind="complete", model=model, prompt=prompt, schema=schema,
+            provider=cache_provider(),
+        )
         response = cache_read(payload)
         if response is None:
             # In CI (cache mode) a miss means the fixture is missing: there is no
@@ -166,18 +251,35 @@ def complete(prompt: str, *, schema: dict[str, Any] | None = None) -> dict[str, 
             _warn("AI cache miss for completion request; no fixture available in cache mode.")
         return response
 
-    if provider == "anthropic":
-        try:
-            response = _anthropic_complete(model, prompt, schema)
-        except Exception as exc:  # noqa: BLE001 - SDK/network must never abort the pipeline
-            _warn(f"AI completion failed ({exc}); returning no suggestion.")
-            return None
-        if response is not None:
-            cache_write(payload, response)
-        return response
+    adapter = _COMPLETION_ADAPTERS.get(provider)
+    if adapter is None:
+        expected = "|".join((NONE, *LIVE_PROVIDERS, CACHE))
+        _warn(f"Unknown AI_PROVIDER {provider!r}; expected {expected}.")
+        return None
 
-    _warn(f"Unknown AI_PROVIDER {provider!r}; expected none|anthropic|cache.")
-    return None
+    payload = request_payload(
+        kind="complete", model=model, prompt=prompt, schema=schema, provider=provider
+    )
+    try:
+        response = adapter(model, prompt, schema)
+    except Exception as exc:  # noqa: BLE001 - SDK/network must never abort the pipeline
+        _warn(f"AI completion failed via {provider} ({exc}); returning no suggestion.")
+        return None
+    if response is not None:
+        cache_write(payload, response)
+    return response
+
+
+def _parse_json_object(text: str | None, provider: str) -> dict[str, Any] | None:
+    """Shared tail of every adapter: text -> a JSON object, or None with a warning."""
+    if not text:
+        return None
+    try:
+        data = json.loads(text)
+    except ValueError as exc:
+        _warn(f"{provider} completion was not valid JSON ({exc}); returning no suggestion.")
+        return None
+    return data if isinstance(data, dict) else None
 
 
 def _anthropic_complete(
@@ -207,14 +309,86 @@ def _anthropic_complete(
         (block.text for block in message.content if getattr(block, "type", None) == "text"),
         None,
     )
-    if not text:
+    return _parse_json_object(text, ANTHROPIC)
+
+
+def _openai_complete(
+    model: str, prompt: str, schema: dict[str, Any] | None
+) -> dict[str, Any] | None:
+    """Single structured call via the official openai SDK (lazy import).
+
+    Differences from the Anthropic adapter, all of them at the request surface:
+    the schema rides in ``response_format`` rather than ``output_config``, it
+    must be wrapped in a named ``json_schema`` envelope, and determinism comes
+    from ``temperature=0`` (which Opus 4.8 rejects but OpenAI models accept).
+    ``strict`` schema mode additionally requires ``additionalProperties: false``,
+    which every schema in this project already sets.
+    """
+    import openai  # lazy: keeps the import path stdlib for none|cache modes
+
+    client = openai.OpenAI()  # reads OPENAI_API_KEY from the environment
+    request: dict[str, Any] = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0,
+    }
+    if schema is not None:
+        request["response_format"] = {
+            "type": "json_schema",
+            "json_schema": {"name": "structured_output", "strict": True, "schema": schema},
+        }
+
+    completion = client.chat.completions.create(**request)
+    choice = completion.choices[0]
+    # OpenAI signals a content-filter stop the way Anthropic signals a refusal.
+    if getattr(choice, "finish_reason", None) == "content_filter":
+        _warn("openai completion refused (finish_reason=content_filter); no suggestion.")
         return None
-    try:
-        data = json.loads(text)
-    except ValueError as exc:
-        _warn(f"AI completion was not valid JSON ({exc}); returning no suggestion.")
-        return None
-    return data if isinstance(data, dict) else None
+    return _parse_json_object(getattr(choice.message, "content", None), OPENAI)
+
+
+def _ollama_complete(
+    model: str, prompt: str, schema: dict[str, Any] | None
+) -> dict[str, Any] | None:
+    """Single structured call to a local ollama server — stdlib HTTP, no SDK.
+
+    Ollama is the keyless, local option: it needs no API budget, which makes it
+    the provider a contributor can actually run to reproduce a comparison. It
+    takes the JSON Schema directly as ``format`` and wants determinism as
+    ``options.temperature = 0``. No third-party package is involved at all —
+    this is the standard library talking to localhost.
+    """
+    from urllib import request as urllib_request
+
+    host = (os.getenv("OLLAMA_HOST") or OLLAMA_DEFAULT_HOST).rstrip("/")
+    body: dict[str, Any] = {
+        "model": model,
+        "prompt": prompt,
+        "stream": False,
+        "options": {"temperature": 0},
+    }
+    if schema is not None:
+        body["format"] = schema
+
+    encoded = json.dumps(body).encode("utf-8")
+    http_request = urllib_request.Request(
+        f"{host}/api/generate",
+        data=encoded,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib_request.urlopen(http_request, timeout=OLLAMA_TIMEOUT_SECONDS) as response:
+        parsed = json.loads(response.read().decode("utf-8"))
+    return _parse_json_object(parsed.get("response"), OLLAMA)
+
+
+# Registry, consulted by complete(). Adding a provider is one entry plus one
+# adapter -- no shared abstraction to bend, and nothing changes for the others.
+_COMPLETION_ADAPTERS = {
+    ANTHROPIC: _anthropic_complete,
+    OPENAI: _openai_complete,
+    OLLAMA: _ollama_complete,
+}
 
 
 # --- Embeddings ------------------------------------------------------------
