@@ -418,11 +418,12 @@ after a prompt change (`PREFILL_PROMPT_VERSION`), a model bump (`AI_MODEL`), or
 when growing the golden set; then re-run `make eval-prefill` to confirm the gate
 still passes offline.
 
-**What is gated, and how each field is scored.** The gate is on **precision** of
-the two **structured** fields: `age_range` and `evidence_strength`. `outcome`/
-`context` are one-sentence free-text *suggestions* a reviewer rewrites, so they
-are **reported but never block the gate** (the report prints them tagged
-`(advisory)` and a `GATED (age+strength)` overall line).
+**What is gated, and how each field is scored.** All four fields carry a
+precision floor. `age_range` and `evidence_strength` are the two **structured**
+fields and make up the `GATED (age+strength)` overall line. `outcome`/`context`
+are free-text suggestions and are gated **conditionally** — only while the
+semantic scorer is available; the report still tags them `(advisory)` because
+they never enter that overall line. See "The decision" below.
 
 ### How the free-text fields are scored (semantic, fixture-backed)
 
@@ -466,6 +467,44 @@ Two properties keep this honest and cheap:
 After a `--record-live` run the recorded texts change, so re-run
 `make eval-prefill` once with `sentence-transformers` installed to mint the new
 vectors and commit `tests/fixtures/embeddings/` alongside the refreshed fixtures.
+
+#### The decision: outcome/context are now gated, conditionally
+
+They were ungated because they could not be measured fairly. Once they could,
+the reason expired, so both carry a floor in `validate.yml`:
+
+| field | measured | floor | headroom |
+| --- | --- | --- | --- |
+| `outcome` | 0.85 | `--min-outcome-precision 0.75` | 0.10 |
+| `context` | 0.98 | `--min-context-precision 0.85` | 0.13 |
+
+The headroom matches how the structured fields are gated (`age_range` 0.94
+measured / 0.8 floor, `evidence_strength` 0.82 / 0.7): tight enough to catch a
+real regression, loose enough that normal re-record jitter does not fail a run.
+
+**Both gates skip themselves when the semantic scorer is unavailable.** This is
+the important part. Under the lexical fallback `outcome` reads 0.11, so a 0.75
+floor would fail every run where `tests/fixtures/embeddings/` is missing — a
+red build caused by an absent file rather than by a regression. The script
+prints a `SKIPPED:` line naming the floors it did not enforce and exits 0.
+A gate that cannot distinguish "worse" from "unmeasurable" is worse than no gate.
+
+They stay **precision-only**, for the reason the structured fields do: the
+pre-fill suggests, so a safe abstention should not fail a run.
+
+**Decommission rule.** Drop these two gates back to advisory if either holds:
+
+1. a live re-record puts `outcome` or `context` precision below its floor for
+   reasons of substance rather than jitter — i.e. the suggestions really did get
+   worse and the prompt cannot recover them; or
+2. the embedding model changes and the threshold calibration is not redone. The
+   0.60 floor is a property of `all-MiniLM-L6-v2`'s similarity distribution, not
+   a universal constant — re-run the cross-paired negative control first (see
+   above) and only then re-enable.
+
+This mirrors how `RELEVANCE_CLASSIFIER` is handled: a signal is switched on only
+while a measurement supports it, and switching it back off is a documented,
+expected move rather than a failure.
 
 **Recall is reported, not gated.** Precision — "when the model proposes a value,
 is it right?" — is the metric that protects reviewer trust, so that is what the

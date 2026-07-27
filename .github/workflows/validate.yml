@@ -18,11 +18,17 @@ jobs:
         run: python scripts/validate_data.py
       - name: Run tests
         run: python -m unittest discover -s tests
+      # outcome/context are now scored semantically (embedding cosine over the
+      # committed vectors), so they can carry a floor at last. Those two gates
+      # skip themselves rather than fail if the embedding fixtures are missing --
+      # the lexical fallback cannot meet a semantic floor, and a missing file is
+      # not a regression. See OPERATIONS.md "How the free-text fields are scored".
       - name: Evaluate LLM claim pre-fill (offline, fixtures)
         run: >-
           python scripts/eval_claim_prefill.py
           --min-precision 0.8
           --min-evidence-strength-precision 0.7 --min-age-range-precision 0.8
+          --min-outcome-precision 0.75 --min-context-precision 0.85
       - name: Build static dashboard
         run: python scripts/build_site.py
 

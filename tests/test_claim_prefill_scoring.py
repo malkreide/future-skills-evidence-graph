@@ -16,6 +16,8 @@ fixture-coverage test only reads the committed cache.
 
 from __future__ import annotations
 
+import contextlib
+import io
 import math
 import sys
 import unittest
@@ -140,6 +142,42 @@ class EvidenceStrengthVocabularyTest(unittest.TestCase):
                 value = (example.get(key) or {}).get("evidence_strength")
                 with self.subTest(example=example["id"], field=key):
                     self.assertIn(value, allowed)
+
+
+class ConditionalTextGateTest(unittest.TestCase):
+    """The free-text gates must skip, not fail, without the semantic scorer.
+
+    Under the lexical fallback outcome reads ~0.11, so enforcing a semantic
+    floor there would turn a missing fixture file into a red build. A gate that
+    cannot tell "worse" from "unmeasurable" is worse than no gate.
+    """
+
+    def run_main(self, argv: list[str]) -> tuple[int, str]:
+        buffer = io.StringIO()
+        with mock.patch.object(sys, "argv", ["eval_claim_prefill.py", *argv]), \
+                contextlib.redirect_stdout(buffer):
+            code = ecp.main()
+        return code, buffer.getvalue()
+
+    def test_gate_passes_with_the_semantic_scorer(self) -> None:
+        code, output = self.run_main(
+            ["--min-outcome-precision", "0.75", "--min-context-precision", "0.85"]
+        )
+        self.assertEqual(code, 0)
+        self.assertNotIn("SKIPPED", output)
+
+    def test_gate_is_skipped_without_embeddings(self) -> None:
+        code, output = self.run_main(
+            ["--lexical-text-scoring", "--min-outcome-precision", "0.75"]
+        )
+        self.assertEqual(code, 0, "a missing scorer must not fail the run")
+        self.assertIn("SKIPPED", output)
+
+    def test_a_real_regression_still_fails(self) -> None:
+        """Skipping must not swallow a genuine drop."""
+        code, output = self.run_main(["--min-outcome-precision", "0.99"])
+        self.assertEqual(code, 1)
+        self.assertIn("FAIL", output)
 
 
 class EmbeddingFixtureCoverageTest(unittest.TestCase):

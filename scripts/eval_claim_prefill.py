@@ -506,6 +506,20 @@ def main() -> int:
         help="Force the old token-overlap scorer for outcome/context instead of "
         "embeddings (the pre-semantic baseline).",
     )
+    parser.add_argument(
+        "--min-outcome-precision",
+        type=float,
+        default=None,
+        help="Gate on outcome precision. SKIPPED (not failed) when the semantic "
+        "scorer is unavailable, since the lexical fallback cannot meet it.",
+    )
+    parser.add_argument(
+        "--min-context-precision",
+        type=float,
+        default=None,
+        help="Gate on context precision. Skipped like --min-outcome-precision when "
+        "the semantic scorer is unavailable.",
+    )
     args = parser.parse_args()
 
     payload = load_payload()
@@ -562,6 +576,28 @@ def main() -> int:
         if minimum is not None and value < minimum:
             print(f"\nFAIL: {label} {value:.2f} < required {minimum}")
             status = 1
+
+    # The free-text gates are conditional on the scorer that made them possible.
+    # Under the lexical fallback a faithful paraphrase reads as a miss (outcome
+    # P 0.11), so enforcing a semantic floor there would fail the run for a
+    # missing fixture rather than for a regression. Skip loudly instead.
+    text_gates = [
+        ("outcome precision", metrics["outcome"].precision, args.min_outcome_precision),
+        ("context precision", metrics["context"].precision, args.min_context_precision),
+    ]
+    requested = [gate for gate in text_gates if gate[2] is not None]
+    if requested and embeddings is None:
+        print(
+            "\nSKIPPED: "
+            + ", ".join(f"{label} (>= {minimum})" for label, _, minimum in requested)
+            + " — the semantic scorer is unavailable, and the lexical fallback cannot "
+            "meet a semantic floor. Restore tests/fixtures/embeddings/ to enforce these."
+        )
+    else:
+        for label, value, minimum in requested:
+            if value < minimum:
+                print(f"\nFAIL: {label} {value:.2f} < required {minimum}")
+                status = 1
     return status
 
 
