@@ -48,6 +48,39 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Gegenevidenz-Lane: eine optionale, isolierte Agenten-Suche nach Widerspruch.**
+  Der Katalog hält 146 Claims mit **genau einem** `contradicts_skill_ids`-Eintrag.
+  `score_evidence.py` kann Widerspruch bestrafen, aber nichts sucht ihn: die
+  Importer suchen *nach* Future-Skills-Themen, der Extraktor bevorzugt einen
+  Befundsatz, und Befundsätze in Abstracts sind überwiegend positiv. Jede Stufe
+  neigt in dieselbe Richtung — `evidence_score` war damit ein Konfidenzmaß ohne
+  Gegenprobe. `agents/counter_evidence.py` sucht gezielt nach Null-Resultaten,
+  gescheiterten Replikationen und Schäden und legt sie als Kandidaten-Claims zur
+  Review vor.
+
+  Dies ist die eine Aufgabe im Projekt, die wirklich agentisch ist — die Query
+  steht nicht vorab fest, und jede Runde formuliert aus dem Ergebnis der
+  vorherigen um. Deshalb LangGraph, und zwar **ausschliesslich als
+  Zustandsmaschine**: jeder Modellaufruf läuft durch `ai_provider`, nicht durch
+  ein `langchain-*`-Binding. Damit bleibt der Fixture-Replay erhalten, die Lane
+  erbt alle Provider aus dem Kern, und kein einziges Integrationspaket wird
+  gebraucht.
+
+  **Isoliert per Vertrag, nicht per Konvention:** Abhängigkeit in
+  `requirements-agents.txt` (von CI nie installiert), `scripts/` darf `agents/`
+  nie importieren, nur `workflow_dispatch`, ausschliesslich Kandidaten-Output,
+  und ein Claim entsteht nur, wenn sein Zitat **wörtlich** im Abstract steht.
+  `tests/test_agent_isolation.py` erzwingt jede dieser Regeln und läuft in der
+  normalen Suite — die kein LangGraph installiert, was der Beweis ist, dass der
+  Kern es nicht braucht. Harte Grenzen (`MAX_ROUNDS`, `MAX_QUERIES`) stehen als
+  Code-Konstanten da, nicht als Prompt-Bitte. Begründung, Grenzen und
+  Aktivierungs-/Decommission-Regel in
+  [docs/gegenevidenz-lane.md](docs/gegenevidenz-lane.md).
+
+  Die Lane ist **standardmässig aus** und in keinen automatischen Workflow
+  eingebunden. Aktivierung setzt eine gemessene Präzision ≥ 0.5 über drei
+  manuelle Läufe voraus.
+
 - **KI-Assist: Skill-Zuordnung als eigener, nicht-bindender Vorschlag.** Ein
   Claim wird erst `reviewed`, wenn er mindestens einen Skill verlinkt — der
   letzte rein manuelle Handgriff der Review-Schleife. Ein zweiter, unabhängig

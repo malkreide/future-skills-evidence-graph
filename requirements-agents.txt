@@ -1,0 +1,18 @@
+# Dependencies for the OPTIONAL, isolated counter-evidence agent lane (agents/).
+#
+# Deliberately a SEPARATE file from requirements-dev.txt. The regular CI installs
+# only requirements-dev.txt, so the core pipeline and its test suite are proven
+# to run without anything listed here — that is the isolation contract from
+# docs/gegenevidenz-lane.md, enforced by tests/test_agent_isolation.py.
+#
+# Install only when actually running the lane:
+#   pip install -r requirements-agents.txt
+#
+# Note what is NOT here: no langchain-anthropic, no langchain-openai, no
+# langchain-community. LangGraph is used purely as a state machine; every LLM
+# call goes through scripts/ai_provider.py, which is what keeps the fixture
+# replay (and therefore reproducibility) working and lets the lane inherit every
+# provider from the core without a single integration package.
+#
+# Pinned exactly, for the same supply-chain reason as requirements-dev.txt.
+langgraph==1.2.9

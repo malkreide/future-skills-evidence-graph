@@ -28,3 +28,7 @@ eval/domain_audit.json
 # transient working dir for the issue-form report importer (downloaded PDF, plaintext, manifest)
 .ingest_work/
 
+
+# The agent lane's compiled bytecode; its run logs (agents/runs/) are the audit
+# trail and ARE committed on purpose — see docs/gegenevidenz-lane.md.
+agents/__pycache__/

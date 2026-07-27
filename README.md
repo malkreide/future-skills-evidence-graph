@@ -277,6 +277,31 @@ deliberately implements a subset; the remaining steps are open:
 | 8. Create changes as pull requests | Implemented (weekly research workflow) |
 | 9. Show reviewed skills in the dashboard | Implemented (`build_site.py`, GitHub Pages) |
 
+## Counter-evidence lane (optional, isolated)
+
+The catalogue holds 146 claims with **exactly one** `contradicts_skill_ids`
+entry. `score_evidence.py` can penalise contradiction, but nothing ever looks
+for it: the importers search *for* future-skills topics and the extractor
+prefers a finding sentence, which in abstracts is overwhelmingly positive. Every
+stage leans the same way, so `evidence_score` is a confidence number without a
+counter-check.
+
+An **optional, opt-in agent lane** (`agents/counter_evidence.py`) closes that
+gap: it searches for studies that report a null result, a failed replication or
+a harm for an active skill, and emits them as candidate claims for review. This
+is the one task in the project that is genuinely agentic — the query is not
+known in advance, and each round reformulates from what the last one returned —
+so it uses LangGraph, purely as a state machine.
+
+It is **isolated by contract**, not by convention: its dependency lives in
+`requirements-agents.txt` (never installed by CI), `scripts/` may never import
+it, every model call routes through `ai_provider` rather than a `langchain-*`
+binding, it runs on `workflow_dispatch` only, and it emits candidates only. A
+test suite enforces each of these. The rationale, the limits, and the
+activation/decommission rule are in
+[docs/gegenevidenz-lane.md](docs/gegenevidenz-lane.md); the lane's own rules in
+[agents/README.md](agents/README.md).
+
 Optional environment variables:
 
 - `SEMANTIC_SCHOLAR_API_KEY`: raises Semantic Scholar rate limits.
