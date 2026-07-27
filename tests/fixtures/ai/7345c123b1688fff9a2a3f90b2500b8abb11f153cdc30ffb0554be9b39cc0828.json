@@ -1,0 +1,10 @@
+{
+  "hash": "7345c123b1688fff9a2a3f90b2500b8abb11f153cdc30ffb0554be9b39cc0828",
+  "kind": "complete",
+  "response": {
+    "age_range": "6-12",
+    "context": "A small quasi-experiment with primary school children receiving weekly music training.",
+    "evidence_strength": "low",
+    "outcome": "The music-trained group showed modest gains in working memory and inhibitory control."
+  }
+}

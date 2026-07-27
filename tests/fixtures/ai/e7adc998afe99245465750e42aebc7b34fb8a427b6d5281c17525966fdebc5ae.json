@@ -1,0 +1,10 @@
+{
+  "hash": "e7adc998afe99245465750e42aebc7b34fb8a427b6d5281c17525966fdebc5ae",
+  "kind": "complete",
+  "response": {
+    "age_range": null,
+    "context": "A review of spaced retrieval practice in schools, spanning multiple subjects and school ages.",
+    "evidence_strength": "strong",
+    "outcome": "Distributing retrieval practice over time reliably improves long-term retention compared with massed study."
+  }
+}

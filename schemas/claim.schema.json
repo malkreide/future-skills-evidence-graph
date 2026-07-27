@@ -60,6 +60,24 @@
             "created_at": { "type": "string" }
           },
           "additionalProperties": true
+        },
+        "skill_links": {
+          "type": "object",
+          "description": "Non-binding skill-link suggestion from a separately versioned call. Advisory only: the real supports_skill_ids/contradicts_skill_ids stay empty until a reviewer passes --supports/--contradicts.",
+          "properties": {
+            "supports_skill_ids": { "type": "array", "items": { "type": "string" } },
+            "contradicts_skill_ids": { "type": "array", "items": { "type": "string" } },
+            "provenance": {
+              "type": "object",
+              "properties": {
+                "model": { "type": "string" },
+                "prompt_version": { "type": "string" },
+                "created_at": { "type": "string" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

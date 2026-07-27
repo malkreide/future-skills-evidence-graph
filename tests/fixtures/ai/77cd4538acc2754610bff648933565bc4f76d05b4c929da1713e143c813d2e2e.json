@@ -1,0 +1,10 @@
+{
+  "hash": "77cd4538acc2754610bff648933565bc4f76d05b4c929da1713e143c813d2e2e",
+  "kind": "complete",
+  "response": {
+    "age_range": "15-18",
+    "context": "Upper-secondary biology classes comparing an augmented-reality anatomy app with a textbook, across three classes.",
+    "evidence_strength": "low",
+    "outcome": "Students using the augmented-reality app were more engaged, but post-test anatomy knowledge did not differ from the textbook condition."
+  }
+}

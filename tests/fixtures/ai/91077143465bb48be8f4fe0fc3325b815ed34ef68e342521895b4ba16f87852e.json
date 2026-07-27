@@ -1,0 +1,10 @@
+{
+  "hash": "91077143465bb48be8f4fe0fc3325b815ed34ef68e342521895b4ba16f87852e",
+  "kind": "complete",
+  "response": {
+    "age_range": null,
+    "context": "A secondary computing course comparing pair programming with solo work across two terms with rotating pairs.",
+    "evidence_strength": "moderate",
+    "outcome": "Students working in pairs solved problems more successfully and reported higher confidence than those working alone."
+  }
+}

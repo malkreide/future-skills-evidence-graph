@@ -63,20 +63,47 @@ from extract_claims import (
 
 EVAL_PATH = ROOT / "eval" / "claim_prefill_labeled.json"
 
-# Free-text fields are matched by token overlap; the categorical fields must
-# match exactly. A suggestion and a gold value count as agreeing on a text field
-# when their Jaccard token overlap reaches this floor.
-# age_range / evidence_strength are the two fields worth a hard gate: they are
-# short, structured, and a wrong value actively misleads a reviewer. outcome and
-# context are one-sentence free-text SUGGESTIONS the reviewer rewrites anyway;
-# the live model paraphrases them faithfully but with different words, which no
-# lexical score captures, so they are measured and reported but NOT gated.
+# age_range / evidence_strength are short, structured fields where a wrong value
+# actively misleads a reviewer. outcome and context are one-sentence free-text
+# SUGGESTIONS the reviewer rewrites anyway.
 GATED_FIELDS = ("age_range", "evidence_strength")
 ADVISORY_FIELDS = ("outcome", "context")
 
 TEXT_FIELDS = ("outcome", "context")
 EXACT_FIELDS = ("evidence_strength",)
-TEXT_MATCH_THRESHOLD = 0.5
+
+# --- How the free-text fields are matched ----------------------------------
+#
+# Two scorers, because the lexical one alone was measuring the wrong thing. The
+# live model states the same finding as the gold label in different words:
+#
+#   model: "Structured AI literacy lessons improved pupils' ability to
+#           critically evaluate machine-generated outputs."
+#   gold:  "Pupils become better at critically evaluating machine-generated
+#           outputs."
+#
+# Jaccard token overlap scores that as a miss, which is why outcome sat at
+# P 0.11 -- a scorer artifact, not a model failure. Cosine similarity over the
+# project's own fixture-backed embeddings (ai_provider.embed) measures agreement
+# instead of vocabulary, so the advisory fields can finally be judged honestly.
+#
+# Both are always computed and reported side by side: the semantic number is the
+# one to act on, the lexical one stays visible so the improvement is auditable
+# and not just a softer ruler.
+TEXT_MATCH_THRESHOLD = 0.5  # Jaccard token overlap (lexical scorer)
+
+# Calibrated on the golden set against a cross-paired negative control (every
+# gold_i vs every recorded_j, i != j), so the floor is measured, not guessed:
+#
+#   field    matching pairs        cross-paired mismatches   at t=0.60
+#   outcome  median 0.736          p99 0.510, max 0.697      87% match / 0.1% false
+#   context  median 0.883          p99 0.531, max 0.689      98% match / 0.2% false
+#
+# 0.60 sits in the gap between the two distributions: well above the mismatch
+# p99, well below the match median. The negative control is the point -- it
+# shows the scorer separates paraphrase from unrelated text rather than waving
+# everything through. Re-run the calibration if the embedding model changes.
+SEMANTIC_MATCH_THRESHOLD = 0.60
 
 # age_range is scored with a numeric tolerance rather than exact-string match: an
 # age band is inherently fuzzy, and asymmetrically so. The lower bound (the entry
@@ -94,6 +121,74 @@ _AGE_RE = re.compile(r"\d+")
 
 def _tokens(text: str) -> set[str]:
     return set(_TOKEN_RE.findall(text.lower()))
+
+
+# --- Semantic scorer (fixture-backed embeddings) ---------------------------
+
+
+def _text_values(examples: list[dict[str, Any]]) -> list[str]:
+    """Every free-text value the scorer will need to compare, deduplicated.
+
+    Both sides of each comparison: the gold labels and the recorded suggestions.
+    Collected up front so they are embedded in ONE batch -- with the fixtures
+    committed that batch is pure cache reads, so CI never loads the model.
+    """
+    values: set[str] = set()
+    for example in examples:
+        for source in (example.get("gold") or {}, example.get("_recorded") or {}):
+            for name in TEXT_FIELDS:
+                value = source.get(name)
+                if isinstance(value, str) and value.strip():
+                    values.add(value)
+    return sorted(values)
+
+
+def load_embeddings(examples: list[dict[str, Any]]) -> dict[str, list[float]] | None:
+    """Embed every free-text value, or None when embeddings are unavailable.
+
+    Degrades exactly like the rest of the project: a missing provider, a missing
+    fixture with no installed model, or a short/failed batch yields None and the
+    caller falls back to the lexical scorer instead of failing the run.
+    """
+    texts = _text_values(examples)
+    if not texts:
+        return None
+    vectors = ai_provider.embed(texts)
+    if not vectors or len(vectors) != len(texts):
+        # embed() returns only the vectors it could produce, so a partial result
+        # would silently misalign text and vector. Refuse rather than mismatch.
+        print(
+            "Warning: no usable embeddings (provider off, or fixtures missing without "
+            "sentence-transformers installed); falling back to the lexical text scorer.",
+            file=sys.stderr,
+        )
+        return None
+    return dict(zip(texts, vectors))
+
+
+def _cosine(left: list[float], right: list[float]) -> float:
+    """Cosine similarity of two vectors (ai_provider returns them L2-normalized)."""
+    return sum(a * b for a, b in zip(left, right))
+
+
+def _texts_match_semantically(
+    gold: Any, predicted: Any, embeddings: dict[str, list[float]]
+) -> bool | None:
+    """Whether two texts agree in meaning, or None when either is not embedded."""
+    gold_vector = embeddings.get(str(gold))
+    predicted_vector = embeddings.get(str(predicted))
+    if gold_vector is None or predicted_vector is None:
+        return None
+    return _cosine(gold_vector, predicted_vector) >= SEMANTIC_MATCH_THRESHOLD
+
+
+def _texts_match_lexically(gold: Any, predicted: Any) -> bool:
+    """Whether two texts share enough tokens (Jaccard) to count as agreeing."""
+    gold_tokens, pred_tokens = _tokens(str(gold)), _tokens(str(predicted))
+    if not gold_tokens or not pred_tokens:
+        return False
+    overlap = len(gold_tokens & pred_tokens) / len(gold_tokens | pred_tokens)
+    return overlap >= TEXT_MATCH_THRESHOLD
 
 
 def _parse_age_range(value: Any) -> tuple[int, int] | None:
@@ -119,17 +214,26 @@ def _age_ranges_match(gold: Any, predicted: Any) -> bool:
     return overlaps and within
 
 
-def _values_match(field_name: str, gold: Any, predicted: Any) -> bool:
-    """Whether a predicted value agrees with gold for *field_name* (both non-null)."""
+def _values_match(
+    field_name: str,
+    gold: Any,
+    predicted: Any,
+    embeddings: dict[str, list[float]] | None = None,
+) -> bool:
+    """Whether a predicted value agrees with gold for *field_name* (both non-null).
+
+    Free-text fields use the semantic scorer when *embeddings* are available and
+    cover both texts, and fall back to token overlap otherwise.
+    """
     if field_name == "age_range":
         return _age_ranges_match(gold, predicted)
     if field_name in EXACT_FIELDS:
         return str(gold).strip().casefold() == str(predicted).strip().casefold()
-    gold_tokens, pred_tokens = _tokens(str(gold)), _tokens(str(predicted))
-    if not gold_tokens or not pred_tokens:
-        return False
-    overlap = len(gold_tokens & pred_tokens) / len(gold_tokens | pred_tokens)
-    return overlap >= TEXT_MATCH_THRESHOLD
+    if embeddings is not None:
+        semantic = _texts_match_semantically(gold, predicted, embeddings)
+        if semantic is not None:
+            return semantic
+    return _texts_match_lexically(gold, predicted)
 
 
 def _present(value: Any) -> bool:
@@ -206,8 +310,15 @@ def _suggestion_for(example: dict[str, Any]) -> dict[str, Any] | None:
     )
 
 
-def evaluate(examples: list[dict[str, Any]]) -> dict[str, FieldMetrics]:
-    """Score every example field-by-field; missing fixtures count as no suggestion."""
+def evaluate(
+    examples: list[dict[str, Any]],
+    embeddings: dict[str, list[float]] | None = None,
+) -> dict[str, FieldMetrics]:
+    """Score every example field-by-field; missing fixtures count as no suggestion.
+
+    With *embeddings* the free-text fields are scored semantically; without them
+    everything falls back to the lexical scorer.
+    """
     metrics = {name: FieldMetrics(name) for name in PREFILL_SUGGESTION_FIELDS}
     for example in examples:
         gold = example["gold"]
@@ -221,7 +332,7 @@ def evaluate(examples: list[dict[str, Any]]) -> dict[str, FieldMetrics]:
             if pred_here:
                 fm.predicted += 1
             if gold_here and pred_here:
-                if _values_match(name, gold_value, pred_value):
+                if _values_match(name, gold_value, pred_value, embeddings):
                     fm.matches += 1
                 else:
                     fm.wrong.append(f"{example['id']}: {pred_value!r} != {gold_value!r}")
@@ -310,12 +421,22 @@ def record_live(payload: dict[str, Any]) -> int:
     return recorded
 
 
-def _report(metrics: dict[str, FieldMetrics], gated: FieldMetrics) -> None:
-    print(f"Labeled examples scored against gold review fields ({EVAL_PATH.name}):\n")
+def _report(
+    metrics: dict[str, FieldMetrics],
+    gated: FieldMetrics,
+    lexical: dict[str, FieldMetrics] | None = None,
+) -> None:
+    scorer = "lexical (token overlap)" if lexical is None else "semantic (embeddings)"
+    print(f"Labeled examples scored against gold review fields ({EVAL_PATH.name}):")
+    print(f"Free-text scorer: {scorer}\n")
     print(f"  {'field':<20} {'P':>5} {'R':>5} {'F1':>5}   predicted/gold  abstain")
     for name in PREFILL_SUGGESTION_FIELDS:
         fm = metrics[name]
         tag = "" if name in GATED_FIELDS else "  (advisory)"
+        # Free-text fields carry their lexical score along, so the semantic
+        # number can never be mistaken for a quietly relaxed ruler.
+        if lexical is not None and name in TEXT_FIELDS:
+            tag += f"  [lexical P {lexical[name].precision:.2f}]"
         print(
             f"  {name:<20} {fm.precision:>5.2f} {fm.recall:>5.2f} {fm.f1:>5.2f}"
             f"   {fm.predicted:>3}/{fm.gold:<3}        {fm.abstain_correct}{tag}"
@@ -325,10 +446,18 @@ def _report(metrics: dict[str, FieldMetrics], gated: FieldMetrics) -> None:
         f"{gated.f1:>5.2f}   {gated.predicted:>3}/{gated.gold:<3}        "
         f"{gated.abstain_correct}"
     )
-    print(
-        "\n  outcome/context are one-sentence suggestions a reviewer rewrites; they are\n"
-        "  reported above but NOT gated (faithful paraphrases fail lexical matching)."
-    )
+    if lexical is None:
+        print(
+            "\n  outcome/context are one-sentence suggestions a reviewer rewrites. Under the\n"
+            "  lexical scorer a faithful paraphrase counts as a miss, so their numbers here\n"
+            "  understate the model; they are reported but NOT gated."
+        )
+    else:
+        print(
+            "\n  outcome/context are one-sentence suggestions a reviewer rewrites, scored by\n"
+            f"  embedding cosine >= {SEMANTIC_MATCH_THRESHOLD:.2f}. The bracketed lexical P is the\n"
+            "  old token-overlap number, kept visible for comparison."
+        )
     disagreements = [w for name in PREFILL_SUGGESTION_FIELDS for w in metrics[name].wrong]
     if disagreements:
         print(f"\nDisagreements with gold ({len(disagreements)}):")
@@ -371,6 +500,26 @@ def main() -> int:
         default=None,
         help="Gate on age_range precision.",
     )
+    parser.add_argument(
+        "--lexical-text-scoring",
+        action="store_true",
+        help="Force the old token-overlap scorer for outcome/context instead of "
+        "embeddings (the pre-semantic baseline).",
+    )
+    parser.add_argument(
+        "--min-outcome-precision",
+        type=float,
+        default=None,
+        help="Gate on outcome precision. SKIPPED (not failed) when the semantic "
+        "scorer is unavailable, since the lexical fallback cannot meet it.",
+    )
+    parser.add_argument(
+        "--min-context-precision",
+        type=float,
+        default=None,
+        help="Gate on context precision. Skipped like --min-outcome-precision when "
+        "the semantic scorer is unavailable.",
+    )
     args = parser.parse_args()
 
     payload = load_payload()
@@ -400,9 +549,21 @@ def main() -> int:
     if ai_provider.ai_provider() == "none":
         os.environ["AI_PROVIDER"] = "cache"
 
-    metrics = evaluate(examples)
+    # Same idea for the free-text scorer: default to the fixture-backed semantic
+    # embeddings so CI measures paraphrase honestly without any flag. With the
+    # vectors committed this is pure cache reads -- offline and deterministic --
+    # and load_embeddings falls back to the lexical scorer if they are missing.
+    if not args.lexical_text_scoring and ai_provider.embedding_provider() == "none":
+        os.environ["EMBEDDING_PROVIDER"] = "st"
+
+    embeddings = None if args.lexical_text_scoring else load_embeddings(examples)
+
+    metrics = evaluate(examples, embeddings)
     gated = micro_average(metrics, GATED_FIELDS)
-    _report(metrics, gated)
+    # The lexical numbers stay on screen next to the semantic ones, so a reader
+    # can always see what changed the score: the model, or the ruler.
+    lexical = evaluate(examples, None) if embeddings is not None else None
+    _report(metrics, gated, lexical)
 
     status = 0
     gates = [
@@ -415,6 +576,28 @@ def main() -> int:
         if minimum is not None and value < minimum:
             print(f"\nFAIL: {label} {value:.2f} < required {minimum}")
             status = 1
+
+    # The free-text gates are conditional on the scorer that made them possible.
+    # Under the lexical fallback a faithful paraphrase reads as a miss (outcome
+    # P 0.11), so enforcing a semantic floor there would fail the run for a
+    # missing fixture rather than for a regression. Skip loudly instead.
+    text_gates = [
+        ("outcome precision", metrics["outcome"].precision, args.min_outcome_precision),
+        ("context precision", metrics["context"].precision, args.min_context_precision),
+    ]
+    requested = [gate for gate in text_gates if gate[2] is not None]
+    if requested and embeddings is None:
+        print(
+            "\nSKIPPED: "
+            + ", ".join(f"{label} (>= {minimum})" for label, _, minimum in requested)
+            + " — the semantic scorer is unavailable, and the lexical fallback cannot "
+            "meet a semantic floor. Restore tests/fixtures/embeddings/ to enforce these."
+        )
+    else:
+        for label, value, minimum in requested:
+            if value < minimum:
+                print(f"\nFAIL: {label} {value:.2f} < required {minimum}")
+                status = 1
     return status
 
 

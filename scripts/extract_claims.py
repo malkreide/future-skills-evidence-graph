@@ -19,12 +19,15 @@ from typing import Any
 import ai_provider
 from common import (
     AGE_SCALE,
+    EVIDENCE_STRENGTH_LIST,
+    EVIDENCE_STRENGTH_VALUES,
     ROOT,
     TODAY,
     append_unique_records,
     claim_statement_key,
     filter_new_claims,
     load_json,
+    load_records,
     normalize_title,
     score_relevance,
     slugify,
@@ -146,11 +149,26 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # longer hard-gated (precision is the reviewer-trust metric; see
 # eval_claim_prefill.py and OPERATIONS "Re-recording"), so safe abstention no
 # longer costs, and keeping the band precise matters more.
-PREFILL_PROMPT_VERSION = "claim-prefill-v6"
+# v7: two changes, neither of them about age.
+#   (a) The strength vocabulary was WRONG. The prompt and its schema asked for
+#       {low, moderate, high}, but the claim schema and promote_candidate.py
+#       only accept {low, moderate, strong} -- so the top suggestion named a
+#       value a reviewer could not actually enter. Both now render from
+#       common.EVIDENCE_STRENGTH_VALUES, the single vocabulary.
+#   (b) evidence_strength never abstained (50/50 proposed on the golden set): a
+#       model that always guesses a strength is exactly the reviewer-trust risk
+#       the gate exists to catch. The prompt now names null as the right answer
+#       when the abstract does not reveal the study type.
+# age_range wording is deliberately untouched: of its 8 recall misses, none name
+# an age in the abstract ("across grade levels", "across school ages", "two
+# primary cohorts"), so recovering them means inferring a band from a stage name
+# -- which is what v5 did, and it cost precision 0.94 -> 0.82.
+PREFILL_PROMPT_VERSION = "claim-prefill-v7"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
 # mirrors Anhang A: every field is optional content (null when the abstract does
-# not support it); evidence_strength uses the {low, moderate, high} vocabulary.
+# not support it); evidence_strength uses the claim schema's vocabulary, so the
+# model can never propose a value promote_candidate.py would refuse.
 PREFILL_OUTPUT_SCHEMA: dict[str, Any] = {
     "type": "object",
     "additionalProperties": False,
@@ -159,7 +177,7 @@ PREFILL_OUTPUT_SCHEMA: dict[str, Any] = {
         "age_range": {"type": ["string", "null"]},
         "outcome": {"type": ["string", "null"]},
         "context": {"type": ["string", "null"]},
-        "evidence_strength": {"enum": ["low", "moderate", "high", None]},
+        "evidence_strength": {"enum": [*EVIDENCE_STRENGTH_VALUES, None]},
     },
 }
 
@@ -192,14 +210,16 @@ ends. Clip ranges beyond {age_scale} to {age_scale}; pure adult samples => null.
 reported (neutral, without exaggeration), or null.
 - context: one sentence, in English, on the setting (country, school level, \
 type of intervention), or null.
-- evidence_strength: one of {{low, moderate, high}}, judged from study type and \
+- evidence_strength: one of {{{strength_values}}}, judged from study type and \
 sample: a randomised controlled trial, systematic review or meta-analysis => \
-high; a controlled, quasi-experimental or multi-site study => moderate; a single \
-small, uncontrolled, descriptive or design/working-paper study => low.
+strong; a controlled, quasi-experimental or multi-site study => moderate; a \
+single small, uncontrolled, descriptive or design/working-paper study => low. \
+Return null if the abstract does not reveal the study type or sample — guessing \
+a strength misleads the reviewer, abstaining does not.
 
 Response schema:
 {{"age_range": string|null, "outcome": string|null, "context": string|null, \
- "evidence_strength": "low"|"moderate"|"high"}}'''
+ "evidence_strength": {strength_schema}|null}}'''
 
 
 def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:
@@ -209,6 +229,8 @@ def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:
         statement=statement.strip(),
         topics=", ".join(topics) if topics else "—",
         age_scale=AGE_SCALE,
+        strength_values=EVIDENCE_STRENGTH_LIST,
+        strength_schema="|".join(f'"{value}"' for value in EVIDENCE_STRENGTH_VALUES),
     )
 
 
@@ -238,6 +260,177 @@ def suggest_claim_fields(
     if all(value is None for value in fields.values()):
         return None
     return fields
+
+
+# --- Optional skill-link suggestion (P1, separate call) --------------------
+#
+# A claim only becomes `reviewed` once it links at least one skill, so that
+# lookup is the last purely manual step left in the review loop. This suggests
+# the link the same non-binding way the field pre-fill suggests review fields.
+#
+# Deliberately a SECOND call with its own prompt version rather than a fifth
+# field on the pre-fill prompt:
+#   - it needs the skill catalogue as context, which would bloat every pre-fill
+#     prompt and could shift the four calibrated fields;
+#   - a shared prompt means one shared version, so the two could never be
+#     re-recorded or calibrated independently;
+#   - keeping the pre-fill prompt untouched keeps its 50 fixtures (and its
+#     measured numbers) valid.
+SKILL_LINK_PROMPT_VERSION = "skill-link-v1"
+
+# Only ACTIVE skills are offered. A candidate skill is itself unreviewed, and
+# pointing new evidence at unreviewed evidence is how a catalogue drifts.
+SKILL_LINK_STATUS = "active"
+
+# Definitions are truncated in the prompt: enough to disambiguate two skills,
+# short enough that 16 of them stay a small prompt.
+SKILL_DEFINITION_BUDGET = 240
+
+SKILL_LINK_OUTPUT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["supports_skill_ids", "contradicts_skill_ids"],
+    "properties": {
+        "supports_skill_ids": {"type": "array", "items": {"type": "string"}},
+        "contradicts_skill_ids": {"type": "array", "items": {"type": "string"}},
+    },
+}
+
+SKILL_LINK_FIELDS = ("supports_skill_ids", "contradicts_skill_ids")
+
+SKILL_LINK_PROMPT_TEMPLATE = '''System: You link an evidence claim from educational research to the skills \
+it concerns, choosing ONLY from a fixed catalogue. You invent nothing: if no \
+catalogue entry fits, return empty lists. Precision matters far more than \
+coverage — a reviewer can add a missing link in seconds, but a wrong link \
+quietly attaches evidence to the wrong skill. Respond only as JSON following \
+the given schema.
+
+User:
+Claim statement:
+"""{statement}"""
+
+Source abstract for context:
+"""{abstract}"""
+
+Detected topics: {topics}
+
+Skill catalogue (the ONLY permitted ids):
+{catalogue}
+
+Return:
+- supports_skill_ids: ids whose skill this claim provides EVIDENCE FOR. Only \
+include an id when the claim is really about that skill, not merely adjacent to \
+it. Usually zero or one; more than two is almost always wrong.
+- contradicts_skill_ids: ids whose skill this claim provides evidence AGAINST \
+(a null result, no measurable effect, or a harm). Empty for the normal case of \
+a supporting finding.
+
+Response schema:
+{{"supports_skill_ids": [string], "contradicts_skill_ids": [string]}}'''
+
+
+_skill_catalogue_cache: list[dict[str, str]] | None = None
+
+
+def skill_catalogue(*, refresh: bool = False) -> list[dict[str, str]]:
+    """Active skills a claim may be linked to: id, name, short definition.
+
+    Memoized: one extraction run builds many claims against the same catalogue,
+    so re-reading data/skills/ per claim would be pure waste. Only ever called
+    behind the provider check, so an LLM-free run touches no skill file at all.
+    """
+    global _skill_catalogue_cache
+    if _skill_catalogue_cache is not None and not refresh:
+        return _skill_catalogue_cache
+    catalogue: list[dict[str, str]] = []
+    for skill in load_records("skills"):
+        if skill.get("status") != SKILL_LINK_STATUS:
+            continue
+        definition = str(skill.get("definition") or "").strip()
+        if len(definition) > SKILL_DEFINITION_BUDGET:
+            definition = definition[:SKILL_DEFINITION_BUDGET].rstrip() + "…"
+        catalogue.append(
+            {
+                "id": str(skill.get("id") or ""),
+                "name": str(skill.get("name") or ""),
+                "definition": definition,
+                "audience": str(skill.get("audience") or "learner"),
+            }
+        )
+    _skill_catalogue_cache = sorted(catalogue, key=lambda entry: entry["id"])
+    return _skill_catalogue_cache
+
+
+def render_catalogue(catalogue: list[dict[str, str]]) -> str:
+    """One line per skill, stable order, so the prompt hashes reproducibly."""
+    return "\n".join(
+        f"- {entry['id']} ({entry['audience']}) — {entry['name']}: {entry['definition']}"
+        for entry in catalogue
+    )
+
+
+def skill_link_prompt(
+    abstract: str, statement: str, topics: list[str], catalogue: list[dict[str, str]]
+) -> str:
+    """Render the versioned skill-link prompt."""
+    return SKILL_LINK_PROMPT_TEMPLATE.format(
+        abstract=abstract.strip(),
+        statement=statement.strip(),
+        topics=", ".join(topics) if topics else "—",
+        catalogue=render_catalogue(catalogue),
+    )
+
+
+def suggest_skill_links(
+    abstract: str,
+    statement: str,
+    topics: list[str],
+    catalogue: list[dict[str, str]] | None = None,
+) -> dict[str, list[str]] | None:
+    """Suggest supporting/contradicting skill links, or None when unavailable.
+
+    Every returned id is checked against the catalogue, so a hallucinated or
+    stale id is dropped rather than written into an assist block a reviewer
+    might trust. Returns None when the provider is off, on any failure, or when
+    nothing survives the check — indistinguishable from AI being off.
+    """
+    if ai_provider.ai_provider() == "none":
+        return None
+    if catalogue is None:
+        catalogue = skill_catalogue()
+    if not catalogue:
+        return None
+
+    prompt = skill_link_prompt(abstract, statement, topics, catalogue)
+    result = ai_provider.complete(prompt, schema=SKILL_LINK_OUTPUT_SCHEMA)
+    if not isinstance(result, dict):
+        return None
+
+    known = {entry["id"] for entry in catalogue}
+    links: dict[str, list[str]] = {}
+    for field in SKILL_LINK_FIELDS:
+        proposed = result.get(field)
+        if not isinstance(proposed, list):
+            proposed = []
+        kept, dropped = [], []
+        for value in proposed:
+            identifier = str(value).strip()
+            # Dedupe while preserving order, and never keep an unknown id.
+            if identifier in known and identifier not in kept:
+                kept.append(identifier)
+            elif identifier not in known:
+                dropped.append(identifier)
+        if dropped:
+            print(
+                f"Warning: skill-link suggestion named {len(dropped)} unknown skill id(s) "
+                f"({', '.join(sorted(set(dropped)))}); dropped.",
+                file=sys.stderr,
+            )
+        links[field] = kept
+
+    if not any(links.values()):
+        return None
+    return links
 
 
 def _has_cue(normalized: str, cues: tuple[str, ...]) -> bool:
@@ -346,6 +539,16 @@ def _build_claim(
         claim["assist"] = {
             "suggestions": [suggestion],
             "provenance": ai_provider.ai_provenance(PREFILL_PROMPT_VERSION),
+        }
+    # The skill link is a second, independently versioned call, so it carries its
+    # own provenance and can be absent even when the field suggestion is present.
+    # Like every assist output it is non-binding: supports_skill_ids above stays
+    # empty and a reviewer still has to pass --supports to promote the claim.
+    links = suggest_skill_links(abstract, sentence, topics)
+    if links is not None:
+        claim.setdefault("assist", {})["skill_links"] = {
+            **links,
+            "provenance": ai_provider.ai_provenance(SKILL_LINK_PROMPT_VERSION),
         }
     return claim
 

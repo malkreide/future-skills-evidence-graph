@@ -1,0 +1,10 @@
+{
+  "hash": "9771571e4866b2b5f53b7275ff1e9afc980671e5cb4853e24b436682638ca1a3",
+  "kind": "complete",
+  "response": {
+    "age_range": "12-15",
+    "context": "A seven-week deployment of an AI tool giving real-time feedback on student code in a lower-secondary computing class, compared with a control class.",
+    "evidence_strength": "moderate",
+    "outcome": "Students using the AI feedback tool fixed bugs faster and submitted more working programs than a control class."
+  }
+}

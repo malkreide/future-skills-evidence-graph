@@ -1,0 +1,10 @@
+{
+  "hash": "217295b2b7c5a1244a5a8e62c2d2bd73b6744fbc5b67c27681fc557fe1d934cc",
+  "kind": "complete",
+  "response": {
+    "age_range": "5-8",
+    "context": "A classroom-based social-emotional learning intervention for early primary children, evaluated against a waitlist control.",
+    "evidence_strength": "moderate",
+    "outcome": "Children in the program showed improved emotional regulation and fewer conflicts based on teacher ratings."
+  }
+}
