@@ -320,5 +320,39 @@
     "created_at": "2026-06-23",
     "reviewed_at": "2026-06-29",
     "relevance_score": 0.6
+  },
+  {
+    "id": "src-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an",
+    "title": "Exploring the relationship between AI literacy, AI trust, AI dependency, and 21st century skills in preservice mathematics teachers",
+    "authors": [
+      "Dongli Zhang",
+      "Tommy Tanu Wijaya",
+      "Ying Wang",
+      "Mingyu Su",
+      "Xinxin Li",
+      "Nia Wahyu Damayanti"
+    ],
+    "year": 2025,
+    "doi": "10.1038/s41598-025-99127-0",
+    "url": "https://www.semanticscholar.org/paper/651a83bdbf8864527d1664dd222a998d0793130d",
+    "openalex_id": null,
+    "semantic_scholar_id": "651a83bdbf8864527d1664dd222a998d0793130d",
+    "eric_id": null,
+    "publisher": "Scientific Reports",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Generation-Artificial Intelligence (Gen-AI) is widely used in education and has been shown to improve students\u2019 mathematical abilities. However, dependency on Gen-AI may negatively impact these abilities and should be approached with caution. This study uses Structural Equation Modeling (SEM) to determine the relationship between AI literacy, AI trust, AI dependency, and 21st-century skills in preservice mathematics teachers. This research utilizes a self-designed questionnaire with 469 preservice mathematics teachers as respondents. SPSS and AMOS software were used for data analysis. The findings reveal that both AI trust and AI literacy significantly influence preservice mathematics teachers\u2019 dependency on Gen-AI. Furthermore, this dependency on Gen-AI among preservice mathematics teachers has a significant negative effect on their problem-solving ability, critical thinking, creative thinking, collaboration skills, communication skills, and self-confidence. This research provides new information to governments, schools, and teachers that caution should be exercised when attempting to enhance AI literacy and trust in AI among preservice mathematics teachers.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "creativity",
+      "collaboration",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "educator"
   }
 ]

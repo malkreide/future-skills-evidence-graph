@@ -1325,5 +1325,281 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "learner"
+  },
+  {
+    "id": "src-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r",
+    "title": "Technology and Its Impact on Education in the Digital Era: A Literature Review",
+    "authors": [
+      "Muhammad Arif Arifin",
+      "Chairil Lizaman",
+      "Kurnia Febianti"
+    ],
+    "year": 2026,
+    "doi": "10.62383/edukasi.v3i3.3307",
+    "url": "https://openalex.org/W7169608467",
+    "openalex_id": "https://openalex.org/W7169608467",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Edukasi Elita Jurnal Inovasi Pendidikan",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-sa",
+    "abstract": "The rapid advancement of digital technology has transformed nearly every aspect of human life, particularly the field of education. The integration of technology into educational environments has significantly changed how teachers deliver instruction and how students access, process, and construct knowledge. Various digital tools, including learning management systems, educational applications, multimedia resources, artificial intelligence, and online communication platforms, have enhanced teaching effectiveness while promoting more interactive and student-centered learning experiences. This study aims to examine the impact of technology on education by synthesizing findings from previous scholarly publications. The study employs a qualitative literature review method by analyzing recent articles, books, conference proceedings, and reports published between 2021 and 2026. The collected literature was analyzed through content analysis to identify recurring themes concerning the benefits, challenges, and future implications of educational technology. The findings indicate that technology positively influences student engagement, academic achievement, communication, collaboration, creativity, critical thinking, and digital literacy. Furthermore, technology expands educational accessibility through online learning environments and personalized learning opportunities. Nevertheless, several challenges remain, including unequal internet access, insufficient technological infrastructure, limited digital competence among educators, and distractions caused by excessive use of digital devices. The study concludes that technology has become an indispensable component of modern education. However, maximizing its benefits requires collaborative efforts among governments, educational institutions, teachers, students, and policymakers to ensure equitable access, effective integration, and sustainable educational development in the digital era.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "digital competence",
+      "creativity",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
+  },
+  {
+    "id": "src-beyond-school-vienna-s-bildungsgratzl-as-an-example-of-learning-communit",
+    "title": "Beyond School: Vienna\u2019s Bildungsgr\u00e4tzl as an Example of Learning Community",
+    "authors": [
+      "Evi Agostini",
+      "Nazime \u00d6zt\u00fcrk",
+      "S. Montanari",
+      "Denis Francesconi"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s11256-026-00833-4",
+    "url": "https://openalex.org/W7169495672",
+    "openalex_id": "https://openalex.org/W7169495672",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "The Urban Review",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract Urban education systems are increasingly experimenting with place\u2011based learning communities (LCs) to respond to growing socio\u2011ecological complexity. Yet empirical research on how such initiatives are organized, governed, and enacted in practice remains limited. This study situates Vienna\u2019s Bildungsgr\u00e4tzl (BG) initiative within this emerging field of distributed, school\u2011anchored LCs, addressing the conceptual ambiguities and governance tensions that characterize comparable models internationally. Drawing on semi\u2011structured expert interviews (N = 16) with educational leaders and stakeholders from seven BGs, we analyze how BGs evolve, how collaboration is structured across formal, non\u2011formal and informal institutions and how actors negotiate the initiative\u2019s values, governance roles and everyday practices. The findings indicate that BGs combine bottom\u2011up engagement with light municipal scaffolding, shifting over time from loosely connected Communities of Practice to more intentionally coordinated Communities of Learners. The analysis identifies key mechanisms\u2014hybrid governance configurations, cross\u2011institutional role distribution and activities that bridge school-community boundaries\u2014that enable BGs to function as extended learning systems embedded in the city\u2019s Smart Climate Strategy. The study contributes new empirical insights into how local LCs can be organized within urban governance structures while retaining local agency, illuminating both the innovative potential and the structural constraints of the BG model. These findings offer transferable lessons for policymakers and educators seeking to establish sustainable, community\u2011rooted educational networks in other urban contexts.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-supporting-teacher-s-reflection-on-their-digital-well-being",
+    "title": "Supporting Teacher\u2019s Reflection on Their Digital Well-being",
+    "authors": [
+      "Khadija El Aadmi-Laamech",
+      "Karina Ginoyan",
+      "Patr\u00edcia Santos",
+      "Davinia Hern\u00e1ndez\u2010Leo"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s10758-026-10013-8",
+    "url": "https://openalex.org/W7169617259",
+    "openalex_id": "https://openalex.org/W7169617259",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Technology Knowledge and Learning",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract The implementation of technology in teaching brings benefits but also presents physical, psychological, technical, and ethical challenges. Therefore, a balanced approach to technology use has become highly relevant, with teacher self-reflection recognized as a key driver in fostering digital well-being (DWB). Guided by Self-Determination Theory (SDT), this study evaluates how a dedicated tool supports teachers in reflecting on their DWB. Data were collected from a digital competence training workshop involving Catalonian educators (n = 46) through the tool\u2019s application and pre- and post-questionnaires, and examined using reflection and thematic analysis. Following the intervention, educators demonstrated deeper reflection in their responses, covering a broader range of topics. Competence emerged as the most frustrated and reflected upon need, while relatedness was the least frustrated and satisfied. This paper contributes to SDT-based research on teacher DWB through reflective practices and offers practical implications and future research directions.",
+    "topics": [
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-embodied-epistemic-cognition-in-higher-science-education-advances-from-t",
+    "title": "Embodied, Epistemic Cognition in Higher Science Education: Advances from the Chemistry Laboratory",
+    "authors": [
+      "Hendra Y. Agustian",
+      "Bente Gammelgaard",
+      "Muhammad Aswin Rangkuti",
+      "Magdalena Kersting"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s11191-026-00768-y",
+    "url": "https://openalex.org/W7169548347",
+    "openalex_id": "https://openalex.org/W7169548347",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Science & Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract This study synthesises two pivotal philosophical notions related to student learning in higher science education, i.e., embodied cognition and epistemic cognition, employing theoretical and empirical inquiries into epistemic practices in teaching laboratories. We conceptualise laboratory work as an authentic context for embodied, epistemic practices and critically review both philosophical notions in light of recent developments in science education. Through a multimethod approach combining interpretative phenomenological analysis, video observations, and multimodal discourse analysis, we characterise seven aspects of epistemic cognition and embodied cognition in the laboratory setting. Our findings reveal how students\u2019 bodily experiences, cognitive processes, and engagement with scientific knowledge unfold in various stages of experimental work. We propose a hybrid, systemic view of cognition that elucidates four key processes: grounding processes, emergent processes, feedback processes, and embodied-affective mediation. The integrated perspective offers significant implications for pedagogy and curriculum development in higher science education, particularly in designing more effective and engaging laboratory experiences that leverage both embodied and epistemic dimensions of learning.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-artificial-intelligence-in-special-education-assessing-teachers-level-of",
+    "title": "Artificial Intelligence in Special Education: Assessing Teachers' Level of Use and Readiness at Tomas Sagun Integrated School, Pagadian City, Philippines",
+    "authors": [
+      "Mike R. Canoy",
+      "April Dawn B. Ruales",
+      "Justriel G. Tutor",
+      "Jieza J. Villarino",
+      "Riza Mae P. Basa",
+      "Natty Lorraine P. Bayocot"
+    ],
+    "year": 2026,
+    "doi": "10.63671/ijeir.v2i3.122",
+    "url": "https://openalex.org/W7169534967",
+    "openalex_id": "https://openalex.org/W7169534967",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Educational Innovations and Research",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The integration of Artificial Intelligence (AI) in special education presents transformative opportunities for inclusive and differentiated instruction. This study examined the level of use and readiness of teachers at Tomas Sagun Integrated School, Pagadian City, Philippines, in adopting AI tools within special education settings. Employing a descriptive-survey research design, the study gathered data from special education (SPED) teachers through a validated questionnaire assessing their awareness, frequency of AI tool use, perceived competence, and overall readiness to integrate AI in teaching learners with diverse needs. Findings revealed that while most teachers demonstrated a moderate level of readiness, actual use of AI-powered instructional tools remained limited, largely attributed to insufficient training, limited access to technology, and a lack of institutional support. Teachers expressed a positive disposition toward AI adoption but identified professional development and infrastructure improvement as critical enablers. The study underscores the need for targeted capacity-building programs, policy frameworks, and resource allocation to support AI integration in SPED classrooms. Recommendations are directed at school administrators, curriculum planners, and education policymakers to bridge the gap between readiness and actual AI utilization, ultimately enhancing the quality of education for learners with special needs.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-from-evidence-to-impact-supporting-sensemaking-and-instructional-revisio",
+    "title": "From Evidence to Impact: Supporting Sensemaking and Instructional Revision in STEM Classrooms",
+    "authors": [
+      "Bonni Jones"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7170125035",
+    "openalex_id": "https://openalex.org/W7170125035",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Utah State Research and Scholarship (Utah State University)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-sa",
+    "abstract": "Science and math literacy is crucial for informed citizenship and economic competitiveness, yet many students leave school without developing the critical thinking skills needed to understand and solve complex issues or pursue STEM careers. This disconnect often stems from traditional teaching methods that emphasize memorization and following steps over authentic reasoning and problem solving. This dissertation addresses this challenge by identifying how teachers in research studies have taught STEM in ways that develop students' ability to think, reason, and problem-solve like real scientists. By analyzing research on instruction that incorporates modeling, inquiry, and sensemaking, and working directly with teachers, this work reveals how to create classrooms where students actively construct understanding rather than passively receive information. The research demonstrates that engaging students in iterative cycles of articulating ideas, examining evidence, and refining their thinking, leads to deeper conceptual understanding and stronger reasoning skills. Recognizing that teachers need practical support to implement these approaches, this research demonstrates an innovative method for translating complex educational research into accessible, engaging resources. Through collaborative design with educators, this work produced tools that help teachers transform their instruction to better prepare students for scientific thinking. The broader impact extends beyond individual classrooms: when students develop genuine scientific reasoning abilities, they become better equipped to engage with societal challenges like climate change, public health decisions, and technological innovation\u2014ultimately contributing to a more scientifically literate society.",
+    "topics": [
+      "critical thinking",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-educator-experiences-of-schoolwide-pbis-discipline-implementation-explor",
+    "title": "Educator Experiences of Schoolwide PBIS Discipline Implementation: Exploring School Culture in Private PK\u201312 Schools",
+    "authors": [
+      "Jessica L Guarneri"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7171276342",
+    "openalex_id": "https://openalex.org/W7171276342",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Digital Commons - East Tennessee State University (East Tennessee State University)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The purpose of this phenomenological study was to explore educators\u2019 lived experiences implementing schoolwide Positive Behavioral Interventions and Supports (PBIS) discipline systems and to understand how those experiences influenced school culture in private PK\u201312 schools. Historically, PBIS focused on specific outcomes, such as reductions in discipline referrals, suspensions, and behavioral incidents. Though these indicators are critical, they do not consider in what way educators experience disciplinary systems, nor how their lived experiences affect routine interactions with students. Educators play a key role in implementing PBIS; their experiences foster consistency, trust, and sustainability. The participants included certified educators and administrators employed at two private PK\u201312 schools who had direct experience implementing or overseeing PBIS discipline systems. The 2 school sites were purposefully selected because they adopted PBIS within the past 5 years. Collection strategies included one-on-one interviews, document analysis, and reflective field notes. Five major themes emerged from the data: clarity and predictability, behavioral accountability, collaborative implementation, relationship-centered support, and implementation consistency. These findings indicated that leadership, communication, consistency, and collaborative implementation practices advance PBIS discipline systems and positively impact school culture.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-challenges-facing-accounting-education-in-high-schools-the-south-afr",
+    "title": "The challenges facing accounting education in high schools: the South African experience",
+    "authors": [
+      "Lilian Ifunanya Nwosu",
+      "Calvin Mahlaule"
+    ],
+    "year": 2026,
+    "doi": "10.3389/feduc.2026.1835760",
+    "url": "https://openalex.org/W7170665240",
+    "openalex_id": "https://openalex.org/W7170665240",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Introduction High school accounting is declining in recognition, and learners lose interest in taking accounting as a subject. Accounting is expected to equip learners with essential skills, promote critical thinking, and enhance financial literacy, contributing to academic and career success. The decline in the enrolment rate has created a concern about basic education in South Africa, which also affects the student's interest in the university. Even though accounting subject is not a prerequisite for learners to get university admission to pursue their careers as accountants, it can be deduced that the lack of interest in accounting subject is creating a roadmap for high schools to remove accounting from their curriculum. To address this problem, this study aims to ascertain the challenges facing accounting education in high school. Methods The study adopted a qualitative approach and interviewed accounting educators within the northwest province of South Africa to understand their perspectives on the problems surrounding accounting education and how they can be addressed. Results The study's findings show that teaching methodology, educators' qualifications, the inability of learners to study accounting, and a low number of learners choosing accounting as a subject (lack of interest) contribute to the decline in accounting students' enrolment. Discussion The study further proposes that learners should be provided with adequate career outreach to understand the importance of accounting as a subject. Educators, on the other hand, should present accounting to learners not as a difficult or irrelevant course but as a course essential to becoming entrepreneurs.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-participation-outside-institutional-provision-implications-of-th",
+    "title": "Digital participation outside institutional provision: implications of the access\u2013competence gap for digital transformation in Ghana's basic education system",
+    "authors": [
+      "Hayford Mensah Ayerakwa",
+      "Millicent O. Awuku",
+      "Antoinette Tsiboe-Darko"
+    ],
+    "year": 2026,
+    "doi": "10.3389/feduc.2026.1815060",
+    "url": "https://openalex.org/W7170411223",
+    "openalex_id": "https://openalex.org/W7170411223",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Digital literacy has become a foundational competence for participation in contemporary educational, social, and economic life. However, debates surrounding children's digital engagement often oscillate between concerns about online vulnerability and assumptions that expanding connectivity automatically promotes digital inclusion. This study examines how digital access, digital literacy, educational engagement, and vulnerability intersect among Basic 8 students in Ghana. The study employed a mixed-methods design involving a cross-sectional survey of 823 students drawn from 24 public schools across three districts in Ghana's Central Region, complemented by a six-week ethnographic study in three selected schools. Composite indices were developed to measure digital access, digital literacy, educational engagement, and vulnerability, all demonstrating acceptable reliability (Cronbach's \u03b1 = 0.76\u20130.88). Correlation and regression analyses were used to examine relationships among key constructs, while qualitative data provided contextual insights into students\u2019 digital experiences. Findings reveal a paradoxical pattern of digital inclusion. Despite limited ICT infrastructure within schools, students reported substantial engagement with digital technologies through home-based access and mobile devices. Digital access was positively associated with digital literacy (r = .174, p &amp;lt; .001) and educational engagement (r = .444, p &amp;lt; .001), while vulnerability was negatively associated with digital access (r = \u22120.692, p &amp;lt; .001), digital literacy (r = \u2212.105, p &amp;lt; .01), and educational engagement (r = \u22120.284, p &amp;lt; .001). Importantly, an access\u2013competence gap was identified among 21.6% of students, indicating that access exceeded competence. Regression analysis further demonstrated that this gap was the strongest predictor of vulnerability (B = 0.326, p &amp;lt; .001), suggesting that exposure to digital environments without corresponding competencies increases susceptibility to online risks. The findings challenge access-centred approaches to digital inclusion by demonstrating that connectivity alone does not guarantee safe, meaningful, or empowering digital participation. The study argues for competence-centred digital inclusion policies that integrate digital literacy, online safety, information verification, and critical media education within basic education systems. By operationalising the concepts of vulnerability and the access\u2013competence gap, the study advances understanding of digital inequality in Ghana and comparable low-resource contexts across sub-Saharan Africa.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s",
+    "title": "Artificial intelligence, indigenous knowledge systems, and prospects for sustainable food system transformation in Africa",
+    "authors": [
+      "Emmanuel Ndhlovu"
+    ],
+    "year": 2026,
+    "doi": "10.20525/ijrbs.v15i4.5022",
+    "url": "https://openalex.org/W7170941104",
+    "openalex_id": "https://openalex.org/W7170941104",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Research in Business and Social Science (2147-4478)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The nexus of Artificial Intelligence (AI) and indigenous knowledge systems (IKS) rarely features as a viable intervention in African food system policy and academic debates. This has created knowledge and practical gaps with policy and practice implications. This article argues that leveraging the AI-IKS nexus has significant potential to transform African food systems currently in crisis. This conceptual article explores the importance of IKS in Sub-Saharan Africa (SSA) and examines how AI solutions can transform regional food systems. The article shows that harnessing the AI-IKS nexus entails merging traditional, generational ecological wisdom with modern technology to enhance food security, sustainability, and resilience. Key applications include using AI to analyse indigenous drought-prediction techniques alongside meteorological data, identifying climate-resilient indigenous crops, and deploying Computer Vision and Natural Language Processing to digitise and disseminate traditional knowledge in local languages. The article argues that this synergy has the potential to enhance climate resilience, boost yields through precision agriculture, reduce post-harvest losses, and promote sustainable resource management, ultimately strengthening food security.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]
