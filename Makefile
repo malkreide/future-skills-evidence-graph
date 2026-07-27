@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record eval-skill-links eval-skill-links-record build recall-probe recall-ingest triage refilter audit-domains train
+.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record eval-skill-links eval-skill-links-record compare-providers build recall-probe recall-ingest triage refilter audit-domains train
 
 install:
 	pip install -r requirements-dev.txt
@@ -43,6 +43,14 @@ eval-skill-links:
 # eval/skill_link_labeled.json together with tests/fixtures/ai/.
 eval-skill-links-record:
 	AI_PROVIDER=anthropic python scripts/eval_skill_links.py --record-live
+
+# Compare AI providers on the pre-fill golden set (offline, from fixtures).
+# Supporting several providers is only worth the code if the choice can be
+# measured; this is that measurement. Record a challenger first with
+# `AI_PROVIDER=openai python scripts/compare_providers.py --record openai
+#  --model openai=gpt-4o` (ollama needs no key, just a running local server).
+compare-providers:
+	python scripts/compare_providers.py
 
 # Re-record the pre-fill fixtures from the live model and report live accuracy.
 # Needs AI_PROVIDER=anthropic + ANTHROPIC_API_KEY; overwrites '_recorded' and the
