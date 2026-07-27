@@ -14,6 +14,54 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Changed
 
+- **KI-Assist: `outcome`/`context` werden semantisch gemessen statt lexikalisch.**
+  Die beiden Freitext-Felder des optionalen Claim-Pre-Fills wurden per
+  Jaccard-Token-Overlap gegen den Gold-Satz gescort — was die falsche Sache misst:
+  das Modell formuliert denselben Befund mit anderen Worten, und eine treue
+  Paraphrase zählte als Fehler. Gemessen lag `outcome` dadurch bei P 0.11, ein
+  Artefakt des Maßstabs, kein Modellfehler. Beide Felder werden jetzt per
+  Cosine-Similarity über die projekteigenen, fixture-gestützten Embeddings
+  gescort (`outcome` 0.11 → **0.85**, `context` 0.44 → **0.98**, Disagreements
+  80 → 19). Der Schwellwert 0.60 ist gegen eine cross-paarige Negativkontrolle
+  kalibriert, nicht geraten. Der alte lexikalische Wert steht in jedem Report
+  daneben, damit sichtbar bleibt, ob sich das Modell verbessert hat oder nur der
+  Maßstab; ein CI-Lauf bleibt reiner Cache-Zugriff und damit offline.
+
+- **KI-Assist: `outcome`/`context` sind jetzt bedingt gegated.** Floors 0.75 bzw.
+  0.85 in `validate.yml`. Fehlen die Embedding-Fixtures, überspringen sich diese
+  beiden Gates mit einer `SKIPPED`-Zeile, statt den Lauf rot zu machen — unter
+  dem lexikalischen Fallback wäre ein semantischer Floor sonst ein Fehlschlag
+  wegen einer fehlenden Datei statt wegen einer Verschlechterung. Inklusive
+  Decommission-Regel nach dem Muster von `RELEVANCE_CLASSIFIER`.
+
+- **Ein Evidenzstärke-Vokabular.** Die LLM-Prompts fragten `evidence_strength`
+  als `{low, moderate, high}` ab, während `schemas/claim.schema.json` und
+  `promote_candidate.py` `{low, moderate, strong}` kennen; ein Mapping
+  überbrückte die Lücke beim Übernehmen, aber der `assist`-Block zeigte einem
+  Reviewer weiterhin einen Wert, den das Datenmodell nicht kennt. Beide Prompts
+  rendern das Vokabular jetzt aus `common.EVIDENCE_STRENGTH_VALUES` (wie
+  `AGE_SCALE`), ein Test verankert die Gleichheit mit dem Schema-Enum. Prompt
+  `claim-prefill-v7` erlaubt zusätzlich Abstinenz bei `evidence_strength` — auf
+  dem Gold-Satz schlug das Modell 50/50 einen Wert vor, sagte also nie „nicht
+  erkennbar". Die v7-Fixtures sind migriert, nicht neu gemessen; ein
+  Live-Re-Record steht aus und ist in `OPERATIONS.md` als offener Punkt vermerkt.
+
+### Added
+
+- **KI-Assist: Skill-Zuordnung als eigener, nicht-bindender Vorschlag.** Ein
+  Claim wird erst `reviewed`, wenn er mindestens einen Skill verlinkt — der
+  letzte rein manuelle Handgriff der Review-Schleife. Ein zweiter, unabhängig
+  versionierter Aufruf (`skill-link-v1`) schlägt `supports_skill_ids` /
+  `contradicts_skill_ids` vor und legt sie unter `claim["assist"]["skill_links"]`
+  ab. Nur aktive Skills werden angeboten, unbekannte IDs werden verworfen und
+  gewarnt, der Vorschlag bleibt rein beratend (`supports_skill_ids` bleibt leer,
+  die Promotion braucht weiterhin ein explizites `--supports`), und bei
+  `AI_PROVIDER=none` wird nicht einmal der Katalog gelesen. Der Gold-Satz
+  `eval/skill_link_labeled.json` ist **vorgeschlagen, nicht kuratiert**:
+  `eval_skill_links.py` verweigert jedes Gate, solange sein `_status` auf
+  `proposed-unreviewed` steht. Das Feature ist damit vollständig, aber ungemessen
+  und in keinen Workflow verdrahtet.
+
 - **Telegram: `/dashboard` öffnet im Privat-Chat als Mini App.** Der Button in
   der `/dashboard`-Antwort ist im Privat-Chat jetzt ein `web_app`-Button —
   das Dashboard öffnet sich bildschirmfüllend in Telegram statt im
