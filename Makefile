@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record build recall-probe recall-ingest triage refilter audit-domains train
+.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record eval-skill-links eval-skill-links-record build recall-probe recall-ingest triage refilter audit-domains train
 
 install:
 	pip install -r requirements-dev.txt
@@ -29,6 +29,20 @@ eval-educator:
 # sentence-transformers installed to mint vectors for the new texts.
 eval-prefill:
 	python scripts/eval_claim_prefill.py
+
+# Offline metrics for the OPTIONAL skill-link suggestion, from fixtures. Reports
+# only: the golden set (eval/skill_link_labeled.json) carries agent-PROPOSED
+# links, so the script refuses any --min-* gate until a reviewer sets its
+# _status to 'reviewed'. Watch the 'abstain' column -- 38 of 50 examples map to
+# no catalogue skill, and that is where an over-eager model shows up first.
+eval-skill-links:
+	python scripts/eval_skill_links.py
+
+# Re-record the skill-link fixtures from the live model and report live accuracy.
+# Needs AI_PROVIDER=anthropic + ANTHROPIC_API_KEY; commit the refreshed
+# eval/skill_link_labeled.json together with tests/fixtures/ai/.
+eval-skill-links-record:
+	AI_PROVIDER=anthropic python scripts/eval_skill_links.py --record-live
 
 # Re-record the pre-fill fixtures from the live model and report live accuracy.
 # Needs AI_PROVIDER=anthropic + ANTHROPIC_API_KEY; overwrites '_recorded' and the

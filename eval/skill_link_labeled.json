@@ -1,0 +1,443 @@
+{
+  "_README": "Golden set for the OPTIONAL skill-link suggestion (scripts/extract_claims.py, suggest_skill_links). Examples are referenced BY ID from eval/claim_prefill_labeled.json -- abstract, statement and topics live there and are not duplicated here. 'gold' is the skill link a reviewer would accept; an EMPTY list is a real label, not a gap: the catalogue is future-skills-shaped and most education studies legitimately map to no skill, so the empty cases are what measure whether the model holds back. '_recorded' is the model suggestion last captured for the same prompt, filled by scripts/eval_skill_links.py --record-live. DO NOT wire these into data/ -- evaluation artifact only.",
+  "_status": "proposed-unreviewed",
+  "_status_note": "These gold links were PROPOSED by an agent, not curated by a human reviewer. Project governance puts editorial judgement with a person, so eval_skill_links.py refuses to enforce any gate while _status is 'proposed-unreviewed'. A reviewer who has checked the links sets _status to 'reviewed' -- that, plus a --record-live run, is what turns this from a harness into a measurement.",
+  "prompt_version": "skill-link-v1",
+  "examples": [
+    {
+      "id": "prefill-ai-literacy-primary",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-ai-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-coding-secondary-rct",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-collaboration-middle",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-collaborative-problem-solving"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-data-literacy-highschool",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-data-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-self-regulation-elementary",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-creativity-design",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-creative-problem-solving"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-digital-citizenship",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-digital-media-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-physics-simulations",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-reading-comprehension",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-ai-tutor-math",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: an AI tutor raising algebra scores is not evidence about AI literacy."
+    },
+    {
+      "id": "prefill-emotional-regulation",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-robotics-club",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-writing-feedback",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-inquiry-biology",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-gamified-vocab",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-peer-tutoring",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-handwriting-tablet",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-flipped-classroom",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-mindset-intervention",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: growth mindset is not a catalogue skill, and the reported effect is small."
+    },
+    {
+      "id": "prefill-coding-unplugged",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-vr-history",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-adult-mooc",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: adult learners, outside the 0-18 learner scope."
+    },
+    {
+      "id": "prefill-early-numeracy-preschool",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-phonics-reception",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-cyber-safety-middle",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-digital-media-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-financial-literacy-secondary",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-music-cognition",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-debate-civics",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-critical-thinking"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-dyslexia-app",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-adhd-selfmonitor",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Self-monitoring reducing off-task behaviour reads as self-regulated learning."
+    },
+    {
+      "id": "prefill-gifted-acceleration",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-outdoor-science",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-spaced-retrieval",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Borderline: a learning-strategy finding, read as evidence for self-regulated learning."
+    },
+    {
+      "id": "prefill-translanguaging-bilingual",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-ai-feedback-coding",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-misinformation-game",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-critical-thinking",
+          "skill-digital-media-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "The only two-link case: epistemic vigilance AND media literacy."
+    },
+    {
+      "id": "prefill-chatbot-design-null",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: a design/methodology sentence, not a finding."
+    },
+    {
+      "id": "prefill-formative-assessment",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-game-fractions",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-pair-programming",
+      "gold": {
+        "supports_skill_ids": [
+          "skill-collaborative-problem-solving"
+        ],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-ar-anatomy",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-policy-ai-ethics",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: a policy recommendation with no measured learning outcome is not evidence for a skill."
+    },
+    {
+      "id": "prefill-mother-tongue-literacy",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-worked-examples-math",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-vr-empathy",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-notetaking-longhand",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-girls-coding-club",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-mindfulness-attention",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null
+    },
+    {
+      "id": "prefill-adult-digital-literacy",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: adult learners, outside the 0-18 learner scope."
+    },
+    {
+      "id": "prefill-stem-camp-null",
+      "gold": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
+      "_recorded": null,
+      "_note": "Deliberately empty: a project outline, not a finding."
+    }
+  ]
+}

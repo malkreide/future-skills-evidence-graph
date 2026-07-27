@@ -321,6 +321,49 @@ weakens the gate: fields the model left null stay placeholders and still block
 promotion, a reviewed claim still needs a `--supports`/`--contradicts` skill
 link, and every explicit flag overrides the suggestion.
 
+### Optional skill-link suggestion (separate call)
+
+A claim only becomes `reviewed` once it links at least one skill, which is the
+last purely manual lookup in the review loop. With a provider configured,
+`extract_claims.py` makes a **second, independently versioned call**
+(`skill-link-v1`) proposing `supports_skill_ids` / `contradicts_skill_ids`, and
+stores it under `claim["assist"]["skill_links"]` with its own provenance.
+
+It is a separate call rather than a fifth pre-fill field on purpose: it needs
+the skill catalogue as context (which would bloat every pre-fill prompt and
+could shift the four calibrated fields), a shared prompt would mean a shared
+version that could never be re-recorded independently, and keeping the pre-fill
+prompt untouched keeps its 50 fixtures and measured numbers valid.
+
+Guardrails:
+
+- **Only active skills are offered.** A candidate skill is itself unreviewed,
+  and pointing new evidence at unreviewed evidence is how a catalogue drifts.
+- **Unknown ids are dropped, with a warning.** Every proposed id is checked
+  against the catalogue, so a hallucinated or stale id never reaches an assist
+  block a reviewer might trust.
+- **Advisory, like every assist output.** The real `supports_skill_ids` stays
+  empty; promotion still requires an explicit `--supports` / `--contradicts`.
+- **Inert when off.** With `AI_PROVIDER=none` the catalogue is not even read.
+
+```bash
+make eval-skill-links           # offline report (fixtures)
+make eval-skill-links-record    # live measurement; needs ANTHROPIC_API_KEY
+```
+
+**The golden set is proposed, not curated — and the harness says so.** The gold
+links in `eval/skill_link_labeled.json` were proposed by an agent; project
+governance puts editorial judgement with a person. While its `_status` is
+`proposed-unreviewed`, `eval_skill_links.py` prints its numbers but **exits
+non-zero on any `--min-*` flag**, so no CI gate can rest on labels nobody
+checked. A reviewer who has checked the links sets `_status` to `reviewed`;
+that, plus a `--record-live` run, is what turns the harness into a measurement.
+Until then the feature ships **unmeasured** and is not wired into any workflow.
+
+Read the `abstain` column first. 38 of the 50 examples map to no catalogue skill
+— an empty gold link is a real label, not a gap — so that column is where an
+over-eager model shows up before precision does.
+
 ### What the CI gate actually measures (regression, not live accuracy)
 
 The golden set `eval/claim_prefill_labeled.json` (~50 examples, broad topics, age
