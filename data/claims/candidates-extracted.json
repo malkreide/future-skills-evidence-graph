@@ -1726,5 +1726,423 @@
     "status": "candidate",
     "created_at": "2026-07-13",
     "reviewed_at": null
+  },
+  {
+    "id": "claim-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r",
+    "statement": "The findings indicate that technology positively influences student engagement, academic achievement, communication, collaboration, creativity, critical thinking, and digital literacy.",
+    "source_ids": [
+      "src-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The findings indicate that technology positively influences student engagement, academic achievement, communication, collaboration, creativity, critical thinking, and digital literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, digital competence, creativity, collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r-2",
+    "statement": "Various digital tools, including learning management systems, educational applications, multimedia resources, artificial intelligence, and online communication platforms, have enhanced teaching effectiveness while promoting more interactive and student-centered learning experiences.",
+    "source_ids": [
+      "src-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Various digital tools, including learning management systems, educational applications, multimedia resources, artificial intelligence, and online communication platforms, have enhanced teaching effectiveness while promoting more interactive and student-centered learning experiences.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r-3",
+    "statement": "However, maximizing its benefits requires collaborative efforts among governments, educational institutions, teachers, students, and policymakers to ensure equitable access, effective integration, and sustainable educational development in the digital era.",
+    "source_ids": [
+      "src-technology-and-its-impact-on-education-in-the-digital-era-a-literature-r"
+    ],
+    "text_anchor": "abstract, sentence 11: \"However, maximizing its benefits requires collaborative efforts among governments, educational institutions, teachers, students, and policymakers to ensure equitable access, effective integration, and sustainable educational development in the digital era.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-supporting-teacher-s-reflection-on-their-digital-well-being-abstract-s1",
+    "statement": "Abstract The implementation of technology in teaching brings benefits but also presents physical, psychological, technical, and ethical challenges.",
+    "source_ids": [
+      "src-supporting-teacher-s-reflection-on-their-digital-well-being"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Abstract The implementation of technology in teaching brings benefits but also presents physical, psychological, technical, and ethical challenges.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-embodied-epistemic-cognition-in-higher-science-education-advances-from-t",
+    "statement": "The integrated perspective offers significant implications for pedagogy and curriculum development in higher science education, particularly in designing more effective and engaging laboratory experiences that leverage both embodied and epistemic dimensions of learning.",
+    "source_ids": [
+      "src-embodied-epistemic-cognition-in-higher-science-education-advances-from-t"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The integrated perspective offers significant implications for pedagogy and curriculum development in higher science education, particularly in designing more effective and engaging laboratory experiences that leverage both embodied and epistemic dimensions of learning.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-embodied-epistemic-cognition-in-higher-science-education-advances-from-t-2",
+    "statement": "Abstract This study synthesises two pivotal philosophical notions related to student learning in higher science education, i.e., embodied cognition and epistemic cognition, employing theoretical and empirical inquiries into epistemic practices in teaching laboratories.",
+    "source_ids": [
+      "src-embodied-epistemic-cognition-in-higher-science-education-advances-from-t"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Abstract This study synthesises two pivotal philosophical notions related to student learning in higher science education, i.e., embodied cognition and epistemic cognition, employing theoretical and empirical inquiries into epistemic practices in teaching laboratories.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-embodied-epistemic-cognition-in-higher-science-education-advances-from-t-3",
+    "statement": "We conceptualise laboratory work as an authentic context for embodied, epistemic practices and critically review both philosophical notions in light of recent developments in science education.",
+    "source_ids": [
+      "src-embodied-epistemic-cognition-in-higher-science-education-advances-from-t"
+    ],
+    "text_anchor": "abstract, sentence 2: \"We conceptualise laboratory work as an authentic context for embodied, epistemic practices and critically review both philosophical notions in light of recent developments in science education.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-in-special-education-assessing-teachers-level-of",
+    "statement": "The integration of Artificial Intelligence (AI) in special education presents transformative opportunities for inclusive and differentiated instruction.",
+    "source_ids": [
+      "src-artificial-intelligence-in-special-education-assessing-teachers-level-of"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The integration of Artificial Intelligence (AI) in special education presents transformative opportunities for inclusive and differentiated instruction.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an",
+    "statement": "Furthermore, this dependency on Gen-AI among preservice mathematics teachers has a significant negative effect on their problem-solving ability, critical thinking, creative thinking, collaboration skills, communication skills, and self-confidence.",
+    "source_ids": [
+      "src-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Furthermore, this dependency on Gen-AI among preservice mathematics teachers has a significant negative effect on their problem-solving ability, critical thinking, creative thinking, collaboration skills, communication skills, and self-confidence.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, creativity, collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an-2",
+    "statement": "The findings reveal that both AI trust and AI literacy significantly influence preservice mathematics teachers\u2019 dependency on Gen-AI.",
+    "source_ids": [
+      "src-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The findings reveal that both AI trust and AI literacy significantly influence preservice mathematics teachers\u2019 dependency on Gen-AI.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an-3",
+    "statement": "Generation-Artificial Intelligence (Gen-AI) is widely used in education and has been shown to improve students\u2019 mathematical abilities.",
+    "source_ids": [
+      "src-exploring-the-relationship-between-ai-literacy-ai-trust-ai-dependency-an"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Generation-Artificial Intelligence (Gen-AI) is widely used in education and has been shown to improve students\u2019 mathematical abilities.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-20",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-from-evidence-to-impact-supporting-sensemaking-and-instructional-revisio",
+    "statement": "Science and math literacy is crucial for informed citizenship and economic competitiveness, yet many students leave school without developing the critical thinking skills needed to understand and solve complex issues or pursue STEM careers.",
+    "source_ids": [
+      "src-from-evidence-to-impact-supporting-sensemaking-and-instructional-revisio"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Science and math literacy is crucial for informed citizenship and economic competitiveness, yet many students leave school without developing the critical thinking skills needed to understand and solve complex issues or pursue STEM careers.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-from-evidence-to-impact-supporting-sensemaking-and-instructional-revisio-2",
+    "statement": "Through collaborative design with educators, this work produced tools that help teachers transform their instruction to better prepare students for scientific thinking.",
+    "source_ids": [
+      "src-from-evidence-to-impact-supporting-sensemaking-and-instructional-revisio"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Through collaborative design with educators, this work produced tools that help teachers transform their instruction to better prepare students for scientific thinking.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-educator-experiences-of-schoolwide-pbis-discipline-implementation-explor",
+    "statement": "These findings indicated that leadership, communication, consistency, and collaborative implementation practices advance PBIS discipline systems and positively impact school culture.",
+    "source_ids": [
+      "src-educator-experiences-of-schoolwide-pbis-discipline-implementation-explor"
+    ],
+    "text_anchor": "abstract, sentence 9: \"These findings indicated that leadership, communication, consistency, and collaborative implementation practices advance PBIS discipline systems and positively impact school culture.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-educator-experiences-of-schoolwide-pbis-discipline-implementation-explor-2",
+    "statement": "Five major themes emerged from the data: clarity and predictability, behavioral accountability, collaborative implementation, relationship-centered support, and implementation consistency.",
+    "source_ids": [
+      "src-educator-experiences-of-schoolwide-pbis-discipline-implementation-explor"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Five major themes emerged from the data: clarity and predictability, behavioral accountability, collaborative implementation, relationship-centered support, and implementation consistency.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-challenges-facing-accounting-education-in-high-schools-the-south-afr",
+    "statement": "Accounting is expected to equip learners with essential skills, promote critical thinking, and enhance financial literacy, contributing to academic and career success.",
+    "source_ids": [
+      "src-the-challenges-facing-accounting-education-in-high-schools-the-south-afr"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Accounting is expected to equip learners with essential skills, promote critical thinking, and enhance financial literacy, contributing to academic and career success.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-participation-outside-institutional-provision-implications-of-th",
+    "statement": "Digital access was positively associated with digital literacy (r = .174, p &amp;lt; .001) and educational engagement (r = .444, p &amp;lt; .001), while vulnerability was negatively associated with digital access (r = \u22120.692, p &amp;lt; .001), digital literacy (r = \u2212.105, p &amp;lt; .01), and educational engagement (r = \u22120.284, p &amp;lt; .001).",
+    "source_ids": [
+      "src-digital-participation-outside-institutional-provision-implications-of-th"
+    ],
+    "text_anchor": "abstract, sentence 9: \"Digital access was positively associated with digital literacy (r = .174, p &amp;lt; .001) and educational engagement (r = .444, p &amp;lt; .001), while vulnerability was negatively associated with digital access (r = \u22120.692, p &amp;lt; .001), digital literacy (r = \u2212.105, p &amp;lt; .01), and educational engagement (r = \u22120.284, p &amp;lt; .001).\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-participation-outside-institutional-provision-implications-of-th-2",
+    "statement": "The study argues for competence-centred digital inclusion policies that integrate digital literacy, online safety, information verification, and critical media education within basic education systems.",
+    "source_ids": [
+      "src-digital-participation-outside-institutional-provision-implications-of-th"
+    ],
+    "text_anchor": "abstract, sentence 13: \"The study argues for competence-centred digital inclusion policies that integrate digital literacy, online safety, information verification, and critical media education within basic education systems.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-participation-outside-institutional-provision-implications-of-th-3",
+    "statement": "Digital literacy has become a foundational competence for participation in contemporary educational, social, and economic life.",
+    "source_ids": [
+      "src-digital-participation-outside-institutional-provision-implications-of-th"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Digital literacy has become a foundational competence for participation in contemporary educational, social, and economic life.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s",
+    "statement": "The nexus of Artificial Intelligence (AI) and indigenous knowledge systems (IKS) rarely features as a viable intervention in African food system policy and academic debates.",
+    "source_ids": [
+      "src-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The nexus of Artificial Intelligence (AI) and indigenous knowledge systems (IKS) rarely features as a viable intervention in African food system policy and academic debates.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s-2",
+    "statement": "The article shows that harnessing the AI-IKS nexus entails merging traditional, generational ecological wisdom with modern technology to enhance food security, sustainability, and resilience.",
+    "source_ids": [
+      "src-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s"
+    ],
+    "text_anchor": "abstract, sentence 5: \"The article shows that harnessing the AI-IKS nexus entails merging traditional, generational ecological wisdom with modern technology to enhance food security, sustainability, and resilience.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s-3",
+    "statement": "The article argues that this synergy has the potential to enhance climate resilience, boost yields through precision agriculture, reduce post-harvest losses, and promote sustainable resource management, ultimately strengthening food security.",
+    "source_ids": [
+      "src-artificial-intelligence-indigenous-knowledge-systems-and-prospects-for-s"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The article argues that this synergy has the potential to enhance climate resilience, boost yields through precision agriculture, reduce post-harvest losses, and promote sustainable resource management, ultimately strengthening food security.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-07-27",
+    "reviewed_at": null
   }
 ]
