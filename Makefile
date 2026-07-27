@@ -23,6 +23,10 @@ eval-educator:
 
 # Offline field metrics for the optional LLM claim pre-fill (P1), from fixtures.
 # This is the regression view: it scores the RECORDED outputs against gold.
+# outcome/context are scored semantically (embedding cosine) from the committed
+# vectors in tests/fixtures/embeddings/, so this stays offline; the old lexical
+# precision is printed alongside. After a --record-live run, run this once with
+# sentence-transformers installed to mint vectors for the new texts.
 eval-prefill:
 	python scripts/eval_claim_prefill.py
 

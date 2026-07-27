@@ -309,8 +309,10 @@ placeholders and `statement`/`text_anchor` stay verbatim.
 
 ```bash
 python scripts/eval_claim_prefill.py                 # offline field metrics (fixtures)
-python scripts/eval_claim_prefill.py --min-precision 0.8 --min-recall 0.8  # CI gate
+python scripts/eval_claim_prefill.py --min-precision 0.8 \
+  --min-evidence-strength-precision 0.7 --min-age-range-precision 0.8   # CI gate
 python scripts/eval_claim_prefill.py --write-fixtures # replay '_recorded' into the cache
+python scripts/eval_claim_prefill.py --lexical-text-scoring  # pre-semantic baseline
 ```
 
 During review, `promote_candidate.py` prints any suggestion and
@@ -363,10 +365,52 @@ still passes offline.
 
 **What is gated, and how each field is scored.** The gate is on **precision** of
 the two **structured** fields: `age_range` and `evidence_strength`. `outcome`/
-`context` are one-sentence free-text *suggestions* a reviewer rewrites; the live
-model paraphrases them faithfully but with different words, which no lexical
-score captures fairly, so they are **reported but never block the gate** (the
-report prints them tagged `(advisory)` and a `GATED (age+strength)` overall line).
+`context` are one-sentence free-text *suggestions* a reviewer rewrites, so they
+are **reported but never block the gate** (the report prints them tagged
+`(advisory)` and a `GATED (age+strength)` overall line).
+
+### How the free-text fields are scored (semantic, fixture-backed)
+
+`outcome`/`context` used to be scored by Jaccard token overlap, which measured
+the wrong thing: the model states the same finding as the gold label in
+different words, and the lexical scorer counted that as a miss. Measured, that
+put `outcome` at **P 0.11** — a scorer artifact, not a model failure.
+
+They are now scored by **cosine similarity over the project's own fixture-backed
+embeddings** (`ai_provider.embed`, `EMBEDDING_PROVIDER=st`), which measures
+agreement instead of vocabulary:
+
+| field | lexical (old) | semantic (now) |
+| --- | --- | --- |
+| `outcome` | P 0.11 | **P 0.85** |
+| `context` | P 0.44 | **P 0.98** |
+
+The threshold (`SEMANTIC_MATCH_THRESHOLD = 0.60`) is **calibrated, not guessed**:
+against a cross-paired negative control (every `gold_i` vs every `recorded_j`,
+i ≠ j) the matching pairs sit at median 0.736 (`outcome`) / 0.883 (`context`)
+while mismatches reach only p99 0.510 / 0.531. At 0.60 the scorer accepts 87 % /
+98 % of true paraphrases at a 0.1 % / 0.2 % false-match rate. The negative
+control is the point: it shows the scorer separates paraphrase from unrelated
+text rather than waving everything through. Re-run the calibration if the
+embedding model changes.
+
+Two properties keep this honest and cheap:
+
+- **The lexical number stays on screen.** Every report prints the semantic score
+  with the old token-overlap precision in brackets, so a reader can always tell
+  whether a number moved because the model improved or because the ruler
+  changed. `--lexical-text-scoring` forces the old scorer outright.
+- **Offline and deterministic, like everything else.** The needed vectors are
+  committed under `tests/fixtures/embeddings/`, so a CI run is pure cache reads —
+  verified at zero model loads. If a vector is missing and the package is absent,
+  `load_embeddings` warns and the harness **falls back to the lexical scorer**
+  instead of failing. `tests/test_claim_prefill_scoring.py` locks in the
+  paraphrase/unrelated behaviour, the fallback, and fixture coverage of the
+  golden set.
+
+After a `--record-live` run the recorded texts change, so re-run
+`make eval-prefill` once with `sentence-transformers` installed to mint the new
+vectors and commit `tests/fixtures/embeddings/` alongside the refreshed fixtures.
 
 **Recall is reported, not gated.** Precision — "when the model proposes a value,
 is it right?" — is the metric that protects reviewer trust, so that is what the
@@ -387,16 +431,26 @@ still exists on the script for ad-hoc checks; CI just doesn't pass it.)
 - `evidence_strength`: **exact category** — adjacent notches are *not* folded
   together, so a one-level disagreement keeps costing.
 
-The prompt (v4) is calibrated to the gold to remove the systematic live biases
+The prompt (v6) is calibrated to the gold to remove the systematic live biases
 the English re-records surfaced: it no longer asks for a *conservative /
 when-in-doubt-low* strength and instead pins an explicit study-type rubric
 (RCT / systematic review / meta-analysis ⇒ high; controlled or multi-site ⇒
 moderate; single small or uncontrolled ⇒ low), and it tells the model not to pad
-the age band to the scale ends. Those prompt effects are only visible on a
-**live** re-record — the offline gate replays the frozen `_recorded`, so it
-stays green (`GATED` ≈0.91, `evidence_strength` ≈0.84, `age_range` 1.00; the
-advisory `outcome`/`context` still read ≈0.98/1.00 against their near-verbatim
-`_recorded`).
+the age band to the scale ends. v5 additionally tried mapping a named school
+stage to a typical age band to lift recall; the live run showed it backfired
+(broad stage bands where the gold has the study's narrower one, `age_range`
+precision 0.94 → 0.82), so v6 reverted that part.
+
+Those prompt effects are only visible on a **live** re-record — the offline gate
+replays the frozen `_recorded`. Current offline regression, measured:
+
+| field | P | R | note |
+| --- | --- | --- | --- |
+| `age_range` | 0.94 | 0.77 | gated ≥ 0.8 |
+| `evidence_strength` | 0.82 | 0.82 | gated ≥ 0.7; never abstains (50/50) |
+| `outcome` | 0.85 | 0.87 | advisory, semantic |
+| `context` | 0.98 | 0.98 | advisory, semantic |
+| **GATED (age+strength)** | **0.87** | 0.80 | gate ≥ 0.8 |
 
 ## Guardrails
 
