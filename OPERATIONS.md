@@ -299,6 +299,13 @@ Triggers → actions:
 
 ## Optional AI claim pre-fill (P1)
 
+> **Offene Messungen.** Drei KI-Fähigkeiten sind gebaut, aber noch nicht gegen
+> das echte Modell gemessen: die v7-Fixtures dieses Pre-Fills (migriert, nicht
+> aufgezeichnet), der Skill-Link-Vorschlag, und die Gegenevidenz-Lane. Die
+> Schritt-für-Schritt-Anleitung dafür steht in
+> [docs/naechste-schritte.md](docs/naechste-schritte.md).
+
+
 Off by default (`AI_PROVIDER=none`): extraction is byte-identical to the LLM-free
 pipeline. When a provider is configured (`AI_PROVIDER=anthropic`, model from
 `AI_MODEL`, default `claude-opus-4-8`), `extract_claims.py` additionally asks the

@@ -13,7 +13,9 @@ Design principle: no skill recommendation without an evidence path.
 > Haltungs-Story – warum ehrliche, auditierbare KI – in
 > [docs/governance-und-haltung.md](docs/governance-und-haltung.md); die
 > Praxisanleitung, wie die Skill-Liste evidenzbasiert erstellt und aktuell
-> gehalten wird, in [docs/tierliste-pflegen.md](docs/tierliste-pflegen.md); wie
+> gehalten wird, in [docs/tierliste-pflegen.md](docs/tierliste-pflegen.md); die
+> aktuell offenen Messungen der drei noch ungemessenen KI-Fähigkeiten in
+> [docs/naechste-schritte.md](docs/naechste-schritte.md); wie
 > die vertrauenswürdige Such-Allowlist (Quell-Domains) evidenzbasiert
 > zusammengestellt und gepflegt wird, in
 > [docs/allowlist-pflegen.md](docs/allowlist-pflegen.md).
