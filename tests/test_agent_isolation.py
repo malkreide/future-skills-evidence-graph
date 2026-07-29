@@ -19,7 +19,9 @@ from __future__ import annotations
 
 import ast
 import io
+import json
 import sys
+import tempfile
 import unittest
 from contextlib import redirect_stderr
 from pathlib import Path
@@ -262,3 +264,126 @@ class CandidatesOnlyTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SourcePersistenceTest(unittest.TestCase):
+    """A claim must never cite a source that exists nowhere.
+
+    The lane originally wrote only claims. Every claim cited a freshly
+    discovered OpenAlex work whose source record was never persisted, so
+    validate_data.py failed with "references missing source" and
+    promote_candidate.py refused the candidate. Sources therefore land BEFORE
+    the claims that cite them, and these tests pin that ordering plus the two
+    id subtleties that make it correct.
+    """
+
+    def setUp(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        self.tmp = tempfile.TemporaryDirectory()
+        self.path = Path(self.tmp.name) / "candidates-counter.json"
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def state_with(self, *sources: dict) -> dict:
+        import counter_evidence as ce
+
+        state = ce.initial_state({"id": "skill-x", "name": "X", "definition": "d"})
+        state["findings"] = [
+            {"source": source, "quote": f"No effect {index}.", "reason": "null"}
+            for index, source in enumerate(sources)
+        ]
+        return state
+
+    def source(self, source_id: str, title: str) -> dict:
+        # url/openalex_id derive from the TITLE, not the id: two records may share
+        # an id while being genuinely different sources, and that is exactly the
+        # collision case this suite has to reach.
+        slug = title.lower().replace(" ", "-")
+        return {
+            "id": source_id, "title": title, "abstract": "a", "authors": [], "year": 2024,
+            "doi": None, "url": f"http://example.org/{slug}", "openalex_id": slug,
+            "semantic_scholar_id": None, "eric_id": None, "publisher": "P",
+            "source_type": "peer_reviewed_article", "license": None, "topics": ["education"],
+            "status": "candidate", "created_at": "2026-01-01", "reviewed_at": None,
+        }
+
+    def test_every_claim_cites_a_persisted_source(self) -> None:
+        import counter_evidence as ce
+
+        state = self.state_with(self.source("src-alpha", "Alpha study"))
+        appended, reused = ce.persist_sources(state, self.path)
+        self.assertEqual((appended, reused), (1, 0))
+
+        stored = {record["id"] for record in json.loads(self.path.read_text())}
+        for claim in ce.to_candidate_claims(state):
+            with self.subTest(claim=claim["id"]):
+                self.assertTrue(set(claim["source_ids"]) <= stored)
+
+    def test_sources_are_written_as_candidates(self) -> None:
+        import counter_evidence as ce
+
+        state = self.state_with(self.source("src-alpha", "Alpha study"))
+        ce.persist_sources(state, self.path)
+        for record in json.loads(self.path.read_text()):
+            self.assertEqual(record["status"], "candidate")
+
+    def test_an_id_collision_is_reflected_in_the_claim(self) -> None:
+        """append_unique_records renames on collision; the claim must follow."""
+        import counter_evidence as ce
+
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text(json.dumps([self.source("src-alpha", "A different paper")]))
+
+        state = self.state_with(self.source("src-alpha", "Alpha study"))
+        ce.persist_sources(state, self.path)
+
+        stored = {record["id"] for record in json.loads(self.path.read_text())}
+        claim = ce.to_candidate_claims(state)[0]
+        self.assertNotEqual(claim["source_ids"], ["src-alpha"], "the id should have been renamed")
+        self.assertTrue(set(claim["source_ids"]) <= stored)
+
+    def test_no_findings_writes_no_file(self) -> None:
+        import counter_evidence as ce
+
+        state = self.state_with()
+        self.assertEqual(ce.persist_sources(state, self.path), (0, 0))
+        self.assertFalse(self.path.exists(), "an empty run must not create a noise file")
+
+
+class StopReasonTest(unittest.TestCase):
+    """The run log must name WHICH limit ended the run.
+
+    should_continue returns only "stop"/"continue" because that is all the graph
+    edge needs — but a reviewer judging a barren run cannot tell "no
+    counter-evidence exists" from "the budget ran out too early" from that word.
+    """
+
+    def test_each_limit_has_its_own_reason(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        base = ce.initial_state({"id": "s", "name": "N", "definition": "d"})
+        self.assertIsNone(ce.stop_reason(base))
+
+        cases = {
+            "exhausted": ("exhausted", True),
+            "rounds": ("rounds", ce.MAX_ROUNDS),
+            "barren": ("barren_rounds", ce.MAX_BARREN_ROUNDS),
+        }
+        reasons = set()
+        for label, (field, value) in cases.items():
+            state = dict(base)
+            state[field] = value
+            reason = ce.stop_reason(state)
+            with self.subTest(limit=label):
+                self.assertIsNotNone(reason)
+                self.assertEqual(ce.should_continue(state), "stop")
+            reasons.add(reason)
+
+        budget = dict(base)
+        budget["queries_used"] = ["q"] * ce.MAX_QUERIES
+        reasons.add(ce.stop_reason(budget))
+
+        self.assertEqual(len(reasons), 4, f"reasons must be distinguishable, got {reasons}")

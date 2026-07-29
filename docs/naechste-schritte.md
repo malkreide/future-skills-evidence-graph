@@ -199,12 +199,28 @@ ob sie es tut, ist ungemessen.
 
 Kosten je Lauf: bis zu 3 Query-Calls + bis zu 60 Assess-Calls.
 
-### 3.1 Trockenlauf — schreibt nichts
+### 3.1 Trockenlauf — schreibt keine Kandidaten
 
 - [ ] ```bash
       AI_PROVIDER=anthropic python agents/counter_evidence.py \
         --skill skill-systems-thinking --dry-run
       ```
+
+> **`--dry-run` heisst nicht „schreibt nichts".** Unterdrückt werden nur
+> Kandidaten-Claims und -Quellen. Weiterhin geschrieben werden: das
+> **Laufprotokoll** unter `agents/runs/` (das ist der Zweck des Trockenlaufs)
+> und — bei `AI_PROVIDER=anthropic` — je ein **Fixture** pro Modellaufruf unter
+> `tests/fixtures/ai/`. Drei Läufe können den Arbeitsbaum also um etliche
+> Dateien erweitern.
+>
+> Was damit tun: die **Laufprotokolle committen** (sie sind der Audit-Trail und
+> gehören zur Messung), die **Fixtures verwerfen**, solange kein Replay des
+> Agenten gewünscht ist:
+>
+> ```bash
+> git add agents/runs/
+> git checkout -- tests/fixtures/ai/ 2>/dev/null; git clean -f tests/fixtures/ai/
+> ```
 
 ### 3.2 Das Laufprotokoll lesen — das ist der Kern
 
@@ -218,7 +234,11 @@ Prüfe:
 - **`queries_used`** — sucht der Agent wirklich nach Null-Resultaten
   („no significant difference", „failed to replicate"), oder formuliert er nur
   den Skillnamen um? Das entscheidet über die Qualität mehr als alles andere.
-- **`stopped_because`** — Abbruch durch Rundenlimit oder durch Erschöpfung?
+- **`stopped_because`** — nennt den konkreten Grund: `round_limit` (Rundenbudget
+  aufgebraucht), `query_budget` (Query-Budget aufgebraucht), `no_new_queries`
+  (der Generator lieferte nichts Neues mehr) oder `no_new_findings` (zwei Runden
+  ohne Fund). Der Unterschied zählt: `no_new_findings` heisst „hier ist
+  vermutlich nichts", `round_limit` heisst „das Budget war zu klein".
 - **`sources_examined` vs. `findings`** — 60 geprüfte Quellen mit 0 Funden ist
   ein **valides Ergebnis**. Gegenevidenz ist selten; das ist der Grund, warum es
   diese Lane gibt.

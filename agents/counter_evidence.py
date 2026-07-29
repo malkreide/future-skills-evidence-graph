@@ -23,12 +23,17 @@ a langchain provider binding. A recorded run replays exactly under
 ``AI_PROVIDER=cache``, LangGraph stays a pure state machine, and the lane
 inherits anthropic/openai/ollama without a single integration package.
 
-    # dry run against one skill, writes nothing
+    # dry run: writes no claim and no source, but DOES write a run log (that is
+    # the point of it), and a live provider still fills its fixture cache
     python agents/counter_evidence.py --skill skill-systems-thinking --dry-run
 
-    # real run: emits candidate claims for review
+    # real run: emits candidate sources AND the claims citing them, for review
     AI_PROVIDER=anthropic python agents/counter_evidence.py \\
-        --skill skill-systems-thinking --output data/claims/candidates-counter.json
+        --skill skill-systems-thinking
+
+Sources are persisted before the claims that cite them. A claim referencing a
+source that exists nowhere fails validate_data.py ("references missing source")
+and is refused by promote_candidate.py, so the ordering is load-bearing.
 """
 
 from __future__ import annotations
@@ -48,12 +53,15 @@ import ai_provider  # noqa: E402
 import ingest_openalex  # noqa: E402
 from common import (  # noqa: E402
     TODAY,
+    append_candidate_sources,
     append_unique_records,
     claim_statement_key,
     fetch_or_warn,
+    load_json,
     load_records,
     normalize_title,
     slugify,
+    source_title_key,
 )
 
 # --- Hard limits ------------------------------------------------------------
@@ -285,16 +293,27 @@ def search_and_assess(state: State) -> dict[str, Any]:
 
 
 def should_continue(state: State) -> str:
-    """Hard limits first, judgement last."""
+    """Hard limits first, judgement last. The graph edge only needs stop/continue."""
+    return "continue" if stop_reason(state) is None else "stop"
+
+
+def stop_reason(state: State) -> str | None:
+    """WHICH limit ended the run, or None while it may continue.
+
+    Kept separate from should_continue because the graph edge only needs
+    "stop"/"continue", while the run log needs the actual reason: a reviewer
+    judging whether a barren search means "no counter-evidence exists" or "the
+    budget ran out too early" cannot tell those apart from the word "stop".
+    """
     if state.get("exhausted"):
-        return "stop"
+        return "no_new_queries"
     if state["rounds"] >= MAX_ROUNDS:
-        return "stop"
+        return "round_limit"
     if len(state["queries_used"]) >= MAX_QUERIES:
-        return "stop"
+        return "query_budget"
     if state["barren_rounds"] >= MAX_BARREN_ROUNDS:
-        return "stop"
-    return "continue"
+        return "no_new_findings"
+    return None
 
 
 def build_graph():
@@ -348,6 +367,54 @@ def run(skill: dict[str, Any]) -> State:
 # --- Output -----------------------------------------------------------------
 
 
+def persist_sources(state: State, path: Path) -> tuple[int, int]:
+    """Write the discovered sources as candidates and pin each claim's source id.
+
+    Without this the lane emits claims pointing at sources that exist nowhere:
+    ``validate_data.py`` fails with "references missing source" and
+    ``promote_candidate.py`` refuses the candidate for the same reason. Sources
+    must therefore land BEFORE the claims that cite them.
+
+    Two id subtleties, both handled here rather than hoped away:
+
+    - ``append_unique_records`` renames a record in place on an id collision
+      (``src-foo`` -> ``src-foo-2``). Because it mutates the same dict the
+      findings hold, building the claims *after* this call picks up the final id.
+    - A source already in the repository is skipped, and the skipped dict keeps
+      the id this run computed — which may differ from the stored one. For those
+      the stored id is looked up by title key and written back, so the claim
+      cites the record that actually exists.
+
+    Returns (appended, reused).
+    """
+    sources = [finding["source"] for finding in state["findings"]]
+    if not sources:
+        return 0, 0
+
+    appended = append_candidate_sources(path, sources)
+    appended_ids = {id(record) for record in appended}
+
+    # Resolve every skipped source to the id under which it is actually stored.
+    # The target file comes FIRST and wins: a source skipped as a duplicate was
+    # most likely matched against a record in that very file, and load_records
+    # only sees data/sources/ — which need not be where --source-output points.
+    stored: dict[str, Any] = {}
+    for record in load_records("sources"):
+        stored.setdefault(source_title_key(record), record.get("id"))
+    if path.exists():
+        for record in load_json(path):
+            stored[source_title_key(record)] = record.get("id")
+    reused = 0
+    for source in sources:
+        if id(source) in appended_ids:
+            continue
+        existing_id = stored.get(source_title_key(source))
+        if existing_id and existing_id != source.get("id"):
+            source["id"] = existing_id
+        reused += 1
+    return len(appended), reused
+
+
 def to_candidate_claims(state: State) -> list[dict[str, Any]]:
     """Turn findings into candidate claims — candidates only, never active.
 
@@ -397,7 +464,9 @@ def write_run_log(state: State) -> Path:
         "queries_used": state["queries_used"],
         "sources_examined": len(state["seen_titles"]),
         "findings": len(state["findings"]),
-        "stopped_because": should_continue(state),
+        # The specific limit, not the word "stop": a reviewer must be able to
+        # tell "no counter-evidence exists" from "the budget ran out too early".
+        "stopped_because": stop_reason(state) or "still_running",
         "log": state["log"],
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -415,7 +484,15 @@ def main() -> int:
         help="Where to append candidate counter-claims.",
     )
     parser.add_argument(
-        "--dry-run", action="store_true", help="Report findings without writing any claim."
+        "--source-output",
+        default="data/sources/candidates-counter.json",
+        help="Where to append the discovered candidate sources the claims cite.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Write no claim and no source. The run log is still written (it is the "
+        "point of a dry run), and a live provider still fills its fixture cache.",
     )
     args = parser.parse_args()
 
@@ -438,23 +515,31 @@ def main() -> int:
         f"Run log: {log_path.relative_to(ROOT)}"
     )
 
-    claims = to_candidate_claims(state)
-    if not claims:
-        print("No candidate claims written.")
+    if not state["findings"]:
+        print("No contradictions found; nothing to write.")
         return 0
 
     if args.dry_run:
-        print(f"\n--dry-run: would write {len(claims)} candidate claim(s):")
-        for claim in claims:
+        # Claims are built for display only. Nothing is persisted, so the ids
+        # shown are provisional — a real run may renumber them on collision.
+        print(f"\n--dry-run: would write {len(state['findings'])} candidate claim(s):")
+        for claim in to_candidate_claims(state):
             print(f"  - {claim['id']}: {claim['statement'][:100]}…")
         return 0
+
+    # Sources FIRST: a claim citing a source that exists nowhere fails
+    # validate_data.py and is refused by promote_candidate.py. persist_sources
+    # also pins each finding's source id to the one actually stored, so the
+    # claims built next cite a record that exists.
+    appended, reused = persist_sources(state, ROOT / args.source_output)
+    print(f"\nSources: {appended} new, {reused} already known ({args.source_output}).")
 
     # Appending through the shared helper keeps dedup, id-collision handling and
     # the no-empty-file rule identical to every importer.
     added = append_unique_records(
-        ROOT / args.output, claims, lambda claim: [claim_statement_key(claim)]
+        ROOT / args.output, to_candidate_claims(state), lambda claim: [claim_statement_key(claim)]
     )
-    print(f"\nWrote {len(added)} new candidate claim(s) to {args.output}.")
+    print(f"Wrote {len(added)} new candidate claim(s) to {args.output}.")
     return 0
 
 
