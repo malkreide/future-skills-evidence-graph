@@ -1,5 +1,5 @@
 {
-  "_README": "Golden set for the OPTIONAL skill-link suggestion (scripts/extract_claims.py, suggest_skill_links). Examples are referenced BY ID from eval/claim_prefill_labeled.json -- abstract, statement and topics live there and are not duplicated here. 'gold' is the skill link a reviewer would accept; an EMPTY list is a real label, not a gap: the catalogue is future-skills-shaped and most education studies legitimately map to no skill, so the empty cases are what measure whether the model holds back. '_recorded' is the model suggestion last captured for the same prompt, filled by scripts/eval_skill_links.py --record-live. DO NOT wire these into data/ -- evaluation artifact only.",
+  "_README": "Golden set for the OPTIONAL skill-link suggestion (scripts/extract_claims.py, suggest_skill_links). Examples are referenced BY ID from eval/claim_prefill_labeled.json -- abstract, statement and topics live there and are not duplicated here. 'gold' is the skill link a reviewer would accept; an EMPTY list is a real label, not a gap: the catalogue is future-skills-shaped and most education studies legitimately map to no skill, so the empty cases are what measure whether the model holds back. LABELLING RULE: a claim links a skill only when it reports a MEASURED result about that skill. A position paper, recommendation or design description that argues for a skill without measuring anything is labelled EMPTY, however on-topic it reads — it is not evidence FOR the skill. Being merely adjacent to a skill's topic is also not enough. '_recorded' is the model suggestion last captured for the same prompt, filled by scripts/eval_skill_links.py --record-live. DO NOT wire these into data/ -- evaluation artifact only.",
   "_status": "proposed-unreviewed",
   "_status_note": "These gold links were PROPOSED by an agent, not curated by a human reviewer. Project governance puts editorial judgement with a person, so eval_skill_links.py refuses to enforce any gate while _status is 'proposed-unreviewed'. A reviewer who has checked the links sets _status to 'reviewed' -- that, plus a --record-live run, is what turns this from a harness into a measurement.",
   "prompt_version": "skill-link-v1",
@@ -65,12 +65,11 @@
     {
       "id": "prefill-digital-citizenship",
       "gold": {
-        "supports_skill_ids": [
-          "skill-digital-media-literacy"
-        ],
+        "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": null,
+      "_note": "Deliberately empty: a position paper that argues for earlier media-evaluation teaching but reports no measured outcome is not evidence FOR the skill. Same rule as prefill-policy-ai-ethics — the two were inconsistent until this correction."
     },
     {
       "id": "prefill-physics-simulations",
