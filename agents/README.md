@@ -35,6 +35,7 @@ the core deliberately does not install it.
 | Model access | only through `scripts/ai_provider.py` — never a `langchain-*` binding |
 | Output | `status: candidate` only; promotion stays a human decision |
 | Text anchors | a claim's statement must appear **verbatim** in the abstract, or it is discarded |
+| Search sources | OpenAlex → Semantic Scholar → ERIC, first usable wins; Crossref excluded (carries no abstracts) |
 | Trigger | `workflow_dispatch` only, never scheduled |
 | Limits | `MAX_ROUNDS` / `MAX_QUERIES` are code constants, not prompt instructions |
 
