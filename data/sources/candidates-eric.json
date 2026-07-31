@@ -3336,9 +3336,9 @@
       "digital competence",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 1.0,
     "audience": "learner"
   },
