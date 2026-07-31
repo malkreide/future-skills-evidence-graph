@@ -111,7 +111,7 @@
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.61,
+    "evidence_score": 0.65,
     "trend": "growing",
     "topics": [
       "critical thinking",
@@ -122,7 +122,8 @@
       "claim-critical-thinking-ai-outputs",
       "claim-labor-market-analytical-ai-resilience",
       "claim-data-literacy-digital-problem-solving",
-      "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa"
+      "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa",
+      "claim-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn"
     ],
     "contradicting_claim_ids": [
       "claim-critical-thinking-domain-specific"
@@ -162,10 +163,20 @@
         "date": "2026-06-20",
         "change": "evidence_score 0.57 -> 0.61",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.61 -> 0.65",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-20"
+    "updated_at": "2026-07-31"
   },
   {
     "id": "skill-data-literacy",

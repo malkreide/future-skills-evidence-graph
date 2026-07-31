@@ -7778,17 +7778,19 @@
       "src-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn"
     ],
     "text_anchor": "abstract, sentence 8: \"The study finds that generative AI tools, when used with purposeful metacognitive scaffolding, support, and do not replace critical thinking and sustainable learning.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, critical thinking. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Quasi-experimental study, 120 secondary students (60 experimental / 60 control) across two matched government schools in Swat, Pakistan, over 6 weeks using GenAI (ChatGPT, Gemini) for structured inquiry vs. traditional instruction",
+    "age_range": "12-16",
+    "outcome": "GenAI used with purposeful metacognitive scaffolding supported (did not replace) critical thinking and sustainable learning",
     "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-critical-thinking"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn-2",
@@ -19940,17 +19942,19 @@
       "src-chatbots-as-pedagogical-co-support-exploring-teachers-practices-and-perc"
     ],
     "text_anchor": "abstract, sentence 7: \"The study further found that AI literacy and technical competence, digital literacy and ICT integration, ethical awareness, pedagogical creativity, and lifelong learning are central competencies for effective GenAI integration.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, digital competence, creativity, self-regulation, ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Qualitative-dominant mixed-methods study of 30 foreign-language teachers (Caribbean and North America) on GenAI as pedagogical co-support in language teaching",
+    "age_range": "0-18",
+    "outcome": "Identifies AI literacy and technical competence, digital literacy and ICT integration, ethical awareness, pedagogical creativity, and lifelong learning as central competencies for effective GenAI integration",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-educator-digital-competence"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-chatbots-as-pedagogical-co-support-exploring-teachers-practices-and-perc-3",

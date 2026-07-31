@@ -919,6 +919,24 @@
       "decision": "reject_source",
       "harvested_at": "2026-07-31",
       "source_id": "src-what-shapes-students-ai-literacy-investigating-digital-competence-studen"
+    },
+    {
+      "title": "Effect of Generative AI Tools on Critical Thinking and Sustainable Learning Skills among Secondary School Students in Swat, Pakistan",
+      "abstract": "The current study involved students of secondary schools of Swat district in Khyber Pakhtunkhwa province in this quantitative study, and the effect of using the generative AI tools (ChatGPT and Google Gemini) on the critical thinking and sustainable learning of the secondary school students of Swat district, Khyber Pakhtunkhwa province, was examined. A quasi-experimental design was used involving 120 students (60 control and 60 experimental) of two matched government secondary schools. For 6 weeks, the experimental group got a traditional intervention approach with generative AI tools for structured inquiry-based tasks, and the control group were given traditional instruction. Pre-test and post-test evaluations were used to measure critical thinking (Watson-Glaser Critical Thinking Appraisal\u2013Short Form) and sustainable learning skills (adapting the SSLSS for students). The results showed that the scores of critical thinking skill and sustainable learning skill of the experimental group were significantly higher than the control group (t = 6.83, p < .001, d = 1.24) and (t = 5.21, p < .001, d = 0.95) respectively. Qualitative observations showed that benefits were dependent on teacher mediation and structured prompting, however. When students were not given any direction, they resorted to copying and pasting. The study finds that generative AI tools, when used with purposeful metacognitive scaffolding, support, and do not replace critical thinking and sustainable learning. Recommendations include teacher training in prompt engineering, incorporation of AI in project-based learning, and ethical guidelines for use of AI in low-resource classrooms.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn"
+    },
+    {
+      "title": "Chatbots as pedagogical co-support: Exploring teachers\u2019 practices and perceptions of GenAI in foreign language education",
+      "abstract": "The rise of Generative Artificial Intelligence (GenAI) has introduced new pedagogical opportunities and challenges in foreign language (FL) education. This study explored how GenAI platforms function as pedagogical co-support in FL teaching, their perceived benefits and challenges in classroom practice, and the competencies required for effective integration. Guided by a qualitative-dominant mixed-methods design, data were collected through a Google Forms questionnaire administered to 30 FL teachers across the Caribbean and North America. Quantitative data were analyzed using descriptive statistics, while qualitative responses underwent thematic analysis with MAXQDA software. The findings reveal that GenAI is increasingly being used to support core teaching tasks such as lesson planning, materials development, and assessment design, enhancing efficiency and expanding instructional possibilities while reshaping traditional notions of pedagogical work. However, this integration is characterized by an ongoing tension between productivity gains and concerns surrounding teacher agency, creativity, and pedagogical judgement, as well as technical, ethical, and infrastructural constraints. The study further found that AI literacy and technical competence, digital literacy and ICT integration, ethical awareness, pedagogical creativity, and lifelong learning are central competencies for effective GenAI integration. These competencies align with UNESCO's AI Competency Framework for Teachers (AI CFT), underscoring the multidimensional nature of AI readiness across technical, ethical, and pedagogical domains. Overall, the findings highlight the need for teacher education programs and institutional policies that prioritize AI literacy, ethical guidance, and infrastructural support to promote sustainable, human-centered GenAI adoption in FL classrooms.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-chatbots-as-pedagogical-co-support-exploring-teachers-practices-and-perc"
     }
   ]
 }
