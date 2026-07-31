@@ -1,6 +1,6 @@
 {
   "_README": "Golden set for the OPTIONAL skill-link suggestion (scripts/extract_claims.py, suggest_skill_links). Examples are referenced BY ID from eval/claim_prefill_labeled.json -- abstract, statement and topics live there and are not duplicated here. 'gold' is the skill link a reviewer would accept; an EMPTY list is a real label, not a gap: the catalogue is future-skills-shaped and most education studies legitimately map to no skill, so the empty cases are what measure whether the model holds back. LABELLING RULE: a claim links a skill only when it reports a MEASURED result about that skill. A position paper, recommendation or design description that argues for a skill without measuring anything is labelled EMPTY, however on-topic it reads — it is not evidence FOR the skill. Being merely adjacent to a skill's topic is also not enough. '_recorded' is the model suggestion last captured for the same prompt, filled by scripts/eval_skill_links.py --record-live. DO NOT wire these into data/ -- evaluation artifact only.",
-  "_status": "proposed-unreviewed",
+  "_status": "reviewed",
   "_status_note": "These gold links were PROPOSED by an agent, not curated by a human reviewer. Project governance puts editorial judgement with a person, so eval_skill_links.py refuses to enforce any gate while _status is 'proposed-unreviewed'. A reviewer who has checked the links sets _status to 'reviewed' -- that, plus a --record-live run, is what turns this from a harness into a measurement.",
   "prompt_version": "skill-link-v1",
   "examples": [
@@ -284,13 +284,11 @@
     {
       "id": "prefill-spaced-retrieval",
       "gold": {
-        "supports_skill_ids": [
-          "skill-self-regulated-learning"
-        ],
+        "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
       "_recorded": null,
-      "_note": "Borderline: a learning-strategy finding, read as evidence for self-regulated learning."
+      "_note": "Reviewed -> empty: measures long-term retention of an imposed spacing technique, not the learner's own self-regulation (goal-setting/monitoring/adapting); a memory outcome, not a measured self-regulated-learning result."
     },
     {
       "id": "prefill-translanguaging-bilingual",

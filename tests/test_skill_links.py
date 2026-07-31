@@ -212,12 +212,25 @@ class GoldenSetGovernanceTest(unittest.TestCase):
     def payload(self) -> dict:
         return json.loads((ROOT / "eval" / "skill_link_labeled.json").read_text())
 
+    def test_committed_golden_set_is_reviewed(self) -> None:
+        # The gold links were reviewed by a person; the file records that so the
+        # gate path is unlocked (wiring it into CI still waits on live 1.5 numbers).
+        import eval_skill_links as esl
+
+        self.assertTrue(esl.is_reviewed(self.payload()))
+
     def test_gate_is_refused_while_unreviewed(self) -> None:
+        # The governance guarantee is independent of the committed file's status:
+        # any set still 'proposed-unreviewed' must refuse every --min-* gate. Test
+        # it against a synthetic unreviewed copy so it keeps holding after review.
         import eval_skill_links as esl
 
         payload = self.payload()
+        payload["_status"] = "proposed-unreviewed"
         self.assertFalse(esl.is_reviewed(payload))
-        with mock.patch.object(sys, "argv", ["eval_skill_links.py", "--min-precision", "0.8"]):
+        with mock.patch.object(esl, "load_payload", lambda: payload), mock.patch.object(
+            sys, "argv", ["eval_skill_links.py", "--min-precision", "0.8"]
+        ):
             self.assertEqual(esl.main(), 1)
 
     def test_report_without_a_gate_still_runs(self) -> None:
