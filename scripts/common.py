@@ -80,6 +80,27 @@ DEFAULT_RESEARCH_QUERIES = ["AI literacy education children future skills"]
 RESEARCH_QUERIES_PATH = ROOT / "config" / "research_queries.json"
 RESEARCH_QUERIES_ENV = "RESEARCH_QUERIES"
 
+# Opt-in flag: when truthy, load_research_queries also derives one query per
+# active catalog skill (derive_catalog_queries) and unions it onto the base set,
+# so the weekly harvest follows what the evidence graph already tracks. Off by
+# default -- the scheduled run stays on the curated config list unless a
+# maintainer enables it (repo variable / workflow_dispatch), keeping the search
+# space a human decision.
+RESEARCH_QUERIES_CATALOG_ENV = "RESEARCH_QUERIES_INCLUDE_CATALOG"
+
+# Scope anchor appended to a skill-derived query, by audience: it keeps the
+# derived query inside the project's focus (learners 0-18 vs. their educators)
+# so a bare skill name like "Systems Thinking" does not search the whole field.
+CATALOG_QUERY_ANCHORS = {
+    "learner": "school students education",
+    "educator": "teacher professional development",
+}
+
+# Upper bound on derived queries, so a growing catalog cannot silently blow up
+# the weekly API load. When the catalog exceeds this, derive_catalog_queries
+# truncates and logs a warning rather than dropping coverage quietly.
+CATALOG_QUERY_LIMIT = 24
+
 
 def dedupe_queries(candidates: Iterable[str]) -> list[str]:
     """Trim/collapse whitespace, drop blanks, and de-dupe while preserving order."""
@@ -94,18 +115,47 @@ def dedupe_queries(candidates: Iterable[str]) -> list[str]:
     return cleaned
 
 
-def load_research_queries() -> list[str]:
-    """Ordered, de-duplicated research queries for the weekly source importers.
+def _truthy(value: str | None) -> bool:
+    return str(value or "").strip().lower() in {"1", "true", "yes", "on"}
 
-    Resolution order, falling through to the next level when one yields nothing
-    usable so the pipeline never runs without a query:
 
-    1. The ``RESEARCH_QUERIES`` env var (newline- or comma-separated) — lets a
-       manual ``workflow_dispatch`` override the set for a single run.
-    2. ``config/research_queries.json`` (a JSON array of strings) — the versioned,
-       editable default the scheduled run uses. Malformed content is ignored.
-    3. ``DEFAULT_RESEARCH_QUERIES`` — the built-in fallback.
+def derive_catalog_queries(
+    skills: list[dict[str, Any]] | None = None, limit: int = CATALOG_QUERY_LIMIT
+) -> list[str]:
+    """Search queries derived from the catalog's active skills.
+
+    Each active skill becomes one query: its name plus an audience-appropriate
+    scope anchor (learner vs. educator), so the weekly harvest automatically
+    follows what the evidence graph already tracks instead of a frozen list.
+    Only ``active`` skills contribute (candidates are still unreviewed noise).
+    Deterministic (sorted), de-duplicated, and capped at *limit* with a logged
+    warning when it truncates, so a growing catalog never drops coverage silently.
     """
+    if skills is None:
+        skills = load_records("skills")
+    derived: list[str] = []
+    for skill in skills:
+        if skill.get("status") != "active":
+            continue
+        name = str(skill.get("name") or "").strip()
+        if not name:
+            continue
+        audience = str(skill.get("audience") or "learner")
+        anchor = CATALOG_QUERY_ANCHORS.get(audience, CATALOG_QUERY_ANCHORS["learner"])
+        derived.append(f"{name} {anchor}")
+    queries = dedupe_queries(sorted(derived))
+    if len(queries) > limit:
+        print(
+            f"Warning: catalog produced {len(queries)} queries; using the first {limit} "
+            f"(raise CATALOG_QUERY_LIMIT to cover more).",
+            file=sys.stderr,
+        )
+        queries = queries[:limit]
+    return queries
+
+
+def _resolve_base_queries() -> list[str]:
+    """The base query set: RESEARCH_QUERIES env → config file → built-in default."""
     raw_env = os.getenv(RESEARCH_QUERIES_ENV)
     if raw_env:
         queries = dedupe_queries(re.split(r"[\n,]", raw_env))
@@ -121,6 +171,31 @@ def load_research_queries() -> list[str]:
             if queries:
                 return queries
     return list(DEFAULT_RESEARCH_QUERIES)
+
+
+def load_research_queries(include_catalog: bool | None = None) -> list[str]:
+    """Ordered, de-duplicated research queries for the weekly source importers.
+
+    The base set resolves through, falling to the next level when one yields
+    nothing usable so the pipeline never runs without a query:
+
+    1. The ``RESEARCH_QUERIES`` env var (newline- or comma-separated) — lets a
+       manual ``workflow_dispatch`` override the set for a single run.
+    2. ``config/research_queries.json`` (a JSON array of strings) — the versioned,
+       editable default the scheduled run uses. Malformed content is ignored.
+    3. ``DEFAULT_RESEARCH_QUERIES`` — the built-in fallback.
+
+    When *include_catalog* is true — or, if it is None, when the
+    ``RESEARCH_QUERIES_INCLUDE_CATALOG`` env var is truthy — the queries derived
+    from active catalog skills (derive_catalog_queries) are unioned onto the base
+    set. This stays opt-in so the search space remains a human decision.
+    """
+    base = _resolve_base_queries()
+    if include_catalog is None:
+        include_catalog = _truthy(os.getenv(RESEARCH_QUERIES_CATALOG_ENV))
+    if include_catalog:
+        return dedupe_queries([*base, *derive_catalog_queries()])
+    return base
 
 
 def normalize_title(title: str) -> str:

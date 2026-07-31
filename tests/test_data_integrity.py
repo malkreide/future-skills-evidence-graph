@@ -24,6 +24,7 @@ from cluster_claims import (  # noqa: E402
 )
 from common import source_is_valid_candidate  # noqa: E402
 from common import (  # noqa: E402
+    CATALOG_QUERY_ANCHORS,
     DEFAULT_RESEARCH_QUERIES,
     RELEVANCE_MODEL_PATH,
     RELEVANCE_THRESHOLD,
@@ -31,6 +32,7 @@ from common import (  # noqa: E402
     classify_audience,
     decide_relevance,
     dedupe_queries,
+    derive_catalog_queries,
     fetch_or_warn,
     filter_new_claims,
     filter_new_sources,
@@ -490,6 +492,64 @@ class DataIntegrityTests(unittest.TestCase):
         self.assertIsInstance(payload, list)
         self.assertTrue(payload)
         self.assertTrue(all(isinstance(q, str) and q.strip() for q in payload))
+
+    def test_derive_catalog_queries_uses_active_skills_and_audience_anchor(self) -> None:
+        skills = [
+            {"name": "Systems Thinking", "status": "active"},  # learner (default)
+            {"name": "Teaching AI Literacy", "status": "active", "audience": "educator"},
+            {"name": "Candidate Skill", "status": "candidate"},  # excluded
+            {"name": "", "status": "active"},  # no name -> excluded
+        ]
+        derived = derive_catalog_queries(skills)
+        self.assertEqual(
+            derived,
+            [
+                f"Systems Thinking {CATALOG_QUERY_ANCHORS['learner']}",
+                f"Teaching AI Literacy {CATALOG_QUERY_ANCHORS['educator']}",
+            ],
+        )
+
+    def test_derive_catalog_queries_is_sorted_and_deduped(self) -> None:
+        skills = [
+            {"name": "Beta Skill", "status": "active"},
+            {"name": "Alpha Skill", "status": "active"},
+            {"name": "Alpha Skill", "status": "active"},  # duplicate
+        ]
+        self.assertEqual(
+            derive_catalog_queries(skills),
+            [
+                f"Alpha Skill {CATALOG_QUERY_ANCHORS['learner']}",
+                f"Beta Skill {CATALOG_QUERY_ANCHORS['learner']}",
+            ],
+        )
+
+    def test_derive_catalog_queries_caps_and_warns(self) -> None:
+        skills = [{"name": f"Skill {i:02d}", "status": "active"} for i in range(30)]
+        with mock.patch("sys.stderr"):
+            capped = derive_catalog_queries(skills, limit=5)
+        self.assertEqual(len(capped), 5)  # truncated, not all 30
+
+    def test_load_research_queries_unions_catalog_when_enabled(self) -> None:
+        import common
+
+        base = common.load_research_queries()
+        catalog = common.derive_catalog_queries()
+        combined = common.load_research_queries(include_catalog=True)
+        # Union of base and catalog, de-duplicated; every source query is present.
+        self.assertEqual(combined, dedupe_queries([*base, *catalog]))
+        for query in base + catalog:
+            self.assertIn(query, combined)
+
+    def test_load_research_queries_catalog_env_flag(self) -> None:
+        import os
+
+        import common
+
+        base_len = len(common.load_research_queries())
+        with mock.patch.dict(os.environ, {"RESEARCH_QUERIES_INCLUDE_CATALOG": "true"}):
+            self.assertGreater(len(common.load_research_queries()), base_len)
+        with mock.patch.dict(os.environ, {"RESEARCH_QUERIES_INCLUDE_CATALOG": "0"}):
+            self.assertEqual(len(common.load_research_queries()), base_len)
 
     def test_claim_extraction_uses_verbatim_text_anchor(self) -> None:
         source = {

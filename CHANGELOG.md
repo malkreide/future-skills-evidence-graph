@@ -14,6 +14,19 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Changed
 
+- **Wöchentliche Suche: kuratierte Zusatz-Abfragen und opt-in Katalog-Modus.**
+  `config/research_queries.json` enthält jetzt eine breitere kuratierte Auswahl
+  (generative KI, Computational Thinking, Medienkompetenz, Fehlinformation/kritisches
+  Denken, Datenkompetenz, Lehrkräfte-KI-Kompetenz, allgemeine Zukunftskompetenzen)
+  statt nur der einen Ausgangs-Abfrage. Zusätzlich folgt die Suche auf Wunsch dem
+  Evidenzgraphen selbst: der neue **opt-in Katalog-Modus** (`derive_catalog_queries`,
+  aktivierbar per `include_catalog`-Checkbox im `workflow_dispatch` oder der
+  Repo-Variable/Env `RESEARCH_QUERIES_INCLUDE_CATALOG`) erzeugt je **aktivem** Skill
+  eine Abfrage — Skill-Name plus zielgruppengerechter Scope-Anker (Lernende vs.
+  Lehrkräfte) — und vereint sie mit der Config-Liste. Ein neuer Skill weitet die
+  Suche damit automatisch aus; die Menge ist gedeckelt (`CATALOG_QUERY_LIMIT`) und
+  protokolliert bei Überschreitung, statt still Abdeckung zu verlieren. Standardmäßig
+  aus, damit der Suchraum eine menschliche Entscheidung bleibt.
 - **KI-Assist: `outcome`/`context` werden semantisch gemessen statt lexikalisch.**
   Die beiden Freitext-Felder des optionalen Claim-Pre-Fills wurden per
   Jaccard-Token-Overlap gegen den Gold-Satz gescort — was die falsche Sache misst:
