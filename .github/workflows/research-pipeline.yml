@@ -7,6 +7,11 @@ on:
         description: "Optional search queries for this run (one per line or comma-separated). Empty uses config/research_queries.json."
         required: false
         type: string
+      include_catalog:
+        description: "Also derive a query per active catalog skill for this run."
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: "17 5 * * 1"
 
@@ -17,10 +22,14 @@ permissions:
 jobs:
   import-candidates:
     runs-on: ubuntu-latest
-    # Empty on the scheduled run, so the importers fall back to the versioned
-    # config/research_queries.json; a manual dispatch can override the set here.
+    # RESEARCH_QUERIES is empty on the scheduled run, so the importers fall back to
+    # the versioned config/research_queries.json; a manual dispatch can override it.
+    # RESEARCH_QUERIES_INCLUDE_CATALOG opts into deriving a query per active skill:
+    # the dispatch checkbox wins, else the repo variable (unset = off), so the
+    # scheduled run only follows the catalog when a maintainer enables it.
     env:
       RESEARCH_QUERIES: ${{ github.event.inputs.queries }}
+      RESEARCH_QUERIES_INCLUDE_CATALOG: ${{ github.event.inputs.include_catalog || vars.RESEARCH_QUERIES_INCLUDE_CATALOG }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Restore pending candidates from open pull request branch

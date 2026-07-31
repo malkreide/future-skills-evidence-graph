@@ -128,7 +128,15 @@ configured query and deduplicates across them; adding a query needs no code. A
 manual `workflow_dispatch` run can override the set for one run via its `queries`
 input (one per line or comma-separated), and the `RESEARCH_QUERIES` environment
 variable does the same locally — both fall back to the config file, which falls
-back to a built-in default, so the pipeline never runs query-less. The importers
+back to a built-in default, so the pipeline never runs query-less. Beyond the
+curated list, an **opt-in catalog mode** makes the harvest follow the evidence
+graph itself: with the `include_catalog` dispatch checkbox (or the
+`RESEARCH_QUERIES_INCLUDE_CATALOG` repo variable / env), `derive_catalog_queries`
+adds one query per **active** skill — the skill name plus an audience-appropriate
+scope anchor (learner vs. educator) — unioned onto the base set. So adding a skill
+automatically widens the search to hunt for evidence about it, capped and logged
+so a growing catalog never silently blows up the API load. It stays off by
+default, keeping the search space a human decision. The importers
 extract candidate claims from the new sources' abstracts (`scripts/extract_claims.py`),
 clusters those claims into candidate skills (`scripts/cluster_claims.py`), and opens
 a candidate pull request. While that pull request stays unmerged, later runs append
