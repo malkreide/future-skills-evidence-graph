@@ -7225,17 +7225,19 @@
       "src-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni"
     ],
     "text_anchor": "abstract, sentence 7: \"These findings enhance our understanding of the dynamics of secondary school students\u2019 metacognition in AI education and provide evidence-based insights into gender- and experience-related differences, guiding the development of tailored pedagogical strategies in AI education.\"",
-    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Epistemic Network Analysis of 24 secondary-school students enrolled in an AI education course, mapping metacognitive elements",
+    "age_range": "12-16",
+    "outcome": "Metacognitive experiences and strategies predominated; gender- and experience-related differences suggest tailored pedagogical strategies for AI education",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-self-regulated-learning"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni-2",
@@ -9277,17 +9279,19 @@
       "src-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a"
     ],
     "text_anchor": "abstract, sentence 5: \"The paper also addresses the significant ethical considerations inherent in PE education, including algorithmic bias, data privacy, and student agency, and outlines essential competencies and professional development models for empowering educators.\"",
-    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
+    "context": "Conceptual K-12 curriculum framework for prompt engineering (Backward Design, Project-Based Learning, Computational Thinking), including educator competencies and professional-development models",
+    "age_range": "0-18",
+    "outcome": "Positions prompt engineering as a 21st-century literacy integrating critical thinking, creativity and ethics; outlines educator competencies and PD models",
+    "evidence_type": "conceptual_review",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-educator-ai-pedagogy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a-2",
@@ -10634,9 +10638,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-what-shapes-students-ai-literacy-investigating-digital-competence-studen-2",
@@ -10653,9 +10657,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-what-shapes-students-ai-literacy-investigating-digital-competence-studen-3",
@@ -10672,9 +10676,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-developing-middle-schoolers-apos-artificial-intelligence-literacy-throug",
@@ -22064,17 +22068,19 @@
       "src-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl"
     ],
     "text_anchor": "abstract, sentence 4: \"Findings indicate positive attitudes toward ChatGPT, with high scorers demonstrating robust engagement, adaptability, and ethical awareness in using the tool for English learning.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, ethics, resilience. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Explanatory sequential mixed-methods study of 100 high-school students' AI literacy (affective, behavioral, cognitive, ethical dimensions) using ChatGPT in English learning",
+    "age_range": "14-18",
+    "outcome": "Higher-AI-literacy students showed stronger engagement, adaptability and ethical awareness; variation highlights the need for targeted interventions",
     "evidence_type": "empirical_study",
-    "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "evidence_strength": "moderate",
+    "supports_skill_ids": [
+      "skill-generative-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl-2",
@@ -24363,17 +24369,19 @@
       "src-interactive-tools-for-middle-school-students-ai-literacy"
     ],
     "text_anchor": "abstract, sentence 4: \"A mixed method study with seven students (ages 10\u201314) revealed their early intuitions about AI systems and shifts in views on bias and ethics, providing preliminary evidence that interactive tools can make these concepts tangible for middle school students.\"",
-    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "Exploratory mixed-method study with 7 middle-school students (ages 10-14) using three interactive AI-literacy tools (PromptPeek, Bandit Explorer, and a third)",
+    "age_range": "10-14",
+    "outcome": "Interactive tools surfaced students' early intuitions about AI and shifted their views on bias and ethics; preliminary evidence that such tools make AI concepts tangible",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-ai-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-examining-teacher-educators-role-in-enhancing-digital-competence-in-viet",
@@ -25522,17 +25530,19 @@
       "src-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco"
     ],
     "text_anchor": "abstract, sentence 4: \"This study is based on the theory of critical digital literacy and combined with the local practice in China -the Education Community Model in Zhejiang Province, to analyze the advantages and disadvantages of policies under this model for cultivating digital literacy among primary and secondary school students in the era of generative AI.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, digital competence. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
-    "evidence_type": "empirical_study",
+    "context": "Policy/strategy analysis grounded in critical digital literacy theory and the Education Community Model (Zhejiang, China) for primary and secondary teachers and students in the GenAI era",
+    "age_range": "0-18",
+    "outcome": "Analyzes strengths and weaknesses of the model for cultivating digital literacy amid misinformation and algorithmic bias; recommends cultivation strategies",
+    "evidence_type": "conceptual_review",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-educator-digital-competence"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco-2",

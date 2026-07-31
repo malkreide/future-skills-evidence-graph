@@ -865,6 +865,60 @@
       "decision": "reject_source",
       "harvested_at": "2026-07-31",
       "source_id": "src-the-ethical-and-legal-complexities-of-regulating-companion-ai-chatbots"
+    },
+    {
+      "title": "Interactive Tools for Middle School Students AI Literacy",
+      "abstract": "Today's youth are the first generation to grow up fully immersed in AI-powered technologies, from recommender systems that shape everyday media choices to generative models that produce text, images, and video. Yet many engage with these tools without recognizing their limitations, biases, or implications for creativity, privacy, and critical thinking. To address this gap, three exploratory tools were developed for middle school students: (1) PromptPeek, which uses prompt creation and reverse prompting to reveal bias and failures with negation; (2) Bandit Explorer, a recommender system simulation that illustrates the exploration\u2013exploitation trade-off through an epsilon-greedy policy; and (3) SpotAI, which engages students in detecting, editing, and reasoning about the ethical dimensions of deepfakes. A mixed method study with seven students (ages 10\u201314) revealed their early intuitions about AI systems and shifts in views on bias and ethics, providing preliminary evidence that interactive tools can make these concepts tangible for middle school students.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-interactive-tools-for-middle-school-students-ai-literacy"
+    },
+    {
+      "title": "An Epistemic Network Analysis (ENA) of Secondary School Students\u2019 Metacognition in Learning Generative AI",
+      "abstract": "The rapid evolution of artificial intelligence (AI) technologies, particularly generative AI (GenAI), underscores the urgent need to cultivate AI literacy and metacognitive skills among secondary school students, preparing them for an AI-driven future. While metacognition is recognized as essential in learning AI, the relationships among metacognitive elements and their variations across gender and learning experience remain underexplored. This study investigates metacognition in 24 secondary school students enrolled in an AI education course, utilizing ENA to map the interconnections among metacognitive elements. The findings reveal that metacognitive experiences and strategies predominate students\u2019 metacognitive processes. Notably, male students demonstrated tighter associations between metacognitive experiences and actions (or strategies) compared to female students. Additionally, experienced learners prioritized actions (or strategies) as central to their metacognitive processes, while less experienced learners focused more on metacognitive experiences. These findings enhance our understanding of the dynamics of secondary school students\u2019 metacognition in AI education and provide evidence-based insights into gender- and experience-related differences, guiding the development of tailored pedagogical strategies in AI education.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni"
+    },
+    {
+      "title": "Rethinking AI literacy: How high school students navigate ChatGPT in English language learning",
+      "abstract": "This study explores high school students\u2019 AI literacy and their use of ChatGPT in English language learning, addressing the gap in AI application research at the secondary education level. Utilizing an explanatory sequential mixed-methods design, the study evaluated the AI literacy of 100 high school students via a validated questionnaire, assessing affective, behavioral, cognitive, and ethical dimensions. Follow-up interviews with six students of varying AI literacy levels provided deeper insights into their experiences and perceptions of ChatGPT. Findings indicate positive attitudes toward ChatGPT, with high scorers demonstrating robust engagement, adaptability, and ethical awareness in using the tool for English learning. Conversely, low scorers showed limited understanding, over-reliance on ChatGPT for superficial tasks, and underutilization of its potential for deeper learning. Despite its benefits, concerns about over-reliance and ethical issues highlight the need for structured guidance. Variations in AI literacy emphasize the importance of targeted interventions to promote critical thinking and responsible AI use. This study offers practical recommendations for integrating AI literacy into curricula to ensure effective and ethical use of AI tools. Future research should investigate the impact of comprehensive AI literacy programs on student engagement and learning outcomes.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl"
+    },
+    {
+      "title": "Prompt Engineering as a 21st-Century Literacy: A K-12 Curriculum Design and Assessment Framework",
+      "abstract": "The rapid proliferation of generative Artificial Intelligence (AI) necessitates a fundamental shift in educational paradigms, positioning prompt engineering (PE) as a crucial 21st-century literacy for K-12 students. This paper argues that PE transcends mere technical skill, embodying a complex interplay of critical thinking, iterative refinement, creative problem-solving, and ethical awareness. It proposes a comprehensive K-12 curriculum framework for PE, grounded in Backward Design principles and leveraging Project-Based Learning (PBL) and Computational Thinking (CT) for authentic skill development across elementary, middle, and high school levels. Furthermore, a multi-dimensional assessment framework is presented, incorporating formative and summative strategies, along with detailed rubrics, to evaluate the multifaceted nature of PE literacy. The paper also addresses the significant ethical considerations inherent in PE education, including algorithmic bias, data privacy, and student agency, and outlines essential competencies and professional development models for empowering educators. By fostering PE literacy, K-12 education can equip students to critically and creatively engage with AI, preparing them for a future where human-AI collaboration is ubiquitous.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a"
+    },
+    {
+      "title": "Research on Digital Literacy Cultivation Strategies for Primary and Secondary School Teachers and Students in the Generative AI Era",
+      "abstract": "With the widespread application of generative AI such as ChatGPT and DeepSeek, primary and secondary school teachers and students are facing severe challenges of rampant false information and algorithmic bias. Therefore, the cultivation of digital literacy among primary and secondary school teachers and students has received widespread attention from society. However, there are still problems such as uneven resource allocation and weak AI ethical awareness. This study is based on the theory of critical digital literacy and combined with the local practice in China -the Education Community Model in Zhejiang Province, to analyze the advantages and disadvantages of policies under this model for cultivating digital literacy among primary and secondary school students in the era of generative AI. This article analyzes how this model has, to some extent, narrowed the digital divide between urban and rural areas, promoted the development of educational equity, improved teacher capabilities, and upgraded digital technology. However, there are also issues such as short- term effectiveness and a lack of educational ethics. Based on this, this article proposes the following suggestions in policy design, teacher training, and technological iteration.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco"
+    },
+    {
+      "title": "What Shapes Students' AI Literacy? Investigating Digital Competence, Student Background, and GenAI Use in Higher Education",
+      "abstract": "This study investigates the relationships between digital competence, Generative AI (GenAI) usage, students' personal background characteristics and AI literacy among undergraduate students in the United Arab Emirates (UAE). As AI becomes increasingly integrated into higher education, understanding how students develop the skills to use these tools responsibly and effectively is critical. Drawing on validated instruments, the Student Digital Competence Scale (SDiCoS) and Artificial Intelligence Literacy Scale (AILS), data were collected from 186 undergraduate students and analyzed using factor analysis, structural equation modeling, ANOVA, and hierarchical regression. Findings revealed a strong positive relationship between digital competence and AI literacy with digital evaluation skills emerging as the strongest predictor. Frequency of GenAI use was significantly associated with both digital competence and AI literacy. Student background characteristics, including academic performance (CGPA), type of high school attended (private international vs. public), and parental education levels, significantly influenced the relationship. Specifically, academic performance positively contributed to both digital competence and AI literacy, while educational background variables moderated the relationship between the two. Additionally, digital competence significantly predicted GenAI usage frequency, whereas AI literacy did not. These results highlight the foundational role of digital competence in supporting students' AI literacy and underscore the value of experiential learning. Practical implications include integrating AI ethics, critical evaluation, and hands-on AI engagement into digital literacy curricula. The study contributes to ongoing global discussions on AI in education, offering insights for curriculum development, institutional strategy, and equitable access to emerging technologies in higher education.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-what-shapes-students-ai-literacy-investigating-digital-competence-studen"
     }
   ]
 }

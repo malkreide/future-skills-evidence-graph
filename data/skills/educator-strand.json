@@ -5,11 +5,11 @@
     "name_de": "KI-Kompetenz unterrichten",
     "short_label": "KI-Didaktik",
     "definition": "Educators' competence to design and deliver age-appropriate AI-literacy instruction for school learners - selecting tools, pedagogies and activities that make AI concepts learnable in primary and secondary classrooms.",
-    "definition_de": "Kompetenz von Lehrpersonen, altersgerechten KI-Unterricht für Schülerinnen und Schüler zu gestalten und durchzuführen – Werkzeuge, Didaktik und Aktivitäten so zu wählen, dass KI-Konzepte in Primar- und Sekundarklassen lernbar werden.",
+    "definition_de": "Kompetenz von Lehrpersonen, altersgerechten KI-Unterricht f\u00fcr Sch\u00fclerinnen und Sch\u00fcler zu gestalten und durchzuf\u00fchren \u2013 Werkzeuge, Didaktik und Aktivit\u00e4ten so zu w\u00e4hlen, dass KI-Konzepte in Primar- und Sekundarklassen lernbar werden.",
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",
-    "evidence_score": 0.5,
+    "evidence_score": 0.53,
     "trend": "emerging",
     "topics": [
       "ai literacy",
@@ -18,7 +18,8 @@
     ],
     "supporting_claim_ids": [
       "claim-professional-development-for-teachers-in-ai-literacy-education-teaching",
-      "claim-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among"
+      "claim-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among",
+      "claim-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -55,10 +56,20 @@
         "date": "2026-06-24",
         "change": "evidence_score 0.46 -> 0.5",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.5 -> 0.53",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-24",
-    "updated_at": "2026-06-24"
+    "updated_at": "2026-07-31"
   },
   {
     "id": "skill-educator-digital-competence",
@@ -66,11 +77,11 @@
     "name_de": "Digitale und KI-Kompetenz von Lehrpersonen",
     "short_label": "Digital-LK",
     "definition": "Educators' own digital and AI literacy - the foundational technological competence teachers need to use AI tools responsibly and integrate tech-driven pedagogy into school teaching.",
-    "definition_de": "Die eigene Digital- und KI-Kompetenz von Lehrpersonen – die technologische Grundkompetenz, um KI-Werkzeuge verantwortungsvoll zu nutzen und technologiegestützte Didaktik in den Schulunterricht zu integrieren.",
+    "definition_de": "Die eigene Digital- und KI-Kompetenz von Lehrpersonen \u2013 die technologische Grundkompetenz, um KI-Werkzeuge verantwortungsvoll zu nutzen und technologiegest\u00fctzte Didaktik in den Schulunterricht zu integrieren.",
     "age_range": "Lehrende",
     "audience": "educator",
     "status": "active",
-    "evidence_score": 0.59,
+    "evidence_score": 0.62,
     "trend": "growing",
     "topics": [
       "digital competence",
@@ -81,7 +92,8 @@
       "claim-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil",
       "claim-investigation-of-digital-competencies-and-artificial-intelligence-litera",
       "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-9",
-      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-11"
+      "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-11",
+      "claim-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -138,9 +150,19 @@
         "date": "2026-06-28",
         "change": "evidence_score 0.58 -> 0.59",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.59 -> 0.62",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-24",
-    "updated_at": "2026-06-28"
+    "updated_at": "2026-07-31"
   }
 ]

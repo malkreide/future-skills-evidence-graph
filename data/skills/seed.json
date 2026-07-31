@@ -5,11 +5,11 @@
     "name_de": "KI-Kompetenz",
     "short_label": "AI",
     "definition": "Ability to understand, use, question, and shape AI systems with awareness of capabilities, limits, risks, and human purpose.",
-    "definition_de": "Fähigkeit, KI-Systeme zu verstehen, zu nutzen, zu hinterfragen und mitzugestalten – im Bewusstsein ihrer Möglichkeiten, Grenzen, Risiken und des menschlichen Zwecks.",
+    "definition_de": "F\u00e4higkeit, KI-Systeme zu verstehen, zu nutzen, zu hinterfragen und mitzugestalten \u2013 im Bewusstsein ihrer M\u00f6glichkeiten, Grenzen, Risiken und des menschlichen Zwecks.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.78,
+    "evidence_score": 0.77,
     "trend": "growing",
     "topics": [
       "ai literacy",
@@ -27,7 +27,8 @@
       "claim-a-scoping-review-of-empirical-research-on-ai-literacy-assessments-abstra",
       "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
       "claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e",
-      "claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev"
+      "claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev",
+      "claim-interactive-tools-for-middle-school-students-ai-literacy-abstract-s4"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -85,10 +86,20 @@
         "date": "2026-06-24",
         "change": "Attached reviewed claim claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev as supporting evidence",
         "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-interactive-tools-for-middle-school-students-ai-literacy-abstract-s4 as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.78 -> 0.77",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-24"
+    "updated_at": "2026-07-31"
   },
   {
     "id": "skill-critical-thinking",
@@ -96,7 +107,7 @@
     "name_de": "Kritisches Denken und epistemische Wachsamkeit",
     "short_label": "Kritik",
     "definition": "Ability to test claims, inspect evidence, identify bias, compare explanations, and resist unsupported authority from humans or machines.",
-    "definition_de": "Fähigkeit, Behauptungen zu prüfen, Belege zu untersuchen, Verzerrungen zu erkennen, Erklärungen zu vergleichen und unbegründeter Autorität von Menschen wie Maschinen zu widerstehen.",
+    "definition_de": "F\u00e4higkeit, Behauptungen zu pr\u00fcfen, Belege zu untersuchen, Verzerrungen zu erkennen, Erkl\u00e4rungen zu vergleichen und unbegr\u00fcndeter Autorit\u00e4t von Menschen wie Maschinen zu widerstehen.",
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
@@ -162,7 +173,7 @@
     "name_de": "Datenkompetenz",
     "short_label": "Daten",
     "definition": "Ability to interpret, question, communicate, and use data-informed claims while understanding uncertainty and model limits.",
-    "definition_de": "Fähigkeit, datengestützte Aussagen zu interpretieren, zu hinterfragen, zu kommunizieren und zu nutzen – im Verständnis von Unsicherheit und Modellgrenzen.",
+    "definition_de": "F\u00e4higkeit, datengest\u00fctzte Aussagen zu interpretieren, zu hinterfragen, zu kommunizieren und zu nutzen \u2013 im Verst\u00e4ndnis von Unsicherheit und Modellgrenzen.",
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
@@ -209,7 +220,7 @@
     "name_de": "Digital- und Medienkompetenz",
     "short_label": "Medien",
     "definition": "Ability to find, evaluate, create, communicate, and act safely with digital information and media.",
-    "definition_de": "Fähigkeit, digitale Informationen und Medien zu finden, zu bewerten, zu erstellen, zu kommunizieren und sicher damit zu handeln.",
+    "definition_de": "F\u00e4higkeit, digitale Informationen und Medien zu finden, zu bewerten, zu erstellen, zu kommunizieren und sicher damit zu handeln.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -267,7 +278,7 @@
     "name_de": "Ethische Technikurteilskraft",
     "short_label": "Ethik",
     "definition": "Ability to reason about privacy, fairness, safety, accountability, human rights, and tradeoffs when technology affects people.",
-    "definition_de": "Fähigkeit, über Datenschutz, Fairness, Sicherheit, Verantwortlichkeit, Menschenrechte und Zielkonflikte zu urteilen, wenn Technologie Menschen betrifft.",
+    "definition_de": "F\u00e4higkeit, \u00fcber Datenschutz, Fairness, Sicherheit, Verantwortlichkeit, Menschenrechte und Zielkonflikte zu urteilen, wenn Technologie Menschen betrifft.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -328,11 +339,11 @@
     "name_de": "Selbstreguliertes Lernen",
     "short_label": "Selbst",
     "definition": "Ability to set goals, choose strategies, monitor progress, reflect, and adapt learning behavior over time.",
-    "definition_de": "Fähigkeit, Ziele zu setzen, Strategien zu wählen, Fortschritt zu überwachen, zu reflektieren und das eigene Lernverhalten über die Zeit anzupassen.",
+    "definition_de": "F\u00e4higkeit, Ziele zu setzen, Strategien zu w\u00e4hlen, Fortschritt zu \u00fcberwachen, zu reflektieren und das eigene Lernverhalten \u00fcber die Zeit anzupassen.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.7,
+    "evidence_score": 0.71,
     "trend": "stable",
     "topics": [
       "metacognition",
@@ -344,7 +355,8 @@
       "claim-student-agency-transformative-competencies",
       "claim-learning-science-metacognition",
       "claim-future-schools-technology-human-skills",
-      "claim-equity-foundational-learning"
+      "claim-equity-foundational-learning",
+      "claim-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -366,18 +378,28 @@
         "date": "2026-06-12",
         "change": "Added topic 'self-regulation'",
         "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.7 -> 0.71",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-07-31"
   },
   {
     "id": "skill-creative-problem-solving",
     "name": "Creative Problem Solving",
-    "name_de": "Kreatives Problemlösen",
+    "name_de": "Kreatives Probleml\u00f6sen",
     "short_label": "Kreativ",
     "definition": "Ability to generate, refine, test, and communicate useful ideas when facing open-ended problems.",
-    "definition_de": "Fähigkeit, bei offenen Problemen nützliche Ideen zu entwickeln, zu verfeinern, zu erproben und zu kommunizieren.",
+    "definition_de": "F\u00e4higkeit, bei offenen Problemen n\u00fctzliche Ideen zu entwickeln, zu verfeinern, zu erproben und zu kommunizieren.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -422,10 +444,10 @@
   {
     "id": "skill-collaborative-problem-solving",
     "name": "Collaborative Problem Solving",
-    "name_de": "Kollaboratives Problemlösen",
+    "name_de": "Kollaboratives Probleml\u00f6sen",
     "short_label": "Koop.",
     "definition": "Ability to coordinate with others, share knowledge, resolve tension, and make progress on complex shared problems.",
-    "definition_de": "Fähigkeit, sich mit anderen zu koordinieren, Wissen zu teilen, Spannungen zu lösen und bei komplexen gemeinsamen Problemen voranzukommen.",
+    "definition_de": "F\u00e4higkeit, sich mit anderen zu koordinieren, Wissen zu teilen, Spannungen zu l\u00f6sen und bei komplexen gemeinsamen Problemen voranzukommen.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -466,7 +488,7 @@
     "name_de": "Systemdenken",
     "short_label": "Systeme",
     "definition": "Ability to understand relationships, feedback loops, incentives, stakeholders, and second-order effects in complex systems.",
-    "definition_de": "Fähigkeit, Zusammenhänge, Rückkopplungen, Anreize, Beteiligte und Folgewirkungen in komplexen Systemen zu verstehen.",
+    "definition_de": "F\u00e4higkeit, Zusammenh\u00e4nge, R\u00fcckkopplungen, Anreize, Beteiligte und Folgewirkungen in komplexen Systemen zu verstehen.",
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
@@ -588,10 +610,10 @@
   {
     "id": "skill-resilience-adaptability",
     "name": "Resilience and Adaptability",
-    "name_de": "Resilienz und Anpassungsfähigkeit",
+    "name_de": "Resilienz und Anpassungsf\u00e4higkeit",
     "short_label": "Resilienz",
     "definition": "Ability to respond constructively to uncertainty, change, error, feedback, and shifting technological conditions.",
-    "definition_de": "Fähigkeit, konstruktiv mit Unsicherheit, Veränderung, Fehlern, Rückmeldungen und wechselnden technologischen Bedingungen umzugehen.",
+    "definition_de": "F\u00e4higkeit, konstruktiv mit Unsicherheit, Ver\u00e4nderung, Fehlern, R\u00fcckmeldungen und wechselnden technologischen Bedingungen umzugehen.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",

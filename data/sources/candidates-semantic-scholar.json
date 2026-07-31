@@ -466,9 +466,9 @@
       "critical thinking",
       "self-regulation"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 1.0,
     "audience": "learner"
   },
@@ -1825,9 +1825,9 @@
       "ethics",
       "systems thinking"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 1.0,
     "audience": "educator"
   },
@@ -3185,9 +3185,9 @@
       "ethics",
       "resilience"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 1.0,
     "audience": "learner"
   },
@@ -4949,9 +4949,9 @@
       "creativity",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 1.0,
     "audience": "learner"
   },
@@ -5866,9 +5866,9 @@
       "digital competence",
       "ethics"
     ],
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 1.0,
     "audience": "educator"
   },

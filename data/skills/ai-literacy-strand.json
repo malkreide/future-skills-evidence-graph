@@ -5,7 +5,7 @@
     "name_de": "KI-Grundkonzepte",
     "short_label": "KI-Konzepte",
     "definition": "Ability to explain in age-appropriate terms how AI and machine-learning systems take in data, learn patterns, make predictions, and where the limits of machine intelligence lie.",
-    "definition_de": "Fähigkeit, altersgerecht zu erklären, wie KI- und Machine-Learning-Systeme Daten aufnehmen, Muster lernen und Vorhersagen treffen – und wo die Grenzen maschineller Intelligenz liegen.",
+    "definition_de": "F\u00e4higkeit, altersgerecht zu erkl\u00e4ren, wie KI- und Machine-Learning-Systeme Daten aufnehmen, Muster lernen und Vorhersagen treffen \u2013 und wo die Grenzen maschineller Intelligenz liegen.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -97,7 +97,7 @@
     "name_de": "KI im Alltag erkennen",
     "short_label": "Alltag-KI",
     "definition": "Ability to recognize where AI and algorithms operate in everyday tools - search, recommendations, voice assistants, smart devices - and to question how they shape what we see and do.",
-    "definition_de": "Fähigkeit zu erkennen, wo KI und Algorithmen in Alltagswerkzeugen wirken – Suche, Empfehlungen, Sprachassistenten, smarte Geräte – und zu hinterfragen, wie sie prägen, was wir sehen und tun.",
+    "definition_de": "F\u00e4higkeit zu erkennen, wo KI und Algorithmen in Alltagswerkzeugen wirken \u2013 Suche, Empfehlungen, Sprachassistenten, smarte Ger\u00e4te \u2013 und zu hinterfragen, wie sie pr\u00e4gen, was wir sehen und tun.",
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
@@ -155,11 +155,11 @@
     "name_de": "Kompetenz im Umgang mit generativer KI",
     "short_label": "GenKI",
     "definition": "Ability to use generative AI tools effectively while understanding how they produce content, verifying their outputs, protecting personal data, and recognizing bias and limits.",
-    "definition_de": "Fähigkeit, generative KI-Werkzeuge wirksam zu nutzen und dabei zu verstehen, wie sie Inhalte erzeugen – ihre Ausgaben zu überprüfen, persönliche Daten zu schützen und Verzerrungen wie Grenzen zu erkennen.",
+    "definition_de": "F\u00e4higkeit, generative KI-Werkzeuge wirksam zu nutzen und dabei zu verstehen, wie sie Inhalte erzeugen \u2013 ihre Ausgaben zu \u00fcberpr\u00fcfen, pers\u00f6nliche Daten zu sch\u00fctzen und Verzerrungen wie Grenzen zu erkennen.",
     "age_range": "13-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.68,
+    "evidence_score": 0.7,
     "trend": "emerging",
     "topics": [
       "ai literacy",
@@ -168,7 +168,8 @@
     ],
     "supporting_claim_ids": [
       "claim-generative-ai-responsible-use",
-      "claim-chatgpt-output-verification"
+      "claim-chatgpt-output-verification",
+      "claim-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -196,9 +197,19 @@
         "date": "2026-06-22",
         "change": "Promoted candidate skill to active",
         "reason": "Human review confirmed definition and reviewed supporting evidence."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.68 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-06-22",
-    "updated_at": "2026-06-22"
+    "updated_at": "2026-07-31"
   }
 ]
