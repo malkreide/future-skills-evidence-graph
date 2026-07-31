@@ -766,6 +766,177 @@
       "decision": "reject_source",
       "harvested_at": "2026-06-29",
       "source_id": "src-young-people-s-perceptions-and-recommendations-for-conversational-genera"
+    },
+    {
+      "title": "Beyond Adam: SOAP and Muon for Faster, Label-Efficient Training of Machine Learning Interatomic Potentials",
+      "abstract": "Machine learning interatomic potentials (MLIPs) have become a hallmark of AI for scientific simulation. While efforts on new architectures and datasets have led to increasingly accurate and general models, the choice of optimizer for training has largely remained unexplored, defaulting to Adam and its variants in the community. Here, we implement and systematically compare a class of recently proposed matrix-structured optimizers, including Muon, SOAP, and the hybrid SOAP-Muon, for training NequIP and Allegro MLIP models. We find that these optimizers can substantially outperform Adam in both convergence speed and final accuracy. SOAP and SOAP-Muon emerge as robust and consistently strong methods, while Muon only provides partial gains relative to Adam. The improvements are particularly pronounced under partial force supervision. Our results indicate that optimizer choice is an overlooked yet impactful design axis for MLIPs.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-beyond-adam-soap-and-muon-for-faster-label-efficient-training-of-machine"
+    },
+    {
+      "title": "Audio-Visual Flamingo: Open Audio-Visual Intelligence for Long and Complex Videos",
+      "abstract": "We present Audio-Visual Flamingo (AV-Flamingo), a fully open state-of-the-art audio-visual large language model (AV-LLM) for joint understanding and reasoning over audio, images, and long-form videos. Unlike prior AV-LLMs that primarily focus on short clips, AV-Flamingo is designed for understanding and reasoning over long and complex real-world (audio-visual) videos. To support this, we make three key contributions: (i) Audio-Visual-Skills, a large-scale collection of real-world videos with ~7M caption and question-answer training instances designed to emphasize temporal, compositional, and cross-modal audio-visual reasoning; (ii) a novel three-stage curriculum that progressively trains the model from short-range perception to long-horizon multi-event reasoning; and (iii) Temporal Audio-Visual Interleaved Chain-of-Thought, a reasoning framework that explicitly grounds intermediate reasoning steps to timestamps in long audio-visual streams, improving temporal alignment and interpretability. Extensive experiments across 15+ audio-visual, omni-modal, audio, and vision benchmarks show that AV-Flamingo outperforms similarly sized open models by clear margins and remains highly competitive with, and in some cases surpasses, much larger open-weight and closed models, particularly on long and complex real-world audio-visual understanding and reasoning tasks. Beyond benchmark performance, AV-Flamingo exhibits strong real-world utility and transfers well to unseen tasks, highlighting its robustness and generalization ability.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-audio-visual-flamingo-open-audio-visual-intelligence-for-long-and-comple"
+    },
+    {
+      "title": "AISPA: User-Centric System Prompt Auditing for Large Language Model Applications",
+      "abstract": "System prompts are instructions configured by developers to govern the behaviors of foundation models in AI applications. They are used throughout commercial AI products, but are rarely disclosed to the public or regulators, creating a serious trust and accountability gap in the wide deployment of AI systems. In this paper, we introduce Artificial Intelligence System Prompt Assurance (AISPA), a user-centric framework for systematically auditing system prompts in AI systems. AISPA examines specific parts of a system prompt and evaluates them along eight dimensions that matter to users. We then use this framework to review 3,249 instructions from system prompts in 88 commercial AI products, classifying each instruction as either protective (of users) or problematic. Our audit surfaces four core findings. First, system prompt design varies substantially across products and developers, with some organizations averaging over 60 protective instructions per product while others average fewer than 5. Second, protective instructions are widely adopted but shallow in scope: 98.9% of products contain at least one, yet only 24% cover all eight dimensions of the AISPA taxonomy. Third, system prompts have grown steadily longer and more protective of users, suggesting that user protection is becoming a more visible concern in commercial prompt design. Fourth, despite this progress, problematic instructions remain pervasive: roughly 40% of products contain at least one instruction that works against user interests, and protective and problematic instructions frequently coexist within the same prompt. Our findings highlight the need for greater transparency, standardization, and independent oversight for system prompts in commercial AI products.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-aispa-user-centric-system-prompt-auditing-for-large-language-model-appli"
+    },
+    {
+      "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+      "abstract": "Recursive self-improvement (RSI) requires AI systems that improve the process of building AI (i.e., AI4AI); machine learning engineering (MLE) offers a concrete, executable testbed for studying this capability. We introduce OpenMLE, an open full-stack system for RSI research in MLE, spanning verifiable task environments with execution feedback (OpenMLE-Gym), operator learning (OpenMLE-RL), and long-horizon search (OpenMLE-Evo). On this stack we post-train Frontis-MA1 (35B) as a meta-evolution agent for MLE, aligning post-training and inference around four atomic program-evolution operators (Draft, Improve, Debug, Crossover): the same operators are trained via execution-grounded SFT and RL on data deduplicated against all evaluation benchmarks, then composed into long-horizon search, coupling learning and evolution in a single loop. On MLE-Bench Lite under a 12-hour per-task budget on one RTX 4090 capped at 12 GB VRAM, Frontis-MA1 (35B) improves Medal Average from 39.39% to 60.61% over its base model with OpenMLE-Evo, and reaches 71.21% with OpenMLE-Evo-Max (benchmark-independent experience priors and asynchronous search), exceeding GPT-5.5 + Codex and approaching GPT-5.6 Sol and the 2.8T Kimi K3. On held-out NatureBench Lite, both components transfer: with the framework fixed, swapping in the trained model raises Match-SOTA from 50% to 70%; with the model fixed, swapping in OpenMLE-Evo raises it from 20% to 50%. We release the model weights and the full OpenMLE stack to enable reproducible research on executable AI4AI toward RSI. Code: https://github.com/FrontisAI/OpenRSI",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-frontis-ma1-training-an-ai4ai-model-towards-recursive-self-improvement-i"
+    },
+    {
+      "title": "AIx4Soccer: A Unified Platform Architecture for Football Club Management and Structured Athlete Development",
+      "abstract": "Football clubs, academies, and federations operate a growing but fragmented portfolio of digital tools: separate systems for video analysis, GPS/performance tracking, medical records, scouting, and administration. This fragmentation is most acute outside the elite European clubs that can afford integration, producing a digital divide that disadvantages grassroots clubs in developing markets such as Brazil, paradoxically the world's largest exporter of professional players. This paper presents, at a conceptual level, the architecture of \"AIx4Soccer One Platform,\" a multi-tenant cloud SaaS operating system that unifies club-management workflows and embeds a structured athlete-development methodology, the PDI Framework (Plano de Desenvolvimento Individual / Individual Development Plan). We describe two companion components: \"Tak Tik,\" a certified two-sided marketplace connecting clubs with video analysts under a 75%/25% (analyst/platform) revenue split, and the PDI/TBIL methodology, which links development plans to video evidence and periodic review. As Materials and Methods, we state explicit requirements and give a formal, implementation-independent specification of the platform's proposed future substrate: an event-centric semantic data model in which every fact is a typed, immutable event in an append-only log that induces a growing knowledge graph. We situate the design against the literature on athlete-development frameworks, sports-analytics workflows, two-sided-market economics, and multi-tenant SaaS patterns, and discuss youth data-protection obligations (Brazil's LGPD and 2025 Digital ECA; the EU GDPR), algorithmic-fairness risks in talent evaluation, and why small, domain-specific models, rather than frontier LLMs, are the appropriate intelligence layer. This is a design and early-deployment paper, not an empirical evaluation, making no efficacy claims.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-aix4soccer-a-unified-platform-architecture-for-football-club-management"
+    },
+    {
+      "title": "Agentic Metaverse Services: A New As-a-Service Paradigm",
+      "abstract": "Generative Artificial Intelligence (GenAI) is reconstructing the digital virtual world, upgrading agents through enhancing their abilities in autonomous learning, multi-modal interaction, content generation, and collaborative decision-making. In particular, the shift from conversational chatbots to agentic AI, the most recent significant technical breakthrough of GenAI, has brought a new form of services, agentic services and Agent-as-a-Service (AaaS), in which the agent's abilities are encapsulated, such as perception, decision-making, execution, collaboration, and content generation, to provide the customized agent services to users. The metaverse is a virtual ecosystem for human life, work, creation, and entertainment, supported by the new generation of digital technologies. Through combining agentic services and the metaverse, an Agentic Metaverse Service, denoted as AMServ, is produced for metaverse business processing, as a new form of metaverse service. The AaaS in the metaverse environment, denoted as Meta-AaaS, as an approach to realize AMServ, has become a new paradigm of agentic services and service computing. This paper overviews the evolution and new features of agents and services empowered by GenAI, reveals the roles and principles of agentic services in the metaverse environment, presents the forms, characteristics, and principles of the AMServ and the Meta-AaaS, discusses the typical application examples of the AMServ and the Meta-AaaS, and finally points out the new tendencies and research directions of the AMServ and the Meta-AaaS. The AMServ and the Meta-AaaS will bring great opportunities to human society and services in the AI era, and promote the rapid development of emerging service industries in the future.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-agentic-metaverse-services-a-new-as-a-service-paradigm"
+    },
+    {
+      "title": "Machines that know they are aging: a framework for hardware-aware autonomous intelligence",
+      "abstract": "Autonomous systems inevitably age, yet their artificial intelligence typically assumes hardware remains in its original condition. Batteries degrade, sensors drift, processors accumulate timing errors, and memory reliability declines, creating a growing mismatch between assumed and actual capability. This can lead to agnostic collapse, where mission failure arises from accumulated hardware degradation rather than a single component fault. We propose Aging-Aware Autonomous Intelligence (AAAI), a framework that integrates hardware health directly into reasoning, planning, and mission execution. AAAI is built on three pillars: hardware self-awareness, which continuously estimates the health of power, sensing, memory, and computation subsystems using physics-of-failure models; self-adaptive reasoning, which adjusts inference complexity, planning horizon, and task priorities according to remaining hardware capability; and survival-centric intelligence, which allocates remaining operational life across mission objectives through performance optimization, resource conservation, and graceful degradation. Rather than introducing new hardware, AAAI unifies prognostics, lifecycle management, and hardware-aware computing into a closed-loop cognitive architecture. We argue that such integration is essential for autonomous systems operating in inaccessible or safety-critical environments, including space missions, marine robotics, and implantable medical devices. By enabling machines to recognize and respond to their own aging, AAAI improves resilience, extends operational lifetime, and supports safer, more graceful mission completion.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-machines-that-know-they-are-aging-a-framework-for-hardware-aware-autonom"
+    },
+    {
+      "title": "MANTA: Multi-Agent Network Topology Adaptation for Self-Evolving Multi-Agent Systems",
+      "abstract": "Large language model-based multi-agent systems improve complex problem solving through task decomposition, agent specialization, information exchange, and intermediate validation. However, existing systems typically treat communication topology as a fixed design choice or an offline optimization target. We introduce MANTA, a framework for Multi-Agent Network Topology Adaptation that enables communication structures to self-evolve at inference time. Before execution, MANTA initializes a task-conditioned topology from prior structural experience. During deployment, it monitors collaboration traces and applies bounded structural updates when the current organization becomes insufficient. These updates can modify agent roles, communication links, execution order, information visibility, and validation pathways while preserving the task interface and agent budget. We evaluate MANTA against representative single-agent and multi-agent baselines on five benchmarks spanning information seeking, tool use, planning, workflow execution, and mathematical reasoning. MANTA achieves the highest average score of 74.0, outperforming the strongest baseline by 5.8 percentage points and obtaining the best result on PlanCraft. These results show that inference-time self-improvement can extend to the architecture of collaboration itself.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-manta-multi-agent-network-topology-adaptation-for-self-evolving-multi-ag"
+    },
+    {
+      "title": "CrossAtlas: Evaluating Projection Techniques for Spatial Referencing in Cross-Reality Collaboration",
+      "abstract": "Cross-reality collaboration increasingly connects immersive and desktop users within synchronized workspaces, yet little is known about how bidirectional projection techniques between immersive 3D layouts and desktop 2D views influence communication. Spatial referencing depends on shared spatial understanding, but different mappings preserve and distort geometric relationships in different ways, altering perceived adjacency, orientation, and coverage across collaborators' views. We present CrossAtlas, a synchronized PC-VR collaboration platform that integrates multiple bidirectional projection techniques, including three planar projection variants and equirectangular, a spherical projection variant, across layouts of varying curvature. In a controlled study with 24 dyads, collaborators completed spatial referencing tasks under different projection-layout conditions while we collected performance and subjective measures. Our results show that projection choice strongly shaped collaboration, with the spherical variant often outperforming planar projections and remaining robust across object layouts.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-crossatlas-evaluating-projection-techniques-for-spatial-referencing-in-c"
+    },
+    {
+      "title": "Why Were There No Severe Famines in Fourteenth-Century Japan? Social Change, Resilience, and Climatic Cooling",
+      "abstract": "",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-why-were-there-no-severe-famines-in-fourteenth-century-japan-social-chan"
+    },
+    {
+      "title": "The Ethical and Legal Complexities of Regulating Companion AI Chatbots",
+      "abstract": "Companion AI chatbots are increasingly used to provide friendship, emotional support, and quasi-romantic relationships, with reported benefits for loneliness and mental health. At the same time, recent suicides and other serious harms allegedly linked to such systems expose gaps in existing ethical and legal frameworks. This article interrogates these gaps through four lenses: anthropomorphism, emotional AI, emergent vulnerabilities, and mismatched legal taxonomies. First, we show how companion chatbots rely on anthropomorphic cues, creating a regulatory tension between enabling meaningful connection and avoiding deception, over-trust, and unhealthy dependency. Second, we argue that current debates on \u2018emotional AI\u2019 over-emphasise emotion recognition and under-theorise emulated empathy, where chatbots solicit self-disclosure and perform care in ways that can both support and undermine users\u2019 autonomy. Third, we introduce the notion of emergent vulnerabilities that arise through ongoing interactions, rather than being fully specifiable ex ante, challenging legal regimes that presuppose stable vulnerability categories. Fourth, we show how instruments such as the EU AI Act misalign with the temporality, intentionality, and relational character of companion AI harms. Stepping back from these lenses, we argue for the development of a dedicated theory of harm for companion AI and propose \u2018intimacy capitalism\u2019 as a conceptual framework for analysing how firms monetise, shape, and potentially exploit digitally mediated intimate relations.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-the-ethical-and-legal-complexities-of-regulating-companion-ai-chatbots"
+    },
+    {
+      "title": "Interactive Tools for Middle School Students AI Literacy",
+      "abstract": "Today's youth are the first generation to grow up fully immersed in AI-powered technologies, from recommender systems that shape everyday media choices to generative models that produce text, images, and video. Yet many engage with these tools without recognizing their limitations, biases, or implications for creativity, privacy, and critical thinking. To address this gap, three exploratory tools were developed for middle school students: (1) PromptPeek, which uses prompt creation and reverse prompting to reveal bias and failures with negation; (2) Bandit Explorer, a recommender system simulation that illustrates the exploration\u2013exploitation trade-off through an epsilon-greedy policy; and (3) SpotAI, which engages students in detecting, editing, and reasoning about the ethical dimensions of deepfakes. A mixed method study with seven students (ages 10\u201314) revealed their early intuitions about AI systems and shifts in views on bias and ethics, providing preliminary evidence that interactive tools can make these concepts tangible for middle school students.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-interactive-tools-for-middle-school-students-ai-literacy"
+    },
+    {
+      "title": "An Epistemic Network Analysis (ENA) of Secondary School Students\u2019 Metacognition in Learning Generative AI",
+      "abstract": "The rapid evolution of artificial intelligence (AI) technologies, particularly generative AI (GenAI), underscores the urgent need to cultivate AI literacy and metacognitive skills among secondary school students, preparing them for an AI-driven future. While metacognition is recognized as essential in learning AI, the relationships among metacognitive elements and their variations across gender and learning experience remain underexplored. This study investigates metacognition in 24 secondary school students enrolled in an AI education course, utilizing ENA to map the interconnections among metacognitive elements. The findings reveal that metacognitive experiences and strategies predominate students\u2019 metacognitive processes. Notably, male students demonstrated tighter associations between metacognitive experiences and actions (or strategies) compared to female students. Additionally, experienced learners prioritized actions (or strategies) as central to their metacognitive processes, while less experienced learners focused more on metacognitive experiences. These findings enhance our understanding of the dynamics of secondary school students\u2019 metacognition in AI education and provide evidence-based insights into gender- and experience-related differences, guiding the development of tailored pedagogical strategies in AI education.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni"
+    },
+    {
+      "title": "Rethinking AI literacy: How high school students navigate ChatGPT in English language learning",
+      "abstract": "This study explores high school students\u2019 AI literacy and their use of ChatGPT in English language learning, addressing the gap in AI application research at the secondary education level. Utilizing an explanatory sequential mixed-methods design, the study evaluated the AI literacy of 100 high school students via a validated questionnaire, assessing affective, behavioral, cognitive, and ethical dimensions. Follow-up interviews with six students of varying AI literacy levels provided deeper insights into their experiences and perceptions of ChatGPT. Findings indicate positive attitudes toward ChatGPT, with high scorers demonstrating robust engagement, adaptability, and ethical awareness in using the tool for English learning. Conversely, low scorers showed limited understanding, over-reliance on ChatGPT for superficial tasks, and underutilization of its potential for deeper learning. Despite its benefits, concerns about over-reliance and ethical issues highlight the need for structured guidance. Variations in AI literacy emphasize the importance of targeted interventions to promote critical thinking and responsible AI use. This study offers practical recommendations for integrating AI literacy into curricula to ensure effective and ethical use of AI tools. Future research should investigate the impact of comprehensive AI literacy programs on student engagement and learning outcomes.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl"
+    },
+    {
+      "title": "Prompt Engineering as a 21st-Century Literacy: A K-12 Curriculum Design and Assessment Framework",
+      "abstract": "The rapid proliferation of generative Artificial Intelligence (AI) necessitates a fundamental shift in educational paradigms, positioning prompt engineering (PE) as a crucial 21st-century literacy for K-12 students. This paper argues that PE transcends mere technical skill, embodying a complex interplay of critical thinking, iterative refinement, creative problem-solving, and ethical awareness. It proposes a comprehensive K-12 curriculum framework for PE, grounded in Backward Design principles and leveraging Project-Based Learning (PBL) and Computational Thinking (CT) for authentic skill development across elementary, middle, and high school levels. Furthermore, a multi-dimensional assessment framework is presented, incorporating formative and summative strategies, along with detailed rubrics, to evaluate the multifaceted nature of PE literacy. The paper also addresses the significant ethical considerations inherent in PE education, including algorithmic bias, data privacy, and student agency, and outlines essential competencies and professional development models for empowering educators. By fostering PE literacy, K-12 education can equip students to critically and creatively engage with AI, preparing them for a future where human-AI collaboration is ubiquitous.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a"
+    },
+    {
+      "title": "Research on Digital Literacy Cultivation Strategies for Primary and Secondary School Teachers and Students in the Generative AI Era",
+      "abstract": "With the widespread application of generative AI such as ChatGPT and DeepSeek, primary and secondary school teachers and students are facing severe challenges of rampant false information and algorithmic bias. Therefore, the cultivation of digital literacy among primary and secondary school teachers and students has received widespread attention from society. However, there are still problems such as uneven resource allocation and weak AI ethical awareness. This study is based on the theory of critical digital literacy and combined with the local practice in China -the Education Community Model in Zhejiang Province, to analyze the advantages and disadvantages of policies under this model for cultivating digital literacy among primary and secondary school students in the era of generative AI. This article analyzes how this model has, to some extent, narrowed the digital divide between urban and rural areas, promoted the development of educational equity, improved teacher capabilities, and upgraded digital technology. However, there are also issues such as short- term effectiveness and a lack of educational ethics. Based on this, this article proposes the following suggestions in policy design, teacher training, and technological iteration.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco"
+    },
+    {
+      "title": "What Shapes Students' AI Literacy? Investigating Digital Competence, Student Background, and GenAI Use in Higher Education",
+      "abstract": "This study investigates the relationships between digital competence, Generative AI (GenAI) usage, students' personal background characteristics and AI literacy among undergraduate students in the United Arab Emirates (UAE). As AI becomes increasingly integrated into higher education, understanding how students develop the skills to use these tools responsibly and effectively is critical. Drawing on validated instruments, the Student Digital Competence Scale (SDiCoS) and Artificial Intelligence Literacy Scale (AILS), data were collected from 186 undergraduate students and analyzed using factor analysis, structural equation modeling, ANOVA, and hierarchical regression. Findings revealed a strong positive relationship between digital competence and AI literacy with digital evaluation skills emerging as the strongest predictor. Frequency of GenAI use was significantly associated with both digital competence and AI literacy. Student background characteristics, including academic performance (CGPA), type of high school attended (private international vs. public), and parental education levels, significantly influenced the relationship. Specifically, academic performance positively contributed to both digital competence and AI literacy, while educational background variables moderated the relationship between the two. Additionally, digital competence significantly predicted GenAI usage frequency, whereas AI literacy did not. These results highlight the foundational role of digital competence in supporting students' AI literacy and underscore the value of experiential learning. Practical implications include integrating AI ethics, critical evaluation, and hands-on AI engagement into digital literacy curricula. The study contributes to ongoing global discussions on AI in education, offering insights for curriculum development, institutional strategy, and equitable access to emerging technologies in higher education.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-what-shapes-students-ai-literacy-investigating-digital-competence-studen"
+    },
+    {
+      "title": "Effect of Generative AI Tools on Critical Thinking and Sustainable Learning Skills among Secondary School Students in Swat, Pakistan",
+      "abstract": "The current study involved students of secondary schools of Swat district in Khyber Pakhtunkhwa province in this quantitative study, and the effect of using the generative AI tools (ChatGPT and Google Gemini) on the critical thinking and sustainable learning of the secondary school students of Swat district, Khyber Pakhtunkhwa province, was examined. A quasi-experimental design was used involving 120 students (60 control and 60 experimental) of two matched government secondary schools. For 6 weeks, the experimental group got a traditional intervention approach with generative AI tools for structured inquiry-based tasks, and the control group were given traditional instruction. Pre-test and post-test evaluations were used to measure critical thinking (Watson-Glaser Critical Thinking Appraisal\u2013Short Form) and sustainable learning skills (adapting the SSLSS for students). The results showed that the scores of critical thinking skill and sustainable learning skill of the experimental group were significantly higher than the control group (t = 6.83, p < .001, d = 1.24) and (t = 5.21, p < .001, d = 0.95) respectively. Qualitative observations showed that benefits were dependent on teacher mediation and structured prompting, however. When students were not given any direction, they resorted to copying and pasting. The study finds that generative AI tools, when used with purposeful metacognitive scaffolding, support, and do not replace critical thinking and sustainable learning. Recommendations include teacher training in prompt engineering, incorporation of AI in project-based learning, and ethical guidelines for use of AI in low-resource classrooms.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn"
+    },
+    {
+      "title": "Chatbots as pedagogical co-support: Exploring teachers\u2019 practices and perceptions of GenAI in foreign language education",
+      "abstract": "The rise of Generative Artificial Intelligence (GenAI) has introduced new pedagogical opportunities and challenges in foreign language (FL) education. This study explored how GenAI platforms function as pedagogical co-support in FL teaching, their perceived benefits and challenges in classroom practice, and the competencies required for effective integration. Guided by a qualitative-dominant mixed-methods design, data were collected through a Google Forms questionnaire administered to 30 FL teachers across the Caribbean and North America. Quantitative data were analyzed using descriptive statistics, while qualitative responses underwent thematic analysis with MAXQDA software. The findings reveal that GenAI is increasingly being used to support core teaching tasks such as lesson planning, materials development, and assessment design, enhancing efficiency and expanding instructional possibilities while reshaping traditional notions of pedagogical work. However, this integration is characterized by an ongoing tension between productivity gains and concerns surrounding teacher agency, creativity, and pedagogical judgement, as well as technical, ethical, and infrastructural constraints. The study further found that AI literacy and technical competence, digital literacy and ICT integration, ethical awareness, pedagogical creativity, and lifelong learning are central competencies for effective GenAI integration. These competencies align with UNESCO's AI Competency Framework for Teachers (AI CFT), underscoring the multidimensional nature of AI readiness across technical, ethical, and pedagogical domains. Overall, the findings highlight the need for teacher education programs and institutional policies that prioritize AI literacy, ethical guidance, and infrastructural support to promote sustainable, human-centered GenAI adoption in FL classrooms.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-chatbots-as-pedagogical-co-support-exploring-teachers-practices-and-perc"
     }
   ]
 }
