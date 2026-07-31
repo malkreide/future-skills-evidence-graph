@@ -18,6 +18,8 @@ These run in the normal suite and need neither LangGraph nor a network.
 from __future__ import annotations
 
 import ast
+import contextlib
+import inspect
 import io
 import json
 import sys
@@ -253,7 +255,7 @@ class CandidatesOnlyTest(unittest.TestCase):
         }
         with mock.patch.object(ai_provider, "ai_provider", return_value="cache"), \
                 mock.patch.object(ai_provider, "complete", return_value=paraphrase), \
-                mock.patch.object(ingest_openalex, "fetch", lambda q, n: [{"id": "W"}]), \
+                mock.patch.object(ingest_openalex, "fetch", lambda *a, **k: [{"id": "W"}]), \
                 mock.patch.object(
                     ingest_openalex, "convert",
                     lambda w: {"id": "src-x", "title": "T", "abstract": abstract}), \
@@ -387,3 +389,109 @@ class StopReasonTest(unittest.TestCase):
         reasons.add(ce.stop_reason(budget))
 
         self.assertEqual(len(reasons), 4, f"reasons must be distinguishable, got {reasons}")
+
+
+class SearchFallbackTest(unittest.TestCase):
+    """The lane must survive one search backend being down.
+
+    A real run showed why: OpenAlex answered HTTP 429, the run examined zero
+    sources, and nothing distinguished "the literature is silent" from "the one
+    source we ask was throttled". The chain tries backends in order until one
+    returns hits this lane can actually judge.
+    """
+
+    def setUp(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+
+    def backend(self, name: str):
+        import counter_evidence as ce
+
+        return dict(ce.SEARCH_BACKENDS)[name]
+
+    def with_backends(self, **behaviour):
+        """Patch each named backend's fetch; a callable may raise to simulate an outage."""
+        import counter_evidence as ce
+
+        patches = []
+        for name, works in behaviour.items():
+            module = dict(ce.SEARCH_BACKENDS)[name]
+            fetch = works if callable(works) else (lambda *a, w=works, **k: w)
+            patches.append(mock.patch.object(module, "fetch", fetch))
+            patches.append(
+                mock.patch.object(module, "convert", lambda w: w)  # already source-shaped
+            )
+        return patches
+
+    def source(self, title: str, abstract: str) -> dict:
+        return {"id": f"src-{title}", "title": title, "abstract": abstract}
+
+    LONG = "A study of twelve schools reporting no significant difference on the transfer task."
+
+    def run_search(self, patches, query: str = "q"):
+        import counter_evidence as ce
+
+        with contextlib.ExitStack() as stack:
+            for patch in patches:
+                stack.enter_context(patch)
+            with redirect_stderr(io.StringIO()):
+                return ce.search_query(query)
+
+    def test_first_healthy_backend_wins(self) -> None:
+        patches = self.with_backends(openalex=[self.source("a", self.LONG)])
+        sources, backend = self.run_search(patches)
+        self.assertEqual(backend, "openalex")
+        self.assertEqual(len(sources), 1)
+
+    def test_an_outage_falls_through_to_the_next(self) -> None:
+        """HTTP 429 is exactly the case that motivated this chain."""
+        def throttled(*args, **kwargs):
+            raise OSError("HTTP Error 429: Too Many Requests")
+
+        patches = self.with_backends(
+            openalex=throttled, semantic_scholar=[self.source("b", self.LONG)]
+        )
+        sources, backend = self.run_search(patches)
+        self.assertEqual(backend, "semantic_scholar")
+        self.assertEqual(len(sources), 1)
+
+    def test_hits_without_abstracts_also_fall_through(self) -> None:
+        """Ten abstract-less hits are as useless here as an outage."""
+        patches = self.with_backends(
+            openalex=[self.source("c", ""), self.source("d", "too short")],
+            semantic_scholar=[self.source("e", self.LONG)],
+        )
+        sources, backend = self.run_search(patches)
+        self.assertEqual(backend, "semantic_scholar")
+
+    def test_all_backends_down_yields_nothing_not_a_crash(self) -> None:
+        def down(*args, **kwargs):
+            raise OSError("unreachable")
+
+        patches = self.with_backends(openalex=down, semantic_scholar=down, eric=down)
+        sources, backend = self.run_search(patches)
+        self.assertEqual(sources, [])
+        self.assertIsNone(backend)
+
+    def test_crossref_is_not_a_backend(self) -> None:
+        """It hard-codes abstract=None, so it could never contribute a claim.
+
+        Including it would lengthen the chain with a link that always yields
+        nothing — redundancy in appearance only.
+        """
+        import counter_evidence as ce
+
+        self.assertNotIn("crossref", dict(ce.SEARCH_BACKENDS))
+
+    def test_every_backend_can_actually_supply_abstracts(self) -> None:
+        """Guards the rule the crossref exclusion follows from."""
+        import counter_evidence as ce
+
+        for name, module in ce.SEARCH_BACKENDS:
+            with self.subTest(backend=name):
+                source = inspect.getsource(module.convert)
+                self.assertNotIn(
+                    '"abstract": None',
+                    source,
+                    f"{name} cannot supply abstracts, so it cannot serve this lane",
+                )

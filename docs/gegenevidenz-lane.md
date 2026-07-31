@@ -114,6 +114,43 @@ gestellt wurden, was sie lieferten und warum der Graph abgebrochen hat.
 Das ist bewusst schwächer als die Zusage des Kerns. Deshalb ist es eine
 getrennte Lane und kein Pipeline-Schritt.
 
+## Suchquellen: eine Fallback-Kette, keine Vereinigung
+
+Die Lane fragte anfangs nur OpenAlex ab. Der erste echte Lauf zeigte, warum das
+zu wenig ist: OpenAlex antwortete mit HTTP 429, der Lauf prüfte **null** Quellen,
+und nichts unterschied „die Literatur schweigt" von „die eine Quelle war
+gedrosselt". Beim Suchen nach Gegenevidenz ist das der teuerste
+Interpretationsfehler überhaupt — er sieht aus wie eine Bestätigung.
+
+Die Quellen werden **der Reihe nach** probiert, bis eine brauchbare Treffer
+liefert:
+
+| Reihenfolge | Quelle | Warum |
+| --- | --- | --- |
+| 1 | OpenAlex | breiteste Abdeckung |
+| 2 | Semantic Scholar | liefert Abstracts, andere Infrastruktur |
+| 3 | ERIC | bildungsspezifisch — die Domäne dieses Katalogs |
+
+**Kette statt Vereinigung**, weil jede geprüfte Quelle einen Modellaufruf kostet:
+alle drei pro Query abzufragen verdreifachte die Laufkosten für Redundanz, die
+nur bei einem Ausfall gebraucht wird.
+
+Weitergereicht wird nicht nur bei einem Fehler, sondern auch, wenn eine Quelle
+zwar Treffer liefert, aber **keiner davon einen Abstract trägt** — zehn
+abstractlose Treffer sind hier so wertlos wie ein Ausfall.
+
+**Crossref fehlt bewusst.** Diese Lane kann eine Quelle nur beurteilen, wenn sie
+einen Abstract hat: ohne ihn gibt es nichts zu bewerten und keinen wörtlichen
+Satz, an dem ein Claim ankern könnte. `ingest_crossref.convert` setzt
+`abstract: None` fest verdrahtet (Crossref liefert Abstracts nur als spärlich
+befülltes JATS-XML). Crossref aufzunehmen hiesse, die Kette um ein Glied zu
+verlängern, das nie etwas tragen kann — das sähe nach Redundanz aus, ohne welche
+zu sein.
+
+Das Laufprotokoll hält fest, **welche Quelle geantwortet hat** (`backends`).
+Ein dünner Ertrag liest sich anders, wenn dort `["eric"]` statt `["openalex"]`
+steht.
+
 ## Abbruch: harte Grenzen vor weichem Urteil
 
 Ein Agent, dessen Abbruch nur von seinem eigenen Urteil abhängt, ist ein

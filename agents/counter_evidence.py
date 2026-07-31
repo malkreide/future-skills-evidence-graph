@@ -50,12 +50,15 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import ai_provider  # noqa: E402
+import ingest_eric  # noqa: E402
 import ingest_openalex  # noqa: E402
+import ingest_semantic_scholar  # noqa: E402
 from common import (  # noqa: E402
     TODAY,
     append_candidate_sources,
     append_unique_records,
     claim_statement_key,
+    env_or_none,
     fetch_or_warn,
     load_json,
     load_records,
@@ -74,6 +77,30 @@ MAX_ROUNDS = 3
 MAX_QUERIES = 6
 MAX_BARREN_ROUNDS = 2  # consecutive rounds with nothing new -> stop
 RESULTS_PER_QUERY = 10
+
+# Shorter than this, an "abstract" cannot carry a finding worth judging.
+MIN_ABSTRACT_LENGTH = 80
+
+# Search backends, tried in this order until one returns usable hits.
+#
+# The lane originally queried OpenAlex alone, and a real run showed why that is
+# fragile: OpenAlex answered HTTP 429 and the run examined zero sources, with no
+# way to tell "the literature is silent" from "the one source was throttled".
+#
+# CROSSREF IS DELIBERATELY ABSENT. This lane can only judge a source that has an
+# abstract — without one there is nothing to assess and no verbatim sentence to
+# anchor a claim on — and `ingest_crossref.convert` hard-codes `abstract: None`
+# (Crossref exposes abstracts as sparsely-populated JATS XML). Adding it would
+# lengthen the chain with a link that can never carry anything, which reads as
+# redundancy while providing none.
+#
+# ERIC takes that slot instead: it carries abstracts and is education-specific,
+# so it is the closest match to what this catalogue is about.
+SEARCH_BACKENDS = (
+    ("openalex", ingest_openalex),
+    ("semantic_scholar", ingest_semantic_scholar),
+    ("eric", ingest_eric),
+)
 
 PROMPT_VERSION = "counter-evidence-v1"
 
@@ -226,6 +253,53 @@ def propose_queries(state: State) -> dict[str, Any]:
     }
 
 
+def usable_sources(works: list[dict[str, Any]], convert: Any) -> list[dict[str, Any]]:
+    """Convert search hits and keep only those this lane can actually judge.
+
+    "Usable" means carrying an abstract long enough to hold a finding: without
+    one there is nothing to assess and no verbatim sentence to anchor a claim on.
+    """
+    sources = []
+    for work in works:
+        source = convert(work)
+        if len(str(source.get("abstract") or "").strip()) >= MIN_ABSTRACT_LENGTH:
+            sources.append(source)
+    return sources
+
+
+def search_query(query: str) -> tuple[list[dict[str, Any]], str | None]:
+    """First backend that returns something usable wins. Returns (sources, backend).
+
+    A fallback chain rather than a union of all backends: every source examined
+    costs one model call, so querying three backends per query would roughly
+    triple the run's cost for redundancy that is only needed when one is down.
+    The chain moves on when a backend errors (`fetch_or_warn` swallows it into
+    an empty list) *and* when it returns hits none of which carry an abstract —
+    ten abstract-less hits are as useless here as an outage.
+    """
+    for name, module in SEARCH_BACKENDS:
+        works = fetch_or_warn(
+            f"{name} counter-evidence ({query})",
+            lambda m=module: _fetch_from(m, query),
+        )
+        sources = usable_sources(works, module.convert)
+        if sources:
+            return sources, name
+    return [], None
+
+
+def _fetch_from(module: Any, query: str) -> list[dict[str, Any]]:
+    """Call one backend's fetch, passing the optional credentials it accepts."""
+    if module is ingest_semantic_scholar:
+        # Without the key this source rate-limits hard (HTTP 429); with it the
+        # fallback chain actually has a second working link.
+        return module.fetch(query, RESULTS_PER_QUERY, env_or_none("SEMANTIC_SCHOLAR_API_KEY"))
+    if module is ingest_openalex:
+        # A contact address raises OpenAlex's rate limit — the polite pool.
+        return module.fetch(query, RESULTS_PER_QUERY, env_or_none("OPENALEX_MAILTO"))
+    return module.fetch(query, RESULTS_PER_QUERY)
+
+
 def search_and_assess(state: State) -> dict[str, Any]:
     """Run this round's queries and keep only verbatim-quotable contradictions."""
     skill = state["skill"]
@@ -233,17 +307,16 @@ def search_and_assess(state: State) -> dict[str, Any]:
     seen = list(state["seen_titles"])
     findings = list(state["findings"])
     examined = 0
+    backends_used: list[str] = []
 
     for query in round_queries:
-        works = fetch_or_warn(
-            f"openalex counter-evidence ({query})",
-            lambda q=query: ingest_openalex.fetch(q, RESULTS_PER_QUERY),
-        )
-        for work in works:
-            source = ingest_openalex.convert(work)
+        sources, backend = search_query(query)
+        if backend and backend not in backends_used:
+            backends_used.append(backend)
+        for source in sources:
             title_key = normalize_title(str(source.get("title") or ""))
             abstract = str(source.get("abstract") or "").strip()
-            if not title_key or title_key in seen or len(abstract) < 80:
+            if not title_key or title_key in seen:
                 continue
             seen.append(title_key)
             examined += 1
@@ -285,6 +358,11 @@ def search_and_assess(state: State) -> dict[str, Any]:
             {
                 "step": "search_and_assess",
                 "queries": round_queries,
+                # Which backend actually answered. A run that fell through to a
+                # fallback looks identical in the counts otherwise, and a
+                # reviewer judging a thin harvest should see that OpenAlex was
+                # down rather than conclude the literature is silent.
+                "backends": backends_used,
                 "examined": examined,
                 "new_findings": new_count,
             }
