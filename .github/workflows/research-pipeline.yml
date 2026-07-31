@@ -27,9 +27,13 @@ jobs:
     # RESEARCH_QUERIES_INCLUDE_CATALOG opts into deriving a query per active skill:
     # the dispatch checkbox wins, else the repo variable (unset = off), so the
     # scheduled run only follows the catalog when a maintainer enables it.
+    # NB: use the typed `inputs.include_catalog` (a real boolean), NOT
+    # `github.event.inputs.*` — the latter is always a string, and the string
+    # "false" is truthy in GitHub expressions, so it would shadow the repo
+    # variable on every manual run and the checkbox could never fall back to it.
     env:
-      RESEARCH_QUERIES: ${{ github.event.inputs.queries }}
-      RESEARCH_QUERIES_INCLUDE_CATALOG: ${{ github.event.inputs.include_catalog || vars.RESEARCH_QUERIES_INCLUDE_CATALOG }}
+      RESEARCH_QUERIES: ${{ inputs.queries }}
+      RESEARCH_QUERIES_INCLUDE_CATALOG: ${{ inputs.include_catalog || vars.RESEARCH_QUERIES_INCLUDE_CATALOG }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Restore pending candidates from open pull request branch
