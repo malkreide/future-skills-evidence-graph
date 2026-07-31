@@ -6264,9 +6264,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-the-role-of-generative-artificial-intelligence-in-korean-language-learni",

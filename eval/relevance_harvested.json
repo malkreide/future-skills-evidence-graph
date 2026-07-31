@@ -856,6 +856,15 @@
       "decision": "reject_source",
       "harvested_at": "2026-07-31",
       "source_id": "src-why-were-there-no-severe-famines-in-fourteenth-century-japan-social-chan"
+    },
+    {
+      "title": "The Ethical and Legal Complexities of Regulating Companion AI Chatbots",
+      "abstract": "Companion AI chatbots are increasingly used to provide friendship, emotional support, and quasi-romantic relationships, with reported benefits for loneliness and mental health. At the same time, recent suicides and other serious harms allegedly linked to such systems expose gaps in existing ethical and legal frameworks. This article interrogates these gaps through four lenses: anthropomorphism, emotional AI, emergent vulnerabilities, and mismatched legal taxonomies. First, we show how companion chatbots rely on anthropomorphic cues, creating a regulatory tension between enabling meaningful connection and avoiding deception, over-trust, and unhealthy dependency. Second, we argue that current debates on \u2018emotional AI\u2019 over-emphasise emotion recognition and under-theorise emulated empathy, where chatbots solicit self-disclosure and perform care in ways that can both support and undermine users\u2019 autonomy. Third, we introduce the notion of emergent vulnerabilities that arise through ongoing interactions, rather than being fully specifiable ex ante, challenging legal regimes that presuppose stable vulnerability categories. Fourth, we show how instruments such as the EU AI Act misalign with the temporality, intentionality, and relational character of companion AI harms. Stepping back from these lenses, we argue for the development of a dedicated theory of harm for companion AI and propose \u2018intimacy capitalism\u2019 as a conceptual framework for analysing how firms monetise, shape, and potentially exploit digitally mediated intimate relations.",
+      "relevant": false,
+      "origin": "harvested",
+      "decision": "reject_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-the-ethical-and-legal-complexities-of-regulating-companion-ai-chatbots"
     }
   ]
 }
