@@ -320,9 +320,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-06",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -366,9 +366,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-20",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -416,9 +416,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -464,9 +464,9 @@
     "topics": [
       "ai literacy"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -491,9 +491,9 @@
     "topics": [
       "ethics"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -553,9 +553,9 @@
       "ai literacy",
       "collaboration"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -581,9 +581,9 @@
       "ai literacy",
       "resilience"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -612,9 +612,9 @@
       "ai literacy",
       "collaboration"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   },
@@ -646,9 +646,9 @@
     "topics": [
       "collaboration"
     ],
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null,
+    "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
   }

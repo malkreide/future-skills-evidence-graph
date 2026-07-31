@@ -1324,9 +1324,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-06",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-lt-b-gt-technology-enhanced-language-learning-in-multilingual-environmen",
@@ -2160,9 +2160,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-aix4soccer-a-unified-platform-architecture-for-football-club-management",
@@ -2179,9 +2179,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-generative-ai-and-linguistic-diversity-in-academic-writing-and-publishin",
@@ -2255,9 +2255,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-agentic-metaverse-services-a-new-as-a-service-paradigm-abstract-s1",
@@ -2274,9 +2274,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-machines-that-know-they-are-aging-a-framework-for-hardware-aware-autonom",
@@ -2293,9 +2293,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-machines-that-know-they-are-aging-a-framework-for-hardware-aware-autonom-2",
@@ -2312,9 +2312,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-manta-multi-agent-network-topology-adaptation-for-self-evolving-multi-ag",
@@ -2331,9 +2331,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-manta-multi-agent-network-topology-adaptation-for-self-evolving-multi-ag-2",
@@ -2350,9 +2350,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-manta-multi-agent-network-topology-adaptation-for-self-evolving-multi-ag-3",
@@ -2369,9 +2369,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-can-generative-artificial-intelligence-be-a-good-teaching-assistant-an-e",
@@ -9931,9 +9931,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-crossatlas-evaluating-projection-techniques-for-spatial-referencing-in-c-2",
@@ -9950,9 +9950,9 @@
     "supports_skill_ids": [],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "rejected",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-teaching-ai-with-games-the-impact-of-generative-ai-drawing-on-computatio",
