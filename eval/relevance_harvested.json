@@ -937,6 +937,15 @@
       "decision": "promote_source",
       "harvested_at": "2026-07-31",
       "source_id": "src-chatbots-as-pedagogical-co-support-exploring-teachers-practices-and-perc"
+    },
+    {
+      "title": "Insights from Educators: Integrating AI Literacy into Media Literacy Education in Practice",
+      "abstract": "Through in-depth interviews with junior high school teachers in Hong Kong who participated in a media and artificial intelligence literacy program intervention, this research highlights the importance of prioritizing values and ethics education over technical proficiency when incorporating artificial intelligence (AI) into media literacy training. While quantitatively assessing students' literacy levels posed challenges, future media literacy programs should concentrate on introducing technological terminology and concepts, promoting awareness of potential issues, instilling values for responsible technology use, and fostering empathy to create a harmonious online environment. By focusing on fundamental values and key concepts rather than following fleeting AI trends, educators can empower students to navigate the digital media landscape effectively. Introducing such education among junior high school students, potentially involving parental education, is crucial for nurturing well-rounded digital citizens. The discussion thoroughly explores implications and recommendations for media literacy education programs, specifically in an AI era.",
+      "relevant": true,
+      "origin": "harvested",
+      "decision": "promote_source",
+      "harvested_at": "2026-07-31",
+      "source_id": "src-insights-from-educators-integrating-ai-literacy-into-media-literacy-educ"
     }
   ]
 }

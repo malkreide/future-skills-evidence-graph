@@ -10803,17 +10803,19 @@
       "src-insights-from-educators-integrating-ai-literacy-into-media-literacy-educ"
     ],
     "text_anchor": "abstract, sentence 1: \"Through in-depth interviews with junior high school teachers in Hong Kong who participated in a media and artificial intelligence literacy program intervention, this research highlights the importance of prioritizing values and ethics education over technical proficiency when incorporating artificial intelligence (AI) into media literacy training.\"",
-    "context": "Auto-extracted candidate; matched topics: ai literacy, digital competence, ethics. Verify during review.",
-    "age_range": "unspecified",
-    "outcome": "Not extracted automatically; describe during review.",
+    "context": "In-depth interviews with junior-high school teachers in Hong Kong participating in a combined media and AI literacy program intervention",
+    "age_range": "12-15",
+    "outcome": "Points to prioritizing values and ethics education over technical proficiency when integrating AI into media literacy",
     "evidence_type": "empirical_study",
     "evidence_strength": "low",
-    "supports_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-digital-media-literacy"
+    ],
     "contradicts_skill_ids": [],
     "extraction_method": "finding_sentence_extraction_no_llm",
-    "status": "candidate",
+    "status": "reviewed",
     "created_at": "2026-07-31",
-    "reviewed_at": null
+    "reviewed_at": "2026-07-31"
   },
   {
     "id": "claim-insights-from-educators-integrating-ai-literacy-into-media-literacy-educ-2",

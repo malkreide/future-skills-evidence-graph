@@ -235,7 +235,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.67,
+    "evidence_score": 0.69,
     "trend": "stable",
     "topics": [
       "digital literacy",
@@ -246,7 +246,8 @@
       "claim-digital-competence-information-literacy",
       "claim-equity-foundational-learning",
       "claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct",
-      "claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac"
+      "claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac",
+      "claim-insights-from-educators-integrating-ai-literacy-into-media-literacy-educ"
     ],
     "contradicting_claim_ids": [],
     "framework_mapping_ids": [
@@ -278,10 +279,20 @@
         "date": "2026-06-24",
         "change": "Attached reviewed claim claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac as supporting evidence",
         "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "Attached reviewed claim claim-insights-from-educators-integrating-ai-literacy-into-media-literacy-educ as supporting evidence",
+        "reason": "Folded reviewed candidate evidence into the skill during operations."
+      },
+      {
+        "date": "2026-07-31",
+        "change": "evidence_score 0.67 -> 0.69",
+        "reason": "Recomputed deterministically from supporting claim scores."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-24"
+    "updated_at": "2026-07-31"
   },
   {
     "id": "skill-ethical-technology-judgment",
