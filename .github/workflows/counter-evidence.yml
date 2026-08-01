@@ -119,6 +119,10 @@ jobs:
             "records the queries the graph chose, which backend answered, how many sources" \
             "were examined per round, and which limit stopped it." \
             "" \
+            "\`proposed\` carries the contradictions themselves: claim id, source, verbatim" \
+            "quote and the assessor's reason. Read the reason, not only the quote — a quote" \
+            "can read like a positive result while the null sits in a clause it cut off." \
+            "" \
             "Read \`stopped_because\` before the finding count: \`no_new_findings\` means the" \
             "search went quiet, while \`query_budget\` or \`round_limit\` means it was cut off" \
             "while possibly still productive. Those are opposite conclusions about the" \

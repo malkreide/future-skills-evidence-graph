@@ -571,3 +571,55 @@ class QueryBudgetCouplingTest(unittest.TestCase):
             ce.QUERY_PROMPT,
             "the per-round query count changed; QUERIES_PER_ROUND here must follow",
         )
+
+
+class RunLogCarriesFindingsTest(unittest.TestCase):
+    """A dry run's log is the ONLY record of what it proposed.
+
+    Activation turns on precision, which is a reviewer's judgement over each
+    proposed contradiction. A log carrying only a count cannot support that
+    judgement -- and on a dry run no candidate claim is written anywhere else.
+    """
+
+    def sample_state(self):
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        state = ce.initial_state({"id": "skill-x", "name": "X", "definition": "d"})
+        state["findings"] = [
+            {
+                "source": {
+                    "id": "src-some-study",
+                    "title": "Some Study",
+                    "url": "https://example.org/a",
+                },
+                "quote": "The intervention produced no measurable effect.",
+                "reason": "null result on the outcome the skill claims",
+            }
+        ]
+        state["seen_titles"] = {"Some Study"}
+        return ce, state
+
+    def test_the_log_names_each_proposal_with_its_quote_and_reason(self) -> None:
+        ce, state = self.sample_state()
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(ce, "RUN_LOG_DIR", Path(tmp)):
+                path = ce.write_run_log(state)
+            payload = json.loads(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(payload["findings"], 1)
+        proposed = payload["proposed"]
+        self.assertEqual(len(proposed), 1)
+        self.assertEqual(proposed[0]["quote"], "The intervention produced no measurable effect.")
+        self.assertEqual(proposed[0]["reason"], "null result on the outcome the skill claims")
+        self.assertEqual(proposed[0]["source_id"], "src-some-study")
+
+    def test_the_logged_claim_id_matches_the_claim_a_real_run_would_write(self) -> None:
+        """Otherwise the log points at an id that never exists."""
+        ce, state = self.sample_state()
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(ce, "RUN_LOG_DIR", Path(tmp)):
+                path = ce.write_run_log(state)
+            logged = json.loads(path.read_text(encoding="utf-8"))["proposed"][0]["claim_id"]
+
+        self.assertEqual(logged, ce.to_candidate_claims(state)[0]["id"])
