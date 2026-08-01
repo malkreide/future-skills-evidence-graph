@@ -252,6 +252,15 @@ weder den einen noch den anderen. Sie bleiben als Ausgangspunkt liegen — ohne
 sie wäre nicht sichtbar geworden, *warum* die Vorschläge danebenlagen, und die
 Vermutung wäre auf die Suche gefallen statt auf die Bewertung.
 
+Deshalb steht die Version **im Dateinamen**:
+`<datum>-<skill>-<prompt-version>.json`. Ohne sie überschrieb ein v2-Lauf das
+v1-Protokoll desselben Skills am selben Tag — ausgerechnet das, was die
+Aktivierungsregel unterscheiden muss, war das Einzige, was der Name nicht trug.
+Zwei Läufe *derselben* Version am selben Tag fallen weiterhin zusammen, und das
+ist richtig: das sind Wiederholungsmessungen, und die neuere gilt. Nur
+Versionen dürfen nie verschmelzen. Die Regel ist damit am Verzeichnis ablesbar,
+statt in jeder Datei einzeln nachgeschlagen werden zu müssen.
+
 **Decommission**, wenn eines davon eintritt:
 
 1. Die Präzision fällt über drei Läufe unter 0.4.
