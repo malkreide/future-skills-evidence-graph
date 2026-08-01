@@ -1,0 +1,305 @@
+{
+  "skill_id": "skill-self-regulated-learning",
+  "prompt_version": "counter-evidence-v2",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-01",
+  "rounds": 2,
+  "queries_used": [
+    "self-regulated learning intervention no significant difference students",
+    "metacognitive strategy training null results school children",
+    "self-regulation learning effects did not persist failed to replicate",
+    "self-regulated learning training no measurable effect academic achievement",
+    "goal setting self-monitoring intervention null effect adolescents randomized",
+    "self-regulation strategy instruction negative outcome meta-analysis students"
+  ],
+  "sources_examined": 47,
+  "findings": 0,
+  "proposed": [],
+  "rejected": 47,
+  "rejected_by_outcome": {
+    "not_contradicting": 47
+  },
+  "not_proposed": [
+    {
+      "source_title": "An Exploration of Providers’ Perspectives on the Impact of Incarceration-Related Stigma on Formerly Incarcerated Women’s Mental Health",
+      "outcome": "not_contradicting",
+      "reason": "This qualitative study concerns mental health providers' perspectives on incarceration-related stigma, not self-regulated learning. It measures no outcome of engaging with the skill."
+    },
+    {
+      "source_title": "The Ethical and Legal Complexities of Regulating Companion AI Chatbots",
+      "outcome": "not_contradicting",
+      "reason": "This is an ethical/legal analysis of companion AI, not a measured study of self-regulated learning outcomes."
+    },
+    {
+      "source_title": "The Relationship Between Adverse Childhood Experiences, Protective and Compensatory Experiences, and Parenting Attitudes Among Fathers",
+      "outcome": "not_contradicting",
+      "reason": "This study examines adverse and protective childhood experiences and parenting attitudes in fathers. It does not measure self-regulated learning or any intervention teaching it."
+    },
+    {
+      "source_title": "Investigating Factors That Affect Students' Help-Seeking Strategies in a University-Level Foundational Mathematics Course",
+      "outcome": "not_contradicting",
+      "reason": "This is a descriptive survey of help-seeking behaviors, not a measured outcome of training or practicing self-regulated learning. It reports what students do and believe, which does not constitute evidence that the skill fails to produce better outcomes."
+    },
+    {
+      "source_title": "\"Building Something Great!\": Fifth-Grade Teachers Nurturing Hope Through Professional Learning Communities – A Telling Case",
+      "outcome": "not_contradicting",
+      "reason": "This qualitative study explores how hope is fostered among teachers; it is not about self-regulated learning, and it reports no measured result showing the skill failed to help."
+    },
+    {
+      "source_title": "The Relationship Between Depression and Cognitive Proficiency Index Across Biological Sex",
+      "outcome": "not_contradicting",
+      "reason": "This study examines depression and cognitive proficiency, not self-regulated learning or any intervention to develop it."
+    },
+    {
+      "source_title": "Perceived Effectiveness of Cigar Warnings Among Young People in the U.S.",
+      "outcome": "not_contradicting",
+      "reason": "This study is about cigar warning labels and smoking behavior, unrelated to self-regulated learning."
+    },
+    {
+      "source_title": "Evolving Roles: School Counselors Addressing Mental Health in PK-12 Education",
+      "outcome": "not_contradicting",
+      "reason": "This abstract concerns school counselors and student mental health services; it does not measure any outcome of self-regulated learning."
+    },
+    {
+      "source_title": "Health Heritage and Public History in Northern Ireland",
+      "outcome": "not_contradicting",
+      "reason": "The abstract describes a public history project and offers best-practice guidance; it measures no outcome of self-regulated learning."
+    },
+    {
+      "source_title": "Relationship between mathematical anxiety and achievement in mathematics as moderated by coping strategies of grade VI learners",
+      "outcome": "not_contradicting",
+      "reason": "The study found that regulative coping strategies positively buffered the anxiety-achievement relationship, supporting rather than contradicting the value of self-regulation-related skills."
+    },
+    {
+      "source_title": "Writing Attitudes and Writing Ability: A Correlational Study of Primary Learners at Blue Sky Academy, Vietnam",
+      "outcome": "not_contradicting",
+      "reason": "The study found a positive correlation between writing attitudes and writing ability, supporting the skill's value, not contradicting it."
+    },
+    {
+      "source_title": "Differential effectiveness of text-to-speech technology on secondary school students’ L2 speaking performance: A mixed-methods study",
+      "outcome": "not_contradicting",
+      "reason": "The study measured TTS technology effects on speaking skills, not the Self-Regulated Learning skill. No measured result shows developing self-regulated learning fails to improve outcomes."
+    },
+    {
+      "source_title": "Reading Proficiency and Challenges of Grade V Learners: Towards a Structured Reading Program",
+      "outcome": "not_contradicting",
+      "reason": "The study measures reading proficiency and challenges, not an intervention outcome for self-regulated learning. Project BUHI was only developed, not tested. No measured result shows the skill failing to help."
+    },
+    {
+      "source_title": "Testing face-to-face social influence at the limits",
+      "outcome": "not_contradicting",
+      "reason": "This study concerns social context and decision-making, not self-regulated learning. It does not measure outcomes of engaging with self-regulated learning skills."
+    },
+    {
+      "source_title": "Informing Cancer Education and School Reintegration After Childhood Cancer: Metacognitive, Psychosocial, and School-Participation Indicators",
+      "outcome": "not_contradicting",
+      "reason": "This study measured metacognitive correlates in childhood cancer survivors but did not test a self-regulated learning intervention or training, nor show that developing the skill failed to improve outcomes. The null result concerns between-group differences, not the skill's efficacy."
+    },
+    {
+      "source_title": "Cognitive Domain Predictors of Mathematics Achievement in Junior High School Learners: A Rapid Mathematics Assessment Study",
+      "outcome": "not_contradicting",
+      "reason": "This study measured correlations between cognitive domains and math achievement; it did not test whether developing self-regulated learning leads to outcomes, nor is it about that skill."
+    },
+    {
+      "source_title": "StreetArt4Sustainability dataset: Mapping aesthetic emotions to street art",
+      "outcome": "not_contradicting",
+      "reason": "This abstract is about emotional responses to street art and has nothing to do with self-regulated learning."
+    },
+    {
+      "source_title": "Assessment of knowledge of adolescent health problems among secondary school teachers in Bayelsa State, Nigeria",
+      "outcome": "not_contradicting",
+      "reason": "This study measures teachers' knowledge of adolescent health problems, unrelated to self-regulated learning, and involves no intervention or measured outcome of engaging with the skill."
+    },
+    {
+      "source_title": "Metacognitive beliefs and worries in relation to subjective success: evidence from Brazil and Portugal",
+      "outcome": "not_contradicting",
+      "reason": "This study measured associations between metacognitive beliefs, worry, and perceived success; it did not test whether developing self-regulated learning through training or intervention failed to improve outcomes."
+    },
+    {
+      "source_title": "Continental shift: operations and supply chain management research from an African perspective",
+      "outcome": "not_contradicting",
+      "reason": "This is a conceptual paper about OSCM research in Africa; it does not measure any outcome related to self-regulated learning."
+    },
+    {
+      "source_title": "From Evidence to Impact: Supporting Sensemaking and Instructional Revision in STEM Classrooms",
+      "outcome": "not_contradicting",
+      "reason": "The abstract reports positive outcomes for engaging students in reasoning cycles and does not measure any failure of self-regulated learning."
+    },
+    {
+      "source_title": "Educator Experiences of Schoolwide PBIS Discipline Implementation: Exploring School Culture in Private PK–12 Schools",
+      "outcome": "not_contradicting",
+      "reason": "This phenomenological study explores educators' lived experiences with PBIS; it does not measure outcomes of self-regulated learning and reports positive impacts, not a failure."
+    },
+    {
+      "source_title": "Hydrogels and artificial intelligence (AI) in tissue engineering and regenerative medicine (TERM): an update on ‘skin and bones’",
+      "outcome": "not_contradicting",
+      "reason": "This abstract is about tissue engineering and hydrogels for skin and bone regeneration, unrelated to self-regulated learning."
+    },
+    {
+      "source_title": "Longitudinal Associations of Active Versus Passive TikTok Use with Depression: A Chain Mediation Model of Autistic Traits and Self-Esteem",
+      "outcome": "not_contradicting",
+      "reason": "This study is about TikTok usage patterns and depression, not about self-regulated learning or any intervention to develop that skill."
+    },
+    {
+      "source_title": "Metabolic-epigenetic axis in cardiovascular inflammatory injury: regulatory mechanisms and intervention strategies",
+      "outcome": "not_contradicting",
+      "reason": "This abstract is about cardiovascular disease biology and has nothing to do with self-regulated learning."
+    },
+    {
+      "source_title": "Designing a modular digital health curriculum for pharmacy education: a stakeholder-driven expert workshop study",
+      "outcome": "not_contradicting",
+      "reason": "This is a curriculum co-design study that measured no learning outcomes; it describes a design process, not a result showing the skill fails to help."
+    },
+    {
+      "source_title": "The Impact of AI on the Landscape Design Process",
+      "outcome": "not_contradicting",
+      "reason": "The study measured design outcomes from AI vs traditional methods, not the self-regulated learning skill or an intervention teaching it."
+    },
+    {
+      "source_title": "A Qualitative Study of Immigration Trauma, Posttraumatic Growth, and the College Experience Among MENA Immigrant Students",
+      "outcome": "not_contradicting",
+      "reason": "The study found adaptive coping and self-regulated behaviors supported positive academic growth, which supports rather than contradicts the skill's value. No measured result shows the skill failing to help."
+    },
+    {
+      "source_title": "Dose-related effects of acute cycling on executive function in children with autism spectrum disorder: a within-subject repeated-measures study",
+      "outcome": "not_contradicting",
+      "reason": "This study examines acute exercise effects on executive function in children with ASD, not self-regulated learning. It does not measure the outcome of developing self-regulated learning skills."
+    },
+    {
+      "source_title": "Pedagogical Innovation in Digital Age: Exploring Teacher Strategies and Student Perceptions of Social Media Integration in Social Science Education",
+      "outcome": "not_contradicting",
+      "reason": "The study found social media integration enhanced engagement; it does not measure self-regulated learning as an intervention that failed to improve outcomes."
+    },
+    {
+      "source_title": "Ethics and Planetary Boundaries",
+      "outcome": "not_contradicting",
+      "reason": "This abstract is about the ethics of the planetary boundaries framework and does not measure any outcome related to self-regulated learning."
+    },
+    {
+      "source_title": "Managing foreign policy complexity under polycrisis: conceptualising the opportunities and risks of artificial intelligence",
+      "outcome": "not_contradicting",
+      "reason": "This is a conceptual synthesis/position paper about AI in foreign policy, unrelated to self-regulated learning and containing no measured outcome of skill development."
+    },
+    {
+      "source_title": "Let’s Read Together: AAC-Supported Interactive Reading in the Classroom",
+      "outcome": "not_contradicting",
+      "reason": "The study measures an AAC-supported interactive reading intervention on literacy outcomes, not self-regulated learning. It does not test the self-regulated learning skill."
+    },
+    {
+      "source_title": "Effects of Single-Session Interventions on Youth Internalizing Problems",
+      "outcome": "not_contradicting",
+      "reason": "The intervention is about approach behavior for anxiety/depression, not self-regulated learning. It does not measure the outcome of engaging with the self-regulated learning skill."
+    },
+    {
+      "source_title": "The effect of a family-centered empowerment model with traditional Chinese medicine health education on self-management in community-dwelling older adult hypertensive patients with a chance health locus of control",
+      "outcome": "not_contradicting",
+      "reason": "The intervention improved self-management and blood pressure control, supporting the skill's value rather than contradicting it."
+    },
+    {
+      "source_title": "Potential of cross-task stylus-based drawing features for predicting psychological vulnerability in children",
+      "outcome": "not_contradicting",
+      "reason": "This study is about predicting stress vulnerability from drawing task features; it does not measure self-regulated learning or any intervention developing it."
+    },
+    {
+      "source_title": "Mathematical Self-Efficacy and Performance of Grade 7 Learners Using the Rapid Mathematics Assessment (RMA)",
+      "outcome": "not_contradicting",
+      "reason": "The study measured self-efficacy, not self-regulated learning, and no intervention teaching self-regulated learning was tested. The null relationship concerns self-efficacy versus performance, which is not the target skill."
+    },
+    {
+      "source_title": "Determinants of HIV Status Disclosure to Adolescents in Western Kenya: Developing an Evidence-based Disclosure Guide",
+      "outcome": "not_contradicting",
+      "reason": "The study concerns HIV status disclosure to adolescents, not the skill of self-regulated learning, and provides no measured result showing this skill fails to improve outcomes."
+    },
+    {
+      "source_title": "From Catering to Clinical Care: An Expert Survey on Designing the Inpatient Psychiatric Meal Concept",
+      "outcome": "not_contradicting",
+      "reason": "This is a survey of nutrition professionals' opinions about meal concepts in psychiatric care; it neither measures self-regulated learning nor tests an intervention involving it."
+    },
+    {
+      "source_title": "Clarifying the Association Between Food Insecurity and Chronic Disease: Why Methods Matter",
+      "outcome": "not_contradicting",
+      "reason": "This abstract concerns food insecurity and health conditions, not self-regulated learning or any learning intervention."
+    },
+    {
+      "source_title": "Evaluating the Reliability, Structure, and Measurement Invariance of the Panorama Student Survey in Middle School",
+      "outcome": "not_contradicting",
+      "reason": "This is a psychometric validation study of a survey instrument, not a measurement of learning outcomes from developing the skill."
+    },
+    {
+      "source_title": "The impact of a story-based intervention on language, literacy, and cognitive development in South African pre-schoolers : randomised controlled trials for two language groups",
+      "outcome": "not_contradicting",
+      "reason": "The study measured a story-based emergent literacy intervention, not self-regulated learning, and found positive effects. No result shows self-regulated learning failing to improve outcomes."
+    },
+    {
+      "source_title": "La autoevaluación y el entrenamiento de estrategias de aprendizaje personalizadas mediante una aplicación para teléfonos móviles en educación superior: el desarrollo y análisis psicométrico de la Escala de Autorregulación del Aprendizaje",
+      "outcome": "not_contradicting",
+      "reason": "This is a scale development study measuring psychometric properties, not an outcome of training or intervention showing the skill fails to help."
+    },
+    {
+      "source_title": "Pavlovian Conditioning and Self-Control: From Laboratory to Classroom Application",
+      "outcome": "not_contradicting",
+      "reason": "The study is about Pavlovian conditioning to promote self-control/impulsive choice, not about self-regulated learning as goal-setting, strategy selection, and reflection. Moreover, results were mixed-to-promising, not a reversed or absent outcome for the defined skill."
+    },
+    {
+      "source_title": "Hope Kit Program",
+      "outcome": "not_contradicting",
+      "reason": "This abstract describes a proposed program design with expected outcomes; it reports no measured results contradicting the skill's value."
+    },
+    {
+      "source_title": "Investigating the Role of Patient-Provider Interaction Quality and Illness Interference in Patients' Basic Psychological Need Fulfillment and Subjective Well-Being",
+      "outcome": "not_contradicting",
+      "reason": "This study concerns patient-provider communication, not self-regulated learning, and does not measure outcomes of a skill-development intervention."
+    },
+    {
+      "source_title": "Paraeducator Perceptions of Teacher-Supervisory Behaviors and Their Effects on Paraeducator Retention",
+      "outcome": "not_contradicting",
+      "reason": "This study is about paraeducator retention and leadership behaviors, not self-regulated learning. It measures nothing about the skill in question."
+    }
+  ],
+  "stopped_because": "no_new_findings",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning intervention no significant difference students",
+        "metacognitive strategy training null results school children",
+        "self-regulation learning effects did not persist failed to replicate"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning intervention no significant difference students",
+        "metacognitive strategy training null results school children",
+        "self-regulation learning effects did not persist failed to replicate"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 26,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning training no measurable effect academic achievement",
+        "goal setting self-monitoring intervention null effect adolescents randomized",
+        "self-regulation strategy instruction negative outcome meta-analysis students"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning training no measurable effect academic achievement",
+        "goal setting self-monitoring intervention null effect adolescents randomized",
+        "self-regulation strategy instruction negative outcome meta-analysis students"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 21,
+      "new_findings": 0
+    }
+  ]
+}
