@@ -655,3 +655,48 @@ class AssessPromptScopeTest(unittest.TestCase):
         import counter_evidence as ce
 
         self.assertNotEqual(ce.PROMPT_VERSION, "counter-evidence-v1")
+
+
+class RunLogFilenameTest(unittest.TestCase):
+    """Two prompt versions must not collapse onto one filename.
+
+    Activation requires three runs sharing a PROMPT_VERSION, so the version is
+    exactly what separates two measurements — and it was the one thing the
+    filename did not carry. A v2 run overwrote the v1 log for the same skill on
+    the same day, destroying the baseline that motivated v2.
+    """
+
+    def write_log(self, ce, tmp, version):
+        state = ce.initial_state({"id": "skill-x", "name": "X", "definition": "d"})
+        with mock.patch.object(ce, "RUN_LOG_DIR", Path(tmp)), mock.patch.object(
+            ce, "PROMPT_VERSION", version
+        ):
+            return ce.write_run_log(state)
+
+    def test_two_versions_produce_two_files(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        with tempfile.TemporaryDirectory() as tmp:
+            first = self.write_log(ce, tmp, "counter-evidence-v1")
+            second = self.write_log(ce, tmp, "counter-evidence-v2")
+
+            self.assertNotEqual(first, second, "a version bump must not overwrite its baseline")
+            self.assertEqual(len(sorted(Path(tmp).glob("*.json"))), 2)
+            self.assertEqual(
+                json.loads(first.read_text(encoding="utf-8"))["prompt_version"],
+                "counter-evidence-v1",
+                "the older measurement must survive intact",
+            )
+
+    def test_a_repeat_under_the_same_version_still_replaces(self) -> None:
+        """Deliberate: same skill, same version, same day is a re-measurement."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        with tempfile.TemporaryDirectory() as tmp:
+            first = self.write_log(ce, tmp, "counter-evidence-v2")
+            second = self.write_log(ce, tmp, "counter-evidence-v2")
+
+            self.assertEqual(first, second)
+            self.assertEqual(len(sorted(Path(tmp).glob("*.json"))), 1)

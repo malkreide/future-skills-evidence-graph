@@ -586,7 +586,14 @@ def write_run_log(state: State) -> Path:
     """Persist the decision trail so a reviewer can audit an unrepeatable run."""
     RUN_LOG_DIR.mkdir(parents=True, exist_ok=True)
     skill_id = str(state["skill"].get("id"))
-    path = RUN_LOG_DIR / f"{TODAY}-{skill_id}.json"
+    # The PROMPT_VERSION belongs in the NAME, not only in the payload. Without it
+    # a v2 run silently overwrote the v1 log for the same skill on the same day --
+    # and the activation rule requires three runs sharing a version, so the very
+    # thing that distinguishes two measurements was the thing the filename lost.
+    # Two runs of the same skill under the same version on the same day still
+    # collapse, and that is correct: those are re-measurements, and the newer one
+    # is the truth. Only versions must never merge.
+    path = RUN_LOG_DIR / f"{TODAY}-{skill_id}-{PROMPT_VERSION}.json"
     payload = {
         "skill_id": skill_id,
         "prompt_version": PROMPT_VERSION,
