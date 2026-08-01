@@ -409,24 +409,62 @@ make eval-skill-links           # offline report (fixtures)
 make eval-skill-links-record    # live measurement; needs ANTHROPIC_API_KEY
 ```
 
-**The golden set is proposed, not curated — and the harness says so.** The gold
-links in `eval/skill_link_labeled.json` were proposed by an agent; project
-governance puts editorial judgement with a person. While its `_status` is
-`proposed-unreviewed`, `eval_skill_links.py` prints its numbers but **exits
-non-zero on any `--min-*` flag**, so no CI gate can rest on labels nobody
-checked. A reviewer who has checked the links sets `_status` to `reviewed`;
-that, plus a `--record-live` run, is what turns the harness into a measurement.
-Until then the feature ships **unmeasured** and is not wired into any workflow.
+**The golden set was proposed, then curated — and the harness enforced the
+order.** The gold links in `eval/skill_link_labeled.json` were proposed by an
+agent; project governance puts editorial judgement with a person. While its
+`_status` was `proposed-unreviewed`, `eval_skill_links.py` printed its numbers
+but **exited non-zero on any `--min-*` flag**, so no CI gate could rest on labels
+nobody had checked. A reviewer went through them on 2026-07-31 and set `_status`
+to `reviewed`, dropping `prefill-spaced-retrieval` — leaving **10 links and 40
+empty**. That refusal still guards any future golden set; the mechanism is
+tested against a synthetic unreviewed copy so it survives the release.
 
 Read the `abstain` column first. 40 of the 50 examples map to no catalogue skill
 — an empty gold link is a real label, not a gap — so that column is where an
 over-eager model shows up before precision does.
 
-The golden set was reviewed on 2026-07-31 (`_status: reviewed`), which lifts the
-refusal to gate. No live recording exists yet, though, so there is still nothing
-to derive a threshold from: run the `eval-skill-links-record` workflow first,
-then set `--min-precision` / `--min-abstention` in `validate.yml` from the
-measured values with a margin.
+#### Measured baseline — `skill-link-v1`, `claude-opus-4-8`, 2026-08-01
+
+| field | P | R | F1 | abstain | TP/FP/FN |
+| --- | --- | --- | --- | --- | --- |
+| `supports_skill_ids` | 0.71 | 0.91 | 0.80 | **0.93** | 10/4/1 |
+| `contradicts_skill_ids` | 1.00 | 1.00 | 1.00 | 1.00 | 0/0/0 |
+
+**The model does not flood.** It leaves 37 of the 40 empty-gold examples empty,
+which was the failure mode this feature had to clear before it could be gated at
+all.
+
+**The three that slipped share one confusion.** `prefill-adult-mooc` and
+`prefill-spaced-retrieval` both drew `skill-self-regulated-learning` where gold
+is empty — and `spaced-retrieval` is *exactly* the link the human reviewer
+removed. The model independently reproduces the agent's original proposal, so
+the reviewer's boundary is precisely the one it cannot see: effectiveness of a
+*prescribed* learning technique is a memory outcome, not evidence about a
+learner's self-regulation. The third (`prefill-adult-digital-literacy`) is the
+same rule from the other side — topical proximity without a measured outcome.
+Recall's single miss is the second link on the one two-link example; when a link
+genuinely exists, the model finds it.
+
+**`contradicts_skill_ids` is empty, not perfect.** 0/0/0: no golden example
+carries a contradiction and the model proposed none. A 1.00 over an empty set
+measures nothing — and that gap is what the counter-evidence lane exists for.
+
+**Why abstention carries the gate and precision only a tripwire.** The
+denominators are small and unequal, which decides what can hold a floor:
+
+| metric | denominator | one flip moves it by |
+| --- | --- | --- |
+| abstention | 40 empty-gold examples | 0.025 |
+| precision | 14 link instances | 0.071 |
+| recall | 11 gold links | 0.091 |
+
+So `--min-abstention 0.85` (measured 0.93, ~3 failures of headroom) is a real
+floor, and it is also the number that governs review load. `--min-precision 0.6`
+(measured 0.71) is deliberately loose: it is a **tripwire for a broken prompt**
+that starts linking everything, not a claim that 0.71 is a defended level — one
+extra false positive is worth 0.07 here, against 0.02 on the pre-fill set.
+Recall is left ungated for the same reason. Revisit both once a second recording
+shows the actual spread.
 
 ### What the CI gate actually measures (regression, not live accuracy)
 
