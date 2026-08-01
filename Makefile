@@ -66,6 +66,12 @@ build:
 recall-probe:
 	python scripts/recall_probe.py
 
+# Does sort=publication_year:desc cost OpenAlex relevance? It REPLACES the
+# relevance ranking, so the importer sees "matches any term, newest first".
+# Usually needs to run on a runner -- OpenAlex 429s shared addresses.
+probe-openalex-ranking:
+	python scripts/probe_openalex_ranking.py
+
 # After filling in the 'relevant' fields, fold the labels into the eval set.
 recall-ingest:
 	python scripts/recall_probe.py --ingest eval/recall_probe.json
