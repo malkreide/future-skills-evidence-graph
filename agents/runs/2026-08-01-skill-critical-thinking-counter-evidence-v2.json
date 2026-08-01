@@ -1,0 +1,64 @@
+{
+  "skill_id": "skill-critical-thinking",
+  "prompt_version": "counter-evidence-v2",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-01",
+  "rounds": 2,
+  "queries_used": [
+    "critical thinking instruction no significant difference students",
+    "epistemic vigilance training failed to replicate school",
+    "teaching bias detection null results classroom transfer",
+    "critical thinking skills no transfer far domain general education",
+    "argument evaluation intervention effects did not persist follow-up students",
+    "media literacy fake news detection null effect randomized trial"
+  ],
+  "sources_examined": 58,
+  "findings": 0,
+  "proposed": [],
+  "stopped_because": "no_new_findings",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking instruction no significant difference students",
+        "epistemic vigilance training failed to replicate school",
+        "teaching bias detection null results classroom transfer"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking instruction no significant difference students",
+        "epistemic vigilance training failed to replicate school",
+        "teaching bias detection null results classroom transfer"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 29,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking skills no transfer far domain general education",
+        "argument evaluation intervention effects did not persist follow-up students",
+        "media literacy fake news detection null effect randomized trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking skills no transfer far domain general education",
+        "argument evaluation intervention effects did not persist follow-up students",
+        "media literacy fake news detection null effect randomized trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 29,
+      "new_findings": 0
+    }
+  ]
+}

@@ -700,3 +700,63 @@ class RunLogFilenameTest(unittest.TestCase):
 
             self.assertEqual(first, second)
             self.assertEqual(len(sorted(Path(tmp).glob("*.json"))), 1)
+
+
+class RejectionLoggingTest(unittest.TestCase):
+    """A run that proposes nothing must still say WHY.
+
+    Otherwise "the assessor is too strict" and "the abstracts held nothing" are
+    the same log — and for a lane hunting contradictions that is the expensive
+    confusion, because an empty run reads like the catalogue being right.
+    """
+
+    def logged(self, ce, rejected):
+        state = ce.initial_state({"id": "skill-x", "name": "X", "definition": "d"})
+        state["rejected"] = rejected
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(ce, "RUN_LOG_DIR", Path(tmp)):
+                path = ce.write_run_log(state)
+            return json.loads(path.read_text(encoding="utf-8"))
+
+    def test_the_three_outcomes_are_counted_separately(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        payload = self.logged(
+            ce,
+            [
+                {"source_title": "A", "outcome": "not_contradicting", "reason": "positive"},
+                {"source_title": "B", "outcome": "not_contradicting", "reason": None},
+                {"source_title": "C", "outcome": "quote_not_verbatim", "reason": "paraphrased"},
+                {"source_title": "D", "outcome": "no_verdict", "reason": None},
+            ],
+        )
+
+        self.assertEqual(payload["rejected"], 4)
+        self.assertEqual(
+            payload["rejected_by_outcome"],
+            {"no_verdict": 1, "not_contradicting": 2, "quote_not_verbatim": 1},
+        )
+        self.assertEqual(len(payload["not_proposed"]), 4)
+
+    def test_a_provider_failure_is_not_recorded_as_a_judgement(self) -> None:
+        """no_verdict means the call died. Counting it as 'no' would read a
+        broken run as a literature with nothing in it."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        payload = self.logged(
+            ce, [{"source_title": "A", "outcome": "no_verdict", "reason": None}] * 3
+        )
+
+        self.assertEqual(payload["rejected_by_outcome"], {"no_verdict": 3})
+        self.assertNotIn("not_contradicting", payload["rejected_by_outcome"])
+
+    def test_an_empty_run_still_reports_the_ledger(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        payload = self.logged(ce, [])
+        self.assertEqual(payload["rejected"], 0)
+        self.assertEqual(payload["rejected_by_outcome"], {})
+        self.assertEqual(payload["not_proposed"], [])

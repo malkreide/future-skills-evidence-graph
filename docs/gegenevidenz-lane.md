@@ -244,6 +244,31 @@ Vorschlägen ist mehr, als der heutige Zustand (1 von 146) liefert. Er ist aber
 nicht *null* — eine Lane, die überwiegend Fehlalarme produziert, kostet
 Reviewzeit und untergräbt das Vertrauen in die Kandidaten-PRs.
 
+**Zusätzlich: mindestens 6 Vorschläge über die drei Läufe.** Präzision allein ist
+die falsche Hälfte der Frage. Sie ist über null Vorschlägen gar nicht definiert,
+und wer 0/0 grosszügig als bestanden liest, hat eine Regel gebaut, die durch
+**Nichtstun** erfüllbar ist: eine Lane, die nie etwas vorschlägt, hat perfekte
+Präzision und null Wert. Der erste v2-Lauf (`skill-critical-thinking`, 58
+Quellen, 0 Vorschläge) ist genau dieser Fall.
+
+Die 6 sind hergeleitet, nicht gemessen — und das soll man ihnen ansehen. Zwei
+Überlegungen tragen sie: unter 6 Vorschlägen springt eine Quote von 0.5 in zu
+groben Stufen, um sie überhaupt zu schätzen (bei 2 Vorschlägen gibt es nur 0,
+0.5, 1). Und bei erfüllter Präzision bedeuten 6 Vorschläge **mindestens 3
+angenommene Widersprüche** — das vervierfacht den heutigen Bestand von einem
+einzigen in 146 Claims. Weniger wäre den Betrieb einer eigenen Lane nicht wert.
+
+Ein Lauf mit null Vorschlägen zählt als einer der drei — er ist eine gültige
+Messung der Lane —, trägt aber nichts zur Ausbeute bei.
+
+**Wenn die Ausbeute reisst, entscheidet das Ablehnungsprotokoll**, nicht das
+Bauchgefühl. `rejected_by_outcome` trennt drei Fälle, die entgegengesetzt zu
+lesen sind: überwiegend `quote_not_verbatim` heisst, der Bewerter fand etwas und
+konnte es nicht verankern (ein Anker-Problem, behebbar); überwiegend
+`not_contradicting` heisst entweder strenger Bewerter oder leere Literatur;
+überwiegend `no_verdict` heisst, der Lauf war kaputt und trägt die Maske eines
+Ergebnisses.
+
 **Die drei Läufe müssen denselben `PROMPT_VERSION` teilen.** Die beiden
 v1-Läufe (`skill-self-regulated-learning`, `skill-critical-thinking`, Protokolle
 unter `agents/runs/`) zählen **nicht** mit: sie haben v2 überhaupt erst
@@ -264,10 +289,15 @@ statt in jeder Datei einzeln nachgeschlagen werden zu müssen.
 **Decommission**, wenn eines davon eintritt:
 
 1. Die Präzision fällt über drei Läufe unter 0.4.
-2. Die Lane erzeugt mehr Reviewaufwand, als der Katalog an Korrektur gewinnt —
+2. Die Lane liefert über drei Läufe **weniger als 6 Vorschläge**, und das
+   Ablehnungsprotokoll zeigt überwiegend `not_contradicting` — dann sucht sie
+   nach etwas, das in Abstracts nicht steht, und kein Prompt behebt das. Bei
+   überwiegend `quote_not_verbatim` gilt dieser Punkt **nicht**: das ist ein
+   Anker-Problem und gehört behoben, nicht abgeschaltet.
+3. Die Lane erzeugt mehr Reviewaufwand, als der Katalog an Korrektur gewinnt —
    messbar daran, dass über einen Betriebsmonat kein einziger Vorschlag zu einem
    `reviewed` Claim wurde.
-3. LangGraph zieht eine Abhängigkeit nach, die sich nicht mehr sauber in
+4. LangGraph zieht eine Abhängigkeit nach, die sich nicht mehr sauber in
    `requirements-agents.txt` einsperren lässt.
 
 In allen drei Fällen ist das Entfernen ein Verzeichnis-Löschen plus eine

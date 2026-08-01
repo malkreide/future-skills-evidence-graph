@@ -135,6 +135,12 @@ class State(TypedDict):
     queries_used: list[str]
     seen_titles: list[str]
     findings: list[dict[str, Any]]
+    # Why each examined source did NOT become a finding. Without this a run that
+    # proposes nothing is unreadable: "the assessor is too strict" and "the
+    # abstracts held nothing quotable" look identical, and for a lane hunting
+    # contradictions that is the expensive confusion — an empty run reads like
+    # the catalogue being right.
+    rejected: list[dict[str, Any]]
     rounds: int
     barren_rounds: int
     # Set when a round had no query left to run — the generator has stopped
@@ -349,8 +355,23 @@ def search_and_assess(state: State) -> dict[str, Any]:
     round_queries = list(state["pending_queries"])
     seen = list(state["seen_titles"])
     findings = list(state["findings"])
+    rejected = list(state["rejected"])
     examined = 0
     backends_used: list[str] = []
+
+    def reject(source: dict[str, Any], outcome: str, reason: Any = None) -> None:
+        rejected.append(
+            {
+                "source_title": source.get("title"),
+                "outcome": outcome,
+                # The model may volunteer a reason on a negative verdict; the
+                # schema allows it and the prompt does not forbid it. It was
+                # simply discarded before. Often null -- that absence is itself
+                # readable, and capturing it needs no prompt change, so v2 stays
+                # the same assessor it was when it was measured.
+                "reason": reason,
+            }
+        )
 
     for query in round_queries:
         sources, backend = search_query(query)
@@ -372,7 +393,15 @@ def search_and_assess(state: State) -> dict[str, Any]:
                 ),
                 schema=ASSESS_SCHEMA,
             )
-            if not isinstance(verdict, dict) or not verdict.get("contradicts"):
+            # Three distinct ways not to become a finding, and they mean opposite
+            # things about a barren run: a dead provider is not a judgement, a
+            # negative verdict is the assessor working, and a rejected anchor is
+            # the assessor finding something it could not quote.
+            if not isinstance(verdict, dict):
+                reject(source, "no_verdict")
+                continue
+            if not verdict.get("contradicts"):
+                reject(source, "not_contradicting", verdict.get("reason"))
                 continue
             quote = str(verdict.get("quote") or "").strip()
             # No claim without a verifiable text anchor: the quote must occur
@@ -383,6 +412,7 @@ def search_and_assess(state: State) -> dict[str, Any]:
                     "the quote is not verbatim in the abstract.",
                     file=sys.stderr,
                 )
+                reject(source, "quote_not_verbatim", verdict.get("reason"))
                 continue
             findings.append({"source": source, "quote": quote, "reason": verdict.get("reason")})
 
@@ -394,6 +424,7 @@ def search_and_assess(state: State) -> dict[str, Any]:
         "exhausted": not round_queries,
         "seen_titles": seen,
         "findings": findings,
+        "rejected": rejected,
         "rounds": state["rounds"] + 1,
         "barren_rounds": 0 if new_count else state["barren_rounds"] + 1,
         "log": state["log"]
@@ -473,6 +504,7 @@ def initial_state(skill: dict[str, Any]) -> State:
         "queries_used": [],
         "seen_titles": [],
         "findings": [],
+        "rejected": [],
         "rounds": 0,
         "barren_rounds": 0,
         "exhausted": False,
@@ -623,6 +655,20 @@ def write_run_log(state: State) -> Path:
             }
             for finding in state["findings"]
         ],
+        # The other side of the ledger. 'proposed' alone cannot explain a run that
+        # proposed nothing, and the three outcomes mean opposite things:
+        #   no_verdict          the provider failed — not a judgement at all
+        #   not_contradicting   the assessor looked and said no
+        #   quote_not_verbatim  the assessor said yes but could not anchor it
+        # A barren run that is mostly the third is an anchoring problem; mostly
+        # the second is either a strict assessor or a literature with nothing to
+        # find; mostly the first is a broken run wearing the mask of a result.
+        "rejected": len(state["rejected"]),
+        "rejected_by_outcome": {
+            outcome: sum(1 for r in state["rejected"] if r["outcome"] == outcome)
+            for outcome in sorted({r["outcome"] for r in state["rejected"]})
+        },
+        "not_proposed": state["rejected"],
         # The specific limit, not the word "stop": a reviewer must be able to
         # tell "no counter-evidence exists" from "the budget ran out too early".
         "stopped_because": stop_reason(state) or "still_running",
