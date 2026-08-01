@@ -1,0 +1,66 @@
+name: Probe OpenAlex ordering (manual)
+
+# Manual only. Answers one open question: does `sort=publication_year:desc` in
+# ingest_openalex.fetch cost us relevance? The parameter REPLACES OpenAlex's
+# relevance ranking, so the importer receives "matches any query term, newest
+# first" instead of "matches best" -- but whether that changes the result set
+# materially is a measurement, not a code reading.
+#
+# It exists as a workflow because OpenAlex rate-limits shared addresses hard
+# (HTTP 429 from a developer sandbox, with and without a mailto), and because
+# the answer decides something about the CORE importer, not just the agent lane.
+#
+# Costs nothing but API calls -- no model is involved and nothing is written.
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Results per query and ordering (default 10)."
+        required: false
+        default: "10"
+      query:
+        description: >-
+          OPTIONAL single query to probe instead of the built-in set. The
+          built-in set deliberately mixes lane-style and importer-style queries.
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      # Stdlib only -- the probe uses urllib. Installing the dev requirements
+      # would only slow it down.
+      - name: Probe both orderings
+        env:
+          OPENALEX_MAILTO: ${{ secrets.OPENALEX_MAILTO }}
+          LIMIT: ${{ inputs.limit }}
+          QUERY: ${{ inputs.query }}
+        run: |
+          set -o pipefail
+          args=(--limit "${LIMIT}")
+          if [ -n "${QUERY}" ]; then
+            args+=(--query "${QUERY}")
+          fi
+          python scripts/probe_openalex_ranking.py "${args[@]}" | tee /tmp/probe.txt
+
+      # The whole point is the comparison, so put it where it can be read next
+      # to the run that produced it rather than only in the console.
+      - name: Publish the comparison
+        if: always()
+        run: |
+          {
+            echo "## OpenAlex ordering probe"
+            echo
+            echo '```'
+            cat /tmp/probe.txt 2>/dev/null || echo "The probe produced no output."
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

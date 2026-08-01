@@ -10,6 +10,14 @@ from common import TODAY, run_importer, slugify
 
 BASE_URL = "https://api.openalex.org/works"
 
+# NOTE: this REPLACES OpenAlex's relevance ranking. `search` would order by how
+# well a work matches; with this sort the API returns "everything matching any
+# query term, newest first" instead. Named here rather than inlined so
+# probe_openalex_ranking.py measures the ordering the importer actually sends —
+# a copied literal there would keep reporting on this value after someone
+# changed it. Whether the trade is right is an open question; see that probe.
+SEARCH_SORT = "publication_year:desc"
+
 
 def inverted_index_to_text(index: dict[str, list[int]] | None) -> str | None:
     if not index:
@@ -26,7 +34,7 @@ def fetch(query: str, limit: int, mailto: str | None = None) -> list[dict[str, A
         "search": query,
         "per-page": str(limit),
         "filter": "type:article|book|report",
-        "sort": "publication_year:desc",
+        "sort": SEARCH_SORT,
     }
     if mailto:
         params["mailto"] = mailto
