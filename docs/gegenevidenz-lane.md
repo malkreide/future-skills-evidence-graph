@@ -51,10 +51,11 @@ verwendet.
 Die Gegenevidenz-Suche hat die entgegengesetzte Form:
 
 - **Die Query steht nicht vorab fest.** „Wo widerspricht die Literatur
-  *Systems Thinking bei 10-12-Jährigen*?" ist keine Stichwortsuche. Man findet
-  Null-Resultate über Formulierungen wie *no significant difference*, *failed to
-  replicate*, *effects did not persist* — und welche davon greift, zeigt sich
-  erst am Ergebnis der vorherigen Runde.
+  *Systems Thinking bei 10-12-Jährigen*?" ist keine Stichwortsuche. Welcher
+  Zugriff trägt — ein Teilkonstrukt, eine andere Altersgruppe, eine benachbarte
+  Intervention —, zeigt sich erst am Ergebnis der vorherigen Runde. (Naheliegend
+  wäre, den Null-Befund in die Query zu schreiben. Das funktioniert nicht; warum,
+  steht unter „Wonach gesucht wird".)
 - **Es gibt eine echte Abbruchentscheidung.** „Genug gesucht" ist ein Urteil
   über die bisherigen Treffer, keine Konstante.
 - **Reformulierung ist der Kern der Aufgabe.** Eine erfolglose Runde ist
@@ -220,6 +221,40 @@ wörtliches Zitat, aber ob ein wörtliches Zitat den Befund *stützt*, kann nur 
 Prompt verlangen und ein Reviewer nachhalten. Das ist eine bewusst schwächere
 Zusage, und sie steht hier, damit niemand sie für eine harte hält.
 
+## Wonach gesucht wird — die Lehre aus v2
+
+v2 lieferte über drei Läufe **null Vorschläge** bei 150 geprüften Quellen. Das
+sah nach einem zu strengen Bewerter aus oder nach einer Literatur ohne
+zitierfähige Null-Resultate. Das Ablehnungsprotokoll zeigte etwas Drittes:
+**60 % der geprüften Quellen waren themenfremd.** Die Suche lieferte Studien über
+Haftstigma, Erziehungshaltungen von Vätern und Warnhinweise auf Zigarren. Der
+Bewerter verwarf sie zu Recht — er bekam nie etwas vorgelegt, worüber sich
+urteilen liess.
+
+Die Ursache steckt in der Suchstrategie von v1/v2, und sie ist lehrreich, weil
+sie richtig *klingt*: „benenne das Null-Resultat in der Query" —
+
+```
+self-regulated learning intervention no significant difference students
+```
+
+Eine bibliografische Volltextsuche behandelt das als **Wortsack**. *no*,
+*significant*, *difference*, *students* passen auf fast alles, sie überstimmen
+die tragenden Begriffe, und zurück kommt Beliebiges. Genau die Wörter, die den
+Null-Befund treffen sollten, verwässern die Anfrage.
+
+v3 dreht die Arbeitsteilung um: **eng auf das Thema suchen, das Filtern dem
+Bewerter überlassen.** Der ist nachweislich streng genug — er sieht nur nie, was
+die Suche nicht liefert. Erlaubt ist höchstens *ein* weiterer Begriff, und nur
+wenn er einen Studien**typ** benennt, in dem Null-Resultate berichtet werden
+(`meta-analysis`, `systematic review`, `randomized controlled trial`,
+`replication`). Höchstens eine Verneinung pro Query, lieber keine.
+
+Der Preis ist ehrlich zu nennen: enge Themen-Queries liefern überwiegend
+positive Studien, es müssen also mehr Quellen geprüft werden, um einen seltenen
+Null-Befund zu finden. Das kostet Modellaufrufe. Der Anteil `off_topic` im
+Protokoll ist ab jetzt die direkte Kennzahl dafür, ob sich das lohnt.
+
 ## Was die Lane nicht darf
 
 - **Keine aktiven Records ändern.** Sie erzeugt Kandidaten, sonst nichts.
@@ -262,17 +297,23 @@ Ein Lauf mit null Vorschlägen zählt als einer der drei — er ist eine gültig
 Messung der Lane —, trägt aber nichts zur Ausbeute bei.
 
 **Wenn die Ausbeute reisst, entscheidet das Ablehnungsprotokoll**, nicht das
-Bauchgefühl. `rejected_by_outcome` trennt drei Fälle, die entgegengesetzt zu
-lesen sind: überwiegend `quote_not_verbatim` heisst, der Bewerter fand etwas und
-konnte es nicht verankern (ein Anker-Problem, behebbar); überwiegend
-`not_contradicting` heisst entweder strenger Bewerter oder leere Literatur;
-überwiegend `no_verdict` heisst, der Lauf war kaputt und trägt die Maske eines
-Ergebnisses.
+Bauchgefühl. `rejected_by_outcome` trennt vier Fälle:
+
+| Ausgang | Was er bedeutet |
+| --- | --- |
+| `off_topic` | Die **Suche** hat danebengegriffen. Der Bewerter hatte recht. |
+| `on_topic_no_contradiction` | Er las eine einschlägige Studie und verneinte. |
+| `quote_not_verbatim` | Er bejahte, konnte es aber nicht wörtlich verankern. |
+| `no_verdict` | Der Aufruf ist gestorben — gar kein Urteil. |
+
+**Nur der zweite ist eine Aussage über die Literatur.** Die anderen drei sehen an
+der Oberfläche gleich aus — null Funde — und verlangen entgegengesetzte
+Korrekturen.
 
 **Die drei Läufe müssen denselben `PROMPT_VERSION` teilen.** Die beiden
 v1-Läufe (`skill-self-regulated-learning`, `skill-critical-thinking`, Protokolle
-unter `agents/runs/`) zählen **nicht** mit: sie haben v2 überhaupt erst
-begründet, und eine Quote über zwei verschiedene Bewerter zu mitteln misst
+unter `agents/runs/`) zählen **nicht** mit, und die v2-Läufe ebenso wenig: jede
+Generation hat die nächste begründet, und eine Quote über zwei verschiedene Bewerter zu mitteln misst
 weder den einen noch den anderen. Sie bleiben als Ausgangspunkt liegen — ohne
 sie wäre nicht sichtbar geworden, *warum* die Vorschläge danebenlagen, und die
 Vermutung wäre auf die Suche gefallen statt auf die Bewertung.
@@ -290,10 +331,18 @@ statt in jeder Datei einzeln nachgeschlagen werden zu müssen.
 
 1. Die Präzision fällt über drei Läufe unter 0.4.
 2. Die Lane liefert über drei Läufe **weniger als 6 Vorschläge**, und das
-   Ablehnungsprotokoll zeigt überwiegend `not_contradicting` — dann sucht sie
-   nach etwas, das in Abstracts nicht steht, und kein Prompt behebt das. Bei
-   überwiegend `quote_not_verbatim` gilt dieser Punkt **nicht**: das ist ein
-   Anker-Problem und gehört behoben, nicht abgeschaltet.
+   Ablehnungsprotokoll zeigt überwiegend `on_topic_no_contradiction` — dann
+   bekommt der Bewerter einschlägige Studien vorgelegt und findet nichts, was
+   dem Skill widerspricht. Das ist eine Aussage über die Literatur, und kein
+   Prompt behebt sie.
+
+   Bei überwiegend `off_topic` oder `quote_not_verbatim` gilt dieser Punkt
+   **ausdrücklich nicht**: das erste ist ein Suchproblem, das zweite ein
+   Anker-Problem, und beide gehören behoben statt abgeschaltet. Die Regel hiess
+   bis v3 schlicht „überwiegend `not_contradicting`" — und hätte die Lane
+   stillgelegt, obwohl der Bewerter fehlerfrei arbeitete und nur die Suche
+   danebengriff. Ein Decommission-Kriterium, das den häufigsten reparierbaren
+   Fehler mit dem einen unreparierbaren verwechselt, schaltet das Falsche ab.
 3. Die Lane erzeugt mehr Reviewaufwand, als der Katalog an Korrektur gewinnt —
    messbar daran, dass über einen Betriebsmonat kein einziger Vorschlag zu einem
    `reviewed` Claim wurde.
