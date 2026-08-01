@@ -4,17 +4,81 @@
   "model": "claude-opus-4-8",
   "provider": "anthropic",
   "created_at": "2026-08-01",
-  "rounds": 2,
+  "rounds": 4,
   "queries_used": [
     "critical thinking instruction no significant difference students",
     "epistemic vigilance training failed to replicate school",
-    "bias detection intervention null results children",
-    "critical thinking skills training effects did not persist follow-up",
-    "argument evaluation intervention no measurable effect adolescents",
-    "media literacy misinformation program null results transfer failure"
+    "teaching critical thinking null results transfer effects did not persist",
+    "debiasing intervention no measurable effect students critical reasoning",
+    "media literacy training null results fake news detection adolescents",
+    "argument evaluation instruction no improvement transfer failed classroom",
+    "critical thinking skills no transfer domain-specific failed generalization students",
+    "inoculation misinformation effect faded no long-term retention pupils",
+    "scientific reasoning intervention no significant gains control group children",
+    "source evaluation training no significant effect student judgment credibility",
+    "logical fallacy instruction failed to improve reasoning null results",
+    "cognitive reflection test no improvement after intervention adolescents null"
   ],
-  "sources_examined": 55,
-  "findings": 1,
+  "sources_examined": 104,
+  "findings": 7,
+  "proposed": [
+    {
+      "claim_id": "claim-construction-and-application-of-a-contextual-thinking-test-for-students",
+      "source_id": "src-construction-and-application-of-a-contextual-thinking-test-for-students",
+      "source_title": "Construction and application of a contextual thinking test for students of the college of education for humanities",
+      "source_url": "https://openalex.org/W7170086731",
+      "quote": "Compared with the hypothetical mean using the one-sample t-test, the result was t (599) = -0.976, p = 0.3293 (α = 0.05), indicating that the students’ level of contextual thinking did not differ significantly from the hypothetical mean.",
+      "reason": "Null result: students' contextual thinking level did not significantly differ from the hypothetical mean."
+    },
+    {
+      "claim_id": "claim-social-intelligence-and-susceptibility-to-online-misinformation-of-gener",
+      "source_id": "src-social-intelligence-and-susceptibility-to-online-misinformation-of-gener",
+      "source_title": "Social Intelligence and Susceptibility to Online Misinformation of Generation Z Learners",
+      "source_url": "https://openalex.org/W7163889118",
+      "quote": "Students performed best in recognizing credible and institutional sources but showed greater vulnerability to emotional manipulation, sensationalism, conspiracy-related content, health misinformation, and repeated unsupported claims.",
+      "reason": "Despite high social intelligence, students showed vulnerability to misinformation, indicating limited epistemic vigilance in evaluating claims."
+    },
+    {
+      "claim_id": "claim-adolescents-trust-in-political-content-from-influencers-the-roles-of-mot",
+      "source_id": "src-adolescents-trust-in-political-content-from-influencers-the-roles-of-mot",
+      "source_title": "Adolescents’ Trust in Political Content From Influencers: The Roles of Motive Attribution and Parental Mediation",
+      "source_url": "https://openalex.org/W7143397076",
+      "quote": "This study proposes two novel theoretical pathways to explain varying trust perceptions between and within adolescents: a source-centered pathway, focusing on observed SMI-audience interactions and motive attribution, and an audience-centered pathway, emphasizing adolescents’ digital literacy and parental mediation.",
+      "reason": "Higher digital literacy was associated with MORE trust in influencers lacking expertise, suggesting literacy did not confer epistemic vigilance against unsupported authority."
+    },
+    {
+      "claim_id": "claim-senior-high-school-students-and-english-teachers-perceptions-of-ai-tools",
+      "source_id": "src-senior-high-school-students-and-english-teachers-perceptions-of-ai-tools",
+      "source_title": "Senior High School Students’ and English Teachers’ Perceptions of AI Tools in English‑Related Tasks: Benefits and Concerns in Baguio City",
+      "source_url": "https://openalex.org/W7171619386",
+      "quote": "English teachers recognized two main problems with student AI usage according to their findings, which included student overdependency on AI-produced materials and their diminishing ability to think critically and create original work, their tendency to commit plagiarism and academic dishonesty, and their difficulty in demonstrating actual student comprehension through evaluation.",
+      "reason": "The abstract reports AI use harming students' ability to think critically, evidence against the skill."
+    },
+    {
+      "claim_id": "claim-the-ethical-and-legal-complexities-of-regulating-companion-ai-chatbots-c",
+      "source_id": "src-the-ethical-and-legal-complexities-of-regulating-companion-ai-chatbots",
+      "source_title": "The Ethical and Legal Complexities of Regulating Companion AI Chatbots",
+      "source_url": "https://openalex.org/W7143585285",
+      "quote": "First, we show how companion chatbots rely on anthropomorphic cues, creating a regulatory tension between enabling meaningful connection and avoiding deception, over-trust, and unhealthy dependency.",
+      "reason": "The abstract describes deception, over-trust, and dependency fostered by companion AI, indicating a harm undermining users' epistemic vigilance and critical resistance to machine authority."
+    },
+    {
+      "claim_id": "claim-implications-of-similarities-and-differences-amongst-media-literacy-skil",
+      "source_id": "src-implications-of-similarities-and-differences-amongst-media-literacy-skil",
+      "source_title": "Implications of Similarities and Differences Amongst Media Literacy Skills and Trust Across Communities of Color",
+      "source_url": "https://openalex.org/W7171911454",
+      "quote": "No significant differences in online information efficacy were found.",
+      "reason": "The abstract reports a null result for online information efficacy across groups."
+    },
+    {
+      "claim_id": "claim-equally-credible-examining-credibility-perceptions-and-evaluation-proces",
+      "source_id": "src-equally-credible-examining-credibility-perceptions-and-evaluation-proces",
+      "source_title": "Equally Credible? Examining Credibility Perceptions and Evaluation Processes of AI- and Human-Generated Information",
+      "source_url": "https://openalex.org/W7171659349",
+      "quote": "In an experiment, participants evaluated the credibility of news articles or social media posts labeled as AI- or human-authored as mostly equal, although human-authored social media posts were perceived as slightly more credible than AI-authored social media posts.",
+      "reason": "People rated AI and human information as roughly equally credible, showing a failure to critically differentiate source reliability."
+    }
+  ],
   "stopped_because": "query_budget",
   "log": [
     {
@@ -22,7 +86,7 @@
       "queries": [
         "critical thinking instruction no significant difference students",
         "epistemic vigilance training failed to replicate school",
-        "bias detection intervention null results children"
+        "teaching critical thinking null results transfer effects did not persist"
       ]
     },
     {
@@ -30,34 +94,76 @@
       "queries": [
         "critical thinking instruction no significant difference students",
         "epistemic vigilance training failed to replicate school",
-        "bias detection intervention null results children"
+        "teaching critical thinking null results transfer effects did not persist"
       ],
       "backends": [
         "openalex"
       ],
-      "examined": 28,
-      "new_findings": 0
+      "examined": 29,
+      "new_findings": 1
     },
     {
       "step": "propose_queries",
       "queries": [
-        "critical thinking skills training effects did not persist follow-up",
-        "argument evaluation intervention no measurable effect adolescents",
-        "media literacy misinformation program null results transfer failure"
+        "debiasing intervention no measurable effect students critical reasoning",
+        "media literacy training null results fake news detection adolescents",
+        "argument evaluation instruction no improvement transfer failed classroom"
       ]
     },
     {
       "step": "search_and_assess",
       "queries": [
-        "critical thinking skills training effects did not persist follow-up",
-        "argument evaluation intervention no measurable effect adolescents",
-        "media literacy misinformation program null results transfer failure"
+        "debiasing intervention no measurable effect students critical reasoning",
+        "media literacy training null results fake news detection adolescents",
+        "argument evaluation instruction no improvement transfer failed classroom"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 28,
+      "new_findings": 3
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking skills no transfer domain-specific failed generalization students",
+        "inoculation misinformation effect faded no long-term retention pupils",
+        "scientific reasoning intervention no significant gains control group children"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking skills no transfer domain-specific failed generalization students",
+        "inoculation misinformation effect faded no long-term retention pupils",
+        "scientific reasoning intervention no significant gains control group children"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 20,
+      "new_findings": 1
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "source evaluation training no significant effect student judgment credibility",
+        "logical fallacy instruction failed to improve reasoning null results",
+        "cognitive reflection test no improvement after intervention adolescents null"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "source evaluation training no significant effect student judgment credibility",
+        "logical fallacy instruction failed to improve reasoning null results",
+        "cognitive reflection test no improvement after intervention adolescents null"
       ],
       "backends": [
         "openalex"
       ],
       "examined": 27,
-      "new_findings": 1
+      "new_findings": 2
     }
   ]
 }

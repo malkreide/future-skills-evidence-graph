@@ -1,0 +1,111 @@
+{
+  "skill_id": "skill-self-regulated-learning",
+  "prompt_version": "counter-evidence-v1",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-01",
+  "rounds": 4,
+  "queries_used": [
+    "self-regulated learning intervention no significant difference students",
+    "self-regulation training failed to improve academic outcomes null results",
+    "metacognitive strategy instruction effects did not persist school children",
+    "self-regulated learning no measurable effect academic achievement adolescents",
+    "goal setting self-monitoring intervention failed to replicate student performance",
+    "self-regulation strategy training negative effect learning outcomes randomized trial",
+    "self-regulated learning no effect meta-analysis college students null",
+    "self-monitoring reflection intervention ineffective learning outcomes controlled study",
+    "metacognition training no improvement achievement failed replication schools",
+    "self-regulated learning intervention no effect achievement primary school null results",
+    "SRL prompts online learning failed to improve performance randomized controlled trial",
+    "self-regulation strategy instruction ineffective transfer no significant difference secondary students"
+  ],
+  "sources_examined": 87,
+  "findings": 5,
+  "stopped_because": "query_budget",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning intervention no significant difference students",
+        "self-regulation training failed to improve academic outcomes null results",
+        "metacognitive strategy instruction effects did not persist school children"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning intervention no significant difference students",
+        "self-regulation training failed to improve academic outcomes null results",
+        "metacognitive strategy instruction effects did not persist school children"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 29,
+      "new_findings": 2
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning no measurable effect academic achievement adolescents",
+        "goal setting self-monitoring intervention failed to replicate student performance",
+        "self-regulation strategy training negative effect learning outcomes randomized trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning no measurable effect academic achievement adolescents",
+        "goal setting self-monitoring intervention failed to replicate student performance",
+        "self-regulation strategy training negative effect learning outcomes randomized trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 18,
+      "new_findings": 1
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning no effect meta-analysis college students null",
+        "self-monitoring reflection intervention ineffective learning outcomes controlled study",
+        "metacognition training no improvement achievement failed replication schools"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning no effect meta-analysis college students null",
+        "self-monitoring reflection intervention ineffective learning outcomes controlled study",
+        "metacognition training no improvement achievement failed replication schools"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 22,
+      "new_findings": 1
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning intervention no effect achievement primary school null results",
+        "SRL prompts online learning failed to improve performance randomized controlled trial",
+        "self-regulation strategy instruction ineffective transfer no significant difference secondary students"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning intervention no effect achievement primary school null results",
+        "SRL prompts online learning failed to improve performance randomized controlled trial",
+        "self-regulation strategy instruction ineffective transfer no significant difference secondary students"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 18,
+      "new_findings": 1
+    }
+  ]
+}
