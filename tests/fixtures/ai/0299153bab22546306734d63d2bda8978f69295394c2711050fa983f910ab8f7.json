@@ -1,0 +1,10 @@
+{
+  "hash": "0299153bab22546306734d63d2bda8978f69295394c2711050fa983f910ab8f7",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-critical-thinking"
+    ]
+  }
+}

@@ -12,7 +12,13 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-ai-literacy",
+          "skill-critical-thinking"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-coding-secondary-rct",
@@ -20,7 +26,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-collaboration-middle",
@@ -30,7 +39,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-collaborative-problem-solving"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-data-literacy-highschool",
@@ -40,7 +54,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-data-literacy"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-self-regulation-elementary",
@@ -50,7 +69,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-creativity-design",
@@ -60,7 +84,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-creative-problem-solving"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-digital-citizenship",
@@ -68,7 +97,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: a position paper that argues for earlier media-evaluation teaching but reports no measured outcome is not evidence FOR the skill. Same rule as prefill-policy-ai-ethics — the two were inconsistent until this correction."
     },
     {
@@ -77,7 +109,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-reading-comprehension",
@@ -85,7 +120,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-ai-tutor-math",
@@ -93,7 +131,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: an AI tutor raising algebra scores is not evidence about AI literacy."
     },
     {
@@ -102,7 +143,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-robotics-club",
@@ -110,7 +154,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-writing-feedback",
@@ -118,7 +165,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-inquiry-biology",
@@ -126,7 +176,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-gamified-vocab",
@@ -134,7 +187,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-peer-tutoring",
@@ -142,7 +198,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-handwriting-tablet",
@@ -150,7 +209,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-flipped-classroom",
@@ -158,7 +220,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-mindset-intervention",
@@ -166,7 +231,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: growth mindset is not a catalogue skill, and the reported effect is small."
     },
     {
@@ -175,7 +243,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-vr-history",
@@ -183,7 +254,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-adult-mooc",
@@ -191,7 +265,12 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: adult learners, outside the 0-18 learner scope."
     },
     {
@@ -200,7 +279,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-phonics-reception",
@@ -208,7 +290,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-cyber-safety-middle",
@@ -218,7 +303,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-digital-media-literacy"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-financial-literacy-secondary",
@@ -226,7 +316,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-music-cognition",
@@ -234,7 +327,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-debate-civics",
@@ -244,7 +340,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-critical-thinking"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-dyslexia-app",
@@ -252,7 +353,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-adhd-selfmonitor",
@@ -262,7 +366,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      },
       "_note": "Self-monitoring reducing off-task behaviour reads as self-regulated learning."
     },
     {
@@ -271,7 +380,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-outdoor-science",
@@ -279,7 +391,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-spaced-retrieval",
@@ -287,7 +402,12 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-self-regulated-learning"
+        ],
+        "contradicts_skill_ids": []
+      },
       "_note": "Reviewed -> empty: measures long-term retention of an imposed spacing technique, not the learner's own self-regulation (goal-setting/monitoring/adapting); a memory outcome, not a measured self-regulated-learning result."
     },
     {
@@ -296,7 +416,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-ai-feedback-coding",
@@ -304,7 +427,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-misinformation-game",
@@ -315,7 +441,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-digital-media-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
       "_note": "The only two-link case: epistemic vigilance AND media literacy."
     },
     {
@@ -324,7 +455,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: a design/methodology sentence, not a finding."
     },
     {
@@ -333,7 +467,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-game-fractions",
@@ -341,7 +478,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-pair-programming",
@@ -351,7 +491,12 @@
         ],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-collaborative-problem-solving"
+        ],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-ar-anatomy",
@@ -359,7 +504,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-policy-ai-ethics",
@@ -367,7 +515,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: a policy recommendation with no measured learning outcome is not evidence for a skill."
     },
     {
@@ -376,7 +527,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-worked-examples-math",
@@ -384,7 +538,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-vr-empathy",
@@ -392,7 +549,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-notetaking-longhand",
@@ -400,7 +560,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-girls-coding-club",
@@ -408,7 +571,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-mindfulness-attention",
@@ -416,7 +582,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      }
     },
     {
       "id": "prefill-adult-digital-literacy",
@@ -424,7 +593,12 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [
+          "skill-digital-media-literacy"
+        ],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: adult learners, outside the 0-18 learner scope."
     },
     {
@@ -433,7 +607,10 @@
         "supports_skill_ids": [],
         "contradicts_skill_ids": []
       },
-      "_recorded": null,
+      "_recorded": {
+        "supports_skill_ids": [],
+        "contradicts_skill_ids": []
+      },
       "_note": "Deliberately empty: a project outline, not a finding."
     }
   ]

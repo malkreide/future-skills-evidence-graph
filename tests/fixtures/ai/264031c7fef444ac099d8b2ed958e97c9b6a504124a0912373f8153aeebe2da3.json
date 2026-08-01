@@ -1,0 +1,10 @@
+{
+  "hash": "264031c7fef444ac099d8b2ed958e97c9b6a504124a0912373f8153aeebe2da3",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-creative-problem-solving"
+    ]
+  }
+}
