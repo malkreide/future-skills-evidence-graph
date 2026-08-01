@@ -463,8 +463,23 @@ floor, and it is also the number that governs review load. `--min-precision 0.6`
 (measured 0.71) is deliberately loose: it is a **tripwire for a broken prompt**
 that starts linking everything, not a claim that 0.71 is a defended level — one
 extra false positive is worth 0.07 here, against 0.02 on the pre-fill set.
-Recall is left ungated for the same reason. Revisit both once a second recording
-shows the actual spread.
+Recall is left ungated for the same reason.
+
+**A second recording produced byte-identical output.** Same 50 live calls, same
+link sets, no diff in `_recorded` *or* in the raw responses under
+`tests/fixtures/ai/` — the run ended with "Live baseline unchanged; nothing to
+commit". The five disagreements repeated exactly, so the
+`self-regulated-learning` confusion above is not merely reproducible but
+deterministic on this prompt.
+
+Two draws that agree do not measure a variance; they only bound it below the gap
+between two draws. But they do change what the margin is *for*. On the pre-fill
+set part of every threshold's headroom is spent absorbing run-to-run noise of
+about one example. Here there is no noise to absorb, so the whole margin is
+available for real change — a prompt edit, a new skill in the catalogue, a model
+bump. That is the case the gate is meant to catch, and it is why the thresholds
+are not tightened toward the measured values: a deterministic score is not a
+stable one, it is one whose instability lives entirely in the inputs.
 
 ### What the CI gate actually measures (regression, not live accuracy)
 
