@@ -5,14 +5,17 @@ alle standardmässig aus und in keinen automatischen Workflow eingebunden — wa
 korrekt ist, aber auch heisst, dass niemand weiss, wie gut sie sind. Diese Liste
 schliesst diese Lücke.
 
-**Stand 2026-08-01: Block 1.1–1.4 (Claim-Prefill) ist erledigt.** Die Zahlen
-stehen in [../OPERATIONS.md](../OPERATIONS.md) unter „Measured baseline". Offen
-sind noch der Skill-Link-Gold-Satz (1.5 und Block 2) und die Gegenevidenz-Lane
-(Block 3).
+**Stand 2026-08-01.** Erledigt: Block 1.1–1.4 (Claim-Prefill live gemessen,
+Zahlen in [../OPERATIONS.md](../OPERATIONS.md) unter „Measured baseline") und
+Block 2 (Gold-Satz durchgesehen, `_status: reviewed`). Offen: **1.5** — die
+Skill-Link-Aufzeichnung, für die es jetzt einen Workflow gibt —, die daraus
+abzuleitenden Schwellen in 2.3, und **Block 3**, die Gegenevidenz-Lane.
 
 Jeder Block ist **eigenständig abarbeitbar** und braucht einen
 `ANTHROPIC_API_KEY` (Block 2 nicht). Es gibt keine Reihenfolge zwischen den
-Blöcken ausser: Block 2 setzt Block 1.5 voraus.
+Blöcken ausser einer: der **letzte Schritt** von Block 2 — die Schwellen setzen
+und in `validate.yml` aufnehmen — setzt die Messung aus 1.5 voraus. Die
+Durchsicht selbst braucht sie nicht und ist deshalb vorgezogen worden.
 
 Verwandte Dokumente: [../OPERATIONS.md](../OPERATIONS.md) (Runbook),
 [gegenevidenz-lane.md](gegenevidenz-lane.md) (Agenten-Lane),
@@ -134,36 +137,56 @@ Aufzeichnung und Replay auseinander.
 
 ### 1.5 Skill-Links aufzeichnen — 50 API-Calls
 
+> **Kürzester Weg: Actions → *Re-record skill-link live baseline (manual)*.**
+> Derselbe Aufbau wie beim Prefill: aufzeichnen, offline gegenprüfen, PR öffnen.
+> Die Gate-Eingaben bleiben beim ersten Lauf **leer** — es gibt noch keinen
+> gemessenen Wert, aus dem sich eine Schwelle ableiten liesse.
+
 - [ ] ```bash
-      make eval-skill-links-record
+      make eval-skill-links-record   # oder der Workflow oben
       make eval-skill-links
       ```
 
-> **Lies die `abstain`-Spalte zuerst, nicht die Precision.** 39 der 50 Beispiele
+> **Lies die `abstain`-Spalte zuerst, nicht die Precision.** 40 der 50 Beispiele
 > bilden auf *keinen* Skill ab. Ein Modell, das für jeden Claim einen plausiblen
-> Skill rät, sieht bei den 11 gut aus und überflutet den Reviewer bei den 39.
+> Skill rät, sieht bei den 10 gut aus und überflutet den Reviewer bei den 40.
 
-Das Gate bleibt hier **verweigert** — das ist Absicht und wird in Block 2
-aufgehoben.
+Das Gate ist seit der Freigabe in Block 2 **erlaubt**, aber noch nicht gesetzt:
+erst messen, dann schwellen. `_recorded` ist derzeit 0 von 50 — es existiert
+also noch gar keine Aufzeichnung, gegen die ein Offline-Lauf etwas replayen
+könnte.
 
 ---
 
 ## 2. Skill-Link-Gold-Satz durchsehen — keine API-Calls
 
-`eval/skill_link_labeled.json` trägt im Kopf:
+> ✅ **Erledigt am 2026-07-31** (Commit `10e9d3a`). Ergebnis der Durchsicht:
+> `prefill-spaced-retrieval` wurde **entfernt** — die Studie misst die Retention
+> einer *vorgegebenen* Spacing-Technik, also ein Gedächtnisergebnis, und nicht
+> die Selbstregulation der Lernenden. Der Kontrast zu `prefill-adhd-selfmonitor`
+> (misst eine SRL-*Handlung*, bleibt) ist der Grund, warum die beiden Fälle
+> auseinandergehen. Der Zwei-Link-Fall `prefill-misinformation-game` trägt beide
+> Links. Die übrigen acht blieben wie vorgeschlagen. Damit: **10 Links, 40 leer**,
+> `_status: reviewed`.
+>
+> Die Schritte bleiben als **Rezept** stehen — bei jeder Erweiterung des
+> Gold-Satzes ist dieselbe Durchsicht fällig, und der Maßstab in 2.2 ist die
+> Regel, an der sie sich misst.
+
+`eval/skill_link_labeled.json` trug im Kopf:
 
 ```json
 "_status": "proposed-unreviewed"
 ```
 
-Die Zuordnungen wurden **von einem Agenten vorgeschlagen, nicht kuratiert**.
+Die Zuordnungen waren **von einem Agenten vorgeschlagen, nicht kuratiert**.
 Redaktionelles Urteil liegt laut Governance bei einem Menschen, deshalb
 verweigert `eval_skill_links.py` jedes `--min-*`-Gate mit Exit 1, solange dieser
 Status steht.
 
-### 2.1 Die 11 Zuordnungen ansehen
+### 2.1 Die vorgeschlagenen Zuordnungen ansehen
 
-- [ ] ```bash
+- [x] ```bash
       python - <<'PY'
       import json
       links=json.load(open('eval/skill_link_labeled.json'))
@@ -187,7 +210,7 @@ Die Regel steht im `_README` der Datei und gilt für jede Entscheidung:
 
 Eine leere Liste ist ein gültiges Label, kein Versäumnis.
 
-- [ ] **Drei Grenzfälle entscheiden** — hier ist fachliches Urteil nötig:
+- [x] **Drei Grenzfälle entscheiden** — hier ist fachliches Urteil nötig:
 
       - `prefill-spaced-retrieval` — ist die Wirksamkeit einer *Lernstrategie*
         Evidenz für **Selbstreguliertes Lernen**?
@@ -196,14 +219,14 @@ Eine leere Liste ist ein gültiges Label, kein Versäumnis.
       - `prefill-misinformation-game` — der einzige Fall mit **zwei** Links
         (`critical-thinking` + `digital-media-literacy`). Trägt er beide?
 
-- [ ] **Die restlichen acht prüfen.** Nach der obigen Regel geradlinig.
+- [x] **Die restlichen acht prüfen.** Nach der obigen Regel geradlinig.
 
 ### 2.3 Freigeben und gaten
 
-- [ ] `"_status": "reviewed"` in `eval/skill_link_labeled.json` setzen.
+- [x] `"_status": "reviewed"` in `eval/skill_link_labeled.json` setzen.
 
 - [ ] Schwellen **aus den gemessenen Werten** aus 1.5 ableiten, mit Abstand —
-      so wie `age_range` bei 0.94 gemessen und auf 0.80 gegatet ist:
+      so wie `age_range` live bei 0.91 gemessen und auf 0.80 gegatet ist:
 
       ```bash
       python scripts/eval_skill_links.py --min-precision <gemessen-0.1> \

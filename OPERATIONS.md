@@ -418,9 +418,15 @@ checked. A reviewer who has checked the links sets `_status` to `reviewed`;
 that, plus a `--record-live` run, is what turns the harness into a measurement.
 Until then the feature ships **unmeasured** and is not wired into any workflow.
 
-Read the `abstain` column first. 38 of the 50 examples map to no catalogue skill
+Read the `abstain` column first. 40 of the 50 examples map to no catalogue skill
 — an empty gold link is a real label, not a gap — so that column is where an
 over-eager model shows up before precision does.
+
+The golden set was reviewed on 2026-07-31 (`_status: reviewed`), which lifts the
+refusal to gate. No live recording exists yet, though, so there is still nothing
+to derive a threshold from: run the `eval-skill-links-record` workflow first,
+then set `--min-precision` / `--min-abstention` in `validate.yml` from the
+measured values with a margin.
 
 ### What the CI gate actually measures (regression, not live accuracy)
 
