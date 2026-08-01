@@ -111,6 +111,17 @@ nachvollziehbar ist der Pfad — jeder Schritt landet in einem Lauf-Protokoll
 (`agents/runs/`), das dem Review-PR beiliegt. Ein Reviewer sieht, welche Queries
 gestellt wurden, was sie lieferten und warum der Graph abgebrochen hat.
 
+Das Protokoll führt unter `proposed` auch **jeden Vorschlag selbst** — Claim-ID,
+Quelle, wörtliches Zitat und die **Begründung des Bewerters**. Eine blosse Anzahl
+würde die eine Entscheidung nicht tragen, für die das Protokoll da ist: die
+Präzision, über die die Aktivierung läuft, ist ein Urteil über jeden einzelnen
+Vorschlag. Die Begründung wiegt dabei am schwersten — ein Zitat kann nach einem
+*positiven* Befund klingen, während der Bewerter das Null-Resultat in einem
+Nebensatz gesehen hat, den das Zitat abschneidet. Nur die Begründung trennt
+diesen Fall vom Fehlalarm. Bei einem Trockenlauf ist das Protokoll ausserdem der
+**einzige** Ort, an dem die Vorschläge existieren: Kandidaten werden keine
+geschrieben.
+
 Das ist bewusst schwächer als die Zusage des Kerns. Deshalb ist es eine
 getrennte Lane und kein Pipeline-Schritt.
 

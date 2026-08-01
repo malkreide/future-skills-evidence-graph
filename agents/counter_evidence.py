@@ -525,7 +525,7 @@ def to_candidate_claims(state: State) -> list[dict[str, Any]]:
         source_id = str(source.get("id", "unknown-source"))
         claims.append(
             {
-                "id": slugify(f"{source_id.removeprefix('src-')} counter {skill_id}", "claim"),
+                "id": claim_id_for(source, skill_id),
                 "statement": finding["quote"],
                 "source_ids": [source_id],
                 "text_anchor": f'abstract, verbatim: "{finding["quote"]}"',
@@ -545,6 +545,18 @@ def to_candidate_claims(state: State) -> list[dict[str, Any]]:
     return claims
 
 
+def claim_id_for(source: dict[str, Any], skill_id: str) -> str:
+    """The id a candidate claim from *source* would carry.
+
+    One definition, two callers: build_claims mints the real claim, and the run
+    log names it so a reviewer reading a dry run can find the claim a later real
+    run would create. Two copies of this formula would drift, and the log would
+    then point at an id that never exists.
+    """
+    source_id = str(source.get("id", "unknown-source"))
+    return slugify(f"{source_id.removeprefix('src-')} counter {skill_id}", "claim")
+
+
 def write_run_log(state: State) -> Path:
     """Persist the decision trail so a reviewer can audit an unrepeatable run."""
     RUN_LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -560,6 +572,25 @@ def write_run_log(state: State) -> Path:
         "queries_used": state["queries_used"],
         "sources_examined": len(state["seen_titles"]),
         "findings": len(state["findings"]),
+        # The findings THEMSELVES, not just how many. Precision -- the number the
+        # activation rule turns on -- is a reviewer's judgement over each proposed
+        # contradiction, so a log carrying only a count cannot support the one
+        # decision it exists for. 'reason' matters most: a quote can read like a
+        # positive result while the assessor saw a null in a clause the quote cut
+        # off, and only the reason distinguishes that from a false positive.
+        # On a dry run this is the ONLY record of them; the candidate claims are
+        # never written.
+        "proposed": [
+            {
+                "claim_id": claim_id_for(finding["source"], skill_id),
+                "source_id": finding["source"].get("id"),
+                "source_title": finding["source"].get("title"),
+                "source_url": finding["source"].get("url"),
+                "quote": finding["quote"],
+                "reason": finding["reason"],
+            }
+            for finding in state["findings"]
+        ],
         # The specific limit, not the word "stop": a reviewer must be able to
         # tell "no counter-evidence exists" from "the budget ran out too early".
         "stopped_because": stop_reason(state) or "still_running",
