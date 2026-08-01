@@ -48,6 +48,34 @@ jobs:
             --skill "${{ inputs.skill }}" \
             ${{ inputs.dry_run && '--dry-run' || '' }}
 
+      # The run log IS the deliverable of a dry run — it carries which backend
+      # answered, how many sources were examined and which limit stopped the
+      # graph, none of which the console output shows. On a dry run nothing is
+      # committed and no pull request opens, so without this step the log is
+      # discarded with the runner and the run cannot be judged at all. Written
+      # to the job summary rather than an artifact: no new pinned action, and it
+      # is readable in the UI next to the run that produced it.
+      - name: Publish the run log to the job summary
+        if: always()
+        run: |
+          log=$(ls -1t agents/runs/*.json 2>/dev/null | head -1)
+          if [ -z "$log" ]; then
+            echo "No run log was written." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          {
+            echo "## Counter-evidence run log"
+            echo
+            echo "\`$log\`"
+            echo
+            echo '```json'
+            cat "$log"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # Also on stdout, so a failed run that never renders a summary still
+          # leaves the trail in the job log.
+          cat "$log"
+
       # Candidates only, and validated before they can reach a pull request —
       # the same gate every importer passes.
       - name: Validate the repository
