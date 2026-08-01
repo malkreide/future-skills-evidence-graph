@@ -76,6 +76,63 @@ jobs:
           # leaves the trail in the job log.
           cat "$log"
 
+      # A dry run writes no candidates, so the non-dry path below never fires and
+      # its run log would live only in the job summary — fine for reading one
+      # run, useless for the activation decision, which compares three. Collect
+      # them on one branch instead: rebuilt from main each time so the pull
+      # request never drifts, with previously committed logs carried forward so
+      # the branch accumulates rather than replaces.
+      - name: Collect the dry-run log for review
+        if: ${{ inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SKILL: ${{ inputs.skill }}
+        run: |
+          log=$(ls -1t agents/runs/*.json 2>/dev/null | head -1)
+          [ -n "$log" ] || { echo "No run log to collect."; exit 0; }
+          cp "$log" /tmp/run-log.json
+
+          branch="chore/counter-evidence-runs"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          # Bring forward whatever the branch already carries. A same-named log
+          # (same day, same skill) is then overwritten by this run's, which is
+          # the newer truth.
+          if git fetch origin "$branch" 2>/dev/null; then
+            git checkout FETCH_HEAD -- agents/runs/ 2>/dev/null || true
+          fi
+          mkdir -p agents/runs
+          cp /tmp/run-log.json "$log"
+
+          git add -- agents/runs
+          if git diff --cached --quiet; then
+            echo "Run log already collected; nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(agents): collect counter-evidence dry-run log for ${SKILL}"
+          git push --force origin "$branch"
+          body=$(printf '%s\n' \
+            "Counter-evidence **dry-run logs**, collected for the activation decision." \
+            "" \
+            "No candidate claims or sources are in here — a dry run writes none. Each log" \
+            "records the queries the graph chose, which backend answered, how many sources" \
+            "were examined per round, and which limit stopped it." \
+            "" \
+            "Read \`stopped_because\` before the finding count: \`no_new_findings\` means the" \
+            "search went quiet, while \`query_budget\` or \`round_limit\` means it was cut off" \
+            "while possibly still productive. Those are opposite conclusions about the" \
+            "literature, and only the log tells them apart." \
+            "" \
+            "Precision is a reviewer's judgement over the proposed contradictions, not a" \
+            "number in these files. Activation needs >= 0.5 across three runs.")
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create --title "chore(agents): counter-evidence dry-run logs" \
+              --body "$body" --base "${GITHUB_REF_NAME}" --head "$branch"
+          else
+            gh pr edit "$branch" --body "$body"
+          fi
+
       # Candidates only, and validated before they can reach a pull request —
       # the same gate every importer passes.
       - name: Validate the repository

@@ -73,8 +73,18 @@ from common import (  # noqa: E402
 # respect is not a bound. The graph's own judgement ("enough found") is the last
 # filter, never the first -- an agent whose only stopping rule is its own
 # opinion is an unbounded cost.
-MAX_ROUNDS = 3
-MAX_QUERIES = 6
+# These two are COUPLED: the query prompt asks for up to 3 queries per round, so
+# a run can never spend more than MAX_ROUNDS * 3 queries. Keep MAX_ROUNDS above
+# MAX_QUERIES / 3, or the round limit silently becomes the real budget and
+# raising MAX_QUERIES changes nothing. Sized so 'query_budget' is what stops a
+# PRODUCTIVE run -- a barren one is still cut short by MAX_BARREN_ROUNDS long
+# before either ceiling.
+#
+# Raised from 3/6 after the first clean run: it examined 55 sources and yielded
+# a single proposal, and precision over one proposal can only be 0.0 or 1.0.
+# The activation rule needs a resolvable rate, not a coin flip.
+MAX_ROUNDS = 5
+MAX_QUERIES = 12
 MAX_BARREN_ROUNDS = 2  # consecutive rounds with nothing new -> stop
 RESULTS_PER_QUERY = 10
 

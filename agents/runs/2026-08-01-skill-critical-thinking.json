@@ -1,0 +1,63 @@
+{
+  "skill_id": "skill-critical-thinking",
+  "prompt_version": "counter-evidence-v1",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-01",
+  "rounds": 2,
+  "queries_used": [
+    "critical thinking instruction no significant difference students",
+    "epistemic vigilance training failed to replicate school",
+    "bias detection intervention null results children",
+    "critical thinking skills training effects did not persist follow-up",
+    "argument evaluation intervention no measurable effect adolescents",
+    "media literacy misinformation program null results transfer failure"
+  ],
+  "sources_examined": 55,
+  "findings": 1,
+  "stopped_because": "query_budget",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking instruction no significant difference students",
+        "epistemic vigilance training failed to replicate school",
+        "bias detection intervention null results children"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking instruction no significant difference students",
+        "epistemic vigilance training failed to replicate school",
+        "bias detection intervention null results children"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 28,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking skills training effects did not persist follow-up",
+        "argument evaluation intervention no measurable effect adolescents",
+        "media literacy misinformation program null results transfer failure"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking skills training effects did not persist follow-up",
+        "argument evaluation intervention no measurable effect adolescents",
+        "media literacy misinformation program null results transfer failure"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 27,
+      "new_findings": 1
+    }
+  ]
+}

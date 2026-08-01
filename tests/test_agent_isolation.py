@@ -534,3 +534,40 @@ class SchemaApiCompatibilityTest(unittest.TestCase):
                             "so this never surfaces as a failure at runtime. Enforce the "
                             "bound in code instead.",
                         )
+
+
+class QueryBudgetCouplingTest(unittest.TestCase):
+    """MAX_QUERIES only bites while MAX_ROUNDS leaves room to spend it.
+
+    The query prompt asks for up to QUERIES_PER_ROUND queries, so a run can
+    never issue more than MAX_ROUNDS * QUERIES_PER_ROUND. Set MAX_ROUNDS too
+    low and the round limit quietly becomes the real budget: raising
+    MAX_QUERIES then changes nothing, and the run log still blames
+    'round_limit' for a run that was actually cut off by arithmetic.
+    """
+
+    QUERIES_PER_ROUND = 3
+
+    def test_the_round_limit_leaves_room_for_the_whole_query_budget(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        reachable = ce.MAX_ROUNDS * self.QUERIES_PER_ROUND
+        self.assertGreaterEqual(
+            reachable,
+            ce.MAX_QUERIES,
+            f"MAX_ROUNDS={ce.MAX_ROUNDS} caps a run at {reachable} queries, below "
+            f"MAX_QUERIES={ce.MAX_QUERIES}: the query budget can never be reached, "
+            "so raising it has no effect.",
+        )
+
+    def test_the_prompt_still_asks_for_that_many_queries(self) -> None:
+        """Guards the constant above: the coupling is only real while this holds."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        self.assertIn(
+            f"up to {self.QUERIES_PER_ROUND} short search queries",
+            ce.QUERY_PROMPT,
+            "the per-round query count changed; QUERIES_PER_ROUND here must follow",
+        )
