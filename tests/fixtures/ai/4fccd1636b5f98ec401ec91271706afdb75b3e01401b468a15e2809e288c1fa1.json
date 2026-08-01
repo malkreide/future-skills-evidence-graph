@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "11-18",
-    "context": "A one-semester block-based programming intervention with secondary school students in Germany.",
+    "context": "A one-semester block-based programming curriculum delivered to secondary school students in Germany.",
     "evidence_strength": "strong",
-    "outcome": "Students in the treatment group achieved significantly higher computational thinking scores than the control group."
+    "outcome": "Students receiving the block-based programming intervention achieved significantly higher computational thinking scores than the control group."
   }
 }

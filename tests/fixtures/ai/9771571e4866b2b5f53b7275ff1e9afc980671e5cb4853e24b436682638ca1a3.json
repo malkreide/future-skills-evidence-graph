@@ -3,7 +3,7 @@
   "kind": "complete",
   "response": {
     "age_range": "12-15",
-    "context": "A seven-week deployment of an AI tool giving real-time feedback on student code in a lower-secondary computing class, compared with a control class.",
+    "context": "Lower-secondary computing classroom deployment of an AI tool providing real-time feedback on student code over seven weeks.",
     "evidence_strength": "moderate",
     "outcome": "Students using the AI feedback tool fixed bugs faster and submitted more working programs than a control class."
   }

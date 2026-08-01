@@ -2,9 +2,9 @@
   "hash": "f44b4f169a717e0c3599afb9d98af2556196af661846eb220207d926b9cb3f34",
   "kind": "complete",
   "response": {
-    "age_range": "4-7",
-    "context": "Systematic review of 28 trials on systematic synthetic phonics instruction during the first years of formal schooling, across languages with transparent orthographies.",
+    "age_range": "5-7",
+    "context": "Systematic review of 28 trials of systematic synthetic phonics instruction during the first years of formal schooling, across languages with transparent orthographies.",
     "evidence_strength": "strong",
-    "outcome": "Systematic synthetic phonics is associated with improved word reading and decoding accuracy."
+    "outcome": "Systematic synthetic phonics instruction is associated with improved word reading and decoding accuracy."
   }
 }

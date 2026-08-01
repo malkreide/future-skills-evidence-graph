@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": null,
-    "context": "University MOOC for adult professionals aged 22-55.",
+    "context": "A university MOOC for adult professionals aged 22 to 55, examining self-regulation through goal-setting in online learning.",
     "evidence_strength": "low",
-    "outcome": "Learners who set weekly goals completed more modules."
+    "outcome": "Learners who set weekly goals completed more modules than those who did not."
   }
 }

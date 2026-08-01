@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "16-17",
-    "context": "Comparison of interactive simulations versus traditional lectures for teaching mechanics to 11th-grade physics students across four classes.",
+    "context": "Physics instruction for 11th-grade students across four classes, comparing interactive simulations to traditional lectures in mechanics.",
     "evidence_strength": "moderate",
-    "outcome": "Students using interactive simulations showed deeper conceptual understanding on a transfer test compared to those taught via traditional lectures."
+    "outcome": "Students using interactive simulations showed deeper conceptual understanding on a transfer test than those taught with traditional lectures."
   }
 }

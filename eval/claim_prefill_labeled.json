@@ -9,7 +9,7 @@
       "statement": "We find that structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs.",
       "topics": ["ai literacy", "critical thinking"],
       "gold": {"age_range": "6-12", "outcome": "Pupils become better at critically evaluating machine-generated outputs.", "context": "Systematic review of AI literacy lessons in European primary school classrooms.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "6-12", "outcome": "Structured AI literacy lessons improved pupils' ability to critically evaluate machine-generated outputs.", "context": "Synthesis of 18 classroom studies of AI literacy instruction in European primary schools.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "6-12", "outcome": "Structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs.", "context": "A synthesis of 18 classroom studies of AI literacy instruction in European primary schools.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-coding-secondary-rct",
@@ -18,7 +18,7 @@
       "statement": "Students in the treatment group showed significantly higher computational thinking scores than controls.",
       "topics": ["computational thinking", "programming"],
       "gold": {"age_range": "12-18", "outcome": "Block-based programming raises computational thinking scores.", "context": "One-semester randomised controlled trial in German secondary schools.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "11-18", "outcome": "Students in the treatment group achieved significantly higher computational thinking scores than the control group.", "context": "A one-semester block-based programming intervention with secondary school students in Germany.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "11-18", "outcome": "Students receiving the block-based programming intervention achieved significantly higher computational thinking scores than the control group.", "context": "A one-semester block-based programming curriculum delivered to secondary school students in Germany.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-collaboration-middle",
@@ -27,7 +27,7 @@
       "statement": "Results indicate that sustained group projects improved students' collaboration and peer-feedback skills.",
       "topics": ["collaboration", "project-based learning"],
       "gold": {"age_range": "10-14", "outcome": "Group projects improve collaboration and peer-feedback skills.", "context": "Multi-district study of project-based science learning in middle schools.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "11-14", "outcome": "Sustained group projects improved students' collaboration and peer-feedback skills, and teachers reported higher engagement.", "context": "Middle-school science classrooms across three districts, using project-based collaborative learning.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "11-14", "outcome": "Sustained group projects improved students' collaboration and peer-feedback skills.", "context": "Middle-school science classrooms across three districts using project-based collaborative learning.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-data-literacy-highschool",
@@ -36,7 +36,7 @@
       "statement": "Post-test scores improved, with the largest gains for students with low prior numeracy.",
       "topics": ["data literacy", "numeracy"],
       "gold": {"age_range": "14-18", "outcome": "A data literacy module improves chart interpretation, especially for low-numeracy students.", "context": "Six-week data literacy module with high-school students.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "14-18", "outcome": "Students' post-test scores in interpreting charts and detecting misleading statistics improved, with the largest gains among students with low prior numeracy.", "context": "A six-week data literacy module delivered to 95 high-school students.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "14-18", "outcome": "Students' post-test scores on interpreting charts and detecting misleading statistics improved, with the largest gains among students with low prior numeracy.", "context": "A six-week data literacy module delivered to 95 high-school students.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-self-regulation-elementary",
@@ -45,7 +45,7 @@
       "statement": "The evidence suggests that explicit goal-setting and self-monitoring routines modestly improve task persistence.",
       "topics": ["self-regulation", "metacognition"],
       "gold": {"age_range": "6-12", "outcome": "Goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of self-regulated learning interventions in elementary schools.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "6-12", "outcome": "Explicit goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of 32 studies on self-regulated learning interventions for elementary pupils.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "6-12", "outcome": "Explicit goal-setting and self-monitoring routines modestly improve task persistence.", "context": "Meta-analysis of 32 studies on self-regulated learning interventions for elementary school pupils.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-creativity-design",
@@ -54,7 +54,7 @@
       "statement": "The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric.",
       "topics": ["creativity", "design thinking"],
       "gold": {"age_range": "12-18", "outcome": "A design-thinking unit increases originality and feasibility of student solutions.", "context": "Quasi-experimental design-thinking unit in secondary cohorts.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "12-18", "outcome": "The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric.", "context": "Quasi-experimental study with two secondary school cohorts following a design-thinking unit.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "12-18", "outcome": "The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric.", "context": "Quasi-experimental study with two secondary-school cohorts following a design-thinking unit.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-digital-citizenship",
@@ -63,7 +63,7 @@
       "statement": "It argues that media-evaluation skills should be introduced earlier, but it presents no new measured learning outcomes.",
       "topics": ["digital citizenship", "media literacy"],
       "gold": {"age_range": null, "outcome": null, "context": "Policy report reviewing national digital citizenship curricula.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": null, "context": "A policy report reviewing national digital citizenship curricula, with recommendations directed at ministries of education.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": null, "context": "A policy report reviewing national digital citizenship curricula, with recommendations targeted at ministries of education.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-physics-simulations",
@@ -72,7 +72,7 @@
       "statement": "Students using simulations demonstrated deeper conceptual understanding on a transfer test.",
       "topics": ["science education", "conceptual understanding"],
       "gold": {"age_range": "15-17", "outcome": "Interactive simulations deepen conceptual understanding of mechanics.", "context": "Classroom comparison of simulations versus lectures in 11th-grade physics.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "16-17", "outcome": "Students using interactive simulations showed deeper conceptual understanding on a transfer test compared to those taught via traditional lectures.", "context": "Comparison of interactive simulations versus traditional lectures for teaching mechanics to 11th-grade physics students across four classes.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "16-17", "outcome": "Students using interactive simulations showed deeper conceptual understanding on a transfer test than those taught with traditional lectures.", "context": "Physics instruction for 11th-grade students across four classes, comparing interactive simulations to traditional lectures in mechanics.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-reading-comprehension",
@@ -81,7 +81,7 @@
       "statement": "Results show consistent, moderate improvements in comprehension across 21 studies.",
       "topics": ["reading comprehension", "literacy"],
       "gold": {"age_range": "9-12", "outcome": "Reciprocal teaching consistently and moderately improves reading comprehension.", "context": "Systematic review of reciprocal teaching in upper-primary classrooms.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "9-12", "outcome": "Reciprocal teaching produced consistent, moderate improvements in reading comprehension.", "context": "Systematic review of reciprocal teaching interventions in upper-primary classrooms across 21 studies.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "8-12", "outcome": "Reciprocal teaching produced consistent, moderate improvements in reading comprehension.", "context": "Systematic review of reciprocal teaching interventions in upper-primary classrooms across 21 studies.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-ai-tutor-math",
@@ -90,7 +90,7 @@
       "statement": "Students using the tutor solved more problems correctly than a worksheet control group.",
       "topics": ["intelligent tutoring", "mathematics"],
       "gold": {"age_range": "12-16", "outcome": "An adaptive AI tutor improves algebra problem-solving accuracy.", "context": "Eight-week deployment of an AI algebra tutor in secondary schools.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "12-18", "outcome": "Students using the adaptive AI tutor solved more algebra problems correctly than a worksheet control group, with the largest gains among initially struggling students.", "context": "Eight-week deployment of an adaptive AI tutoring system for algebra practice with 310 secondary students, compared to a worksheet control group.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "12-18", "outcome": "Students using the AI tutor solved more algebra problems correctly than a worksheet control group, with the largest gains among initially struggling students.", "context": "Secondary school algebra practice using an adaptive AI tutoring system deployed over eight weeks with 310 students.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-emotional-regulation",
@@ -99,7 +99,7 @@
       "statement": "Children in the program showed improved emotional regulation and fewer conflicts.",
       "topics": ["social-emotional learning", "self-regulation"],
       "gold": {"age_range": "6-8", "outcome": "A social-emotional learning program improves emotional regulation and reduces conflicts.", "context": "Waitlist-controlled SEL program in early primary classrooms.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "5-8", "outcome": "Children in the program showed improved emotional regulation and fewer conflicts based on teacher ratings.", "context": "A classroom-based social-emotional learning intervention for early primary children, evaluated against a waitlist control.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "5-8", "outcome": "Children in the program showed improved emotional regulation and fewer conflicts according to teacher ratings.", "context": "Early primary classroom social-emotional learning program evaluated with teacher ratings using a waitlist control.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-robotics-club",
@@ -108,7 +108,7 @@
       "statement": "We present a six-step design for the club's activities.",
       "topics": ["robotics", "stem"],
       "gold": {"age_range": null, "outcome": null, "context": "Working paper describing an after-school robotics club design.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": null, "context": "After-school robotics club presenting a six-step activity design with preliminary engagement data.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": null, "context": "An after-school robotics club described in a working paper, reporting preliminary engagement data with a six-step activity design.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-writing-feedback",
@@ -117,7 +117,7 @@
       "statement": "Students who received automated feedback revised more substantively and improved essay quality scores.",
       "topics": ["writing", "feedback"],
       "gold": {"age_range": "14-18", "outcome": "Automated feedback leads to more substantive revision and higher essay quality.", "context": "Study of automated essay feedback with high-school writers.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "14-18", "outcome": "Students receiving automated feedback revised more substantively and achieved higher essay quality scores, with gains maintained at a delayed post-test.", "context": "Study of automated writing feedback for argumentative essays among 150 high-school students.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "14-18", "outcome": "Students receiving automated feedback revised more substantively and achieved higher essay quality scores, with improvements maintained at a delayed post-test.", "context": "Study of automated writing feedback for argumentative essays among 150 high-school students.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-inquiry-biology",
@@ -126,7 +126,7 @@
       "statement": "Students in the inquiry condition retained more conceptual knowledge after six months.",
       "topics": ["inquiry learning", "science education"],
       "gold": {"age_range": "11-14", "outcome": "Guided inquiry improves long-term retention of biology concepts.", "context": "Comparison of guided inquiry and direct instruction in lower-secondary biology.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "12-15", "outcome": "Students in the guided-inquiry condition retained more conceptual knowledge after six months than those receiving direct instruction, and engagement measures also favoured inquiry.", "context": "Lower-secondary biology classrooms comparing guided-inquiry lessons with direct instruction.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "12-15", "outcome": "Students in the guided-inquiry condition retained more conceptual knowledge after six months than those in direct instruction.", "context": "Lower-secondary biology classrooms comparing guided-inquiry lessons with direct instruction.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-gamified-vocab",
@@ -135,7 +135,7 @@
       "statement": "Children using the app learned and retained more vocabulary than those using flashcards.",
       "topics": ["gamification", "language learning"],
       "gold": {"age_range": "7-11", "outcome": "A gamified app improves vocabulary learning and retention over flashcards.", "context": "Four-week trial of a gamified vocabulary app with primary language learners.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "6-12", "outcome": "Children using the gamified app learned and retained more vocabulary than those using flashcards.", "context": "A four-week trial with 120 primary-school English-language learners comparing a gamified vocabulary app to flashcards.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": null, "outcome": "Children using the gamified app learned and retained more vocabulary than those using flashcards.", "context": "A four-week trial with 120 primary-school English-language learners comparing a gamified vocabulary app with flashcards.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-peer-tutoring",
@@ -144,7 +144,7 @@
       "statement": "Findings indicate small-to-moderate gains in achievement for both tutors and tutees.",
       "topics": ["peer tutoring", "mathematics"],
       "gold": {"age_range": "12-18", "outcome": "Peer tutoring yields small-to-moderate achievement gains for tutors and tutees.", "context": "Review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "12-18", "outcome": "Peer tutoring is associated with small-to-moderate achievement gains for both tutors and tutees, with stronger effects in structured, well-monitored programs.", "context": "A review of peer-tutoring programs in secondary mathematics.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "12-18", "outcome": "Peer tutoring produced small-to-moderate achievement gains for both tutors and tutees, with stronger effects in structured, well-monitored programs.", "context": "Review of peer-tutoring programs in secondary mathematics education.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-handwriting-tablet",
@@ -153,7 +153,7 @@
       "statement": "Both groups improved legibility, with no significant difference between conditions.",
       "topics": ["handwriting", "early education"],
       "gold": {"age_range": "6-7", "outcome": "Tablet and paper handwriting instruction improve legibility equally.", "context": "Term-long comparison of tablet versus paper handwriting instruction for first graders.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "6-7", "outcome": "Both tablet-based and paper-based handwriting instruction improved legibility, with no significant difference between the two conditions.", "context": "First-grade classroom study comparing tablet-based and paper-based handwriting instruction over a term with 60 children.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "6-7", "outcome": "Both tablet-based and paper-based handwriting instruction improved legibility, with no significant difference between the two conditions.", "context": "First-grade schoolchildren receiving handwriting instruction via either tablet-based or paper-based methods over one term.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-flipped-classroom",
@@ -162,7 +162,7 @@
       "statement": "Students completed more practice in class and achieved higher exam scores than in the prior traditional year.",
       "topics": ["flipped classroom", "science education"],
       "gold": {"age_range": "15-18", "outcome": "A flipped classroom increases in-class practice and exam scores in chemistry.", "context": "Non-randomised flipped-classroom implementation in upper-secondary chemistry.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "15-18", "outcome": "Students completed more in-class practice and achieved higher exam scores than in the previous traditional year.", "context": "Upper-secondary chemistry classroom implementing a flipped-classroom instructional model.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "15-18", "outcome": "Students engaged in more in-class practice and achieved higher exam scores than in the previous traditional year.", "context": "Upper-secondary chemistry classes using a flipped-classroom instructional model, compared non-randomly with a prior traditional year.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-mindset-intervention",
@@ -171,7 +171,7 @@
       "statement": "A review of growth-mindset interventions across school ages reports that effects on achievement are small and concentrated among disadvantaged students.",
       "topics": ["growth mindset", "motivation"],
       "gold": {"age_range": "6-18", "outcome": "Growth-mindset interventions yield small achievement effects, mainly for disadvantaged students.", "context": "Review of growth-mindset interventions across school ages.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "5-18", "outcome": "Growth-mindset interventions show small positive effects on achievement, concentrated among disadvantaged students.", "context": "A review of growth-mindset interventions conducted across school ages.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "5-18", "outcome": "Growth-mindset interventions have small effects on achievement, concentrated among disadvantaged students.", "context": "A review of growth-mindset interventions conducted across school ages.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-coding-unplugged",
@@ -180,7 +180,7 @@
       "statement": "Pupils improved on algorithmic-thinking tasks compared with a control class.",
       "topics": ["computational thinking", "programming"],
       "gold": {"age_range": "6-9", "outcome": "An unplugged computing curriculum improves algorithmic thinking.", "context": "Evaluation of an unplugged computing curriculum with early-primary pupils.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "5-8", "outcome": "Pupils showed improved performance on algorithmic-thinking tasks relative to a control class.", "context": "An unplugged computing curriculum using physical games and cards was implemented with early-primary pupils who had no computer access.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "5-8", "outcome": "Pupils showed improved performance on algorithmic-thinking tasks relative to a control class.", "context": "An unplugged computing curriculum using physical games and cards was delivered to early-primary pupils without computer access.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-vr-history",
@@ -189,7 +189,7 @@
       "statement": "Students reported high engagement, but knowledge-test gains did not differ from a video condition.",
       "topics": ["virtual reality", "history education"],
       "gold": {"age_range": "13-16", "outcome": "VR history boosts engagement but not knowledge gains over video.", "context": "Classroom test of a VR history experience in secondary students.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "12-18", "outcome": "Students reported high engagement, but knowledge-test gains did not differ from a video condition.", "context": "A virtual-reality history experience tested with two secondary school classes.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "12-18", "outcome": "Students reported high engagement, but knowledge-test gains did not differ from a video condition.", "context": "A virtual-reality history learning experience tested with secondary school students in two classes.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-adult-mooc",
@@ -198,7 +198,7 @@
       "statement": "Learners who set weekly goals completed more modules.",
       "topics": ["self-regulation", "online learning"],
       "gold": {"age_range": null, "outcome": "Weekly goal-setting raises MOOC module completion.", "context": "Analysis of completion patterns in an adult-professional university MOOC.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": "Learners who set weekly goals completed more modules.", "context": "University MOOC for adult professionals aged 22-55.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": "Learners who set weekly goals completed more modules than those who did not.", "context": "A university MOOC for adult professionals aged 22 to 55, examining self-regulation through goal-setting in online learning.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-early-numeracy-preschool",
@@ -207,7 +207,7 @@
       "statement": "Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison.",
       "topics": ["numeracy", "early education"],
       "gold": {"age_range": "4-6", "outcome": "A manipulatives-based program strengthens preschoolers' early numeracy.", "context": "Ten-week manipulatives number-sense program with preschool children in two countries.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "3-5", "outcome": "Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison.", "context": "A ten-week manipulatives-based number-sense program delivered by trained educators to preschool children across two countries.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "3-5", "outcome": "Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison.", "context": "A ten-week manipulatives-based number-sense intervention delivered by trained educators to preschool children across two countries.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-phonics-reception",
@@ -216,7 +216,7 @@
       "statement": "The evidence consistently shows improved word reading and decoding accuracy.",
       "topics": ["reading comprehension", "literacy"],
       "gold": {"age_range": "5-7", "outcome": "Systematic synthetic phonics improves early word reading and decoding.", "context": "Systematic review of synthetic phonics trials in the first years of schooling.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "4-7", "outcome": "Systematic synthetic phonics is associated with improved word reading and decoding accuracy.", "context": "Systematic review of 28 trials on systematic synthetic phonics instruction during the first years of formal schooling, across languages with transparent orthographies.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "5-7", "outcome": "Systematic synthetic phonics instruction is associated with improved word reading and decoding accuracy.", "context": "Systematic review of 28 trials of systematic synthetic phonics instruction during the first years of formal schooling, across languages with transparent orthographies.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-cyber-safety-middle",
@@ -225,7 +225,7 @@
       "statement": "Students who completed it reported fewer risky online disclosures and better password practices at a two-month follow-up.",
       "topics": ["digital citizenship", "media literacy"],
       "gold": {"age_range": "11-14", "outcome": "A cyber-safety curriculum reduces risky online disclosures and improves password practices.", "context": "Matched-school comparison of a cyber-safety curriculum in middle schools.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "11-14", "outcome": "Students who completed the curriculum reported fewer risky online disclosures and better password practices at a two-month follow-up.", "context": "A cyber-safety curriculum delivered to middle-school students across eleven schools, evaluated via a matched-school comparison.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "11-14", "outcome": "Students who completed the curriculum reported fewer risky online disclosures and better password practices at a two-month follow-up.", "context": "A cyber-safety curriculum delivered to middle-school students across eleven schools.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-financial-literacy-secondary",
@@ -234,7 +234,7 @@
       "statement": "Players improved their budgeting knowledge and reported greater confidence managing money.",
       "topics": ["financial literacy", "numeracy"],
       "gold": {"age_range": "14-18", "outcome": "A budgeting game improves students' budgeting knowledge and money confidence.", "context": "Pre-post trial of a budgeting simulation game with secondary students.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "12-18", "outcome": "Students improved their budgeting knowledge and reported greater confidence in managing money.", "context": "A budgeting simulation game intervention trialled with 180 secondary school students to teach personal finance.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "12-18", "outcome": "Students improved their budgeting knowledge and reported greater confidence in managing money.", "context": "Secondary school setting using a budgeting simulation game to teach personal finance.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-music-cognition",
@@ -243,7 +243,7 @@
       "statement": "The trained group showed modest gains in working memory and inhibitory control.",
       "topics": ["self-regulation", "metacognition"],
       "gold": {"age_range": "7-10", "outcome": "Music training yields modest working-memory and inhibitory-control gains.", "context": "Small non-randomised quasi-experiment of music training with primary children.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "6-12", "outcome": "The music-trained group showed modest gains in working memory and inhibitory control.", "context": "A small quasi-experiment with primary school children receiving weekly music training.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "6-12", "outcome": "Children who received music training showed modest gains in working memory and inhibitory control.", "context": "A quasi-experimental study of primary school children receiving weekly music training.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-debate-civics",
@@ -252,7 +252,7 @@
       "statement": "Students improved measurably in argument quality and willingness to consider opposing views.",
       "topics": ["critical thinking", "collaboration"],
       "gold": {"age_range": "14-18", "outcome": "Structured debate improves argument quality and openness to opposing views.", "context": "Multi-school study of structured debate in upper-secondary civics.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "15-18", "outcome": "Students showed measurable improvement in argument quality and openness to opposing views.", "context": "Upper-secondary civics lessons across six schools using a common structured debate protocol.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "15-18", "outcome": "Students improved in argument quality and willingness to consider opposing views.", "context": "Structured classroom debate intervention using a common protocol in upper-secondary civics lessons across six schools.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-dyslexia-app",
@@ -261,7 +261,7 @@
       "statement": "App users improved decoding speed and accuracy more than the comparison group.",
       "topics": ["reading comprehension", "literacy"],
       "gold": {"age_range": "8-11", "outcome": "A multisensory app improves decoding speed and accuracy for children with dyslexia.", "context": "Twelve-week controlled trial of a multisensory dyslexia app versus standard remediation.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": null, "outcome": "Children using the multisensory reading app improved decoding speed and accuracy more than those receiving standard remediation.", "context": "A twelve-week trial with 72 children with dyslexia comparing a multisensory reading app against standard reading remediation.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": null, "outcome": "Children using the app showed greater improvement in decoding speed and accuracy than those receiving standard remediation.", "context": "A twelve-week trial with 72 children with dyslexia comparing a multisensory reading app to standard remediation.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-adhd-selfmonitor",
@@ -270,7 +270,7 @@
       "statement": "Using the tool, students reduced off-task behaviour and completed more independent work.",
       "topics": ["self-regulation", "metacognition"],
       "gold": {"age_range": "9-12", "outcome": "A self-monitoring tool reduces off-task behaviour and increases independent work.", "context": "Single-case multiple-baseline study of a self-monitoring tool with inattentive primary students.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "6-12", "outcome": "Students reduced off-task behaviour and completed more independent work when using the tablet self-monitoring tool.", "context": "Primary school students with attention difficulties used a tablet-based self-monitoring intervention.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "6-12", "outcome": "Students reduced off-task behaviour and increased completion of independent work when using the self-monitoring tool.", "context": "Primary school students with attention difficulties used a tablet-based self-monitoring intervention.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-gifted-acceleration",
@@ -279,7 +279,7 @@
       "statement": "Across the evidence, accelerated students achieved more without social-emotional harm.",
       "topics": ["motivation", "mathematics"],
       "gold": {"age_range": "8-16", "outcome": "Acceleration raises achievement for high-ability students without social-emotional harm.", "context": "Systematic review of grade-skipping and subject acceleration for gifted students.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": null, "outcome": "Accelerated high-ability students showed higher academic achievement with no adverse social-emotional effects.", "context": "Systematic review of academic acceleration (grade-skipping and subject acceleration) for high-ability students.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": null, "outcome": "Accelerated high-ability students achieved higher academic outcomes without negative social-emotional effects.", "context": "Systematic review of academic acceleration (grade-skipping and subject acceleration) for high-ability students.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-outdoor-science",
@@ -288,7 +288,7 @@
       "statement": "Outdoor learners gained more environmental knowledge and reported more positive attitudes to science.",
       "topics": ["science education", "inquiry learning"],
       "gold": {"age_range": "10-12", "outcome": "Place-based outdoor science improves environmental knowledge and attitudes.", "context": "Quasi-experimental comparison of outdoor versus classroom science in primary cohorts.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": null, "outcome": "Learners in the outdoor unit gained more environmental knowledge and reported more positive attitudes toward science than classroom-only learners.", "context": "Primary school setting comparing a place-based outdoor science unit with classroom-only instruction across two cohorts.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": null, "outcome": "Outdoor learners gained more environmental knowledge and reported more positive attitudes toward science compared with classroom-only learners.", "context": "Primary-school science instruction comparing a place-based outdoor unit with classroom-only teaching across two cohorts.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-spaced-retrieval",
@@ -297,7 +297,7 @@
       "statement": "Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study.",
       "topics": ["metacognition", "self-regulation"],
       "gold": {"age_range": "10-18", "outcome": "Spaced retrieval practice reliably improves long-term retention over massed study.", "context": "Review of spaced retrieval practice across school subjects and ages.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": null, "outcome": "Distributing retrieval practice over time reliably improves long-term retention compared with massed study.", "context": "A review of spaced retrieval practice in schools, spanning multiple subjects and school ages.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": null, "outcome": "Distributing retrieval practice over time improves long-term retention compared with massed study.", "context": "A review of spaced retrieval practice in school settings across various subjects and school ages.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-translanguaging-bilingual",
@@ -306,7 +306,7 @@
       "statement": "Pupils allowed to draw on both languages understood science content better and participated more.",
       "topics": ["language learning", "science education"],
       "gold": {"age_range": "6-12", "outcome": "Translanguaging pedagogy improves bilingual pupils' content understanding and participation.", "context": "Year-long study of translanguaging in bilingual primary science classrooms.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "6-12", "outcome": "Pupils permitted to use both languages showed better understanding of science content and greater participation.", "context": "Bilingual primary school classrooms studied over a school year using translanguaging pedagogy, with teacher logs and content assessments.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "6-12", "outcome": "Pupils allowed to use both languages showed better understanding of science content and increased participation.", "context": "Year-long study in bilingual primary school classrooms using a translanguaging pedagogy intervention, assessed via teacher logs and content assessments.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-ai-feedback-coding",
@@ -315,7 +315,7 @@
       "statement": "Students using it fixed bugs faster and submitted more working programs than a control class.",
       "topics": ["programming", "computational thinking"],
       "gold": {"age_range": "12-15", "outcome": "An AI code-feedback tool speeds debugging and increases working submissions.", "context": "Seven-week deployment of an AI code-feedback tool in lower-secondary computing.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "12-15", "outcome": "Students using the AI feedback tool fixed bugs faster and submitted more working programs than a control class.", "context": "A seven-week deployment of an AI tool giving real-time feedback on student code in a lower-secondary computing class, compared with a control class.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "12-15", "outcome": "Students using the AI feedback tool fixed bugs faster and submitted more working programs than a control class.", "context": "Lower-secondary computing classroom deployment of an AI tool providing real-time feedback on student code over seven weeks.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-misinformation-game",
@@ -324,7 +324,7 @@
       "statement": "Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later.",
       "topics": ["media literacy", "critical thinking"],
       "gold": {"age_range": "13-17", "outcome": "A prebunking game improves detection of misinformation techniques, with gains persisting two weeks.", "context": "Class-randomised trial of an inoculation game against misinformation in secondary students.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "12-18", "outcome": "Students improved at identifying manipulation techniques in headlines, with gains persisting two weeks later.", "context": "A randomised trial with secondary school classes assigned to an inoculation 'prebunking' game or a control condition.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "11-18", "outcome": "Students improved at identifying misinformation manipulation techniques in headlines, with gains persisting two weeks later.", "context": "A randomised trial of an inoculation 'prebunking' game with secondary school students, randomising classes to game or control.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-chatbot-design-null",
@@ -333,7 +333,7 @@
       "statement": "We detail the dialogue-management design and planned classroom integration.",
       "topics": ["language learning", "intelligent tutoring"],
       "gold": {"age_range": null, "outcome": null, "context": "Working paper describing the design of a language-practice chatbot.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": null, "context": "Working paper describing the architecture and planned classroom integration of a conversational chatbot for language practice.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": null, "context": "Working paper describing the architecture and dialogue-management design of a conversational chatbot for language practice with planned classroom integration.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-formative-assessment",
@@ -342,7 +342,7 @@
       "statement": "The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels.",
       "topics": ["feedback", "self-regulation"],
       "gold": {"age_range": "6-18", "outcome": "Frequent feedback-rich formative assessment raises achievement across grades.", "context": "Synthesis of classroom formative-assessment studies across grade levels.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": null, "outcome": "Frequent, feedback-rich formative assessment is reported to raise student achievement, with larger effects when feedback is specific and actionable.", "context": "A synthesis of classroom formative-assessment studies conducted across grade levels.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": null, "outcome": "Frequent, feedback-rich formative assessment is associated with higher achievement, with larger effects when feedback is specific and actionable.", "context": "A synthesis of classroom formative-assessment studies examining effects on attainment across grade levels.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-game-fractions",
@@ -351,7 +351,7 @@
       "statement": "Players developed stronger conceptual understanding of fractions than a worksheet group.",
       "topics": ["mathematics", "gamification"],
       "gold": {"age_range": "9-11", "outcome": "A fractions game improves conceptual understanding over worksheets.", "context": "Four-week trial of a digital fractions game with upper-primary pupils.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": "9-12", "outcome": "Pupils using the digital game showed stronger conceptual understanding of fractions than those using worksheets.", "context": "A four-week trial with 110 upper-primary pupils comparing a fraction-focused digital game to worksheet-based instruction.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "9-12", "outcome": "Pupils using the digital game developed stronger conceptual understanding of fractions than those using worksheets.", "context": "Four-week trial with 110 upper-primary pupils comparing a fraction-focused digital game to worksheet-based instruction.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-pair-programming",
@@ -360,7 +360,7 @@
       "statement": "Paired students solved problems more successfully and reported higher confidence.",
       "topics": ["programming", "collaboration"],
       "gold": {"age_range": "12-15", "outcome": "Pair programming improves problem-solving success and confidence.", "context": "Two-term comparison of pair programming versus solo work in secondary computing.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": null, "outcome": "Students working in pairs solved problems more successfully and reported higher confidence than those working alone.", "context": "A secondary computing course comparing pair programming with solo work across two terms with rotating pairs.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": null, "outcome": "Students working in pairs solved problems more successfully and reported higher confidence than those working alone.", "context": "Pair programming intervention introduced in a secondary computing course, compared with solo work over two terms with rotating pairs.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-ar-anatomy",
@@ -369,7 +369,7 @@
       "statement": "Students using the app were more engaged, but post-test anatomy knowledge did not differ between conditions.",
       "topics": ["science education", "augmented reality"],
       "gold": {"age_range": "15-18", "outcome": "An AR anatomy app raises engagement but not knowledge over a textbook.", "context": "Classroom comparison of an AR anatomy app versus a textbook in upper-secondary biology.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "15-18", "outcome": "Students using the augmented-reality app were more engaged, but post-test anatomy knowledge did not differ from the textbook condition.", "context": "Upper-secondary biology classes comparing an augmented-reality anatomy app with a textbook, across three classes.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "15-18", "outcome": "Students using the augmented-reality app showed greater engagement, but anatomy knowledge on the post-test did not differ from the textbook condition.", "context": "Upper-secondary biology classes comparing an augmented-reality anatomy app with a textbook.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-policy-ai-ethics",
@@ -378,7 +378,7 @@
       "statement": "It recommends clearer guidance for teachers and students but reports no measured learning outcomes.",
       "topics": ["ai literacy", "digital citizenship"],
       "gold": {"age_range": null, "outcome": null, "context": "Policy report reviewing how school systems address AI ethics in classrooms.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": "No measured learning outcomes are reported; the report recommends clearer guidance for teachers and students.", "context": "Policy report reviewing how school systems address the ethics of AI use in classrooms, targeting regional education authorities.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": "No learning outcomes were measured; the report recommends clearer guidance for teachers and students on ethical AI use.", "context": "A policy report reviewing how school systems address the ethics of AI use in classrooms, targeting regional education authorities.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-mother-tongue-literacy",
@@ -387,7 +387,7 @@
       "statement": "The evidence shows that initial literacy in the home language improves early reading outcomes.",
       "topics": ["literacy", "language learning"],
       "gold": {"age_range": "6-9", "outcome": "Mother-tongue-based early instruction improves early reading outcomes.", "context": "Review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "5-8", "outcome": "Initial literacy in the home language is associated with improved early reading outcomes, with supported transfer to the second language.", "context": "A review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "5-8", "outcome": "Initial literacy in the home language is associated with improved early reading outcomes, with support for transfer to a second language.", "context": "A review of mother-tongue-based instruction in the early grades of multilingual countries.", "evidence_strength": "moderate"}
     },
     {
       "id": "prefill-worked-examples-math",
@@ -396,7 +396,7 @@
       "statement": "Students given worked examples learned more efficiently and scored higher on a delayed test.",
       "topics": ["mathematics", "metacognition"],
       "gold": {"age_range": "13-16", "outcome": "Worked examples improve learning efficiency and delayed-test performance in algebra.", "context": "Randomised comparison of worked examples versus problem-solving in lower-secondary algebra.", "evidence_strength": "strong"},
-      "_recorded": {"age_range": "12-15", "outcome": "Students taught with worked examples learned more efficiently and achieved higher scores on a delayed test than those using conventional problem-solving.", "context": "A randomised trial with 200 lower-secondary students comparing worked examples with conventional problem-solving for teaching algebra.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": "12-15", "outcome": "Students taught with worked examples learned more efficiently and scored higher on a delayed test than those using conventional problem-solving.", "context": "A randomised trial with 200 lower-secondary students comparing worked examples with conventional problem-solving for teaching algebra.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-vr-empathy",
@@ -405,7 +405,7 @@
       "statement": "Immediately afterwards students reported higher empathy, but the effect was not measured beyond the session.",
       "topics": ["social-emotional learning", "virtual reality"],
       "gold": {"age_range": "12-16", "outcome": "A VR perspective-taking experience raises immediate self-reported empathy, with durability untested.", "context": "Uncontrolled test of a VR perspective-taking experience with secondary students.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "12-18", "outcome": "Students reported higher empathy immediately after the intervention, but no longer-term effect was measured.", "context": "Secondary school setting using a virtual-reality perspective-taking experience to foster empathy.", "evidence_strength": "low"}
+      "_recorded": {"age_range": "12-18", "outcome": "Students reported higher empathy immediately after the intervention, but no effect was measured beyond the session.", "context": "Secondary school students participated in a virtual-reality perspective-taking intervention aimed at fostering empathy.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-notetaking-longhand",
@@ -414,7 +414,7 @@
       "statement": "Students taking longhand notes recalled slightly more conceptual content on a later quiz.",
       "topics": ["metacognition", "science education"],
       "gold": {"age_range": "12-15", "outcome": "Longhand note-taking yields slightly better conceptual recall than laptop notes.", "context": "Comparison of longhand versus laptop note-taking in lower-secondary science.", "evidence_strength": "low"},
-      "_recorded": {"age_range": "12-15", "outcome": "Students taking longhand notes recalled slightly more conceptual content on a later quiz, with small differences that varied by topic.", "context": "Comparison of longhand versus laptop note-taking among lower-secondary students during science lessons.", "evidence_strength": "moderate"}
+      "_recorded": {"age_range": "12-15", "outcome": "Students who took longhand notes recalled slightly more conceptual content on a later quiz, though differences were small and varied by topic.", "context": "Comparison of longhand versus laptop note-taking among lower-secondary students during science lessons.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-girls-coding-club",
@@ -423,7 +423,7 @@
       "statement": "Participants reported higher coding self-efficacy and interest in computing careers.",
       "topics": ["programming", "motivation"],
       "gold": {"age_range": "11-14", "outcome": "An all-girls coding club raises coding self-efficacy and interest in computing.", "context": "Year-long all-girls coding club in an underserved district.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": "Participants reported higher coding self-efficacy and greater interest in computing careers.", "context": "An all-girls coding club held weekly over a school year in an underserved school district.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": "Participants reported increased coding self-efficacy and greater interest in computing careers.", "context": "An all-girls weekly coding club conducted over a school year in an underserved school district.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-mindfulness-attention",
@@ -432,7 +432,7 @@
       "statement": "Children in the program showed improved sustained attention on a standardised task.",
       "topics": ["self-regulation", "social-emotional learning"],
       "gold": {"age_range": "8-11", "outcome": "A mindfulness program improves children's sustained attention.", "context": "Cluster-randomised evaluation of a classroom mindfulness program in primary schools.", "evidence_strength": "moderate"},
-      "_recorded": {"age_range": null, "outcome": "Children participating in the mindfulness program showed improved sustained attention on a standardised task.", "context": "A cluster-randomised classroom mindfulness intervention conducted over eight weeks across twelve classes in primary schools.", "evidence_strength": "strong"}
+      "_recorded": {"age_range": null, "outcome": "Children in the mindfulness program showed improved sustained attention on a standardised task.", "context": "A classroom mindfulness intervention delivered over eight weeks in primary schools.", "evidence_strength": "strong"}
     },
     {
       "id": "prefill-adult-digital-literacy",
@@ -441,7 +441,7 @@
       "statement": "Participants improved their ability to use online public services after the course.",
       "topics": ["digital citizenship", "media literacy"],
       "gold": {"age_range": null, "outcome": "A community course improves adults' ability to use online public services.", "context": "Pre-post evaluation of a community digital-literacy course for adult learners.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": "Participants improved their ability to use online public services after completing the course.", "context": "A community digital-literacy course for adult learners aged 25 to 55, evaluated with pre- and post-course assessments.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": "Participants improved their ability to use online public services after completing the course.", "context": "A community digital-literacy course for adult learners, evaluated with pre- and post-course assessments.", "evidence_strength": "low"}
     },
     {
       "id": "prefill-stem-camp-null",
@@ -450,7 +450,7 @@
       "statement": "We outline the project sequence and share preliminary interest-survey responses.",
       "topics": ["stem", "robotics"],
       "gold": {"age_range": null, "outcome": null, "context": "Working paper describing the curriculum design of a summer STEM camp.", "evidence_strength": "low"},
-      "_recorded": {"age_range": null, "outcome": null, "context": "A two-week summer STEM camp described in a curriculum-design working paper, sharing preliminary interest-survey responses.", "evidence_strength": "low"}
+      "_recorded": {"age_range": null, "outcome": null, "context": "A working paper describing the curriculum design of a two-week summer STEM camp, reporting preliminary interest-survey responses.", "evidence_strength": "low"}
     }
   ]
 }

@@ -4,7 +4,7 @@
   "response": {
     "age_range": "5-18",
     "context": "A review of growth-mindset interventions conducted across school ages.",
-    "evidence_strength": "moderate",
-    "outcome": "Growth-mindset interventions show small positive effects on achievement, concentrated among disadvantaged students."
+    "evidence_strength": "strong",
+    "outcome": "Growth-mindset interventions have small effects on achievement, concentrated among disadvantaged students."
   }
 }

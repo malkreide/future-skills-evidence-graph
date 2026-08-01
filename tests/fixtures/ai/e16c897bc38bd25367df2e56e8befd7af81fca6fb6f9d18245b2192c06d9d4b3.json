@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": null,
-    "context": "A twelve-week trial with 72 children with dyslexia comparing a multisensory reading app against standard reading remediation.",
+    "context": "A twelve-week trial with 72 children with dyslexia comparing a multisensory reading app to standard remediation.",
     "evidence_strength": "moderate",
-    "outcome": "Children using the multisensory reading app improved decoding speed and accuracy more than those receiving standard remediation."
+    "outcome": "Children using the app showed greater improvement in decoding speed and accuracy than those receiving standard remediation."
   }
 }

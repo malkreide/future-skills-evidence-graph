@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "12-18",
-    "context": "Secondary school setting using a virtual-reality perspective-taking experience to foster empathy.",
+    "context": "Secondary school students participated in a virtual-reality perspective-taking intervention aimed at fostering empathy.",
     "evidence_strength": "low",
-    "outcome": "Students reported higher empathy immediately after the intervention, but no longer-term effect was measured."
+    "outcome": "Students reported higher empathy immediately after the intervention, but no effect was measured beyond the session."
   }
 }
