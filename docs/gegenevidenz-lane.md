@@ -157,13 +157,25 @@ Ein Agent, dessen Abbruch nur von seinem eigenen Urteil abhängt, ist ein
 unbegrenzter Kostenposten. Die weiche Entscheidung („genug gefunden") ist der
 letzte Filter, nicht der erste:
 
-- **maximal `MAX_ROUNDS` Runden** pro Skill (Default 3),
-- **maximal `MAX_QUERIES` Suchanfragen** insgesamt (Default 6),
+- **maximal `MAX_ROUNDS` Runden** pro Skill (Default 5),
+- **maximal `MAX_QUERIES` Suchanfragen** insgesamt (Default 12),
 - **Abbruch bei zwei aufeinanderfolgenden Runden ohne neuen Fund**,
 - danach erst das Urteil des Graphen.
 
 Die Grenzen stehen als Konstanten im Modul, nicht im Prompt: eine Schranke, die
 das Modell einhalten *soll*, ist keine Schranke.
+
+**Die ersten beiden sind gekoppelt.** Der Prompt verlangt bis zu 3 Queries pro
+Runde, ein Lauf kann also nie mehr als `MAX_ROUNDS × 3` Anfragen stellen. Liegt
+`MAX_ROUNDS` zu niedrig, wird das Rundenlimit stillschweigend zum eigentlichen
+Budget: `MAX_QUERIES` zu erhöhen ändert dann nichts, und das Laufprotokoll
+schreibt `round_limit`, wo in Wahrheit eine Rechnung die Grenze war. Ein Test
+(`QueryBudgetCouplingTest`) hält das zusammen.
+
+Die Werte wurden nach dem ersten sauberen Lauf von 3/6 angehoben. Der prüfte 55
+Quellen und lieferte **einen** Vorschlag — und über einen Vorschlag kann die
+Präzision nur 0.0 oder 1.0 sein. Die Aktivierungsregel unten braucht eine
+auflösbare Quote, keinen Münzwurf.
 
 ## Was die Lane nicht darf
 
