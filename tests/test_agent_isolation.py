@@ -623,3 +623,35 @@ class RunLogCarriesFindingsTest(unittest.TestCase):
             logged = json.loads(path.read_text(encoding="utf-8"))["proposed"][0]["claim_id"]
 
         self.assertEqual(logged, ce.to_candidate_claims(state)[0]["id"])
+
+
+class AssessPromptScopeTest(unittest.TestCase):
+    """v2 narrows 'contradicts'. These are anti-revert guards, not behaviour tests.
+
+    What the model actually does with the prompt can only be measured by running
+    it. What a test CAN do is notice if an edit quietly drops the two exclusions
+    that the first two measured runs were re-written to address -- losing either
+    would silently restore v1's error classes under a v2 version string, which is
+    worse than v1, because the version is what tells two measurements apart.
+    """
+
+    def assess_prompt(self) -> str:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        return ce.ASSESS_PROMPT
+
+    def test_scarcity_is_excluded(self) -> None:
+        """'People are bad at this' argues FOR the skill, not against it."""
+        self.assertIn("SCARCE", self.assess_prompt())
+
+    def test_the_quote_must_state_the_finding(self) -> None:
+        """A verbatim sentence that carries only the study's aim is the wrong anchor."""
+        self.assertIn("STATES THAT FINDING", self.assess_prompt())
+
+    def test_the_version_moved_with_the_prompt(self) -> None:
+        """A changed prompt under an unchanged version corrupts every comparison."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        self.assertNotEqual(ce.PROMPT_VERSION, "counter-evidence-v1")

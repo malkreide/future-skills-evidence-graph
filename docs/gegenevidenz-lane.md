@@ -188,6 +188,38 @@ Quellen und lieferte **einen** Vorschlag — und über einen Vorschlag kann die
 Präzision nur 0.0 oder 1.0 sein. Die Aktivierungsregel unten braucht eine
 auflösbare Quote, keinen Münzwurf.
 
+## Was als Widerspruch zählt — die Lehre aus v1
+
+Die ersten beiden gemessenen Läufe lieferten 12 Vorschläge, von denen nach
+Durchsicht die wenigsten echte Gegenevidenz waren. Das Problem lag nicht bei der
+Suche — die Queries waren gut und die Trefferzahl hoch —, sondern bei einer zu
+weiten Definition von „widerspricht" im Assess-Prompt. Zwei Fehlerklassen traten
+systematisch auf:
+
+**„Menschen können es nicht" ist kein Gegenargument.** Dass Jugendliche auf
+Sensationalismus hereinfallen oder KI-Texte nicht von menschlichen unterscheiden
+können, zeigt, dass die Fähigkeit **selten** ist — und das spricht *für* ihre
+Bedeutung, nicht gegen ihren Nutzen. Diese Verwechslung erzeugte allein vier der
+sieben Vorschläge im `critical-thinking`-Lauf.
+
+**Ein Null-Befund über die falsche Grösse zählt nicht.** Das mittlere Niveau
+einer Population gegen einen hypothetischen Mittelwert, oder ausbleibende
+Unterschiede *zwischen* Gruppen, sagen nichts darüber, ob die Fähigkeit wirkt.
+
+v2 verlangt deshalb kumulativ: eine **Messung** (kein Positionspapier, keine
+Befragung von Meinungen), gemessen als **Ergebnis einer Intervention oder
+Exposition**, die den Skill adressiert, und ein Ergebnis, das **ausbleibt, sich
+umkehrt oder nicht anhält**.
+
+**Der Anker muss den Befund tragen.** Ein Zitat kann wörtlich aus dem Abstract
+stammen und trotzdem der falsche Satz sein — im `critical-thinking`-Lauf war
+einmal die Methodenbeschreibung zitiert, während die Begründung einen Befund
+nannte, den dieser Satz gar nicht enthält. Anders als die Wörtlichkeit lässt
+sich diese Regel **nicht mechanisch prüfen**: der Code verwirft ein nicht
+wörtliches Zitat, aber ob ein wörtliches Zitat den Befund *stützt*, kann nur der
+Prompt verlangen und ein Reviewer nachhalten. Das ist eine bewusst schwächere
+Zusage, und sie steht hier, damit niemand sie für eine harte hält.
+
 ## Was die Lane nicht darf
 
 - **Keine aktiven Records ändern.** Sie erzeugt Kandidaten, sonst nichts.
@@ -211,6 +243,14 @@ ist bewusst niedrig: Gegenevidenz ist selten, und ein Fund unter zwei
 Vorschlägen ist mehr, als der heutige Zustand (1 von 146) liefert. Er ist aber
 nicht *null* — eine Lane, die überwiegend Fehlalarme produziert, kostet
 Reviewzeit und untergräbt das Vertrauen in die Kandidaten-PRs.
+
+**Die drei Läufe müssen denselben `PROMPT_VERSION` teilen.** Die beiden
+v1-Läufe (`skill-self-regulated-learning`, `skill-critical-thinking`, Protokolle
+unter `agents/runs/`) zählen **nicht** mit: sie haben v2 überhaupt erst
+begründet, und eine Quote über zwei verschiedene Bewerter zu mitteln misst
+weder den einen noch den anderen. Sie bleiben als Ausgangspunkt liegen — ohne
+sie wäre nicht sichtbar geworden, *warum* die Vorschläge danebenlagen, und die
+Vermutung wäre auf die Suche gefallen statt auf die Bewertung.
 
 **Decommission**, wenn eines davon eintritt:
 

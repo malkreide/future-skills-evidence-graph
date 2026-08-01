@@ -112,7 +112,12 @@ SEARCH_BACKENDS = (
     ("eric", ingest_eric),
 )
 
-PROMPT_VERSION = "counter-evidence-v1"
+# v2 narrows what counts as a contradiction. v1 accepted anything that sounded
+# negative about the skill's subject area, which produced two systematic error
+# classes across the first two measured runs -- see ASSESS_PROMPT. The version is
+# part of the cache key and of every claim's extraction_method, so v1 and v2
+# findings never silently mix in a measurement.
+PROMPT_VERSION = "counter-evidence-v2"
 
 # Where a run's decision trail is written. A reviewer must be able to see which
 # queries were asked, what they returned, and why the graph stopped -- the agent
@@ -202,17 +207,37 @@ Definition: {definition}
 Abstract:
 """{abstract}"""
 
-Does this abstract report evidence AGAINST the skill — a null result, no \
-measurable effect, a failed replication, an effect that did not persist, or a \
-harm?
+The claim under test is that this skill MATTERS — that developing it leads to \
+better outcomes. Evidence against it is a MEASURED RESULT showing that it does \
+not.
 
-Judge strictly. A study reporting a SMALLER positive effect is NOT contradicting \
-evidence; only an absent, reversed or non-persisting effect is. When the \
-abstract is merely unrelated, answer false.
+Answer false unless all three hold:
+
+1. The study MEASURED something. A position paper, a legal or ethical analysis, \
+a survey of what teachers or students believe, or the description of a design \
+is not a measurement, however critical its tone.
+2. What was measured is an OUTCOME of engaging with the skill — a training, an \
+intervention, a program, a deliberate exposure. How well some population happens \
+to perform is not that.
+3. The result is absent, reversed, or did not persist. A smaller positive effect \
+is still a positive effect.
+
+Two traps, both observed in real runs of this lane:
+
+- **"People are bad at this" is not evidence against the skill.** That students \
+fall for misinformation, or cannot distinguish AI-written from human-written \
+text, shows the skill is SCARCE — which argues FOR its importance, not against \
+its value. Only a study where teaching or practising the skill failed to help \
+counts here.
+- **A null result about the wrong quantity does not count.** A population's mean \
+measured against a hypothetical mean, or an absence of differences BETWEEN \
+groups, says nothing about whether the skill works.
 
 If and only if contradicts is true, set quote to the VERBATIM sentence from the \
-abstract that carries the negative finding — copied exactly, not paraphrased. \
-If no such sentence exists verbatim, answer false.
+abstract that STATES THAT FINDING — copied exactly, not paraphrased. The \
+sentence must carry the result itself, not the study's aim, method or framing: \
+if your reason names a finding the quoted sentence does not contain, you have \
+picked the wrong sentence. If no such sentence exists verbatim, answer false.
 
 Response schema:
 {{"contradicts": boolean, "quote": string|null, "reason": string|null}}'''
