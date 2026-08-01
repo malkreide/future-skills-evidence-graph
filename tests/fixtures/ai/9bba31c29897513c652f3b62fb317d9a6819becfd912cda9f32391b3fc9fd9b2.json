@@ -1,0 +1,10 @@
+{
+  "hash": "9bba31c29897513c652f3b62fb317d9a6819becfd912cda9f32391b3fc9fd9b2",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-self-regulated-learning"
+    ]
+  }
+}

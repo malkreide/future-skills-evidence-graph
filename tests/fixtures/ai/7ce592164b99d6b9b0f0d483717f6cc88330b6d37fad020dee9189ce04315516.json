@@ -1,0 +1,10 @@
+{
+  "hash": "7ce592164b99d6b9b0f0d483717f6cc88330b6d37fad020dee9189ce04315516",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-collaborative-problem-solving"
+    ]
+  }
+}

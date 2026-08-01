@@ -1,0 +1,10 @@
+{
+  "hash": "789e2512daca5c8781bd62faf82456414e3afb778143a0264a173b65b65d2395",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-digital-media-literacy"
+    ]
+  }
+}

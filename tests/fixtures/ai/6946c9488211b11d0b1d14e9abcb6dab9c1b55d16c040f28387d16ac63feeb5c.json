@@ -1,0 +1,11 @@
+{
+  "hash": "6946c9488211b11d0b1d14e9abcb6dab9c1b55d16c040f28387d16ac63feeb5c",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-ai-literacy",
+      "skill-critical-thinking"
+    ]
+  }
+}

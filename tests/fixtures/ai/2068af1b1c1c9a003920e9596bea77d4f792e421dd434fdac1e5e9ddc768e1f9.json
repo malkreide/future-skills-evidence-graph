@@ -1,0 +1,10 @@
+{
+  "hash": "2068af1b1c1c9a003920e9596bea77d4f792e421dd434fdac1e5e9ddc768e1f9",
+  "kind": "complete",
+  "response": {
+    "contradicts_skill_ids": [],
+    "supports_skill_ids": [
+      "skill-data-literacy"
+    ]
+  }
+}
