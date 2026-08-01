@@ -495,3 +495,42 @@ class SearchFallbackTest(unittest.TestCase):
                     source,
                     f"{name} cannot supply abstracts, so it cannot serve this lane",
                 )
+
+
+class SchemaApiCompatibilityTest(unittest.TestCase):
+    """Every JSON Schema handed to ai_provider must be one the endpoint accepts.
+
+    AST-only, so this runs in the core suite with langgraph uninstalled -- the
+    same reason DependencyDirectionTest parses instead of imports.
+    """
+
+    # Observed, not guessed. The first live workflow run of the counter-evidence
+    # lane failed twice with HTTP 400:
+    #   output_config.format.schema: For 'array' type, property 'maxItems' is
+    #   not supported
+    # Only keywords seen rejected belong in here; this is a record of a real
+    # failure, not a speculative allow-list.
+    UNSUPPORTED_KEYWORDS = ("maxItems",)
+
+    def schema_sources(self) -> list[Path]:
+        return sorted(AGENTS_DIR.glob("*.py")) + sorted(SCRIPTS_DIR.glob("*.py"))
+
+    def test_no_schema_uses_a_keyword_the_endpoint_rejects(self) -> None:
+        for path in self.schema_sources():
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Dict):
+                    continue
+                for key in node.keys:
+                    if not isinstance(key, ast.Constant) or not isinstance(key.value, str):
+                        continue
+                    with self.subTest(file=path.name, line=key.lineno):
+                        self.assertNotIn(
+                            key.value,
+                            self.UNSUPPORTED_KEYWORDS,
+                            f"{path.name}:{key.lineno} uses {key.value!r}, which the "
+                            "structured-output endpoint rejects with HTTP 400. The call "
+                            "then degrades to None and the caller silently falls back, "
+                            "so this never surfaces as a failure at runtime. Enforce the "
+                            "bound in code instead.",
+                        )

@@ -5,11 +5,11 @@ alle standardmässig aus und in keinen automatischen Workflow eingebunden — wa
 korrekt ist, aber auch heisst, dass niemand weiss, wie gut sie sind. Diese Liste
 schliesst diese Lücke.
 
-**Stand 2026-08-01.** Erledigt: Block 1.1–1.4 (Claim-Prefill live gemessen,
-Zahlen in [../OPERATIONS.md](../OPERATIONS.md) unter „Measured baseline") und
-Block 2 (Gold-Satz durchgesehen, `_status: reviewed`). Offen: **1.5** — die
-Skill-Link-Aufzeichnung, für die es jetzt einen Workflow gibt —, die daraus
-abzuleitenden Schwellen in 2.3, und **Block 3**, die Gegenevidenz-Lane.
+**Stand 2026-08-01.** Erledigt: **Block 1 vollständig** (Claim-Prefill und
+Skill-Links live gemessen, Zahlen in [../OPERATIONS.md](../OPERATIONS.md) unter
+„Measured baseline") und **Block 2** (Gold-Satz durchgesehen, `_status:
+reviewed`, Schwellen in `validate.yml`). Offen ist nur noch **Block 3**, die
+Gegenevidenz-Lane.
 
 Jeder Block ist **eigenständig abarbeitbar** und braucht einen
 `ANTHROPIC_API_KEY` (Block 2 nicht). Es gibt keine Reihenfolge zwischen den
@@ -225,15 +225,19 @@ Eine leere Liste ist ein gültiges Label, kein Versäumnis.
 
 - [x] `"_status": "reviewed"` in `eval/skill_link_labeled.json` setzen.
 
-- [ ] Schwellen **aus den gemessenen Werten** aus 1.5 ableiten, mit Abstand —
-      so wie `age_range` live bei 0.91 gemessen und auf 0.80 gegatet ist:
+- [x] Schwellen **aus den gemessenen Werten** aus 1.5 ableiten, mit Abstand:
 
       ```bash
-      python scripts/eval_skill_links.py --min-precision <gemessen-0.1> \
-                                          --min-abstention <gemessen-0.1>
+      python scripts/eval_skill_links.py --min-abstention 0.85 --min-precision 0.6
       ```
 
-- [ ] Erst wenn das hält: den Aufruf in `.github/workflows/validate.yml`
+      Gemessen 0.93 / 0.71. Der Abstand ist bewusst **ungleich**: `abstention`
+      hat 40 Beispiele im Nenner (ein Fehler = 0.025) und trägt deshalb ein
+      echtes Gate; `precision` hat nur 14 Link-Instanzen (ein Fehler = 0.071)
+      und bekommt eine Reissleine statt eines Qualitätsmasses. Recall (Nenner 11,
+      0.091 pro Fehler) bleibt ungegatet.
+
+- [x] Erst wenn das hält: den Aufruf in `.github/workflows/validate.yml`
       aufnehmen und die Entscheidung in `OPERATIONS.md` festhalten.
 
 ---

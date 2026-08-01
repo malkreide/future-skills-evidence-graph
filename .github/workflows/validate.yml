@@ -29,6 +29,18 @@ jobs:
           --min-precision 0.8
           --min-evidence-strength-precision 0.7 --min-age-range-precision 0.8
           --min-outcome-precision 0.75 --min-context-precision 0.85
+      # Skill links, gated on abstention and only loosely on precision. The
+      # denominators are small and unequal, which decides what can carry a floor:
+      # abstention is 40 empty-gold examples (one flip = 0.025), precision is 14
+      # link instances (0.071) and recall 11 gold links (0.091). Abstention is
+      # also the number that governs review load -- an over-eager model floods
+      # the reviewer with plausible links on the 40, long before precision over
+      # the other 10 looks bad. Measured 0.93 / 0.71; recall is deliberately
+      # ungated. See OPERATIONS.md "Optional skill-link suggestion".
+      - name: Evaluate skill-link suggestions (offline, fixtures)
+        run: >-
+          python scripts/eval_skill_links.py
+          --min-abstention 0.85 --min-precision 0.6
       - name: Build static dashboard
         run: python scripts/build_site.py
 

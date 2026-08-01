@@ -132,8 +132,16 @@ QUERY_SCHEMA: dict[str, Any] = {
     "type": "object",
     "additionalProperties": False,
     "required": ["queries"],
+    # No 'maxItems' here, deliberately. Anthropic's structured-output endpoint
+    # rejects it -- "output_config.format.schema: For 'array' type, property
+    # 'maxItems' is not supported" (HTTP 400), observed on the first workflow
+    # run of this lane. Every such 400 makes complete() return None, and the
+    # lane then falls back to its fixed seed queries: the run still produces
+    # findings, so the failure is silent unless someone reads the warnings.
+    # The cap belongs in code anyway -- propose_queries() truncates against
+    # MAX_QUERIES, which a schema hint could not enforce.
     "properties": {
-        "queries": {"type": "array", "items": {"type": "string"}, "maxItems": 3},
+        "queries": {"type": "array", "items": {"type": "string"}},
     },
 }
 
