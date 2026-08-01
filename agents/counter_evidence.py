@@ -112,12 +112,18 @@ SEARCH_BACKENDS = (
     ("eric", ingest_eric),
 )
 
-# v2 narrows what counts as a contradiction. v1 accepted anything that sounded
-# negative about the skill's subject area, which produced two systematic error
-# classes across the first two measured runs -- see ASSESS_PROMPT. The version is
-# part of the cache key and of every claim's extraction_method, so v1 and v2
-# findings never silently mix in a measurement.
-PROMPT_VERSION = "counter-evidence-v2"
+# v2 narrowed what counts as a contradiction; v1 had accepted anything that
+# sounded negative about the skill's subject area. v3 fixes what that revealed:
+# v2 proposed nothing across three runs, and the rejection log showed why -- the
+# assessor was correct every time, and 60% of what it was given was off-topic.
+# The bottleneck was RETRIEVAL, not judgement. v3 rebuilds the query strategy
+# around that (see QUERY_PROMPT) and splits relevance out of the verdict so the
+# two failures can never again share one outcome.
+#
+# The version is part of the cache key and of every claim's extraction_method,
+# so findings from different generations never silently mix in a measurement.
+# It covers BOTH prompts: changing either one changes what a run measures.
+PROMPT_VERSION = "counter-evidence-v3"
 
 # Where a run's decision trail is written. A reviewer must be able to see which
 # queries were asked, what they returned, and why the graph stopped -- the agent
@@ -169,8 +175,17 @@ QUERY_SCHEMA: dict[str, Any] = {
 ASSESS_SCHEMA: dict[str, Any] = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["contradicts", "quote", "reason"],
+    "required": ["relevant", "contradicts", "quote", "reason"],
     "properties": {
+        # Asked BEFORE the contradiction question, because the two failures mean
+        # opposite things. A v2 run rejected 47 of 47 sources as
+        # "not_contradicting" -- which read like a strict assessor or an empty
+        # literature, when in fact 60% of them were about incarceration stigma,
+        # parenting attitudes and cigar warning labels. The assessor was right
+        # every time; the SEARCH was missing. One outcome cannot carry both
+        # meanings, so relevance is now its own answer and the off-topic share
+        # becomes the direct measure of search quality.
+        "relevant": {"type": "boolean"},
         # A null result / no measurable effect / a harm counts; a merely weaker
         # positive effect does NOT, or every study becomes contradicting.
         "contradicts": {"type": "boolean"},
@@ -194,11 +209,30 @@ Queries already tried (do not repeat them):
 
 Findings so far: {found_count}
 
-Propose up to 3 short search queries likely to surface studies that FAIL to \
-find an effect for this skill, or find a negative one. Effective phrasings name \
-the null result itself — "no significant difference", "failed to replicate", \
-"effects did not persist", "null results", "no measurable effect" — combined \
-with the topic and a school-age context. Do not simply restate the skill name.
+Propose up to 3 short search queries.
+
+These go to a bibliographic FULL-TEXT search, which treats a query as a bag of \
+words and ranks by how many match. That has a consequence worth stating plainly, \
+because the obvious strategy fails on it: stringing negations together — \
+"no significant difference", "null results", "effects did not persist" — does \
+NOT find null results. Words like *no*, *significant*, *difference*, *results* \
+and *students* match almost anything, they outnumber the terms that carry the \
+topic, and the search returns unrelated literature. Measured: a run built that \
+way returned studies on incarceration stigma, parenting attitudes and cigar \
+warning labels, and 60% of everything it examined was off-topic.
+
+So: make the query narrow on the SUBJECT, and let the assessor do the filtering \
+for null results — it is strict enough, and it never sees what the search fails \
+to return.
+
+- Lead with the skill's own terminology, and the population or setting it \
+  applies to. These are the words that must match.
+- At most ONE further term, and only where it concentrates where null results \
+  get reported: "meta-analysis", "systematic review", "randomized controlled \
+  trial", "replication". These name study TYPES, not outcomes.
+- Never more than one negation word in a query. Prefer none.
+- Vary the angle between queries — a sub-construct, a different age band, a \
+  neighbouring intervention. Do not simply restate the skill name.
 
 Response schema:
 {{"queries": [string]}}'''
@@ -213,11 +247,18 @@ Definition: {definition}
 Abstract:
 """{abstract}"""
 
-The claim under test is that this skill MATTERS — that developing it leads to \
-better outcomes. Evidence against it is a MEASURED RESULT showing that it does \
-not.
+FIRST: is this abstract about this skill at all? Set relevant to false when the \
+study concerns a different subject entirely — a search returns whatever matched \
+its words, and much of it has nothing to do with the skill. Judge relevance by \
+subject matter alone, not by whether the finding is positive or negative. When \
+relevant is false, set contradicts to false, quote to null, and say in one \
+clause what the study is actually about.
 
-Answer false unless all three hold:
+THEN, only if it is relevant: the claim under test is that this skill MATTERS — \
+that developing it leads to better outcomes. Evidence against it is a MEASURED \
+RESULT showing that it does not.
+
+Answer contradicts false unless all three hold:
 
 1. The study MEASURED something. A position paper, a legal or ethical analysis, \
 a survey of what teachers or students believe, or the description of a design \
@@ -246,7 +287,8 @@ if your reason names a finding the quoted sentence does not contain, you have \
 picked the wrong sentence. If no such sentence exists verbatim, answer false.
 
 Response schema:
-{{"contradicts": boolean, "quote": string|null, "reason": string|null}}'''
+{{"relevant": boolean, "contradicts": boolean, "quote": string|null, \
+"reason": string|null}}'''
 
 
 def active_skill(skill_id: str) -> dict[str, Any] | None:
@@ -281,9 +323,13 @@ def propose_queries(state: State) -> dict[str, Any]:
         # than nothing: a deterministic phrasing over the skill name. Same
         # graceful-degradation rule as every importer.
         topic = skill.get("name", "")
+        # Same rule the prompt explains: name the subject, add a study TYPE that
+        # concentrates null reporting, and leave the null-filtering to the
+        # assessor. Stacking negations here would reproduce the retrieval failure
+        # these two exist to survive.
         proposed = [
-            f"{topic} no significant difference school",
-            f"{topic} null results replication students",
+            f"{topic} meta-analysis",
+            f"{topic} randomized controlled trial school",
         ]
 
     # Never repeat a query, and never exceed the total budget — the limit is
@@ -400,8 +446,11 @@ def search_and_assess(state: State) -> dict[str, Any]:
             if not isinstance(verdict, dict):
                 reject(source, "no_verdict")
                 continue
+            if not verdict.get("relevant"):
+                reject(source, "off_topic", verdict.get("reason"))
+                continue
             if not verdict.get("contradicts"):
-                reject(source, "not_contradicting", verdict.get("reason"))
+                reject(source, "on_topic_no_contradiction", verdict.get("reason"))
                 continue
             quote = str(verdict.get("quote") or "").strip()
             # No claim without a verifiable text anchor: the quote must occur
@@ -656,13 +705,16 @@ def write_run_log(state: State) -> Path:
             for finding in state["findings"]
         ],
         # The other side of the ledger. 'proposed' alone cannot explain a run that
-        # proposed nothing, and the three outcomes mean opposite things:
-        #   no_verdict          the provider failed — not a judgement at all
-        #   not_contradicting   the assessor looked and said no
-        #   quote_not_verbatim  the assessor said yes but could not anchor it
-        # A barren run that is mostly the third is an anchoring problem; mostly
-        # the second is either a strict assessor or a literature with nothing to
-        # find; mostly the first is a broken run wearing the mask of a result.
+        # proposed nothing, and the four outcomes mean different things:
+        #   no_verdict                 the provider failed — not a judgement
+        #   off_topic                  the SEARCH missed; the assessor was right
+        #   on_topic_no_contradiction  the assessor read a relevant study, said no
+        #   quote_not_verbatim         it said yes but could not anchor it
+        # Only the third is evidence about the literature. A run dominated by
+        # off_topic says the retrieval is broken, which reads identically at the
+        # top level -- zero findings -- and demands the opposite repair. That
+        # conflation is why the split exists: v2 logged 47 of 47 as one outcome,
+        # and 60% of those were simply other subjects.
         "rejected": len(state["rejected"]),
         "rejected_by_outcome": {
             outcome: sum(1 for r in state["rejected"] if r["outcome"] == outcome)

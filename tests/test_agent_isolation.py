@@ -650,11 +650,44 @@ class AssessPromptScopeTest(unittest.TestCase):
         self.assertIn("STATES THAT FINDING", self.assess_prompt())
 
     def test_the_version_moved_with_the_prompt(self) -> None:
-        """A changed prompt under an unchanged version corrupts every comparison."""
+        """A changed prompt under an unchanged version corrupts every comparison.
+
+        PROMPT_VERSION covers BOTH prompts — the query prompt decides what the
+        assessor ever gets to see, so a retrieval change is as much a change of
+        measurement as a change of criteria.
+        """
         sys.path.insert(0, str(AGENTS_DIR))
         import counter_evidence as ce
 
-        self.assertNotEqual(ce.PROMPT_VERSION, "counter-evidence-v1")
+        self.assertNotIn(ce.PROMPT_VERSION, {"counter-evidence-v1", "counter-evidence-v2"})
+
+    def test_the_query_prompt_does_not_teach_stacked_negations(self) -> None:
+        """The strategy that produced 60% off-topic retrieval must not return."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        self.assertIn("bag of words", ce.QUERY_PROMPT)
+        self.assertIn("Never more than one negation word", ce.QUERY_PROMPT)
+
+    def test_the_seed_queries_follow_the_same_rule(self) -> None:
+        """They run whenever the model call fails, so they are a real strategy."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+        from unittest import mock
+
+        state = ce.initial_state({"id": "s", "name": "Systems Thinking", "definition": "d"})
+        with mock.patch.object(ce.ai_provider, "complete", return_value=None):
+            seeds = ce.propose_queries(state)["pending_queries"]
+
+        self.assertTrue(seeds)
+        for query in seeds:
+            with self.subTest(query=query):
+                negations = sum(
+                    word in query.lower().split()
+                    for word in ("no", "null", "not", "failed", "without")
+                )
+                self.assertLessEqual(negations, 1, "stacked negations dilute a full-text query")
+                self.assertIn("systems thinking", query.lower())
 
 
 class RunLogFilenameTest(unittest.TestCase):
@@ -725,8 +758,8 @@ class RejectionLoggingTest(unittest.TestCase):
         payload = self.logged(
             ce,
             [
-                {"source_title": "A", "outcome": "not_contradicting", "reason": "positive"},
-                {"source_title": "B", "outcome": "not_contradicting", "reason": None},
+                {"source_title": "A", "outcome": "on_topic_no_contradiction", "reason": "positive"},
+                {"source_title": "B", "outcome": "off_topic", "reason": "about cigar warnings"},
                 {"source_title": "C", "outcome": "quote_not_verbatim", "reason": "paraphrased"},
                 {"source_title": "D", "outcome": "no_verdict", "reason": None},
             ],
@@ -735,7 +768,12 @@ class RejectionLoggingTest(unittest.TestCase):
         self.assertEqual(payload["rejected"], 4)
         self.assertEqual(
             payload["rejected_by_outcome"],
-            {"no_verdict": 1, "not_contradicting": 2, "quote_not_verbatim": 1},
+            {
+                "no_verdict": 1,
+                "off_topic": 1,
+                "on_topic_no_contradiction": 1,
+                "quote_not_verbatim": 1,
+            },
         )
         self.assertEqual(len(payload["not_proposed"]), 4)
 
@@ -750,7 +788,7 @@ class RejectionLoggingTest(unittest.TestCase):
         )
 
         self.assertEqual(payload["rejected_by_outcome"], {"no_verdict": 3})
-        self.assertNotIn("not_contradicting", payload["rejected_by_outcome"])
+        self.assertNotIn("on_topic_no_contradiction", payload["rejected_by_outcome"])
 
     def test_an_empty_run_still_reports_the_ledger(self) -> None:
         sys.path.insert(0, str(AGENTS_DIR))
@@ -760,3 +798,54 @@ class RejectionLoggingTest(unittest.TestCase):
         self.assertEqual(payload["rejected"], 0)
         self.assertEqual(payload["rejected_by_outcome"], {})
         self.assertEqual(payload["not_proposed"], [])
+
+
+class RelevanceSplitTest(unittest.TestCase):
+    """off_topic and on_topic_no_contradiction must never share an outcome.
+
+    Both look identical at the top of the log — zero findings — and they demand
+    opposite repairs: one says the search is broken, the other says the
+    literature holds nothing. A v2 run collapsed them and read as the second
+    when it was the first.
+    """
+
+    def run_round(self, ce, verdicts):
+        state = ce.initial_state({"id": "s", "name": "N", "definition": "d"})
+        state["pending_queries"] = ["q"] * len(verdicts)
+        sources = [
+            {"id": f"src-{i}", "title": f"Study {i}", "url": "u", "abstract": "An abstract here."}
+            for i in range(len(verdicts))
+        ]
+        it = iter(verdicts)
+        with mock.patch.object(
+            ce, "search_query", side_effect=[([s], "openalex") for s in sources]
+        ), mock.patch.object(ce.ai_provider, "complete", side_effect=lambda *a, **k: next(it)):
+            return ce.search_and_assess(state)
+
+    def test_an_irrelevant_source_is_not_recorded_as_a_judgement_on_the_skill(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        out = self.run_round(
+            ce,
+            [
+                {"relevant": False, "contradicts": False, "quote": None, "reason": "about cigars"},
+                {"relevant": True, "contradicts": False, "quote": None, "reason": "positive effect"},
+            ],
+        )
+
+        outcomes = [r["outcome"] for r in out["rejected"]]
+        self.assertEqual(outcomes, ["off_topic", "on_topic_no_contradiction"])
+
+    def test_relevance_is_checked_before_the_contradiction_verdict(self) -> None:
+        """An off-topic abstract cannot become a finding even if it claims to."""
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        out = self.run_round(
+            ce,
+            [{"relevant": False, "contradicts": True, "quote": "An abstract here.", "reason": "x"}],
+        )
+
+        self.assertEqual(out["findings"], [])
+        self.assertEqual([r["outcome"] for r in out["rejected"]], ["off_topic"])
