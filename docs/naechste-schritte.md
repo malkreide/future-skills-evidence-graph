@@ -1,9 +1,14 @@
 # Nächste Schritte: die offenen Messungen
 
-Drei Fähigkeiten sind gebaut, aber **noch nicht gemessen**. Sie sind deshalb
+Drei Fähigkeiten waren gebaut, aber **noch nicht gemessen**. Sie sind deshalb
 alle standardmässig aus und in keinen automatischen Workflow eingebunden — was
 korrekt ist, aber auch heisst, dass niemand weiss, wie gut sie sind. Diese Liste
 schliesst diese Lücke.
+
+**Stand 2026-08-01: Block 1.1–1.4 (Claim-Prefill) ist erledigt.** Die Zahlen
+stehen in [../OPERATIONS.md](../OPERATIONS.md) unter „Measured baseline". Offen
+sind noch der Skill-Link-Gold-Satz (1.5 und Block 2) und die Gegenevidenz-Lane
+(Block 3).
 
 Jeder Block ist **eigenständig abarbeitbar** und braucht einen
 `ANTHROPIC_API_KEY` (Block 2 nicht). Es gibt keine Reihenfolge zwischen den
@@ -50,37 +55,51 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 
 ## 1. Live-Messungen des KI-Assists
 
-Der Prompt `claim-prefill-v7` ist nie gegen das echte Modell gelaufen: seine
+> ✅ **Erledigt am 2026-08-01** (PRs #180, #181). Zwei Live-Läufe über den
+> Workflow `eval-prefill-record`; Lauf 2 ist committet. Die Details stehen in
+> [../OPERATIONS.md](../OPERATIONS.md) → „Measured baseline". Die Schritte 1.1–1.4
+> bleiben als **Rezept** stehen, weil sie bei jedem v8, jedem Modellwechsel und
+> jeder Erweiterung des Gold-Satzes erneut gebraucht werden.
+
+Der Prompt `claim-prefill-v7` war nie gegen das echte Modell gelaufen: seine
 Fixtures wurden aus v6 **migriert** (`high` → `strong`, dieselbe Bewertung unter
-dem Namen, den das Datenmodell akzeptiert). Die Regression ist damit als
-Drift-Check gültig, aber v7s Live-Verhalten ist unbekannt — insbesondere die neu
+dem Namen, den das Datenmodell akzeptiert). Die Regression war damit als
+Drift-Check gültig, aber v7s Live-Verhalten unbekannt — insbesondere die neu
 erlaubte Abstinenz bei `evidence_strength`.
 
 ### 1.1 Claim-Prefill aufzeichnen — 50 API-Calls
 
-- [ ] ```bash
+- [x] ```bash
       make eval-prefill-record
       ```
 
 Ruft für jedes der 50 Gold-Beispiele das Modell auf, überschreibt `_recorded`
 und die Fixtures, und druckt die **live gemessene** Genauigkeit.
 
-| Feld | migrierte Baseline | CI-Gate |
-| --- | --- | --- |
-| `age_range` | P 0.94 | ≥ 0.80 |
-| `evidence_strength` | P 0.82, **abstain 0/50** | ≥ 0.70 |
-| `outcome` | P 0.85 | ≥ 0.75 |
-| `context` | P 0.98 | ≥ 0.85 |
+| Feld | migrierte Baseline | **live gemessen** | CI-Gate |
+| --- | --- | --- | --- |
+| `age_range` | P 0.94 | **P 0.91** | ≥ 0.80 ✓ |
+| `evidence_strength` | P 0.82, abstain 0/50 | **P 0.80, abstain 0/50** | ≥ 0.70 ✓ |
+| `outcome` | P 0.85 | **P 0.87** | ≥ 0.75 ✓ |
+| `context` | P 0.98 | **P 0.96** | ≥ 0.85 ✓ |
 
-> **Der eigentliche Prüfpunkt ist die `abstain`-Spalte bei
+> **Der eigentliche Prüfpunkt war die `abstain`-Spalte bei
 > `evidence_strength`.** v7 erlaubt erstmals „nicht erkennbar"; unter v6 riet das
-> Modell in 50 von 50 Fällen. Steht dort weiterhin `0`, hat die Prompt-Änderung
-> nicht gewirkt. Das ist ein **Befund, kein Fehler** — er gehört dann in
-> `OPERATIONS.md` und begründet ein v8.
+> Modell in 50 von 50 Fällen. **Sie steht weiterhin auf `0` — in beiden Läufen.**
+> Die Prompt-Änderung hat für dieses Feld also nicht gewirkt. Das ist ein
+> **Befund, kein Fehler**: er ist in `OPERATIONS.md` festgehalten und begründet
+> ein v8, zusammen mit den durchgängig zu breiten `age_range`-Vorschlägen.
+
+> **Kürzester Weg: Actions → *Re-record claim pre-fill live baseline (manual)*.**
+> Der Workflow erledigt 1.1 bis 1.4 in einem Lauf und öffnet einen PR. Die
+> folgenden Schritte sind der lokale Weg — und die Erklärung, was der Workflow
+> tut, falls er einmal etwas auslässt. Genau das ist beim ersten echten Lauf
+> passiert: er hatte `tests/fixtures/embeddings/` nicht committet (behoben in
+> #181).
 
 ### 1.2 Embedding-Vektoren prägen — kein API-Call
 
-- [ ] ```bash
+- [x] ```bash
       make eval-prefill
       ```
 
@@ -88,16 +107,21 @@ Die Antworten aus 1.1 sind neue Texte ohne Vektor; dieser Lauf erzeugt sie.
 **Er dauert dann ein bis zwei Minuten statt sieben Sekunden** — das ist das
 Zeichen, dass Vektoren geprägt werden, kein Hänger.
 
+Diesen Schritt zu überspringen fällt **nicht** von selbst auf: ohne Vektoren
+fällt der Scorer auf lexikalisch zurück, und das semantische Gate ist bewusst so
+gebaut, dass es dann *überspringt* statt zu scheitern. Die CI wäre grün und
+würde nichts mehr prüfen. Deshalb 1.3.
+
 ### 1.3 Absichern
 
-- [ ] ```bash
+- [x] ```bash
       make test        # der Fixture-Coverage-Test schlägt an, falls Vektoren fehlen
       make validate
       ```
 
 ### 1.4 Committen — alle drei zusammen
 
-- [ ] ```bash
+- [x] ```bash
       git add eval/claim_prefill_labeled.json tests/fixtures/ai/ tests/fixtures/embeddings/
       git commit -m "eval: Live-Baseline fuer Prompt v7 aufgezeichnet"
       ```
@@ -105,7 +129,7 @@ Zeichen, dass Vektoren geprägt werden, kein Hänger.
 Aufzeichnung, Fixtures und Vektoren gehören in **einen** Commit, sonst laufen
 Aufzeichnung und Replay auseinander.
 
-- [ ] **Gemessene Zahlen in `OPERATIONS.md` nachtragen** (Abschnitt „Optional AI
+- [x] **Gemessene Zahlen in `OPERATIONS.md` nachtragen** (Abschnitt „Optional AI
       claim pre-fill") und den Hinweis „Outstanding for v7" entfernen.
 
 ### 1.5 Skill-Links aufzeichnen — 50 API-Calls

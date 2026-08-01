@@ -299,10 +299,10 @@ Triggers → actions:
 
 ## Optional AI claim pre-fill (P1)
 
-> **Offene Messungen.** Drei KI-Fähigkeiten sind gebaut, aber noch nicht gegen
-> das echte Modell gemessen: die v7-Fixtures dieses Pre-Fills (migriert, nicht
-> aufgezeichnet), der Skill-Link-Vorschlag, und die Gegenevidenz-Lane. Die
-> Schritt-für-Schritt-Anleitung dafür steht in
+> **Offene Messungen.** Dieser Pre-Fill ist seit 2026-08-01 live gemessen — zwei
+> Läufe, Zahlen unter „Re-recording" weiter unten. **Zwei** KI-Fähigkeiten sind
+> weiterhin gebaut, aber ungemessen: der Skill-Link-Vorschlag und die
+> Gegenevidenz-Lane. Die Schritt-für-Schritt-Anleitung dafür steht in
 > [docs/naechste-schritte.md](docs/naechste-schritte.md).
 
 
@@ -437,24 +437,84 @@ catches drift between what we froze and the labels — it does **not** call the
 model and is **not** a live-accuracy number. `_recorded` is intentionally allowed
 to diverge from `gold` on the harder cases (e.g. an over-confident
 `evidence_strength`), so the frozen number stays honest rather than a saturated
-1.00. The current regression sits at overall precision ≈0.95 / recall ≈0.94,
-`evidence_strength` precision ≈0.84 — comfortably above the
-`--min-precision 0.8 / --min-recall 0.8 / --min-evidence-strength-precision 0.7`
-gate, which is unchanged.
+1.00. The current regression sits at GATED precision 0.85 / recall 0.76,
+`evidence_strength` precision 0.80 and `age_range` precision 0.91 — above the
+gate `validate.yml` actually runs, which is unchanged:
+`--min-precision 0.8 --min-evidence-strength-precision 0.7
+--min-age-range-precision 0.8 --min-outcome-precision 0.75
+--min-context-precision 0.85`. (Recall is reported but **not** gated;
+`--min-recall` exists and is deliberately left unset, because abstention lowers
+recall by design — see the abstention note below.)
+
+One subtlety worth stating plainly: **immediately after a re-record these
+regression numbers *are* the live-accuracy numbers**, because `_recorded` was
+just overwritten with live output. The two only start to drift apart when `gold`
+is edited afterwards, or when the prompt changes without a re-record. The
+regression/live distinction is therefore about *what a later CI run measures* —
+frozen output, never the model — not a claim that the two figures differ at the
+moment of recording.
 
 ### Re-recording — where live accuracy is measured
 
-> **Outstanding for v7.** The v7 fixtures were produced by *migrating* the v6
-> recordings (`high` → `strong`), not by calling the model: the same judgement
-> under the name the data model accepts, which is why every metric is unchanged
-> after the switch. That keeps the offline regression valid as a drift check,
-> but two v7 changes are **unmeasured** until someone re-records — the new
-> abstention permission for `evidence_strength`, and the reworded strength
-> rubric. Run `make eval-prefill-record` with a live key, then
-> `make eval-prefill` once with `sentence-transformers` installed to mint
-> embedding vectors for the changed texts, and commit
-> `eval/claim_prefill_labeled.json`, `tests/fixtures/ai/` and
-> `tests/fixtures/embeddings/` together.
+#### Measured baseline — v7, `claude-opus-4-8`, 2026-08-01
+
+The v7 fixtures were originally *migrated* from the v6 recordings
+(`high` → `strong`) rather than recorded, which left the two substantive v7
+changes unmeasured. They have since been recorded live **twice**, via the
+`eval-prefill-record` workflow:
+
+| field | run 1 | run 2 | abstain (both) |
+| --- | --- | --- | --- |
+| `age_range` | 0.89 | **0.91** | 7 |
+| `outcome` | 0.87 | **0.87** | 4 |
+| `context` | 0.98 | **0.96** | 0 |
+| `evidence_strength` | 0.78 | **0.80** | 0 |
+| GATED (age+strength) | 0.82 | **0.85** | 7 |
+
+Run 2 is what is committed. Precision figures, `outcome`/`context` scored
+semantically.
+
+**Run-to-run spread is about one example.** Every field moved by at most 0.02–0.03,
+and one example out of 50 is worth 0.02. That is the number to reason with when
+setting a gate: the current thresholds sit at least one example below the worse
+of the two runs, which is meant to be tight — a future run that trips a gate is a
+signal worth reading, not noise to absorb by lowering it.
+
+**Two findings that justify a v8.** Both hold in *both* runs as aggregate
+patterns, so neither is sampling noise — though individual examples do move
+between runs (`prefill-mindset-intervention` went `low` → `strong` against the
+same `moderate` gold), which is exactly why the claims below are about the shape
+of the errors and not about single items. Counts are from the committed run:
+
+1. **`evidence_strength` abstained 0/50, in both runs.** The v7 permission to
+   answer "not determinable" does not fire for the one field it was written for.
+   It is also the weakest field (0.78 / 0.80) — but of its 10 disagreements *all*
+   are adjacent steps (`low`↔`moderate`, `moderate`↔`strong`), never
+   `low`↔`strong`, and they land on both sides of `gold` (6 above, 4 below). So
+   this is boundary placement on a 3-level ordinal scale, **not** a systematic
+   tendency to overrate evidence — which is the failure mode this catalogue would
+   actually have to worry about. Exact-match scoring charges an adjacent step the
+   same as a total miss, which makes 0.80 read worse than the behaviour is.
+2. **`age_range` is systematically too wide.** All disagreements err in the same
+   direction — the model proposes the broader band (`12-18` for `14-18`, `6-12`
+   for `9-12`, `11-18` for `13-17`; run 1 additionally `12-18` for `12-15`).
+   Unlike (1) this *is* directional, and directional error is what a prompt can
+   fix. A related single case in `outcome`: where `gold` is null, the model wrote
+   "…but measures no learning outcomes" — it recognised the absence and filled
+   the field anyway.
+
+A v8 addressing (1) and (2) now has a measured baseline to be compared against.
+Do not change the prompt and the golden set in the same step.
+
+> **Re-recording locally** needs one extra step the workflow does for you: the
+> fresh `outcome`/`context` texts have no embedding vectors, so run
+> `make eval-prefill` once with `sentence-transformers` installed to mint them,
+> and commit `eval/claim_prefill_labeled.json`, `tests/fixtures/ai/` **and**
+> `tests/fixtures/embeddings/` together. Leaving the vectors behind does not fail
+> loudly by itself: the scorer degrades to lexical and the semantic gate is built
+> to *skip* rather than fail, so CI would pass while enforcing nothing.
+> `EmbeddingFixtureCoverageTest` is what catches it — in `make test`, and in the
+> record workflow before it opens a pull request.
 
 Live accuracy is measured only when you re-record against the real model:
 
