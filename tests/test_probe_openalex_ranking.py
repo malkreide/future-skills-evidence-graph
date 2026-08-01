@@ -45,13 +45,23 @@ class ProbeIsolatesTheOrderingTest(unittest.TestCase):
         self.assertIn("sort", first)
         self.assertNotIn("sort", second)
 
-    def test_the_probe_uses_the_sort_the_importer_sends(self) -> None:
-        """A literal copied here would keep reporting the old ordering."""
+    def test_the_probe_compares_date_sorting_against_the_importer(self) -> None:
+        """One side is the ordering we left; the other is whatever ships now."""
         first, _ = self.captured_params()
-        self.assertEqual(first["sort"], ingest_openalex.SEARCH_SORT)
+        self.assertEqual(first["sort"], probe.LEGACY_SORT)
+        self.assertEqual(probe.LEGACY_SORT, "publication_year:desc")
 
-    def test_the_importer_still_sends_that_sort(self) -> None:
-        """Guards the other direction: the constant must reach the request."""
+    def test_the_importer_no_longer_sorts_at_all(self) -> None:
+        """The whole point: `search` must be free to rank by relevance.
+
+        Measured across four queries at ten results: date-sorting and relevance
+        ranking shared zero works. A regression here produces plausible-looking
+        results and no error, so it needs a test rather than a reviewer's eye.
+        """
+        self.assertIsNone(ingest_openalex.SEARCH_SORT)
+
+    def test_recency_survives_as_a_filter(self) -> None:
+        """Removing the sort must not silently drop the intent behind it."""
         captured: dict[str, str] = {}
 
         class FakeResponse:
@@ -72,10 +82,11 @@ class ProbeIsolatesTheOrderingTest(unittest.TestCase):
              mock.patch.object(ingest_openalex.json, "load", lambda _: {"results": []}):
             ingest_openalex.fetch("q", 5)
 
+        self.assertNotIn("sort=", captured["url"], "no ordering may override relevance")
         self.assertIn(
-            ingest_openalex.SEARCH_SORT.replace(":", "%3A"),
+            f"publication_year%3A%3E{ingest_openalex.earliest_publication_year() - 1}",
             captured["url"],
-            "the importer must actually send SEARCH_SORT, or the probe measures a fiction",
+            "recency must still constrain the candidate set, just not its order",
         )
 
 

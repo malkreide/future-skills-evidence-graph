@@ -10,13 +10,35 @@ from common import TODAY, run_importer, slugify
 
 BASE_URL = "https://api.openalex.org/works"
 
-# NOTE: this REPLACES OpenAlex's relevance ranking. `search` would order by how
-# well a work matches; with this sort the API returns "everything matching any
-# query term, newest first" instead. Named here rather than inlined so
-# probe_openalex_ranking.py measures the ordering the importer actually sends —
-# a copied literal there would keep reporting on this value after someone
-# changed it. Whether the trade is right is an open question; see that probe.
-SEARCH_SORT = "publication_year:desc"
+# Results are ranked by RELEVANCE — OpenAlex's default for `search` — and recency
+# is a FILTER instead.
+#
+# This used to be `sort=publication_year:desc`, which replaced the relevance
+# ranking outright: the API then returned "everything matching any query term,
+# newest first". probe_openalex_ranking.py measured what that cost, and the
+# answer was total. Across four queries, ten results each, the two orderings
+# shared **zero** works:
+#
+#   query                                          overlap
+#   artificial intelligence literacy primary school   0/10
+#   critical thinking curriculum secondary education  0/10
+#
+# For the first, sorting by date returned "Doing Game Design in Theatre" and
+# "Distributed Leadership Applied"; ranking by relevance returned "Artificial
+# intelligence literacy education in primary schools: a review". Curated
+# importer queries were hit exactly as hard as the agent lane's — the relevance
+# filter downstream could only ever pick from what this function handed it.
+#
+# The sort was not pointless, though: a catalogue about FUTURE skills wants
+# recent work. That intent survives as a filter, which constrains the candidate
+# set without touching the ordering — "the best matches among recent work"
+# rather than "the newest among any match".
+SEARCH_SORT: str | None = None
+
+# How far back the filter reaches. Wide enough that a field's formative papers
+# are still reachable, narrow enough to keep the catalogue current. Relative to
+# TODAY rather than a fixed date, or it silently ages into meaninglessness.
+RECENCY_YEARS = 8
 
 
 def inverted_index_to_text(index: dict[str, list[int]] | None) -> str | None:
@@ -29,13 +51,22 @@ def inverted_index_to_text(index: dict[str, list[int]] | None) -> str | None:
     return " ".join(word for _, word in sorted(positions))
 
 
+def earliest_publication_year() -> int:
+    """First year the recency filter still admits, counted back from TODAY."""
+    return int(TODAY[:4]) - RECENCY_YEARS
+
+
 def fetch(query: str, limit: int, mailto: str | None = None) -> list[dict[str, Any]]:
     params = {
         "search": query,
         "per-page": str(limit),
-        "filter": "type:article|book|report",
-        "sort": SEARCH_SORT,
+        # Recency as a filter, not as an ordering — see SEARCH_SORT above.
+        "filter": (
+            f"type:article|book|report,publication_year:>{earliest_publication_year() - 1}"
+        ),
     }
+    if SEARCH_SORT:
+        params["sort"] = SEARCH_SORT
     if mailto:
         params["mailto"] = mailto
     url = f"{BASE_URL}?{urllib.parse.urlencode(params)}"

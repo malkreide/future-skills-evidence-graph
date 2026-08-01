@@ -12,6 +12,14 @@ requires human review through pull requests. Nothing here changes that.
 
 ## Components
 
+> **OpenAlex ranked by date, not relevance, until 2026-08-01.** `fetch` sent
+> `sort=publication_year:desc` alongside `search`, which replaces the relevance
+> ranking: the API returned "everything matching any query term, newest first".
+> Measured across four queries at ten results each, date-ordering and relevance
+> ordering shared **zero** works. Recency is now a filter and relevance decides
+> the order. See "What the date sort cost" below for what it did to the
+> catalogue, and `scripts/probe_openalex_ranking.py` for the measurement.
+
 | Stage | Script / Workflow | Notes |
 | --- | --- | --- |
 | Import (5 sources) | `ingest_openalex / crossref / semantic_scholar / arxiv / eric .py` | One shared pipeline (`common.run_importer`; per source only `fetch`/`convert` differ). Each degrades gracefully on outage (`fetch_or_warn`); single page of `--limit` (25) results per query — no pagination. Crossref ingests no abstracts (JATS-only, sparse), so its sources never yield automatic claims — metadata only |
@@ -327,6 +335,49 @@ During review, `promote_candidate.py` prints any suggestion and
 weakens the gate: fields the model left null stay placeholders and still block
 promotion, a reviewed claim still needs a `--supports`/`--contradicts` skill
 link, and every explicit flag overrides the suggestion.
+
+## What the date sort cost (audit, 2026-08-01)
+
+`ingest_openalex.fetch` ranked by publication date instead of relevance from the
+start until 2026-08-01. Before deciding what to do about the sources already
+collected that way, here is what the catalogue actually holds.
+
+**How much of it came through OpenAlex**
+
+| origin | sources | candidate | rejected | reviewed | rejection rate |
+| --- | --- | --- | --- | --- | --- |
+| ERIC | 304 | 283 | 7 | 14 | 2% |
+| Semantic Scholar | 234 | 216 | 2 | 16 | 1% |
+| **OpenAlex** | **120** | 82 | **26** | 12 | **22%** |
+| manual / other | 52 | 1 | 20 | 31 | — |
+
+**What it contributes**
+
+| | OpenAlex share |
+| --- | --- |
+| sources | 17% (120 of 710) |
+| claim citations | 13% (190 of 1432) |
+| citations in **reviewed** claims | **8%** (5 of 59) |
+
+**Reading.** OpenAlex sources were rejected at roughly **ten times** the rate of
+the other automated origins, and they thin out further at every stage where a
+human looks: 17% of sources, 13% of citations, 8% of what reviewers accepted.
+That is the signature of an importer delivering poorly matched material — and it
+is also the reason the damage stayed contained. The relevance filter and the
+reviewers caught most of it; the reviewed core of the catalogue rests
+predominantly on manually curated sources (61% of citations in reviewed claims).
+
+**No purge is warranted.** The 12 reviewed OpenAlex sources passed human
+judgement and stand on their own merits regardless of how they were found. The
+82 candidates never entered the catalogue. Deleting records because of how they
+were retrieved would discard work a reviewer already did.
+
+**What was lost is invisible in the data: recall, not precision.** The papers
+this importer *should* have returned and did not leave no trace — there is no
+record of a missing source. That loss cannot be audited after the fact, only
+stopped going forward. It also means the OpenAlex share above understates the
+harm: the question is not how much bad material got in, but how much good
+material never appeared.
 
 ### Choosing a provider (and why there is no framework here)
 

@@ -1,19 +1,22 @@
-"""Measure what `sort=publication_year:desc` costs OpenAlex result relevance.
+"""Measure what date-sorting costs OpenAlex result relevance.
 
-`ingest_openalex.fetch` passes both `search` and `sort=publication_year:desc`.
-The `search` parameter ranks by relevance; the `sort` parameter REPLACES that
-ordering. What comes back is therefore "everything matching any query term,
-newest first" rather than "what matches best" -- a distinction that is invisible
-as long as nobody compares the two orderings.
+`ingest_openalex.fetch` used to pass `sort=publication_year:desc` alongside
+`search`. The `search` parameter ranks by relevance; that `sort` REPLACED the
+ordering, so the API returned "everything matching any query term, newest first"
+rather than "what matches best" -- invisible as long as nobody compared the two.
 
 The counter-evidence lane made it visible: three runs examined 147 sources and
 proposed nothing, and the rejection log showed 60-80% of those sources were
 about other subjects entirely. Narrowing the queries made it WORSE, which is the
 signature of a ranking that never considered the query in the first place.
 
-This probe does not fix anything and changes no behaviour. It fetches the same
-query both ways and reports how much the two result sets share, so the decision
-about that `sort` rests on a measurement rather than on reading the code.
+This probe measured it: across four queries at ten results each, the two
+orderings shared ZERO works. The importer now ranks by relevance and expresses
+recency as a filter instead.
+
+The probe stays because the comparison is worth repeating -- it is the only
+thing that would notice a regression back to date-sorting, which produces
+plausible-looking results and no error at all.
 
     python scripts/probe_openalex_ranking.py                # both query styles
     python scripts/probe_openalex_ranking.py --limit 20
@@ -42,9 +45,15 @@ from typing import Any
 import ingest_openalex
 from common import env_or_none
 
+# The ordering the importer used until the probe measured it. Kept here, not in
+# ingest_openalex, because the importer no longer has any business knowing it --
+# but a comparison needs something to compare AGAINST, and a regression that
+# reintroduced date-sorting would otherwise look like a clean run.
+LEGACY_SORT = "publication_year:desc"
+
 # One query in the shape the agent lane produces, one in the shape the curated
-# importers use. They are listed together on purpose: the sort is shared, so a
-# verdict that only looks at the lane would miss what it does to the core.
+# importers use. They are listed together on purpose: the ordering is shared, so
+# a verdict that only looks at the lane would miss what it does to the core.
 PROBE_QUERIES = (
     ("lane", "self-regulated learning intervention meta-analysis"),
     ("lane", "metacognitive strategy training academic achievement"),
@@ -58,9 +67,12 @@ def fetch_raw(query: str, limit: int, sort: str | None, mailto: str | None) -> l
     params: dict[str, str] = {
         "search": query,
         "per-page": str(limit),
-        # Mirror the importer's filter exactly; only the ordering may differ, or
-        # the comparison measures two things at once.
-        "filter": "type:article|book|report",
+        # Mirror the importer's filter exactly -- including its recency window,
+        # or the comparison measures two things at once.
+        "filter": (
+            "type:article|book|report,"
+            f"publication_year:>{ingest_openalex.earliest_publication_year() - 1}"
+        ),
     }
     if sort:
         params["sort"] = sort
@@ -73,8 +85,8 @@ def fetch_raw(query: str, limit: int, sort: str | None, mailto: str | None) -> l
 
 
 def compare(query: str, limit: int, mailto: str | None) -> dict[str, Any]:
-    dated = fetch_raw(query, limit, ingest_openalex.SEARCH_SORT, mailto)
-    ranked = fetch_raw(query, limit, None, mailto)
+    dated = fetch_raw(query, limit, LEGACY_SORT, mailto)
+    ranked = fetch_raw(query, limit, ingest_openalex.SEARCH_SORT, mailto)
     shared = {t for t in dated if t} & {t for t in ranked if t}
     return {
         "query": query,
