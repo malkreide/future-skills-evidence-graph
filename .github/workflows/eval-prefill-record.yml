@@ -59,8 +59,14 @@ jobs:
           MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
           MIN_ARP: ${{ inputs.min_age_range_precision }}
       - name: Confirm offline gate against the freshly recorded fixtures
-        # No live provider here: this reads the committed fixtures only, proving the
-        # offline CI gate (validate.yml path) passes on the new baseline.
+        # No live provider here, proving the offline CI gate (validate.yml path)
+        # passes on the new baseline. This step is also where the EMBEDDING vectors
+        # for the freshly recorded free-text suggestions are minted: they are new
+        # texts, so the semantic scorer misses the committed cache and computes
+        # them locally, writing tests/fixtures/embeddings/ (ai_provider.embed).
+        # That directory MUST therefore be staged below alongside the other two --
+        # without it the next CI run recomputes vectors over the network, and if
+        # that fails the scorer silently degrades to lexical and the gate SKIPS.
         run: |
           python scripts/eval_claim_prefill.py \
             --min-precision "${MIN_PRECISION}" \
@@ -70,14 +76,20 @@ jobs:
           MIN_PRECISION: ${{ inputs.min_precision }}
           MIN_ESP: ${{ inputs.min_evidence_strength_precision }}
           MIN_ARP: ${{ inputs.min_age_range_precision }}
+      - name: Confirm every recorded text has an embedding vector
+        # Fails HERE rather than in the reviewer's CI: a baseline pull request whose
+        # vectors were left behind on the runner is not a reviewable artefact.
+        run: python -m unittest tests.test_claim_prefill_scoring.EmbeddingFixtureCoverageTest
+
       - name: Open or update the baseline pull request
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # '_recorded' and the fixtures are written by the same run and MUST stay
-          # in lock-step, so stage both paths together (-A also stages any fixture
-          # that the new prompt hash made obsolete, leaving no orphan hash files).
-          git add -A -- eval/claim_prefill_labeled.json tests/fixtures/ai
+          # '_recorded', the prompt-hashed fixtures and the embedding vectors are
+          # all written by this same run and MUST stay in lock-step, so stage the
+          # three paths together (-A also stages any fixture that the new prompt
+          # hash made obsolete, leaving no orphan hash files).
+          git add -A -- eval/claim_prefill_labeled.json tests/fixtures/ai tests/fixtures/embeddings
           if git diff --cached --quiet; then
             echo "Live baseline unchanged; nothing to commit."
             exit 0
