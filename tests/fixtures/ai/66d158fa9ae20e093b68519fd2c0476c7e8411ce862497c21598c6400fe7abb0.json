@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": null,
-    "context": "A synthesis of classroom formative-assessment studies conducted across grade levels.",
+    "context": "A synthesis of classroom formative-assessment studies examining effects on attainment across grade levels.",
     "evidence_strength": "strong",
-    "outcome": "Frequent, feedback-rich formative assessment is reported to raise student achievement, with larger effects when feedback is specific and actionable."
+    "outcome": "Frequent, feedback-rich formative assessment is associated with higher achievement, with larger effects when feedback is specific and actionable."
   }
 }

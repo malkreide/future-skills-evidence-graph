@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "12-18",
-    "context": "Eight-week deployment of an adaptive AI tutoring system for algebra practice with 310 secondary students, compared to a worksheet control group.",
+    "context": "Secondary school algebra practice using an adaptive AI tutoring system deployed over eight weeks with 310 students.",
     "evidence_strength": "moderate",
-    "outcome": "Students using the adaptive AI tutor solved more algebra problems correctly than a worksheet control group, with the largest gains among initially struggling students."
+    "outcome": "Students using the AI tutor solved more algebra problems correctly than a worksheet control group, with the largest gains among initially struggling students."
   }
 }

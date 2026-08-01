@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": null,
-    "context": "A cluster-randomised classroom mindfulness intervention conducted over eight weeks across twelve classes in primary schools.",
+    "context": "A classroom mindfulness intervention delivered over eight weeks in primary schools.",
     "evidence_strength": "strong",
-    "outcome": "Children participating in the mindfulness program showed improved sustained attention on a standardised task."
+    "outcome": "Children in the mindfulness program showed improved sustained attention on a standardised task."
   }
 }

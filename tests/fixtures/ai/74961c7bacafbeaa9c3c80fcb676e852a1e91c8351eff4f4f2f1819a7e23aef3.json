@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "11-14",
-    "context": "Middle-school science classrooms across three districts, using project-based collaborative learning.",
+    "context": "Middle-school science classrooms across three districts using project-based collaborative learning.",
     "evidence_strength": "moderate",
-    "outcome": "Sustained group projects improved students' collaboration and peer-feedback skills, and teachers reported higher engagement."
+    "outcome": "Sustained group projects improved students' collaboration and peer-feedback skills."
   }
 }

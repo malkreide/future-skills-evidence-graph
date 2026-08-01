@@ -3,8 +3,8 @@
   "kind": "complete",
   "response": {
     "age_range": "6-12",
-    "context": "Synthesis of 18 classroom studies of AI literacy instruction in European primary schools.",
+    "context": "A synthesis of 18 classroom studies of AI literacy instruction in European primary schools.",
     "evidence_strength": "strong",
-    "outcome": "Structured AI literacy lessons improved pupils' ability to critically evaluate machine-generated outputs."
+    "outcome": "Structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs."
   }
 }

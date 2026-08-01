@@ -4,7 +4,7 @@
   "response": {
     "age_range": "12-15",
     "context": "Comparison of longhand versus laptop note-taking among lower-secondary students during science lessons.",
-    "evidence_strength": "moderate",
-    "outcome": "Students taking longhand notes recalled slightly more conceptual content on a later quiz, with small differences that varied by topic."
+    "evidence_strength": "low",
+    "outcome": "Students who took longhand notes recalled slightly more conceptual content on a later quiz, though differences were small and varied by topic."
   }
 }
