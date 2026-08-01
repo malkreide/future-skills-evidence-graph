@@ -1,0 +1,132 @@
+name: Re-record skill-link live baseline (manual)
+
+# Manually triggered ONLY, and the counterpart to eval-prefill-record.yml. This
+# refreshes the OPTIONAL skill-link suggestion baseline against the LIVE model:
+# it overwrites the '_recorded' suggestions in eval/skill_link_labeled.json AND
+# the prompt-hashed fixtures in tests/fixtures/ai/, then opens a candidate pull
+# request with both in lock-step.
+#
+# It calls the real model (AI_PROVIDER=anthropic), which costs money and needs a
+# human to decide when a fresh live baseline is wanted, so it is never part of
+# the mandatory offline CI (validate.yml) and never runs on a schedule. See
+# docs/naechste-schritte.md (block 1.5 and 2) and OPERATIONS.md.
+on:
+  workflow_dispatch:
+    inputs:
+      min_precision:
+        description: >-
+          OPTIONAL supports_skill_ids precision gate. Leave EMPTY until a live
+          baseline exists — there is nothing yet to derive a threshold from.
+        required: false
+        default: ""
+      min_abstention:
+        description: >-
+          OPTIONAL gate on the share of empty-gold examples left empty. Read this
+          one before precision: 40 of the 50 examples map to no skill.
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  record-skill-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Re-record live baseline
+        # The gate flags are appended only when the inputs are non-empty, so the
+        # default run reports without gating. Two reasons that default matters:
+        # eval_skill_links.py exits non-zero on ANY --min-* flag while the golden
+        # set is '_status: proposed-unreviewed' (it is 'reviewed' now, but that is
+        # a reviewer's decision that can be taken back), and until a first live
+        # recording exists there is no measured value to derive a threshold from.
+        # Gate from the numbers, not before them.
+        run: |
+          set -o pipefail
+          gates=()
+          if [ -n "${MIN_PRECISION}" ]; then
+            gates+=(--min-precision "${MIN_PRECISION}")
+          fi
+          if [ -n "${MIN_ABSTENTION}" ]; then
+            gates+=(--min-abstention "${MIN_ABSTENTION}")
+          fi
+          python scripts/eval_skill_links.py --record-live "${gates[@]}" \
+            | tee /tmp/skill_links_live.txt
+        env:
+          AI_PROVIDER: anthropic
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MIN_PRECISION: ${{ inputs.min_precision }}
+          MIN_ABSTENTION: ${{ inputs.min_abstention }}
+
+      - name: Confirm offline replay against the freshly recorded fixtures
+        # No live provider here: this reads the committed fixtures only, proving
+        # the offline path (AI_PROVIDER=cache) reproduces the run above. Unlike
+        # the pre-fill harness there are no embedding vectors to mint -- skill
+        # links are catalogue IDs compared exactly, not free text scored
+        # semantically -- so tests/fixtures/embeddings/ is deliberately NOT part
+        # of this workflow.
+        run: python scripts/eval_skill_links.py
+
+      - name: Open or update the baseline pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # '_recorded' and the fixtures are written by the same run and MUST stay
+          # in lock-step, so stage both paths together (-A also stages any fixture
+          # that the new prompt hash made obsolete, leaving no orphan hash files).
+          git add -A -- eval/skill_link_labeled.json tests/fixtures/ai
+          if git diff --cached --quiet; then
+            echo "Live baseline unchanged; nothing to commit."
+            exit 0
+          fi
+          branch="chore/skill-link-live-rerecord"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git commit -m "chore: re-record skill-link live baseline"
+          git push --force origin "$branch"
+          {
+            echo "Refreshed the OPTIONAL skill-link suggestion baseline against the live model."
+            echo
+            echo "\`_recorded\` (eval/skill_link_labeled.json) and the prompt-hashed fixtures"
+            echo "(tests/fixtures/ai/) were rewritten together by the same \`--record-live\` run,"
+            echo "so they stay in lock-step. Offline replay confirmed against the new fixtures."
+            echo
+            echo "## Live accuracy (this run)"
+            echo
+            echo '```'
+            cat /tmp/skill_links_live.txt
+            echo '```'
+            echo
+            echo "## How to read this"
+            echo
+            echo "**Read the \`abstain\` column before the precision.** 40 of the 50 golden"
+            echo "examples map to *no* catalogue skill — an empty gold link is a real label,"
+            echo "not a gap — so a model that invents a plausible link for every claim shows"
+            echo "up there first, while precision over the remaining 10 still looks"
+            echo "respectable."
+            echo
+            echo "Unless a gate input was set, these numbers are **reported, not enforced**."
+            echo "That is the intended state for a first recording: thresholds belong in"
+            echo "\`validate.yml\`, derived from measured values with a margin — not guessed"
+            echo "ahead of them."
+          } > /tmp/pr_body.md
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --title "chore: re-record skill-link live baseline" \
+              --body-file /tmp/pr_body.md \
+              --base "${GITHUB_REF_NAME}" \
+              --head "$branch"
+          else
+            gh pr edit "$branch" --body-file /tmp/pr_body.md
+            echo "Updated existing pull request for $branch."
+          fi
