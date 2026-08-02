@@ -112,18 +112,26 @@ SEARCH_BACKENDS = (
     ("eric", ingest_eric),
 )
 
-# v2 narrowed what counts as a contradiction; v1 had accepted anything that
-# sounded negative about the skill's subject area. v3 fixes what that revealed:
-# v2 proposed nothing across three runs, and the rejection log showed why -- the
-# assessor was correct every time, and 60% of what it was given was off-topic.
-# The bottleneck was RETRIEVAL, not judgement. v3 rebuilds the query strategy
-# around that (see QUERY_PROMPT) and splits relevance out of the verdict so the
-# two failures can never again share one outcome.
+# v1 accepted anything that sounded negative about the skill's subject area. v2
+# narrowed that and proposed nothing across three runs -- which turned out to be
+# a RETRIEVAL failure, not a judgement one, and v3 fixed the query strategy and
+# split relevance out of the verdict so the two could never again share one
+# outcome.
+#
+# v4 is the first version written from a clean measurement: three v3 runs under
+# corrected OpenAlex ranking, 266 sources, 14 proposals. Roughly half of those
+# proposals failed for three nameable reasons, and each is now addressed where it
+# occurred rather than by tightening everything:
+#
+#   a weaker positive effect read as a null   -> ASSESS_PROMPT rule 3, by example
+#   a review's summary read as a measurement  -> ASSESS_PROMPT rule 1
+#   a neighbouring construct, wrong population -> both prompts now get age and
+#                                                 audience, which they never had
 #
 # The version is part of the cache key and of every claim's extraction_method,
 # so findings from different generations never silently mix in a measurement.
 # It covers BOTH prompts: changing either one changes what a run measures.
-PROMPT_VERSION = "counter-evidence-v3"
+PROMPT_VERSION = "counter-evidence-v4"
 
 # Where a run's decision trail is written. A reviewer must be able to see which
 # queries were asked, what they returned, and why the graph stopped -- the agent
@@ -203,6 +211,7 @@ JSON following the given schema.
 User:
 Skill: {name}
 Definition: {definition}
+Applies to: {audience}s aged {age_range}
 
 Queries already tried (do not repeat them):
 {tried}
@@ -225,8 +234,10 @@ So: make the query narrow on the SUBJECT, and let the assessor do the filtering 
 for null results — it is strict enough, and it never sees what the search fails \
 to return.
 
-- Lead with the skill's own terminology, and the population or setting it \
-  applies to. These are the words that must match.
+- Lead with the skill's own terminology, and the population above. These are the \
+  words that must match. A query that omits the population invites the wrong one:
+  a run on media literacy returned a digital-health-literacy trial in older
+  adults, and the assessor accepted it.
 - At most ONE further term, and only where it concentrates where null results \
   get reported: "meta-analysis", "systematic review", "randomized controlled \
   trial", "replication". These name study TYPES, not outcomes.
@@ -243,6 +254,7 @@ a skill claim. You invent nothing. Respond only as JSON following the given sche
 User:
 Skill: {name}
 Definition: {definition}
+Applies to: {audience}s aged {age_range}
 
 Abstract:
 """{abstract}"""
@@ -254,20 +266,33 @@ subject matter alone, not by whether the finding is positive or negative. When \
 relevant is false, set contradicts to false, quote to null, and say in one \
 clause what the study is actually about.
 
+**The population has to match too.** A study of a NEIGHBOURING construct in a \
+DIFFERENT population is not about this skill: digital health literacy in older \
+adults is not media literacy in schools, however similar the words look. Judge \
+against "Applies to" above.
+
 THEN, only if it is relevant: the claim under test is that this skill MATTERS — \
 that developing it leads to better outcomes. Evidence against it is a MEASURED \
 RESULT showing that it does not.
 
 Answer contradicts false unless all three hold:
 
-1. The study MEASURED something. A position paper, a legal or ethical analysis, \
-a survey of what teachers or students believe, or the description of a design \
-is not a measurement, however critical its tone.
+1. **This study** measured something. A position paper, a legal or ethical \
+analysis, a survey of what teachers or students believe, or the description of \
+a design is not a measurement, however critical its tone. Nor is a REVIEW \
+reporting what other work found: "some research shows little-to-no impact" and \
+"there are no effective debiasing strategies" summarise other people's results, \
+and this lane anchors claims in the study that produced them.
 2. What was measured is an OUTCOME of engaging with the skill — a training, an \
 intervention, a program, a deliberate exposure. How well some population happens \
 to perform is not that.
-3. The result is absent, reversed, or did not persist. A smaller positive effect \
-is still a positive effect.
+3. The result is absent, reversed, or did not persist — NOT merely smaller. \
+This is the one that slips most often, so read the sentence again before \
+answering true. Every one of these is a POSITIVE result and answers false: \
+"affected to a lesser degree", "a small benefit", "equivocal evidence of a \
+benefit", "improved less than the comparison". An effect that is weak is an \
+effect. Only "no significant difference", "no effect was found", "did not \
+differ from control", a reversal, or a documented harm answer true.
 
 Two traps, both observed in real runs of this lane:
 
@@ -312,6 +337,8 @@ def propose_queries(state: State) -> dict[str, Any]:
     prompt = QUERY_PROMPT.format(
         name=skill.get("name", ""),
         definition=skill.get("definition", ""),
+        age_range=skill.get("age_range") or "not specified",
+        audience=skill.get("audience") or "learner",
         tried="\n".join(f"- {q}" for q in state["queries_used"]) or "(none yet)",
         found_count=len(state["findings"]),
     )
@@ -435,6 +462,11 @@ def search_and_assess(state: State) -> dict[str, Any]:
                 ASSESS_PROMPT.format(
                     name=skill.get("name", ""),
                     definition=skill.get("definition", ""),
+                    # v4 passes these. Without them the assessor could not tell a
+                    # digital-health-literacy trial in older adults from a media
+                    # literacy study in schools -- and accepted the former.
+                    age_range=skill.get("age_range") or "not specified",
+                    audience=skill.get("audience") or "learner",
                     abstract=abstract,
                 ),
                 schema=ASSESS_SCHEMA,

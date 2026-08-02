@@ -255,6 +255,43 @@ positive Studien, es müssen also mehr Quellen geprüft werden, um einen seltene
 Null-Befund zu finden. Das kostet Modellaufrufe. Der Anteil `off_topic` im
 Protokoll ist ab jetzt die direkte Kennzahl dafür, ob sich das lohnt.
 
+## Was v4 geschlossen hat — die erste saubere Messung
+
+v1 bis v3 wurden gegen Symptome geschrieben, deren Ursache im Retrieval lag.
+**v4 ist die erste Version, die auf einer sauberen Messung beruht**: drei Läufe
+unter korrigiertem OpenAlex-Ranking, 266 geprüfte Quellen, 14 Vorschläge.
+
+| Lauf | Quellen | `off_topic` | Vorschläge |
+| --- | --- | --- | --- |
+| `skill-self-regulated-learning` | 94 | 54 % | 4 |
+| `skill-critical-thinking` | 97 | 55 % | 8 |
+| `skill-digital-media-literacy` | 75 | 31 % | 2 |
+
+Etwa die Hälfte der Vorschläge scheiterte aus **drei benennbaren Gründen**, und
+jeder ist dort behoben, wo er auftrat — statt vorsorglich alles zu verschärfen:
+
+**Ein schwächerer positiver Effekt wurde als Null gelesen.** Regel 3 sagte schon
+immer, dass ein kleinerer positiver Effekt nicht zählt; angenommen wurden
+trotzdem „affected to a lesser degree" und „equivocal evidence of a small
+benefit". v4 zitiert diese Formulierungen zurück, statt die Regel nur zu
+wiederholen. Das war die häufigste Leckstelle.
+
+**Die Zusammenfassung fremder Forschung wurde als Messung gelesen.** „Some
+research shows little-to-no impact" und „there are no effective debiasing
+strategies" referieren Ergebnisse anderer. Diese Lane verankert Claims in der
+Studie, die sie erzeugt hat.
+
+**Ein Nachbarkonstrukt in der falschen Population.** Eine Interventionsstudie zu
+digitaler *Gesundheits*kompetenz bei **älteren Erwachsenen** wurde als
+Gegenevidenz zur Medienkompetenz von Schülerinnen angenommen. Der Grund ist
+banal und war lange unsichtbar: **die Prompts kannten die Zielgruppe gar nicht.**
+`age_range` und `audience` stehen im Skill-Record, wurden aber nie übergeben.
+Seit v4 bekommen beide Prompts sie, und der Bewerter prüft die Population
+ausdrücklich mit.
+
+Der dritte Punkt ist der lehrreichste: zwei Prompt-Generationen lang habe ich das
+*Urteil* geschärft, während dem Urteilenden schlicht eine Information fehlte.
+
 ## Was die Lane nicht darf
 
 - **Keine aktiven Records ändern.** Sie erzeugt Kandidaten, sonst nichts.
