@@ -661,11 +661,16 @@ class AssessPromptScopeTest(unittest.TestCase):
 
         self.assertNotIn(
             ce.PROMPT_VERSION,
-            {"counter-evidence-v1", "counter-evidence-v2", "counter-evidence-v3"},
+            {
+                "counter-evidence-v1",
+                "counter-evidence-v2",
+                "counter-evidence-v3",
+                "counter-evidence-v4",
+            },
         )
 
-    def test_both_prompts_state_who_the_skill_is_for(self) -> None:
-        """v4 passes age and audience; v1-v3 never did.
+    def test_the_assessor_is_told_who_the_skill_is_for(self) -> None:
+        """v4 passes age and audience to the assessor; v1-v3 never did.
 
         Without them the assessor accepted a digital-health-literacy trial in
         older adults as counter-evidence about media literacy in schools -- the
@@ -675,10 +680,29 @@ class AssessPromptScopeTest(unittest.TestCase):
         sys.path.insert(0, str(AGENTS_DIR))
         import counter_evidence as ce
 
-        for label, prompt in (("assess", ce.ASSESS_PROMPT), ("query", ce.QUERY_PROMPT)):
-            with self.subTest(prompt=label):
-                self.assertIn("{audience}", prompt)
-                self.assertIn("{age_range}", prompt)
+        self.assertIn("{audience}", ce.ASSESS_PROMPT)
+        self.assertIn("{age_range}", ce.ASSESS_PROMPT)
+
+    def test_the_query_prompt_is_not_told_the_population(self) -> None:
+        """The other half of that same v4 change, which measured as a regression.
+
+        v4 gave the population to both prompts. The queries then led with
+        "students" / "children" / "adolescents" / "school" -- high-frequency
+        words in a bag-of-words full-text search -- and one run on
+        skill-self-regulated-learning went from 54% to 75% off_topic, with
+        on-topic sources falling from 39 to 16 against v3 on the same skill.
+
+        This is an anti-revert guard, and a pointed one: the change it blocks
+        looks like an obvious improvement, was argued for by a real failure, and
+        only measurement said otherwise. Population belongs in the JUDGEMENT,
+        never in the SEARCH TERMS.
+        """
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        for placeholder in ("{audience}", "{age_range}"):
+            with self.subTest(placeholder=placeholder):
+                self.assertNotIn(placeholder, ce.QUERY_PROMPT)
 
     def test_a_weaker_positive_effect_is_named_as_a_rejection(self) -> None:
         """The leak that slipped most often across the three measured runs.
