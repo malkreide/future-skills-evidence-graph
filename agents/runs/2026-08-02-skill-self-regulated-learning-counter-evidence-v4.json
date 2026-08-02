@@ -1,0 +1,457 @@
+{
+  "skill_id": "skill-self-regulated-learning",
+  "prompt_version": "counter-evidence-v4",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-02",
+  "rounds": 3,
+  "queries_used": [
+    "self-regulated learning intervention students randomized controlled trial",
+    "metacognition strategy instruction adolescents meta-analysis",
+    "goal setting self-monitoring primary school children systematic review",
+    "self-regulated learning secondary students replication",
+    "self-efficacy academic self-monitoring adolescents randomized controlled trial",
+    "learning strategies training reflection children systematic review",
+    "self-regulated learning boundary conditions failed intervention children",
+    "self-regulation training transfer school effectiveness meta-analysis",
+    "self-regulated learning teacher-delivered classroom no effect adolescents"
+  ],
+  "sources_examined": 71,
+  "findings": 2,
+  "proposed": [
+    {
+      "claim_id": "claim-a-meta-analysis-on-the-effects-of-text-structure-instruction-on-reading",
+      "source_id": "src-a-meta-analysis-on-the-effects-of-text-structure-instruction-on-reading",
+      "source_title": "A Meta‐Analysis on the Effects of Text Structure Instruction on Reading Comprehension in the Upper Elementary Grades",
+      "source_url": "https://openalex.org/W3016369389",
+      "quote": "However, students who received text structure instruction no longer outperformed control groups at delayed posttests.",
+      "reason": "Text structure instruction is a metacognitive strategy intervention; its effects did not persist at delayed posttest, showing the benefit failed to maintain."
+    },
+    {
+      "claim_id": "claim-connecting-teachers-classroom-instructions-with-children-s-metacognition",
+      "source_id": "src-connecting-teachers-classroom-instructions-with-children-s-metacognition",
+      "source_title": "Connecting teachers’ classroom instructions with children’s metacognition and learning in elementary school",
+      "source_url": "https://openalex.org/W3103888057",
+      "quote": "Although there were no relations between teachers' instructions for metacognitive strategies and children's outcome measures, teaching cognitive strategies was positively associated with children's performance and self-monitoring accuracy.",
+      "reason": "Metacognitive strategy instruction showed no relation to children's self-regulation outcome measures, a null result for that intervention."
+    }
+  ],
+  "rejected": 69,
+  "rejected_by_outcome": {
+    "off_topic": 53,
+    "on_topic_no_contradiction": 16
+  },
+  "not_proposed": [
+    {
+      "source_title": "Review of deep learning: concepts, CNN architectures, challenges, applications, future directions",
+      "outcome": "off_topic",
+      "reason": "Study is a technical review of deep learning methods in machine learning, unrelated to self-regulated learning in students."
+    },
+    {
+      "source_title": "Application of Artificial Intelligence powered digital writing assistant in higher education: randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns AI writing tools and engagement in postgraduate ESL students, not self-regulated learning in ages 6-18"
+    },
+    {
+      "source_title": "A Critical Review of Research on Student Self-Assessment",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review of self-assessment research; reports associations, not a measured failure of self-regulated learning to help."
+    },
+    {
+      "source_title": "The Cognitive Affective Model of Immersive Learning (CAMIL): a Theoretical Research-Based Model of Learning in Immersive Virtual Reality",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Theoretical framework/model paper synthesizing prior research, not a measurement showing the skill fails to help."
+    },
+    {
+      "source_title": "Mindfulness training reduces loneliness and increases social contact in a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about mindfulness training reducing loneliness and social isolation, not self-regulated learning."
+    },
+    {
+      "source_title": "Enhancing academic writing skills and motivation: assessing the efficacy of ChatGPT in AI-assisted language learning for EFL students",
+      "outcome": "off_topic",
+      "reason": "Study is about AI-assisted EFL writing instruction outcomes, not self-regulated learning"
+    },
+    {
+      "source_title": "The sudden transition to synchronized online learning during the COVID-19 pandemic in Saudi Arabia: a qualitative study exploring medical students’ perspectives",
+      "outcome": "off_topic",
+      "reason": "Study concerns undergraduate medical students' perceptions of online learning, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Self-Regulated Learning Strategies for Nursing Students: A Pilot Randomized Controlled Trial",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "SRL intervention improved several SRL subdomains; positive result, no reversal or null on the skill's benefit."
+    },
+    {
+      "source_title": "Effectiveness of Universal Self-regulation–Based Interventions in Children and Adolescents",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The meta-analysis found positive effects of self-regulation interventions (pooled effect size 0.42) and improved distal outcomes, supporting the skill's importance."
+    },
+    {
+      "source_title": "Empowering ChatGPT with guidance mechanism in blended learning: effect of self-regulated learning, higher-order thinking skills, and knowledge construction",
+      "outcome": "off_topic",
+      "reason": "Study concerns undergraduate university students, not learners aged 6-18."
+    },
+    {
+      "source_title": "The Relationship Between Executive Functions and Academic Performance in Primary Education: Review and Meta-Analysis",
+      "outcome": "off_topic",
+      "reason": "Study concerns executive functions and academic performance, not self-regulated learning as defined."
+    },
+    {
+      "source_title": "A systematic framework of creative metacognition",
+      "outcome": "off_topic",
+      "reason": "Theoretical framework paper about creative metacognition, not a measured study of self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "The Role of Direct Strategy Instruction and Indirect Activation of Self-Regulated Learning—Evidence from Classroom Observation Studies",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review/framework about how teachers support SRL; reports scarcity of direct strategy instruction but no measured outcome showing SRL fails to improve learning."
+    },
+    {
+      "source_title": "Metacognition: ideas and insights from neuro- and educational sciences",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review calling for synthesis of educational and neuroscience research on metacognition; reports no measured null or reversed outcome of training the skill."
+    },
+    {
+      "source_title": "Learning Management System (LMS) Use with Online Instruction",
+      "outcome": "off_topic",
+      "reason": "Study is about Learning Management Systems and online classroom design, not self-regulated learning skill development."
+    },
+    {
+      "source_title": "Age-related decreases in global metacognition are independent of local metacognition and task performance",
+      "outcome": "off_topic",
+      "reason": "Study concerns metacognition across adults aged 18-83, not self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Interventions for preventing obesity in children",
+      "outcome": "off_topic",
+      "reason": "Study is about diet and physical activity interventions to prevent childhood obesity, not self-regulated learning."
+    },
+    {
+      "source_title": "Global, regional, and national incidence, prevalence, and years lived with disability for 354 diseases and injuries for 195 countries and territories, 1990–2017: a systematic analysis for the Global Burden of Disease Study 2017",
+      "outcome": "off_topic",
+      "reason": "Study is about global burden of disease, incidence and disability, not self-regulated learning."
+    },
+    {
+      "source_title": "High-quality health systems in the Sustainable Development Goals era: time for a revolution",
+      "outcome": "off_topic",
+      "reason": "about health care system quality and governance, not self-regulated learning"
+    },
+    {
+      "source_title": "World Health Organization 2020 guidelines on physical activity and sedentary behaviour",
+      "outcome": "off_topic",
+      "reason": "Study is about WHO physical activity and sedentary behaviour guidelines, not self-regulated learning"
+    },
+    {
+      "source_title": "Global, regional, and national age-sex-specific mortality for 282 causes of death in 195 countries and territories, 1980–2017: a systematic analysis for the Global Burden of Disease Study 2017",
+      "outcome": "off_topic",
+      "reason": "study is about global cause-specific mortality estimates, not self-regulated learning"
+    },
+    {
+      "source_title": "Clinical Targets for Continuous Glucose Monitoring Data Interpretation: Recommendations From the International Consensus on Time in Range",
+      "outcome": "off_topic",
+      "reason": "study is about continuous glucose monitoring in diabetes care, not self-regulated learning"
+    },
+    {
+      "source_title": "Mental Health Surveillance Among Children — United States, 2013–2019",
+      "outcome": "off_topic",
+      "reason": "Study is about prevalence of children's mental disorders, not self-regulated learning"
+    },
+    {
+      "source_title": "Effectiveness of brief alcohol interventions in primary care populations",
+      "outcome": "off_topic",
+      "reason": "Study is about brief interventions to reduce alcohol consumption in primary care, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Global incidence, prevalence, years lived with disability (YLDs), disability-adjusted life-years (DALYs), and healthy life expectancy (HALE) for 371 diseases and injuries in 204 countries and territories and 811 subnational locations, 1990–2021: a systematic analysis for the Global Burden of Disease Study 2021",
+      "outcome": "off_topic",
+      "reason": "Study is about global burden of disease estimates, not self-regulated learning"
+    },
+    {
+      "source_title": "Setting the future of digital and social media marketing research: Perspectives and research propositions",
+      "outcome": "off_topic",
+      "reason": "study is about digital and social media marketing, not self-regulated learning"
+    },
+    {
+      "source_title": "Self-regulated learning support in flipped learning videos enhances learning outcomes",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "SRL support had a positive effect on learning outcomes; though not explained by measured SRL differences, this is not a null or reversed result for the skill's value."
+    },
+    {
+      "source_title": "Educational Design Principles of Using AI Chatbot That Supports Self-Regulated Learning in Education: Goal Setting, Feedback, and Personalization",
+      "outcome": "off_topic",
+      "reason": "Position paper proposing pedagogical principles for AI chatbots in higher education, not measuring SRL outcomes in learners aged 6-18"
+    },
+    {
+      "source_title": "Learning design to support student-AI collaboration: perspectives of leading teachers for AI in education",
+      "outcome": "off_topic",
+      "reason": "study is about teachers' perspectives on designing student-AI collaboration, not self-regulated learning"
+    },
+    {
+      "source_title": "Self-Report is Indispensable to Assess Students’ Learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Methodological discussion of self-report measurement of learning processes; no measured outcome of developing the skill."
+    },
+    {
+      "source_title": "Relationships between self-regulated learning strategies, learning motivation and mathematics achievement",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found positive relationships between self-regulated learning and motivation and achievement, supporting the skill."
+    },
+    {
+      "source_title": "The Self-Regulation-View in Writing-to-Learn: Using Journal Writing to Optimize Cognitive Load in Self-Regulated Learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The abstract reports positive effects of instructional support for self-regulated journal writing, providing no null or reversed outcome against the skill."
+    },
+    {
+      "source_title": "Teachers’ Professional Competences in Self-Regulated Learning: An Approach to Integrate Teachers’ Competences as Self-Regulated Learners and as Agents of Self-Regulated Learning in a Holistic Manner",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study examines teachers' professional competences and beliefs about SRL, not whether developing SRL improves learner outcomes; no reversed or null intervention result."
+    },
+    {
+      "source_title": "The Role of Experiential Learning on Students’ Motivation and Classroom Engagement",
+      "outcome": "off_topic",
+      "reason": "Study concerns experiential learning's effect on classroom engagement and motivation, not self-regulated learning."
+    },
+    {
+      "source_title": "Mapping research in student engagement and educational technology in higher education: a systematic evidence map",
+      "outcome": "off_topic",
+      "reason": "Study maps research on digital technology and student engagement in higher education, not self-regulated learning in ages 6-18"
+    },
+    {
+      "source_title": "The efficacy of app‐supported smartphone interventions for mental health problems: a meta‐analysis of randomized controlled trials",
+      "outcome": "off_topic",
+      "reason": "Study is about app-supported smartphone interventions for mental health problems, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Efficacy of Dialectical Behavior Therapy for Adolescents at High Risk for Suicide",
+      "outcome": "off_topic",
+      "reason": "Study is about DBT for reducing suicide attempts and self-harm in adolescents, not self-regulated learning."
+    },
+    {
+      "source_title": "Psychological interventions for needle-related procedural pain and distress in children and adolescents",
+      "outcome": "off_topic",
+      "reason": "Study is about psychological interventions for needle-related pain and distress in children, not self-regulated learning."
+    },
+    {
+      "source_title": "Promoting resilience in adolescents and young adults with cancer: Results from the PRISM randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns a resilience/psychosocial intervention for adolescents with cancer, not self-regulated learning."
+    },
+    {
+      "source_title": "Promoting self‐efficacy in patients with chronic disease beyond traditional education: A literature review",
+      "outcome": "off_topic",
+      "reason": "Study concerns self-efficacy in chronic disease patients, not self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "A cluster randomized controlled trial of a theory-based sleep hygiene intervention for adolescents",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Intervention improved sleep hygiene and self-regulatory processes mediated positive effects, supporting the skill's value."
+    },
+    {
+      "source_title": "Effectiveness of an Internet- and App-Based Intervention for College Students With Elevated Stress: Randomized Controlled Trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns an internet-based stress management intervention for college students' mental health, not self-regulated learning in ages 6-18."
+    },
+    {
+      "source_title": "Current evidence on the efficacy of mental health smartphone apps for symptoms of depression and anxiety. A meta‐analysis of 176 randomized controlled trials",
+      "outcome": "off_topic",
+      "reason": "Study is about smartphone apps for treating depression and anxiety, not self-regulated learning."
+    },
+    {
+      "source_title": "The role of prefrontal cortex in cognitive control and executive function",
+      "outcome": "off_topic",
+      "reason": "Study is about cognitive control and executive function neurobiology and psychopathology, not self-regulated learning."
+    },
+    {
+      "source_title": "COVID-19 and teacher education: a literature review of online teaching and learning practices",
+      "outcome": "off_topic",
+      "reason": "This is a literature review on online teaching practices in teacher education, not about self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Understanding the role of digital technologies in education: A review",
+      "outcome": "off_topic",
+      "reason": "Paper is about digital technologies in education generally, not self-regulated learning."
+    },
+    {
+      "source_title": "Conceptualizing AI literacy: An exploratory review",
+      "outcome": "off_topic",
+      "reason": "Study conceptualizes AI literacy, not self-regulated learning"
+    },
+    {
+      "source_title": "Evidence-Based Practices for Children, Youth, and Young Adults with Autism: Third Generation Review",
+      "outcome": "off_topic",
+      "reason": "Review of evidence-based intervention practices for autistic children, not about self-regulated learning."
+    },
+    {
+      "source_title": "Resilience in Children: Developmental Perspectives",
+      "outcome": "off_topic",
+      "reason": "study is about developmental resilience science in pediatric contexts, not self-regulated learning"
+    },
+    {
+      "source_title": "Research co-design in health: a rapid overview of reviews",
+      "outcome": "off_topic",
+      "reason": "Study is about research co-design in health settings, not self-regulated learning in youth."
+    },
+    {
+      "source_title": "Online Learning and Emergency Remote Teaching: Opportunities and Challenges in Emergency Situations",
+      "outcome": "off_topic",
+      "reason": "study is about challenges of emergency remote teaching during COVID-19, not self-regulated learning"
+    },
+    {
+      "source_title": "Educational applications of artificial intelligence in simulation-based learning: A systematic mapping review",
+      "outcome": "off_topic",
+      "reason": "Review of AI applications in simulation-based learning, not about self-regulated learning."
+    },
+    {
+      "source_title": "Supporting students’ self-regulated learning in online learning using artificial intelligence applications",
+      "outcome": "off_topic",
+      "reason": "Study of university students' perceptions of AI applications for SRL, wrong population (adults, not 6-18)"
+    },
+    {
+      "source_title": "Learner Engagement in Blended Learning Environments: A Conceptual Framework",
+      "outcome": "off_topic",
+      "reason": "Study is about learner engagement frameworks in blended learning, not self-regulated learning."
+    },
+    {
+      "source_title": "Digital Behaviour Change Interventions to Break and Form Habits",
+      "outcome": "off_topic",
+      "reason": "This is about digital habit-change interventions and behaviour change theory, not self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Artificial Intelligence (AI): Multidisciplinary perspectives on emerging challenges, opportunities, and agenda for research, practice and policy",
+      "outcome": "off_topic",
+      "reason": "Study is about AI's transformative impact on industry and society, not self-regulated learning in learners."
+    },
+    {
+      "source_title": "Understanding Difficulties and Resulting Confusion in Learning: An Integrative Review",
+      "outcome": "off_topic",
+      "reason": "Theoretical review about cognitive disequilibrium, difficulties and emotional responses in learning, not about self-regulated learning."
+    },
+    {
+      "source_title": "APPLICATION OF EYE-TRACKING TECHNOLOGY DUAL EYE TRACKING (DUET) IN THE STUDY OF COOPERATION BETWEEN CHILDREN WITH ATYPICAL DEVELOPMENT AND ADULTS IN THE LEARNING PROCESS",
+      "outcome": "off_topic",
+      "reason": "Study is about dual eye-tracking of gaze patterns in adult-child dyads during perceptual learning, not self-regulated learning; population is preschoolers 3-6."
+    },
+    {
+      "source_title": "Migration and Migrant Labour in the Gig Economy: An Intervention",
+      "outcome": "off_topic",
+      "reason": "study is about migrant labour in the gig economy, not self-regulated learning"
+    },
+    {
+      "source_title": "Learning theories for artificial intelligence promoting learning processes",
+      "outcome": "off_topic",
+      "reason": "This is a theoretical paper proposing a unified learning theory and roles for AI in education, not about self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Effectiveness of Virtual Reality in Nursing Education: Meta-Analysis",
+      "outcome": "off_topic",
+      "reason": "Study concerns VR effectiveness in nursing education, not self-regulated learning in ages 6-18."
+    },
+    {
+      "source_title": "A Review on Virtual Reality Skill Training Applications",
+      "outcome": "off_topic",
+      "reason": "Review of VR technology for training applications, not about self-regulated learning in youth"
+    },
+    {
+      "source_title": "Transfer of metacognitive skills in self-regulated learning: an experimental training study",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Hybrid training improved both near and far transfer of metacognitive skills, a positive result supporting the skill's value."
+    },
+    {
+      "source_title": "Mandatory CSR and sustainability reporting: economic analysis and literature review",
+      "outcome": "off_topic",
+      "reason": "Study is about economic effects of mandated CSR and sustainability reporting standards, unrelated to self-regulated learning."
+    },
+    {
+      "source_title": "Teachers’ roles and identities in student-centered classrooms",
+      "outcome": "off_topic",
+      "reason": "Study is about teacher identity shifts when adopting student-centered STEM pedagogy, not learner self-regulated learning"
+    },
+    {
+      "source_title": "Granularity matters: comparing different ways of measuring self-regulated learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review compares measurement methods for SRL, not whether developing the skill improves outcomes; no failed-intervention finding."
+    },
+    {
+      "source_title": "A Review into Effective Classroom Management and Strategies for Student Engagement: Teacher and Student Roles in Today’s Classrooms",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Literature review/position paper on teaching pedagogies and student ownership of learning; no measured null or reversed outcome."
+    },
+    {
+      "source_title": "Students’ online learning challenges during the pandemic and how they cope with them: The case of the Philippines",
+      "outcome": "off_topic",
+      "reason": "Study concerns college students' online learning challenges and coping strategies during COVID-19, not SRL in learners aged 6-18."
+    },
+    {
+      "source_title": "Measuring self-regulated learning and the role of AI: Five years of research using multimodal multichannel data",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Methodological framework/overview paper on measuring SRL with multimodal data; reports no outcome result showing the skill fails to help."
+    }
+  ],
+  "stopped_because": "no_new_findings",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning intervention students randomized controlled trial",
+        "metacognition strategy instruction adolescents meta-analysis",
+        "goal setting self-monitoring primary school children systematic review"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning intervention students randomized controlled trial",
+        "metacognition strategy instruction adolescents meta-analysis",
+        "goal setting self-monitoring primary school children systematic review"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 28,
+      "new_findings": 2
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning secondary students replication",
+        "self-efficacy academic self-monitoring adolescents randomized controlled trial",
+        "learning strategies training reflection children systematic review"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning secondary students replication",
+        "self-efficacy academic self-monitoring adolescents randomized controlled trial",
+        "learning strategies training reflection children systematic review"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 26,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning boundary conditions failed intervention children",
+        "self-regulation training transfer school effectiveness meta-analysis",
+        "self-regulated learning teacher-delivered classroom no effect adolescents"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning boundary conditions failed intervention children",
+        "self-regulation training transfer school effectiveness meta-analysis",
+        "self-regulated learning teacher-delivered classroom no effect adolescents"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 17,
+      "new_findings": 0
+    }
+  ]
+}

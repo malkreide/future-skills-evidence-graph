@@ -1,0 +1,306 @@
+{
+  "skill_id": "skill-self-regulated-learning",
+  "prompt_version": "counter-evidence-v5",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-02",
+  "rounds": 2,
+  "queries_used": [
+    "self-regulated learning meta-analysis",
+    "metacognition monitoring calibration randomized controlled trial",
+    "goal setting strategy training systematic review",
+    "self-regulated learning replication",
+    "self-monitoring learning strategies randomized controlled trial",
+    "study time regulation reflection meta-analysis"
+  ],
+  "sources_examined": 47,
+  "findings": 0,
+  "proposed": [],
+  "rejected": 47,
+  "rejected_by_outcome": {
+    "off_topic": 38,
+    "on_topic_no_contradiction": 9
+  },
+  "not_proposed": [
+    {
+      "source_title": "Using metacognitive prompts to enhance self‐regulated learning and learning outcomes: A meta‐analysis of experimental studies in computer‐based learning environments",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Meta-analysis found metacognitive prompts significantly enhanced SRL and learning outcomes, a positive result supporting the skill."
+    },
+    {
+      "source_title": "Emotions in self-regulated learning: A critical literature review and meta-analysis",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review/meta-analysis examining role of emotions in SRL; no measured result showing SRL fails to help"
+    },
+    {
+      "source_title": "SELF-REGULATED LEARNING THROUGH ePORTFOLIO: A META-ANALYSIS",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The meta-analysis reports positive academic outcomes from SRL via ePortfolio, supporting the skill's value."
+    },
+    {
+      "source_title": "Continual lifelong learning with neural networks: A review",
+      "outcome": "off_topic",
+      "reason": "This is about lifelong learning in artificial neural networks and machine learning, not self-regulated learning in human learners aged 6-18."
+    },
+    {
+      "source_title": "Artificial intelligence in language instruction: impact on English learning achievement, L2 motivation, and self-regulated learning",
+      "outcome": "off_topic",
+      "reason": "Study of university EFL students, outside the 6-18 population, and reports positive SRL effects anyway"
+    },
+    {
+      "source_title": "Measuring actual learning versus feeling of learning in response to being actively engaged in the classroom",
+      "outcome": "off_topic",
+      "reason": "Study concerns college students' perception vs actual learning under active/passive instruction, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "The L2 motivational self system: A meta-analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about L2 motivational self system and language learning motivation, not self-regulated learning."
+    },
+    {
+      "source_title": "An integrated model of school students’ academic achievement and life satisfaction. Linking soft skills, extracurricular activities, self-regulated learning, motivation, and emotions",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found SRL positively mediated academic achievement, supporting the skill's importance."
+    },
+    {
+      "source_title": "The Cognitive Affective Model of Immersive Learning (CAMIL): a Theoretical Research-Based Model of Learning in Immersive Virtual Reality",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Theoretical framework paper synthesizing existing research; measures nothing and reports no null or reversed outcome for self-regulation."
+    },
+    {
+      "source_title": "Metacognition and Confidence: A Review and Synthesis",
+      "outcome": "off_topic",
+      "reason": "Theoretical roadmap on neural/computational bases of confidence and metacognition, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Reactivity to Measures of Metacognition",
+      "outcome": "off_topic",
+      "reason": "This is about reactivity of metacognition measurement methods, not self-regulated learning outcomes in learners aged 6-18"
+    },
+    {
+      "source_title": "Age-related decreases in global metacognition are independent of local metacognition and task performance",
+      "outcome": "off_topic",
+      "reason": "Study measures metacognition across adults aged 18-83, not self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Unity and diversity of metacognition.",
+      "outcome": "off_topic",
+      "reason": "Study concerns the structure of metacognitive ability (domain-general vs domain-specific) using lab tasks in adults, not self-regulated learning in ages 6-18"
+    },
+    {
+      "source_title": "Improving Cognitive Performance of 9–12 Years Old Children: Just Dance? A Randomized Controlled Trial",
+      "outcome": "off_topic",
+      "reason": "Study is about exercise breaks and cognitive performance, not self-regulated learning."
+    },
+    {
+      "source_title": "Promoting physical activity in children through family-based intervention: protocol of the “Active 1 + FUN” randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about a family-based physical activity intervention, not self-regulated learning."
+    },
+    {
+      "source_title": "Effects of aerobic and cognitively-engaging physical activity on academic skills: A cluster randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about physical activity interventions and academic achievement, not self-regulated learning."
+    },
+    {
+      "source_title": "Psychiatrically relevant signatures of domain-general decision-making and metacognition in the general population",
+      "outcome": "off_topic",
+      "reason": "Study is about metacognitive confidence and psychopathology in the general population, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Global burden of bacterial antimicrobial resistance in 2019: a systematic analysis",
+      "outcome": "off_topic",
+      "reason": "study is about global burden of antimicrobial resistance, unrelated to self-regulated learning"
+    },
+    {
+      "source_title": "High-quality health systems in the Sustainable Development Goals era: time for a revolution",
+      "outcome": "off_topic",
+      "reason": "about health system quality improvement, not self-regulated learning"
+    },
+    {
+      "source_title": "Global, regional, and national incidence, prevalence, and years lived with disability for 354 diseases and injuries for 195 countries and territories, 1990–2017: a systematic analysis for the Global Burden of Disease Study 2017",
+      "outcome": "off_topic",
+      "reason": "Study is about global burden of disease, incidence and disability, not self-regulated learning."
+    },
+    {
+      "source_title": "Per- and Polyfluoroalkyl Substance Toxicity and Human Health Review: Current State of Knowledge and Strategies for Informing Future Research",
+      "outcome": "off_topic",
+      "reason": "Study is about toxicological health effects of PFAS chemicals, not about self-regulated learning"
+    },
+    {
+      "source_title": "Global, regional, and national burden of chronic kidney disease, 1990–2017: a systematic analysis for the Global Burden of Disease Study 2017",
+      "outcome": "off_topic",
+      "reason": "Study is about global burden of chronic kidney disease, not self-regulated learning."
+    },
+    {
+      "source_title": "Global, regional, and national burden of neurological disorders, 1990–2016: a systematic analysis for the Global Burden of Disease Study 2016",
+      "outcome": "off_topic",
+      "reason": "Study is about the global burden of neurological disorders, not self-regulated learning."
+    },
+    {
+      "source_title": "Understanding the role of digital technologies in education: A review",
+      "outcome": "off_topic",
+      "reason": "Paper is about digital technologies in education generally, not self-regulated learning."
+    },
+    {
+      "source_title": "An overview of clinical decision support systems: benefits, risks, and strategies for success",
+      "outcome": "off_topic",
+      "reason": "about clinical decision support systems in medicine, not self-regulated learning in students"
+    },
+    {
+      "source_title": "World Health Organization 2020 guidelines on physical activity and sedentary behaviour",
+      "outcome": "off_topic",
+      "reason": "Study is about WHO physical activity and sedentary behaviour guidelines, not self-regulated learning."
+    },
+    {
+      "source_title": "Review of deep learning: concepts, CNN architectures, challenges, applications, future directions",
+      "outcome": "off_topic",
+      "reason": "Survey of deep learning techniques in machine learning, unrelated to self-regulated learning in students"
+    },
+    {
+      "source_title": "Self-regulated learning support in flipped learning videos enhances learning outcomes",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "SRL support had a positive effect on learning outcomes; no reversal or null benefit on the skill's value."
+    },
+    {
+      "source_title": "A classification tool to foster self-regulated learning with generative artificial intelligence by applying self-determination theory: a case of ChatGPT",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Delphi design developing a classification tool from teacher expertise; no measured learning outcome contradicting the skill's value."
+    },
+    {
+      "source_title": "The Role of Direct Strategy Instruction and Indirect Activation of Self-Regulated Learning—Evidence from Classroom Observation Studies",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "A literature review and framework paper about how teachers support SRL; it reports little direct strategy instruction takes place but does not measure that teaching SRL failed to improve outcomes."
+    },
+    {
+      "source_title": "Granularity matters: comparing different ways of measuring self-regulated learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review comparing measurement methods for SRL, not testing whether developing the skill improves outcomes."
+    },
+    {
+      "source_title": "Clinical Virtual Simulation in Nursing Education: Randomized Controlled Trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns virtual simulation effects on nursing students' knowledge and clinical reasoning, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "The efficacy of app‐supported smartphone interventions for mental health problems: a meta‐analysis of randomized controlled trials",
+      "outcome": "off_topic",
+      "reason": "Study is about smartphone app interventions for mental health problems, not self-regulated learning."
+    },
+    {
+      "source_title": "Recent advances in Alzheimer’s disease: mechanisms, clinical trials and new drug development strategies",
+      "outcome": "off_topic",
+      "reason": "study is about Alzheimer's disease pathogenesis and drug development"
+    },
+    {
+      "source_title": "Deep Learning Approach for Intelligent Intrusion Detection System",
+      "outcome": "off_topic",
+      "reason": "Study is about deep learning intrusion detection systems for cyberattacks, not self-regulated learning in learners."
+    },
+    {
+      "source_title": "Recent advances and applications of machine learning in solid-state materials science",
+      "outcome": "off_topic",
+      "reason": "Study is about machine learning in materials science, not self-regulated learning in learners"
+    },
+    {
+      "source_title": "A review of vibration-based damage detection in civil structures: From traditional methods to Machine Learning and Deep Learning applications",
+      "outcome": "off_topic",
+      "reason": "Study is about vibration-based structural damage detection in civil structures using machine learning, unrelated to self-regulated learning."
+    },
+    {
+      "source_title": "Application of Artificial Intelligence powered digital writing assistant in higher education: randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns AI writing tools and engagement in postgraduate ESL students, not self-regulated learning in ages 6-18."
+    },
+    {
+      "source_title": "Thriving at work: A meta‐analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about thriving at work among employees, not self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Effectiveness of Virtual Reality in Nursing Education: Meta-Analysis",
+      "outcome": "off_topic",
+      "reason": "Study concerns VR effectiveness in nursing education, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Does Strategic Planning Improve Organizational Performance? A Meta‐Analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about strategic planning and organizational performance, not self-regulated learning in learners aged 6-18"
+    },
+    {
+      "source_title": "Therapist empathy and client outcome: An updated meta-analysis.",
+      "outcome": "off_topic",
+      "reason": "Study is about therapist empathy and psychotherapy outcomes, not self-regulated learning in youth."
+    },
+    {
+      "source_title": "The Relationship Between Executive Functions and Academic Performance in Primary Education: Review and Meta-Analysis",
+      "outcome": "off_topic",
+      "reason": "Study concerns executive functions and academic performance, not self-regulated learning."
+    },
+    {
+      "source_title": "Research Review: The effects of mindfulness‐based interventions on cognition and mental health in children and adolescents – a meta‐analysis of randomized controlled trials",
+      "outcome": "off_topic",
+      "reason": "study is about mindfulness interventions for youth mental health, not self-regulated learning"
+    },
+    {
+      "source_title": "Mandatory CSR and sustainability reporting: economic analysis and literature review",
+      "outcome": "off_topic",
+      "reason": "Study is about economic effects of mandatory CSR and sustainability reporting standards, not self-regulated learning."
+    },
+    {
+      "source_title": "Latent profile analysis: A review and “how to” guide of its application within vocational behavior research",
+      "outcome": "off_topic",
+      "reason": "Study is a methodological review of latent profile analysis in vocational behavior research, not about self-regulated learning in learners aged 6-18."
+    },
+    {
+      "source_title": "Intrinsically Disordered Proteins and Their “Mysterious” (Meta)Physics",
+      "outcome": "off_topic",
+      "reason": "Study is about intrinsically disordered proteins in biochemistry, not learning skills"
+    }
+  ],
+  "stopped_because": "no_new_findings",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning meta-analysis",
+        "metacognition monitoring calibration randomized controlled trial",
+        "goal setting strategy training systematic review"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning meta-analysis",
+        "metacognition monitoring calibration randomized controlled trial",
+        "goal setting strategy training systematic review"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 26,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning replication",
+        "self-monitoring learning strategies randomized controlled trial",
+        "study time regulation reflection meta-analysis"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning replication",
+        "self-monitoring learning strategies randomized controlled trial",
+        "study time regulation reflection meta-analysis"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 21,
+      "new_findings": 0
+    }
+  ]
+}

@@ -1,0 +1,605 @@
+{
+  "skill_id": "skill-digital-media-literacy",
+  "prompt_version": "counter-evidence-v5",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-02",
+  "rounds": 4,
+  "queries_used": [
+    "digital literacy intervention meta-analysis",
+    "media literacy misinformation evaluation randomized controlled trial",
+    "online information credibility source evaluation systematic review",
+    "fact-checking lateral reading intervention effectiveness",
+    "media literacy education replication",
+    "phishing detection training randomized controlled trial",
+    "media literacy fake news identification meta-analysis",
+    "digital competence self-assessment overestimation",
+    "news credibility inoculation intervention randomized controlled trial",
+    "digital media literacy skill transfer failure",
+    "information evaluation training decay follow-up",
+    "media literacy backfire unintended effects"
+  ],
+  "sources_examined": 94,
+  "findings": 5,
+  "proposed": [
+    {
+      "claim_id": "claim-a-digital-media-literacy-intervention-increases-discernment-between-main",
+      "source_id": "src-a-digital-media-literacy-intervention-increases-discernment-between-main",
+      "source_title": "A digital media literacy intervention increases discernment between mainstream and false news in the United States and India",
+      "source_url": "https://openalex.org/W3037661194",
+      "quote": "However, we find no effects among a representative sample of respondents in a largely rural area of northern India, where rates of social media use are far lower.",
+      "reason": "The media literacy intervention produced no measurable effect on discernment in the rural India sample, a null outcome of engaging with the skill."
+    },
+    {
+      "claim_id": "claim-gamified-inoculation-against-misinformation-in-india-a-randomized-contro",
+      "source_id": "src-gamified-inoculation-against-misinformation-in-india-a-randomized-contro",
+      "source_title": "Gamified Inoculation Against Misinformation in India: A Randomized Control Trial",
+      "source_url": "https://openalex.org/W4322489965",
+      "quote": "We found no significant impact of the intervention on the perceived reliability of messages containing misinformation, confidence judgments, and willingness to share information with others.",
+      "reason": "A game-based inoculation intervention (skill training against misinformation) showed no significant effect in north India."
+    },
+    {
+      "claim_id": "claim-prominent-misinformation-interventions-reduce-misperceptions-but-increas",
+      "source_id": "src-prominent-misinformation-interventions-reduce-misperceptions-but-increas",
+      "source_title": "Prominent misinformation interventions reduce misperceptions but increase scepticism",
+      "source_url": "https://openalex.org/W4399499950",
+      "quote": "Our results show that while all interventions successfully reduce belief in false information, they also negatively impact the credibility of factual information.",
+      "reason": "Measured intervention (media literacy tips) produced a documented harm: reduced credibility of accurate information."
+    },
+    {
+      "claim_id": "claim-striking-the-balance-between-fake-and-real-under-what-conditions-can-med",
+      "source_id": "src-striking-the-balance-between-fake-and-real-under-what-conditions-can-med",
+      "source_title": "Striking the balance between fake and real: under what conditions can media literacy messages that warn about misinformation maintain trust in accurate information?",
+      "source_url": "https://openalex.org/W4387539505",
+      "quote": "We did not find direct overall effects on truth discernment but observed conditional effects on decreasing beliefs in misinformation and negative spillover effects on the truth rating of accurate information.",
+      "reason": "Media literacy warning intervention produced no overall effect on truth discernment and a negative spillover harming trust in accurate information."
+    },
+    {
+      "claim_id": "claim-can-fighting-misinformation-have-a-negative-spillover-effect-how-warning",
+      "source_id": "src-can-fighting-misinformation-have-a-negative-spillover-effect-how-warning",
+      "source_title": "Can Fighting Misinformation Have a Negative Spillover Effect? How Warnings for the Threat of Misinformation Can Decrease General News Credibility",
+      "source_url": "https://openalex.org/W4327555979",
+      "quote": "Findings suggest that efforts like warning about the threat of misinformation can prime general distrust in authentic news, hinting toward a deception bias in the context of fear of misinformation being salient.",
+      "reason": "The study measured NML interventions and misinformation warnings and found a harmful spillover, decreasing credibility of accurate news."
+    }
+  ],
+  "rejected": 89,
+  "rejected_by_outcome": {
+    "off_topic": 69,
+    "on_topic_no_contradiction": 20
+  },
+  "not_proposed": [
+    {
+      "source_title": "Effectiveness of Digital Health Literacy Interventions in Older Adults: Single-Arm Meta-Analysis",
+      "outcome": "off_topic",
+      "reason": "Study concerns digital health literacy in older adults, not media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Digital Literacy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Literature review and conceptual paper proposing models; no measured outcome showing the skill fails to help."
+    },
+    {
+      "source_title": "Understanding the role of digital technologies in education: A review",
+      "outcome": "off_topic",
+      "reason": "Position paper on digital technologies in education generally, not about media literacy skill outcomes"
+    },
+    {
+      "source_title": "Digital literacy as a new determinant of health: A scoping review",
+      "outcome": "off_topic",
+      "reason": "study concerns digital health literacy in general/adult healthcare populations, not media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Setting the future of digital and social media marketing research: Perspectives and research propositions",
+      "outcome": "off_topic",
+      "reason": "About digital and social media marketing for businesses, not media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "A digital literacy model to narrow the digital literacy skills gap",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The study found the digital literacy tool was effective (positive Cohen's d and positive attitudes), supporting the skill's value rather than contradicting it."
+    },
+    {
+      "source_title": "Health literacy, digital health literacy and the implementation of digital health technologies in cancer care: the need for a strategic approach",
+      "outcome": "off_topic",
+      "reason": "Study concerns digital health literacy for cancer care in adult/disadvantaged populations, not media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Financial literacy in the digital age—A research agenda",
+      "outcome": "off_topic",
+      "reason": "Study is about digital financial literacy and money management, not digital/media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Workplace literacy skills—how information and digital literacy affect adoption of digital technology",
+      "outcome": "off_topic",
+      "reason": "Study concerns employees' information/digital literacy and technology acceptance at the workplace, not learners aged 6-18."
+    },
+    {
+      "source_title": "The Promises, Challenges, and Futures of Media Literacy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a review/position paper summarizing other work, not a measurement study of its own; the negative findings it cites are other people's results."
+    },
+    {
+      "source_title": "Fake news game confers psychological resistance against online misinformation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The intervention improved ability to spot and resist misinformation, a positive result supporting the skill."
+    },
+    {
+      "source_title": "Misinformation About COVID-19 Vaccines on Social Media: Rapid Review",
+      "outcome": "off_topic",
+      "reason": "Systematic review of COVID-19 vaccine misinformation spread on social media, not about teaching digital/media literacy skills to learners aged 6-18."
+    },
+    {
+      "source_title": "Accuracy prompts are a replicable and generalizable approach for reducing the spread of misinformation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Accuracy prompts increased sharing discernment; the intervention worked, supporting the skill's value."
+    },
+    {
+      "source_title": "Misinformation of COVID-19 vaccines and vaccine hesitancy",
+      "outcome": "off_topic",
+      "reason": "Study of adults and college students on COVID vaccine misinformation and hesitancy, not media literacy skills in learners aged 6-18"
+    },
+    {
+      "source_title": "The growing field of digital psychiatry: current evidence and the future of apps, social media, chatbots, and virtual reality",
+      "outcome": "off_topic",
+      "reason": "This is about digital mental health technologies in psychiatry, not digital and media literacy skills in learners."
+    },
+    {
+      "source_title": "A review of statistically-based landslide susceptibility models",
+      "outcome": "off_topic",
+      "reason": "Study is about statistical methods for landslide susceptibility modelling, not digital/media literacy."
+    },
+    {
+      "source_title": "Online Health Information Seeking Behaviors Among Older Adults: Systematic Scoping Review",
+      "outcome": "off_topic",
+      "reason": "study concerns older adults' online health information seeking, not media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Making sense of credibility in complex information environments: the role of message sidedness, information source, and thinking styles in credibility evaluation online",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study measures how source type and message sidedness affect perceived credibility among US Internet users, not an intervention teaching the skill to learners aged 6-18, and reports no failure of the skill."
+    },
+    {
+      "source_title": "Practical and ethical challenges of large language models in education: A systematic scoping review",
+      "outcome": "off_topic",
+      "reason": "Study is about using LLMs to automate educational tasks, not about students' digital and media literacy skills."
+    },
+    {
+      "source_title": "Methods to systematically review and meta-analyse observational studies: a systematic scoping review of recommendations",
+      "outcome": "off_topic",
+      "reason": "Study is about methodological guidance for systematic reviews and meta-analyses of observational studies, not digital/media literacy in learners."
+    },
+    {
+      "source_title": "What matters to women during childbirth: A systematic qualitative review",
+      "outcome": "off_topic",
+      "reason": "Study is about childbearing women's expectations of maternity care, unrelated to digital and media literacy."
+    },
+    {
+      "source_title": "Transparency, Reproducibility, and the Credibility of Economics Research",
+      "outcome": "off_topic",
+      "reason": "Study is about research transparency and reproducibility in economics, not digital/media literacy for learners."
+    },
+    {
+      "source_title": "A high-speed search engine pLink 2 with systematic evaluation for proteome-scale identification of cross-linked peptides",
+      "outcome": "off_topic",
+      "reason": "study is about a mass spectrometry search engine for cross-linked peptides, not digital/media literacy"
+    },
+    {
+      "source_title": "Mandatory CSR and sustainability reporting: economic analysis and literature review",
+      "outcome": "off_topic",
+      "reason": "Study is about economic effects of mandatory CSR and sustainability reporting for firms, unrelated to digital/media literacy in learners"
+    },
+    {
+      "source_title": "From information seeking to information avoidance: Understanding the health information behavior during a global health crisis",
+      "outcome": "off_topic",
+      "reason": "Study concerns information overload and anxiety in Finnish adults during COVID-19, not digital/media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Improving college students’ fact-checking strategies through lateral reading instruction in a general education civics course",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The DPI intervention improved lateral reading and trustworthiness evaluation versus controls; also population is college students, not 6-18."
+    },
+    {
+      "source_title": "The advantage of videos over text to boost adolescents' lateral reading in a digital workshop",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The MIL intervention improved engagement and effectiveness of lateral reading, a positive result."
+    },
+    {
+      "source_title": "Lateral reading and monetary incentives to spot disinformation about science",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Both interventions increased fact-checking use and accuracy, with cumulative effects; this supports the skill's value."
+    },
+    {
+      "source_title": "2018 ESC/ESH Guidelines for the management of arterial hypertension",
+      "outcome": "off_topic",
+      "reason": "This is about ESC hypertension clinical guidelines, not digital and media literacy."
+    },
+    {
+      "source_title": "A digital media literacy intervention for older adults improves resilience to fake news",
+      "outcome": "off_topic",
+      "reason": "Study concerns digital literacy intervention for older adults (M age 67), not learners aged 6-18."
+    },
+    {
+      "source_title": "Beyond the headlines: On the efficacy and effectiveness of misinformation interventions",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a position/review paper drawing on implementation science, not a measurement study; it summarizes challenges rather than reporting a null result from a specific intervention."
+    },
+    {
+      "source_title": "A trustworthy AI reality-check: the lack of transparency of artificial intelligence products in healthcare",
+      "outcome": "off_topic",
+      "reason": "Study is about transparency of medical AI radiology products, not digital/media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "ChatGPT: Bullshit spewer or the end of traditional assessments in higher education?",
+      "outcome": "off_topic",
+      "reason": "Position/review article on ChatGPT's implications for higher education assessment, not digital/media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "A Multidimensional Tool Based on the eHealth Literacy Framework: Development and Initial Validity Testing of the eHealth Literacy Questionnaire (eHLQ)",
+      "outcome": "off_topic",
+      "reason": "study develops an eHealth literacy questionnaire for adults with chronic conditions, not digital/media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Online Education: Benefits, Challenges and Strategies During and After COVID-19 in Higher Education",
+      "outcome": "off_topic",
+      "reason": "Study concerns online/blended education perspectives in Nepali higher education, not digital/media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Supporting Literacy and Digital Literacy Development in Early Childhood Education Using Storytelling Activities",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Digital storytelling significantly improved literacy and both conditions enhanced digital literacy skills — a positive result."
+    },
+    {
+      "source_title": "The role of ChatGPT in higher education: Benefits, challenges, and future research directions",
+      "outcome": "off_topic",
+      "reason": "Position paper on ChatGPT use in higher education, not digital/media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Deep Learning for Phishing Detection: Taxonomy, Current Challenges and Future Directions",
+      "outcome": "off_topic",
+      "reason": "Study is about deep learning algorithms for automated phishing detection, not digital/media literacy in learners."
+    },
+    {
+      "source_title": "Analysis of the Performance Impact of Fine-Tuned Machine Learning Model for Phishing URL Detection",
+      "outcome": "off_topic",
+      "reason": "study is about machine learning models for phishing URL detection, not learners' digital media literacy"
+    },
+    {
+      "source_title": "Phishing Happens Beyond Technology: The Effects of Human Behaviors and Demographics on Each Step of a Phishing Process",
+      "outcome": "off_topic",
+      "reason": "Study concerns adult psychological predictors (risk-taking, gender) of phishing susceptibility, not media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "A Deep Learning-Based Innovative Technique for Phishing Detection in Modern Security with Uniform Resource Locators",
+      "outcome": "off_topic",
+      "reason": "study is about a CNN-based machine learning model for automated phishing website detection, not about learners' media literacy skills"
+    },
+    {
+      "source_title": "A Comprehensive Survey for Intelligent Spam Email Detection",
+      "outcome": "off_topic",
+      "reason": "Survey of AI/ML methods for spam email detection, not about learners' digital media literacy"
+    },
+    {
+      "source_title": "Financial Fraud: A Review of Anomaly Detection Techniques and Recent Advances",
+      "outcome": "off_topic",
+      "reason": "study is about anomaly detection techniques for financial fraud detection, not digital/media literacy in learners"
+    },
+    {
+      "source_title": "Creative Persuasion: A Study on Adversarial Behaviors and Strategies in Phishing Attacks",
+      "outcome": "off_topic",
+      "reason": "Study is about adversarial phishing strategies and adult participants, not media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Deep Character-Level Anomaly Detection Based on a Convolutional Autoencoder for Zero-Day Phishing URL Detection",
+      "outcome": "off_topic",
+      "reason": "Study is about a deep learning phishing URL detection method, not human digital/media literacy in learners."
+    },
+    {
+      "source_title": "A Hybrid Approach for Alluring Ads Phishing Attack Detection Using Machine Learning",
+      "outcome": "off_topic",
+      "reason": "Study is about machine-learning phishing website detection, not learners' digital and media literacy skills"
+    },
+    {
+      "source_title": "Fake News: A Definition",
+      "outcome": "off_topic",
+      "reason": "Conceptual paper defining 'fake news', not about learners' media literacy skills or outcomes"
+    },
+    {
+      "source_title": "Sharing of fake news on social media: Application of the honeycomb framework and the third-person effect hypothesis",
+      "outcome": "off_topic",
+      "reason": "study examines adult social media users' motives for sharing fake news, not media literacy skill in learners aged 6-18"
+    },
+    {
+      "source_title": "Social media literacy: A conceptual framework",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Conceptual framework paper proposing social media literacy, no measured outcomes."
+    },
+    {
+      "source_title": "Separating truth from lies: comparing the effects of news media literacy interventions and fact-checkers in response to political misinformation in the US and Netherlands",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found media literacy intervention combined with fact-checkers was most effective in lowering misinformation acceptance, a positive result."
+    },
+    {
+      "source_title": "The Psychology of Fake News",
+      "outcome": "off_topic",
+      "reason": "Study analyzes misinformation diffusion on Twitter, not learners' media literacy skills or interventions."
+    },
+    {
+      "source_title": "Fake news detection on social media: the predictive role of university students’ critical thinking dispositions and new media literacy",
+      "outcome": "off_topic",
+      "reason": "study concerns university students, not learners aged 6-18"
+    },
+    {
+      "source_title": "Arresting fake news sharing on social media: a theory of planned behavior approach",
+      "outcome": "off_topic",
+      "reason": "Study surveys adult social media users in India about intention to verify news, not media literacy skills in learners aged 6-18"
+    },
+    {
+      "source_title": "How digitalised are vocational teachers? Assessing digital competence in vocational education and looking at its underlying factors",
+      "outcome": "off_topic",
+      "reason": "Study is about vocational education teachers' digital competence, not learners aged 6-18."
+    },
+    {
+      "source_title": "Self-reported technological pedagogical content knowledge (TPACK) of pre-service teachers in relation to digital technology use in lesson plans",
+      "outcome": "off_topic",
+      "reason": "Study concerns pre-service teachers' TPACK and technology use in lesson plans, not learners aged 6-18 developing digital/media literacy."
+    },
+    {
+      "source_title": "Technostress and Digital Competence Among Health Professionals in Swiss Psychiatric Hospitals: Cross-sectional Study",
+      "outcome": "off_topic",
+      "reason": "Study concerns technostress and digital competence in adult health professionals, not media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Tools for assessing teacher digital literacy: a review",
+      "outcome": "off_topic",
+      "reason": "Review of instruments assessing teacher digital literacy, not the skill in learners aged 6-18"
+    },
+    {
+      "source_title": "Process mining for self-regulated learning assessment in e-learning",
+      "outcome": "off_topic",
+      "reason": "Study is about mining self-regulated learning processes of university students in e-learning, not digital/media literacy in learners 6-18."
+    },
+    {
+      "source_title": "Application of Artificial Intelligence powered digital writing assistant in higher education: randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns AI writing tools and engagement in postgraduate ESL academic writing, not digital/media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Assessing teachers’ digital competence in primary and secondary education: Applying a new instrument to integrate pedagogical and professional elements for digital education",
+      "outcome": "off_topic",
+      "reason": "Study develops an instrument to assess teachers' digital competence, not learners' digital and media literacy."
+    },
+    {
+      "source_title": "The digital competence of academics in higher education: is the glass half empty or half full?",
+      "outcome": "off_topic",
+      "reason": "Study surveys digital competence of university academics/educators, not digital and media literacy in learners aged 6-18."
+    },
+    {
+      "source_title": "Opening up the black box: Teacher competence, instructional quality, and students’ learning progress",
+      "outcome": "off_topic",
+      "reason": "Study concerns teacher knowledge and instructional quality effects on math learning, not digital/media literacy"
+    },
+    {
+      "source_title": "Countering Misinformation and Fake News Through Inoculation and Prebunking",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review reporting inoculation appears promising to protect against misinformation; positive framing, no contrary measured result."
+    },
+    {
+      "source_title": "Prebunking interventions based on the psychological theory of “inoculation” can reduce susceptibility to misinformation across cultures.",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found the intervention conferred psychological resistance against misinformation, a positive result supporting the skill's value."
+    },
+    {
+      "source_title": "Psychological Inoculation against Misinformation: Current Evidence and Future Directions",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review of inoculation studies reporting positive immunization effects against misinformation; no absent or reversed result stated."
+    },
+    {
+      "source_title": "NudgeCred: Supporting News Credibility Assessment on Social Media Through Nudges",
+      "outcome": "off_topic",
+      "reason": "Study tests a browser nudge extension for adult Twitter users evaluating news credibility, not media literacy skill development in learners aged 6-18"
+    },
+    {
+      "source_title": "Testing the Efficacy of Attitudinal Inoculation Videos to Enhance COVID-19 Vaccine Acceptance: Quasi-Experimental Intervention Trial",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study of unvaccinated adults, not learners aged 6-18, and it found positive intervention effects."
+    },
+    {
+      "source_title": "From digital literacy to digital competence: the teacher digital competency (TDC) framework",
+      "outcome": "off_topic",
+      "reason": "Conceptual framework for teacher education digital competence, not learners aged 6-18"
+    },
+    {
+      "source_title": "Teachers’ Satisfaction, Role, and Digital Literacy during the COVID-19 Pandemic",
+      "outcome": "off_topic",
+      "reason": "Study is about teachers' professional roles, satisfaction, and digital literacy during COVID online teaching, not media literacy skill development in learners aged 6-18."
+    },
+    {
+      "source_title": "Digital Literacy Key Performance Indicators for Sustainable Development",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Case-study analysis identifying KPIs for digital inclusion; no measured outcome showing the skill fails to help."
+    },
+    {
+      "source_title": "Digital transformation in healthcare: Analyzing the current state-of-research",
+      "outcome": "off_topic",
+      "reason": "Study is about digital transformation in healthcare management, not digital/media literacy in learners"
+    },
+    {
+      "source_title": "Digital Transformation in Healthcare: Technology Acceptance and Its Applications",
+      "outcome": "off_topic",
+      "reason": "Study is about digital transformation in healthcare, not media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Just Google it! Digital literacy and the epistemology of ignorance",
+      "outcome": "off_topic",
+      "reason": "Theoretical/philosophical analysis of digital literacy and ignorance in undergraduate (higher education) students, not learners aged 6-18"
+    },
+    {
+      "source_title": "Heutagogy and digital media networks",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Theoretical/position paper on heutagogy framework, no measured outcome."
+    },
+    {
+      "source_title": "Barren plateaus in quantum neural network training landscapes",
+      "outcome": "off_topic",
+      "reason": "study is about quantum computing circuits and optimization, not digital/media literacy"
+    },
+    {
+      "source_title": "Untitled OpenAlex work",
+      "outcome": "off_topic",
+      "reason": "Study is about computational design of DNA-co-polymerized hydrogel structures, not digital/media literacy."
+    },
+    {
+      "source_title": "Learning to Optimize: Training Deep Neural Networks for Interference Management",
+      "outcome": "off_topic",
+      "reason": "study is about deep learning approximation of signal processing optimization algorithms, not digital/media literacy"
+    },
+    {
+      "source_title": "ResMLP: Feedforward Networks for Image Classification With Data-Efficient Training",
+      "outcome": "off_topic",
+      "reason": "Study is about a neural network architecture for image classification, not digital/media literacy."
+    },
+    {
+      "source_title": "Training Spiking Neural Networks Using Lessons From Deep Learning",
+      "outcome": "off_topic",
+      "reason": "Study is about spiking neural networks and deep learning, not digital/media literacy in learners"
+    },
+    {
+      "source_title": "Review of deep learning: concepts, CNN architectures, challenges, applications, future directions",
+      "outcome": "off_topic",
+      "reason": "This is a technical survey of deep learning methods and architectures, not about digital and media literacy in learners."
+    },
+    {
+      "source_title": "Training Deep Spiking Convolutional Neural Networks With STDP-Based Unsupervised Pre-training Followed by Supervised Fine-Tuning",
+      "outcome": "off_topic",
+      "reason": "Study is about spiking neural networks and machine learning, not digital/media literacy skills in learners"
+    },
+    {
+      "source_title": "A generative modeling approach for benchmarking and training shallow quantum circuits",
+      "outcome": "off_topic",
+      "reason": "Study is about hybrid quantum-classical algorithms and quantum computer benchmarking, not digital or media literacy."
+    },
+    {
+      "source_title": "The intended and unintended effects of synced advertising: When persuasion knowledge could help or backfire",
+      "outcome": "off_topic",
+      "reason": "study concerns adult consumers' knowledge of synced advertising, not digital/media literacy in learners aged 6-18"
+    },
+    {
+      "source_title": "Social Media and Morality",
+      "outcome": "off_topic",
+      "reason": "Study concerns social media's interaction with morality and society, not digital/media literacy skills in learners aged 6-18"
+    },
+    {
+      "source_title": "Media literacy tips promoting reliable news improve discernment and enhance trust in traditional media",
+      "outcome": "off_topic",
+      "reason": "Study tests media literacy tips on US adults' news sharing, not the target population aged 6-18"
+    },
+    {
+      "source_title": "Mitigating Psychological Costs—The Role of Citizens’ Administrative Literacy and Social Capital",
+      "outcome": "off_topic",
+      "reason": "study concerns administrative literacy and psychological costs among unemployment insurance recipients, not digital/media literacy in learners"
+    },
+    {
+      "source_title": "Paradoxes of Media and Information Literacy. The Crisis of Information",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Conceptual analysis of paradoxes in media and information literacy, not a measured intervention outcome."
+    },
+    {
+      "source_title": "The COVID‐19 pandemic and the search for structure: Social media and conspiracy theories",
+      "outcome": "off_topic",
+      "reason": "Theoretical model of how the pandemic and social media spread conspiracy beliefs, not about digital/media literacy skills in learners aged 6-18."
+    },
+    {
+      "source_title": "When your supporters become your opponents: Exploring the unintended effects of parodies on social media engagement",
+      "outcome": "off_topic",
+      "reason": "Study is about social media engagement with political parodies and stigma types, not about digital/media literacy in learners aged 6-18."
+    }
+  ],
+  "stopped_because": "query_budget",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "digital literacy intervention meta-analysis",
+        "media literacy misinformation evaluation randomized controlled trial",
+        "online information credibility source evaluation systematic review"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "digital literacy intervention meta-analysis",
+        "media literacy misinformation evaluation randomized controlled trial",
+        "online information credibility source evaluation systematic review"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 26,
+      "new_findings": 1
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "fact-checking lateral reading intervention effectiveness",
+        "media literacy education replication",
+        "phishing detection training randomized controlled trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "fact-checking lateral reading intervention effectiveness",
+        "media literacy education replication",
+        "phishing detection training randomized controlled trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 21,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "media literacy fake news identification meta-analysis",
+        "digital competence self-assessment overestimation",
+        "news credibility inoculation intervention randomized controlled trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "media literacy fake news identification meta-analysis",
+        "digital competence self-assessment overestimation",
+        "news credibility inoculation intervention randomized controlled trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 22,
+      "new_findings": 1
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "digital media literacy skill transfer failure",
+        "information evaluation training decay follow-up",
+        "media literacy backfire unintended effects"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "digital media literacy skill transfer failure",
+        "information evaluation training decay follow-up",
+        "media literacy backfire unintended effects"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 25,
+      "new_findings": 3
+    }
+  ]
+}
