@@ -1,0 +1,477 @@
+{
+  "skill_id": "skill-digital-media-literacy",
+  "prompt_version": "counter-evidence-v3",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-02",
+  "rounds": 3,
+  "queries_used": [
+    "digital literacy intervention randomized controlled trial",
+    "media literacy misinformation evaluation meta-analysis",
+    "adolescent online information credibility assessment",
+    "media literacy education fake news detection failed to transfer",
+    "digital literacy training older adults phishing susceptibility",
+    "news literacy curriculum longitudinal follow-up decay",
+    "media literacy intervention children systematic review",
+    "digital literacy skills self-assessment overconfidence",
+    "information evaluation source credibility training replication"
+  ],
+  "sources_examined": 75,
+  "findings": 2,
+  "proposed": [
+    {
+      "claim_id": "claim-effectiveness-of-digital-health-literacy-interventions-in-older-adults-s",
+      "source_id": "src-effectiveness-of-digital-health-literacy-interventions-in-older-adults-s",
+      "source_title": "Effectiveness of Digital Health Literacy Interventions in Older Adults: Single-Arm Meta-Analysis",
+      "source_url": "https://openalex.org/W4382345319",
+      "quote": "No statistically significant effect was found for skills (standardized mean difference 0.77, 95% CI -0.30 to 1.85; P=.16).",
+      "reason": "DHL interventions produced no statistically significant effect on skills, a measured null outcome of a deliberate intervention."
+    },
+    {
+      "claim_id": "claim-the-promises-challenges-and-futures-of-media-literacy-counter-skill-digi",
+      "source_id": "src-the-promises-challenges-and-futures-of-media-literacy",
+      "source_title": "The Promises, Challenges, and Futures of Media Literacy",
+      "source_url": "https://openalex.org/W2801480010",
+      "quote": "Some research shows that media literacy efforts can have little-to-no impact for certain materials, or even produce harmful conditions of overconfidence.",
+      "reason": "Abstract reports research showing media literacy interventions can have little-to-no impact or even harmful overconfidence effects."
+    }
+  ],
+  "rejected": 73,
+  "rejected_by_outcome": {
+    "off_topic": 23,
+    "on_topic_no_contradiction": 50
+  },
+  "not_proposed": [
+    {
+      "source_title": "A digital media literacy intervention increases discernment between mainstream and false news in the United States and India",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The intervention improved discernment in two samples, a positive effect; the null in rural India is attributed to low social media use, not to the skill failing."
+    },
+    {
+      "source_title": "Application of Artificial Intelligence powered digital writing assistant in higher education: randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "study is about AI writing tools improving engagement and self-efficacy in academic writing, not digital/media literacy"
+    },
+    {
+      "source_title": "Digital literacy as a new determinant of health: A scoping review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study finds higher digital health literacy associated with better outcomes and effective interventions, supporting the skill's value."
+    },
+    {
+      "source_title": "A digital health intervention for cardiovascular disease management in primary care (CONNECT) randomized controlled trial",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The app improved e-health literacy and some behaviors; the null result was about medication adherence, not the skill's value."
+    },
+    {
+      "source_title": "Application of the eHealth Literacy Model in Digital Health Interventions: Scoping Review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Scoping review describing whether eHealth literacy domains are assessed in interventions; no measured outcome showing the skill fails to help."
+    },
+    {
+      "source_title": "Impact of a Digital Intervention for Literacy in Depression among Portuguese University Students: A Randomized Controlled Trial",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The digital media intervention effectively increased depression knowledge, supporting the skill's value."
+    },
+    {
+      "source_title": "Media Health Literacy, eHealth Literacy, and the Role of the Social Environment in Context",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review/position paper on health and eHealth literacy concepts; no measured outcome showing the skill failed to help."
+    },
+    {
+      "source_title": "Digital Health Literacy: Bibliometric Analysis",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Bibliometric analysis of the field; no measured outcome of a skill intervention, and it reports positive potential."
+    },
+    {
+      "source_title": "The growing field of digital psychiatry: current evidence and the future of apps, social media, chatbots, and virtual reality",
+      "outcome": "off_topic",
+      "reason": "Study is about digital mental health technologies in psychiatry, not digital/media literacy skills."
+    },
+    {
+      "source_title": "Psychological inoculation improves resilience against misinformation on social media",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found inoculation videos improved misinformation resilience, supporting the skill's value."
+    },
+    {
+      "source_title": "Misinformation About COVID-19 Vaccines on Social Media: Rapid Review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Describes misinformation spread and its effects on vaccine hesitancy, not a measured outcome of a literacy intervention"
+    },
+    {
+      "source_title": "Fake news game confers psychological resistance against online misinformation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The intervention improved people's ability to spot and resist misinformation, supporting the skill's value."
+    },
+    {
+      "source_title": "Social media literacy: A conceptual framework",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a conceptual framework/position paper proposing a new model of social media literacy; it measures no outcome of an intervention."
+    },
+    {
+      "source_title": "Separating truth from lies: comparing the effects of news media literacy interventions and fact-checkers in response to political misinformation in the US and Netherlands",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found media literacy interventions combined with fact-checkers were most effective at lowering misinformation acceptance, supporting the skill's value."
+    },
+    {
+      "source_title": "The prevalence of depression, anxiety, and sleep disturbances in COVID‐19 patients: a meta‐analysis",
+      "outcome": "off_topic",
+      "reason": "Study concerns prevalence of depression, anxiety, and sleep disturbances in COVID-19 patients, not digital/media literacy."
+    },
+    {
+      "source_title": "Medical and Health-Related Misinformation on Social Media: Bibliometric Study of the Scientific Literature",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Bibliometric analysis of publication trends on medical misinformation; measures no skill intervention outcome."
+    },
+    {
+      "source_title": "Fancying the New Rich and Famous? Explicating the Roles of Influencer Content, Credibility, and Parental Mediation in Adolescents’ Parasocial Relationship, Materialism, and Purchase Intentions",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study examines influencer appeal and parental mediation effects on adolescents' materialism; it did not test whether digital/media literacy training improves outcomes."
+    },
+    {
+      "source_title": "Making sense of credibility in complex information environments: the role of message sidedness, information source, and thinking styles in credibility evaluation online",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study measures how source type and message sidedness affect perceived credibility, not whether developing the skill improves outcomes."
+    },
+    {
+      "source_title": "How adolescent patients search for and appraise online health information: A pilot study",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive study showing adolescents have low eHealth literacy; 'people are bad at this' argues for the skill's importance, not against it."
+    },
+    {
+      "source_title": "Evidence on Digital Mental Health Interventions for Adolescents and Young People: Systematic Overview",
+      "outcome": "off_topic",
+      "reason": "Study is about digital mental health interventions for adolescents, not digital/media literacy skills."
+    },
+    {
+      "source_title": "School Closures During Social Lockdown and Mental Health, Health Behaviors, and Well-being Among Children and Adolescents During the First COVID-19 Wave",
+      "outcome": "off_topic",
+      "reason": "Study is about school closures during COVID-19 and their association with children's mental health and behaviors, not digital/media literacy."
+    },
+    {
+      "source_title": "The Reliability, Validity, and Utility of Self-Assessment",
+      "outcome": "off_topic",
+      "reason": "Study is about student self-assessment in education, not digital or media literacy."
+    },
+    {
+      "source_title": "Online Health Information Seeking Behaviors Among Older Adults: Systematic Scoping Review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Scoping review describing older adults' online health information seeking behavior; no measured failure of a skill intervention."
+    },
+    {
+      "source_title": "Adolescents’ credibility justifications when evaluating online texts",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive study of how well students evaluate credibility; no intervention or training measured, and poor performance argues for the skill's importance."
+    },
+    {
+      "source_title": "Acceptability and Utility of an Open-Access, Online Single-Session Intervention Platform for Adolescent Mental Health",
+      "outcome": "off_topic",
+      "reason": "Study is about online single-session mental health interventions for youth, not digital and media literacy."
+    },
+    {
+      "source_title": "Setting the future of digital and social media marketing research: Perspectives and research propositions",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is an expert perspectives/position paper on digital and social media marketing, with no measured outcome of the skill."
+    },
+    {
+      "source_title": "Fake images: The effects of source, intermediary, and digital media literacy on contextual assessment of image credibility online",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Observational study finding Internet skills predicted better image credibility evaluation, which supports the skill's value rather than contradicting it."
+    },
+    {
+      "source_title": "The Emergence of Deepfake Technology: A Review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Introductory framing about fake news as a threat; no measured outcome of a media literacy intervention."
+    },
+    {
+      "source_title": "The Psychology of Fake News",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study analyzes misinformation diffusion on Twitter; no measured outcome of teaching or practising the skill."
+    },
+    {
+      "source_title": "Information Literacy vs. Fake News: The Case of Ukraine",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive profile of a media literacy program, no measured outcome of the intervention."
+    },
+    {
+      "source_title": "Opinion Paper: “So what if ChatGPT wrote it?” Multidisciplinary perspectives on opportunities, challenges and implications of generative conversational AI for research, practice and policy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "A multi-disciplinary opinion/position article on ChatGPT; it measures no outcome of a skill intervention."
+    },
+    {
+      "source_title": "War of the chatbots: Bard, Bing Chat, ChatGPT, Ernie and beyond. The new AI gold rush and its impact on higher education",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study compares chatbot performance on academic tests, not an intervention teaching digital/media literacy to people."
+    },
+    {
+      "source_title": "The Crisis of Public Health and Infodemic: Analyzing Belief Structure of Fake News about COVID-19 Pandemic",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Correlational study of factors predicting belief in COVID-19 misinformation; measures no skill training or intervention outcome."
+    },
+    {
+      "source_title": "Digital Images on Social Media and Proliferation of Fake News on Covid-19 in Kano, Nigeria",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive survey showing residents are influenced by fake news and lack image-verification skills; this shows the skill is scarce, not that teaching it failed."
+    },
+    {
+      "source_title": "SoK: Human-centered Phishing Susceptibility",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "A literature review proposing a susceptibility model; no measured outcome of training or intervention showing the skill failed."
+    },
+    {
+      "source_title": "Which phish is captured in the net? Understanding phishing susceptibility and individual differences",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study identifies psychological predictors of phishing susceptibility; it measures who is vulnerable, not whether training the skill fails to help."
+    },
+    {
+      "source_title": "Navigating the digital world: development of an evidence-based digital literacy program and assessment tool for youth",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Describes development of a program and assessment tool via environmental scan and literature review; no measured outcome of an intervention."
+    },
+    {
+      "source_title": "Who Gets Caught in the Web of Lies?: Understanding Susceptibility to Phishing Emails, Fake News Headlines, and Scam Text Messages",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found higher digital literacy predicted better discrimination of deception, supporting the skill's value, not contradicting it."
+    },
+    {
+      "source_title": "How do Older Adults feel about engaging with Cyber‐Security?",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Qualitative interview study of older adults' perceptions of cyber-security behaviors; no measured outcome of training or intervention showing the skill fails."
+    },
+    {
+      "source_title": "Better beware: comparing metacognition for phishing and legitimate emails",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study measures phishing-detection confidence/accuracy and found better resolution linked to less vulnerability, supporting the skill's value rather than contradicting it."
+    },
+    {
+      "source_title": "Phishing vulnerability compounded by older age, apolipoprotein E e4 genotype, and lower cognition",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study identifies risk factors for phishing susceptibility; it shows the skill is scarce among certain groups, not that developing the skill fails to help."
+    },
+    {
+      "source_title": "Technological Change in the Retirement Transition and the Implications for Cybersecurity Vulnerability in Older Adults",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Qualitative interview study exploring retirement-related factors that may increase cyber vulnerability; no measured outcome of skill training or intervention."
+    },
+    {
+      "source_title": "The intersection of digital safety and financial literacy: Mitigating financial risks in the digital economy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Position paper on digital safety and financial literacy; no measured outcome of an intervention."
+    },
+    {
+      "source_title": "What’s the News About Bad News? A Review of Bad News Games as a Tool to Teach Media Literacy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a theoretical/critical analysis of a media literacy game, not a measured outcome study of an intervention."
+    },
+    {
+      "source_title": "Media literacy interventions: meta-analytic review of 40 years of research",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Meta-analysis found overall positive effects of media literacy interventions; smaller effects for some outcomes are still positive."
+    },
+    {
+      "source_title": "Death in the Scottish curriculum: Denying or confronting?",
+      "outcome": "off_topic",
+      "reason": "Study analyzes how death is represented in the Scottish school curriculum, unrelated to digital and media literacy"
+    },
+    {
+      "source_title": "Passive longitudinal weight and cardiopulmonary monitoring in the home bed",
+      "outcome": "off_topic",
+      "reason": "Study is about a non-contact home health monitoring sensor for cardiopulmonary disease, not digital/media literacy."
+    },
+    {
+      "source_title": "Understanding dental caries as a non-communicable and behavioral disease: Management implications",
+      "outcome": "off_topic",
+      "reason": "Study is about dental caries as a non-communicable disease, not digital/media literacy."
+    },
+    {
+      "source_title": "MODELING THE GROWTH OF STUDENTS’ COVARIATIONAL REASONING DURING AN INTRODUCTORY STATISTICS COURSE",
+      "outcome": "off_topic",
+      "reason": "study is about students' statistical reasoning about bivariate data, not digital or media literacy"
+    },
+    {
+      "source_title": "Enhancing Digital Skills of Early Childhood Teachers Through Online Science, Technology, Engineering, Art, Math Training Programs in Estonia",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Both formats improved digital competences; the null result was between groups, not an absence of skill benefit."
+    },
+    {
+      "source_title": "An inductive learning intervention to improve news veracity discernment.",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The intervention improved news veracity discernment, supporting the skill's value."
+    },
+    {
+      "source_title": "The Art Nouveau Path: Curriculum-Aligned Heritage Learning for Urban Resilience and Sustainability Competences",
+      "outcome": "off_topic",
+      "reason": "Study is about an augmented reality heritage game for sustainability education and urban resilience, not digital/media literacy."
+    },
+    {
+      "source_title": "Conceptualizing AI literacy: An exploratory review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is an exploratory review proposing a conceptual framework for AI literacy, not a measurement of outcomes from teaching the skill."
+    },
+    {
+      "source_title": "Understanding the role of digital technologies in education: A review",
+      "outcome": "off_topic",
+      "reason": "position paper on digital technologies in education generally, not about digital/media literacy skill outcomes"
+    },
+    {
+      "source_title": "Review of mental health promotion interventions in schools",
+      "outcome": "off_topic",
+      "reason": "Study is about mental health promotion interventions in schools, not digital or media literacy."
+    },
+    {
+      "source_title": "Digital Literacy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Literature review and conceptual models; no measured outcome of a digital literacy intervention."
+    },
+    {
+      "source_title": "In search of artificial intelligence (AI) literacy in teacher education: A scoping review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Scoping review conceptualising AI literacy in teacher education; no measured outcome of a skill intervention."
+    },
+    {
+      "source_title": "Digital literacy and online political behavior",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a measurement/methodology paper about defining and measuring digital literacy; it does not test whether developing the skill leads to better outcomes."
+    },
+    {
+      "source_title": "Digital literacy practices of Turkish pre-service EFL teachers",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Qualitative study of pre-service teachers' conceptualisation of digital literacy; no measured outcome of an intervention."
+    },
+    {
+      "source_title": "To be or not to be algorithm aware: a question of a new digital divide?",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive survey of algorithm awareness levels and attitudes; measures no outcome of skill-building interventions."
+    },
+    {
+      "source_title": "Addressing Information Literacy and the Digital Divide in Higher Education",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found computer applications courses effective at building skills, supporting the skill's value."
+    },
+    {
+      "source_title": "Artificial intelligence in medical education: a cross-sectional needs assessment",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Survey of medical students' perceptions and educational needs regarding AI; measures beliefs, not outcomes of skill development."
+    },
+    {
+      "source_title": "Swedish teenagers’ difficulties and abilities to determine digital news credibility",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive assessment showing teens are poor at determining news credibility; no measured outcome of teaching or practising the skill that failed to help."
+    },
+    {
+      "source_title": "How-to Bureaucracy: A Concept of Citizens’ Administrative Literacy",
+      "outcome": "off_topic",
+      "reason": "concept development paper about administrative literacy and citizen-state interactions, not digital/media literacy"
+    },
+    {
+      "source_title": "Are digital natives overconfident in their privacy literacy? Discrepancy between self-assessed and actual privacy literacy, and their impacts on privacy protection behavior",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study examines cognitive biases in privacy literacy but measures no training outcome that failed; it calls for more literacy training."
+    },
+    {
+      "source_title": "Transparency, Reproducibility, and the Credibility of Economics Research",
+      "outcome": "off_topic",
+      "reason": "The study is about research transparency and reproducibility in economics, not digital and media literacy."
+    },
+    {
+      "source_title": "Replicability, Robustness, and Reproducibility in Psychological Science",
+      "outcome": "off_topic",
+      "reason": "Study is about replication and reproducibility in psychological science, not digital and media literacy."
+    },
+    {
+      "source_title": "The impact of simulation-based training in medical education: A review",
+      "outcome": "off_topic",
+      "reason": "Study is about simulation-based training in medical education, not digital and media literacy"
+    },
+    {
+      "source_title": "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update to Improve Clarity, Replication, and Structural Realism",
+      "outcome": "off_topic",
+      "reason": "This is an author list for an agent-based/ecological modeling paper, not about digital and media literacy."
+    },
+    {
+      "source_title": "Registries for Evaluating Patient Outcomes: A User’s Guide",
+      "outcome": "off_topic",
+      "reason": "About patient registries methodology in healthcare, not digital/media literacy"
+    },
+    {
+      "source_title": "Psychology's Replication Crisis and Clinical Psychological Science",
+      "outcome": "off_topic",
+      "reason": "About replication and open science reform in clinical psychology, not digital/media literacy"
+    },
+    {
+      "source_title": "Credibility, Replicability, and Reproducibility in Simulation for Biomedicine and Clinical Applications in Neuroscience",
+      "outcome": "off_topic",
+      "reason": "study is about computational neuroscience modeling and simulation credibility, not digital/media literacy"
+    },
+    {
+      "source_title": "A Critical Review of Sustainable Energy Policies for the Promotion of Renewable Energy Sources",
+      "outcome": "off_topic",
+      "reason": "Study is about sustainable energy policy and renewable energy, not digital and media literacy."
+    }
+  ],
+  "stopped_because": "no_new_findings",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "digital literacy intervention randomized controlled trial",
+        "media literacy misinformation evaluation meta-analysis",
+        "adolescent online information credibility assessment"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "digital literacy intervention randomized controlled trial",
+        "media literacy misinformation evaluation meta-analysis",
+        "adolescent online information credibility assessment"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 27,
+      "new_findings": 2
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "media literacy education fake news detection failed to transfer",
+        "digital literacy training older adults phishing susceptibility",
+        "news literacy curriculum longitudinal follow-up decay"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "media literacy education fake news detection failed to transfer",
+        "digital literacy training older adults phishing susceptibility",
+        "news literacy curriculum longitudinal follow-up decay"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 27,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "media literacy intervention children systematic review",
+        "digital literacy skills self-assessment overconfidence",
+        "information evaluation source credibility training replication"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "media literacy intervention children systematic review",
+        "digital literacy skills self-assessment overconfidence",
+        "information evaluation source credibility training replication"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 21,
+      "new_findings": 0
+    }
+  ]
+}

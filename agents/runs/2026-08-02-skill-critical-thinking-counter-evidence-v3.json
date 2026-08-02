@@ -1,0 +1,629 @@
+{
+  "skill_id": "skill-critical-thinking",
+  "prompt_version": "counter-evidence-v3",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-02",
+  "rounds": 4,
+  "queries_used": [
+    "critical thinking instruction college students randomized controlled trial",
+    "epistemic vigilance misinformation detection meta-analysis",
+    "argument evaluation reasoning bias training replication",
+    "critical thinking transfer far transfer generalization",
+    "detecting fake news adolescents intervention",
+    "source evaluation credibility judgment training",
+    "debiasing intervention reasoning fallacies replication",
+    "open-mindedness disposition assessment adults",
+    "scientific reasoning skills school curriculum systematic review",
+    "cognitive reflection test performance training",
+    "inoculation theory misinformation resistance replication",
+    "critical thinking dispositions workplace employees longitudinal"
+  ],
+  "sources_examined": 97,
+  "findings": 8,
+  "proposed": [
+    {
+      "claim_id": "claim-a-randomised-active-controlled-trial-to-examine-the-effects-of-an-online",
+      "source_id": "src-a-randomised-active-controlled-trial-to-examine-the-effects-of-an-online",
+      "source_title": "A randomised active-controlled trial to examine the effects of an online mindfulness intervention on executive control, critical thinking and key thinking dispositions in a university student sample",
+      "source_url": "https://openalex.org/W4211190527",
+      "quote": "No evidence was found to suggest that engaging in guided mindfulness practice for 6 weeks using the online intervention method applied in this study improves critical thinking performance.",
+      "reason": "RCT measured a mindfulness intervention's effect on critical thinking and found no significant group effect, showing this developmental route failed to improve the skill."
+    },
+    {
+      "claim_id": "claim-towards-a-new-conceptual-model-of-ai-enhanced-learning-for-college-stude",
+      "source_id": "src-towards-a-new-conceptual-model-of-ai-enhanced-learning-for-college-stude",
+      "source_title": "Towards a New Conceptual Model of AI-Enhanced Learning for College Students: The Roles of Artificial Intelligence Capabilities, General Self-Efficacy, Learning Motivation, and Critical Thinking Awareness",
+      "source_url": "https://openalex.org/W4392166859",
+      "quote": "The results showed that AI capabilities could indirectly enhance students’ critical thinking awareness by strengthening general self-efficacy and learning motivation, but the effect on critical thinking awareness was not significant.",
+      "reason": "Measured SEM study found AI capabilities' direct effect on critical thinking awareness was not significant, a null result for the intervention outcome."
+    },
+    {
+      "claim_id": "claim-does-explaining-the-origins-of-misinformation-improve-the-effectiveness",
+      "source_id": "src-does-explaining-the-origins-of-misinformation-improve-the-effectiveness",
+      "source_title": "Does explaining the origins of misinformation improve the effectiveness of a given correction?",
+      "source_url": "https://openalex.org/W4296484677",
+      "quote": "Overall, the results suggest that informing people of the cause leading to presentation of misinformation, whether deliberate or accidental, may not be an effective correction strategy over and above stating that the misinformation is false.",
+      "reason": "Measured intervention (explaining misinformation origins) found no added effectiveness over a plain correction."
+    },
+    {
+      "claim_id": "claim-activating-reflective-thinking-with-decision-justification-and-debiasing",
+      "source_id": "src-activating-reflective-thinking-with-decision-justification-and-debiasing",
+      "source_title": "Activating reflective thinking with decision justification and debiasing training",
+      "source_url": "https://openalex.org/W3128967034",
+      "quote": "We found no evidence that online versions of the two regularly used reflection conditions — time delay and memory recall — improve cognitive performance.",
+      "reason": "Two reflection-activating interventions failed to improve cognitive reflection performance, a measured null outcome of engaging the skill."
+    },
+    {
+      "claim_id": "claim-implicit-bias-in-healthcare-clinical-practice-research-and-decision-maki",
+      "source_id": "src-implicit-bias-in-healthcare-clinical-practice-research-and-decision-maki",
+      "source_title": "Implicit bias in healthcare: clinical practice, research and decision making",
+      "source_url": "https://openalex.org/W3136853555",
+      "quote": "However, there are no effective debiasing strategies.",
+      "reason": "Literature review reports that debiasing strategies (interventions to develop bias recognition) are ineffective."
+    },
+    {
+      "claim_id": "claim-comparing-fast-thinking-and-slow-thinking-the-relative-benefits-of-inter",
+      "source_id": "src-comparing-fast-thinking-and-slow-thinking-the-relative-benefits-of-inter",
+      "source_title": "Comparing fast thinking and slow thinking: The relative benefits of interventions, individual differences, and inferential rules",
+      "source_url": "https://openalex.org/W3102598414",
+      "quote": "Overall, we find equivocal evidence of a small benefit from slow thinking, evidence for a small benefit to accuracy incentives, and clear evidence of a larger cost from fast thinking.",
+      "reason": "Intervention promoting slow (System 2) deliberative thinking to reduce decision biases yielded only equivocal/small benefit, a measured result where the intervention largely failed to help."
+    },
+    {
+      "claim_id": "claim-the-effect-of-problem-based-learning-on-the-creative-thinking-and-critic",
+      "source_id": "src-the-effect-of-problem-based-learning-on-the-creative-thinking-and-critic",
+      "source_title": "The Effect of Problem-Based Learning on the Creative Thinking and Critical Thinking Disposition of Students in Visual Arts Education",
+      "source_url": "https://openalex.org/W2792215959",
+      "quote": "PBL had a significant effect on creative thinking, but critical thinking disposition was affected to a lesser degree.",
+      "reason": "PBL intervention measured critical thinking disposition and found it affected only to a lesser degree, a weak/absent outcome from the intervention aimed partly at it."
+    },
+    {
+      "claim_id": "claim-actively-open-minded-thinking-and-its-measurement-counter-skill-critical",
+      "source_id": "src-actively-open-minded-thinking-and-its-measurement",
+      "source_title": "Actively Open-Minded Thinking and Its Measurement",
+      "source_url": "https://openalex.org/W4318480085",
+      "quote": "We conclude by discussing the paradox that although AOT scales are potent predictors of performance on most rational thinking tasks, they do not predict the avoidance of myside thinking, even though it is virtually the quintessence of the AOT concept.",
+      "reason": "The abstract reports a measured finding that AOT fails to predict avoidance of myside bias, the very outcome it should govern."
+    }
+  ],
+  "rejected": 89,
+  "rejected_by_outcome": {
+    "off_topic": 53,
+    "on_topic_no_contradiction": 36
+  },
+  "not_proposed": [
+    {
+      "source_title": "A Critical Review of Research on Student Self-Assessment",
+      "outcome": "off_topic",
+      "reason": "Study is about student self-assessment in education, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Mindfulness training reduces loneliness and increases social contact in a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about mindfulness training reducing loneliness and increasing social contact, not critical thinking."
+    },
+    {
+      "source_title": "Creativity, Critical Thinking, Communication, and Collaboration: Assessment, Certification, and Promotion of 21st Century Skills for the Future of Work and Education",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Position/framework paper on assessing and certifying the 4Cs; no measured outcome of an intervention."
+    },
+    {
+      "source_title": "Enhancing academic writing skills and motivation: assessing the efficacy of ChatGPT in AI-assisted language learning for EFL students",
+      "outcome": "off_topic",
+      "reason": "Study is about AI-assisted EFL writing skills and motivation, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "The role of prefrontal cortex in cognitive control and executive function",
+      "outcome": "off_topic",
+      "reason": "Study is about cognitive control and executive function neurobiology, not critical thinking or epistemic vigilance"
+    },
+    {
+      "source_title": "Six-year positive effects of a mindfulness-based intervention on mindfulness, coping and well-being in medical and psychology students; Results from a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about mindfulness training effects on well-being and coping, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Quantifying critical thinking: Development and validation of the physics lab inventory of critical thinking",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This describes development and validation of an assessment instrument, not a measured outcome of developing critical thinking."
+    },
+    {
+      "source_title": "Online learning versus blended learning of clinical supervisee skills with pre-registration nursing students: A randomised controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study compares blended vs online learning for teaching clinical supervision skills to nursing students, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Mistrust and misinformation: A two-component, socio-epistemic model of belief in conspiracy theories",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Theoretical model paper about conspiracy belief and epistemic mistrust; no measured outcome of a skill intervention."
+    },
+    {
+      "source_title": "The digital transformation of knowledge order: a model for the analysis of the epistemic crisis",
+      "outcome": "off_topic",
+      "reason": "Study develops an analytical model of digital transformation of knowledge order, not critical thinking skills."
+    },
+    {
+      "source_title": "Social and Cognitive Aspects of the Vulnerability to Political Misinformation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a critical review/position paper proposing a conceptual framework; it measures no outcome of a skill intervention."
+    },
+    {
+      "source_title": "The Era of Artificial Intelligence Deception: Unraveling the Complexities of False Realities and Emerging Threats of Misinformation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Position paper advocating ethical AI frameworks; no measured outcome of a skill intervention."
+    },
+    {
+      "source_title": "People believe misinformation is a threat because they assume others are gullible",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study examines psychological predictors of perceived danger of misinformation and the third-person effect; it measures no outcome of teaching or practising critical thinking."
+    },
+    {
+      "source_title": "Epistemic trust: a comprehensive review of empirical insights and implications for developmental psychopathology",
+      "outcome": "off_topic",
+      "reason": "Study concerns epistemic trust in developmental psychopathology and mental health, not critical thinking as claim-testing skill."
+    },
+    {
+      "source_title": "Epistemic authority in the digital public sphere. An integrative conceptual framework and research agenda",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Conceptual framework and research agenda, no measured outcome of any intervention."
+    },
+    {
+      "source_title": "Epistemic trust and associations with psychopathology: Validation of the German version of the Epistemic Trust, Mistrust and Credulity-Questionnaire (ETMCQ)",
+      "outcome": "off_topic",
+      "reason": "Study validates a questionnaire measuring epistemic trust/mistrust as a psychopathology factor, not critical thinking as a skill."
+    },
+    {
+      "source_title": "GenAI and misinformation in education: a systematic scoping review of opportunities and challenges",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Scoping review of GenAI and misinformation in education; no measured outcome of teaching critical thinking that failed."
+    },
+    {
+      "source_title": "PROBAST: A Tool to Assess Risk of Bias and Applicability of Prediction Model Studies: Explanation and Elaboration",
+      "outcome": "off_topic",
+      "reason": "Describes a tool for assessing risk of bias in health prediction models, not human critical thinking skills."
+    },
+    {
+      "source_title": "Literature review as a research methodology: An overview and guidelines",
+      "outcome": "off_topic",
+      "reason": "About literature review as a research methodology in business research, not critical thinking skills."
+    },
+    {
+      "source_title": "Opinion Paper: “So what if ChatGPT wrote it?” Multidisciplinary perspectives on opportunities, challenges and implications of generative conversational AI for research, practice and policy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Multi-disciplinary opinion piece on ChatGPT's opportunities and challenges, not a measured outcome of engaging the skill."
+    },
+    {
+      "source_title": "Cultural bias and cultural alignment of large language models",
+      "outcome": "off_topic",
+      "reason": "Study is about cultural bias in LLM outputs and cultural prompting, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Progress in Neural NLP: Modeling, Learning, and Reasoning",
+      "outcome": "off_topic",
+      "reason": "Technical review of neural network-based NLP methods, not about human critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Advances and Open Problems in Federated Learning",
+      "outcome": "off_topic",
+      "reason": "study is about federated machine learning, not critical thinking"
+    },
+    {
+      "source_title": "Evaluating Weaknesses of “Perceptual-Cognitive Training” and “Brain Training” Methods in Sport: An Ecological Dynamics Critique",
+      "outcome": "off_topic",
+      "reason": "position paper about perceptual-cognitive/brain training transfer to sport performance, not critical thinking or epistemic vigilance"
+    },
+    {
+      "source_title": "Veil-of-ignorance reasoning favors the greater good",
+      "outcome": "off_topic",
+      "reason": "Study is about veil-of-ignorance moral reasoning promoting utilitarian choices, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Transfer of Learning and Teaching: A Review of Transfer Theories and Effective Instructional Practices",
+      "outcome": "off_topic",
+      "reason": "The study is about knowledge transfer in education, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "A FRAMEWORK FOR THINKING ABOUT INFORMAL STATISTICAL INFERENCE",
+      "outcome": "off_topic",
+      "reason": "Study is about teaching informal statistical inference to primary school students, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Text Data Augmentation for Deep Learning",
+      "outcome": "off_topic",
+      "reason": "Study is about data augmentation techniques for NLP deep learning, not critical thinking skills"
+    },
+    {
+      "source_title": "Computational Thinking, Between Papert and Wing",
+      "outcome": "off_topic",
+      "reason": "Historical/epistemological review of computational thinking in CS education, not about critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Toward Causal Representation Learning",
+      "outcome": "off_topic",
+      "reason": "Study is about causal inference and machine learning, not human critical thinking skills."
+    },
+    {
+      "source_title": "Why Are DNA and Protein Electron Transfer So Different?",
+      "outcome": "off_topic",
+      "reason": "Study is about electron transfer theory in nucleic acids and proteins, not critical thinking."
+    },
+    {
+      "source_title": "Fake news game confers psychological resistance against online misinformation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The study found gameplay improved ability to spot and resist misinformation, supporting the skill's value."
+    },
+    {
+      "source_title": "Sharing of fake news on social media: Application of the honeycomb framework and the third-person effect hypothesis",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study examines motives behind fake-news sharing, not an intervention teaching critical thinking; authenticating-before-sharing finding is observational, not a measured outcome of skill training."
+    },
+    {
+      "source_title": "Adolescents’ Vulnerability to Fake News and to Racial Hoaxes: A Qualitative Analysis on Italian Sample",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Qualitative focus-group study showing adolescents struggle to recognize fake news, which indicates the skill is scarce, not that developing it fails; no intervention measured."
+    },
+    {
+      "source_title": "How Can Psychological Science Help Counter the Spread of Fake News?",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review/research agenda on countering fake news; no measured outcome showing an intervention failed."
+    },
+    {
+      "source_title": "Fake News Reaching Young People on Social Networks: Distrust Challenging Media Literacy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive survey of Generation Z media consumption and trust; no measured outcome of a skill intervention."
+    },
+    {
+      "source_title": "Fake News and Advertising on Social Media: A Study of the Anti-Vaccination Movement",
+      "outcome": "off_topic",
+      "reason": "Study is about the spread of fake news on social networks and effects of advertising bans, not critical thinking skills."
+    },
+    {
+      "source_title": "Arresting fake news sharing on social media: a theory of planned behavior approach",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study identifies predictors of intention to verify news before sharing; it does not show that critical thinking failed to improve outcomes."
+    },
+    {
+      "source_title": "Taking corrective action when exposed to fake news: The role of fake news literacy",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Survey study measuring literacy constructs and corrective action; suggests specific fake news literacy is needed, not a failed intervention against the skill."
+    },
+    {
+      "source_title": "Digital Resilience Through Training Protocols: Learning To Identify Fake News On Social Media",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Training protocol significantly improved fake news detection, supporting the skill's value."
+    },
+    {
+      "source_title": "Transparency, Reproducibility, and the Credibility of Economics Research",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Survey/position paper on research transparency and reproducibility in economics; no measured outcome of skill training."
+    },
+    {
+      "source_title": "The impact of simulation-based training in medical education: A review",
+      "outcome": "off_topic",
+      "reason": "Study is about simulation-based training in medical education, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Evaluating the credibility of anchor based estimates of minimal important differences for patient reported outcomes: instrument development and reliability study",
+      "outcome": "off_topic",
+      "reason": "Study develops an instrument to evaluate credibility of minimal important differences in patient-reported outcome measures, not the human skill of critical thinking."
+    },
+    {
+      "source_title": "Registries for Evaluating Patient Outcomes: A User’s Guide",
+      "outcome": "off_topic",
+      "reason": "The abstract is about a handbook for designing and operating patient outcome registries, not critical thinking."
+    },
+    {
+      "source_title": "Judgmental selection of forecasting models",
+      "outcome": "off_topic",
+      "reason": "Study is about judgmental vs algorithmic forecasting model selection, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Credibility in Online Social Networks: A Survey",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "A literature review of credibility assessment on Twitter; no measured outcome of skill training or intervention."
+    },
+    {
+      "source_title": "Why refugee visa credibility assessments lack credibility: a critical discourse analysis",
+      "outcome": "off_topic",
+      "reason": "study analyzes discourse and language ideologies in asylum credibility assessments, not critical thinking skill development"
+    },
+    {
+      "source_title": "Determining the credibility of commitments in international climate policy",
+      "outcome": "off_topic",
+      "reason": "Study is about credibility of national climate policy pledges under the Paris Agreement, not about critical thinking skills."
+    },
+    {
+      "source_title": "How the expertise heuristic accelerates decision-making and credibility judgments in social media by means of effort reduction",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study examines whether credibility judgments follow an expertise heuristic; it measures task latencies, not an intervention teaching critical thinking."
+    },
+    {
+      "source_title": "The Einstein effect provides global evidence for scientific source credibility effects and the influence of religiosity",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study measures source credibility bias (people trusting scientists on meaningless statements), showing the skill is scarce; it does not test whether teaching or practising critical thinking failed to help."
+    },
+    {
+      "source_title": "Debiasing System 1: Training favours logical over stereotypical intuiting",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Training boosted reasoning performance and persisted, supporting the skill's value."
+    },
+    {
+      "source_title": "Motivated numeracy and active reasoning in a Western European sample",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This study measured motivated numeracy effects, not the outcome of teaching or practising critical thinking; the active reasoning intervention's effect is not reported as failing."
+    },
+    {
+      "source_title": "A debiasing intervention to reduce the causality bias in undergraduates: the role of a bias induction phase",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The intervention reduced causal illusions, supporting the skill's value; the induction phase's effect does not reverse the training's success."
+    },
+    {
+      "source_title": "Dual process models of clinical reasoning: The central role of knowledge in diagnostic expertise",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a literature review/position paper arguing against a theory of diagnostic error; it measures no outcome of teaching or practising critical thinking."
+    },
+    {
+      "source_title": "Reopening Openness to Experience: A Network Analysis of Four Openness to Experience Inventories",
+      "outcome": "off_topic",
+      "reason": "Study concerns the taxonomic structure of the Openness to Experience personality trait, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Parent reports of adolescents and young adults perceived to show signs of a rapid onset of gender dysphoria",
+      "outcome": "off_topic",
+      "reason": "Study is about parental reports of rapid-onset gender dysphoria in adolescents, not critical thinking skills."
+    },
+    {
+      "source_title": "Sensing sociability: Individual differences in young adults’ conversation, calling, texting, and app use behaviors in daily life.",
+      "outcome": "off_topic",
+      "reason": "Study is about everyday sociability patterns measured via smartphone sensing, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Development and validation of the critical thinking disposition inventory for Chinese medical college students (CTDI-M)",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study develops and validates a critical thinking disposition inventory; it measures psychometric properties, not outcomes of training the skill."
+    },
+    {
+      "source_title": "Assessment Strategies for Online Learning: Engagement and Authenticity",
+      "outcome": "off_topic",
+      "reason": "The abstract is about online education assessment theory and practice, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "The State of Dispositional Mindfulness Research",
+      "outcome": "off_topic",
+      "reason": "Bibliometric review of trait mindfulness research, not about critical thinking or epistemic vigilance"
+    },
+    {
+      "source_title": "Artificial Intelligence in Education: A Review",
+      "outcome": "off_topic",
+      "reason": "Study is about AI's impact on education administration, instruction, and learning, not about critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "The school and society",
+      "outcome": "off_topic",
+      "reason": "Philosophical treatise on progressive education and child-centered learning, not about critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Conceptualizing AI literacy: An exploratory review",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Exploratory review conceptualizing AI literacy; no measured outcome of the skill."
+    },
+    {
+      "source_title": "Impact of Artificial Intelligence on Dental Education: A Review and Guide for Curriculum Update",
+      "outcome": "off_topic",
+      "reason": "Review of AI applications in dental education and curriculum updates, not about critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "A Review of Artificial Intelligence (AI) in Education from 2010 to 2020",
+      "outcome": "off_topic",
+      "reason": "Content analysis of AI applications in education research, not about critical thinking or epistemic vigilance"
+    },
+    {
+      "source_title": "The Effectiveness of Problem Based Learning and Aptitude Treatment Interaction in Improving Mathematical Creative Thinking Skills on Curriculum 2013",
+      "outcome": "off_topic",
+      "reason": "Study compares learning models for creative mathematical thinking, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Curriculum initiatives to enhance research skills acquisition by medical students: a scoping review",
+      "outcome": "off_topic",
+      "reason": "Study is about medical curriculum initiatives for student research experience, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "A Survey of Large Language Models",
+      "outcome": "off_topic",
+      "reason": "survey of LLM techniques, not about critical thinking or epistemic vigilance skills in humans"
+    },
+    {
+      "source_title": "Cognitive Architecture and Instructional Design: 20 Years Later",
+      "outcome": "off_topic",
+      "reason": "The study is about cognitive load theory and instructional design, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Cognitive training for people with mild to moderate dementia",
+      "outcome": "off_topic",
+      "reason": "Study is about cognitive training for people with dementia, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "The Cognitive Affective Model of Immersive Learning (CAMIL): a Theoretical Research-Based Model of Learning in Immersive Virtual Reality",
+      "outcome": "off_topic",
+      "reason": "Study is about a theoretical model of learning in immersive virtual reality, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Cognitive and behavioural flexibility: neural mechanisms and clinical considerations",
+      "outcome": "off_topic",
+      "reason": "Study is about cognitive/behavioural flexibility and its neural systems, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Effects of Physical Exercise on Cognitive Functioning and Wellbeing: Biological and Psychological Benefits",
+      "outcome": "off_topic",
+      "reason": "Study is about physical exercise effects on brain plasticity and neurodegeneration, not critical thinking."
+    },
+    {
+      "source_title": "Cognitive reflection correlates with behavior on Twitter",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Correlational study finding higher cognitive reflection associated with more discerning social media use, supporting the skill's importance rather than contradicting it."
+    },
+    {
+      "source_title": "40 years of cognitive architectures: core cognitive abilities and practical applications",
+      "outcome": "off_topic",
+      "reason": "Survey of cognitive architectures in AI research, not about critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "The structure of performance and training in esports",
+      "outcome": "off_topic",
+      "reason": "Study is about esports training and competency structures, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "IOC consensus statement: dietary supplements and the high-performance athlete",
+      "outcome": "off_topic",
+      "reason": "study is about dietary supplements and nutrition for elite athletes, not critical thinking or epistemic vigilance"
+    },
+    {
+      "source_title": "Countering Misinformation and Fake News Through Inoculation and Prebunking",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Review concludes inoculation is a promising way to boost resilience to misinformation, supporting the skill's value."
+    },
+    {
+      "source_title": "Psychological inoculation improves resilience against misinformation on social media",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found inoculation videos improved manipulation recognition and discernment, supporting the skill's value."
+    },
+    {
+      "source_title": "Good News about Bad News: Gamified Inoculation Boosts Confidence and Cognitive Immunity Against Fake News",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The intervention significantly improved ability to spot misinformation, supporting the skill's value."
+    },
+    {
+      "source_title": "Inoculating Against Fake News About COVID-19",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Position/theory paper proposing psychological inoculation; no measured outcome showing the skill failed."
+    },
+    {
+      "source_title": "Psychological Inoculation against Misinformation: Current Evidence and Future Directions",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study reviews evidence that inoculation interventions successfully help people resist misinformation, supporting the skill's value."
+    },
+    {
+      "source_title": "Prebunking interventions based on the psychological theory of “inoculation” can reduce susceptibility to misinformation across cultures.",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found the inoculation game successfully conferred resistance to misinformation across cultures, supporting the skill's value."
+    },
+    {
+      "source_title": "The different forms of COVID-19 misinformation and their consequences",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This study describes belief structures in COVID conspiracy theories and misinformation; it measures no outcome of a critical-thinking intervention."
+    },
+    {
+      "source_title": "Employee Voice and Silence: Taking Stock a Decade Later",
+      "outcome": "off_topic",
+      "reason": "Study reviews employee voice and silence in organizations, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "How workplace support for the <scp>COVID</scp>‐19 pandemic and personality traits affect changes in employees' affective commitment to the organization and job‐related well‐being",
+      "outcome": "off_topic",
+      "reason": "study is about organizational support, affective commitment, and job-related well-being during COVID-19, not critical thinking"
+    },
+    {
+      "source_title": "Critical thinking in business education: current outlook and future prospects",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a thematic literature review of critical thinking in business education, not a measurement of an intervention outcome."
+    },
+    {
+      "source_title": "Why Does Workplace Gender Diversity Matter? Justice, Organizational Benefits, and Policy",
+      "outcome": "off_topic",
+      "reason": "Study is about workplace gender diversity benefits, not critical thinking or epistemic vigilance."
+    },
+    {
+      "source_title": "Reciprocal relationships between dispositional optimism and work experiences: A five-wave longitudinal investigation.",
+      "outcome": "off_topic",
+      "reason": "Study is about dispositional optimism and work experiences, not critical thinking or epistemic vigilance."
+    }
+  ],
+  "stopped_because": "query_budget",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking instruction college students randomized controlled trial",
+        "epistemic vigilance misinformation detection meta-analysis",
+        "argument evaluation reasoning bias training replication"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking instruction college students randomized controlled trial",
+        "epistemic vigilance misinformation detection meta-analysis",
+        "argument evaluation reasoning bias training replication"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 28,
+      "new_findings": 3
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking transfer far transfer generalization",
+        "detecting fake news adolescents intervention",
+        "source evaluation credibility judgment training"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking transfer far transfer generalization",
+        "detecting fake news adolescents intervention",
+        "source evaluation credibility judgment training"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 25,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "debiasing intervention reasoning fallacies replication",
+        "open-mindedness disposition assessment adults",
+        "scientific reasoning skills school curriculum systematic review"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "debiasing intervention reasoning fallacies replication",
+        "open-mindedness disposition assessment adults",
+        "scientific reasoning skills school curriculum systematic review"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 23,
+      "new_findings": 5
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "cognitive reflection test performance training",
+        "inoculation theory misinformation resistance replication",
+        "critical thinking dispositions workplace employees longitudinal"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "cognitive reflection test performance training",
+        "inoculation theory misinformation resistance replication",
+        "critical thinking dispositions workplace employees longitudinal"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 21,
+      "new_findings": 0
+    }
+  ]
+}
