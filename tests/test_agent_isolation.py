@@ -659,7 +659,46 @@ class AssessPromptScopeTest(unittest.TestCase):
         sys.path.insert(0, str(AGENTS_DIR))
         import counter_evidence as ce
 
-        self.assertNotIn(ce.PROMPT_VERSION, {"counter-evidence-v1", "counter-evidence-v2"})
+        self.assertNotIn(
+            ce.PROMPT_VERSION,
+            {"counter-evidence-v1", "counter-evidence-v2", "counter-evidence-v3"},
+        )
+
+    def test_both_prompts_state_who_the_skill_is_for(self) -> None:
+        """v4 passes age and audience; v1-v3 never did.
+
+        Without them the assessor accepted a digital-health-literacy trial in
+        older adults as counter-evidence about media literacy in schools -- the
+        words overlap, the populations do not, and nothing in the prompt let it
+        tell the difference.
+        """
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        for label, prompt in (("assess", ce.ASSESS_PROMPT), ("query", ce.QUERY_PROMPT)):
+            with self.subTest(prompt=label):
+                self.assertIn("{audience}", prompt)
+                self.assertIn("{age_range}", prompt)
+
+    def test_a_weaker_positive_effect_is_named_as_a_rejection(self) -> None:
+        """The leak that slipped most often across the three measured runs.
+
+        Rule 3 always said a smaller positive effect does not count; the model
+        accepted "affected to a lesser degree" and "a small benefit" anyway. v4
+        quotes those phrases back, so a rewrite that drops them is visible.
+        """
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        for phrase in ("affected to a lesser degree", "a small benefit"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, ce.ASSESS_PROMPT)
+
+    def test_a_review_of_other_work_is_named_as_a_rejection(self) -> None:
+        sys.path.insert(0, str(AGENTS_DIR))
+        import counter_evidence as ce
+
+        self.assertIn("Nor is a REVIEW", ce.ASSESS_PROMPT)
 
     def test_the_query_prompt_does_not_teach_stacked_negations(self) -> None:
         """The strategy that produced 60% off-topic retrieval must not return."""
