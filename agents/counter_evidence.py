@@ -125,13 +125,24 @@ SEARCH_BACKENDS = (
 #
 #   a weaker positive effect read as a null   -> ASSESS_PROMPT rule 3, by example
 #   a review's summary read as a measurement  -> ASSESS_PROMPT rule 1
-#   a neighbouring construct, wrong population -> both prompts now get age and
-#                                                 audience, which they never had
+#   a neighbouring construct, wrong population -> the ASSESS_PROMPT now gets age
+#                                                 and audience, which it never had
+#
+# v5 exists because v4 gave the population to BOTH prompts, and the query half of
+# that was a mistake. One measured v4 run on skill-self-regulated-learning:
+# off_topic rose from 54% to 75% and on-topic sources fell from 39 to 16 against
+# the v3 run on the same skill -- because "students", "children", "adolescents"
+# and "school" are exactly the high-frequency words this prompt already warns
+# about two paragraphs further up. It is the negation-stacking failure again,
+# arriving from the other direction. The three v4 leaks stayed shut in that run,
+# so v5 keeps the assessor half and removes the population from the QUERY_PROMPT
+# only. The two halves were always separable; only one of them was ever measured
+# as a fix.
 #
 # The version is part of the cache key and of every claim's extraction_method,
 # so findings from different generations never silently mix in a measurement.
 # It covers BOTH prompts: changing either one changes what a run measures.
-PROMPT_VERSION = "counter-evidence-v4"
+PROMPT_VERSION = "counter-evidence-v5"
 
 # Where a run's decision trail is written. A reviewer must be able to see which
 # queries were asked, what they returned, and why the graph stopped -- the agent
@@ -211,7 +222,6 @@ JSON following the given schema.
 User:
 Skill: {name}
 Definition: {definition}
-Applies to: {audience}s aged {age_range}
 
 Queries already tried (do not repeat them):
 {tried}
@@ -234,15 +244,18 @@ So: make the query narrow on the SUBJECT, and let the assessor do the filtering 
 for null results — it is strict enough, and it never sees what the search fails \
 to return.
 
-- Lead with the skill's own terminology, and the population above. These are the \
-  words that must match. A query that omits the population invites the wrong one:
-  a run on media literacy returned a digital-health-literacy trial in older
-  adults, and the assessor accepted it.
+- Lead with the skill's own terminology. Those are the words that must match.
+- Name NO population. "students", "children", "adolescents", "school" are among \
+  the most common words in this literature, so they match nearly everything and \
+  push the terms that carry the topic down the ranking. Measured: adding them \
+  raised the off-topic share from 54% to 75% on the same skill. Whether a study \
+  is about the right age group is the assessor's job — it is told the population \
+  and can see it in the abstract, which a search term cannot.
 - At most ONE further term, and only where it concentrates where null results \
   get reported: "meta-analysis", "systematic review", "randomized controlled \
   trial", "replication". These name study TYPES, not outcomes.
 - Never more than one negation word in a query. Prefer none.
-- Vary the angle between queries — a sub-construct, a different age band, a \
+- Vary the angle between queries — a sub-construct, a component skill, a \
   neighbouring intervention. Do not simply restate the skill name.
 
 Response schema:
@@ -337,8 +350,6 @@ def propose_queries(state: State) -> dict[str, Any]:
     prompt = QUERY_PROMPT.format(
         name=skill.get("name", ""),
         definition=skill.get("definition", ""),
-        age_range=skill.get("age_range") or "not specified",
-        audience=skill.get("audience") or "learner",
         tried="\n".join(f"- {q}" for q in state["queries_used"]) or "(none yet)",
         found_count=len(state["findings"]),
     )

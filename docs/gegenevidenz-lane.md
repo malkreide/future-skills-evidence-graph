@@ -286,11 +286,43 @@ digitaler *Gesundheits*kompetenz bei **älteren Erwachsenen** wurde als
 Gegenevidenz zur Medienkompetenz von Schülerinnen angenommen. Der Grund ist
 banal und war lange unsichtbar: **die Prompts kannten die Zielgruppe gar nicht.**
 `age_range` und `audience` stehen im Skill-Record, wurden aber nie übergeben.
-Seit v4 bekommen beide Prompts sie, und der Bewerter prüft die Population
-ausdrücklich mit.
+Seit v4 bekommt der **Bewerter** sie und prüft die Population ausdrücklich mit.
 
 Der dritte Punkt ist der lehrreichste: zwei Prompt-Generationen lang habe ich das
 *Urteil* geschärft, während dem Urteilenden schlicht eine Information fehlte.
+
+## Warum v5 die Hälfte von v4 zurücknimmt
+
+v4 gab die Zielgruppe an **beide** Prompts. Für den Bewerter war das richtig; für
+den Query-Generator war es ein Fehler, und ein gemessener.
+
+Ein v4-Lauf auf `skill-self-regulated-learning`, gegen den v3-Lauf auf demselben
+Skill:
+
+| | v3 | v4 |
+| --- | --- | --- |
+| Quellen | 94 | 71 |
+| `off_topic` | 54 % | **75 %** |
+| `on_topic_no_contradiction` | 39 | **16** |
+| Vorschläge | 4 | 2 |
+
+Die Queries führten daraufhin mit `students`, `children`, `adolescents`,
+`school` — genau den hochfrequenten Wörtern, vor denen der Query-Prompt zwei
+Absätze weiter oben selbst warnt. Es ist derselbe Bag-of-Words-Fehler wie beim
+Stapeln von Negationen, nur aus der anderen Richtung: die Zielgruppe *verengt*
+eine Volltextsuche nicht, sie verwässert sie.
+
+Die drei v4-Leckstellen blieben in diesem Lauf zu — keine „schwächerer positiver
+Effekt", keine Review-Zusammenfassung, keine falsche Population unter den
+Vorschlägen. Die Reparatur wirkt also, nur wurde ihr die Datenbasis entzogen.
+
+**v5 behält deshalb die Bewerter-Hälfte und nimmt nur die Query-Hälfte zurück.**
+Die Zielgruppe gehört ins **Urteil**, nie in die **Suchbegriffe** — der Bewerter
+sieht das Abstract und kann die Population dort prüfen, ein Suchterm kann das
+nicht. `test_the_query_prompt_is_not_told_the_population` hält das fest; die
+Änderung, die er blockiert, sieht wie eine offensichtliche Verbesserung aus,
+wurde von einem echten Fehlschlag begründet, und nur die Messung sagte etwas
+anderes.
 
 ## Was die Lane nicht darf
 
