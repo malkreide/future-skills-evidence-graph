@@ -4,312 +4,593 @@
   "model": "claude-opus-4-8",
   "provider": "anthropic",
   "created_at": "2026-08-01",
-  "rounds": 2,
+  "rounds": 4,
   "queries_used": [
     "self-regulated learning intervention meta-analysis",
-    "metacognitive strategy training academic achievement randomized controlled trial",
-    "self-monitoring goal setting students systematic review",
-    "self-regulated learning boundary conditions",
+    "self-monitoring goal setting students randomized controlled trial",
+    "metacognitive strategy training academic achievement systematic review",
+    "self-regulated learning primary school children replication",
     "calibration accuracy metacognitive monitoring students",
-    "self-regulation training transfer failure classroom"
+    "self-regulation training transfer college students randomized controlled trial",
+    "self-regulated learning online learning meta-analysis",
+    "self-efficacy academic self-regulation adolescents",
+    "self-reflection journaling learning outcomes randomized controlled trial",
+    "self-regulated learning strategy instruction meta-analysis",
+    "self-regulation microanalysis validity measurement",
+    "study skills training academic performance randomized controlled trial"
   ],
-  "sources_examined": 50,
-  "findings": 0,
-  "proposed": [],
-  "rejected": 50,
+  "sources_examined": 94,
+  "findings": 4,
+  "proposed": [
+    {
+      "claim_id": "claim-beware-of-metacognitive-laziness-effects-of-generative-artificial-intell",
+      "source_id": "src-beware-of-metacognitive-laziness-effects-of-generative-artificial-intell",
+      "source_title": "Beware of metacognitive laziness: Effects of generative artificial intelligence on learning motivation, processes, and performance",
+      "source_url": "https://openalex.org/W4405211386",
+      "quote": "What is particularly noteworthy is that AI technologies such as ChatGPT may promote learners' dependence on technology and potentially trigger “metacognitive laziness”.",
+      "reason": "Experimental study measured SRL processes and found ChatGPT support triggered metacognitive laziness, undermining self-regulation despite improved task performance."
+    },
+    {
+      "claim_id": "claim-a-cross-cultural-investigation-on-perseverance-self-regulated-learning-m",
+      "source_id": "src-a-cross-cultural-investigation-on-perseverance-self-regulated-learning-m",
+      "source_title": "A cross-cultural investigation on perseverance, self-regulated learning, motivation, and achievement",
+      "source_url": "https://openalex.org/W3161601550",
+      "quote": "Control strategy was stronger positive mediators of achievement in Western countries, whereas memorisation and elaboration strategy use and instrumental motivation more negatively mediated the effect of perseverance on achievement in Western countries.",
+      "reason": "Study measured self-regulated learning strategies as mediators and found memorisation and elaboration strategies negatively mediated achievement in Western countries, a reversed effect."
+    },
+    {
+      "claim_id": "claim-the-impact-of-cooperation-and-competition-on-metacognitive-monitoring-in",
+      "source_id": "src-the-impact-of-cooperation-and-competition-on-metacognitive-monitoring-in",
+      "source_title": "The Impact of Cooperation and Competition on Metacognitive Monitoring in Classroom Context",
+      "source_url": "https://openalex.org/W3022256608",
+      "quote": "Results indicated no improvement in monitoring accuracy due to classroom conditions.",
+      "reason": "The metacognitive monitoring training intervention produced no improvement in monitoring accuracy, and even increased overconfidence in the competitive condition."
+    },
+    {
+      "claim_id": "claim-metacognitive-training-and-online-community-college-students-learning-ca",
+      "source_id": "src-metacognitive-training-and-online-community-college-students-learning-ca",
+      "source_title": "Metacognitive Training and Online Community College Students’ Learning Calibration and Performance",
+      "source_url": "https://openalex.org/W3096588710",
+      "quote": "Still, relative and absolute calibration accuracy (measured as the difference between judgments of learning and actual performance) showed similar results in both the control and experimental group.",
+      "reason": "Metacognitive monitoring training (an intervention in the skill) failed to improve calibration accuracy relative to control, a measured null result."
+    }
+  ],
+  "rejected": 90,
   "rejected_by_outcome": {
-    "off_topic": 40,
-    "on_topic_no_contradiction": 10
+    "off_topic": 51,
+    "on_topic_no_contradiction": 39
   },
   "not_proposed": [
     {
-      "source_title": "An Exploration of Providers’ Perspectives on the Impact of Incarceration-Related Stigma on Formerly Incarcerated Women’s Mental Health",
-      "outcome": "off_topic",
-      "reason": "study is about mental health providers' perspectives on incarceration-related stigma affecting formerly incarcerated women, not self-regulated learning"
-    },
-    {
-      "source_title": "Association Between Anxiety and RRBs in Autistic Youth: Role of Ethnicity",
-      "outcome": "off_topic",
-      "reason": "Study is about anxiety and restricted repetitive behaviors in autistic youth, not self-regulated learning."
-    },
-    {
-      "source_title": "The Ethical and Legal Complexities of Regulating Companion AI Chatbots",
-      "outcome": "off_topic",
-      "reason": "Study is about ethical and legal frameworks for companion AI chatbots, not self-regulated learning."
-    },
-    {
-      "source_title": "Continental shift: operations and supply chain management research from an African perspective",
-      "outcome": "off_topic",
-      "reason": "Paper is about operations and supply chain management research in Africa, not self-regulated learning."
-    },
-    {
-      "source_title": "The Relationship Between Depression and Cognitive Proficiency Index Across Biological Sex",
-      "outcome": "off_topic",
-      "reason": "Study is about depression and cognitive functioning (working memory, processing speed) across biological sex, not self-regulated learning."
-    },
-    {
-      "source_title": "Perceived Effectiveness of Cigar Warnings Among Young People in the U.S.",
-      "outcome": "off_topic",
-      "reason": "Study is about cigar packaging warning labels and youth smoking behavior, not self-regulated learning."
-    },
-    {
-      "source_title": "Evolving Roles: School Counselors Addressing Mental Health in PK-12 Education",
-      "outcome": "off_topic",
-      "reason": "study is about school counselors and student mental health access, not self-regulated learning"
-    },
-    {
-      "source_title": "Hope Kit Program",
-      "outcome": "off_topic",
-      "reason": "Study is about a suicide prevention program for rural youth, not self-regulated learning."
-    },
-    {
-      "source_title": "Investigating the Role of Patient-Provider Interaction Quality and Illness Interference in Patients' Basic Psychological Need Fulfillment and Subjective Well-Being",
-      "outcome": "off_topic",
-      "reason": "Study is about patient-provider communication and its association with autonomy, competence, relatedness, not self-regulated learning."
-    },
-    {
-      "source_title": "A Qualitative Study of Immigration Trauma, Posttraumatic Growth, and the College Experience Among MENA Immigrant Students",
+      "source_title": "Artificial intelligence in language instruction: impact on English learning achievement, L2 motivation, and self-regulated learning",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Qualitative study of MENA immigrant students' coping and resilience; where relevant to self-regulated learning, it shows positive academic growth, not evidence against the skill."
+      "reason": "Study found AI-mediated instruction increased self-regulated learning and outcomes, supporting the skill's value."
     },
     {
-      "source_title": "Educator Experiences of Schoolwide PBIS Discipline Implementation: Exploring School Culture in Private PK–12 Schools",
-      "outcome": "off_topic",
-      "reason": "Study is about educators' experiences implementing PBIS discipline systems and school culture, not self-regulated learning."
-    },
-    {
-      "source_title": "Curriculum innovation through artificial intelligence and its influence on pupils’ independent learning in Azerbaijan",
+      "source_title": "Measuring actual learning versus feeling of learning in response to being actively engaged in the classroom",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Study found positive associations between AI integration, curriculum innovation, and independent learning skills, supporting rather than contradicting the skill's value."
+      "reason": "The study measures perception vs. actual learning under active vs. passive instruction; it discusses self-regulation as potentially affected but does not measure that developing self-regulated learning fails to improve outcomes."
     },
     {
-      "source_title": "Augmented Reality (AR) and Gamification on Immersive Learning Experiences and Perceived Academic Performance: Using SEM and Network Analysis",
-      "outcome": "off_topic",
-      "reason": "study concerns critical thinking, cognitive load, self-efficacy, and immersive learning, not self-regulated learning"
-    },
-    {
-      "source_title": "Neuroscience-based educational intervention for enhancing academic adaptation, self-efficacy, and mental health in undergraduate students",
+      "source_title": "The Cognitive Affective Model of Immersive Learning (CAMIL): a Theoretical Research-Based Model of Learning in Immersive Virtual Reality",
       "outcome": "on_topic_no_contradiction",
-      "reason": "The intervention positively impacted academic regulation and study strategies, supporting the skill's value rather than contradicting it."
+      "reason": "Theoretical framework paper synthesizing existing research; no measured outcome showing self-regulation fails to help."
     },
     {
-      "source_title": "The Effectiveness of an Augmented Reality-Integrated Physics Textbook on Students' Critical and Computational Thinking Skills",
-      "outcome": "off_topic",
-      "reason": "Study is about AR-based physics textbooks improving critical thinking and computational thinking, not self-regulated learning."
-    },
-    {
-      "source_title": "Unveiling the impact of goal types: enhancing self-efficacy in rehabilitation robotics",
+      "source_title": "Learning during COVID-19: the role of self-regulated learning, motivation, and procrastination for perceived competence",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Study measured goal-setting effects on self-efficacy in stroke rehab robotics; found positive effects, no contradiction of the skill's value."
+      "reason": "Correlational study showing SRL use associated with higher perceived competence and less procrastination, which supports rather than contradicts the skill's value."
     },
     {
-      "source_title": "Feasibility of the Italian version of the Teen Online Problem Solving Program (I-TOPS) in a sample of adolescents with acquired brain injury: Results from a randomized controlled trial",
-      "outcome": "off_topic",
-      "reason": "Study is about feasibility of an executive-function rehabilitation program for adolescents with acquired brain injury, not self-regulated learning."
-    },
-    {
-      "source_title": "Development of Academic Procrastination Model for Nursing Students at Institute of National Importance: Expanding Horizons in Nursing Education",
+      "source_title": "The effectiveness of self-regulated learning (SRL) interventions on L2 learning achievement, strategy employment and self-efficacy: A meta-analytic study",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Correlational study finding higher procrastination associated with lower self-efficacy and performance; no intervention tested SRL and no reversed outcome shown."
+      "reason": "Meta-analysis found positive effects of SRL interventions on achievement, self-efficacy, and strategy use, supporting the skill's value."
     },
     {
-      "source_title": "Social Media Use and Academic Burnout among Pharmacy Students: Does Self-Regulated Learning Moderate the Relationship?",
+      "source_title": "The Role of Direct Strategy Instruction and Indirect Activation of Self-Regulated Learning—Evidence from Classroom Observation Studies",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Study found self-regulated learning significantly reduces burnout (a positive effect); the null result concerns only the moderation of social media effects, not the skill's own value."
+      "reason": "Literature review of classroom observation studies about how teachers support SRL; it does not measure an intervention outcome showing SRL fails to help."
     },
     {
-      "source_title": "Entrepreneurial growth mindset boosts entrepreneurial intention via the serial path of cognitive flexibility and entrepreneurial alertness",
-      "outcome": "off_topic",
-      "reason": "Study is about entrepreneurial growth mindset, cognitive flexibility, and entrepreneurial intention, not self-regulated learning."
-    },
-    {
-      "source_title": "The Role of Generative Artificial Intelligence in Korean Language Learning: Applications, Challenges, and Instructional Strategies",
-      "outcome": "off_topic",
-      "reason": "Conceptual review of generative AI in Korean language learning, not about self-regulated learning"
-    },
-    {
-      "source_title": "Let’s Read Together: AAC-Supported Interactive Reading in the Classroom",
-      "outcome": "off_topic",
-      "reason": "Study is about AAC-supported reading intervention for emergent literacy in children with disabilities, not self-regulated learning."
-    },
-    {
-      "source_title": "Legislation Is Hot: Reforming the Troubled Teen Industry in California",
-      "outcome": "off_topic",
-      "reason": "This is a patient testimonial advertisement for a school, not about self-regulated learning."
-    },
-    {
-      "source_title": "The relationship between socially aversive personality of project managers and project performance : Evidence from the UAE",
-      "outcome": "off_topic",
-      "reason": "Study is about dark personality traits of project managers and project performance, not self-regulated learning."
-    },
-    {
-      "source_title": "La autoevaluación y el entrenamiento de estrategias de aprendizaje personalizadas mediante una aplicación para teléfonos móviles en educación superior: el desarrollo y análisis psicométrico de la Escala de Autorregulación del Aprendizaje",
+      "source_title": "Effectiveness of Universal Self-regulation–Based Interventions in Children and Adolescents",
       "outcome": "on_topic_no_contradiction",
-      "reason": "This is a scale-development/psychometric validation study; it measured no learning outcome of an intervention."
+      "reason": "Meta-analysis found interventions improved self-regulation and distal outcomes, supporting the skill's importance."
     },
     {
-      "source_title": "Perfectionism: Secondary pupils’ perceptions of pressures contributing to perfectionism, and its relationship with emotional wellbeing",
-      "outcome": "off_topic",
-      "reason": "Study is about perfectionism and its links to depression and anxiety in adolescents, not self-regulated learning."
-    },
-    {
-      "source_title": "Enhancing Patient Understanding: Standardizing Cardiac Medication Education Using Teach-Back for Heart Failure",
-      "outcome": "off_topic",
-      "reason": "Study is about teach-back methodology for heart failure patient medication education, not self-regulated learning."
-    },
-    {
-      "source_title": "Multispecies Weed Detection Using Unmanned Aerial Vehicles and Deep Learning Object Detection Models in Utah Forage Crop Corn Field",
-      "outcome": "off_topic",
-      "reason": "Study is about drone-based AI weed detection in corn fields, not self-regulated learning."
-    },
-    {
-      "source_title": "Bridging the Gap: Educator Experiences Supporting Students During the Transition from Middle to High School",
-      "outcome": "off_topic",
-      "reason": "Study is about educators' experiences supporting middle-to-high-school transition, not self-regulated learning."
-    },
-    {
-      "source_title": "Supporting interprofessional collaboration: The boundary work carried out by nurse managers in public hospitals",
-      "outcome": "off_topic",
-      "reason": "Study is about nurse managers' boundary work and interprofessional collaboration in hospitals, not self-regulated learning."
-    },
-    {
-      "source_title": "Refusing expectation? Class, masculinity and selfhood in a longitudinal analysis of young men’s educational transitions/ trajectories, age 10-22",
-      "outcome": "off_topic",
-      "reason": "Study concerns social reproduction and young men's educational trajectories through a Bourdieusian lens, not self-regulated learning."
-    },
-    {
-      "source_title": "Toward a global eco-social policy? The OECD and Green Keynesianism",
-      "outcome": "off_topic",
-      "reason": "Study is about eco-social policy paradigms in international organizations like the OECD, not about self-regulated learning."
-    },
-    {
-      "source_title": "PARENTAL ROLES IN SHAPING CHILDREN'S EMOTIONAL INTELLIGENCE AMID SOCIOCULTURAL CHANGE: A QUALITATIVE STUDY OF MUSLIM FAMILIES IN NAGORI BAH JAMBI III",
-      "outcome": "off_topic",
-      "reason": "study is about parental roles in developing children's emotional intelligence in Muslim families, not self-regulated learning"
-    },
-    {
-      "source_title": "The Relationship Between Adverse Childhood Experiences, Protective and Compensatory Experiences, and Parenting Attitudes Among Fathers",
-      "outcome": "off_topic",
-      "reason": "Study concerns fathers' childhood experiences and parenting attitudes, not self-regulated learning."
-    },
-    {
-      "source_title": "Health Heritage and Public History in Northern Ireland",
-      "outcome": "off_topic",
-      "reason": "about a public history project on health history in Belfast, not self-regulated learning"
-    },
-    {
-      "source_title": "Modelling Classroom Co-Regulation from LMS Interaction Logs for Real-Time Classroom Orchestration",
+      "source_title": "Granularity matters: comparing different ways of measuring self-regulated learning",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Develops and validates a co-regulation measurement framework; no test of whether the skill improves outcomes."
+      "reason": "Methodological review comparing measurement approaches for SRL; it does not measure outcomes of developing the skill."
     },
     {
-      "source_title": "Interprofessional teams see differently: a cross-over study using dual mobile eye-tracking",
+      "source_title": "Aging and aging-related diseases: from molecular mechanisms to interventions and treatments",
       "outcome": "off_topic",
-      "reason": "Study is about interprofessional team visual attention patterns in clinical cases, not self-regulated learning."
+      "reason": "Study concerns biological aging and aging-related diseases, not self-regulated learning."
     },
     {
-      "source_title": "Evaluating the Validity of a Spoken Dialog System-Mediated Role-Play Test for Assessing Second Language Oral Communication",
+      "source_title": "Scientific Machine Learning Through Physics–Informed Neural Networks: Where we are and What’s Next",
       "outcome": "off_topic",
-      "reason": "Study is about validating an AI-mediated oral English speaking test, not self-regulated learning."
+      "reason": "Study is about physics-informed neural networks for solving differential equations, not human self-regulated learning."
     },
     {
-      "source_title": "Pronunciation assessment in foreign language learning: Reliability and scoring bias in human–generative AI evaluation",
+      "source_title": "Clinical Virtual Simulation in Nursing Education: Randomized Controlled Trial",
       "outcome": "off_topic",
-      "reason": "Study is about AI vs human reliability in pronunciation assessment, not self-regulated learning."
+      "reason": "Study concerns clinical virtual simulation effects on nursing students' knowledge retention, clinical reasoning, self-efficacy and satisfaction, not self-regulated learning."
     },
     {
-      "source_title": "Pharmacology educators as leaders of programmatic assessment for safe prescribing in competency-based medical education",
+      "source_title": "Clinical Targets for Continuous Glucose Monitoring Data Interpretation: Recommendations From the International Consensus on Time in Range",
       "outcome": "off_topic",
-      "reason": "position paper on pharmacology curriculum leadership and programmatic assessment for prescribing competence, not self-regulated learning"
+      "reason": "Study is about continuous glucose monitoring metrics and clinical consensus recommendations for diabetes, not self-regulated learning."
     },
     {
-      "source_title": "Individual Differences in Generative AI Effectiveness: An Empirical Puzzle for HRD Research",
+      "source_title": "Application of Artificial Intelligence powered digital writing assistant in higher education: randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns AI-powered writing tool effects on engagement, self-efficacy and emotions, not self-regulated learning."
+    },
+    {
+      "source_title": "A Critical Review of Research on Student Self-Assessment",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Perspectives piece with a research agenda, not a measured outcome of self-regulated learning."
+      "reason": "Review of self-assessment research; no measured result showing the skill fails to improve outcomes."
     },
     {
-      "source_title": "Which factors matter in data-driven peer learning: Social intimacy, proficiency gaps, or selection autonomy?",
+      "source_title": "The role of prefrontal cortex in cognitive control and executive function",
       "outcome": "off_topic",
-      "reason": "Study is about peer learning partner selection in a data-driven collaborative learning environment, not self-regulated learning."
+      "reason": "study concerns cognitive control and executive function neurobiology and psychopathology, not self-regulated learning"
     },
     {
-      "source_title": "Anchoring Hypothesis and the Illusion of Learning: Why High-Performing Practice Students Underperform on High-Stakes Assessments",
+      "source_title": "Managing Cancer and Living Meaningfully (CALM): A Randomized Controlled Trial of a Psychological Intervention for Patients With Advanced Cancer",
+      "outcome": "off_topic",
+      "reason": "Study concerns a psychotherapeutic intervention for depression in advanced cancer patients, not self-regulated learning."
+    },
+    {
+      "source_title": "Promoting resilience in adolescents and young adults with cancer: Results from the PRISM randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about a psychosocial resilience intervention for young cancer patients, not self-regulated learning"
+    },
+    {
+      "source_title": "Cohort Profile: Design and methods of the PREDIMED-Plus randomized trial",
+      "outcome": "off_topic",
+      "reason": "Study is about Mediterranean diet and coronary heart disease, not self-regulated learning."
+    },
+    {
+      "source_title": "The Effect of Metacognitive Strategies Implementation on Students’ Reading Comprehension Achievement",
       "outcome": "on_topic_no_contradiction",
-      "reason": "Study observes a practice-exam performance gap under adaptive systems but did not measure an outcome of training self-regulated learning; observational pattern about learning illusions, not a failed SRL intervention."
+      "reason": "Study found metacognitive strategies had a large positive effect on reading achievement, supporting the skill."
     },
     {
-      "source_title": "Digital Transformation in English Writing Instruction for Cross-border E-commerce: A Quasi-experimental Study in Chinese Application-oriented Universities",
+      "source_title": "Metacognitive and Metaemotional Training Strategies through the Nine-layer Pyramid Model of Emotional Intelligence",
       "outcome": "off_topic",
-      "reason": "Study is about a digital teaching platform improving English writing proficiency, not self-regulated learning."
+      "reason": "Study is about developing emotional intelligence via metacognitive/metaemotional skills, not self-regulated learning."
     },
     {
-      "source_title": "Tennessee High School Teachers' Perceptions of Culturally Inclusive Curriculum and Its Impact on African American Students’ Achievement Motivation",
+      "source_title": "The Relationship Between Executive Functions and Academic Performance in Primary Education: Review and Meta-Analysis",
       "outcome": "off_topic",
-      "reason": "Study concerns teachers' perceptions of culturally inclusive curriculum for African American students, not self-regulated learning."
+      "reason": "Study concerns executive functions and academic performance, not self-regulated learning."
     },
     {
-      "source_title": "Paraeducator Perceptions of Teacher-Supervisory Behaviors and Their Effects on Paraeducator Retention",
-      "outcome": "off_topic",
-      "reason": "Study is about paraeducator retention and teacher-supervisor leadership behaviors, not self-regulated learning."
+      "source_title": "Prediction of academic achievement based on learning strategies and outcome expectations among medical students",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found self-regulating learning strategies positively predict academic achievement, supporting the skill's value."
     },
     {
-      "source_title": "From Evidence to Impact: Supporting Sensemaking and Instructional Revision in STEM Classrooms",
+      "source_title": "Motivation-Achievement Cycles in Learning: a Literature Review and Research Agenda",
       "outcome": "off_topic",
-      "reason": "Study is about STEM instruction developing scientific reasoning, not self-regulated learning."
+      "reason": "Study concerns the reciprocal relationship between motivation and academic achievement, not self-regulated learning."
     },
     {
-      "source_title": "From learners to contributors: how an AI-infused STEM program shaped youth identity and initiated them to an AI-future",
-      "outcome": "off_topic",
-      "reason": "Study is about AI/machine learning literacy education, not self-regulated learning."
+      "source_title": "Transfer of metacognitive skills in self-regulated learning: an experimental training study",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The study found hybrid training improved both near and far transfer of metacognitive skills, a positive effect supporting the skill's value."
     },
     {
-      "source_title": "Cultivating Adab Through Leadership: How Educational Leaders Shape Islamic Character in Cambodian Tahfiz Boarding Schools",
+      "source_title": "The Role of Metacognitive Components in Creative Thinking",
       "outcome": "off_topic",
-      "reason": "Study is about leadership practices for cultivating adab (moral character) in Cambodian Muslim boarding schools, not self-regulated learning."
+      "reason": "Review about metacognition's role in creative thinking, not self-regulated learning outcomes."
     },
     {
-      "source_title": "Disaster Management Practices and Occupational Health and Safety in a Large-Scale Mining Operation in Chingola, Zambia: With Reference to the Nchanga Operations of Konkola Copper Mines",
+      "source_title": "Metacognitive Skills and Problem-Solving",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found metacognitive skills positively affect problem-solving success, supporting the skill's importance."
+    },
+    {
+      "source_title": "School Engagement, Academic Achievement, and Self-Regulated Learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found high engagement associated with better self-regulation and grades, supporting the skill's value."
+    },
+    {
+      "source_title": "A classification tool to foster self-regulated learning with generative artificial intelligence by applying self-determination theory: a case of ChatGPT",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Delphi study developing a classification tool from teacher input; no measured outcome of an SRL intervention showing failure."
+    },
+    {
+      "source_title": "The Self-Regulation-View in Writing-to-Learn: Using Journal Writing to Optimize Cognitive Load in Self-Regulated Learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The abstract describes a research program supporting SRL via journal writing and reports positive/supportive effects, not evidence against the skill's value."
+    },
+    {
+      "source_title": "Relationships between self-regulated learning strategies, learning motivation and mathematics achievement",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found positive relationships between self-regulated learning and motivation and achievement, supporting the skill's value."
+    },
+    {
+      "source_title": "Evidence for Social and Emotional Learning in Schools",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "SEL meta-analyses show consistent positive effects, supporting rather than contradicting the skill's value."
+    },
+    {
+      "source_title": "The Role of Mental Effort in Fostering Self-Regulated Learning with Problem-Solving Tasks",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The review reports that fostering self-monitoring and self-regulation improves learning outcomes, supporting the skill's value."
+    },
+    {
+      "source_title": "ADHD: Current Concepts and Treatments in Children and Adolescents",
       "outcome": "off_topic",
-      "reason": "study is about disaster management and emergency preparedness at a copper mine, not self-regulated learning"
+      "reason": "The study is about ADHD diagnosis, neurobiology, and treatment, not self-regulated learning."
+    },
+    {
+      "source_title": "Self-Report is Indispensable to Assess Students’ Learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Methodological discussion of self-report measures for learning processes; no measured outcome of skill training."
+    },
+    {
+      "source_title": "Computer‐based scaffoldings influence students' metacognitive monitoring and problem‐solving efficiency in an intelligent tutoring system",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found metacognitive scaffolding improved monitoring accuracy and efficiency, supporting the skill's value."
+    },
+    {
+      "source_title": "Individual differences in local and global metacognitive judgments",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Descriptive study of predictors of metacognitive judgment accuracy; no intervention outcome showing the skill failed to help."
+    },
+    {
+      "source_title": "Measuring Metacognitive Knowledge, Monitoring, and Control in the Pharmacy Classroom and Experiential Settings",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a methodological user's guide on measuring metacognition, not a measured outcome study; it presents no result showing the skill fails to help."
+    },
+    {
+      "source_title": "Modelling the Components of Metacognitive Awareness",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study models relationships between metacognitive components and confirms planning/goals predict success; no failed intervention shown."
+    },
+    {
+      "source_title": "Mindfulness training reduces loneliness and increases social contact in a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "study is about mindfulness training reducing loneliness and social isolation, not self-regulated learning"
+    },
+    {
+      "source_title": "Effectiveness of an Internet- and App-Based Intervention for College Students With Elevated Stress: Randomized Controlled Trial",
+      "outcome": "off_topic",
+      "reason": "Study is about an internet-based stress management intervention for college students' mental health, not self-regulated learning."
+    },
+    {
+      "source_title": "A randomized controlled trial of emotion regulation therapy for generalized anxiety disorder with and without co-occurring depression.",
+      "outcome": "off_topic",
+      "reason": "Study concerns Emotion Regulation Therapy for anxiety and depression, not self-regulated learning."
+    },
+    {
+      "source_title": "The Effect of Cognitive Behavioral Therapy on Depression, Anxiety, and Stress in Patients With COVID-19: A Randomized Controlled Trial",
+      "outcome": "off_topic",
+      "reason": "Study is about CBT reducing psychological distress in COVID-19 patients, not self-regulated learning."
+    },
+    {
+      "source_title": "Effect of Artificial Intelligence Tutoring vs Expert Instruction on Learning Simulated Surgical Skills Among Medical Students",
+      "outcome": "off_topic",
+      "reason": "Study compares AI tutoring versus expert instruction for surgical simulation skill acquisition, not self-regulated learning."
+    },
+    {
+      "source_title": "A randomised active-controlled trial to examine the effects of an online mindfulness intervention on executive control, critical thinking and key thinking dispositions in a university student sample",
+      "outcome": "off_topic",
+      "reason": "Study is about mindfulness meditation effects on critical thinking and executive function, not self-regulated learning."
+    },
+    {
+      "source_title": "Global, regional, and national incidence, prevalence, and years lived with disability for 354 diseases and injuries for 195 countries and territories, 1990–2017: a systematic analysis for the Global Burden of Disease Study 2017",
+      "outcome": "off_topic",
+      "reason": "Study is about global burden of disease incidence, prevalence, and disability, not self-regulated learning."
+    },
+    {
+      "source_title": "Effects of core stabilization exercise and strengthening exercise on proprioception, balance, muscle thickness and pain related outcomes in patients with subacute nonspecific low back pain: a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study is about physical therapy exercises for low back pain, not self-regulated learning."
+    },
+    {
+      "source_title": "Reducing stigma among healthcare providers to improve mental health services (RESHAPE): protocol for a pilot cluster randomized controlled trial of a stigma reduction intervention for training primary healthcare workers in Nepal",
+      "outcome": "off_topic",
+      "reason": "Study is about reducing mental health stigma among healthcare workers in Nepal, not self-regulated learning."
+    },
+    {
+      "source_title": "Continual lifelong learning with neural networks: A review",
+      "outcome": "off_topic",
+      "reason": "Study is about lifelong learning in artificial neural networks and catastrophic forgetting, not human self-regulated learning."
+    },
+    {
+      "source_title": "Advantages, Limitations and Recommendations for online learning during COVID-19 pandemic era",
+      "outcome": "off_topic",
+      "reason": "study is about perceptions of online learning advantages and limitations during COVID-19, not self-regulated learning"
+    },
+    {
+      "source_title": "Machine learning in materials science",
+      "outcome": "off_topic",
+      "reason": "study is about machine learning applications in materials science, not self-regulated learning"
+    },
+    {
+      "source_title": "Towards Personalized Federated Learning",
+      "outcome": "off_topic",
+      "reason": "Study is about personalized federated machine learning and data privacy, not human self-regulated learning."
+    },
+    {
+      "source_title": "The impact of artificial intelligence on learner–instructor interaction in online learning",
+      "outcome": "off_topic",
+      "reason": "Study is about perceptions of AI systems' impact on learner-instructor interaction in online learning, not self-regulated learning."
+    },
+    {
+      "source_title": "A Survey on the Explainability of Supervised Machine Learning",
+      "outcome": "off_topic",
+      "reason": "study is about explainable supervised machine learning methods, not self-regulated learning"
+    },
+    {
+      "source_title": "Investigating the relationship between emotion regulation strategies and self‐efficacy beliefs among adolescents: Implications for academic achievement",
+      "outcome": "off_topic",
+      "reason": "Study concerns emotion regulation strategies and self-efficacy/academic achievement, not self-regulated learning."
+    },
+    {
+      "source_title": "SELF-EFFICACY AND SELF-REGULATION WITH ACADEMIC PROCRASTINATION IN MUSLIM ADOLESCENTS DURING THE ONLINE LEARNING PERIOD",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Correlational study showing self-regulation negatively associated with procrastination, supporting the skill's value rather than contradicting it."
+    },
+    {
+      "source_title": "Grit, self-efficacy, achievement orientation goals, and academic performance in University students",
+      "outcome": "off_topic",
+      "reason": "Study concerns grit, self-efficacy, and achievement goals predicting academic performance, not self-regulated learning."
+    },
+    {
+      "source_title": "Efficacy of Dialectical Behavior Therapy for Adolescents at High Risk for Suicide",
+      "outcome": "off_topic",
+      "reason": "Study is about dialectical behavior therapy for reducing suicide attempts and self-harm in adolescents, not self-regulated learning."
+    },
+    {
+      "source_title": "Emotional Regulation and Academic Performance in the Academic Context: The Mediating Role of Self-Efficacy in Secondary Education Students",
+      "outcome": "off_topic",
+      "reason": "study concerns emotional regulation and self-efficacy, not self-regulated learning"
+    },
+    {
+      "source_title": "Teachers’ Self-Efficacy: The Role of Personal Values and Motivations for Teaching",
+      "outcome": "off_topic",
+      "reason": "Study concerns teachers' personal values, motivation, and self-efficacy, not self-regulated learning."
+    },
+    {
+      "source_title": "Agency for Learning: Intention, Motivation, Self-Efficacy and Self-Regulation",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a scale-development and validation study for the Agency for Learning Questionnaire, not a measured test of whether developing self-regulation improves outcomes."
+    },
+    {
+      "source_title": "Coping Strategies and Self-Efficacy in University Students: A Person-Centered Approach",
+      "outcome": "off_topic",
+      "reason": "Study concerns academic coping strategy profiles and self-efficacy, not self-regulated learning."
+    },
+    {
+      "source_title": "Digital transformation: A multidisciplinary reflection and research agenda",
+      "outcome": "off_topic",
+      "reason": "Study is about digital transformation and business model innovation in firms, not self-regulated learning."
+    },
+    {
+      "source_title": "Research Review: The effects of mindfulness‐based interventions on cognition and mental health in children and adolescents – a meta‐analysis of randomized controlled trials",
+      "outcome": "off_topic",
+      "reason": "Study concerns mindfulness interventions for youth mental health, not self-regulated learning."
+    },
+    {
+      "source_title": "Peer-supported self-management for people discharged from a mental health crisis team: a randomised controlled trial",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The self-management intervention reduced readmission to acute care, a positive effect supporting the skill's value."
+    },
+    {
+      "source_title": "Satisfaction and self-confidence in the learning of nursing students: Randomized clinical trial",
+      "outcome": "off_topic",
+      "reason": "Study is about nursing students' satisfaction and self-confidence in simulation vs traditional teaching, not self-regulated learning"
+    },
+    {
+      "source_title": "Gender-transformative Bandebereho couples’ intervention to promote male engagement in reproductive and maternal health and violence prevention in Rwanda: Findings from a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "Study concerns a gender-transformative couples' intervention affecting intimate partner violence and reproductive health outcomes, not self-regulated learning."
+    },
+    {
+      "source_title": "Empowering ChatGPT with guidance mechanism in blended learning: effect of self-regulated learning, higher-order thinking skills, and knowledge construction",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found the GCLA intervention enhanced SRL, a positive result supporting the skill's value."
+    },
+    {
+      "source_title": "Strengthening resilience in military officer cadets: A group-randomized controlled trial of coping and emotion regulatory self-reflection training.",
+      "outcome": "off_topic",
+      "reason": "Study concerns emotion regulatory self-reflection for resilience and mental health symptoms, not self-regulated learning."
+    },
+    {
+      "source_title": "Adaptive designs in clinical trials: why use them, and how to run and report them",
+      "outcome": "off_topic",
+      "reason": "The abstract is about adaptive designs in clinical trials, not self-regulated learning."
+    },
+    {
+      "source_title": "Cognitive Architecture and Instructional Design: 20 Years Later",
+      "outcome": "off_topic",
+      "reason": "The abstract concerns cognitive load theory and instructional design, not self-regulated learning."
+    },
+    {
+      "source_title": "The L2 motivational self system: A meta-analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about L2 motivational self system predicting language learning effort/achievement, not self-regulated learning."
+    },
+    {
+      "source_title": "Relationships between academic self-efficacy, learning-related emotions, and metacognitive learning strategies with academic performance in medical students: a structural equation model",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found metacognitive strategies positively mediate performance, supporting the skill's value."
+    },
+    {
+      "source_title": "Capturing the dynamic and cyclical nature of regulation: Methodological Progress in understanding socially shared regulation in learning",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Methodological review of data collection approaches for studying socially shared regulation; no measured outcome of an intervention."
+    },
+    {
+      "source_title": "Differential Predictive Effect of Self-Regulation Behavior and the Combination of Self- vs. External Regulation Behavior on Executive Dysfunctions and Emotion Regulation Difficulties, in University Students",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Correlational/predictive study of self-regulation and executive/emotion regulation; no intervention and results supported regulation factors' value."
+    },
+    {
+      "source_title": "Self-Regulation in Creative Learning: Agentic Perspective",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found self-regulation strategies predict creative learning outcomes, supporting the skill's value."
+    },
+    {
+      "source_title": "Advances on Self-Regulation Models: A New Research Agenda Through the SR vs ER Behavior Theory in Different Psychology Contexts",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Theoretical position paper on models of self-regulation, no measured outcome of an intervention."
+    },
+    {
+      "source_title": "Effect of Levels of Self-Regulation and Situational Stress on Achievement Emotions in Undergraduate Students: Class, Study and Testing",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found higher self-regulation accompanied higher positive and lower negative emotionality, supporting the skill's value."
+    },
+    {
+      "source_title": "From co‐regulation to self‐regulation: Maternal soothing strategies and self‐efficacy in relation to maternal reports of infant regulation at 3 and 7 months",
+      "outcome": "off_topic",
+      "reason": "Study is about maternal soothing strategies and infant regulation, not self-regulated learning."
+    },
+    {
+      "source_title": "From self-regulation to co-regulation: refining learning presence in a community of inquiry in interprofessional education",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Path analysis supports positive roles of co-regulation and self-regulation in learning outcomes, not against the skill."
+    },
+    {
+      "source_title": "Gender Differences in Self-Regulated Online Learning During the COVID-19 Lockdown",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study measures gender differences in SRL, not whether developing SRL improves outcomes; no intervention or reversed effect."
+    },
+    {
+      "source_title": "Change Process in Coaching: Interplay of Nonverbal Synchrony, Working Alliance, Self-Regulation, and Goal Attainment",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study measures nonverbal synchrony's association with self-regulation in coaching; it does not show developing self-regulated learning fails to improve outcomes."
+    },
+    {
+      "source_title": "Multimethod assessment of self-regulated learning in college students: different methods for different components?",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found every SRL component predictive for achievement, supporting the skill's value, not against it."
+    },
+    {
+      "source_title": "Defining Training and Performance Caliber: A Participant Classification Framework",
+      "outcome": "off_topic",
+      "reason": "study proposes a framework for classifying athletes' training/performance level, not about self-regulated learning"
+    },
+    {
+      "source_title": "Machine learning for identifying Randomized Controlled Trials: An evaluation and practitioner's guide",
+      "outcome": "off_topic",
+      "reason": "Study is about machine learning classification of randomized controlled trials, not self-regulated learning."
+    },
+    {
+      "source_title": "Randomized control trial of Tools of the Mind: Marked benefits to kindergarten children and their teachers",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found the self-regulation-focused Tools program improved academic and self-control outcomes, supporting the skill's value."
+    },
+    {
+      "source_title": "Enhancing academic writing skills and motivation: assessing the efficacy of ChatGPT in AI-assisted language learning for EFL students",
+      "outcome": "off_topic",
+      "reason": "Study is about AI-assisted instruction's effect on EFL writing skills and motivation, not self-regulated learning."
+    },
+    {
+      "source_title": "The impact of simulation-based training in medical education: A review",
+      "outcome": "off_topic",
+      "reason": "The abstract is about simulation-based training in medical education, not self-regulated learning."
+    },
+    {
+      "source_title": "Communication skills training for healthcare professionals working with people who have cancer",
+      "outcome": "off_topic",
+      "reason": "Study is about communication skills training for healthcare professionals in cancer care, not self-regulated learning."
+    },
+    {
+      "source_title": "Methodological quality (risk of bias) assessment tools for primary and secondary medical studies: what are they and which is better?",
+      "outcome": "off_topic",
+      "reason": "The abstract is about methodological quality assessment tools for medical study types, not self-regulated learning."
+    },
+    {
+      "source_title": "Nurse-Physician Communication Team Training in Virtual Reality Versus Live Simulations: Randomized Controlled Trial on Team Communication and Teamwork Attitudes",
+      "outcome": "off_topic",
+      "reason": "Study compares virtual reality vs live simulation for nurse-physician communication team training, not self-regulated learning."
     }
   ],
-  "stopped_because": "no_new_findings",
+  "stopped_because": "query_budget",
   "log": [
     {
       "step": "propose_queries",
       "queries": [
         "self-regulated learning intervention meta-analysis",
-        "metacognitive strategy training academic achievement randomized controlled trial",
-        "self-monitoring goal setting students systematic review"
+        "self-monitoring goal setting students randomized controlled trial",
+        "metacognitive strategy training academic achievement systematic review"
       ]
     },
     {
       "step": "search_and_assess",
       "queries": [
         "self-regulated learning intervention meta-analysis",
-        "metacognitive strategy training academic achievement randomized controlled trial",
-        "self-monitoring goal setting students systematic review"
+        "self-monitoring goal setting students randomized controlled trial",
+        "metacognitive strategy training academic achievement systematic review"
       ],
       "backends": [
         "openalex"
       ],
-      "examined": 29,
-      "new_findings": 0
+      "examined": 27,
+      "new_findings": 1
     },
     {
       "step": "propose_queries",
       "queries": [
-        "self-regulated learning boundary conditions",
+        "self-regulated learning primary school children replication",
         "calibration accuracy metacognitive monitoring students",
-        "self-regulation training transfer failure classroom"
+        "self-regulation training transfer college students randomized controlled trial"
       ]
     },
     {
       "step": "search_and_assess",
       "queries": [
-        "self-regulated learning boundary conditions",
+        "self-regulated learning primary school children replication",
         "calibration accuracy metacognitive monitoring students",
-        "self-regulation training transfer failure classroom"
+        "self-regulation training transfer college students randomized controlled trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 24,
+      "new_findings": 3
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning online learning meta-analysis",
+        "self-efficacy academic self-regulation adolescents",
+        "self-reflection journaling learning outcomes randomized controlled trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning online learning meta-analysis",
+        "self-efficacy academic self-regulation adolescents",
+        "self-reflection journaling learning outcomes randomized controlled trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 22,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "self-regulated learning strategy instruction meta-analysis",
+        "self-regulation microanalysis validity measurement",
+        "study skills training academic performance randomized controlled trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "self-regulated learning strategy instruction meta-analysis",
+        "self-regulation microanalysis validity measurement",
+        "study skills training academic performance randomized controlled trial"
       ],
       "backends": [
         "openalex"
