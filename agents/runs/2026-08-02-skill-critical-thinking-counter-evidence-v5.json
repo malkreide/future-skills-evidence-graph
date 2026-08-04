@@ -1,0 +1,326 @@
+{
+  "skill_id": "skill-critical-thinking",
+  "prompt_version": "counter-evidence-v5",
+  "model": "claude-opus-4-8",
+  "provider": "anthropic",
+  "created_at": "2026-08-02",
+  "rounds": 2,
+  "queries_used": [
+    "critical thinking instruction meta-analysis",
+    "epistemic vigilance source evaluation randomized controlled trial",
+    "bias detection reasoning intervention systematic review",
+    "fallacy identification argument evaluation",
+    "unwarranted authority deference replication",
+    "claim verification evidence appraisal randomized controlled trial"
+  ],
+  "sources_examined": 51,
+  "findings": 0,
+  "proposed": [],
+  "rejected": 51,
+  "rejected_by_outcome": {
+    "off_topic": 43,
+    "on_topic_no_contradiction": 8
+  },
+  "not_proposed": [
+    {
+      "source_title": "AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical Thinking",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "This is a correlational study of AI usage and critical thinking, not a test of teaching/practising critical thinking; higher educational attainment was actually associated with better critical thinking."
+    },
+    {
+      "source_title": "Thinking about the Coding Process in Qualitative Data Analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about qualitative research coding as a decision-making process, not critical thinking in learners aged 10-18."
+    },
+    {
+      "source_title": "Creativity, Critical Thinking, Communication, and Collaboration: Assessment, Certification, and Promotion of 21st Century Skills for the Future of Work and Education",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Conceptual/framework paper on assessing and labelizing the 4Cs, no measured outcome of skill training"
+    },
+    {
+      "source_title": "The Effect of Problem-Based Learning on the Creative Thinking and Critical Thinking Disposition of Students in Visual Arts Education",
+      "outcome": "off_topic",
+      "reason": "study of PBL effects on higher education visual arts students, not learners aged 10-18"
+    },
+    {
+      "source_title": "Effectiveness of Virtual Reality in Nursing Education: Meta-Analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about VR effectiveness in nursing education, not critical thinking in learners aged 10-18"
+    },
+    {
+      "source_title": "The effects of educational robotics in STEM education: a multilevel meta-analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about educational robotics effects on STEM learning, not critical thinking or epistemic vigilance"
+    },
+    {
+      "source_title": "Metacognitive Strategies and Development of Critical Thinking in Higher Education",
+      "outcome": "off_topic",
+      "reason": "Study concerns first-year university psychology students, not learners aged 10-18."
+    },
+    {
+      "source_title": "The Impact of Collaborative Learning on Learners’ Critical Thinking Skills",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study found CL had positive significant impact on critical thinking and supported retention; a positive result."
+    },
+    {
+      "source_title": "Effects of Inquiry-Based Approaches on Students’ Higher-Order Thinking Skills in Science: A Meta-Analysis",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study finds inquiry-based learning has a large positive effect on higher-order thinking skills, supporting the skill's value."
+    },
+    {
+      "source_title": "Mistrust and misinformation: A two-component, socio-epistemic model of belief in conspiracy theories",
+      "outcome": "off_topic",
+      "reason": "Theoretical model of belief in conspiracy theories, not a measured study of critical thinking skill in learners aged 10-18"
+    },
+    {
+      "source_title": "Fighting “bad science” in the information age: The effects of an intervention to stimulate evaluation and critique of false scientific claims",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "The RCT found a moderate positive effect for the intervention among compliant students, supporting the skill's value."
+    },
+    {
+      "source_title": "Epistemic Vigilance in Early Ontogeny: Children’s Use of Nonverbal Behavior to Detect Deception",
+      "outcome": "off_topic",
+      "reason": "Study concerns preschoolers (4-6 year olds) trusting verbal vs nonverbal cues, outside the 10-18 population and about developmental trust modulation, not the target skill."
+    },
+    {
+      "source_title": "Developing an assessment of epistemic trust: a research protocol",
+      "outcome": "off_topic",
+      "reason": "study develops an epistemic trust assessment related to personality disorders in university students, not critical thinking skills in learners aged 10-18"
+    },
+    {
+      "source_title": "Therapeutic Assessment in Personality Disorders: Toward the Restoration of Epistemic Trust",
+      "outcome": "off_topic",
+      "reason": "Study concerns Therapeutic Assessment and epistemic trust in psychotherapy clients with personality disorders, not critical thinking in learners aged 10-18."
+    },
+    {
+      "source_title": "The relation between epistemic trust and borderline pathology in an adolescent inpatient sample",
+      "outcome": "off_topic",
+      "reason": "Study concerns epistemic trust in parents and its association with borderline personality disorder in adolescents, not critical thinking or epistemic vigilance skills."
+    },
+    {
+      "source_title": "The Mentalizing Approach to Psychopathology: State of the Art and Future Directions",
+      "outcome": "off_topic",
+      "reason": "Study is about mentalizing and mentalization-based treatments for psychopathology, not critical thinking or epistemic vigilance in learners."
+    },
+    {
+      "source_title": "Algorithmic Decision-Making and the Control Problem",
+      "outcome": "off_topic",
+      "reason": "Position paper on human-machine control problem and automation complacency in high-stakes decisions, not about critical thinking skills in learners aged 10-18"
+    },
+    {
+      "source_title": "Mapping the journey from epistemic mistrust in depressed adolescents receiving psychotherapy.",
+      "outcome": "off_topic",
+      "reason": "Study concerns epistemic trust/mistrust in depressed adolescents during psychotherapy, not critical thinking or evidence evaluation skills."
+    },
+    {
+      "source_title": "The Developmental Puzzle of Irony Understanding: Is Epistemic Vigilance the Missing Piece?",
+      "outcome": "off_topic",
+      "reason": "Study concerns epistemic vigilance and irony understanding in 5-7 year olds, not the 10-18 population."
+    },
+    {
+      "source_title": "PROBAST: A Tool to Assess Risk of Bias and Applicability of Prediction Model Studies: Explanation and Elaboration",
+      "outcome": "off_topic",
+      "reason": "This is about a risk-of-bias assessment tool for clinical prediction models, not critical thinking in learners."
+    },
+    {
+      "source_title": "Effectiveness of brief alcohol interventions in primary care populations",
+      "outcome": "off_topic",
+      "reason": "Study is about brief alcohol interventions in primary care, not critical thinking or epistemic vigilance in learners."
+    },
+    {
+      "source_title": "Financial Fraud: A Review of Anomaly Detection Techniques and Recent Advances",
+      "outcome": "off_topic",
+      "reason": "Study is about machine learning anomaly detection for financial fraud, not critical thinking in learners."
+    },
+    {
+      "source_title": "Bias in data‐driven artificial intelligence systems—An introductory survey",
+      "outcome": "off_topic",
+      "reason": "survey of bias in AI systems and legal/ethical fairness, not about learners' critical thinking skills"
+    },
+    {
+      "source_title": "Sex and gender differences and biases in artificial intelligence for biomedicine and healthcare",
+      "outcome": "off_topic",
+      "reason": "Study is about sex/gender bias in biomedical AI for precision medicine, not critical thinking skills in learners."
+    },
+    {
+      "source_title": "Social Data: Biases, Methodological Pitfalls, and Ethical Boundaries",
+      "outcome": "off_topic",
+      "reason": "This is a framework paper on biases and pitfalls in social data research practices, not about critical thinking skills in learners aged 10-18."
+    },
+    {
+      "source_title": "Artificial Intelligence and Business Value: a Literature Review",
+      "outcome": "off_topic",
+      "reason": "study is about AI adoption and business value in organizations, not critical thinking in learners"
+    },
+    {
+      "source_title": "Early Intervention for Children Aged 0 to 2 Years With or at High Risk of Cerebral Palsy",
+      "outcome": "off_topic",
+      "reason": "Study is about early intervention for cerebral palsy in children aged 0-2, unrelated to critical thinking skills."
+    },
+    {
+      "source_title": "Argument Mining: A Survey",
+      "outcome": "off_topic",
+      "reason": "Survey of automatic argument mining NLP techniques, not about learners' critical thinking skills"
+    },
+    {
+      "source_title": "The lexical fallacy in emotion research: Mistaking vernacular words for psychological entities.",
+      "outcome": "off_topic",
+      "reason": "This is a theoretical paper about linguistic construct validity in emotion research, not about critical thinking skills in learners."
+    },
+    {
+      "source_title": "Deconstructing climate misinformation to identify reasoning errors",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Position/analysis paper proposing a critical thinking inoculation strategy; no measured outcome of teaching the skill."
+    },
+    {
+      "source_title": "Fact vs Fallacy: The Anti-Vaccine Discussion Reloaded",
+      "outcome": "off_topic",
+      "reason": "Position paper on anti-vaccine sentiment and science communication strategies, not about learners' critical thinking skills"
+    },
+    {
+      "source_title": "The sodium pump and digitalis drugs: Dogmas and fallacies",
+      "outcome": "off_topic",
+      "reason": "study is about Na/K-ATPase sodium pump and digitalis drugs, not critical thinking"
+    },
+    {
+      "source_title": "Logical fallacies and invasion biology",
+      "outcome": "off_topic",
+      "reason": "Analysis of logical fallacies in invasion biology debates, not about learners' critical thinking skill"
+    },
+    {
+      "source_title": "Philosophical Problems With the Gender-Critical Feminist Argument Against Trans Inclusion",
+      "outcome": "off_topic",
+      "reason": "philosophical critique of gender-critical feminist arguments, not about critical thinking skill in learners"
+    },
+    {
+      "source_title": "From fallacies to semi-fake news: Improving the identification of misinformation triggers across digital media",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Study develops fallacy-based indicators to flag misinformation; it does not measure whether teaching critical thinking failed to help."
+    },
+    {
+      "source_title": "INTERNATIONAL HUMAN RIGHTS LAW AS A FRAMEWORK FOR ALGORITHMIC ACCOUNTABILITY",
+      "outcome": "off_topic",
+      "reason": "legal analysis of algorithmic accountability and human rights law, not critical thinking skills in learners"
+    },
+    {
+      "source_title": "Index Funds and the Future of Corporate Governance: Theory, Evidence, and Policy",
+      "outcome": "off_topic",
+      "reason": "Study is about index fund stewardship and corporate governance, unrelated to critical thinking skills in learners."
+    },
+    {
+      "source_title": "“Truly free consent”? Clarifying the nature of police legitimacy using causal mediation analysis",
+      "outcome": "off_topic",
+      "reason": "Study is about police legitimacy and obligation to obey, not critical thinking in learners"
+    },
+    {
+      "source_title": "Do your own research!",
+      "outcome": "on_topic_no_contradiction",
+      "reason": "Philosophical argument about lay research versus expert testimony; no measured outcome of a skill intervention."
+    },
+    {
+      "source_title": "On the limits of the political: The problem of overly permissive pluralism in Mouffe's agonism",
+      "outcome": "off_topic",
+      "reason": "Political theory article on agonistic pluralism and depoliticization, not about critical thinking skills in learners aged 10-18"
+    },
+    {
+      "source_title": "Pride: The Emotional Foundation of Social Rank Attainment",
+      "outcome": "off_topic",
+      "reason": "Study is about pride as an emotion and social rank attainment, not critical thinking."
+    },
+    {
+      "source_title": "Algorithmic Accountability in the Administrative State",
+      "outcome": "off_topic",
+      "reason": "Study is about AI use in federal government agencies and administrative law, not critical thinking skills in learners."
+    },
+    {
+      "source_title": "CONSORT 2010 statement: extension to randomised crossover trials",
+      "outcome": "off_topic",
+      "reason": "Study is about reporting standards (CONSORT) for randomised crossover trials, not critical thinking in learners"
+    },
+    {
+      "source_title": "Update on treatments for nonmotor symptoms of Parkinson's disease—an evidence‐based medicine review",
+      "outcome": "off_topic",
+      "reason": "Study is about treating nonmotor symptoms in Parkinson's disease, unrelated to critical thinking skills in learners."
+    },
+    {
+      "source_title": "Multimodal prehabilitation in colorectal cancer patients to improve functional capacity and reduce postoperative complications: the first international randomized controlled trial for multimodal prehabilitation",
+      "outcome": "off_topic",
+      "reason": "Study is about prehabilitation for colorectal cancer surgery, not critical thinking skills."
+    },
+    {
+      "source_title": "A Critical Appraisal of the Evidence Supporting Consumer Motivations for Alternative Proteins",
+      "outcome": "off_topic",
+      "reason": "Study reviews evidence for alternative protein claims, not critical thinking skills in learners."
+    },
+    {
+      "source_title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+      "outcome": "off_topic",
+      "reason": "This is about reporting guidelines for prediction model studies (TRIPOD+AI), not about learners' critical thinking skills."
+    },
+    {
+      "source_title": "Walking to your right music: a randomized controlled trial on the novel use of treadmill plus music in Parkinson’s disease",
+      "outcome": "off_topic",
+      "reason": "study is about rhythmic auditory stimulation gait training in Parkinson's disease patients, not critical thinking in learners"
+    },
+    {
+      "source_title": "COvid-19 and high-dose VITamin D supplementation TRIAL in high-risk older patients (COVIT-TRIAL): study protocol for a randomized controlled trial",
+      "outcome": "off_topic",
+      "reason": "study is about vitamin D supplementation for COVID-19 in older adults, not critical thinking"
+    },
+    {
+      "source_title": "Organizational contextual features that influence the implementation of evidence-based practices across healthcare settings: a systematic integrative review",
+      "outcome": "off_topic",
+      "reason": "Study is about organizational contextual features influencing implementation of evidence-based practices in healthcare, not critical thinking in learners."
+    },
+    {
+      "source_title": "Evidence-Based Practices for Children, Youth, and Young Adults with Autism: Third Generation Review",
+      "outcome": "off_topic",
+      "reason": "review of evidence-based intervention practices for autistic children, not about critical thinking skills"
+    }
+  ],
+  "stopped_because": "no_new_findings",
+  "log": [
+    {
+      "step": "propose_queries",
+      "queries": [
+        "critical thinking instruction meta-analysis",
+        "epistemic vigilance source evaluation randomized controlled trial",
+        "bias detection reasoning intervention systematic review"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "critical thinking instruction meta-analysis",
+        "epistemic vigilance source evaluation randomized controlled trial",
+        "bias detection reasoning intervention systematic review"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 27,
+      "new_findings": 0
+    },
+    {
+      "step": "propose_queries",
+      "queries": [
+        "fallacy identification argument evaluation",
+        "unwarranted authority deference replication",
+        "claim verification evidence appraisal randomized controlled trial"
+      ]
+    },
+    {
+      "step": "search_and_assess",
+      "queries": [
+        "fallacy identification argument evaluation",
+        "unwarranted authority deference replication",
+        "claim verification evidence appraisal randomized controlled trial"
+      ],
+      "backends": [
+        "openalex"
+      ],
+      "examined": 24,
+      "new_findings": 0
+    }
+  ]
+}
