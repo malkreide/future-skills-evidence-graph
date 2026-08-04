@@ -62,18 +62,20 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Restore pending candidates from open pull request branch
-        run: |
-          # Reuse the research pipeline's candidate branch so this import
-          # deduplicates against candidates already awaiting review.
-          if git fetch origin research/candidates; then
-            for pattern in 'data/sources/candidates-*.json' 'data/claims/candidates-*.json' 'data/skills/candidates-*.json'; do
-              git checkout FETCH_HEAD -- "$pattern" || echo "No pending files for $pattern."
-            done
-          fi
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
+      - name: Restore pending candidates from open pull request branch
+        run: |
+          # Reuse the research pipeline's candidate branch so this import
+          # deduplicates against candidates already awaiting review. The restore
+          # MERGES rather than checking the files out: reviews live in the same
+          # candidates-*.json files, so overwriting them would revert every review
+          # already merged into the base branch (see
+          # scripts/restore_pending_candidates.py).
+          if git fetch origin research/candidates; then
+            python scripts/restore_pending_candidates.py --ref FETCH_HEAD
+          fi
       - name: Install dev dependencies
         run: pip install -r requirements-dev.txt
       - name: Parse issue into an import manifest

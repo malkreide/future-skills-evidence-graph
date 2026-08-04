@@ -808,6 +808,15 @@ replays the frozen `_recorded`. Current offline regression, measured:
   verdict together.
 - Score drift is auto-handled: `promote_candidate.py` recomputes scores and
   `validate_data.py` blocks drift.
+- Reviews live **inside** the `candidates-*.json` files — `promote_candidate.py`
+  flips `status` in place and never moves a record to a curated file. So the
+  ingest workflows must not check those files out from the `research/candidates`
+  branch wholesale; they merge instead
+  (`scripts/restore_pending_candidates.py --ref FETCH_HEAD`), keeping the base
+  branch's copy of every record it already carries and appending only the
+  genuinely pending ones. If an ingest run ever fails with an `evidence_score`
+  mismatch on a skill it never touched, that restore is the first place to look:
+  a reverted claim status silently drops the claim out of scoring.
 
 ## Baseline (first dry run)
 

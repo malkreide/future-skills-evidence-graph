@@ -175,6 +175,28 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   Vertrauensentscheidung) und Einrichtung:
   [docs/telegram-integration.md](docs/telegram-integration.md).
 
+### Fixed
+
+- **Import-Workflows setzen keine bereits gemergten Reviews mehr zurück.** Jeder
+  Import-Workflow holte offene Kandidaten vom `research/candidates`-Branch —
+  per `git checkout FETCH_HEAD -- data/*/candidates-*.json`, also *dateiweise*.
+  Das war falsch: `promote_candidate.py` setzt `status` **in derselben**
+  `candidates-*.json` **Datei** (ein promovierter Datensatz wandert nicht in eine
+  kuratierte Datei), und der Review-Branch wird bei jedem Lauf von einem älteren
+  Stand force-gepusht. Ein zwischenzeitlich gemergtes Review wurde damit
+  überschrieben: der Claim kam als `candidate` zurück, fiel aus der Bewertung
+  (`score_evidence.py` zählt nur `reviewed`) und die Pipeline starb an einem
+  Skill, den der Lauf nie angefasst hatte — konkret
+  `skills:skill-digital-media-literacy evidence_score 0.69 does not match
+  computed 0.67`. Der Restore **merged** jetzt
+  (`scripts/restore_pending_candidates.py`): die ausgecheckte Basis-Fassung eines
+  Datensatzes gewinnt immer, nur wirklich ausschließlich auf dem Review-Branch
+  vorhandene Kandidaten werden angehängt — die, welche die Importer zur
+  Deduplizierung brauchen. Quellen werden zusätzlich über Identity- und
+  Titel/Jahr-Schlüssel abgeglichen (dieselben, auf denen `validate_data.py`
+  Dubletten ablehnt), damit eine seither zusammengeführte Quelle nicht unter
+  altem Namen zurückkehrt.
+
 ### Changed
 
 - **Wöchentliche Suchabfrage ist jetzt konfigurierbar statt fest verdrahtet.**
