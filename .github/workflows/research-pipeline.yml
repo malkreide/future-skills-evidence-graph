@@ -36,19 +36,22 @@ jobs:
       RESEARCH_QUERIES_INCLUDE_CATALOG: ${{ inputs.include_catalog || vars.RESEARCH_QUERIES_INCLUDE_CATALOG }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
       - name: Restore pending candidates from open pull request branch
         run: |
           # Candidates from an earlier run may still sit unmerged on the
           # research/candidates branch. Restoring them lets the importers
           # deduplicate against them instead of importing them again.
+          # The restore MERGES: promote_candidate.py flips status in place inside
+          # the candidates-*.json files, so checking the files out wholesale would
+          # revert every review already merged into the base branch (see
+          # scripts/restore_pending_candidates.py). Stdlib only -- it runs before
+          # the dependency install on purpose, so a broken restore fails here.
           if git fetch origin research/candidates; then
-            for pattern in 'data/sources/candidates-*.json' 'data/claims/candidates-*.json' 'data/skills/candidates-*.json'; do
-              git checkout FETCH_HEAD -- "$pattern" || echo "No pending files for $pattern."
-            done
+            python scripts/restore_pending_candidates.py --ref FETCH_HEAD
           fi
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: "3.12"
       - name: Install dev dependencies
         run: pip install -r requirements-dev.txt
       - name: Import OpenAlex candidates
