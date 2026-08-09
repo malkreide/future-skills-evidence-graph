@@ -1,5 +1,5 @@
 # Operations shortcuts. See OPERATIONS.md for the full runbook.
-.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record eval-skill-links eval-skill-links-record compare-providers build recall-probe recall-ingest triage refilter audit-domains train
+.PHONY: install validate test eval eval-model eval-educator eval-prefill eval-prefill-record eval-skill-links eval-skill-links-record agreement agreement-worksheet compare-providers build recall-probe recall-ingest triage refilter audit-domains train
 
 install:
 	pip install -r requirements-dev.txt
@@ -60,6 +60,18 @@ eval-prefill-record:
 
 build:
 	python scripts/build_site.py
+
+# How reproducible are the LABELS the gates are measured against? Reports
+# agreement, kappa and whether a comparison is independent enough to serve as
+# a baseline at all. Not a CI gate -- see docs/eval-baseline.md.
+agreement:
+	python scripts/eval_agreement.py
+
+# Blind second-rater worksheets. The rater never sees the primary label; the
+# filled file is scored with `eval_agreement.py --second-rater FILE`.
+agreement-worksheet:
+	python scripts/eval_agreement.py --worksheet relevance --out eval/relevance_second_rater.json
+	python scripts/eval_agreement.py --worksheet claim_prefill --out eval/claim_prefill_second_rater.json
 
 # Surface the relevance filter's rejected region for labeling (fights the
 # harvest's selection bias). Fills eval/recall_probe.json with a worksheet.

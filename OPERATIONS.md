@@ -734,6 +734,27 @@ This mirrors how `RELEVANCE_CLASSIFIER` is handled: a signal is switched on only
 while a measurement supports it, and switching it back off is a documented,
 expected move rather than a failure.
 
+**The ceiling above these floors is not yet measured.** Every number above
+compares the pipeline to `gold` and treats `gold` as ground truth. How
+reproducible `gold` itself is has never been measured, and that decides how the
+floors read: if two reviewers agree on `evidence_strength` only ~80% of the
+time, then the measured 0.80 is already at the label ceiling and the 0.10 of
+headroom is absorbing reviewer scatter rather than model regression.
+
+`scripts/eval_agreement.py` (`make agreement`) measures the label side —
+agreement, Cohen's kappa, a Wilson interval, and whether a comparison is
+independent and large enough to carry a floor at all. It is **not** a CI gate
+today, for a reason worth stating: the only comparison currently computable is
+the 16-title overlap between `eval/relevance_labeled.json` and
+`eval/relevance_harvested.json`, it agrees 16/16, and that number measures
+nothing — the two sides most likely record the *same* review session rather than
+two independent judgments. The tool reports it as PROVENANCE UNVERIFIED instead
+of banking it. `make agreement-worksheet` produces the blind second-rater
+worksheets that would close this; the protocol, the evidence behind the
+provenance verdict, and the rule for reading a measured ceiling against these
+floors are in [docs/eval-baseline.md](docs/eval-baseline.md). Nothing in
+`validate.yml` changes until an independent pass exists.
+
 **Recall is reported, not gated.** Precision — "when the model proposes a value,
 is it right?" — is the metric that protects reviewer trust, so that is what the
 gate enforces (`--min-precision`, `--min-age-range-precision`,

@@ -21,7 +21,9 @@ Design principle: no skill recommendation without an evidence path.
 > [docs/allowlist-pflegen.md](docs/allowlist-pflegen.md); die Ankerdefinitionen
 > hinter den Evidenz-Zahlen – was `low`/`moderate`/`strong` heisst, warum jeder
 > Quellentyp sein Gewicht trägt und wie die Methode versioniert wird – in
-> [docs/evidenz-bewertung-anker.md](docs/evidenz-bewertung-anker.md).
+> [docs/evidenz-bewertung-anker.md](docs/evidenz-bewertung-anker.md); wie
+> verlässlich die Eval-Labels selbst sind, gegen die alle CI-Schwellen messen,
+> in [docs/eval-baseline.md](docs/eval-baseline.md).
 
 The project starts as a static, versioned evidence graph. Research automation may create
 candidate sources, claims, or skills, but publication of active skills requires human
