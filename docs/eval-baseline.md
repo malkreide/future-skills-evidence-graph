@@ -115,14 +115,41 @@ gleiche offene Frage.
 `scripts/eval_agreement.py` erzeugt einen **blinden Bewertungsbogen** und
 wertet ihn aus.
 
-```powershell
-# 1. Bogen erzeugen (enthält nur die Eingaben, kein Gold, keine Notizen)
-python scripts/eval_agreement.py --worksheet claim_prefill --out eval/claim_prefill_second_rater.json
-python scripts/eval_agreement.py --worksheet relevance --out eval/relevance_second_rater.json
+**Der Bogen für die 50 Prefill-Fälle liegt bereits im Repository:**
+[`eval/claim_prefill_second_rater.json`](../eval/claim_prefill_second_rater.json).
+Er ist leer und wartet auf einen Durchgang — ausfüllen, `protocol.rater`
+und `protocol.labeled_at` setzen, auswerten:
 
-# 2. Ausfüllen (siehe Protokoll unten), dann auswerten
+```powershell
 python scripts/eval_agreement.py --second-rater eval/claim_prefill_second_rater.json
 ```
+
+Neu erzeugen (überschreibt einen begonnenen Bogen) oder den
+Relevanz-Bogen dazunehmen:
+
+```powershell
+python scripts/eval_agreement.py --worksheet claim_prefill --out eval/claim_prefill_second_rater.json
+python scripts/eval_agreement.py --worksheet relevance --out eval/relevance_second_rater.json
+```
+
+### Was im Bogen steht
+
+Pro Fall: `statement`, `abstract`, `source_type` — und die beiden leeren
+Felder `evidence_strength` und `age_range`. Kein `gold`, kein
+`_recorded`, keine `note`.
+
+Dazu die **Rubrik im Bogen selbst**: die drei
+`evidence_strength`-Ankerdefinitionen werden beim Erzeugen aus
+[docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md)
+ausgelesen, nicht im Code wiederholt. Über 50 Fälle erspart das den
+Dokumentwechsel, und eine später geschärfte Ankerdefinition kann nicht
+still vom Bogen abweichen — ließe sich die Tabelle nicht lesen, bricht
+die Erzeugung ab, statt einen Bogen ohne Rubrik auszuliefern.
+
+Die Reihenfolge bleibt die des Goldsets. Sie wurde geprüft: 30
+Kategorienwechsel bei 50 Fällen (unter Zufall ~31 erwartet), längster
+gleichartiger Block 4 — es gibt kein Muster, gegen das ein Mischen
+schützen müsste.
 
 ### Protokoll
 

@@ -117,6 +117,45 @@ class WorksheetTests(unittest.TestCase):
         self.assertTrue(prefill["statement"])
         self.assertTrue(prefill["source_type"])
 
+    def test_the_rubric_is_read_from_the_methodology_doc(self) -> None:
+        # Restating the anchors in code would let the worksheet drift from the
+        # document. Two raters on two rulebooks disagree in a way that looks
+        # like rater variance and is not.
+        rubric = ea.anchor_rubric()
+        self.assertEqual(set(rubric), {"strong", "moderate", "low"})
+        doc = ea.ANCHOR_DOC.read_text(encoding="utf-8")
+        for level, definition in rubric.items():
+            self.assertGreater(len(definition), 40, level)
+            self.assertIn(definition, doc, level)
+
+    def test_a_prefill_worksheet_carries_the_rubric(self) -> None:
+        worksheet = ea.build_worksheet("claim_prefill")
+        self.assertEqual(
+            set(worksheet["rubrik_evidence_strength"]), {"strong", "moderate", "low"}
+        )
+        self.assertIn("rubrik_age_range", worksheet)
+        # The relevance worksheet judges a boolean and needs no strength rubric.
+        self.assertNotIn("rubrik_evidence_strength", ea.build_worksheet("relevance"))
+
+    def test_an_unreadable_rubric_stops_the_worksheet(self) -> None:
+        # Shipping a worksheet with a silently empty rubric is worse than
+        # shipping none: the rater would invent their own scale.
+        import tempfile
+        from pathlib import Path as _Path
+
+        original = ea.ANCHOR_DOC
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                empty = _Path(tmp) / "anker.md"
+                empty.write_text("# Kein Anker-Table hier\n", encoding="utf-8")
+                ea.ANCHOR_DOC = empty
+                with self.assertRaises(SystemExit):
+                    ea.anchor_rubric()
+                with self.assertRaises(SystemExit):
+                    ea.build_worksheet("claim_prefill")
+        finally:
+            ea.ANCHOR_DOC = original
+
     def test_worksheet_keys_match_the_primary_labels(self) -> None:
         # A key mismatch would silently compare nothing and report n=0 as
         # if the rater had skipped every item.
