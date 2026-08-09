@@ -187,12 +187,73 @@
               <option value="quality">Evidenzqualität je Aussage</option>
               <option value="claims">Anzahl geprüfter Belege</option>
             </select>
-            <span id="sortHint" class="field-hint">
-              Der Gesamtscore verrechnet Qualität und Menge. Die beiden anderen
-              Ansichten trennen sie.
-            </span>
+            <span id="sortHint" class="field-hint">Qualität und Menge getrennt statt verrechnet.</span>
           </label>
         </div>
+        <details class="advanced-filters" id="advancedFilters">
+          <summary>
+            Erweiterte Filter
+            <span id="advancedFilterBadge" class="advanced-badge" hidden></span>
+          </summary>
+          <p class="field-hint advanced-intro">
+            Kombinierbare Schwellen auf den Dimensionen, die der Gesamtscore
+            zusammenfasst. Beispiel: gut belegt <em>und</em> im Lehrplan 21 noch
+            eine Zukunftslücke.
+          </p>
+          <div class="toolbar-fields">
+            <label>
+              Lehrplan 21
+              <select id="lp21CoverageFilter" aria-describedby="lp21CoverageHint">
+                <option value="all">Alle</option>
+                <option value="Zukunftsluecke">Zukunftslücke</option>
+                <option value="teilweise">teilweise abgedeckt</option>
+                <option value="gut abgedeckt">gut abgedeckt</option>
+              </select>
+              <span id="lp21CoverageHint" class="field-hint">
+                Nur Lernenden-Skills tragen eine Lehrplan-21-Zuordnung.
+              </span>
+            </label>
+            <label>
+              Min. Belege
+              <select id="claimCountFilter" aria-describedby="claimCountHint">
+                <option value="0">Alle</option>
+                <option value="2">ab 2</option>
+                <option value="3">ab 3</option>
+                <option value="5">ab 5</option>
+                <option value="6">ab 6 (volle Breite)</option>
+              </select>
+              <span id="claimCountHint" class="field-hint">Anzahl geprüfter Aussagen.</span>
+            </label>
+            <label>
+              Min. Qualität je Aussage
+              <span class="range-row">
+                <input
+                  id="qualityFilter"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  value="0"
+                  aria-describedby="qualityHint"
+                />
+                <output id="qualityValue" for="qualityFilter">0.00</output>
+              </span>
+              <span id="qualityHint" class="field-hint">
+                Evidenzstärke der einzelnen Aussage, ohne den Breiteneffekt.
+              </span>
+            </label>
+            <label>
+              Trend
+              <select id="trendFilter">
+                <option value="all">Alle</option>
+                <option value="emerging">aufkommend</option>
+                <option value="growing">wachsend</option>
+                <option value="stable">stabil</option>
+                <option value="declining">rückläufig</option>
+              </select>
+            </label>
+          </div>
+        </details>
         <div class="toolbar-actions">
           <p id="filterSummary" class="filter-summary" role="status" aria-live="polite"></p>
           <button id="resetFilters" type="button" class="ghost-button" disabled>Filter zurücksetzen</button>
