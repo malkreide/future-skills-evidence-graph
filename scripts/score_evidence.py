@@ -63,7 +63,7 @@ CLAIM_WEIGHTS = {"strong": 1.0, "moderate": 0.7, "low": 0.35}
 
 # A skill with this many supporting claims gets the full breadth factor.
 BREADTH_SATURATION = 6
-BREADTH_FLOOR = 0.7
+BREADTH_FLOOR = 0.85
 CONTRADICTION_PENALTY = 0.1
 
 SOURCE_COMPONENT_WEIGHT = 0.6
@@ -73,7 +73,7 @@ CLAIM_COMPONENT_WEIGHT = 0.4
 # constant above changes: the stored evidence_score of an active skill
 # records the version that produced it, so two numbers computed under
 # different methods can never sit side by side unmarked.
-METHOD_VERSION = "1.0.0"
+METHOD_VERSION = "1.1.0"
 
 # The fingerprint each declared version must produce. It is derived from
 # the constants themselves, so editing a weight without bumping
@@ -81,6 +81,7 @@ METHOD_VERSION = "1.0.0"
 # instead of silently redefining what every stored score means.
 METHOD_FINGERPRINTS = {
     "1.0.0": "7e6e20f1eec2da83",
+    "1.1.0": "75279e202834675b",
 }
 
 
