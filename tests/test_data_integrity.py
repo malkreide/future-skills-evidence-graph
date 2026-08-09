@@ -89,7 +89,17 @@ from promote_candidate import (  # noqa: E402
     format_claim_suggestions,
     skill_activation_errors,
 )
-from score_evidence import reviewed_claim_scores, skill_score  # noqa: E402
+from score_evidence import (  # noqa: E402
+    METHOD_FINGERPRINTS,
+    METHOD_VERSION,
+    claim_score,
+    fingerprint,
+    method_fingerprint,
+    method_parameters,
+    reviewed_claim_scores,
+    skill_score,
+    unscoreable_reviewed_claims,
+)
 from triage_candidates import build_worksheet  # noqa: E402
 from validate_data import validate_repository  # noqa: E402
 
@@ -156,6 +166,92 @@ class DataIntegrityTests(unittest.TestCase):
             "contradicting_claim_ids": ["c-candidate"],
         }
         self.assertEqual(skill_score(contradicted, scores), skill_score(clean, scores))
+
+    def test_claim_score_reports_unknown_instead_of_scoring_it_as_weak(self) -> None:
+        # Each of these three used to produce a number: a missing source and an
+        # unknown evidence_strength scored 0 for their component, an unweighted
+        # source_type scored 0.25 (the weight of the weakest known type). All
+        # three made a data defect indistinguishable from weak evidence.
+        sources = {
+            "src-ok": {"id": "src-ok", "source_type": "web_resource"},
+            "src-odd": {"id": "src-odd", "source_type": "blog_post"},
+        }
+        weakest_valid = {
+            "id": "c-weak",
+            "status": "reviewed",
+            "evidence_strength": "low",
+            "source_ids": ["src-ok"],
+        }
+        # The weakest scoreable claim still gets a real number, so None below
+        # cannot be read as "just very weak".
+        self.assertIsNotNone(claim_score(weakest_valid, sources))
+        self.assertGreater(claim_score(weakest_valid, sources), 0)
+
+        for label, claim in {
+            "missing source": {"evidence_strength": "low", "source_ids": ["src-gone"]},
+            "unweighted source_type": {"evidence_strength": "low", "source_ids": ["src-odd"]},
+            "no sources": {"evidence_strength": "low", "source_ids": []},
+            "unanchored strength": {"evidence_strength": "very strong", "source_ids": ["src-ok"]},
+            "missing strength": {"source_ids": ["src-ok"]},
+        }.items():
+            with self.subTest(label):
+                self.assertIsNone(claim_score(claim, sources), label)
+
+    def test_unscoreable_reviewed_claims_are_dropped_and_named(self) -> None:
+        sources = {"src-1": {"id": "src-1", "source_type": "systematic_review"}}
+        claims = [
+            {
+                "id": "c-good",
+                "status": "reviewed",
+                "evidence_strength": "strong",
+                "source_ids": ["src-1"],
+            },
+            {
+                "id": "c-broken",
+                "status": "reviewed",
+                "evidence_strength": "strong",
+                "source_ids": ["src-gone"],
+            },
+            {
+                "id": "c-broken-candidate",
+                "status": "candidate",
+                "evidence_strength": "strong",
+                "source_ids": ["src-gone"],
+            },
+        ]
+        # The broken claim leaves the score rather than dragging it down...
+        self.assertEqual(set(reviewed_claim_scores(claims, sources)), {"c-good"})
+        # ...but it does not leave quietly: only the reviewed one is reported,
+        # because a candidate with a dangling source is normal pipeline state.
+        problems = unscoreable_reviewed_claims(claims, sources)
+        self.assertEqual(set(problems), {"c-broken"})
+        self.assertIn("src-gone", problems["c-broken"])
+
+    def test_method_fingerprint_pins_declared_version(self) -> None:
+        # The version is a human declaration; the fingerprint is what the
+        # constants actually are. Editing a weight without bumping the version
+        # has to break here, or every stored evidence_score silently changes
+        # meaning while the recorded method still claims to be the old one.
+        self.assertEqual(METHOD_FINGERPRINTS.get(METHOD_VERSION), method_fingerprint())
+
+        for key, mutation in (
+            ("source_weights", {**method_parameters()["source_weights"], "book": 0.76}),
+            ("claim_weights", {**method_parameters()["claim_weights"], "low": 0.36}),
+            ("breadth_saturation", 7),
+            ("breadth_floor", 0.71),
+            ("contradiction_penalty", 0.11),
+            ("source_component_weight", 0.61),
+            ("claim_component_weight", 0.39),
+        ):
+            with self.subTest(key):
+                changed = {**method_parameters(), key: mutation}
+                self.assertNotEqual(fingerprint(changed), method_fingerprint(), key)
+
+    def test_active_skills_record_the_scoring_method(self) -> None:
+        active = [skill for skill in load_records("skills") if skill["status"] == "active"]
+        self.assertGreater(len(active), 0)
+        for skill in active:
+            self.assertEqual(skill.get("evidence_score_method"), METHOD_VERSION, skill["id"])
 
     def test_off_scope_covers_pe_and_language_pedagogy(self) -> None:
         # Physical education and foreign-language pedagogy are out of the topic

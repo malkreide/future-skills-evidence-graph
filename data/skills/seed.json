@@ -96,10 +96,16 @@
         "date": "2026-07-31",
         "change": "evidence_score 0.78 -> 0.77",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.77."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-07-31"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-critical-thinking",
@@ -173,10 +179,16 @@
         "date": "2026-07-31",
         "change": "evidence_score 0.61 -> 0.65",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.65."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-07-31"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-data-literacy",
@@ -220,10 +232,16 @@
         "date": "2026-06-12",
         "change": "Added topic 'data literacy'",
         "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.66."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-digital-media-literacy",
@@ -289,10 +307,16 @@
         "date": "2026-07-31",
         "change": "evidence_score 0.67 -> 0.69",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.69."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-07-31"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-ethical-technology-judgment",
@@ -350,10 +374,16 @@
         "date": "2026-06-23",
         "change": "evidence_score 0.72 -> 0.74",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.74."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-23"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-self-regulated-learning",
@@ -410,10 +440,16 @@
         "date": "2026-07-31",
         "change": "evidence_score 0.7 -> 0.71",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.71."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-07-31"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-creative-problem-solving",
@@ -458,10 +494,16 @@
         "date": "2026-06-12",
         "change": "Added topic 'creativity'",
         "reason": "Align skill topics with the shared topic vocabulary so claim clustering links new claims here instead of proposing a duplicate skill."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.64."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-collaborative-problem-solving",
@@ -499,10 +541,16 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.76 -> 0.56",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.56."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-systems-thinking",
@@ -624,10 +672,16 @@
         "date": "2026-06-28",
         "change": "evidence_score 0.69 -> 0.68",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.68."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-28"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-resilience-adaptability",
@@ -666,9 +720,15 @@
         "date": "2026-06-12",
         "change": "evidence_score 0.72 -> 0.63",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.63."
       }
     ],
     "created_at": "2026-04-28",
-    "updated_at": "2026-06-12"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   }
 ]

@@ -18,7 +18,10 @@ Design principle: no skill recommendation without an evidence path.
 > [docs/naechste-schritte.md](docs/naechste-schritte.md); wie
 > die vertrauenswürdige Such-Allowlist (Quell-Domains) evidenzbasiert
 > zusammengestellt und gepflegt wird, in
-> [docs/allowlist-pflegen.md](docs/allowlist-pflegen.md).
+> [docs/allowlist-pflegen.md](docs/allowlist-pflegen.md); die Ankerdefinitionen
+> hinter den Evidenz-Zahlen – was `low`/`moderate`/`strong` heisst, warum jeder
+> Quellentyp sein Gewicht trägt und wie die Methode versioniert wird – in
+> [docs/evidenz-bewertung-anker.md](docs/evidenz-bewertung-anker.md).
 
 The project starts as a static, versioned evidence graph. Research automation may create
 candidate sources, claims, or skills, but publication of active skills requires human
@@ -111,6 +114,25 @@ python scripts/score_evidence.py --write
 `scripts/validate_data.py` recomputes every skill score and fails when a stored
 value drifts from the formula, so the dashboard's trust signal always has a
 reproducible evidence path.
+
+What the numbers *mean* is documented in
+[docs/evidenz-bewertung-anker.md](docs/evidenz-bewertung-anker.md): anchored
+definitions of `low` / `moderate` / `strong`, a rationale for every source-type
+weight, and the rule for changing them. Two properties the scoring enforces:
+
+- **Unknown is not weak.** A claim with an unresolvable source, an unweighted
+  `source_type`, or an `evidence_strength` outside the three anchored levels is
+  *unscoreable*: `claim_score` returns `None` instead of substituting a low
+  number that reads like a bad score. Such a claim leaves the calculation, and
+  `validate_data.py` fails on any *reviewed* claim that cannot be scored — so a
+  data defect is loud instead of quietly counted as weak evidence.
+- **Every stored score names its method.** `score_evidence.py` carries a
+  `METHOD_VERSION` plus a fingerprint derived from the scoring constants
+  themselves; changing a weight without bumping the version fails validation and
+  the pinning test. Each active skill records the `evidence_score_method` that
+  produced its number, and a method change writes a `change_log` entry even when
+  the value stays the same — otherwise the same stored `0.74` would silently
+  mean something new.
 
 ## Automation
 

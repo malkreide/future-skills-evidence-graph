@@ -86,10 +86,16 @@
         "date": "2026-06-24",
         "change": "evidence_score 0.76 -> 0.74",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.74."
       }
     ],
     "created_at": "2026-06-22",
-    "updated_at": "2026-06-24"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-ai-everyday-recognition",
@@ -144,10 +150,16 @@
         "date": "2026-06-22",
         "change": "Promoted candidate skill to active",
         "reason": "Human review confirmed definition and reviewed supporting evidence."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.62."
       }
     ],
     "created_at": "2026-06-22",
-    "updated_at": "2026-06-22"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   },
   {
     "id": "skill-generative-ai-literacy",
@@ -207,9 +219,15 @@
         "date": "2026-07-31",
         "change": "evidence_score 0.68 -> 0.7",
         "reason": "Recomputed deterministically from supporting claim scores."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.7."
       }
     ],
     "created_at": "2026-06-22",
-    "updated_at": "2026-07-31"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   }
 ]
