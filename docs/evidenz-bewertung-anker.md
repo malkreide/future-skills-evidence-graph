@@ -195,6 +195,79 @@ Wer eine Konstante in `score_evidence.py` ändert:
   Zielgruppen. Ein Thema mit systematischen Reviews erreicht strukturell
   höhere Werte als ein junges; der Score bildet damit auch die Reife
   eines Forschungsfeldes ab, nicht nur die Evidenzlage einer Kompetenz.
+  Wie stark, ist inzwischen gemessen — siehe den nächsten Abschnitt.
 - Die Gegenprobe fehlt weitgehend: Der Score ist eine Konfidenzzahl, die
   fast nur bestätigende Evidenz kennt. Siehe
   [docs/gegenevidenz-lane.md](gegenevidenz-lane.md).
+
+## Der Score misst Menge stärker als Qualität
+
+Der Gesamtscore verrechnet zwei Dinge zu einer Zahl: die Evidenzqualität
+**je Aussage** (der Mittelwert der Claim-Scores) und die **Menge**
+unabhängiger Aussagen (der Breitenfaktor, 0,80 bei zwei Belegen bis 1,00
+ab sechs). Über die 16 aktiven Skills gemessen (Stand 2026-08-09):
+
+| Zusammenhang | r |
+| --- | --- |
+| Score ↔ Anzahl geprüfter Aussagen | **+0,663** |
+| Score ↔ Evidenzqualität je Aussage | +0,530 |
+| Evidenzqualität je Aussage ↔ Anzahl | −0,112 |
+
+Die Rangfolge wird also **stärker von der Anzahl der Belege getrieben als
+von ihrer Qualität** — und die Anzahl sagt über die Qualität praktisch
+nichts aus (r ≈ −0,11). Die Anzahl geprüfter Aussagen ist zu einem
+erheblichen Teil ein Produkt des Review-Durchsatzes und der Reife des
+Forschungsfeldes, nicht der Belegkraft.
+
+Zwei Fälle zeigen es konkret:
+
+- **Datenkompetenz** hat mit 0,828 die zweithöchste Evidenzqualität je
+  Aussage im ganzen Katalog — aber nur 2 geprüfte Belege. Gesamtscore
+  0,66, Rang 8 von 14.
+- **Systemdenken** hat mit 0,675 eine der *niedrigsten* Qualitäten je
+  Aussage — aber 10 Belege. Gesamtscore 0,68, Rang 7.
+
+Systemdenken steht also über Datenkompetenz, obwohl seine Evidenz je
+Aussage deutlich schwächer ist. Wer nur die Rangliste liest, zieht daraus
+den falschen Schluss.
+
+### Was daraus folgt — und was nicht
+
+**Was umgesetzt ist:** Das Dashboard zeigt die Zerlegung neben dem Score
+(Qualität je Aussage, Anzahl Belege, Breitenfaktor), nennt die
+Vergleichsgruppe, und benennt die Divergenz im Klartext, wo sie auftritt
+(„Hohe Evidenzqualität je Aussage, aber erst 2 geprüfte Belege — das ist
+eine dünne Beleglage, keine schwache Evidenz"). Zusätzlich lässt sich die
+Liste nach Qualität je Aussage oder nach Anzahl Belege sortieren statt
+nur nach dem Gesamtscore. Berechnet wird das in
+`scripts/score_context.py` zur Bauzeit; gespeichert wird nichts davon,
+damit kein zweiter abgeleiteter Wert von seiner Formel abdriften kann.
+
+**Was bewusst nicht umgesetzt ist:** Die Formel bleibt unverändert. Den
+Breitenfaktor zu dämpfen (etwa `BREADTH_FLOOR` von 0,7 anzuheben) würde
+die Vermischung verringern, ist aber eine Methodenänderung — sie
+verschiebt alle 16 gespeicherten Scores und verlangt einen
+`METHOD_VERSION`-Sprung. Ob die Breite so stark zählen *soll*, ist eine
+redaktionelle Entscheidung, keine technische: Mehrere unabhängige Belege
+sind ein echtes Qualitätssignal, nur eben ein anderes als die Stärke des
+einzelnen Belegs. Diese Entscheidung gehört in einen eigenen Vorgang mit
+eigener Begründung.
+
+### Vergleichsgruppen
+
+Die Vergleichsgruppe ist die `audience` — Evidenz über Lernende und
+Evidenz über Lehrpersonen stammt aus verschiedenen Literaturen
+(K-12-Interventionsstudien vs. Professionalisierungsforschung) und ist
+nicht direkt vergleichbar. kurate.org rankt aus demselben Grund innerhalb
+der arXiv-Kategorie.
+
+Unter `MIN_PEER_GROUP` = 5 Skills gibt das Dashboard **keinen Rang** aus,
+sondern sagt, dass die Gruppe zu klein ist. „Rang 1 von 2" liest sich wie
+ein Befund und ist keiner. Das ist dieselbe Zurückhaltung, die
+[docs/eval-baseline.md](eval-baseline.md) bei einer unterpowerten
+Baseline anwendet. Die Gruppe „Lehrende" umfasst derzeit 2 Skills und
+bekommt deshalb keinen Rang.
+
+Kandidaten-Skills bilden keine Vergleichsgruppe: Sie tragen
+konstruktionsbedingt `evidence_score` 0,0 (`cluster_claims.py`) und
+würden jeden Median gegen null ziehen.

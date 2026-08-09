@@ -10,6 +10,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from common import ROOT, load_records, write_json
+from score_context import quality_vs_breadth_note, score_contexts
+from score_evidence import reviewed_claim_scores
 from validate_data import validate_repository
 
 # Matches local CSS/JS references in the HTML, e.g. src="./assets/app.js".
@@ -54,11 +56,24 @@ def _slim(records: list[dict], dropped: tuple[str, ...]) -> list[dict]:
 
 
 def build_index() -> dict[str, object]:
+    claims = load_records("claims")
+    skills = load_records("skills")
+    sources = load_records("sources")
+    # Derived at build time rather than stored in data/skills/*.json: a second
+    # persisted value computed from the same formula would be a second thing
+    # that can drift from it. The dashboard needs it, the record does not.
+    contexts = score_contexts(
+        skills, reviewed_claim_scores(claims, {source["id"]: source for source in sources})
+    )
+    for skill in skills:
+        context = dict(contexts[skill["id"]])
+        context["note"] = quality_vs_breadth_note(context)
+        skill["score_context"] = context
     return {
         "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
-        "sources": _slim(load_records("sources"), _DROPPED_SOURCE_FIELDS),
-        "claims": _slim(load_records("claims"), _DROPPED_CLAIM_FIELDS),
-        "skills": load_records("skills"),
+        "sources": _slim(sources, _DROPPED_SOURCE_FIELDS),
+        "claims": _slim(claims, _DROPPED_CLAIM_FIELDS),
+        "skills": skills,
         "frameworks": load_records("frameworks"),
     }
 
