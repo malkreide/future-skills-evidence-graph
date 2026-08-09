@@ -200,24 +200,57 @@ def compute_claim_scores() -> dict[str, float]:
     return reviewed_claim_scores(load_records("claims"), sources)
 
 
-def skill_score(skill: dict[str, Any], claim_scores: dict[str, float]) -> float:
+def score_breakdown(skill: dict[str, Any], claim_scores: dict[str, float]) -> dict[str, Any]:
+    """The score's components, not just its total.
+
+    The composite folds two things a reader needs apart: how good the
+    evidence is *per claim* (claim_quality) and how many independent
+    claims a reviewer has attached (breadth_factor). Over the current
+    catalogue the second drives the ranking more than the first — see the
+    limits section of docs/evidenz-bewertung-anker.md — so a skill can sit
+    low because the catalogue is thin on it rather than because its
+    evidence is weak. Exposing the parts is what lets the dashboard say
+    which of the two it is.
+
+    This is the single implementation of the formula; skill_score reads
+    its total, so the parts can never drift from the number they explain.
+    """
     supporting = [
         claim_scores[claim_id]
         for claim_id in skill.get("supporting_claim_ids", [])
         if claim_id in claim_scores
     ]
-    if not supporting:
-        return 0.0
-    base = math.fsum(supporting) / len(supporting)
-    breadth = min(len(supporting), BREADTH_SATURATION) / BREADTH_SATURATION
-    contradiction = math.fsum(
+    contradicting = [
         claim_scores[claim_id]
         for claim_id in skill.get("contradicting_claim_ids", [])
         if claim_id in claim_scores
-    )
-    score = base * (BREADTH_FLOOR + (1 - BREADTH_FLOOR) * breadth)
-    score -= CONTRADICTION_PENALTY * contradiction
-    return round(max(0.0, min(1.0, score)), 2)
+    ]
+    if not supporting:
+        return {
+            "claim_quality": None,
+            "supporting_claims": 0,
+            "contradicting_claims": len(contradicting),
+            "breadth_factor": None,
+            "contradiction_penalty": None,
+            "evidence_score": 0.0,
+        }
+    base = math.fsum(supporting) / len(supporting)
+    breadth = min(len(supporting), BREADTH_SATURATION) / BREADTH_SATURATION
+    breadth_factor = BREADTH_FLOOR + (1 - BREADTH_FLOOR) * breadth
+    penalty = CONTRADICTION_PENALTY * math.fsum(contradicting)
+    score = base * breadth_factor - penalty
+    return {
+        "claim_quality": round(base, 3),
+        "supporting_claims": len(supporting),
+        "contradicting_claims": len(contradicting),
+        "breadth_factor": round(breadth_factor, 3),
+        "contradiction_penalty": round(penalty, 3),
+        "evidence_score": round(max(0.0, min(1.0, score)), 2),
+    }
+
+
+def skill_score(skill: dict[str, Any], claim_scores: dict[str, float]) -> float:
+    return score_breakdown(skill, claim_scores)["evidence_score"]
 
 
 def compute_skill_scores() -> dict[str, float]:

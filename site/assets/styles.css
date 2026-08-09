@@ -261,6 +261,48 @@ select {
 }
 
 /* Inline explanation of the evidence score, right where the score is shown. */
+.score-context {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 12px;
+  padding: 12px;
+}
+
+.score-context-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.score-context-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-context-key {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.score-context-item strong {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-context-peer,
+.score-context-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 10px 0 0;
+  max-width: 80ch;
+}
+
+.score-context-note {
+  border-left: 3px solid var(--green);
+  padding-left: 10px;
+}
+
 .score-info {
   border-left: 3px solid var(--line);
   margin-top: 10px;

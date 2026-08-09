@@ -15,6 +15,7 @@ const els = {
   audienceFilter: document.querySelector("#audienceFilter"),
   ageFilter: document.querySelector("#ageFilter"),
   scoreFilter: document.querySelector("#scoreFilter"),
+  sortFilter: document.querySelector("#sortFilter"),
   scoreValue: document.querySelector("#scoreValue"),
   skillList: document.querySelector("#skillList"),
   detailPane: document.querySelector("#detailPane"),
@@ -48,6 +49,7 @@ const FILTER_DEFAULTS = {
   audience: "all",
   age: "all",
   score: "0",
+  sort: "score",
   cycle: "all",
 };
 
@@ -63,6 +65,7 @@ const URL_PARAM_MAP = {
   audience: "audienceFilter",
   age: "ageFilter",
   score: "scoreFilter",
+  sort: "sortFilter",
   cycle: "lp21CycleFilter",
 };
 
@@ -179,6 +182,7 @@ function currentControlValues() {
     audience: currentAudience(),
     age: els.ageFilter.value,
     score: els.scoreFilter.value,
+    sort: els.sortFilter ? els.sortFilter.value : FILTER_DEFAULTS.sort,
     cycle: els.lp21CycleFilter ? els.lp21CycleFilter.value : "all",
   };
 }
@@ -199,6 +203,7 @@ function resetFilters() {
   els.audienceFilter.value = FILTER_DEFAULTS.audience;
   els.ageFilter.value = FILTER_DEFAULTS.age;
   els.scoreFilter.value = FILTER_DEFAULTS.score;
+  if (els.sortFilter) els.sortFilter.value = FILTER_DEFAULTS.sort;
   if (els.lp21CycleFilter) els.lp21CycleFilter.value = FILTER_DEFAULTS.cycle;
   render();
 }
@@ -352,7 +357,28 @@ function filteredSkills() {
     .filter((skill) => status === "all" || skill.status === status)
     .filter((skill) => ageMatchesCycle(skill.age_range, age))
     .filter((skill) => Number(skill.evidence_score || 0) >= score)
-    .sort((a, b) => Number(b.evidence_score || 0) - Number(a.evidence_score || 0));
+    .sort(skillComparator(els.sortFilter ? els.sortFilter.value : "score"));
+}
+
+// The composite score multiplies evidence quality per claim by a breadth
+// factor, so a thin-but-strong skill and a broad-but-weak one can land on the
+// same number for opposite reasons. These orderings pull the two apart; the
+// composite stays the default because it is the reviewed trust signal.
+function sortValue(skill, mode) {
+  const context = skill.score_context || {};
+  if (mode === "quality") return Number(context.claim_quality || 0);
+  if (mode === "claims") return Number(context.supporting_claims || 0);
+  return Number(skill.evidence_score || 0);
+}
+
+function skillComparator(mode) {
+  return (a, b) => {
+    const delta = sortValue(b, mode) - sortValue(a, mode);
+    // Ties fall back to the composite so the order stays stable and
+    // reproducible rather than depending on file position.
+    if (delta !== 0) return delta;
+    return Number(b.evidence_score || 0) - Number(a.evidence_score || 0);
+  };
 }
 
 function statusCount(status) {
@@ -468,6 +494,59 @@ function renderSkillList() {
     selectedButton.scrollIntoView({ block: "nearest" });
   }
   focusSelectedCard = false;
+}
+
+// A single score cannot say whether a skill sits low because its evidence is
+// weak or because the catalogue is still thin on it. This block separates the
+// two and names the peer group the number should be read against; both are
+// computed at build time in scripts/score_context.py.
+function scoreContextBlock(skill) {
+  const context = skill.score_context;
+  if (!context || !context.supporting_claims) return null;
+
+  const box = document.createElement("div");
+  box.className = "score-context";
+
+  const parts = document.createElement("div");
+  parts.className = "score-context-parts";
+  parts.append(
+    scoreContextItem("Qualität je Aussage", scoreLabel(context.claim_quality)),
+    scoreContextItem("Geprüfte Belege", String(context.supporting_claims)),
+    scoreContextItem("Breitenfaktor", `× ${scoreLabel(context.breadth_factor)}`)
+  );
+  box.append(parts);
+
+  const peer = document.createElement("p");
+  peer.className = "score-context-peer";
+  const median = context.peer_group_median === null ? "–" : scoreLabel(context.peer_group_median);
+  // Educator and learner evidence come from different literatures, so the
+  // comparison group is stated rather than left implicit.
+  peer.textContent = context.rank
+    ? `Vergleichsgruppe ${context.peer_group_label}: Rang ${context.rank} von ` +
+      `${context.peer_group_size}, Median ${median}.`
+    : `Vergleichsgruppe ${context.peer_group_label} (${context.peer_group_size} Skills, ` +
+      `Median ${median}). ${context.rank_note || ""}`.trim();
+  box.append(peer);
+
+  if (context.note) {
+    const note = document.createElement("p");
+    note.className = "score-context-note";
+    note.textContent = context.note;
+    box.append(note);
+  }
+  return box;
+}
+
+function scoreContextItem(label, value) {
+  const item = document.createElement("div");
+  item.className = "score-context-item";
+  const key = document.createElement("span");
+  key.className = "score-context-key";
+  key.textContent = label;
+  const val = document.createElement("strong");
+  val.textContent = value;
+  item.append(key, val);
+  return item;
 }
 
 function pill(text, className = "") {
@@ -972,7 +1051,15 @@ function renderDetail() {
   scoreLink.rel = "noreferrer";
   scoreLink.textContent = "Ausführliche Erklärung für Laien →";
   scoreInfo.append(scoreSummary, scoreText, scoreLink);
-  header.append(title, definition, ...(original ? [original] : []), tags, scoreInfo);
+  const contextBlock = scoreContextBlock(skill);
+  header.append(
+    title,
+    definition,
+    ...(original ? [original] : []),
+    tags,
+    ...(contextBlock ? [contextBlock] : []),
+    scoreInfo
+  );
 
   const grid = document.createElement("div");
   grid.className = "detail-grid";
@@ -1093,6 +1180,7 @@ for (const control of [
   els.audienceFilter,
   els.ageFilter,
   els.scoreFilter,
+  els.sortFilter,
   els.lp21CycleFilter,
 ]) {
   if (control) control.addEventListener("input", render);
