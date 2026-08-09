@@ -16,6 +16,13 @@ const els = {
   ageFilter: document.querySelector("#ageFilter"),
   scoreFilter: document.querySelector("#scoreFilter"),
   sortFilter: document.querySelector("#sortFilter"),
+  lp21CoverageFilter: document.querySelector("#lp21CoverageFilter"),
+  claimCountFilter: document.querySelector("#claimCountFilter"),
+  qualityFilter: document.querySelector("#qualityFilter"),
+  qualityValue: document.querySelector("#qualityValue"),
+  trendFilter: document.querySelector("#trendFilter"),
+  advancedFilters: document.querySelector("#advancedFilters"),
+  advancedFilterBadge: document.querySelector("#advancedFilterBadge"),
   scoreValue: document.querySelector("#scoreValue"),
   skillList: document.querySelector("#skillList"),
   detailPane: document.querySelector("#detailPane"),
@@ -50,8 +57,16 @@ const FILTER_DEFAULTS = {
   age: "all",
   score: "0",
   sort: "score",
+  coverage: "all",
+  claims: "0",
+  quality: "0",
+  trend: "all",
   cycle: "all",
 };
+
+// The advanced controls live inside a collapsed <details>. An active filter the
+// user cannot see is a trap, so these keys drive the badge on the summary.
+const ADVANCED_FILTER_KEYS = ["coverage", "claims", "quality", "trend"];
 
 // Lehrplan-21-Zyklen als Altersspannen (Kindergarten–Sek I). Ein Skill zählt zu
 // einem Zyklus, wenn seine age_range-Spanne die Zyklus-Spanne überlappt.
@@ -66,6 +81,10 @@ const URL_PARAM_MAP = {
   age: "ageFilter",
   score: "scoreFilter",
   sort: "sortFilter",
+  coverage: "lp21CoverageFilter",
+  claims: "claimCountFilter",
+  quality: "qualityFilter",
+  trend: "trendFilter",
   cycle: "lp21CycleFilter",
 };
 
@@ -183,6 +202,10 @@ function currentControlValues() {
     age: els.ageFilter.value,
     score: els.scoreFilter.value,
     sort: els.sortFilter ? els.sortFilter.value : FILTER_DEFAULTS.sort,
+    coverage: els.lp21CoverageFilter ? els.lp21CoverageFilter.value : FILTER_DEFAULTS.coverage,
+    claims: els.claimCountFilter ? els.claimCountFilter.value : FILTER_DEFAULTS.claims,
+    quality: els.qualityFilter ? els.qualityFilter.value : FILTER_DEFAULTS.quality,
+    trend: els.trendFilter ? els.trendFilter.value : FILTER_DEFAULTS.trend,
     cycle: els.lp21CycleFilter ? els.lp21CycleFilter.value : "all",
   };
 }
@@ -195,6 +218,23 @@ function activeFilterCount() {
 function updateFilterControls() {
   const active = activeFilterCount();
   if (els.resetFilters) els.resetFilters.disabled = active === 0;
+  updateAdvancedBadge();
+}
+
+// An active filter inside a collapsed <details> would silently shrink the list.
+// The badge counts them, and the panel opens itself when one is set from a
+// shared URL so the state is never hidden from the person reading it.
+function updateAdvancedBadge() {
+  if (!els.advancedFilterBadge) return;
+  const values = currentControlValues();
+  const count = ADVANCED_FILTER_KEYS.filter(
+    (key) => String(values[key]) !== FILTER_DEFAULTS[key]
+  ).length;
+  els.advancedFilterBadge.hidden = count === 0;
+  els.advancedFilterBadge.textContent = count === 1 ? "1 aktiv" : `${count} aktiv`;
+  if (count && els.advancedFilters && !els.advancedFilters.open) {
+    els.advancedFilters.open = true;
+  }
 }
 
 function resetFilters() {
@@ -204,6 +244,10 @@ function resetFilters() {
   els.ageFilter.value = FILTER_DEFAULTS.age;
   els.scoreFilter.value = FILTER_DEFAULTS.score;
   if (els.sortFilter) els.sortFilter.value = FILTER_DEFAULTS.sort;
+  if (els.lp21CoverageFilter) els.lp21CoverageFilter.value = FILTER_DEFAULTS.coverage;
+  if (els.claimCountFilter) els.claimCountFilter.value = FILTER_DEFAULTS.claims;
+  if (els.qualityFilter) els.qualityFilter.value = FILTER_DEFAULTS.quality;
+  if (els.trendFilter) els.trendFilter.value = FILTER_DEFAULTS.trend;
   if (els.lp21CycleFilter) els.lp21CycleFilter.value = FILTER_DEFAULTS.cycle;
   render();
 }
@@ -357,7 +401,107 @@ function filteredSkills() {
     .filter((skill) => status === "all" || skill.status === status)
     .filter((skill) => ageMatchesCycle(skill.age_range, age))
     .filter((skill) => Number(skill.evidence_score || 0) >= score)
+    .filter((skill) => skillMatchesAdvanced(skill))
     .sort(skillComparator(els.sortFilter ? els.sortFilter.value : "score"));
+}
+
+// The Lehrplan-21 coverage lives on the mapping, not the skill: mappings point
+// at skills via skill_id, and a skill's own framework_mapping_ids does not
+// reliably list them. Educator skills carry no LP21 mapping at all -- the
+// curriculum covers learners; educators are anchored to the UNESCO framework.
+function lp21CoverageLabel(skill) {
+  const mappings = state.frameworks.filter(
+    (mapping) => mapping.skill_id === skill.id && mapping.framework === "Lehrplan 21"
+  );
+  if (!mappings.length) return null;
+  // Most conservative reading when a skill ever gains several mappings: a gap
+  // anywhere is a gap.
+  return mappings.reduce(
+    (worst, mapping) =>
+      Number(mapping.coverage_score || 0) < Number(worst.coverage_score || 0) ? mapping : worst
+  ).coverage_label;
+}
+
+// Each advanced filter as a named predicate, so the empty state can report
+// which one emptied the list instead of only that it is empty.
+const ADVANCED_FILTERS = [
+  {
+    key: "coverage",
+    label: "Lehrplan 21",
+    isActive: (value) => value !== "all",
+    matches: (skill, value) => lp21CoverageLabel(skill) === value,
+  },
+  {
+    key: "claims",
+    label: "Min. Belege",
+    isActive: (value) => Number(value) > 0,
+    matches: (skill, value) =>
+      Number((skill.score_context || {}).supporting_claims || 0) >= Number(value),
+  },
+  {
+    key: "quality",
+    label: "Min. Qualität je Aussage",
+    isActive: (value) => Number(value) > 0,
+    matches: (skill, value) =>
+      Number((skill.score_context || {}).claim_quality || 0) >= Number(value),
+  },
+  {
+    key: "trend",
+    label: "Trend",
+    isActive: (value) => value !== "all",
+    matches: (skill, value) => skill.trend === value,
+  },
+];
+
+// Combinable thresholds make dead ends common, and "Keine Treffer" alone does
+// not say which of six controls is responsible. Each active filter is dropped
+// in turn: if removing exactly one would bring results back, name it.
+function emptyStateFor() {
+  const empty = document.createElement("div");
+  empty.className = "empty-state";
+  const heading = document.createElement("h2");
+  heading.textContent = "Keine Treffer";
+  empty.append(heading);
+
+  const active = activeAdvancedFilters();
+  const culprits = active.filter((dropped) => {
+    const rest = active.filter((filter) => filter.key !== dropped.key);
+    return state.skills.some((skill) => rest.every((f) => f.matches(skill, f.value)));
+  });
+
+  const text = document.createElement("p");
+  if (culprits.length) {
+    const names = culprits.map((filter) => `„${filter.label}“`).join(" oder ");
+    text.textContent =
+      culprits.length === active.length && active.length === 1
+        ? `Der Filter ${names} schliesst alles aus. Ohne ihn gäbe es wieder Treffer.`
+        : `Die Kombination ist zu eng. ${names} zu lockern bringt wieder Treffer.`;
+  } else {
+    text.textContent = "Filter reduzieren oder Suchbegriff anpassen.";
+  }
+  empty.append(text);
+
+  if (active.length) {
+    const hint = document.createElement("p");
+    hint.className = "field-hint";
+    hint.textContent = `Aktiv unter „Erweiterte Filter“: ${active
+      .map((filter) => filter.label)
+      .join(", ")}.`;
+    empty.append(hint);
+  }
+  return empty;
+}
+
+function activeAdvancedFilters() {
+  const values = currentControlValues();
+  return ADVANCED_FILTERS.filter((filter) => filter.isActive(values[filter.key])).map((filter) => ({
+    ...filter,
+    value: values[filter.key],
+  }));
+}
+
+function skillMatchesAdvanced(skill) {
+  return activeAdvancedFilters().every((filter) => filter.matches(skill, filter.value));
 }
 
 // The composite score multiplies evidence quality per claim by a breadth
@@ -450,10 +594,7 @@ function renderSkillList() {
   els.skillList.replaceChildren();
 
   if (!skills.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty-state";
-    empty.innerHTML = "<h2>Keine Treffer</h2><p>Filter reduzieren oder Suchbegriff anpassen.</p>";
-    els.skillList.append(empty);
+    els.skillList.append(emptyStateFor());
     return;
   }
 
@@ -1150,6 +1291,16 @@ function render() {
   const score = scoreLabel(els.scoreFilter.value);
   els.scoreValue.textContent = score;
   els.scoreFilter.setAttribute("aria-valuetext", `Mindestens ${score} Evidenz`);
+  if (els.qualityFilter && els.qualityValue) {
+    const quality = scoreLabel(els.qualityFilter.value);
+    els.qualityValue.textContent = quality;
+    els.qualityFilter.setAttribute("aria-valuetext", `Mindestens ${quality} Qualität je Aussage`);
+  }
+  if (els.lp21CoverageFilter) {
+    // Lehrplan 21 covers learners only, so the control cannot narrow anything
+    // in the educator view -- same reasoning as the age bands below.
+    els.lp21CoverageFilter.disabled = currentAudience() === "educator";
+  }
   state.selectedCycle = els.lp21CycleFilter ? els.lp21CycleFilter.value : "all";
   if (els.ageFilter) {
     // Age bands describe learners, so the control is inert for the educator view.
@@ -1181,6 +1332,10 @@ for (const control of [
   els.ageFilter,
   els.scoreFilter,
   els.sortFilter,
+  els.lp21CoverageFilter,
+  els.claimCountFilter,
+  els.qualityFilter,
+  els.trendFilter,
   els.lp21CycleFilter,
 ]) {
   if (control) control.addEventListener("input", render);

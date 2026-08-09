@@ -261,6 +261,46 @@ select {
 }
 
 /* Inline explanation of the evidence score, right where the score is shown. */
+.advanced-filters {
+  border-top: 1px solid var(--line);
+  margin-top: 14px;
+  padding-top: 10px;
+}
+
+.advanced-filters summary {
+  align-items: center;
+  color: var(--green);
+  cursor: pointer;
+  display: flex;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.advanced-badge {
+  background: var(--green);
+  border-radius: 999px;
+  color: var(--surface);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 8px;
+}
+
+.advanced-intro {
+  margin: 8px 0 12px;
+  max-width: 80ch;
+}
+
+.advanced-filters .toolbar-fields {
+  margin-top: 4px;
+}
+
+/* The advanced panel has no wide search box, so the first-child override that
+   stretches the search field across the main toolbar must not apply here. */
+.advanced-filters .toolbar-fields label:first-child {
+  grid-column: auto;
+}
+
 .score-context {
   background: var(--surface-2);
   border: 1px solid var(--line);
