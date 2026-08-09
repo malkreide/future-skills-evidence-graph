@@ -107,9 +107,15 @@ def quality_vs_breadth_note(context: dict[str, Any]) -> str | None:
             "dünne Beleglage, keine schwache Evidenz."
         )
     if quality <= 0.70 and count >= 6:
+        # Under method 1.0.0 this case could be described as the score resting
+        # on quantity: the breadth factor spanned 0.75 to 1.00, so a long
+        # evidence path lifted a weak skill noticeably. Since 1.1.0 the factor
+        # only spans 0.875 to 1.00, and at six claims it is exactly 1.00 -- the
+        # score then simply *is* the claim quality, undamped. Saying it rests on
+        # quantity would now overstate an effect the formula no longer has.
         return (
-            f"Breite Beleglage ({count} Aussagen), aber eher niedrige Evidenzqualität "
-            f"je Aussage ({quality:.2f}). Der Gesamtscore ruht hier auf Menge, "
-            "nicht auf Stärke."
+            f"Breite Beleglage ({count} Aussagen) bei eher niedriger Evidenzqualität "
+            f"je Aussage ({quality:.2f}). Der Gesamtscore wird hier nicht durch eine "
+            "dünne Beleglage gedämpft — er spiegelt die Stärke der Aussagen selbst."
         )
     return None

@@ -24,7 +24,7 @@ Ein Claim-Score besteht zu 60 % aus der Quellenqualität (`source_type`)
 und zu 40 % aus der im Review vergebenen `evidence_strength`. Der
 Skill-Score ist der Mittelwert seiner geprüften Claim-Scores, skaliert um
 einen Breitenfaktor (voll ab `BREADTH_SATURATION` = 6 unabhängigen
-Claims, Untergrenze `BREADTH_FLOOR` = 0,7) und vermindert um
+Claims, Untergrenze `BREADTH_FLOOR` = 0,85) und vermindert um
 `CONTRADICTION_PENALTY` = 0,1 je widersprechendem Claim.
 
 ## Anker: `evidence_strength`
@@ -182,6 +182,18 @@ Wer eine Konstante in `score_evidence.py` ändert:
    ersetzen — sonst ist nicht mehr prüfbar, was eine ältere gespeicherte
    Zahl bedeutete.
 
+### Versionsverlauf
+
+| Version | Datum | Änderung | Wirkung |
+| --- | --- | --- | --- |
+| 1.0.0 | 2026-08-09 | Erstfassung: Anker dokumentiert, „unbekannt ≠ schwach", Versionierung eingeführt. | Keine Score-Änderung; die Formel war zuvor unversioniert dieselbe. |
+| 1.1.0 | 2026-08-09 | `BREADTH_FLOOR` 0,7 → 0,85. | 11 von 16 Scores geändert (+0,01 bis +0,08). Rangfolge in der Gruppe Lernende: Datenkompetenz 8 → 3, Systemdenken 7 → 10. |
+
+Ein Score aus einer älteren Methode ist an `evidence_score_method` am
+Skill-Datensatz erkennbar; `validate_data.py` verlangt auf aktiven Skills
+die aktuelle Version, sodass zwei Methodenstände nie unmarkiert
+nebeneinander stehen können.
+
 ## Grenzen
 
 - Die Gewichte sind **eine redaktionelle Einzelbewertung**, ohne
@@ -204,54 +216,70 @@ Wer eine Konstante in `score_evidence.py` ändert:
 
 Der Gesamtscore verrechnet zwei Dinge zu einer Zahl: die Evidenzqualität
 **je Aussage** (der Mittelwert der Claim-Scores) und die **Menge**
-unabhängiger Aussagen (der Breitenfaktor, 0,80 bei zwei Belegen bis 1,00
-ab sechs). Über die 16 aktiven Skills gemessen (Stand 2026-08-09):
+unabhängiger Aussagen (der Breitenfaktor). Unter Methode **1.0.0** war
+die Menge der stärkere Treiber — was ein Score, der Evidenz behauptet zu
+messen, nicht sein sollte. Methode **1.1.0** korrigiert das Verhältnis.
 
-| Zusammenhang | r |
-| --- | --- |
-| Score ↔ Anzahl geprüfter Aussagen | **+0,663** |
-| Score ↔ Evidenzqualität je Aussage | +0,530 |
-| Evidenzqualität je Aussage ↔ Anzahl | −0,112 |
+Gemessen über die 16 aktiven Skills (Stand 2026-08-09):
 
-Die Rangfolge wird also **stärker von der Anzahl der Belege getrieben als
-von ihrer Qualität** — und die Anzahl sagt über die Qualität praktisch
-nichts aus (r ≈ −0,11). Die Anzahl geprüfter Aussagen ist zu einem
-erheblichen Teil ein Produkt des Review-Durchsatzes und der Reife des
-Forschungsfeldes, nicht der Belegkraft.
+| Zusammenhang | 1.0.0 (`BREADTH_FLOOR` 0,7) | 1.1.0 (`BREADTH_FLOOR` 0,85) |
+| --- | --- | --- |
+| Score ↔ Anzahl geprüfter Aussagen | **+0,663** | +0,352 |
+| Score ↔ Evidenzqualität je Aussage | +0,530 | **+0,827** |
+| Evidenzqualität ↔ Anzahl | −0,112 | −0,112 |
 
-Zwei Fälle zeigen es konkret:
+Die dritte Zeile ist der eigentliche Befund und ändert sich nicht: Die
+Anzahl geprüfter Aussagen sagt über deren Qualität **nichts** aus
+(r ≈ −0,11). Sie ist zu einem erheblichen Teil ein Produkt des
+Review-Durchsatzes und der Reife eines Forschungsfeldes, nicht der
+Belegkraft. Unter 1.0.0 trieb genau diese uninformative Größe die
+Rangfolge stärker als die informative.
 
-- **Datenkompetenz** hat mit 0,828 die zweithöchste Evidenzqualität je
-  Aussage im ganzen Katalog — aber nur 2 geprüfte Belege. Gesamtscore
-  0,66, Rang 8 von 14.
-- **Systemdenken** hat mit 0,675 eine der *niedrigsten* Qualitäten je
-  Aussage — aber 10 Belege. Gesamtscore 0,68, Rang 7.
+Der Fall, an dem es sichtbar wurde:
 
-Systemdenken steht also über Datenkompetenz, obwohl seine Evidenz je
-Aussage deutlich schwächer ist. Wer nur die Rangliste liest, zieht daraus
-den falschen Schluss.
+(Ränge in der Vergleichsgruppe *Lernende*, 14 Skills — so, wie das
+Dashboard sie ausweist.)
 
-### Was daraus folgt — und was nicht
+| Skill | Qualität je Aussage | Belege | Score 1.0.0 | Score 1.1.0 |
+| --- | --- | --- | --- | --- |
+| Datenkompetenz | 0,828 (zweithöchste im Katalog) | 2 | 0,66 → Rang 8 | 0,74 → **Rang 3** |
+| Systemdenken | 0,675 (eine der niedrigsten) | 10 | 0,68 → Rang 7 | 0,68 → **Rang 10** |
 
-**Was umgesetzt ist:** Das Dashboard zeigt die Zerlegung neben dem Score
-(Qualität je Aussage, Anzahl Belege, Breitenfaktor), nennt die
-Vergleichsgruppe, und benennt die Divergenz im Klartext, wo sie auftritt
-(„Hohe Evidenzqualität je Aussage, aber erst 2 geprüfte Belege — das ist
-eine dünne Beleglage, keine schwache Evidenz"). Zusätzlich lässt sich die
-Liste nach Qualität je Aussage oder nach Anzahl Belege sortieren statt
-nur nach dem Gesamtscore. Berechnet wird das in
+Unter 1.0.0 stand Systemdenken über Datenkompetenz, obwohl seine Evidenz
+je Aussage deutlich schwächer ist. Wer die Rangliste als Rangliste las,
+zog daraus den falschen Schluss.
+
+### Warum 0,85 und nicht 1,0
+
+Der Breitenfaktor ist `BREADTH_FLOOR + (1 − BREADTH_FLOOR) · min(n, 6)/6`.
+Die Untergrenze bestimmt, wie stark ein kurzer Evidenzpfad den Score
+dämpft: bei 0,7 reichte der Faktor von 0,75 (ein Beleg) bis 1,00 (ab
+sechs), bei 0,85 nur noch von 0,875 bis 1,00.
+
+Ihn ganz abzuschalten (`BREADTH_FLOOR` = 1,0) wäre die einfachere
+Antwort und die falsche: **mehrere unabhängige Belege sind ein echtes
+Qualitätssignal**, nur ein anderes als die Stärke des einzelnen Belegs.
+Eine Aussage, die dreimal unabhängig repliziert wurde, ist besser
+abgesichert als eine gleich starke Einzelstudie — der Score soll das noch
+sehen, nur nicht mehr dominieren lassen. 0,85 lässt die Breite als
+nachgeordnetes Signal wirken (r sinkt von 0,66 auf 0,35), während die
+Qualität den Score klar bestimmt (r steigt von 0,53 auf 0,83).
+
+Die Wahl ist damit ausdrücklich **redaktionell**, nicht hergeleitet. Was
+sich messen lässt, ist die Wirkung, nicht die Richtigkeit; die Tabelle
+oben zeigt sie für 0,85, und `git log` bewahrt, wogegen entschieden
+wurde.
+
+### Was die Zerlegung zusätzlich leistet
+
+Auch mit korrigierter Gewichtung bleibt der Gesamtscore eine
+Zusammenfassung. Das Dashboard zeigt deshalb weiterhin die Zerlegung
+daneben (Qualität je Aussage, Anzahl Belege, Breitenfaktor), nennt die
+Vergleichsgruppe und benennt die Divergenz im Klartext, wo sie auftritt.
+Die Liste lässt sich nach Qualität je Aussage oder nach Anzahl Belege
+sortieren statt nur nach dem Gesamtscore. Berechnet wird das in
 `scripts/score_context.py` zur Bauzeit; gespeichert wird nichts davon,
 damit kein zweiter abgeleiteter Wert von seiner Formel abdriften kann.
-
-**Was bewusst nicht umgesetzt ist:** Die Formel bleibt unverändert. Den
-Breitenfaktor zu dämpfen (etwa `BREADTH_FLOOR` von 0,7 anzuheben) würde
-die Vermischung verringern, ist aber eine Methodenänderung — sie
-verschiebt alle 16 gespeicherten Scores und verlangt einen
-`METHOD_VERSION`-Sprung. Ob die Breite so stark zählen *soll*, ist eine
-redaktionelle Entscheidung, keine technische: Mehrere unabhängige Belege
-sind ein echtes Qualitätssignal, nur eben ein anderes als die Stärke des
-einzelnen Belegs. Diese Entscheidung gehört in einen eigenen Vorgang mit
-eigener Begründung.
 
 ### Vergleichsgruppen
 

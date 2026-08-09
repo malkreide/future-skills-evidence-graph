@@ -163,7 +163,12 @@ class NoteTests(unittest.TestCase):
     def test_note_fires_when_a_broad_path_carries_weak_claims(self) -> None:
         note = quality_vs_breadth_note({"claim_quality": 0.64, "supporting_claims": 6})
         self.assertIsNotNone(note)
-        self.assertIn("Menge", note)
+        # At six claims the breadth factor is exactly 1.0, so the score is the
+        # claim quality undamped. The note must say that rather than claim the
+        # score rests on quantity -- true under method 1.0.0, overstated since
+        # 1.1.0 narrowed the factor to 0.875..1.00.
+        self.assertIn("nicht durch eine dünne Beleglage gedämpft", note)
+        self.assertNotIn("ruht", note)
 
     def test_note_stays_quiet_when_quality_and_breadth_agree(self) -> None:
         # Wallpaper is not context: a note on every skill would stop being read.

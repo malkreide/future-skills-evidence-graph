@@ -101,11 +101,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.77."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method 1.0.0 -> 1.1.0",
+        "reason": "Recomputed under scoring method 1.1.0; the value stayed at 0.77."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-critical-thinking",
@@ -117,7 +122,7 @@
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.65,
+    "evidence_score": 0.67,
     "trend": "growing",
     "topics": [
       "critical thinking",
@@ -184,11 +189,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.65."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.65 -> 0.67",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-data-literacy",
@@ -200,7 +210,7 @@
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.66,
+    "evidence_score": 0.74,
     "trend": "growing",
     "topics": [
       "data",
@@ -237,11 +247,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.66."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.66 -> 0.74",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-digital-media-literacy",
@@ -253,7 +268,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.69,
+    "evidence_score": 0.7,
     "trend": "stable",
     "topics": [
       "digital literacy",
@@ -312,11 +327,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.69."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.69 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-ethical-technology-judgment",
@@ -379,11 +399,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.74."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method 1.0.0 -> 1.1.0",
+        "reason": "Recomputed under scoring method 1.1.0; the value stayed at 0.74."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-self-regulated-learning",
@@ -395,7 +420,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.71,
+    "evidence_score": 0.73,
     "trend": "stable",
     "topics": [
       "metacognition",
@@ -445,11 +470,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.71."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.71 -> 0.73",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-creative-problem-solving",
@@ -461,7 +491,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.64,
+    "evidence_score": 0.7,
     "trend": "growing",
     "topics": [
       "creative thinking",
@@ -499,11 +529,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.64."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.64 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-collaborative-problem-solving",
@@ -515,7 +550,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.56,
+    "evidence_score": 0.63,
     "trend": "stable",
     "topics": [
       "collaboration",
@@ -546,11 +581,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.56."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.56 -> 0.63",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-systems-thinking",
@@ -677,11 +717,16 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.68."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method 1.0.0 -> 1.1.0",
+        "reason": "Recomputed under scoring method 1.1.0; the value stayed at 0.68."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   },
   {
     "id": "skill-resilience-adaptability",
@@ -693,7 +738,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.63,
+    "evidence_score": 0.7,
     "trend": "growing",
     "topics": [
       "resilience",
@@ -725,10 +770,15 @@
         "date": "2026-08-09",
         "change": "evidence_score method None -> 1.0.0",
         "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.63."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score 0.63 -> 0.7",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
       }
     ],
     "created_at": "2026-04-28",
     "updated_at": "2026-08-09",
-    "evidence_score_method": "1.0.0"
+    "evidence_score_method": "1.1.0"
   }
 ]
