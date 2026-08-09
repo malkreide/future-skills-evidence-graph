@@ -282,6 +282,31 @@ def primary_labels(set_name: str) -> dict[str, dict[str, Any]]:
     }
 
 
+ANCHOR_DOC = EVAL_DIR.parent / "docs" / "evidenz-bewertung-anker.md"
+
+
+def anchor_rubric() -> dict[str, str]:
+    """The evidence_strength anchors, read out of the methodology document.
+
+    Extracted rather than restated: a copy pasted into this file would go
+    stale the first time the anchors are sharpened, and a worksheet
+    carrying an outdated rubric would produce disagreement that looks
+    like rater variance but is really two different rulebooks.
+
+    Raises if the table cannot be found, because shipping a worksheet
+    with an empty rubric is worse than not shipping one.
+    """
+    text = ANCHOR_DOC.read_text(encoding="utf-8")
+    rows = re.findall(r"^\|\s*`(strong|moderate|low)`\s*\|[^|]*\|\s*(.+?)\s*\|\s*$", text, re.M)
+    rubric = {level: definition for level, definition in rows}
+    if set(rubric) != {"strong", "moderate", "low"}:
+        raise SystemExit(
+            f"{ANCHOR_DOC}: could not read the evidence_strength anchors "
+            f"(found {sorted(rubric)}). The worksheet must not ship without them."
+        )
+    return rubric
+
+
 def build_worksheet(set_name: str) -> dict[str, Any]:
     """A blind re-judging worksheet: inputs only, no gold, no notes.
 
@@ -330,6 +355,22 @@ def build_worksheet(set_name: str) -> dict[str, Any]:
             "labeled_at": "",
             "blind": True,
         },
+        # The rubric travels with the worksheet so a rater working through
+        # fifty items never has to leave the file to recall what a level
+        # means. Read live from the methodology doc, never restated here.
+        **(
+            {
+                "rubrik_evidence_strength": anchor_rubric(),
+                "rubrik_age_range": (
+                    "Altersspanne als \"von-bis\" in Jahren, so eng wie der Text sie "
+                    "hergibt (z. B. \"6-12\"). Nennt der Text nur eine Schulstufe, die "
+                    "übliche Spanne dieser Stufe verwenden. Ist gar keine Altersangabe "
+                    "ableitbar, null lassen statt zu raten."
+                ),
+            }
+            if "evidence_strength" in fields
+            else {}
+        ),
         "labels": items,
     }
 
