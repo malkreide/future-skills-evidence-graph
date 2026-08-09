@@ -16,7 +16,14 @@ from common import (
     source_identity,
     source_title_key,
 )
-from score_evidence import reviewed_claim_scores, skill_score
+from score_evidence import (
+    METHOD_FINGERPRINTS,
+    METHOD_VERSION,
+    method_fingerprint,
+    reviewed_claim_scores,
+    skill_score,
+    unscoreable_reviewed_claims,
+)
 
 
 SCHEMA_FILES = {
@@ -109,6 +116,23 @@ def validate_repository() -> list[str]:
                 errors.append(f"claims:{claim_id} contradicts missing skill {skill_id}")
 
     sources_by_id = {source["id"]: source for source in sources}
+
+    # A weight edited without a METHOD_VERSION bump would silently redefine
+    # every stored score, so the declared version has to match the constants
+    # it claims to describe before any score is compared against them.
+    if METHOD_FINGERPRINTS.get(METHOD_VERSION) != method_fingerprint():
+        errors.append(
+            f"scoring: method {METHOD_VERSION} computes fingerprint {method_fingerprint()}, "
+            f"but METHOD_FINGERPRINTS records "
+            f"{METHOD_FINGERPRINTS.get(METHOD_VERSION)!r} - the scoring constants changed "
+            f"without a version bump (see docs/evidenz-bewertung-anker.md)"
+        )
+
+    # Unknown is not weak: an unscoreable reviewed claim silently leaves the
+    # evidence path, so it has to be an error rather than a missing summand.
+    for claim_id, problem in unscoreable_reviewed_claims(claims, sources_by_id).items():
+        errors.append(f"claims:{claim_id} is reviewed but cannot be scored ({problem})")
+
     claim_scores = reviewed_claim_scores(claims, sources_by_id)
     for skill in skills:
         skill_id = skill.get("id", "<missing id>")
@@ -117,6 +141,12 @@ def validate_repository() -> list[str]:
             errors.append(
                 f"skills:{skill_id} evidence_score {skill.get('evidence_score')!r} does not "
                 f"match computed {expected_score} (run scripts/score_evidence.py --write)"
+            )
+        if skill.get("status") == "active" and skill.get("evidence_score_method") != METHOD_VERSION:
+            errors.append(
+                f"skills:{skill_id} is active with evidence_score_method "
+                f"{skill.get('evidence_score_method')!r}, expected {METHOD_VERSION!r} "
+                f"(run scripts/score_evidence.py --write)"
             )
         for claim_id in skill.get("supporting_claim_ids", []):
             if claim_id not in claim_ids:

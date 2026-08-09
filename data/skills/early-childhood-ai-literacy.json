@@ -2,10 +2,10 @@
   {
     "id": "skill-early-childhood-ai-literacy",
     "name": "Early Childhood AI Literacy",
-    "name_de": "Frühkindliche KI-Kompetenz",
+    "name_de": "Fr\u00fchkindliche KI-Kompetenz",
     "short_label": "Vorschul-KI",
     "definition": "Ability of young children in the pre-primary years (ages 0-6) to encounter and make sense of basic AI concepts - recognising that AI systems learn from data and make simple predictions - through age-appropriate, playful and creative activities.",
-    "definition_de": "Fähigkeit junger Kinder im Vorschulalter (0–6 Jahre), grundlegenden KI-Konzepten zu begegnen und sie zu begreifen – etwa dass KI-Systeme aus Daten lernen und einfache Vorhersagen treffen – über altersgerechte, spielerische und kreative Aktivitäten.",
+    "definition_de": "F\u00e4higkeit junger Kinder im Vorschulalter (0\u20136 Jahre), grundlegenden KI-Konzepten zu begegnen und sie zu begreifen \u2013 etwa dass KI-Systeme aus Daten lernen und einfache Vorhersagen treffen \u2013 \u00fcber altersgerechte, spielerische und kreative Aktivit\u00e4ten.",
     "age_range": "0-6",
     "audience": "learner",
     "status": "active",
@@ -66,9 +66,15 @@
         "date": "2026-06-23",
         "change": "Promoted candidate skill to active",
         "reason": "Human review confirmed definition and reviewed supporting evidence."
+      },
+      {
+        "date": "2026-08-09",
+        "change": "evidence_score method None -> 1.0.0",
+        "reason": "Recomputed under scoring method 1.0.0; the value stayed at 0.57."
       }
     ],
     "created_at": "2026-06-23",
-    "updated_at": "2026-06-23"
+    "updated_at": "2026-08-09",
+    "evidence_score_method": "1.0.0"
   }
 ]

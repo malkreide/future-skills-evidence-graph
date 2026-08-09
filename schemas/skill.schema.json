@@ -36,6 +36,11 @@
     "audience": { "type": "string", "enum": ["learner", "educator"] },
     "status": { "type": "string", "enum": ["candidate", "active", "deprecated"] },
     "evidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "evidence_score_method": {
+      "type": "string",
+      "description": "Version of the scoring method that produced evidence_score (score_evidence.py METHOD_VERSION). Written by score_evidence.py --write; validate_data.py requires it on active skills so two scores computed under different methods never sit side by side unmarked. See docs/evidenz-bewertung-anker.md.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
     "trend": { "type": "string", "enum": ["emerging", "growing", "stable", "declining"] },
     "topics": { "type": "array", "items": { "type": "string" } },
     "supporting_claim_ids": { "type": "array", "items": { "type": "string" } },
