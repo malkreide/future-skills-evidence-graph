@@ -17,7 +17,7 @@ anthropic==0.120.2
 # only inside its adapter, never touched in {none, cache} mode. It exists so the
 # provider choice can be MEASURED (scripts/compare_providers.py) instead of
 # assumed -- not because the pipeline needs it.
-openai==2.50.0
+openai==2.53.0
 # NOTE: AI_PROVIDER=ollama deliberately has NO entry here. That adapter talks to
 # a local server over urllib, so the keyless, local provider -- the one a
 # contributor without an API budget can actually run -- costs this file nothing.
@@ -28,12 +28,12 @@ openai==2.50.0
 # with EMBEDDING_PROVIDER in {none, local} (the default and CI mode) nothing here
 # is imported, and EMBEDDING_PROVIDER=st replays committed vectors from
 # tests/fixtures/embeddings/ offline, so the importers stay standard-library only.
-sentence-transformers==5.6.1
+sentence-transformers==5.7.0
 # pypdf is only needed by the OPTIONAL PDF->plaintext helper
 # (scripts/extract_pdf_text.py), which an operator runs to prepare a report for
 # scripts/ingest_reports.py. It is imported lazily and only when actually parsing
 # a PDF; the importer itself takes plaintext and stays standard-library only.
-pypdf==6.14.2
+pypdf==6.15.0
 # ddgs (DuckDuckGo search) is the OPTIONAL open-source, keyless web-search tier of
 # the source-URL resolver (scripts/resolve_source_url.py, Option B). It is imported
 # lazily and only when a report has no URL and the keyless catalogues (Crossref/
