@@ -69,6 +69,58 @@ das: es zählt in die rohe Übereinstimmung und in Cohens Kappa, aber ein
 Paar, das es enthält, trägt keine ordinale Distanz und fällt aus dem
 gewichteten Kappa heraus (die Anzahl wird ausgewiesen).
 
+## Zuerst: Was für eine Aussage ist das?
+
+`claim_type` steht vor allem anderen, weil die Design-Leiter unten genau
+**eine** Frage beantwortet: *Kann dieses Design eine Ursache isolieren?*
+Das ist nur dann die richtige Frage, wenn die Aussage eine Ursache
+behauptet.
+
+| `claim_type` | Beispiel | Pfad |
+| --- | --- | --- |
+| `causal_effect` | „Die Intervention verbessert das Lernen." | Design-Leiter |
+| `association` | „Digitalkompetenz hängt mit KI-Kompetenz zusammen." | Eignung |
+| `descriptive` | „Eltern berichteten vier Schwierigkeiten." | Eignung |
+| `normative` | „Kinder brauchen altersgerechtes Verständnis." | Eignung |
+| `definitional` | „Digitalkompetenz umfasst Informationskompetenz." | Eignung |
+
+Eine definitorische Aussage danach zu bewerten, ob sie randomisiert hat,
+ist ein Kategorienfehler — und die Antwort `very_low` würde diesen Fehler
+als Befund ausweisen. Bei der Anwendung auf den Produktivkatalog stellte
+sich heraus, dass nur **14 von 59** geprüften Aussagen überhaupt eine
+Wirkung behaupten. Ohne diese Unterscheidung wären rund vierzig Aussagen
+`very_low` geworden, und der Grund dafür wäre eine Frage gewesen, die
+niemand gestellt hat.
+
+### Der Eignungspfad
+
+Für Aussagen ohne Wirkungsbehauptung lautet die Frage nicht „konnte das
+Design eine Ursache isolieren", sondern **„ist die Quelle eine kompetente
+Zeugin für das, was die Aussage beschreibt?"** Ein Referenzrahmen ist die
+Primärquelle für seinen eigenen Inhalt; eine Interviewstudie hat die
+Wahrnehmungen, die sie berichtet, tatsächlich erhoben; neun
+Länder-Fallstudien haben diese Lehrpläne tatsächlich angesehen. Das trägt
+`directness`, und deshalb setzt dort sie die Baseline:
+
+| `directness` | Baseline |
+| --- | --- |
+| `direct` | `moderate` |
+| `partially_direct` | `low` |
+| `indirect` | `very_low` |
+| nicht erfasst | **keine** — Ergebnis `null` |
+
+Auf diesem Pfad wird `directness` **nicht** zusätzlich abgewertet (sie hat
+die Baseline schon gesetzt), und `comparator: historical_control` bleibt
+folgenlos — eine Aussage ohne Wirkungsbehauptung hat keine
+Vergleichsbedingung, die falsch sein könnte. Alles andere (Bias,
+Inkonsistenz, Präzision, `claim_supported_by_source`) wirkt unverändert.
+
+Die Aufwertung verlangt hier **keine** dokumentierte Bias-Prüfung: Eine
+deskriptive Arbeit berichtet praktisch nie eine, und sie zu verlangen
+machte die Aufwertung für die halbe Katalogseite unerreichbar — das wäre
+eine Regel über Papierkram, nicht über Evidenz. Konsistenz über
+Replikationen oder Kontexte bleibt Bedingung, und die tut die Arbeit.
+
 ## Wie die Herleitung funktioniert — und warum sie kein Punktesystem ist
 
 `derive_certainty()` in `scripts/appraisal.py` startet bei dem, was das
@@ -82,6 +134,8 @@ oder Synthese **verdient** werden.
 | `study_design` | Baseline | Begründung |
 | --- | --- | --- |
 | `systematic_review`, `meta_analysis` | `moderate` | Eine Synthese ist so gut wie das, was sie gepoolt hat. |
+| `narrative_review` | `very_low` | Kein offengelegtes Suchprotokoll, keine eigenen Primärdaten. |
+| `psychometric_validation` | `very_low` | Geeignet für eine Validitätsaussage, ungeeignet für eine Wirkungsaussage. |
 | `rct`, `cluster_rct` | `moderate` | Kausale Zuschreibung ist prinzipiell verfügbar. |
 | `quasi_experimental`, `matched_comparison`, `controlled_pre_post`, `cohort` | `low` | Vergleich vorhanden, Confounding nicht ausgeschlossen. |
 | `consensus_framework` | `low` | Belegt, worauf sich ein Feld geeinigt hat — nicht, dass es wirkt. |
@@ -379,13 +433,33 @@ Wer eine Konstante in `score_evidence.py` ändert:
 5. hält alte Einträge in `METHOD_FINGERPRINTS` fest, statt sie zu
    ersetzen.
 
-### Versionsverlauf
+### Versionsverlauf des Bewertungsmodells (`APPRAISAL_VERSION`)
+
+Getrennt von `METHOD_VERSION`: Diese Version beschreibt die **Regeln**
+(Vokabulare, Baselines, Herleitung), jene die **Arithmetik**, die aus einer
+Stufe eine Zahl macht. Jede erfasste Begutachtung trägt in
+`appraisal_method` die Version, unter der sie entstand — eine Begutachtung
+von vor einer Regeländerung ist damit als solche erkennbar, statt still
+unter Regeln gelesen zu werden, die ihre Autorin nie gesehen hat.
+`validate_appraisal()` verlangt das Feld, sobald eine Stufe erfasst ist.
+
+| Version | Änderung |
+| --- | --- |
+| 1.0.0 | Erstfassung: fünfstufige `evidence_certainty`, GRADE-artige Herleitung. |
+| 1.1.0 | `claim_type` mit zweitem Herleitungspfad; `narrative_review` und `psychometric_validation` ergänzt. |
+
+### Versionsverlauf der Scoring-Methode (`METHOD_VERSION`)
 
 | Version | Datum | Änderung | Wirkung |
 | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-09 | Erstfassung: Anker dokumentiert, „unbekannt ≠ schwach", Versionierung eingeführt. | Keine Score-Änderung; die Formel war zuvor unversioniert dieselbe. |
 | 1.1.0 | 2026-08-09 | `BREADTH_FLOOR` 0,7 → 0,85. | 11 von 16 Scores geändert (+0,01 bis +0,08). Rangfolge in der Gruppe Lernende: Datenkompetenz 8 → 3, Systemdenken 7 → 10. |
-| 1.2.0 | 2026-08-10 | Claim-Komponente liest `appraisal.evidence_certainty`; `very_low` = 0,15 ergänzt, `unverifiable` macht unbewertbar. | Keine Score-Änderung: noch trägt keine Katalog-Claim eine Begutachtung. Alle 16 Skills neu gestempelt. |
+| 1.2.0 | 2026-08-10 | Claim-Komponente liest `appraisal.evidence_certainty`; `very_low` = 0,15 ergänzt, `unverifiable` macht unbewertbar. | Keine Score-Änderung zum Zeitpunkt der Einführung; alle 16 Skills neu gestempelt. |
+
+Die erste inhaltliche Score-Bewegung entstand nicht durch eine
+Methodenänderung, sondern durch **Daten**: die Begutachtung der 59
+geprüften Claims (siehe unten). Das ist der gewollte Weg — die Methode
+steht fest, die Urteile ändern sich.
 
 ## Der Score misst Menge stärker als Qualität
 
@@ -442,7 +516,18 @@ Befund und ist keiner.
 - **Die Herleitung wurde an denselben 50 Fällen entworfen**, an denen sie
   jetzt zutrifft. Ihre Übereinstimmung mit der Begutachtung ist deshalb
   **kein** unabhängiger Beleg — sie zeigt Konsistenz, nicht Gültigkeit.
-- **Der Katalog ist nicht begutachtet.** Alle produktiven Claims tragen
-  weiterhin nur `evidence_strength`; `evidence_certainty` ist dort `null`.
+- **Nur die geprüften Claims sind begutachtet.** 59 von 1814; die
+  Kandidaten tragen weiterhin nur `evidence_strength`. Für den Score ist
+  das folgenlos (nur geprüfte Claims zählen), für eine spätere Freigabe
+  nicht.
+- **Auch der Katalog erreicht nirgends `strong`.** Wie im Goldset: keine
+  der 51 Quellen berichtet im Abstract eine Bias-Prüfung, und der
+  Eignungspfad kommt ohne Replikation *und* belegte Konsistenz nicht über
+  `moderate` hinaus.
+- **Die Begutachtung stützt sich auf Abstracts**, nicht auf Volltexte. Für
+  neun Aussagen kommt erschwerend hinzu, dass sie eine Sekundärquelle
+  zitieren, die ihrerseits eine Primärstudie referiert (JRC-Bericht →
+  Rijke et al., Bower et al., Lamprou & Repenning). Deren Design ist nur
+  so weit erfasst, wie das Zitat es hergibt.
 - Der Score ist eine Konfidenzzahl, die fast nur bestätigende Evidenz
   kennt. Siehe [docs/gegenevidenz-lane.md](gegenevidenz-lane.md).

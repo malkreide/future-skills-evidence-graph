@@ -146,6 +146,7 @@ Felder. Kein `gold`, kein `gold_appraisal`, kein `_recorded`, keine `note`.
 | `study_design` | nominal, und der Eingang, auf den die Herleitung am stärksten reagiert |
 | `effect_direction` | nominal; getrennt erhoben, damit eine Person, die Richtung und Sicherheit vermischt, sichtbar wird statt unsichtbar |
 | `age_range_explicit` | nur gemeldete Alter — das Feld, dessen Vorgänger Gemeldetes und Geschätztes vermischte |
+| `claim_type` | entscheidet, welcher Herleitungspfad gilt; wer hier abweicht, bewertet eine andere Frage |
 | `evidence_strength`, `age_range` | die alten Felder, mitgeführt, damit sich beide Skalen an derselben Lektüre vergleichen lassen |
 
 **Nicht bewertet** werden bibliografische Felder (`authors`, `year`, `doi`,

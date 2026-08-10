@@ -73,6 +73,10 @@ MIN_N_FOR_GATE = math.ceil(1 / MAX_ONE_FLIP_FOR_GATE)
 #                             version silently mixed reported and inferred
 SECOND_RATER_APPRAISAL_FIELDS = [
     "evidence_certainty",
+    # Rated because it decides which derivation path applies: two raters
+    # who disagree here are answering different questions, and that would
+    # otherwise surface as unexplained scatter in evidence_certainty.
+    "claim_type",
     "claim_supported_by_source",
     "study_design",
     "effect_direction",
@@ -632,6 +636,14 @@ def _prefill_rubric() -> dict[str, Any]:
                 "unabhaengig davon, wie gut die Quelle ist."
             ),
         },
+        "rubrik_claim_type": (
+            "Welche Art von Aussage ist das? "
+            + ", ".join(appraisal.CLAIM_TYPE_VALUES)
+            + ". Behauptet sie eine Wirkung (causal_effect), einen Zusammenhang "
+            "(association), beschreibt sie, was beobachtet wurde (descriptive), "
+            "empfiehlt sie etwas (normative) oder legt sie einen Begriff fest "
+            "(definitional)? Danach richtet sich, woran die Aussage gemessen wird."
+        ),
         "rubrik_study_design": (
             "Das im Text beschriebene Design, aus: "
             + ", ".join(appraisal.STUDY_DESIGN_VALUES)

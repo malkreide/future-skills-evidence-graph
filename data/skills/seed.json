@@ -9,7 +9,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.77,
+    "evidence_score": 0.71,
     "trend": "growing",
     "topics": [
       "ai literacy",
@@ -111,6 +111,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.77."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.77 -> 0.71",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -127,7 +132,7 @@
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.67,
+    "evidence_score": 0.6,
     "trend": "growing",
     "topics": [
       "critical thinking",
@@ -204,6 +209,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.67."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.67 -> 0.6",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -220,7 +230,7 @@
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.74,
+    "evidence_score": 0.69,
     "trend": "growing",
     "topics": [
       "data",
@@ -267,6 +277,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.74."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.74 -> 0.69",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -283,7 +298,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.7,
+    "evidence_score": 0.69,
     "trend": "stable",
     "topics": [
       "digital literacy",
@@ -352,6 +367,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.7."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.7 -> 0.69",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -368,7 +388,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.74,
+    "evidence_score": 0.72,
     "trend": "growing",
     "topics": [
       "ethics",
@@ -429,6 +449,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.74."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.74 -> 0.72",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -445,7 +470,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.73,
+    "evidence_score": 0.68,
     "trend": "stable",
     "topics": [
       "metacognition",
@@ -505,6 +530,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.73."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.73 -> 0.68",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -521,7 +551,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.7,
+    "evidence_score": 0.66,
     "trend": "growing",
     "topics": [
       "creative thinking",
@@ -569,6 +599,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.7."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.7 -> 0.66",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -642,7 +677,7 @@
     "age_range": "10-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.68,
+    "evidence_score": 0.69,
     "trend": "growing",
     "topics": [
       "complexity",
@@ -767,6 +802,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.68."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.68 -> 0.69",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",
@@ -783,7 +823,7 @@
     "age_range": "6-18",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.7,
+    "evidence_score": 0.65,
     "trend": "growing",
     "topics": [
       "resilience",
@@ -825,6 +865,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.7."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.7 -> 0.65",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-04-28",

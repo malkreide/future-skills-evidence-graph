@@ -173,6 +173,17 @@
             null
           ]
         },
+        "claim_type": {
+          "enum": [
+            "causal_effect",
+            "association",
+            "descriptive",
+            "normative",
+            "definitional",
+            "unknown",
+            null
+          ]
+        },
         "source_verified": {
           "enum": [
             "true",
@@ -185,6 +196,8 @@
           "enum": [
             "systematic_review",
             "meta_analysis",
+            "narrative_review",
+            "psychometric_validation",
             "rct",
             "cluster_rct",
             "quasi_experimental",
@@ -334,6 +347,12 @@
             "strong",
             "unverifiable",
             null
+          ]
+        },
+        "appraisal_method": {
+          "type": [
+            "string",
+            "null"
           ]
         },
         "sample_size": {
