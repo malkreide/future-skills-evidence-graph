@@ -12,6 +12,33 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Added
+
+- **Zweitbewertungs-Bogen für den Katalog** (`--worksheet catalog`,
+  `eval/catalog_second_rater.json`). Der vorhandene Bogen misst die 50
+  synthetischen Eval-Fälle; seit der Begutachtung treiben aber die 59
+  echten Katalog-Claims die Live-Scores, und dafür gab es keinen. Der neue
+  Bogen bewertet zusätzlich das alte `evidence_strength` — damit
+  beantwortet ein Durchgang, ob die neue Skala reproduzierbarer ist als
+  die ersetzte, an derselben Lektüre desselben Claims. Das alte
+  `age_range` bleibt aussen vor: vier geprüfte Claims tragen darin die
+  Zeichenkette `"Lehrende"`, und wer einen Defekt reproduziert, misst
+  nichts.
+  Beim Entwurf fiel auf, dass zwei Claim-Felder die Antwort verraten
+  hätten: `context` und `text_anchor` sind reviewgeschrieben und nennen
+  das Design im Klartext („single-group study", „Systematic review
+  synthesis"). Der Bogen zeigt nur Statement, Quellentitel, `source_type`
+  und das Quellen-Abstract.
+- **`--fields`: einen Durchgang verkleinern, ohne ihn zu verfälschen.**
+  Sechs Urteilsfelder × 59 Fälle sind ein halber Arbeitstag. Wer vorher
+  zwei Felder ausfüllte und den Rest leer liess, bekam für den Rest eine
+  Übereinstimmung von **0,000** ausgewiesen — Arbeit, um die niemand
+  gebeten hatte, gezählt als Widerspruch. Der gewählte Feldsatz steht
+  jetzt in `protocol.rated_fields`, die Auswertung hält sich daran, die
+  Rubrik im Bogen schrumpft mit, und ein unbekannter Feldname wird mit der
+  Liste der verfügbaren abgelehnt. Bögen ohne die Angabe werden
+  unverändert als Vollumfang gelesen.
+
 ### Changed
 
 - **Die 59 geprüften Katalog-Claims sind begutachtet.** Erste produktive

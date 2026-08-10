@@ -72,6 +72,7 @@ agreement:
 agreement-worksheet:
 	python scripts/eval_agreement.py --worksheet relevance --out eval/relevance_second_rater.json
 	python scripts/eval_agreement.py --worksheet claim_prefill --out eval/claim_prefill_second_rater.json
+	python scripts/eval_agreement.py --worksheet catalog --out eval/catalog_second_rater.json
 
 # Surface the relevance filter's rejected region for labeling (fights the
 # harvest's selection bias). Fills eval/recall_probe.json with a worksheet.

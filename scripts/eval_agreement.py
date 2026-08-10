@@ -24,6 +24,8 @@ Usage:
     python scripts/eval_agreement.py                      # report every comparison
     python scripts/eval_agreement.py --worksheet relevance --out FILE
     python scripts/eval_agreement.py --worksheet claim_prefill --out FILE
+    python scripts/eval_agreement.py --worksheet catalog --out FILE
+    python scripts/eval_agreement.py --worksheet catalog --fields evidence_certainty,claim_type
     python scripts/eval_agreement.py --second-rater FILE   # score a completed worksheet
 
 See docs/eval-baseline.md for the protocol and for what the numbers may
@@ -88,6 +90,17 @@ SECOND_RATER_FIELDS = {
     # The legacy pair stays rated so the successor model can be compared
     # against the scale it replaces on the same items.
     "claim_prefill": [*SECOND_RATER_APPRAISAL_FIELDS, "evidence_strength", "age_range"],
+    # The reviewed catalogue claims -- the appraisals that actually drive
+    # the dashboard's evidence scores. evidence_strength is rated here too,
+    # so one pass answers a question the eval set cannot: is the successor
+    # scale MORE reproducible than the one it replaced, on the same
+    # reading of the same claim?
+    #
+    # The legacy age_range is deliberately NOT rated. Four reviewed claims
+    # carry the string "Lehrende" in it -- an audience, not an age. Asking
+    # a second rater to reproduce that is asking them to reproduce a
+    # defect, and the disagreement would say nothing about either scale.
+    "catalog": [*SECOND_RATER_APPRAISAL_FIELDS, "evidence_strength"],
 }
 
 # Fields whose categories sit on an ordinal scale, mapped to that scale.
@@ -440,7 +453,12 @@ def second_rater_comparisons(path: Path) -> list[Comparison]:
     rater = protocol.get("rater") or "<unnamed>"
     primary = primary_labels(set_name)
 
-    rated_fields = SECOND_RATER_FIELDS[set_name]
+    # What the worksheet asked for, not what the set could ask for. A pass
+    # narrowed to two fields must be scored on those two: the fields nobody
+    # was asked about are all null, and comparing them against a non-null
+    # primary label would report six disagreements per item for work that
+    # was never requested.
+    rated_fields = resolve_fields(set_name, protocol.get("rated_fields"))
     comparisons = []
     for field in rated_fields:
         pairs = []
@@ -492,12 +510,30 @@ def primary_labels(set_name: str) -> dict[str, dict[str, Any]]:
             normalize_title(example["title"]): {"relevant": example["relevant"]}
             for example in load_eval("relevance_labeled")["examples"]
         }
+    if set_name == "catalog":
+        return {
+            claim["id"]: {
+                "evidence_strength": claim.get("evidence_strength"),
+                **claim["appraisal"],
+            }
+            for claim in appraised_claims()
+        }
     labels = {}
     for example in load_eval("claim_prefill_labeled")["examples"]:
         merged = dict(example["gold"])
         merged.update(example.get("gold_appraisal") or {})
         labels[example["id"]] = merged
     return labels
+
+
+def appraised_claims() -> list[dict[str, Any]]:
+    """Reviewed catalogue claims that carry an appraisal, in a stable order."""
+    from common import load_records
+
+    return sorted(
+        (claim for claim in load_records("claims") if claim.get("appraisal")),
+        key=lambda claim: claim["id"],
+    )
 
 
 ANCHOR_DOC = EVAL_DIR.parent / "docs" / "evidenz-bewertung-anker.md"
@@ -538,13 +574,38 @@ def anchor_rubric() -> dict[str, str]:
     return rubric
 
 
-def build_worksheet(set_name: str) -> dict[str, Any]:
+def resolve_fields(set_name: str, requested: list[str] | None) -> list[str]:
+    """The fields a worksheet asks for, defaulting to all of them.
+
+    A rejected name lists what was available rather than just failing:
+    the caller is picking from a vocabulary they cannot see.
+    """
+    available = SECOND_RATER_FIELDS[set_name]
+    if not requested:
+        return list(available)
+    unknown = [field for field in requested if field not in available]
+    if unknown:
+        raise SystemExit(
+            f"--fields: {', '.join(unknown)} is not rated for set {set_name!r}. "
+            f"Available: {', '.join(available)}"
+        )
+    # Keep the canonical order rather than the order typed, so two
+    # worksheets asking for the same fields look the same.
+    return [field for field in available if field in requested]
+
+
+def build_worksheet(set_name: str, fields: list[str] | None = None) -> dict[str, Any]:
     """A blind re-judging worksheet: inputs only, no gold, no notes.
 
     Withholding the primary label and its rationale is what makes the
     result a second opinion rather than a confirmation.
+
+    *fields* narrows what is asked. The chosen set is recorded in
+    protocol.rated_fields and scoring honours it -- without that, a
+    worksheet asking for two fields would be scored against all eight,
+    and the six nobody was asked about would each read as a disagreement.
     """
-    fields = SECOND_RATER_FIELDS[set_name]
+    fields = resolve_fields(set_name, fields)
     if set_name == "relevance":
         items = [
             {
@@ -554,6 +615,27 @@ def build_worksheet(set_name: str) -> dict[str, Any]:
             }
             for example in load_eval("relevance_labeled")["examples"]
         ]
+    elif set_name == "catalog":
+        from common import load_records
+
+        sources = {source["id"]: source for source in load_records("sources")}
+        items = []
+        for claim in appraised_claims():
+            source = sources[claim["source_ids"][0]]
+            # Only the claim's own statement and the SOURCE's abstract. The
+            # claim's `context` and `text_anchor` are review-written and
+            # name the design outright -- "single-group study", "Systematic
+            # review synthesis", "Mixed-methods study". Handing those to a
+            # second rater would be handing them one of the answers.
+            items.append(
+                {
+                    "key": claim["id"],
+                    "statement": claim["statement"],
+                    "source_title": source.get("title"),
+                    "source_type": source.get("source_type"),
+                    "abstract": source.get("abstract"),
+                }
+            )
     else:
         items = [
             {
@@ -585,12 +667,46 @@ def build_worksheet(set_name: str) -> dict[str, Any]:
             "rater": "",
             "labeled_at": "",
             "blind": True,
+            # What this worksheet actually asked for. Scoring reads it, so
+            # a narrowed pass is compared on what it was asked and not on
+            # what it was not.
+            "rated_fields": fields,
         },
         # The rubric travels with the worksheet so a rater working through
         # fifty items never has to leave the file to recall what a level
         # means. Read live from the methodology doc, never restated here.
-        **(_prefill_rubric() if "evidence_certainty" in fields else {}),
+        **_rubric_for(fields),
         "labels": items,
+    }
+
+
+# Which rubric block belongs to which rated field. Explicit rather than
+# derived from the key name: two blocks describe the same field, one block
+# covers two fields, and a name-matching rule that has to carry both
+# exceptions is harder to check than the mapping it replaces.
+RUBRIC_FOR_FIELD: dict[str, tuple[str, ...]] = {
+    "evidence_certainty": ("rubrik_evidence_certainty", "rubrik_evidence_certainty_hinweis"),
+    "claim_type": ("rubrik_claim_type",),
+    "claim_supported_by_source": ("rubrik_claim_supported_by_source",),
+    "study_design": ("rubrik_study_design",),
+    "effect_direction": ("rubrik_effect_direction",),
+    "age_range_explicit": ("rubrik_age_range_explicit",),
+    "evidence_strength": ("rubrik_legacy_felder",),
+    "age_range": ("rubrik_legacy_felder",),
+}
+
+
+def _rubric_for(fields: list[str]) -> dict[str, Any]:
+    """The rubric blocks a worksheet asking for *fields* should carry.
+
+    A rubric entry for a field nobody is rating is noise in a file
+    somebody has to read forty times.
+    """
+    if "evidence_certainty" not in fields:
+        return {}
+    wanted = {key for field in fields for key in RUBRIC_FOR_FIELD.get(field, ())}
+    return {
+        key: value for key, value in _prefill_rubric().items() if key in wanted
     }
 
 
@@ -730,6 +846,12 @@ def main() -> int:
     )
     parser.add_argument("--out", help="Where to write the worksheet (default: stdout).")
     parser.add_argument(
+        "--fields",
+        help="Comma-separated subset of fields the worksheet should ask for "
+        "(default: all of them). Recorded in protocol.rated_fields and honoured "
+        "by --second-rater, so a narrowed pass is scored on what it was asked.",
+    )
+    parser.add_argument(
         "--second-rater",
         action="append",
         default=[],
@@ -748,7 +870,10 @@ def main() -> int:
         return 0
 
     if args.worksheet:
-        worksheet = json.dumps(build_worksheet(args.worksheet), indent=2, ensure_ascii=False)
+        chosen = [f.strip() for f in args.fields.split(",")] if args.fields else None
+        worksheet = json.dumps(
+            build_worksheet(args.worksheet, chosen), indent=2, ensure_ascii=False
+        )
         if args.out:
             Path(args.out).write_text(worksheet + "\n", encoding="utf-8")
             print(f"Wrote worksheet to {args.out}")

@@ -756,10 +756,17 @@ floors read: if two reviewers agree on `evidence_strength` only ~80% of the
 time, then the measured 0.80 is already at the label ceiling and the 0.10 of
 headroom is absorbing reviewer scatter rather than model regression.
 
-The prepared worksheet is `eval/claim_prefill_second_rater.json`. It now rates
-five appraisal fields (`evidence_certainty`, `claim_supported_by_source`,
-`study_design`, `effect_direction`, `age_range_explicit`) alongside the two
-legacy ones, so one blind pass measures both scales from the same reading.
+Two worksheets are prepared. `eval/catalog_second_rater.json` covers the 59
+appraised catalogue claims -- the judgements that drive the live skill scores --
+and `eval/claim_prefill_second_rater.json` covers the 50 synthetic eval cases
+behind the CI floors. Both rate six appraisal fields (`evidence_certainty`,
+`claim_type`, `claim_supported_by_source`, `study_design`, `effect_direction`,
+`age_range_explicit`) alongside the legacy `evidence_strength`, so one blind
+pass measures both scales from the same reading.
+
+`--fields` narrows a pass; the chosen set is recorded in
+`protocol.rated_fields` and `--second-rater` honours it. Without that, a
+worksheet filled in for two fields reported the other six at agreement 0.000.
 
 `scripts/eval_agreement.py` (`make agreement`) measures the label side —
 agreement, Cohen's kappa, a Wilson interval, and whether a comparison is
