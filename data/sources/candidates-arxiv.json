@@ -651,5 +651,191 @@
     "reviewed_at": "2026-07-31",
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-against-explainable-artificial-intelligence-in-law-why-justifiable-ai-ma",
+    "title": "Against Explainable Artificial Intelligence In Law: Why Justifiable Ai Matters. A Credit Scoring Example",
+    "authors": [
+      "\u0141ukasz G\u00f3rski"
+    ],
+    "year": 2026,
+    "doi": "10.31338/2544-3135.si.2025-110.7",
+    "url": "https://arxiv.org/abs/2608.07452v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Artificial intelligence-based solutions offer new efficiency-increasing possibilities in many applications, including credit scoring. Yet, the increasing sophistication of machine-learning models in use raises concerns regarding many of their aspects, explainability notwithstanding. We review the relevant EU legal background and integrate this review with insights from technical sciences to interpret relevant legal provisions in the light of technological possibilities. We reject the narrow interpretations of the right to explanation and suggest the broad one, which encompasses not only a technical explanations but also a legal justification as the only one that allows to safeguard the creditors rights in an operative manner.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-bottom-up-taxonomy-of-student-discourse-with-a-socratic-ai-physics-tut",
+    "title": "A bottom-up taxonomy of student discourse with a Socratic AI physics tutor",
+    "authors": [
+      "Syed Furqan Abbas Hashmi",
+      "N. Sanjay Rebello"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.07373v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Large language model (LLM) tutors are being deployed in introductory physics courses at a scale that produces transcript corpora far larger than traditional qualitative coding can absorb. A central question for physics education research (PER) is empirical and prior to any claim about effectiveness: what do students actually say to these tutors? We address this question for one Socratic AI tutor deployed in an introductory calculus-based mechanics course by building a bottom-up taxonomy of student discourse. Each student turn is assigned an emergent free-text label by an LLM coder using the surrounding conversational context; near-paraphrase labels are then consolidated into a smaller set of discourse categories using a similarity-based grouping procedure. The procedure is validated against a stratified human-coded sample. The resulting taxonomy of 357 categories is strikingly concentrated: the top 25 categories cover roughly half of all student turns, and two thematic bands: equation-handling and meta-procedural requests together dominate the head of the distribution. The substantive contribution is the taxonomy itself: a description of the discourse PER researchers can expect to encounter when students work with an AI tutor of this design, including a striking prevalence of meta-procedural turns in which students cede strategic control to the tutor",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-curriculum-as-code-an-ai-assisted-architecture-for-instructional-design",
+    "title": "Curriculum as Code: An AI-Assisted Architecture for Instructional Design in STEM Education",
+    "authors": [
+      "Henrique Mohallem Paiva"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.07364v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Contribution: This paper presents a six-phase AI-assisted instructional design architecture based on the Curriculum as Code paradigm, integrating Generative AI with LaTeX and Python to automate the creation of reproducible, visually consistent, and technically precise materials for STEM education. Background: Creating customized instructional materials for active learning imposes a heavy workload on faculty. Standard presentation tools lack robust support for technical content, while current AI applications often hallucinate and fail to formalize the instructional authoring process, limiting their utility for rigorous academic design. Intended Outcomes: The framework aims to reduce preparation time while ensuring mathematical accuracy, adherence to institutional visual identity, and preservation of the instructor's tacit pedagogical knowledge through explicit rules. Application Design: The solution comprises a six-phase pipeline that replaces ad-hoc prompt engineering with a systematic workflow, utilizing text-based interfaces and code-driven generation (LaTeX/Beamer for slides, Python for figures), governed by pedagogical constraints, contextual calibrations, and automated review cycles. Findings: Validated over one year across 8 modules and 28 project contexts in a Project-Based Learning environment, the architecture significantly reduced instructor workload. Generated assets underwent independent peer review and were deployed by six different faculty members, confirming scalability beyond a single author. Based on over 600 voluntary student evaluations, materials achieved high quality ratings from 8.5 to 9.9/10. Results indicate high reproducibility, minimized hallucinations, and sustained pedagogical and visual fidelity, suggesting viability for broad STEM educational applications.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-creativeinstruct-scalably-teaching-llms-to-balance-quality-creativity-an",
+    "title": "CreativeInstruct: Scalably Teaching LLMs to Balance Quality, Creativity, and Diversity",
+    "authors": [
+      "Ananya Sahu",
+      "Mohit Bansal",
+      "Elias Stengel-Eskin"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.07460v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "While post-training improves the capabilities of large language models (LLMs), it generally lowers their output diversity and creativity, negatively impacting tasks that explicitly require creativity (e.g., story generation) as well as those that require it implicitly, e.g., reinforcement learning (RL). We instead propose CreativeInstruct, a scalable instruction-tuning method that teaches LLMs to balance creative, base-model-like generations with the quality of post-trained models, by learning to inject special [StartCreativity] spans that bias generation toward creativity. Furthermore, we introduce a structural diversity metric based on graph edit distance, which captures narrative level variation missed by purely lexical and semantic metrics. On narrative generation, CreativeInstruct matches or exceeds the diversity of both multi-model baselines and distilled variants of their outputs, without sacrificing quality or requiring multiple models at inference time. These results are mirrored in our human evaluation, where we find that annotators rate CreativeInstruct generations as more creative than the post-trained LLMs' generations in 70.3% of cases. We also show the benefits of creative models as a substrate for RL: GRPO applied to a CreativeInstruct checkpoint improves by ~4% on AMC and ~5% points on MATH over the same training applied to the post-trained checkpoint.",
+    "topics": [
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-from-forensics-to-ecosystems-rethinking-watermarks-for-generative-ai-ove",
+    "title": "From Forensics to Ecosystems: Rethinking Watermarks for Generative AI Oversight",
+    "authors": [
+      "Daniel Susser",
+      "John Thickstun",
+      "Gili Vidan"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.07337v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The arrival of generative AI as a cheap, widely accessible commercial service, and the tidal wave of AI-generated synthetic content it has unleashed, have provoked deep epistemic and social anxieties and raised difficult governance questions that policymakers are struggling to address. One approach that has attracted both enthusiasm from regulators and skepticism from researchers is digital watermarking. Signals embedded in a synthetically-generated piece of content indicating that it was AI-generated---possibly even identifying the specific systems that generated it---appear to offer a path toward mitigating risks of genAI that avoids the downsides of more interventionist strategies. But critics warn that watermarks may prove technically brittle, epistemically ambiguous, and politically ineffectual tools. In this paper, we explore the challenges and opportunities of using digital watermarking for AI governance, paying special attention to the specific problem of watermarking AI-generated text. We argue that such critiques often treat the problem of identifying synthetic content as an isolated forensic question. Instead, we propose reconceptualizing digital watermarks as tools for understanding the impacts of synthetic content on media ecosystems, rather than reliably identifying individual pieces of synthetic content. Such an ``ecosystems approach'' more effectively utilizes the features of watermarks. And while this approach raises its own governance challenges, we argue that they are more tractable than the challenges of using watermarks for digital forensics.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-agentic-artificial-intelligence-for-reproducible-human-in-the-loop-envir",
+    "title": "Agentic Artificial Intelligence for Reproducible Human-in-the-Loop Environmental Health Research",
+    "authors": [
+      "Edmund Seto"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.06771v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Agentic artificial intelligence (AI) systems that are capable of planning and executing multi-step analytical tasks are increasingly available to environmental health researchers, but their reliability in real-world practice has not been fully explored. This paper describes a human-in-the-loop agentic framework for environmental health research, involving the review, verification, and correction of AI-generated data analysis code and results at each step - a process that mirrors the mentorship structure of traditional research teams. This approach offers a path toward rigorous, reproducible use of agentic AI in routine data-rich environmental health research. We illustrate this framework through a case study analyzing nitrogenous organic contaminants at U.S. Superfund sites, a chemical family linked to the emerging tire-derived contaminants 6PPD and 6PPD-quinone. Using an agentic large language model to generate R code for data filtering, spatial mapping, and cluster analysis, we document instances where initial agentic AI outputs benefited from a human-in-the-loop process to produce more rigorous and reproducible results. We conclude that effective use of agentic AI requires both domain expertise to frame questions and evaluate outputs, and coding literacy to guide the AI's approach, while outlining future opportunities for agentic AI workflow to advance the environmental health sciences.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-feddose-federated-learning-framework-decomposing-site-effects-for-modeli",
+    "title": "FedDOSE: Federated Learning Framework Decomposing Site Effects for Modeling Brain Dynamic Functional Connectivity",
+    "authors": [
+      "Deepank Girish",
+      "Yi Hao Chan",
+      "Yubin Zheng",
+      "Sukrit Gupta",
+      "Jagath C. Rajapakse"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.07393v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Functional Magnetic Resonance Imaging ( fMRI ) data are often pooled into collaborative multi-site consortia, as deep learning models for analyses require large datasets to generalize well. While Federated Learning (FL) offers a privacy-preserving paradigm for collaborative training, standard approaches continue to struggle with statistical heterogeneity. In particular, site differences pose a key challenge in multi-site data settings. Additionally, existing FL approaches for fMRI rely on static Functional Connectivity ( FC), omitting dynamic information in brain networks. To address this, we propose FedDOSE, a novel framework that explicitly decomposes site differences for analysis of dynamic FC (dFC). FedDOSE introduces a Modularity-Guided Tucker Decomposition block to encode high-dimensional dFC tensors and capture modular-level spatio-temporal patterns efficiently. Class-specific prototypes are generated across all sites and subsequently aligned at the global level by using a combination of Optimal Transport (OT) barycenter formulation and Procrustes analysis. Extensive experiments for diagnosing Autism Spectrum Disorder (ASD) and Attention-Deficit Hyperactivity Disorder (ADHD) on three multi-site resting-state fMRI datasets: ABIDE-I, ABIDE-II, and ADHD-200, demonstrate that FedDOSE outperforms state-of-the-art methods in ASD and ADHD detection. Our results highlight its effectiveness in learning robust representations from multi-site datasets for reliable analysis.",
+    "topics": [
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]

@@ -6512,5 +6512,1046 @@
     "reviewed_at": null,
     "relevance_score": 1.0,
     "audience": "learner"
+  },
+  {
+    "id": "src-the-mediating-effect-of-epistemic-curiosity-between-perceived-critical-t",
+    "title": "The Mediating Effect of Epistemic Curiosity Between Perceived Critical Thinking Disposition and Research Competence of Senior High School Students Under Education 4.0",
+    "authors": [
+      "Julven Tuba",
+      "Princess May Quilaton",
+      "Glory Anne Aban",
+      "Jun Mark R. Panlaan"
+    ],
+    "year": 2026,
+    "doi": "10.69569/jip.2025.792",
+    "url": "https://www.semanticscholar.org/paper/9f9c0c724524244f6140d0652629630c9e634363",
+    "openalex_id": null,
+    "semantic_scholar_id": "9f9c0c724524244f6140d0652629630c9e634363",
+    "eric_id": null,
+    "publisher": "Journal of Interdisciplinary Perspectives",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Epistemic curiosity is increasingly recognized as a key factor in students\u2019 learning engagement. However, its role in supporting critical thinking and research competence among senior high school students remains poorly established. This study examined the relationships among epistemic curiosity, perceived critical thinking disposition, and research competence, with particular focus on the mediating effect of curiosity. Quantitative, non experimental, descriptive\u2013correlational methods were employed, utilizing data from 144 students via adopted survey questionnaires. Correlational analyses indicated no significant relationships among the three variables. Mediation analysis using the Sobel z-test revealed that epistemic curiosity did not significantly mediate the association between critical thinking disposition and research competence. These findings suggest that while students may exhibit high levels of curiosity and cognitive ability, these attributes do not necessarily result in enhanced research skills. The study emphasizes the need for interventions that combine curiosity-driven approaches with explicit instruction in metacognition, research methods, and self-regulated learning. Project QUEST is proposed as an intervention to enhance research competence among senior high school students while maintaining curiosity and engagement.",
+    "topics": [
+      "critical thinking",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-critical-thinking-and-epistemic-sophistication-in-science-education",
+    "title": "Critical Thinking and Epistemic Sophistication in Science Education",
+    "authors": [
+      "O. E. Tamayo Alzate"
+    ],
+    "year": 2025,
+    "doi": "10.3390/jintelligence13080093",
+    "url": "https://www.semanticscholar.org/paper/7a41bf63ecd18d90ba62655c0dd0f15cd76c578c",
+    "openalex_id": null,
+    "semantic_scholar_id": "7a41bf63ecd18d90ba62655c0dd0f15cd76c578c",
+    "eric_id": null,
+    "publisher": "Journal of Intelligence",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "One of the central purposes of education at different educational levels is to contribute to the formation of critical thinking in students. There are many theoretical perspectives from which critical thinking is conceptualized, such as those centers on the development of students\u2019 capacities and those based on competences, skills, dispositions and criteria, among others. We consider that in the school context the critical thinking perspective that should come first is the domain-specific one; consequently, we present a conceptual model for the formation of critical thinking in the context of science teaching and learning in the classroom constituted by the integration of four dimensions: languages and argumentation, metacognition, emotions, and problem solving and decision making. Our focus of reflection is epistemic cognition with the processes of epistemic sophistication, metacognitive sophistication, and metaemotional sophistication, determinants of critical thinking in relation to each of the dimensions and the relationships between them. We conclude with the proposal of a conceptual model for the development of critical thinking based on students\u2019 epistemic cognition.",
+    "topics": [
+      "critical thinking",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-transformative-learning-in-the-development-of-higher-order-t",
+    "title": "The role of transformative learning in the development of higher-order thinking skills in junior high school students: a qualitative study",
+    "authors": [
+      "Mas\u2019ud B",
+      "Sriyanti Mustafa",
+      "Marwati Abd. Malik"
+    ],
+    "year": 2026,
+    "doi": "10.3389/feduc.2026.1811834",
+    "url": "https://www.semanticscholar.org/paper/88d39efb21ab2b8a60a55dbb421764255e27ac3c",
+    "openalex_id": null,
+    "semantic_scholar_id": "88d39efb21ab2b8a60a55dbb421764255e27ac3c",
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The development of Higher-Order Thinking Skills (HOTS) is an important agenda for 21st-century education, but pedagogical mechanisms explaining how HOTS develops in junior high school classroom practices, particularly in mathematics learning, are still limited. This qualitative study explores the role of transformative learning in mediating students' HOTS development through critical reflection, epistemic dialogue in the classroom, and the meaning of learning experiences. The study used an interpretative-constructivist paradigm with an instrumental qualitative case study design. Data were collected through learning observations of 77 students (grades VII\u2009=\u200927; VIII\u2009=\u200925; IX\u2009=\u200925), in-depth interviews with three teachers (G1-G3), semi-structured interviews with 15 students, and analysis of learning documents. Thematic-reflective analysis resulted in four themes: (1) the gradual and contextual development of HOTS across levels, (2) critical reflection as the main trigger for analysis and evaluation, (3) epistemic dialogue as a space for testing and assessing arguments, and (4) the transformation of learning orientation from a focus on answers to the quality of thinking processes and justification. The findings suggest that HOTS develops through a spiral trajectory influenced by the intensity of reflective scaffolding, norms of classroom dialogue, and a classroom culture that is safe for experimenting and revising reasoning. This study contributes by mapping the mechanisms of how and why transformative learning facilitates HOTS in a junior high school context while also offering practical implications for the design of sustainable reflective and dialogic learning.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-using-peer-feedback-to-improve-critical-thinking-in-computer-supported-c",
+    "title": "Using peer feedback to improve critical thinking in computer-supported collaborative argumentation: An exploratory study",
+    "authors": [
+      "Wenli Chen",
+      "Hua Hu",
+      "Qianru Lyu",
+      "Lishan Zheng"
+    ],
+    "year": 2024,
+    "doi": "10.1111/jcal.13078",
+    "url": "https://www.semanticscholar.org/paper/6a1b50b26fe359c1b5732a03ee639252c90a2180",
+    "openalex_id": null,
+    "semantic_scholar_id": "6a1b50b26fe359c1b5732a03ee639252c90a2180",
+    "eric_id": null,
+    "publisher": "Journal of Computer Assisted Learning",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Critical thinking is one of the 21st Century competencies for students. While previous research acknowledges the potential of peer feedback to enhance critical thinking skills, particularly within computer\u2010supported collaborative learning (CSCL) environments, there is limited understanding of which specific aspects of critical thinking are improved through peer feedback and how various components of critical thinking are interrelated within a CSCL environment in K\u201012 education contexts.This study aims to investigate how peer feedback affects secondary school students' critical thinking skills within a computer\u2010supported collaborative argumentation (CSCA) environment. It explores the specific aspects of critical thinking that were enhanced and examines the relationships among different critical thinking indicators using Epistemic Network Analysis (ENA) to provide a deep understanding of these skills' development before and after peer feedback.This study adopted a mixed\u2010method approach. Qualitative content analysis was conducted to explore the effect of peer feedback on students' depth of critical thinking by adopting Newman's framework. Quantitative ethnographic method known as ENA was employed to analyse the co\u2010occurrence patterns of critical thinking influenced by peer feedback.This study found that peer feedback was effective in promoting students' critical thinking measured by Newman's framework (Justification, Ambiguities, Importance, Novelty, Relevance, Width of understanding, and Linking ideas, factors, and interpretation). However, the study noted a lack of improvement in the dimensions of Bringing Outside Knowledge/Experience to Bear on the Problem (O), Critical Assessment (C), and Practical Utility (P). Peer feedback significantly influenced the co\u2010occurrence patterns of critical thinking. Before peer feedback, students\u2019 arguments were characterized by confusion and narrow viewpoints, despite containing important and relevant points. After peer feedback, there was a marked improvement, with students presenting their arguments with greater clarity, breadth of information, and creativity. This suggests that peer feedback helped students refine their argumentation skills, making their points clearer and more comprehensive.",
+    "topics": [
+      "critical thinking",
+      "creativity",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "learner"
+  },
+  {
+    "id": "src-change-in-students-critical-thinking-over-the-course-of-dental-education",
+    "title": "Change in students' critical thinking over the course of dental education.",
+    "authors": [
+      "P. Anders",
+      "E. Davis",
+      "W. Mccall"
+    ],
+    "year": 2023,
+    "doi": "10.1002/jdd.13287",
+    "url": "https://www.semanticscholar.org/paper/5d8e12857519886f4399e03921b808cd220cd58d",
+    "openalex_id": null,
+    "semantic_scholar_id": "5d8e12857519886f4399e03921b808cd220cd58d",
+    "eric_id": null,
+    "publisher": "Journal of Dental Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "PURPOSE\nThe purpose of this study was to test whether critical thinking changes over the course of dental education by assessing dental students at the beginning and toward the end of their training.\n\n\nMETHODS\nDental student participants completed a survey at the beginning of their first year (August 2019) and at the start of their last year of dental school (August 2022). The survey consisted of two instruments designed to measure the disposition and metacognition components of critical thinking. The study used a pretest-posttest design. Paired t tests were used to determine whether critical thinking scores changed over the 3-year period.\n\n\nRESULTS\nSurveys were completed by 85 of 94 students (90%) on the pretest and 63 of 93 students (68%) on the posttest. Of the 92 students who were members of the class at both testing periods, data were available for 59 students (64%). There were significant mean decreases in disposition and its tolerance for cognitive complexity subscale, as well as in metacognition and its metacognitive strategies subscale (p < .05). There was no significant mean change in either open-mindedness or metacognitive thinking.\n\n\nCONCLUSION\nResults of this study suggest that some aspects of critical thinking (metacognition and disposition) decrease over the course of dental education. Future research should investigate why this is the case, and explore different instructional methods designed to improve critical thinking.",
+    "topics": [
+      "critical thinking",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-students-qualification-in-education-for-sustainable-development-epistemi",
+    "title": "Students\u2019 Qualification in Education for Sustainable Development : Epistemic gaps or composites of critical thinking?",
+    "authors": [
+      "H. Hassl\u00f6f",
+      "Iann Lundeg\u00e5rd",
+      "C. Malmberg"
+    ],
+    "year": 2015,
+    "doi": null,
+    "url": "https://www.semanticscholar.org/paper/4847ee5c62489fde549ac7a4e6c89de83551476b",
+    "openalex_id": null,
+    "semantic_scholar_id": "4847ee5c62489fde549ac7a4e6c89de83551476b",
+    "eric_id": null,
+    "publisher": "Semantic Scholar",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-leadership-in-times-of-uncertainty-proactive-crisis-leadership-andstrate",
+    "title": "Leadership in Times of Uncertainty: Proactive Crisis Leadership andStrategic Vigilance among School Administrators in a Selected PrivateHigher Education Institution",
+    "authors": [
+      "Darwin B. Reyes"
+    ],
+    "year": 2024,
+    "doi": "10.47191/ijsshr/v7-i06-53",
+    "url": "https://www.semanticscholar.org/paper/bfd19e309fc0484a202aa25236a6a2d3069a8cb1",
+    "openalex_id": null,
+    "semantic_scholar_id": "bfd19e309fc0484a202aa25236a6a2d3069a8cb1",
+    "eric_id": null,
+    "publisher": "International journal of social science and human research",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examines the strategic vigilance and crisis leadership competencies of school administrators, highlighting the critical importance of these skills in navigating the complex and unpredictable landscape of modern education. The analysis covers a range of competencies, including adaptability, communication transparency, global engagement, practical experience, collaboration, ethical decision-making, systemic thinking, and innovation. The study underscores the necessity for school administrators to continuously enhance their skills through practical training and professional development. Key recommendations include fostering a culture of adaptability, improving communication channels, engaging with global best practices, prioritizing ethical decision-making, and promoting continuous learning and innovation. These efforts are essential for maintaining resilience, ensuring operational stability, and achieving long-term success in educational institutions. The results suggest that effective crisis leadership and strategic vigilance are less about inherent traits or background and more about ongoing development and proactive management. This research provides a comprehensive plan for improving leadership strategies, ultimately benefiting students, staff, and the broader educational community.",
+    "topics": [
+      "collaboration",
+      "ethics",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-making-creative-thinking-visible-learner-and-teacher-experiences-of-boun",
+    "title": "Making Creative Thinking Visible: Learner and Teacher Experiences of Boundary Objects as Epistemic Tools in Adolescent Classrooms",
+    "authors": [
+      "S. Vohra",
+      "Peter R. N. Childs"
+    ],
+    "year": 2025,
+    "doi": "10.3390/educsci16010013",
+    "url": "https://www.semanticscholar.org/paper/4cfd6c28ee681287d3409cc5529cf8717f37af7c",
+    "openalex_id": null,
+    "semantic_scholar_id": "4cfd6c28ee681287d3409cc5529cf8717f37af7c",
+    "eric_id": null,
+    "publisher": "Education sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Creative thinking has become more important in education globally due to industry demand and a fast-paced world. In this study, boundary objects that can be tangible and digital objects are investigated to understand their role in facilitating creative thinking across five subject areas for teenagers aged 13\u201318 and their teachers, in their natural learning environment. A multiple case study method is used to investigate learners\u2019 and their teachers\u2019 experience in using boundary objects, to enable communication and understanding between individuals or groups in learning. Participants from an inner London secondary school comprised case groups: 8 Teachers and 16 Learners (8 from the lower school, aged 13\u201315 years, and 8 from the upper school, aged 16\u201318 years). Participants were invited through email and a short presentation. Consented participants were organised into male and female across teachers and students and were approached in lessons where boundary objects were being used. Data was collected through interviews and comprised photos of tool use, analysed through Reflexive Thematic Analysis for data analysis. The resulting five themes for teacher and student themes showed that boundary objects were perceived to facilitate creative thinking across all case groups within the studied context, with important insights such as iterative design, which develops real-world skills; metacognition, which is critical in learning and enables students to actively question their own thinking; memory, which is very important in enabling students to remember what they learned and how; and individual liberty, suggesting that learning need not be linear nor prescribed but that there must be freedom to learn in ways that are enjoyable and challenging too, amongst others. This study\u2019s interpretive results indicate that when participants experience the use of boundary objects in a natural classroom or learning setting, the learning process is perceived to bring benefits that allow the process of creative thinking to occur.",
+    "topics": [
+      "critical thinking",
+      "creativity",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-socio-constructionist-design-thinking-tools-and-practices-in-mainstream",
+    "title": "Socio-Constructionist Design Thinking: Tools and Practices in Mainstream Education",
+    "authors": [
+      "Alkistis Verevi",
+      "C. Kynigos",
+      "Marios Xenos"
+    ],
+    "year": 2026,
+    "doi": "10.3390/educsci16020322",
+    "url": "https://www.semanticscholar.org/paper/48b931b526868f1305f276563a97baa9c839b434",
+    "openalex_id": null,
+    "semantic_scholar_id": "48b931b526868f1305f276563a97baa9c839b434",
+    "eric_id": null,
+    "publisher": "Education sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Design Thinking (DT) has been widely promoted as a creative, human-centred approach for engaging students with real-world problems. Yet, research consistently shows that DT in mainstream schooling often struggles with ambiguity, superficial engagement with socio-scientific issues, weak integration of disciplinary knowledge, and epistemological tensions with school learning. In this paper, we examine whether DT can become more effective and educationally meaningful when enacted through a socio-constructionist environment using digital media as both design tools and design products. Drawing on a school-based intervention with 70 students using ChoiCo\u2014an open-source digital authoring system for creating socio-scientific games\u2014we analysed critical incidents of student interaction to explore how constructionist digital media mediate reasoning, collaboration, and conceptual development. Our findings show that ChoiCo supports conceptual clarity, iterative refinement, and epistemic grounding by requiring students to encode ideas into rules, thresholds, and consequences. The system\u2019s malleability and embedded feedback align with a special socio-constructionist DT model developed through a multi-organisational European Research and Innovation Project ExtenDT2, enabling rapid prototyping and collaborative meaning-making. We argue that socio-constructionist DT offers a promising way to address long-standing shortcomings of DT in education, shifting the focus from producing polished artefacts to engaging in meaningful, iterative, and epistemically rich design activity. Implications for curriculum design, teacher practice, and the integration of constructionist digital media in DT pedagogy are discussed.",
+    "topics": [
+      "critical thinking",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-paradigm-of-islamic-boarding-school-education-based-on-ethics-law-an",
+    "title": "THE PARADIGM OF ISLAMIC BOARDING SCHOOL EDUCATION BASED ON ETHICS, LAW, AND PSYCHOLOGY: A CRITICAL ANALYSIS OF KH. HASYIM ASY'ARI\u2019S THOUGHT",
+    "authors": [
+      "Sutan Botung",
+      "Nur Hakima",
+      "Akhirani Nasution",
+      "M. Lubis",
+      "Fithri Choirunnisa",
+      "Siregar",
+      "Sri Wahyuni",
+      "Desi Asmaret"
+    ],
+    "year": 2026,
+    "doi": "10.66053/ri.v4i3.646",
+    "url": "https://www.semanticscholar.org/paper/df0b3879a37c1469f3e0760c170767ee908f4f20",
+    "openalex_id": null,
+    "semantic_scholar_id": "df0b3879a37c1469f3e0760c170767ee908f4f20",
+    "eric_id": null,
+    "publisher": "Jurnal Studi Islam",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study aims to analyze the concept of pesantren education from ethical, legal, and psychological perspectives by placing the thinking of KH. Hasyim Asy'ari is the main basis of the analysis. This research uses a qualitative approach based on literature studies with hermeneutic-critical analysis. The results of the study show that in the thinking of KH. Hasyim Asy'ari, pesantren education is built on the integration of adab, fiqh, and kiai-santri relations as the foundation for the formation of student character. This study found that adab is placed as the main requirement in the process of seeking knowledge, so that students are required to prioritize respect for teachers, sincerity, discipline, and self-control before achieving intellectual competence. In the normative dimension, fiqh is not only understood as a formal rule of worship, but also as an instrument for fostering social behavior and ethics in the daily life of students. Meanwhile, the kiai-santri relationship functions as an affective pedagogical model that emphasizes example, emotional closeness, and habituation of values through direct interaction in pesantren life. These findings show that pesantren education from the perspective of KH. Hasyim Asy'ari is oriented towards the integration of intellectual, spiritual, and moral development. This article emphasizes that this paradigm has high relevance in responding to the crisis of dehumanization of modern education. The novelty of this research lies in the effort of an integrative conceptual reconstruction, which synthesizes the dimensions of ethics, law, and psychology in one coherent epistemic framework, different from previous studies that tended to be partial, both sociological, historical, and pedagogical. These findings show that the paradigm is relevant in responding to the crisis of dehumanization of modern education as well as contributing to the development of a more integrative epistemology of Islamic education.",
+    "topics": [
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-linguistic-sources-in-grammar-education-fostering-reflective-thinking-ab",
+    "title": "Linguistic sources in grammar education: Fostering reflective thinking about language",
+    "authors": [
+      "A. Wijnands"
+    ],
+    "year": 2025,
+    "doi": "10.54195/9789465150949",
+    "url": "https://www.semanticscholar.org/paper/62a11c9a2edc8bc19851616d972a6363f7dfe617",
+    "openalex_id": null,
+    "semantic_scholar_id": "62a11c9a2edc8bc19851616d972a6363f7dfe617",
+    "eric_id": null,
+    "publisher": "Semantic Scholar",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Educational reforms emphasise the importance of secondary school students learning to think critically about language. To this end, students must become aware that not every language problem has a single correct answer, but that an answer can be the result of a reasoning process in which the problem has been analysed from different perspectives. This doctoral research investigated whether the use of linguistic sources in grammar lessons could encourage students to explore language and develop their reflective thinking about language. To this end, King and Kitchener's (1994) Reflective Judgment Model was used to investigate what exactly reflective thinking is and how teachers feel about reflective thinking about language in secondary education. Next, the epistemic views of students on grammar were examined and how these differ from the views of experts. A model was then developed to enable students to investigate a language problem in small steps, using linguistic sources. This model was subsequently tested by teachers in the classroom using the Lesson Study method. The final study focused on the scaffolding that students need to develop their reflective thinking about language when consulting linguistic sources.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-effect-of-scenario-epistemic-game-on-higher-order-thinking-skills-am",
+    "title": "The Effect of Scenario-Epistemic Game on Higher Order Thinking Skills among High School Chemistry Students in Malaysia",
+    "authors": [
+      "Kho Pui Wun",
+      "Jamalludin Harun"
+    ],
+    "year": 2017,
+    "doi": "10.1109/LaTiCE.2017.10",
+    "url": "https://www.semanticscholar.org/paper/34e86226e72b7419ff4844a8c6ee0ba62d6f7a90",
+    "openalex_id": null,
+    "semantic_scholar_id": "34e86226e72b7419ff4844a8c6ee0ba62d6f7a90",
+    "eric_id": null,
+    "publisher": "Learning and Teaching in Computing and Engineering",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-lessons-to-demonstrate-statistical-literacy-skills-a-case-study-of-japan",
+    "title": "Lessons to Demonstrate Statistical Literacy Skills: A Case Study of Japanese High School Students on Reading Statistical Reports",
+    "authors": [
+      "Shunya Koga"
+    ],
+    "year": 2024,
+    "doi": "10.1080/26939169.2024.2334903",
+    "url": "https://www.semanticscholar.org/paper/a00e044025e73824eae94a7bf5483e1a6c01b57a",
+    "openalex_id": null,
+    "semantic_scholar_id": "a00e044025e73824eae94a7bf5483e1a6c01b57a",
+    "eric_id": null,
+    "publisher": "Journal of Statistics and Data Science Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Abstract Statistical literacy, encompassing the interpretation and evaluation of statistical reports, is a skill developed in schools. However, the pedagogical approaches to statistical literacy skills have not been sufficiently investigated. This study investigated whether statistical literacy skills could be demonstrated through high school lessons. These lessons include a statistical literacy process, grounded in critical thinking principles, to facilitate students\u2019 interpretation and evaluation of statistical reports. Additionally, a corresponding worksheet, aligning with this process, is included in the lessons to help students comprehend statistical reports. Seven 50-min lessons were conducted with 34 high school students, aged between 17 and 18 years, using this worksheet. Additionally, a statistical literacy skills test, designed to assess various statistical literacy skills within a short timeframe, was developed and administered at the beginning of the first lesson and at the end of the last lesson. The outcomes revealed that students were able to demonstrate some skills and effectively evaluate statistical reports. This study makes notable contributions by introducing a structured statistical literacy process and an associated skills assessment test. These tools can serve as valuable resources for students seeking to critically evaluate statistical reports and enable educators to gauge the extent of students\u2019 acquisition. Supplementary materials for this article are available online.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-social-media-wise-education-improving-the-digital-literacy-of-vocational",
+    "title": "Social media wise education: Improving the digital literacy of vocational school students through Instagram",
+    "authors": [
+      "M. Ulfa",
+      "Metha Lubis"
+    ],
+    "year": 2025,
+    "doi": "10.53088/penamas.v5i2.2012",
+    "url": "https://www.semanticscholar.org/paper/497219cd7ccded13bd599a0b9e20313a541c095a",
+    "openalex_id": null,
+    "semantic_scholar_id": "497219cd7ccded13bd599a0b9e20313a541c095a",
+    "eric_id": null,
+    "publisher": "Penamas Journal of Community Service",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The COVID-19 pandemic has led to significant changes in the education system, including in Indonesia, with the implementation of online learning. This condition has encouraged an increase in internet and social media use among teenagers. Student activities on social media, especially Instagram, have increased significantly, but have not been balanced with adequate digital literacy skills. This Community Service activity aims to provide education to students of SMK Islamiyah Serua Ciputat about the wise and responsible use of social media, as well as encourage the involvement of teachers and parents in the online mentoring process. The implementation method includes initial observation, interactive counselling, positive Instagram content visualisation training, and practical assistance involving lecturers, teachers, and students. The results of the activity showed that students experienced an increase in understanding related to social media ethics, skills in creating positive content, and awareness of the importance of critical thinking before sharing information on social media. Additionally, teachers and school staff play an active role in supervising student activities both during and after the event. This program is expected to be the first step in forming a smart, critical, and responsible digital generation on social media.",
+    "topics": [
+      "critical thinking",
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-effect-of-digital-literacy-education-based-on-cognitive-behavioral-t",
+    "title": "The Effect of Digital Literacy Education Based on Cognitive Behavioral Therapy on the Dependence on Digital Media of Middle School Students",
+    "authors": [
+      "N. Moon",
+      "Ji Yeon Lee"
+    ],
+    "year": 2025,
+    "doi": "10.22251/jlcci.2025.25.10.270",
+    "url": "https://www.semanticscholar.org/paper/64a4a06e1d7f2f536603514518c47d80764be379",
+    "openalex_id": null,
+    "semantic_scholar_id": "64a4a06e1d7f2f536603514518c47d80764be379",
+    "eric_id": null,
+    "publisher": "Korean Association For Learner-Centered Curriculum And Instruction",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Objectives This study aims to develop a digital literacy education program based on Cognitive Behavioral Therapy (CBT) and verify its effectiveness. \nMethods The objectives of the digital literacy education program are as follows. First, To enable students in the general user group to use digital media appropriately through CBT-based education, emphasizing that behavior and emotions can be managed through thinking. Second, To help students understand themselves, others, and digital society through self-concept education. Third, To ensure that cognitive changes are translated into behavioral changes through practical tasks. \nResults The digital literacy education program was designed following the counseling and psychological education program development model (Kim Chang-dae et al., 2022) and was reviewed by experts. Data collected through a pretest-posttest control group design were analyzed using SPSS 29.0 with Analysis of Covariance (ANCOVA). \nConclusions The results of the study are as follows. First, After completing the program, the experimental group showed a decrease in over-dependence test scores compared to the control group. Second, The experimental group demonstrated improved digital citizenship test scores compared to the control group.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-media-literacy-education-and-social-development-a-study-on-the-n",
+    "title": "Digital Media Literacy Education And Social Development: A Study On The Need Of Digital Media Literacy Education Among The School Students Of Tonk District Of Rajasthan State In India",
+    "authors": [
+      "Dr. Lokesh Sharma",
+      "M. S",
+      "Ms. Anjali Gupta",
+      "D. U. Gupta",
+      "Meha Palan Jayaswal",
+      "Tapasya Tyagi"
+    ],
+    "year": 2024,
+    "doi": "10.53555/kuey.v30i2.2720",
+    "url": "https://www.semanticscholar.org/paper/30daf972d1619d8e4b103cb1b63858bbf300e8c1",
+    "openalex_id": null,
+    "semantic_scholar_id": "30daf972d1619d8e4b103cb1b63858bbf300e8c1",
+    "eric_id": null,
+    "publisher": "Educational Administration Theory and Practices",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-exploring-the-disparity-in-digital-media-literacy-between-urban-and-rura",
+    "title": "Exploring the Disparity in Digital Media Literacy Between Urban and Rural Primary School Students: Insights from an Empirical Study in China",
+    "authors": [
+      "Jing Sun",
+      "Zi Yang",
+      "Siyuan Chen",
+      "Ruiqi Deng"
+    ],
+    "year": 2024,
+    "doi": "10.1007/s44366-024-0003-1",
+    "url": "https://www.semanticscholar.org/paper/ab73a28265693d6d43eb43c881fc0013aa30e1c2",
+    "openalex_id": null,
+    "semantic_scholar_id": "ab73a28265693d6d43eb43c881fc0013aa30e1c2",
+    "eric_id": null,
+    "publisher": "Frontiers of Digital Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-of-augmented-reality-based-science-learning-media-to-improve",
+    "title": "Development of Augmented Reality-Based Science Learning Media to Improve Creative Thinking Skills and Digital Literacy in Junior High School Students",
+    "authors": [
+      "Y. Pakereng",
+      "Susanti Billi",
+      "Yulius Ndara Walla",
+      "Angela Ghunu"
+    ],
+    "year": 2025,
+    "doi": "10.62672/telad.v4i1.101",
+    "url": "https://www.semanticscholar.org/paper/ee101c42ca5e9a9a6bde2663a10bc1cccf743215",
+    "openalex_id": null,
+    "semantic_scholar_id": "ee101c42ca5e9a9a6bde2663a10bc1cccf743215",
+    "eric_id": null,
+    "publisher": "Teaching, Learning, and Development",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "21st-century skills that students need to have are creative thinking skills and digital literacy. Efforts to improve creative thinking skills and digital literacy can be done through the development of Augmented Reality (AR)-based learning media. Augmented Reality is a current technology that combines real objects (the physical world) with the digital world and will obtain clear and detailed information from objects that are made as if alive. In the field of education, the use of Augmented Reality can produce interesting learning media and facilitate the student learning process. Based on the results of observations conducted on students, the empowerment of creative thinking skills and digital literacy has not been optimally implemented. However, basically the school has recognized the importance of empowering creative thinking skills and digital literacy for students. Creative thinking skills and digital literacy that have not been optimally implemented are not supported by the availability of learning media, especially in science subjects that are in accordance with facts or real objects around them. Creative thinking skills and digital literacy are not optimal and there is no development of science learning media that activates students so that researchers conducted research to develop AR learning media. The purpose of this research is to develop AR-based science learning media to improve creative thinking skills and digital literacy of eighth-grade students. The research and development method is the Lee and Owens method. Results indicate AR learning media developed can improve creative thinking skills and digital literacy of grade 8 students.",
+    "topics": [
+      "digital competence",
+      "creativity",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-media-literacy-in-education-preparing-students-for-a-digital-world",
+    "title": "MEDIA LITERACY IN EDUCATION: PREPARING STUDENTS FOR A DIGITAL WORLD",
+    "authors": [
+      "RAJI T. O",
+      "OLADIMEJI O. A",
+      "AKINYERA M. B"
+    ],
+    "year": 2025,
+    "doi": "10.70382/sjestp.v8i8.028",
+    "url": "https://www.semanticscholar.org/paper/6146fa0b0e719badf6d72060aa2d6dfd67770f6c",
+    "openalex_id": null,
+    "semantic_scholar_id": "6146fa0b0e719badf6d72060aa2d6dfd67770f6c",
+    "eric_id": null,
+    "publisher": "Journal of Educational Studies Trends and Practice",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Media literacy in education has become an essential skill in the digital age, equipping students with the critical thinking and analytical abilities needed to navigate an increasingly complex and information-rich world. As technology continues to shape daily life, students are exposed to a vast array of media platforms, including social media, news outlets, online videos, and interactive content. The ability to evaluate, interpret, and create media messages is no longer a luxury but a necessity for active, informed citizenship. Media literacy education aims to help students develop the competencies to discern credible information from misinformation, recognize bias, and understand the ethical implications of media consumption and creation. By integrating media literacy into school curricula, educators empower students to become more discerning consumers of information and responsible digital citizens. This includes not only understanding how media is produced and distributed but also learning how media can shape perceptions, influence behavior, and reflect societal values. In addition to fostering critical thinking skills, media literacy encourages creativity and expression. Students are provided with tools to engage in content creation, from blogging and podcasting to video production and social media campaigns. These experiences promote digital fluency and prepare students for the diverse communication challenges they will face in their academic, professional, and personal lives. However, implementing media literacy education presents challenges, including varying levels of access to technology, the need for teacher training, and the evolving nature of digital media. Despite these hurdles, integrating media literacy into education is crucial for preparing students to succeed in a digital world, where the ability to navigate and contribute to the media landscape is central to personal empowerment, critical engagement, and lifelong learning.",
+    "topics": [
+      "critical thinking",
+      "digital competence",
+      "creativity",
+      "self-regulation",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-role-of-digital-media-in-developing-civic-literacy-among-high-school",
+    "title": "THE ROLE OF DIGITAL MEDIA IN DEVELOPING CIVIC LITERACY AMONG HIGH SCHOOL STUDENTS IN THE ERA OF SOCIAL TRANSFORMATION",
+    "authors": [
+      "Sheik Mohamed S.H",
+      "Sam Hermansyah"
+    ],
+    "year": 2024,
+    "doi": "10.61677/smart.v2i2.592",
+    "url": "https://www.semanticscholar.org/paper/2d3349700db2a0cffe2251b55b92b440bd55971f",
+    "openalex_id": null,
+    "semantic_scholar_id": "2d3349700db2a0cffe2251b55b92b440bd55971f",
+    "eric_id": null,
+    "publisher": "SMART",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This study aims to explore the role of digital media in fostering civic literacy among high school students in the context of ongoing social transformation. As youth increasingly engage with digital platforms, this research seeks to understand how these technologies can be pedagogically leveraged to enhance students\u2019 civic knowledge, critical thinking, and participatory skills. Employing a structured literature review as the primary method, the study systematically analyzes scholarly sources published between 2020 and 2025 to synthesize findings on the intersection of digital literacy and civic education. Results reveal that digital media\u2014when used with intentional pedagogical design\u2014can significantly improve civic awareness, ethical reasoning, and active engagement among students. However, disparities in access, teacher readiness, and curriculum integration remain persistent challenges. The novelty of this study lies in its integrated approach: positioning digital media not merely as a technological tool, but as a civic space that requires guided participation and critical engagement. It also contributes methodologically by offering a thematic synthesis of recent empirical findings specific to high school learners, a group often overlooked in digital citizenship discourse. The study concludes that fostering meaningful digital citizenship requires more than digital access; it demands targeted strategies that align media use with civic goals. Findings from this research are expected to inform educators, policymakers, and curriculum developers in designing inclusive and transformative civic education models suitable for 21st-century learners.",
+    "topics": [
+      "critical thinking",
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-gender-digital-divide-the-complexity-of-digital-media-literacy-among-hig",
+    "title": "Gender Digital Divide: The Complexity of Digital Media Literacy Among High School Students With Professional Technical Training in Mexico",
+    "authors": [
+      "Iris Cristina Pel\u00e1ez-S\u00e1nchez",
+      "C. George-Reyes",
+      "L. Glasserman-Morales"
+    ],
+    "year": 2023,
+    "doi": "10.22492/issn.2188-1162.2023.34",
+    "url": "https://www.semanticscholar.org/paper/64cb286c90d2367be492e8771e30ea7dd210785d",
+    "openalex_id": null,
+    "semantic_scholar_id": "64cb286c90d2367be492e8771e30ea7dd210785d",
+    "eric_id": null,
+    "publisher": "ECE Official Conference Proceedings",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Nowadays, society faces a new era of digitization and virtualization due to the Fourth Industrial Revolution. This era has influenced all the complex aspects of human life. Therefore, it is vital to promote the digital media literacy of students in all educational levels, but it is needed in high school as a step before higher education. On the other hand, the digital gender divide represents a digital fracture that causes a lower representation of women in the digital world and access to STEM careers, even affecting female students' learning due to factors such as technophobia or stereotypes associated with feminine and masculine roles. This study presents the perception of the complex level of digital media literacy of 124 students (men=73, women=44, and non-binary students=7) in a high school center with technical professional training in computer science in Mexico. The data collection employed an instrument that measured three dimensions of digital media literacy based on gender. The sample considered just male participants in all groups, highlighting a gender gap in technical and professional education. However, men had a lower level in all three dimensions: Access to Digital Information (ADI) ( M =3.05), Interpretation of Digital Information (IDI) ( M =3.05), and Production and Socialization of Digital Communication (PSDC) ( M =3.02) compared to women (ADI: M =3.10; IDI: M =3.10; PSDC: M =3.21). Although the results indicate differences in media literacy among high school students with professional technical training, the interaction between men and women is highly similar.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-effectiveness-of-roblox-based-metaverse-learning-media-in-enhancing-digi",
+    "title": "Effectiveness of Roblox-Based Metaverse Learning Media in Enhancing Digital Literacy among Primary School Students in Technology-Limited Areas",
+    "authors": [
+      "Agustinus Sembiring",
+      "Heni Jusuf",
+      "Handri Santoso"
+    ],
+    "year": 2026,
+    "doi": "10.58723/finger.v5i1.593",
+    "url": "https://www.semanticscholar.org/paper/ff4745e3b7e95dc542d1c0d880194452dc0e35c4",
+    "openalex_id": null,
+    "semantic_scholar_id": "ff4745e3b7e95dc542d1c0d880194452dc0e35c4",
+    "eric_id": null,
+    "publisher": "FINGER : Jurnal Ilmiah Teknologi Pendidikan",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Background: The development of metaverse technology has opened up new opportunities in education, particularly through interactive platforms such as Roblox. However, most previous research has focused on schools with adequate technological access, leaving a gap in the implementation of the metaverse in areas with limited technology.Aims: This study examines the effectiveness of Roblox-based metaverse learning media in enhancing digital literacy among primary school students in technology-limited regions, contributing to inclusive digital learning strategies.Methods: The study employed a mixed-method approach with a quasi-experimental pretest\u2013posttest design involving 118 students. A quantitative instrument in the form of a Likert-scale questionnaire was used to measure digital literacy, while qualitative data were obtained through open-ended interviews and documentation. The analysis was conducted using a paired sample t-test along with thematic analysis to enrich the interpretation of the results.Results: Quantitative findings show a significant improvement in digital literacy scores (t = -2.144; p = 0.034), with all five dimensions scoring above 3\u2014especially Educational Game Evaluation (Mean = 3.464) and Attitudes and Perceptions (Mean = 3.451). Qualitative results reveal enthusiasm, engagement, and improved understanding of digital content. However, limited devices and unstable internet may reduce the consistency of students\u2019 engagement.Conclusion: This study demonstrates that Roblox, as a metaverse-based learning medium, can be effectively adapted in elementary schools with limited technology. These findings underscore the importance of developing more adaptive learning media, providing clear instructions, and implementing educational policies that support equitable access to technology.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-integration-of-strengthening-islamic-education-in-digital-literacy-based",
+    "title": "Integration of Strengthening Islamic Education in Digital Literacy-Based Learning for Junior High School Students",
+    "authors": [
+      "Fatiya Rahma Zarkasi",
+      "J. Aziz"
+    ],
+    "year": 2026,
+    "doi": "10.62710/gtr5at47",
+    "url": "https://www.semanticscholar.org/paper/2c41931bf17076811bcd37d25e3f9eedc0902eed",
+    "openalex_id": null,
+    "semantic_scholar_id": "2c41931bf17076811bcd37d25e3f9eedc0902eed",
+    "eric_id": null,
+    "publisher": "Jurnal Ragam Pengabdian",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study aims to describe the integration of Islamic Religious Education (IRE) reinforcement in digital literacy-based learning among junior high school students. This study uses a qualitative approach with a descriptive research type. The research subjects are Islamic Religious Education teachers as the main informants, with school principals and students as supporting informants. Data collection techniques include in-depth interviews, observation, and documentation. Data analysis was conducted using the Miles and Huberman model, which includes data reduction, data presentation, and conclusion drawing, while data validity was maintained through source and technique triangulation. The results show that the integration of digital literacy in PAI learning is carried out through the use of digital media, online learning platforms, and interactive Islamic content. This integration has a positive impact on increasing learning motivation, understanding Islamic values, and shaping students' religious attitudes and digital ethics. Despite challenges such as limited facilities and digital literacy skills, teachers' efforts to develop adaptive learning strategies make digital literacy an effective means of strengthening Islamic values in the digital age.",
+    "topics": [
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-religious-literacy-and-the-promotion-of-religious-moderation-thr",
+    "title": "Digital Religious Literacy and the Promotion of Religious Moderation through Islamic Education Learning among Senior High School Students",
+    "authors": [
+      "Anggi Wulandini",
+      "Mambaul Ngadimah"
+    ],
+    "year": 2026,
+    "doi": "10.52366/edusoshum.v6i3.469",
+    "url": "https://www.semanticscholar.org/paper/5254101f7e757ec100b685d236232a31e1c7f5a5",
+    "openalex_id": null,
+    "semantic_scholar_id": "5254101f7e757ec100b685d236232a31e1c7f5a5",
+    "eric_id": null,
+    "publisher": "EDUSOSHUM Journal of Islamic Education and Social Humanities",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The development of digital media has transformed the way students acquire religious information. On the one hand, digital media expands access to religious knowledge; on the other hand, it has the potential to disseminate non-credible information and influence students\u2019 religious attitudes. This study aims to analyze students\u2019 digital religious literacy in Islamic Religious Education (IRE) learning and its implications for strengthening religious moderation. The study employed a qualitative approach using a case study method conducted at SMA Negeri 1 Babadan, Ponorogo. The participants consisted of one Islamic Religious Education teacher and five eleventh-grade students selected through purposive sampling. Data were collected through observation, interviews, and documentation and were analyzed using the interactive analysis model. The findings reveal four main themes. First, there has been a transformation in the sources and construction of students\u2019 religious literacy, shifting from a teacher-centered model to the utilization of diverse digital sources. Second, critical digital literacy enhances students\u2019 religious understanding through practices of information verification, source comparison, and confirmation of religious information. Third, Islamic Religious Education teachers serve as epistemic guides who assist students in identifying credible religious sources while integrating digital media into the learning process. Fourth, digital religious literacy contributes to strengthening students\u2019 understanding of religious moderation by fostering tolerance, openness, and respect for diversity. The study concludes that digital religious literacy has the potential to reinforce religious moderation when supported by students\u2019 critical thinking skills and adequate teacher guidance in navigating the digital environment.",
+    "topics": [
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-of-artificial-intelligence-based-digital-learning-media-to-i",
+    "title": "Development of Artificial Intelligence-Based Digital Learning Media To Improve The Quality of Civic Literacy of Muhammadiyah Senior High School Students In Purbalingga",
+    "authors": [
+      "W. Wartono",
+      "Iskandar Iskandar",
+      "Irfan Fatkhurohman",
+      "Elsa Puji Hapsari",
+      "Asmawati Asmawati"
+    ],
+    "year": 2026,
+    "doi": "10.51601/ijse.v6i1.331",
+    "url": "https://www.semanticscholar.org/paper/13b87cc12f373206b5a069e7e7f478124ac20345",
+    "openalex_id": null,
+    "semantic_scholar_id": "13b87cc12f373206b5a069e7e7f478124ac20345",
+    "eric_id": null,
+    "publisher": "International Journal of Science and Environment (IJSE)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study aims to develop an Artificial Intelligence (AI)-based digital learning media to improve students' civic literacy at SMA Muhammadiyah Purbalingga. The development of this media is motivated by the growing digitalization in education, which demands innovative learning tools that are adaptable to technological advances while remaining focused on forming intelligent and virtuous citizens (good and thoughtful citizens). This research employs a Research and Development (R&D) approach using the ADDIE model, which comprises five stages: analysis, design, development, implementation, and evaluation. The focus of this study is on the analysis and development stages to produce a feasible and effective learning media product. The results indicate that integrating Artificial Intelligence (AI) in the learning process has positive impacts, such as increasing efficiency, effectiveness, and accessibility in civic education. Moreover, the use of AI encourages students to think critically, creatively, and adaptively in responding to technological advancements within the context of citizenship education. However, potential adverse effects, including overdependence on technology and reduced critical thinking skills, must be anticipated by instilling digital ethics consistent with Islamic values. Therefore, the development of AI-based digital learning media is expected to serve as an innovative solution for effectively and ethically enhancing students\u2019 civic literacy at SMA Muhammadiyah Purbalingga.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-literacy-based-on-christian-education-as-a-formation-tool-charac",
+    "title": "Digital Literacy Based on Christian Education as a Formation Tool Characteristics of Lentera Harapan Middle School and High School Students in Kupang-NTT",
+    "authors": [
+      "Sakheus Junias Nenosaban",
+      "Ezra Tari"
+    ],
+    "year": 2023,
+    "doi": "10.58526/jsret.v2i3.238",
+    "url": "https://www.semanticscholar.org/paper/6a463a2dda2f8edfe5f65cab0e99242c0c0b313b",
+    "openalex_id": null,
+    "semantic_scholar_id": "6a463a2dda2f8edfe5f65cab0e99242c0c0b313b",
+    "eric_id": null,
+    "publisher": "Journal of Scientific Research, Education, and Technology (JSRET)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The development of the world of education and the high use of digital media today, makes students and educators need to improve themselves in a better and positive direction. If, the use of media is not accompanied by good digital literacy. As a result, students are trapped in hoaxes, sexual exploitation, cyberbullying, hate speech, digital-based radicalism, thus degrading student morals and psychology. The purpose of this writing is to overcome the explosion of technological information that continues to increase in digital sources. As a student, you need to equip yourself in digital literacy to fulfill your responsibilities in the learning system. The presence of Christian Religious Education is to equip students to maintain Christian values in the learning process. The research method used is a literature study approach, and the results of research on educators/teachers and students of Lentera Harapan Middle School and High School Students Kupang-NTT. Through the Construction Tools of school digital literacy, it provides convenience and character development for students. digital literacy as an educational coaching tool to build the character of students or students who are critical and applicable, so as to have an impact on changes in character and social situations.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-media-education-and-media-literacy-as-a-factor-in-combating-disinformati",
+    "title": "Media Education and Media Literacy as a Factor in Combating Disinformation",
+    "authors": [
+      "N. Voitovych",
+      "Mariana Kitsa",
+      "I. Mudra"
+    ],
+    "year": 2025,
+    "doi": "10.3390/journalmedia6040188",
+    "url": "https://www.semanticscholar.org/paper/3af32f81eaaef3c3bd571c0d617447478cf1eace",
+    "openalex_id": null,
+    "semantic_scholar_id": "3af32f81eaaef3c3bd571c0d617447478cf1eace",
+    "eric_id": null,
+    "publisher": "Journalism and Media",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This article explores the crucial role of media education and media literacy as effective tools in combating disinformation. In the context of the growing influence of digital media and the increasing spread of fake news, propaganda, and manipulative content, the authors examine the level of awareness among young people regarding key media-related concepts such as media literacy, fake news, propaganda, and disinformation. A sociological survey was conducted among students from two Ukrainian higher education institutions\u2014Ivan Franko National University of Lviv and Lviv Polytechnic National University\u2014involving 277 respondents. The research aimed to evaluate the depth of understanding and preparedness of youth to critically assess media content and recognize signs of manipulative information. The findings indicate a clear trend: media awareness and critical thinking skills improve progressively from secondary school students to university students. This article emphasizes the importance of integrating media literacy into formal education systems as a long-term strategy to build a more informed and resilient society. The authors highlight the need for systematic educational initiatives and practical training in media literacy to empower young audiences in navigating the complex media environment and resisting the impact of disinformation.",
+    "topics": [
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-strengthening-character-education-through-digital-literacy-in-elementary",
+    "title": "Strengthening Character Education through Digital Literacy in Elementary Schools: Challenges and Opportunities in So-ciety 5.0 Era",
+    "authors": [
+      "Iffah Zahrotul Khasanah",
+      "Salma Natha Erlinda",
+      "Nesya Nabila Az Zahra",
+      "Vikar Waruwu",
+      "Zulmi Roestika Rini"
+    ],
+    "year": 2026,
+    "doi": "10.70062/iccms.v3i1.252",
+    "url": "https://www.semanticscholar.org/paper/ed49d9b507535bfcd4969d92ed3d6f55b885c990",
+    "openalex_id": null,
+    "semantic_scholar_id": "ed49d9b507535bfcd4969d92ed3d6f55b885c990",
+    "eric_id": null,
+    "publisher": "Proceeding International Collaborative Conference on Multidisciplinary Science",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The rapid convergence of digital technology and everyday life in the Society 5.0 era has reshaped how elementary school students learn, socialize, and build their character. While digital literacy equips young learners with the technical and cognitive skills needed to navigate digital environments, character education remains essential to ensure that technological fluency is balanced with ethical judgment, empathy, and social responsibility. This study examines the interconnection between digital literacy and character education for elementary school students, identifies the challenges faced by teachers and schools in integrating both competencies, and explores the opportunities that Society 5.0 offers for strengthening character formation through digital means. A qualitative narrative literature review method was employed, synthesizing findings from national and international peer-reviewed journal articles published between 2018 and 2025. The results indicate that digital literacy contributes positively to character strengthening when it is deliberately embedded in classroom pedagogy and supported by teacher competence, parental supervision, and school policy. However, challenges such as unequal digital access, teachers' limited digital pedagogical skills, and students' exposure to cyberbullying and misinformation continue to hinder effective implementation. The study concludes that strengthening character education through digital literacy requires a collaborative, human-centered approach involving teachers, families, and communities, consistent with the Society 5.0 vision of technology that serves human values.",
+    "topics": [
+      "critical thinking",
+      "digital competence",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
+  },
+  {
+    "id": "src-a-study-on-the-approach-to-ai-ethics-education-in-art-education-focusing",
+    "title": "A Study on the Approach to AI Ethics Education in Art Education: Focusing on the Perception of Elementary School Students",
+    "authors": [
+      "Seon-hee Jeong",
+      "Hyun-gyeoung Lee",
+      "Xuanhe Jin",
+      "Euijin Hwang"
+    ],
+    "year": 2025,
+    "doi": "10.25297/aer.2025.93.311",
+    "url": "https://www.semanticscholar.org/paper/23841efa77e3fda4eb571706e4c4b8ec775c9b32",
+    "openalex_id": null,
+    "semantic_scholar_id": "23841efa77e3fda4eb571706e4c4b8ec775c9b32",
+    "eric_id": null,
+    "publisher": "Society for Art Education of Korea",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study aims to emphasize the importance of AI ethics education along with AI technology to be dealt with in art departments, as AI technology is being utilized in various ways in elementary school curricula and AI technology is expanding into the field of art. To this end, qualitative research was conducted to present ethical situations that will be encountered in the field of art and explore learners\u2019 perceptions of them. Since AI ethics education is important in fostering the ability to make ethical judgments in real sit uations beyond learning ethical principles, it needs to be specifically addressed in the social and con textual contexts that learners will encounter as AI users. Accordingly, this paper conducted semi-structured interviews with five elementary school students to deeply understand their perceptions of AI ethics con cepts as AI users and learners of AI ethics education. Based on this, it was proposed that AI ethics educa tion to be dealt with in art departments should be wary of lenient invasion as they get closer to users of AI technology, should attempt to crack the illusion of perfection as recipients of information from AI, and should begin discussions of confusion toward creative topics as creators. This can be used as basic data for AI ethics education that should be covered in elementary art education.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-integrating-design-thinking-into-stem-education-enhancing-problem-solvin",
+    "title": "Integrating design thinking into STEM education: Enhancing problem-solving skills of high school students",
+    "authors": [
+      "Le Chi Nguy\u1ec7n",
+      "H. Hoa",
+      "Le Hoang Phuoc Hien"
+    ],
+    "year": 2025,
+    "doi": "10.29333/ejmste/16084",
+    "url": "https://www.semanticscholar.org/paper/c0ee434c82ca878e651e6ebe658b3d3bd4c20c73",
+    "openalex_id": null,
+    "semantic_scholar_id": "c0ee434c82ca878e651e6ebe658b3d3bd4c20c73",
+    "eric_id": null,
+    "publisher": "Eurasia Journal of Mathematics, Science and Technology Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores the integration of design thinking into science, technology, engineering and mathematics (STEM) education to develop problem-solving skills among high school students. The study applied a design thinking model with five stages: empathy, problem identification, ideation, prototyping, and testing, through experimental STEM lessons with 334 students. The results show that the model of integrating design thinking into STEM education not only improves critical thinking ability but also increases the ability to apply STEM knowledge into practice. Confirmatory factor analysis (CFA) and indices such as CFI = 0.994 and RMSEA = 0.020 confirmed the high suitability of the model for STEM education. The strong correlations between stages, especially define-ideate (r = 0.731) and prototype-test (r = 0.709), show the effectiveness of repetition in the learning process. This article emphasizes that iteration between stages helps students continually refine and improve their solutions while developing their observation, creativity, and self-evaluation skills.",
+    "topics": [
+      "critical thinking",
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-technology-in-reducing-mathematics-anxiety-in-primary-school",
+    "title": "The role of technology in reducing mathematics anxiety in primary school students",
+    "authors": [
+      "Zara Ersozlu"
+    ],
+    "year": 2024,
+    "doi": "10.30935/cedtech/14717",
+    "url": "https://www.semanticscholar.org/paper/2b94c0b903bc8df12a802de8482e8d67b44d4331",
+    "openalex_id": null,
+    "semantic_scholar_id": "2b94c0b903bc8df12a802de8482e8d67b44d4331",
+    "eric_id": null,
+    "publisher": "Contemporary Educational Technology",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Mathematics anxiety is a significant problem in education that affects students\u2019 learning outcomes, academic success, and well-being. This systematic literature review aimed to explore the role of technological interventions in reducing mathematics anxiety and promoting positive learning experiences in mathematics learning. Our findings revealed a mixed picture, where learning mathematics through online distance education increases mathematics anxiety, especially among primary school students, while interventions such as game-based learning and digital tools show positive results in reducing students\u2019 mathematics anxiety levels. Additionally, the results of this study contribute to ongoing discussions on effective strategies to reduce mathematics anxiety and improve mathematics education through the integration of technology, providing new understanding among educators, parents, researchers, and policymakers in creating inclusive and effective learning environments. Using technology to reduce mathematics anxiety and increase student achievement emphasizes the importance of collaborative efforts.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-artificial-intelligence-in-shaping-high-school-students-moti",
+    "title": "The Role of Artificial Intelligence in Shaping High School Students' Motivation",
+    "authors": [
+      "Rena Alasgarova",
+      "Jeyhun Rzayev"
+    ],
+    "year": 2024,
+    "doi": "10.46328/ijtes.553",
+    "url": "https://www.semanticscholar.org/paper/eac4214f43c782462c0c3efe4c1a5bfb57813b1a",
+    "openalex_id": null,
+    "semantic_scholar_id": "eac4214f43c782462c0c3efe4c1a5bfb57813b1a",
+    "eric_id": null,
+    "publisher": "International journal of technology in education and science",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores the integration of Artificial Intelligence (AI) in high school education, focusing on its implications for student motivation and learning through the framework of Self-Determination Theory. As AI technologies like ChatGPT4 become more prevalent in educational settings, their potential to enhance learning by catering to students' needs for competence is significant. However, this investigation also highlights the challenges associated with AI misuse, which can undermine students' autonomy and relatedness, leading to academic dishonesty and superficial learning. The research underscores the importance of balancing technological advancements with ethical engagement and intrinsic motivation. Through qualitative analysis, including interviews and thematic analysis of student and teacher feedback, the study reveals a nuanced picture of AI's role in education. It suggests that while AI offers considerable benefits, its integration requires careful consideration of ethical use, digital literacy, and the cultivation of intrinsic motivation. The findings advocate for educational policies and practices that not only leverage AI's potential to enrich learning experiences but also address the challenges posed by its misuse. This study contributes to the ongoing discourse on technology in education, emphasizing the need for a balanced approach to AI integration that supports ethical standards and promotes a meaningful educational experience.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-effects-of-virtual-reality-technology-on-primary-school-students-creativ",
+    "title": "Effects of virtual reality technology on primary school students\u2019 creativity performance, learning engagement and mental flow",
+    "authors": [
+      "Mohamed Oubibi",
+      "Katsiaryna Hryshayeva"
+    ],
+    "year": 2024,
+    "doi": "10.1007/s10639-024-12766-0",
+    "url": "https://www.semanticscholar.org/paper/09e08b4329416b550fcad8e4b7433e6773bccf32",
+    "openalex_id": null,
+    "semantic_scholar_id": "09e08b4329416b550fcad8e4b7433e6773bccf32",
+    "eric_id": null,
+    "publisher": "Education and Information Technologies : Official Journal of the IFIP technical committee on Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-mydata-fostering-middle-school-students-engagement-with-machine-learn",
+    "title": "AI MyData: Fostering Middle School Students\u2019 Engagement with Machine Learning through an Ethics-Infused AI Curriculum",
+    "authors": [
+      "I. Sanusi",
+      "Fred G. Martin",
+      "Ruizhe Ma",
+      "Joseph E. Gonzales",
+      "Vaishali Mahipal",
+      "S. Oyelere",
+      "Jarkko Suhonen",
+      "M. Tukiainen"
+    ],
+    "year": 2024,
+    "doi": "10.1145/3702242",
+    "url": "https://www.semanticscholar.org/paper/06639ee3b562cd82b11a818687983de5e92ea152",
+    "openalex_id": null,
+    "semantic_scholar_id": "06639ee3b562cd82b11a818687983de5e92ea152",
+    "eric_id": null,
+    "publisher": "ACM Transactions on Computing Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "As initiatives on AI education in K-12 learning contexts continues to evolve, researchers have developed curricula among other resources to promote AI across grade levels. Yet, there is a need for more effort regarding curriculum, tools, and pedagogy, as well as assessment techniques to popularize AI at the middle school level. Drawing on prior work, we created original curriculum activities with innovative use of existing technology, a new computational teaching tool, and a series of approaches and assessments to evaluate students\u2019 engagement with the learning resources. Our curriculum called AI MyData comprises elements of ML and data science infused with ethical orientation. In this article, we describe the novel AI curriculum and further discuss how we engaged students in learning and critiquing AI ethical dilemmas. We gathered data from two pilot studies conducted in the Northeast United States, one Artificial Intelligence Afterschool (AIA) program, and one virtual AI summer camp. The AIA program was carried out in a local public school with four middle school students aged 12 to 13; the program consisted of eleven 2-hour sessions. The summer camp consisted of 2-hour sessions over 4 consecutive days, with 18 students aged 12 to 15. We facilitated both pilot programs with hands-on plugged and unplugged activities. The method of capturing data included artifact collection, structured interviews, written assessments, and a pre- to post-questionnaire tapping participants\u2019 dispositions about AI and its societal implication. Participant artifacts, written assessments, survey, observation, and analysis of tasks completed revealed that the children improved in their knowledge of AI. In addition, the AI curriculum units and accompanying approaches developed for this study successfully engaged the participants, even without prior knowledge of related concepts. We also found an indication that introducing ethics of AI to adolescents will help their development as ethically responsive citizens. Our study results also indicate that lessons establishing links with students\u2019 personal lives (e.g., letting students choose personally meaningful datasets) and societal implications using unplugged activities and interactive tools were particularly valuable for promoting AI and the integration of AI in middle school education across the subject domains and settings. Based on these results, we discuss our findings, identify their limitations, and propose future work.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-primary-school-students-perceptions-of-artificial-intelligence-for-good",
+    "title": "Primary school students\u2019 perceptions of artificial intelligence \u2013 for good or bad",
+    "authors": [
+      "S. Walan"
+    ],
+    "year": 2024,
+    "doi": "10.1007/s10798-024-09898-2",
+    "url": "https://www.semanticscholar.org/paper/578c6c9f80a902a60d1c50a014dc287e797e8cfd",
+    "openalex_id": null,
+    "semantic_scholar_id": "578c6c9f80a902a60d1c50a014dc287e797e8cfd",
+    "eric_id": null,
+    "publisher": "International Journal of Technology and Design Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Since the end of 2022, global discussions on Artificial Intelligence (AI) have surged, influencing diverse societal groups, such as teachers, students and policymakers. This case study focuses on Swedish primary school students aged 11\u201312. The aim is to examine their cognitive and affective perceptions of AI and their current usage. Data, comprising a pre-test, focus group interviews, and post-lesson evaluation reports, were analysed using a fusion of Mitcham\u2019s philosophical framework of technology with a behavioural component, and the four basic pillars of AI literacy. Results revealed students\u2019 cognitive perceptions encompassing AI as both a machine and a concept with or without human attributes. Affective perceptions were mixed, with students expressing positive views on AI\u2019s support in studies and practical tasks, alongside concerns about rapid development, job loss, privacy invasion, and potential harm. Regarding AI usage, students initially explored various AI tools, emphasising the need for regulations to slow down and contemplate consequences. This study provides insights into primary school students perceptions and use of AI, serving as a foundation for further exploration of AI literacy in education contexts and considerations for policy makers to take into account, listening to children\u2019s voices.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-character-education-in-forming-ethical-and-responsible-stude",
+    "title": "The Role Of Character Education In Forming Ethical And Responsible Students",
+    "authors": [
+      "Tiara Ramadhani",
+      "Danar Widiyanta",
+      "Yena Sumayana",
+      "Rengga",
+      "Yudha Santoso",
+      "Puspita",
+      "Dian Agustin",
+      "Al-Amin"
+    ],
+    "year": 2024,
+    "doi": "10.37567/ijgie.v5i2.3064",
+    "url": "https://www.semanticscholar.org/paper/f75dd0c060447c65df213352d91704342ed60fd8",
+    "openalex_id": null,
+    "semantic_scholar_id": "f75dd0c060447c65df213352d91704342ed60fd8",
+    "eric_id": null,
+    "publisher": "IJGIE (International Journal of Graduate of Islamic Education)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Character education refers to an approach to learning that aims to help students develop moral and ethical values, such as honesty, responsibility and empathy. The integration of these values in the curriculum and school activities along with the active support of teachers, families and communities are the main efforts for character education to build individuals who are highly ethical and responsible in every aspect of their lives. In this study, the literature research method was used. From the results, it is evident that teachers who have undergone specialised training in character education play an important role as living examples of these values. In addition, a safe and supportive school environment greatly contributes to the ethical formation of students. Another opinion states that the active participation of parents and the community also strengthens the implementation of moral values in schools through their daily behaviour. This finding proves the synergy relationship between the collaborative participation of the main institutions, namely school, family and the wider community, can empower students with strong character, have good morals and be perfectly responsible.",
+    "topics": [
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-of-integrated-stem-education-learning-units-to-access-studen",
+    "title": "Development of integrated STEM education learning units to access students' systems thinking abilities",
+    "authors": [
+      "B. Wahono",
+      "Arinal Husna",
+      "S. Hariyadi",
+      "Y. Anwar",
+      "M. Meilinda"
+    ],
+    "year": 2023,
+    "doi": "10.21831/jitp.v10i1.52886",
+    "url": "https://www.semanticscholar.org/paper/520369c0955e2528a73cc731b7cb6d6aa8c0ec2e",
+    "openalex_id": null,
+    "semantic_scholar_id": "520369c0955e2528a73cc731b7cb6d6aa8c0ec2e",
+    "eric_id": null,
+    "publisher": "Jurnal Inovasi Teknologi Pendidikan",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This research aims to develop a Biology Science learning unit based on Science, Technology, Engineering, and Mathematics (STEM) that is valid, practical and effective in accessing students' system thinking skills. The topic ,of the Biology Science learning unit is the water cycle. The development used the ADDIE model research and development for the research method. The research subjects were 32 grade VII students from State Junior High School in Jember. The research findings showed that the average validation result of STEM-based learning units was 95.3%. These can be considered valid. The Paired Sample Test result is 0.001 or less than 0.05, so there is a significant difference between the pretest and post-test results. The average effectiveness test score is 0.73, higher than the typical gain test score, and the results include the high criteria. Finally, the average percentage of practicality tests is in the high category of 89%. \u00a0System thinking skills are needed in learning activities to describe and solve a problem using integrated STEM education. Therefore, the STEM-based learning unit on the water cycle topic could be applied in the learning process to acquire students' system thinking abilities in the Biology Science learning unit. Finally, assessing student responses during the learning using this learning unit is pivotal for future research.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]

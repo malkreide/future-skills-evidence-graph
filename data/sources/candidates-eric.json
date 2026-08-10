@@ -8228,5 +8228,70 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "educator"
+  },
+  {
+    "id": "src-exploring-artificial-intelligence-literacy-among-basic-school-teachers-i",
+    "title": "Exploring Artificial Intelligence Literacy among Basic School Teachers in Ghana",
+    "authors": [
+      "Valentina Arkorful",
+      "Francis Arthur",
+      "Eric Boateng",
+      "Monica Ofosu-Koranteng",
+      "Iddrisu Salifu",
+      "Emmanuel Rungson Attom",
+      "Solomon Adjatey Tetteh",
+      "Emmanuel Quayson",
+      "Stanley Asare-Bediako",
+      "Sharon Abam Nortey"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s44217-025-00630-3",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1478500",
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In the twenty-first century, it has become increasingly important for educators to familiarise themselves with &quot;Artificial Intelligence (AI)&quot;, given its growing influence in various fields, including education. This study examines AI literacy among Ghanaian basic school teachers and investigates gender differences in AI literacy. This study used a cross-sectional survey design to assess the AI literacy of 319 teachers using an adapted AI literacy scale. Data were analysed using descriptive statistics (mean and standard deviation) and &quot;one-way multivariate analysis of variance (MANOVA)&quot;. In addition, &quot;confirmatory factor analysis (CFA)&quot; was used to validate the adapted AI literacy scale. The results showed that overall, teachers had moderate levels of AI literacy. Specifically, they demonstrated moderate levels of &quot;knowledge and understanding of AI&quot;, &quot;application of AI&quot;, &quot;evaluation of AI&quot;, and &quot;ethics of AI&quot;. In addition, the results showed that gender differences in the dimensions of AI literacy were statistically significant. This article contributes to the literature on AI literacy among teachers by examining gender differences in dimensions of AI literacy. It further advances the field by discussing the implications of these findings for educational policy and practice, highlighting the need for targeted interventions to address the gender gap in AI literacy. By adding to the growing body of research on AI education, this research provides valuable insights for policymakers, educational administrators, and teacher preparation programmes aimed at improving AI literacy among educators.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-empowering-teachers-for-the-ai-genai-era-predictors-of-digital-competenc",
+    "title": "Empowering Teachers for the AI-GenAI Era: Predictors of Digital Competence in Curriculum Innovation",
+    "authors": [
+      "Francisco D. Guill&#x00E9;n-G&#x00E1;mez",
+      "Esther Mena-Rodriguez",
+      "Francisco Recio-Mu&#x00F1;oz",
+      "Bethy Linoska D&#x00ED;az-Vargas"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s11528-026-01185-2",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1512120",
+    "publisher": "TechTrends: Linking Research and Practice to Improve Learning",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial Intelligence (AI) and, more recently, Generative Artificial Intelligence (GenAI), have emerged as innovative technologies with strong potential for educational planning and the creation of learning resources. However, their effective integration into teaching requires teachers to demonstrate sufficient digital competence. This study aimed to analyze and compare teachers' self-assessment of their digital competence in the use of GenAI tools for curriculum planning, while considering the influence of different sociodemographic and professional variables. Specifically, the objectives were: (1) to determine teachers' self-perception of digital competence in using GenAI for curriculum planning, according to educational stage, and (2) to examine whether significant differences exist in digital competence across sex, type of territory, prior training in educational technology, and creativity in the development of educational content. A quantitative, ex post facto design was applied, using a non-probabilistic purposive sample of 502 in-service teachers from the Dominican Republic, covering early childhood, primary, secondary, and higher education. The data were collected using an instrument developed by the authors themselves, which measures self-perception in digital competence, based on the Technology Acceptance Model (TAM) framework. The findings revealed a medium-high level of perceived digital competence, with Early Childhood Education teachers achieving the highest scores. Significant differences were observed in relation to prior training and creativity, whereas no effect was found for territory. In higher education, sex differences emerged in favor of female teachers. These results highlight the importance of fostering continuous training and creativity-oriented strategies to enhance digital competence for GenAI-based curriculum innovation.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-10",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
   }
 ]
