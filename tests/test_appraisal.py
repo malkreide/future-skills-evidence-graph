@@ -933,6 +933,106 @@ class NarrowedWorksheetTests(unittest.TestCase):
         )
 
 
+class CalibrationTests(unittest.TestCase):
+    """A calibration round must not be mistakable for a baseline."""
+
+    KEYS = ["prefill-handwriting-tablet", "prefill-adult-mooc", "prefill-policy-ai-ethics"]
+
+    def _round(self, keys=None, fields=None):
+        worksheet = ea.build_worksheet("claim_prefill", fields, keys or self.KEYS)
+        primary = ea.primary_labels("claim_prefill")
+        for item in worksheet["labels"]:
+            for field in worksheet["protocol"]["rated_fields"]:
+                item[field] = primary[item["key"]].get(field)
+        worksheet["protocol"].update(rater="k", labeled_at="2026-08-10", blind=True)
+        return worksheet
+
+    def _score(self, worksheet):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "k.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            return ea.second_rater_comparisons(path)
+
+    def test_only_narrows_the_items(self) -> None:
+        worksheet = ea.build_worksheet("claim_prefill", None, self.KEYS)
+        self.assertEqual(
+            [item["key"] for item in worksheet["labels"]], self.KEYS
+        )
+
+    def test_a_calibration_round_is_never_a_baseline(self) -> None:
+        # Perfect agreement on a hand-picked subset is not a ceiling: the
+        # items were chosen to span the rubric, and they get discussed.
+        for comparison in self._score(self._round()):
+            with self.subTest(comparison.field):
+                self.assertEqual(comparison.agreement, 1.0)
+                self.assertTrue(comparison.independent)
+                self.assertFalse(comparison.gate_ready())
+                self.assertIn("calibration round", "\n".join(comparison.report()))
+
+    def test_the_mark_blocks_the_gate_on_its_own(self) -> None:
+        # A three-item round fails gate_ready() on size alone, so the test
+        # above cannot tell "blocked because it is calibration" from
+        # "blocked because it is small". This one can: same sample, well
+        # over the size threshold, differing only in the mark.
+        pairs = [("low", "low")] * 30 + [("moderate", "moderate")] * 30
+        measured = ea.Comparison("t", "evidence_certainty", pairs, True, "x")
+        calibration = ea.Comparison(
+            "t", "evidence_certainty", pairs, True, "x", calibration=True
+        )
+        self.assertGreater(measured.n, ea.MIN_N_FOR_GATE)
+        self.assertTrue(measured.gate_ready())
+        self.assertFalse(calibration.gate_ready())
+
+    def test_a_full_pass_is_not_marked_as_calibration(self) -> None:
+        worksheet = ea.build_worksheet("claim_prefill")
+        self.assertNotIn("calibration_subset", worksheet["protocol"])
+
+    def test_an_unknown_key_is_rejected(self) -> None:
+        with self.assertRaises(SystemExit) as caught:
+            ea.build_worksheet("claim_prefill", None, ["prefill-adult-mooc", "nope"])
+        self.assertIn("nope", str(caught.exception))
+
+    def test_explain_shows_both_answers_and_the_stored_reasoning(self) -> None:
+        import tempfile
+
+        worksheet = self._round()
+        # Introduce one disagreement so the marker is exercised.
+        worksheet["labels"][0]["evidence_certainty"] = "strong"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "k.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            report = "\n".join(ea.explain_report(path))
+        self.assertIn("DISAGREE", report)
+        self.assertIn("agree]", report)
+        self.assertIn("<-- differs", report)
+        # The reasoning is the point: without it a calibration round is a
+        # list of differences with nobody in the room to ask why.
+        self.assertIn("baseline", report)
+        self.assertIn("why the stored evidence_certainty is", report)
+
+    def test_explain_is_not_part_of_scoring(self) -> None:
+        # Seeing the stored reasoning is exactly what must not happen
+        # before a measured pass, so it takes a separate command.
+        report = "\n".join(c.report()[0] for c in self._score(self._round()))
+        self.assertNotIn("why the stored", report)
+
+    def test_the_excluded_pairs_are_named_by_value(self) -> None:
+        # The note used to say "e.g. 'unverifiable'" whatever had actually
+        # been set aside -- telling the reader the wrong reason for a
+        # number they cannot see.
+        comparison = ea.Comparison(
+            name="t",
+            field="evidence_certainty",
+            pairs=[("low", "low"), (None, None), ("unverifiable", "low")],
+            independent=True,
+            provenance="test",
+        )
+        report = "\n".join(comparison.report())
+        self.assertIn("2 pair(s) excluded, holding null, unverifiable", report)
+
+
 class WorksheetTests(unittest.TestCase):
     def setUp(self) -> None:
         self.worksheet = ea.build_worksheet("claim_prefill")

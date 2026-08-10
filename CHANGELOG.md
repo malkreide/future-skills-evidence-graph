@@ -14,6 +14,39 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Kalibrierrunde: `--only` und `--explain`.** Vor dem gemessenen
+  Durchgang steht eine Runde, in der beide Seiten zehn Fälle bewerten und
+  die Abweichungen besprechen. Dafür fehlten zwei Dinge. `--only` schneidet
+  einen Bogen auf ausgewählte Fälle zu und setzt
+  `protocol.calibration_subset` — die Auswertung weigert sich dann, ihn als
+  Baseline zu zählen, egal wie gut die Übereinstimmung ausfällt: die Fälle
+  sind danach besprochen und eine spätere Runde über dieselben nicht mehr
+  blind. `--explain` zeigt pro Fall beide Antworten **und die Begründung**
+  des gespeicherten Urteils. Das ist nötig, weil die primäre Bewertung von
+  niemandem stammt, der mit im Raum sitzt; ohne die Begründungskette wäre
+  die Runde eine Liste von Differenzen ohne Ansprechpartnerin. Bewusst ein
+  eigener Befehl — die gespeicherte Begründung zu sehen ist genau das, was
+  vor einem gemessenen Durchgang nicht passieren darf.
+- **Anleitung mit zehn benannten Kalibrierfällen** in
+  `docs/eval-baseline.md`: sechs Schritte, die zehn Fälle mit der Regel,
+  die jeder prüft, und die drei Sorten von Abweichung — mehrdeutige Rubrik
+  (Anker schärfen), Lesefehler (nichts tun), echte Urteilsdifferenz
+  (notieren, **nicht** wegverhandeln).
+  Korrektur am bisherigen Text: Kalibriert wird auf dem **Eval-Set**,
+  gemessen auf dem Katalog. Vorher stand dort, auf dem Katalog zu
+  kalibrieren — das hätte zehn der 59 Fälle für die Messung verbrannt.
+
+### Fixed
+
+- **`eval/claim_prefill_second_rater.json` war eine Generation alt** — beim
+  Nachziehen von `--fields` wurde nur der Katalog-Bogen neu erzeugt. Der
+  gespeicherte Prefill-Bogen trug kein `protocol.rated_fields`.
+- **Die Meldung zu ausgeschlossenen Paaren nannte den falschen Grund.** Sie
+  sagte pauschal „e.g. 'unverifiable'", auch wenn die ausgeschlossenen
+  Paare `null` waren. Sie nennt jetzt die tatsächlich betroffenen Werte.
+
+### Added
+
 - **Zweitbewertungs-Bogen für den Katalog** (`--worksheet catalog`,
   `eval/catalog_second_rater.json`). Der vorhandene Bogen misst die 50
   synthetischen Eval-Fälle; seit der Begutachtung treiben aber die 59

@@ -251,21 +251,99 @@ Kappa heraus. Die Anzahl der so entfernten Paare wird ausgewiesen.
 gemeldet und nie als Baseline gezählt, unabhängig davon, wie hoch die
 Übereinstimmung ausfällt.
 
-### Ein konkreter Ablauf
+### Die Kalibrierrunde, Schritt für Schritt
 
-1. **Kalibrierrunde: 10 Fälle**, beide Seiten blind, danach besprechen,
-   wo ihr auseinanderlauft. Das fängt Missverständnisse über die Rubrik
-   ab, bevor die ganze Stichprobe verbraucht ist. Diese zehn dürfen
-   **nicht** in die Baseline — nach dem Gespräch ist die Unabhängigkeit
-   weg. Beim Katalog bleiben danach 49 gemessene Fälle, über den 40, die
-   eine Schwelle tragen können.
-2. **Blinder Durchgang** über den Rest.
-3. **Auswerten**, `protocol.rater` und `protocol.labeled_at` gesetzt.
+**Kalibriert wird auf dem Eval-Set, gemessen wird auf dem Katalog.** So
+geht kein Katalogfall für die Messung verloren, und die Kalibrierfälle
+decken die Design-Leiter breiter ab, als der Katalog es könnte (dort
+behaupten nur 14 von 59 Aussagen überhaupt eine Wirkung).
 
-Die bewertende Person braucht **keine** Fachexpertise in KI oder
-Bildungsforschung. Sie muss ein Abstract lesen und eine geschriebene
-Rubrik anwenden können — die Rubrik liegt im Bogen. Das ist der Grund,
-warum die Anker überhaupt aufgeschrieben wurden.
+**Schritt 1 — Bogen erzeugen.** Diese zehn Fälle stellen je eine andere
+Regel auf die Probe; zusammen decken sie alle vier Certainty-Stufen, neun
+Studiendesigns und drei `claim_type`-Werte ab:
+
+```powershell
+python scripts/eval_agreement.py --worksheet claim_prefill --out kalibrierung.json --only `
+  prefill-handwriting-tablet,prefill-worked-examples-math,prefill-phonics-reception,`
+  prefill-self-regulation-elementary,prefill-financial-literacy-secondary,`
+  prefill-adhd-selfmonitor,prefill-physics-simulations,prefill-adult-mooc,`
+  prefill-policy-ai-ethics,prefill-collaboration-middle
+```
+
+| Fall | prüft |
+| --- | --- |
+| `handwriting-tablet` | Ein Nullbefund senkt die Sicherheit **nicht**. |
+| `worked-examples-math` | Ein gutes RCT bleibt `moderate` — ohne Replikation kein `strong`. |
+| `phonics-reception` | 28 Trials, konsistent — und trotzdem nicht `strong`, weil keine Bias-Prüfung berichtet ist. |
+| `self-regulation-elementary` | Hohe Heterogenität wertet eine Meta-Analyse ab. |
+| `financial-literacy-secondary` | Pre-Post ohne Kontrollgruppe. |
+| `adhd-selfmonitor` | Single-Case. |
+| `physics-simulations` | „11th grade" ergibt **keine** Altersspanne. |
+| `adult-mooc` | `association` statt `causal_effect`, und „aged 22 to 55" ist eine echte Altersangabe. |
+| `policy-ai-ethics` | Normative Aussage → Eignungspfad statt Design-Leiter. |
+| `collaboration-middle` | Design nicht berichtet → `null` ist die richtige Antwort. |
+
+Der Bogen trägt `protocol.calibration_subset: true`. Die Auswertung
+weigert sich damit, ihn als Baseline zu zählen, egal wie gut die
+Übereinstimmung ausfällt.
+
+**Schritt 2 — blind ausfüllen.** Die bewertende Person füllt die Felder
+aus, ohne dieses Dokument über die Rubrik hinaus zu lesen und ohne in den
+Katalog zu schauen. `protocol.rater` und `protocol.labeled_at` setzen.
+
+**Schritt 3 — Zahlen ansehen.**
+
+```powershell
+python scripts/eval_agreement.py --second-rater kalibrierung.json
+```
+
+Die Konfusionsmatrix ist hier wichtiger als die Prozentzahl: Ein
+durchgehender Versatz um eine Stufe ist etwas anderes als Streuung.
+
+**Schritt 4 — das Gespräch führen.**
+
+```powershell
+python scripts/eval_agreement.py --explain kalibrierung.json
+```
+
+Das zeigt pro Fall beide Antworten **und die Begründung** des
+gespeicherten Urteils („baseline moderate for study_design meta_analysis;
+high heterogeneity between pooled studies (-1)"). Das ist nötig, weil die
+primäre Bewertung von niemandem stammt, der mit im Raum sitzt — die
+Begründungskette ist die Gesprächspartnerin.
+
+**Schritt 5 — jede Abweichung einsortieren.** Genau drei Sorten:
+
+| Sorte | Woran erkennbar | Was zu tun ist |
+| --- | --- | --- |
+| **Rubrik war mehrdeutig** | Beide Lesarten sind mit dem Ankertext vereinbar | Ankertext schärfen — das ist ein Defekt und die einzige Sorte, die eine Änderung verlangt |
+| **Jemand hat den Abstract falsch gelesen** | Eine Seite räumt es beim Nachlesen ein | Nichts. Ein Lesefehler ist kein Methodenproblem |
+| **Echte Urteilsdifferenz** | Beide bleiben nach dem Gespräch bei ihrer Lesart | Notieren, stehenlassen. Nicht wegverhandeln — diese Streuung ist das, was die Baseline später messen soll |
+
+Die Versuchung ist Sorte drei: sich auf eine „richtige" Antwort zu
+einigen und dann zu messen. Das erzeugt eine hohe Übereinstimmung, die
+nichts bedeutet.
+
+**Schritt 6 — messen.** Erst jetzt der volle Durchgang, auf einem
+frischen Bogen, über den ganzen Katalog:
+
+```powershell
+python scripts/eval_agreement.py --second-rater eval/catalog_second_rater.json
+```
+
+Die zehn Kalibrierfälle stammen aus dem Eval-Set und tauchen dort nicht
+auf; alle 59 Katalogfälle bleiben messbar.
+
+### Wer bewerten kann
+
+**Keine Fachexpertise in KI oder Bildungsforschung nötig.** Die Person
+muss ein Abstract lesen und eine geschriebene Rubrik anwenden können —
+die Rubrik liegt im Bogen. Genau dafür wurden die Anker aufgeschrieben.
+
+Wenn niemand verfügbar ist: derselbe Mensch zeitversetzt. Das misst
+Selbstkonsistenz (Test-Retest) und ist eine **Obergrenze** für die
+Übereinstimmung zwischen Personen — verwertbar, aber es muss in
+`protocol.rater` so stehen.
 
 ### Protokoll
 

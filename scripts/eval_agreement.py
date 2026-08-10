@@ -27,6 +27,7 @@ Usage:
     python scripts/eval_agreement.py --worksheet catalog --out FILE
     python scripts/eval_agreement.py --worksheet catalog --fields evidence_certainty,claim_type
     python scripts/eval_agreement.py --second-rater FILE   # score a completed worksheet
+    python scripts/eval_agreement.py --explain FILE        # calibration walkthrough
 
 See docs/eval-baseline.md for the protocol and for what the numbers may
 and may not be used for.
@@ -273,12 +274,19 @@ class Comparison:
         independent: bool,
         provenance: str,
         skipped: int = 0,
+        calibration: bool = False,
     ) -> None:
         self.name = name
         self.field = field
         self.pairs = pairs
         self.independent = independent
         self.provenance = provenance
+        # A calibration round is blind while it is rated and unusable as a
+        # baseline all the same: its items were picked to span the rubric
+        # rather than to represent the set, and they get discussed
+        # afterwards. Marked so a number from one cannot be quoted as the
+        # measured ceiling.
+        self.calibration = calibration
         # Items the second rater left null. Reported rather than dropped:
         # a field skipped forty times out of fifty says something about
         # the field, and an agreement figure computed on the remaining ten
@@ -325,7 +333,7 @@ class Comparison:
         Independence first: a large sample of one judgment recorded twice
         is still no baseline.
         """
-        return self.independent and self.n >= MIN_N_FOR_GATE
+        return self.independent and not self.calibration and self.n >= MIN_N_FOR_GATE
 
     def report(self) -> list[str]:
         lines = [f"## {self.name} ({self.field})"]
@@ -349,9 +357,21 @@ class Comparison:
         if self.field in ORDINAL_SCALES:
             usable, excluded = self.ordinal_pairs()
             weighted = weighted_kappa(usable, ORDINAL_SCALES[self.field])
+            # Name the values that were actually set aside. Saying "e.g.
+            # 'unverifiable'" when the excluded pairs were all nulls tells
+            # the reader the wrong reason for a number they cannot see.
+            scale = ORDINAL_SCALES[self.field]
+            off = sorted(
+                {
+                    "null" if value is None else str(value)
+                    for pair in self.pairs
+                    for value in pair
+                    if value not in scale
+                }
+            )
             note = (
-                f" ({excluded} pair(s) excluded: a rating off the ordinal scale, "
-                f"e.g. 'unverifiable', is a valid answer with no ordinal distance)"
+                f" ({excluded} pair(s) excluded, holding {', '.join(off)} -- a valid "
+                "answer with no position on the ordinal scale)"
                 if excluded
                 else ""
             )
@@ -367,6 +387,13 @@ class Comparison:
             lines.append(
                 "VERDICT: PROVENANCE UNVERIFIED -- not usable as a baseline. Two "
                 "records of the same judgment agree by construction."
+            )
+        elif self.calibration:
+            lines.append(
+                "VERDICT: calibration round -- not a baseline. Its items were "
+                "chosen to span the rubric rather than to represent the set, and "
+                "they are discussed afterwards; a later pass over the same items "
+                "would no longer be blind."
             )
         elif self.n < MIN_N_FOR_GATE:
             lines.append(
@@ -488,6 +515,7 @@ def second_rater_comparisons(path: Path) -> list[Comparison]:
                 # A worksheet that was not filled in blind is not a second
                 # opinion; seeing the primary label makes agreement cheap.
                 independent=blind,
+                calibration=bool(protocol.get("calibration_subset")),
                 provenance=(
                     f"second rater {rater}, blind={blind}, "
                     f"labeled_at={protocol.get('labeled_at') or '<unset>'}"
@@ -594,7 +622,9 @@ def resolve_fields(set_name: str, requested: list[str] | None) -> list[str]:
     return [field for field in available if field in requested]
 
 
-def build_worksheet(set_name: str, fields: list[str] | None = None) -> dict[str, Any]:
+def build_worksheet(
+    set_name: str, fields: list[str] | None = None, only: list[str] | None = None
+) -> dict[str, Any]:
     """A blind re-judging worksheet: inputs only, no gold, no notes.
 
     Withholding the primary label and its rationale is what makes the
@@ -646,6 +676,15 @@ def build_worksheet(set_name: str, fields: list[str] | None = None) -> dict[str,
             }
             for example in load_eval("claim_prefill_labeled")["examples"]
         ]
+    if only:
+        available = {item["key"] for item in items}
+        unknown = [key for key in only if key not in available]
+        if unknown:
+            raise SystemExit(
+                f"--only: {', '.join(unknown)} is not in set {set_name!r} "
+                f"({len(available)} items available)"
+            )
+        items = [item for item in items if item["key"] in set(only)]
     for item in items:
         for field in fields:
             item[field] = None
@@ -667,6 +706,11 @@ def build_worksheet(set_name: str, fields: list[str] | None = None) -> dict[str,
             "rater": "",
             "labeled_at": "",
             "blind": True,
+            # A narrowed item set is a calibration round, not a baseline:
+            # its cases get discussed afterwards, which ends their
+            # independence. Recorded so a scored calibration sheet cannot
+            # later be mistaken for a measured one.
+            **({"calibration_subset": True} if only else {}),
             # What this worksheet actually asked for. Scoring reads it, so
             # a narrowed pass is compared on what it was asked and not on
             # what it was not.
@@ -791,6 +835,69 @@ def _prefill_rubric() -> dict[str, Any]:
     }
 
 
+def explain_report(path: Path) -> list[str]:
+    """Per-item comparison for a calibration round.
+
+    A calibration round normally ends in a conversation between the two
+    raters. Here one side is a stored appraisal, so there is nobody in the
+    room to ask why -- which would leave the round as a list of
+    differences and no way to tell a rubric problem from a reading slip.
+
+    derive_certainty() already returns its reasons; this prints them next
+    to both answers. It is deliberately NOT part of --second-rater: seeing
+    the stored reasoning is exactly what must not happen before a measured
+    pass, and it should take a separate, deliberate command.
+    """
+    document = json.loads(path.read_text(encoding="utf-8"))
+    protocol = document.get("protocol", {})
+    set_name = protocol.get("source_set")
+    if set_name not in SECOND_RATER_FIELDS:
+        raise SystemExit(
+            f"{path}: protocol.source_set must be one of {sorted(SECOND_RATER_FIELDS)}, "
+            f"got {set_name!r}"
+        )
+    primary = primary_labels(set_name)
+    rated = resolve_fields(set_name, protocol.get("rated_fields"))
+
+    lines = [
+        f"# Calibration walkthrough: {path.name}",
+        "",
+        "For each item: what you answered, what the stored appraisal says, and",
+        "why. Use it to sort each disagreement into one of three kinds --",
+        "the rubric was ambiguous (sharpen the anchor), one side misread the",
+        "abstract (no action), or you genuinely judge it differently (record",
+        "it and move on). Only the first kind is a defect.",
+        "",
+        "Do NOT run this on the items you intend to measure.",
+        "",
+    ]
+    for label in document.get("labels", []):
+        key = label.get("key")
+        if key not in primary:
+            continue
+        differing = [
+            field
+            for field in rated
+            if field in label and label[field] != primary[key].get(field)
+        ]
+        marker = "DISAGREE" if differing else "agree"
+        lines.append(f"## [{marker}] {key}")
+        for field in rated:
+            if field not in label:
+                continue
+            mine, stored = label[field], primary[key].get(field)
+            flag = "  <-- differs" if mine != stored else ""
+            lines.append(f"  {field:26} you: {str(mine):22} stored: {str(stored)}{flag}")
+        block = primary[key]
+        if any(field in block for field in appraisal.APPRAISAL_FIELDS):
+            level, reasons = appraisal.derive_certainty(block)
+            lines.append(f"  why the stored evidence_certainty is {level}:")
+            for reason in reasons:
+                lines.append(f"    - {reason}")
+        lines.append("")
+    return lines
+
+
 def legacy_drift_report() -> list[str]:
     """Where the frozen legacy labels and the appraisal disagree.
 
@@ -846,6 +953,12 @@ def main() -> int:
     )
     parser.add_argument("--out", help="Where to write the worksheet (default: stdout).")
     parser.add_argument(
+        "--only",
+        help="Comma-separated item keys to include -- for a calibration round. "
+        "Marks the worksheet protocol.calibration_subset, because its cases get "
+        "discussed afterwards and can no longer serve as a measured sample.",
+    )
+    parser.add_argument(
         "--fields",
         help="Comma-separated subset of fields the worksheet should ask for "
         "(default: all of them). Recorded in protocol.rated_fields and honoured "
@@ -858,6 +971,12 @@ def main() -> int:
         help="Score a completed worksheet. May be repeated.",
     )
     parser.add_argument(
+        "--explain",
+        help="Walk through a completed CALIBRATION worksheet: both answers per "
+        "item plus why the stored appraisal reads as it does. Never run this on "
+        "items you still intend to measure.",
+    )
+    parser.add_argument(
         "--legacy-drift",
         action="store_true",
         help="Report where the legacy labels and the appraisal disagree on the "
@@ -865,14 +984,19 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    if args.explain:
+        print("\n".join(explain_report(Path(args.explain))))
+        return 0
+
     if args.legacy_drift:
         print("\n".join(legacy_drift_report()))
         return 0
 
     if args.worksheet:
         chosen = [f.strip() for f in args.fields.split(",")] if args.fields else None
+        only = [k.strip() for k in args.only.split(",")] if args.only else None
         worksheet = json.dumps(
-            build_worksheet(args.worksheet, chosen), indent=2, ensure_ascii=False
+            build_worksheet(args.worksheet, chosen, only), indent=2, ensure_ascii=False
         )
         if args.out:
             Path(args.out).write_text(worksheet + "\n", encoding="utf-8")
