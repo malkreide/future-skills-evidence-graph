@@ -76,10 +76,15 @@
         "date": "2026-08-09",
         "change": "evidence_score 0.57 -> 0.62",
         "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.1.0)."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score method 1.1.0 -> 1.2.0",
+        "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.62."
       }
     ],
     "created_at": "2026-06-23",
-    "updated_at": "2026-08-09",
-    "evidence_score_method": "1.1.0"
+    "updated_at": "2026-08-10",
+    "evidence_score_method": "1.2.0"
   }
 ]

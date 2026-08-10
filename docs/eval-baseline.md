@@ -134,22 +134,95 @@ python scripts/eval_agreement.py --worksheet relevance --out eval/relevance_seco
 
 ### Was im Bogen steht
 
-Pro Fall: `statement`, `abstract`, `source_type` — und die beiden leeren
-Felder `evidence_strength` und `age_range`. Kein `gold`, kein
-`_recorded`, keine `note`.
+Pro Fall: `statement`, `abstract`, `source_type` — und die zu bewertenden
+Felder. Kein `gold`, kein `gold_appraisal`, kein `_recorded`, keine `note`.
 
-Dazu die **Rubrik im Bogen selbst**: die drei
-`evidence_strength`-Ankerdefinitionen werden beim Erzeugen aus
+**Bewertet werden fünf Urteilsfelder** und zusätzlich die beiden alten:
+
+| Feld | Warum bewertet |
+| --- | --- |
+| `evidence_certainty` | die zentrale Variable; ordinal |
+| `claim_supported_by_source` | der Abgleich Aussage↔Quelle, für den kein Metadatenfeld einspringen kann |
+| `study_design` | nominal, und der Eingang, auf den die Herleitung am stärksten reagiert |
+| `effect_direction` | nominal; getrennt erhoben, damit eine Person, die Richtung und Sicherheit vermischt, sichtbar wird statt unsichtbar |
+| `age_range_explicit` | nur gemeldete Alter — das Feld, dessen Vorgänger Gemeldetes und Geschätztes vermischte |
+| `evidence_strength`, `age_range` | die alten Felder, mitgeführt, damit sich beide Skalen an derselben Lektüre vergleichen lassen |
+
+**Nicht bewertet** werden bibliografische Felder (`authors`, `year`, `doi`,
+…). Das ist Abschrift, kein Urteil: Wer denselben Titel liest, schreibt
+denselben Titel, und eine Abweichung dort ist ein Tippfehler, keine
+Bewertungsdifferenz.
+
+Dazu die **Rubrik im Bogen selbst**: die fünf
+`evidence_certainty`-Ankerdefinitionen werden beim Erzeugen aus
 [docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md)
-ausgelesen, nicht im Code wiederholt. Über 50 Fälle erspart das den
-Dokumentwechsel, und eine später geschärfte Ankerdefinition kann nicht
-still vom Bogen abweichen — ließe sich die Tabelle nicht lesen, bricht
-die Erzeugung ab, statt einen Bogen ohne Rubrik auszuliefern.
+ausgelesen, nicht im Code wiederholt. Ließe sich die Tabelle nicht lesen,
+bricht die Erzeugung ab, statt einen Bogen ohne Rubrik auszuliefern.
 
 Die Reihenfolge bleibt die des Goldsets. Sie wurde geprüft: 30
 Kategorienwechsel bei 50 Fällen (unter Zufall ~31 erwartet), längster
 gleichartiger Block 4 — es gibt kein Muster, gegen das ein Mischen
 schützen müsste.
+
+### Was `null` im Bogen bedeutet
+
+`null` trägt zwei Bedeutungen, und sie auseinanderzuhalten entscheidet
+über die Aussagekraft:
+
+- **„Ich habe diesen Fall nicht bewertet."**
+- **„Ich habe ihn bewertet, und die Antwort ist nichts."** — kein Alter
+  genannt, Design nicht berichtet, Abstract gibt zu wenig her.
+
+Entschieden wird deshalb **fallweise, nicht feldweise**: Ein Fall, in dem
+gar kein Feld ausgefüllt ist, gilt als übersprungen; in jedem Fall, an dem
+gearbeitet wurde, ist ein `null` eine Antwort.
+
+Feldweise zu entscheiden hätte die zweite Bedeutung verschluckt — bei
+`age_range_explicit` betrifft sie 48 von 50 Fällen, die Stichprobe wäre auf
+zwei zusammengeschrumpft. Umgekehrt darf `null` nicht überall als Antwort
+gelten: Ein Bogen, den niemand ausgefüllt hat, stimmte dann mit jedem
+`null`-Primärlabel überein und meldete sich selbst als Baseline. Genau das
+prüft `test_an_untouched_worksheet_measures_nothing`.
+
+Übersprungene Fälle werden **gezählt und ausgewiesen**, nicht stillschweigend
+weggelassen.
+
+### Welche Kennzahlen berichtet werden
+
+Für jedes Feld:
+
+- **Anzahl bewerteter und übersprungener Fälle**
+- **rohe Übereinstimmung** mit 95-%-Wilson-Intervall
+- **Cohens Kappa** — zufallskorrigiert; `undefined`, wenn nur eine
+  Kategorie vorkam (dann ist die erwartete Übereinstimmung 1,0 und die
+  Zahl wäre eine Division durch null, kein perfektes Ergebnis)
+- **linear gewichtetes Kappa** für ordinale Felder (derzeit nur
+  `evidence_certainty`)
+- **Konfusionsmatrix**; bei mehr als sechs Kategorien stattdessen die
+  besetzten Zellen als Liste, weil ein Raster aus achtzehn fast leeren
+  Spalten weniger zeigt als sechs Zeilen, die benennen, wer was verwechselt
+  hat
+
+**Ordinal ist nur `evidence_certainty`** (`very_low` < `low` < `moderate` <
+`strong`). Alle anderen bewerteten Felder sind nominal und bekommen kein
+gewichtetes Kappa.
+
+**Gewichtung: linear, nicht quadratisch.** Quadratische Gewichte machen
+eine Zwei-Stufen-Abweichung viermal so nachsichtig wie eine
+Ein-Stufen-Abweichung — das ist eine präzise Behauptung darüber, wie viel
+schlimmer der grössere Fehler ist, und nichts hier misst das. Lineare
+Gewichte sagen nur „weiter auseinander ist schlechter", und mehr behauptet
+die Ordinalskala nicht.
+
+**`unverifiable` ist kein fehlender Wert.** Es zählt in die rohe
+Übereinstimmung und in Cohens Kappa wie jede andere Kategorie. Es liegt
+aber nicht auf der Ordinalskala — es sagt etwas über Auffindbarkeit, nicht
+über Stärke —, deshalb fällt ein Paar, das es enthält, aus dem gewichteten
+Kappa heraus. Die Anzahl der so entfernten Paare wird ausgewiesen.
+
+**Nicht-blinde Bewertungen** werden weiterhin als `PROVENANCE UNVERIFIED`
+gemeldet und nie als Baseline gezählt, unabhängig davon, wie hoch die
+Übereinstimmung ausfällt.
 
 ### Protokoll
 
@@ -157,7 +230,7 @@ schützen müsste.
    Statement/Abstract/`source_type` — nicht das primäre Label, nicht die
    `note`, nicht die Pipeline-Ausgabe. Der erzeugte Bogen enthält diese
    Felder gar nicht erst.
-2. **Nach den geschriebenen Ankern.** Für `evidence_strength` gelten die
+2. **Nach den geschriebenen Ankern.** Für `evidence_certainty` gelten die
    Definitionen aus
    [docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md). Das
    misst zugleich, ob diese Anker tragen: Wenn zwei Personen mit

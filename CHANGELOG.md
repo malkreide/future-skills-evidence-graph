@@ -14,6 +14,59 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Changed
 
+- **Evidenzbewertung: `evidence_certainty` löst `evidence_strength` ab.** Die
+  alte Variable beantwortete mehrere Fragen mit einem Wert — Studiendesign,
+  methodische Qualität, Menge, Replikation, Effektrichtung, Effektstärke,
+  Generalisierbarkeit, Reviewqualität und Verifizierbarkeit. Das riss
+  auseinander, sobald sie nicht in dieselbe Richtung zeigten: Ein sauber
+  durchgeführter Nullbefund konnte auf ihr nicht anders als schwach heissen.
+  Neu trennt `scripts/appraisal.py` die Dimensionen (`study_design`,
+  `comparator`, `outcome_type`, `effect_direction`, `effect_magnitude`,
+  `risk_of_bias`, `directness`, `replication`, `consistency`, `heterogeneity`,
+  `precision`, `follow_up`, `claim_supported_by_source`, `source_verified`,
+  `source_provenance`, …), alle als kontrollierte Enums. `evidence_certainty`
+  hat fünf Stufen (`strong`, `moderate`, `low`, `very_low`, `unverifiable`);
+  `unverifiable` liegt bewusst nicht auf der Ordinalskala und macht eine Claim
+  unbewertbar statt schwach. `derive_certainty()` leitet einen Vorschlag
+  GRADE-artig aus dem beschriebenen Design her — mit **benannten** Auf- und
+  Abwertungen statt eines Punktesystems — und gibt die Begründungen mit
+  zurück; `certainty_conflicts()` prüft die Guardrails, die ein Urteil nicht
+  verletzen darf. `source_type` erreicht die Herleitung nachweislich nicht.
+  Scoring-Methode **1.2.0**: die Claim-Komponente liest die Begutachtung, wenn
+  eine vorliegt, und fällt sonst unverändert auf `evidence_strength` zurück.
+  Keine gespeicherte Zahl ändert sich; alle 16 Skills sind neu gestempelt.
+- **Alterslogik: gemeldet, abgeleitet und Schulstufe sind jetzt drei Felder.**
+  Die Regel „genannte Schulstufe ergibt die übliche Altersspanne" ist entfernt
+  — international nicht tragfähig, und das Repository hatte den Beleg bereits
+  selbst produziert (Prefill-Prompt v5 versuchte genau das; `age_range`-
+  Precision fiel 0,94 → 0,82). Neu: `age_range_explicit` (nur im Text genannte
+  Alter), `grade_or_stage`, sowie `age_range_inferred` mit
+  **verpflichtender** `age_inference_basis`. Am Goldset machte das sichtbar,
+  dass das alte Feld invertiert war: von 43 gesetzten Werten stand **keiner**
+  im Abstract, und die beiden Fälle, die tatsächlich Alter nennen, trugen
+  `null`.
+- **Die 50 Prefill-Fälle sind nach der neuen Rubrik neu begutachtet** und
+  ausdrücklich als `synthetic_eval_case` markiert; `validate_data.py` weist
+  eine so markierte Claim im Produktivkatalog zurück. Das alte `gold` bleibt
+  eingefroren (die CI-Gates messen `_recorded` dagegen), die Begutachtung
+  liegt als `gold_appraisal` daneben. 43 von 50 Certainty-Werten weichen vom
+  alten Label ab; alle zehn alten `strong` fallen. `eval_agreement.py
+  --legacy-drift` zeigt die Kreuztabelle.
+- **Interrater-Auswertung: gewichtetes Kappa, Konfusionsmatrix, Zählungen.**
+  Für ordinale Felder zusätzlich linear gewichtetes Kappa (nicht quadratisch —
+  das behauptete eine Präzision über Fehlergrössen, die hier nichts misst).
+  Bewertete und übersprungene Fälle werden ausgewiesen. `null` wird
+  **fallweise** statt feldweise gedeutet: ein Fall ohne jeden Eintrag gilt als
+  übersprungen, in einem bearbeiteten Fall ist `null` eine Antwort.
+- **Zweitbewertungs-Bogen bewertet fünf Urteilsfelder** statt nur der beiden
+  alten. Bibliografische Felder bleiben aussen vor — das ist Abschrift, kein
+  Urteil. Die Rubrik im Bogen enthielt bis dahin selbst die Anweisung, aus
+  einer Schulstufe die übliche Altersspanne einzutragen; sie ist ersetzt.
+- **Neuer Prompt `claim-appraisal-v1`.** `claim-prefill-v7` bleibt eingefroren
+  und ist als Legacy markiert: sein Schema-Cache hängt am Prompt-Volltext, ein
+  geändertes Zeichen invalidiert alle 50 Fixtures und schickt die Offline-Eval
+  live. Der Wechsel ist ein Aufnahmelauf, keine Textänderung.
+
 - **Wöchentliche Suche: kuratierte Zusatz-Abfragen und opt-in Katalog-Modus.**
   `config/research_queries.json` enthält jetzt eine breitere kuratierte Auswahl
   (generative KI, Computational Thinking, Medienkompetenz, Fehlinformation/kritisches

@@ -122,7 +122,7 @@ class WorksheetTests(unittest.TestCase):
         # document. Two raters on two rulebooks disagree in a way that looks
         # like rater variance and is not.
         rubric = ea.anchor_rubric()
-        self.assertEqual(set(rubric), {"strong", "moderate", "low"})
+        self.assertEqual(set(rubric), set(ea.appraisal.CERTAINTY_VALUES))
         doc = ea.ANCHOR_DOC.read_text(encoding="utf-8")
         for level, definition in rubric.items():
             self.assertGreater(len(definition), 40, level)
@@ -131,11 +131,11 @@ class WorksheetTests(unittest.TestCase):
     def test_a_prefill_worksheet_carries_the_rubric(self) -> None:
         worksheet = ea.build_worksheet("claim_prefill")
         self.assertEqual(
-            set(worksheet["rubrik_evidence_strength"]), {"strong", "moderate", "low"}
+            set(worksheet["rubrik_evidence_certainty"]), set(ea.appraisal.CERTAINTY_VALUES)
         )
-        self.assertIn("rubrik_age_range", worksheet)
-        # The relevance worksheet judges a boolean and needs no strength rubric.
-        self.assertNotIn("rubrik_evidence_strength", ea.build_worksheet("relevance"))
+        self.assertIn("rubrik_age_range_explicit", worksheet)
+        # The relevance worksheet judges a boolean and needs no certainty rubric.
+        self.assertNotIn("rubrik_evidence_certainty", ea.build_worksheet("relevance"))
 
     def test_an_unreadable_rubric_stops_the_worksheet(self) -> None:
         # Shipping a worksheet with a silently empty rubric is worse than
@@ -147,7 +147,7 @@ class WorksheetTests(unittest.TestCase):
         try:
             with tempfile.TemporaryDirectory() as tmp:
                 empty = _Path(tmp) / "anker.md"
-                empty.write_text("# Kein Anker-Table hier\n", encoding="utf-8")
+                empty.write_text("## Anker: `evidence_certainty`\nkeine Tabelle\n", encoding="utf-8")
                 ea.ANCHOR_DOC = empty
                 with self.assertRaises(SystemExit):
                     ea.anchor_rubric()
@@ -171,9 +171,10 @@ class SecondRaterScoringTests(unittest.TestCase):
         gold = ea.primary_labels("claim_prefill")
         rotate = {"low": "moderate", "moderate": "strong", "strong": "low"}
         for index, item in enumerate(worksheet["labels"]):
+            for field in ea.SECOND_RATER_FIELDS["claim_prefill"]:
+                item[field] = gold[item["key"]].get(field)
             answer = gold[item["key"]]["evidence_strength"]
             item["evidence_strength"] = rotate[answer] if index < flips else answer
-            item["age_range"] = gold[item["key"]]["age_range"]
         worksheet["protocol"].update(rater="tester", labeled_at="2026-08-09", blind=blind)
         path = tmp / "second_rater.json"
         path.write_text(json.dumps(worksheet), encoding="utf-8")

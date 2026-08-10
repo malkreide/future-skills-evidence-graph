@@ -123,7 +123,8 @@ definitions of `low` / `moderate` / `strong`, a rationale for every source-type
 weight, and the rule for changing them. Two properties the scoring enforces:
 
 - **Unknown is not weak.** A claim with an unresolvable source, an unweighted
-  `source_type`, or an `evidence_strength` outside the three anchored levels is
+  `source_type`, an `evidence_certainty` of `unverifiable`, or an
+  `evidence_strength` outside the three anchored levels is
   *unscoreable*: `claim_score` returns `None` instead of substituting a low
   number that reads like a bad score. Such a claim leaves the calculation, and
   `validate_data.py` fails on any *reviewed* claim that cannot be scored — so a
