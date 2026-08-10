@@ -14,6 +14,38 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Changed
 
+- **Die 59 geprüften Katalog-Claims sind begutachtet.** Erste produktive
+  Anwendung des Bewertungsmodells: `evidence_certainty` steht jetzt an
+  jedem geprüften Claim, bibliografische Felder aus dem Quellendatensatz
+  abgeschrieben (nie getippt — ein Test prüft jeden DOI, jede URL, jeden
+  Titel gegen den gespeicherten Datensatz). Verteilung: 40 `moderate`,
+  7 `low`, 12 `very_low`, kein `strong` — keine der 51 Quellen berichtet
+  im Abstract eine Bias-Prüfung. **14 von 16 Skill-Scores bewegen sich**
+  (−0,21 bis +0,05), ohne Methodenänderung: die Konstanten stehen fest,
+  die Urteile haben sich geändert.
+- **`claim_type` und ein zweiter Herleitungspfad (`APPRAISAL_VERSION`
+  1.1.0).** Bei der Begutachtung zeigte sich, dass nur 14 der 59 Aussagen
+  überhaupt eine Wirkung behaupten; der Rest beschreibt, definiert,
+  empfiehlt oder berichtet einen Zusammenhang. Die Design-Leiter
+  beantwortet aber genau eine Frage — *kann dieses Design eine Ursache
+  isolieren?* — und die ist bei „Digitalkompetenz umfasst
+  Informationskompetenz" ein Kategorienfehler. Ohne die Unterscheidung
+  wären rund vierzig Aussagen `very_low` geworden, und der Grund wäre eine
+  nie gestellte Frage gewesen. Für Aussagen ohne Wirkungsbehauptung
+  entscheidet jetzt `directness`: Ist die Quelle kompetente Zeugin für
+  das, was die Aussage beschreibt? Zwei Studiendesigns ergänzt
+  (`narrative_review`, `psychometric_validation`).
+- **Begutachtungen tragen ihre Regelversion.** `appraisal_method` ist
+  Pflicht, sobald eine Stufe erfasst ist — getrennt von `METHOD_VERSION`,
+  das die Arithmetik versioniert. Eine Begutachtung von vor einer
+  Regeländerung bleibt so als solche erkennbar.
+- **Zwei Datenbefunde aus der Lektüre.** Vier geprüfte Claims tragen die
+  Zeichenkette `"Lehrende"` im Feld `age_range` — eine Zielgruppe, kein
+  Alter; das string-typisierte Schema hat das nie bemerkt. Und eine als
+  `systematic_review` abgelegte Quelle beschreibt im Abstract eine
+  Befragung: genau die Verwechslung, gegen die die Trennung von
+  `source_type` und `study_design` gebaut wurde.
+
 - **Evidenzbewertung: `evidence_certainty` löst `evidence_strength` ab.** Die
   alte Variable beantwortete mehrere Fragen mit einem Wert — Studiendesign,
   methodische Qualität, Menge, Replikation, Effektrichtung, Effektstärke,

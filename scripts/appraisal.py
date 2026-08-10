@@ -45,6 +45,20 @@ import re
 from typing import Any
 
 
+# Human-declared version of the appraisal RULES -- the vocabularies, the
+# baselines and the derivation. Distinct from score_evidence.METHOD_VERSION,
+# which versions the arithmetic that turns a certainty into a number. Every
+# recorded appraisal carries the version it was made under, so an appraisal
+# written before a rule changed is recognisable as such instead of being
+# silently reread under rules its author never saw.
+#
+# 1.0.0  first release: five-level evidence_certainty, GRADE-style derivation.
+# 1.1.0  claim_type added, with a second derivation path for claims that
+#        assert no effect; study designs narrative_review and
+#        psychometric_validation added.
+APPRAISAL_VERSION = "1.1.0"
+
+
 # --- Controlled vocabularies ----------------------------------------------
 #
 # Every appraisal field is an enum, not free text. Free text cannot be
@@ -67,9 +81,44 @@ SOURCE_PROVENANCE_VALUES = (
 
 TRISTATE = ("true", "false", "unknown")
 
+# What KIND of assertion the claim makes. Added when the model was first
+# applied to the real catalogue, where it turned out that only about a
+# third of the reviewed claims assert an effect at all. The rest describe
+# ("parents reported four challenges"), define ("digital competence
+# includes information literacy"), recommend ("children need
+# age-appropriate understanding") or report an association.
+#
+# This matters because the design ladder below answers exactly one
+# question -- can this design isolate a CAUSE? -- and that question is
+# only the right one when the claim asserts a cause. Asking a definitional
+# claim whether it randomised is a category error, and answering it
+# "very_low" would have marked most of the catalogue as poorly evidenced
+# on the strength of a question nobody asked.
+CLAIM_TYPE_VALUES = (
+    "causal_effect",
+    "association",
+    "descriptive",
+    "normative",
+    "definitional",
+    "unknown",
+)
+
+# Claim types for which the design ladder applies. Everything else is
+# judged on fitness for purpose; see _fit_baseline.
+CAUSAL_CLAIM_TYPES = ("causal_effect",)
+
 STUDY_DESIGN_VALUES = (
     "systematic_review",
     "meta_analysis",
+    # A review without a disclosed search protocol, and a conceptual or
+    # argumentative paper. Distinct from systematic_review because the
+    # selection of what it discusses is not reproducible.
+    "narrative_review",
+    # An instrument-development study: reliability and validity evidence
+    # for a measure, not an effect. Kept separate because a validation
+    # study is fit for a validity claim and unfit for an effect claim,
+    # and one label cannot say both.
+    "psychometric_validation",
     "rct",
     "cluster_rct",
     "quasi_experimental",
@@ -176,6 +225,7 @@ CLAIM_SUPPORT_VALUES = (
 # place and rejected in the other.
 ENUM_FIELDS: dict[str, tuple[str, ...]] = {
     "source_provenance": SOURCE_PROVENANCE_VALUES,
+    "claim_type": CLAIM_TYPE_VALUES,
     "source_verified": TRISTATE,
     "study_design": STUDY_DESIGN_VALUES,
     "comparator": COMPARATOR_VALUES,
@@ -196,6 +246,7 @@ ENUM_FIELDS: dict[str, tuple[str, ...]] = {
 # Free-form / numeric appraisal fields. None is always allowed and always
 # means "not derivable from the source", never "zero" and never "no".
 SCALAR_FIELDS: dict[str, str] = {
+    "appraisal_method": "string",
     "sample_size": "integer",
     "effect_size": "number",
     "effect_size_metric": "string",
@@ -268,6 +319,14 @@ def validate_appraisal(appraisal: dict[str, Any]) -> list[str]:
         elif kind == "string" and not isinstance(value, str):
             problems.append(f"{field}: expected a string or null, got {value!r}")
     problems.extend(_age_problems(appraisal))
+    if appraisal.get("evidence_certainty") is not None and not appraisal.get(
+        "appraisal_method"
+    ):
+        problems.append(
+            "evidence_certainty is recorded without appraisal_method; a level whose "
+            f"rule version is unknown cannot be reread safely (current: "
+            f"{APPRAISAL_VERSION})"
+        )
     return problems
 
 
@@ -330,6 +389,10 @@ BASELINE_BY_DESIGN: dict[str, str | None] = {
     # well is what consistency/heterogeneity/risk_of_bias record.
     "systematic_review": "moderate",
     "meta_analysis": "moderate",
+    # No disclosed protocol and no primary data of its own.
+    "narrative_review": "very_low",
+    # Fit for a validity claim, not for an effect claim.
+    "psychometric_validation": "very_low",
     # Randomised designs: causal attribution is available in principle.
     "rct": "moderate",
     "cluster_rct": "moderate",
@@ -384,6 +447,24 @@ def _inconsistency_downgrade(appraisal: dict[str, Any]) -> tuple[int, list[str]]
     return 0, []
 
 
+# For a claim that asserts no effect, the question is not "could this
+# design isolate a cause" but "is this source a competent witness to what
+# the claim describes". A framework is the primary source for its own
+# content; an interview study did observe the perceptions it reports; a
+# multi-country case study did look at those curricula. Directness is what
+# carries that judgement, so it -- not the design -- sets the baseline.
+FIT_BASELINE_BY_DIRECTNESS: dict[str, str] = {
+    "direct": "moderate",
+    "partially_direct": "low",
+    "indirect": "very_low",
+}
+
+
+def _fit_baseline(appraisal: dict[str, Any]) -> str | None:
+    """Baseline for a non-effect claim, or None when directness is unrecorded."""
+    return FIT_BASELINE_BY_DIRECTNESS.get(appraisal.get("directness") or "")
+
+
 def derive_certainty(appraisal: dict[str, Any]) -> tuple[str | None, list[str]]:
     """Suggest a certainty level for *appraisal*, with the reasons.
 
@@ -414,11 +495,25 @@ def derive_certainty(appraisal: dict[str, Any]) -> tuple[str | None, list[str]]:
     if support == "cannot_determine":
         return None, ["cannot determine whether the source supports this claim"]
 
+    claim_type = appraisal.get("claim_type")
+    causal = claim_type in CAUSAL_CLAIM_TYPES or claim_type is None
     design = appraisal.get("study_design")
-    baseline = BASELINE_BY_DESIGN.get(design) if design else None
-    if baseline is None:
-        return None, [f"no baseline for study_design {design!r}"]
-    reasons.append(f"baseline {baseline} for study_design {design}")
+    if causal:
+        baseline = BASELINE_BY_DESIGN.get(design) if design else None
+        if baseline is None:
+            return None, [f"no baseline for study_design {design!r}"]
+        reasons.append(f"baseline {baseline} for study_design {design}")
+    else:
+        baseline = _fit_baseline(appraisal)
+        if baseline is None:
+            return None, [
+                f"claim_type {claim_type} needs a directness judgement to be rated"
+            ]
+        reasons.append(
+            f"baseline {baseline}: claim_type {claim_type} asserts no effect, so it "
+            f"is judged on whether the source witnesses what it describes, not on "
+            f"whether the design isolates a cause"
+        )
     level = baseline
 
     downgrades = 0
@@ -431,19 +526,23 @@ def derive_certainty(appraisal: dict[str, Any]) -> tuple[str | None, list[str]]:
     if appraisal.get("precision") == "imprecise":
         downgrades += 1
         reasons.append("imprecise estimate (-1)")
-    # A previous cohort is not a control group. Everything else that
-    # changed between the two years -- staff, intake, curriculum, the
-    # pandemic -- rides along with the intervention.
-    if appraisal.get("comparator") == "historical_control":
-        downgrades += 1
-        reasons.append("comparison against a historical cohort (-1)")
-    directness = appraisal.get("directness")
-    if directness == "indirect":
-        downgrades += 2
-        reasons.append("indirect evidence for this claim (-2)")
-    elif directness == "partially_direct":
-        downgrades += 1
-        reasons.append("only partially direct evidence for this claim (-1)")
+    if causal:
+        # A previous cohort is not a control group. Everything else that
+        # changed between the two years -- staff, intake, curriculum, the
+        # pandemic -- rides along with the intervention. Meaningless for a
+        # claim that asserts no effect, so it is only applied here.
+        if appraisal.get("comparator") == "historical_control":
+            downgrades += 1
+            reasons.append("comparison against a historical cohort (-1)")
+        # On the fit path directness already set the baseline; counting it
+        # again would charge the same concern twice.
+        directness = appraisal.get("directness")
+        if directness == "indirect":
+            downgrades += 2
+            reasons.append("indirect evidence for this claim (-2)")
+        elif directness == "partially_direct":
+            downgrades += 1
+            reasons.append("only partially direct evidence for this claim (-1)")
     if support == "partially_supported":
         downgrades += 1
         reasons.append("source only partially supports the claim as worded (-1)")
@@ -454,14 +553,25 @@ def derive_certainty(appraisal: dict[str, Any]) -> tuple[str | None, list[str]]:
     # A single upgrade, and only for evidence that is both replicated and
     # clean. Replication in the presence of high bias is replication of
     # the bias.
-    if (
-        not downgrades
-        and appraisal.get("replication") in _UPGRADING_REPLICATION
+    #
+    # The bias condition applies only on the causal path. A descriptive
+    # claim rarely has a risk-of-bias assessment to cite -- demanding one
+    # would make the upgrade unreachable for the entire non-effect half of
+    # the catalogue, which is a rule about paperwork, not about evidence.
+    # Consistency across contexts is still required, and that is the
+    # condition doing the actual work.
+    replicated = (
+        appraisal.get("replication") in _UPGRADING_REPLICATION
         and appraisal.get("consistency") == "consistent"
-        and appraisal.get("risk_of_bias") == "low"
-    ):
+    )
+    clean = appraisal.get("risk_of_bias") == "low" if causal else True
+    if not downgrades and replicated and clean:
         level = _shift(level, 1)
-        reasons.append("replicated, consistent and at low risk of bias (+1)")
+        reasons.append(
+            "replicated, consistent and at low risk of bias (+1)"
+            if causal
+            else "consistent across replications or contexts (+1)"
+        )
 
     if support == "not_supported":
         level = "very_low"

@@ -9,7 +9,7 @@
     "age_range": "0-6",
     "audience": "learner",
     "status": "active",
-    "evidence_score": 0.62,
+    "evidence_score": 0.64,
     "trend": "emerging",
     "topics": [
       "ai literacy",
@@ -81,6 +81,11 @@
         "date": "2026-08-10",
         "change": "evidence_score method 1.1.0 -> 1.2.0",
         "reason": "Recomputed under scoring method 1.2.0; the value stayed at 0.62."
+      },
+      {
+        "date": "2026-08-10",
+        "change": "evidence_score 0.62 -> 0.64",
+        "reason": "Recomputed deterministically from supporting claim scores (scoring method 1.2.0)."
       }
     ],
     "created_at": "2026-06-23",

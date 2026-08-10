@@ -9,6 +9,7 @@ than a data file.
 from __future__ import annotations
 
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -205,6 +206,218 @@ class CertaintyDerivationTests(unittest.TestCase):
                 self.assertTrue(ap.derive_certainty(record)[1])
 
 
+class ClaimTypeTests(unittest.TestCase):
+    """The design ladder only applies to claims that assert a cause."""
+
+    def test_a_definitional_claim_is_not_judged_by_the_design_ladder(self) -> None:
+        # "DigComp includes information literacy" needs no control group.
+        # Asking whether it randomised is a category error, and answering
+        # very_low would report a category error as a finding.
+        record = base(
+            claim_type="definitional",
+            study_design="consensus_framework",
+            effect_direction="not_applicable",
+            directness="direct",
+            claim_supported_by_source="supported",
+        )
+        self.assertEqual(ap.derive_certainty(record)[0], "moderate")
+        # The same document behind a CAUSAL claim gets the ladder.
+        causal = dict(record, claim_type="causal_effect", effect_direction="positive")
+        self.assertEqual(ap.derive_certainty(causal)[0], "low")
+
+    def test_the_fit_path_rests_on_directness(self) -> None:
+        record = base(
+            claim_type="descriptive",
+            study_design="qualitative",
+            effect_direction="not_applicable",
+            claim_supported_by_source="supported",
+        )
+        for directness, expected in (
+            ("direct", "moderate"),
+            ("partially_direct", "low"),
+            ("indirect", "very_low"),
+            (None, None),
+        ):
+            with self.subTest(directness=directness):
+                self.assertEqual(
+                    ap.derive_certainty(dict(record, directness=directness))[0], expected
+                )
+
+    def test_directness_is_not_charged_twice_on_the_fit_path(self) -> None:
+        # It sets the baseline there; applying the downgrade as well would
+        # take the same concern off the score a second time.
+        record = base(
+            claim_type="descriptive",
+            study_design="descriptive",
+            directness="partially_direct",
+            effect_direction="not_applicable",
+            claim_supported_by_source="supported",
+        )
+        level, reasons = ap.derive_certainty(record)
+        self.assertEqual(level, "low")
+        self.assertFalse(any("partially direct" in reason for reason in reasons))
+
+    def test_a_historical_control_is_irrelevant_to_a_non_effect_claim(self) -> None:
+        record = base(
+            claim_type="descriptive",
+            study_design="descriptive",
+            comparator="historical_control",
+            directness="direct",
+            effect_direction="not_applicable",
+            claim_supported_by_source="supported",
+        )
+        self.assertEqual(ap.derive_certainty(record)[0], "moderate")
+
+    def test_downgrades_that_still_apply_on_the_fit_path(self) -> None:
+        record = base(
+            claim_type="descriptive",
+            study_design="qualitative",
+            directness="direct",
+            effect_direction="not_applicable",
+            claim_supported_by_source="supported",
+        )
+        for field, value in (
+            ("precision", "imprecise"),
+            ("risk_of_bias", "high"),
+            ("consistency", "inconsistent"),
+        ):
+            with self.subTest(field=field):
+                self.assertEqual(
+                    ap.derive_certainty(dict(record, **{field: value}))[0], "low"
+                )
+        self.assertEqual(
+            ap.derive_certainty(
+                dict(record, claim_supported_by_source="partially_supported")
+            )[0],
+            "low",
+        )
+
+    def test_an_unset_claim_type_keeps_the_causal_reading(self) -> None:
+        # Backward compatibility: an appraisal written before claim_type
+        # existed must not silently change level.
+        record = base(
+            study_design="uncontrolled_pre_post",
+            directness="direct",
+            claim_supported_by_source="supported",
+        )
+        self.assertIsNone(record["claim_type"])
+        self.assertEqual(ap.derive_certainty(record)[0], "very_low")
+
+
+class MethodVersionTests(unittest.TestCase):
+    def test_a_recorded_certainty_must_name_its_rule_version(self) -> None:
+        problems = ap.validate_appraisal({"evidence_certainty": "moderate"})
+        self.assertTrue(any("appraisal_method" in problem for problem in problems))
+        self.assertEqual(
+            ap.validate_appraisal(
+                {"evidence_certainty": "moderate", "appraisal_method": "1.1.0"}
+            ),
+            [],
+        )
+
+    def test_an_unrated_appraisal_needs_no_version(self) -> None:
+        self.assertEqual(ap.validate_appraisal(ap.normalized({})), [])
+
+    def test_every_stored_appraisal_carries_a_version(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        appraised = [c for c in load_records("claims") if c.get("appraisal")]
+        self.assertGreaterEqual(len(appraised), 59)
+        for claim in appraised:
+            with self.subTest(claim["id"]):
+                self.assertTrue(claim["appraisal"].get("appraisal_method"), claim["id"])
+
+
+class CatalogueAppraisalTests(unittest.TestCase):
+    """Properties of the 59 appraised catalogue claims."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        cls.claims = [c for c in load_records("claims") if c.get("appraisal")]
+        cls.sources = {s["id"]: s for s in load_records("sources")}
+
+    def test_every_appraisal_validates_and_holds_the_guardrails(self) -> None:
+        for claim in self.claims:
+            with self.subTest(claim["id"]):
+                self.assertEqual(ap.validate_appraisal(claim["appraisal"]), [])
+                self.assertEqual(ap.certainty_conflicts(claim["appraisal"]), [])
+
+    def test_no_catalogue_claim_is_marked_synthetic(self) -> None:
+        for claim in self.claims:
+            with self.subTest(claim["id"]):
+                self.assertEqual(
+                    claim["appraisal"]["source_provenance"], "verified_real_source"
+                )
+
+    def test_bibliography_is_transcribed_not_typed(self) -> None:
+        # Every bibliographic value must be findable in the stored source
+        # record. A DOI that appears here and nowhere else was invented.
+        for claim in self.claims:
+            source = self.sources[claim["source_ids"][0]]
+            block = claim["appraisal"]
+            with self.subTest(claim["id"]):
+                self.assertEqual(block["doi"], source.get("doi"))
+                self.assertEqual(block["url"], source.get("url"))
+                self.assertEqual(block["title"], source.get("title"))
+                self.assertEqual(block["year"], source.get("year"))
+                if block["authors"]:
+                    self.assertEqual(block["authors"], ", ".join(source["authors"]))
+
+    def test_explicit_ages_appear_in_the_claim_or_its_source(self) -> None:
+        for claim in self.claims:
+            explicit = claim["appraisal"]["age_range_explicit"]
+            if explicit is None:
+                continue
+            haystack = " ".join(
+                [
+                    claim["statement"],
+                    claim.get("context") or "",
+                    self.sources[claim["source_ids"][0]].get("abstract") or "",
+                ]
+            )
+            with self.subTest(claim["id"]):
+                for bound in explicit.split("-"):
+                    self.assertIn(bound, haystack, claim["id"])
+
+    def test_the_legacy_age_field_is_not_copied_into_the_explicit_one(self) -> None:
+        # Four reviewed claims carry the literal string "Lehrende" in
+        # age_range -- an audience, not an age, which the string-typed
+        # schema never caught. Nothing like that may reach the new field.
+        #
+        # Note what is NOT asserted: that the two fields differ. Two claims
+        # legitimately agree, because their source does state the ages the
+        # legacy label guessed at. The rule is that the new field is a
+        # numeric band that came from the text, not that it disagrees.
+        non_numeric = [c for c in self.claims if not re.match(
+            r"^\d{1,2}-\d{1,2}$", str(c.get("age_range", ""))
+        )]
+        self.assertTrue(non_numeric, "expected the legacy audience labels to still exist")
+        for claim in non_numeric:
+            with self.subTest(claim["id"]):
+                self.assertIsNone(claim["appraisal"]["age_range_explicit"])
+        for claim in self.claims:
+            explicit = claim["appraisal"]["age_range_explicit"]
+            if explicit is not None:
+                with self.subTest(claim["id"]):
+                    self.assertRegex(explicit, r"^\d{1,2}-\d{1,2}$")
+
+    def test_source_type_and_study_design_are_allowed_to_disagree(self) -> None:
+        # The separation is only worth having if it actually separates.
+        # One catalogue source is filed as a systematic_review and
+        # describes a survey; the appraisal records the survey.
+        mismatched = [
+            c
+            for c in self.claims
+            if self.sources[c["source_ids"][0]]["source_type"] == "systematic_review"
+            and c["appraisal"]["study_design"] not in ("systematic_review", "meta_analysis")
+        ]
+        self.assertTrue(mismatched)
+
+
 class UnverifiableTests(unittest.TestCase):
     def test_invariant_7_unverifiable_is_a_rating_not_a_missing_value(self) -> None:
         record = base(
@@ -215,7 +428,13 @@ class UnverifiableTests(unittest.TestCase):
         self.assertEqual(ap.derive_certainty(record)[0], "unverifiable")
         self.assertIn("unverifiable", ap.CERTAINTY_VALUES)
         # It is a permitted value, so validation accepts it...
-        self.assertEqual(ap.validate_appraisal(dict(record, evidence_certainty="unverifiable")), [])
+        self.assertEqual(
+            ap.validate_appraisal(
+                dict(record, evidence_certainty="unverifiable",
+                     appraisal_method=ap.APPRAISAL_VERSION)
+            ),
+            [],
+        )
         # ...but it is not a rung on the ordinal ladder.
         self.assertNotIn("unverifiable", ap.ORDERED_CERTAINTY)
 
