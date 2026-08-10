@@ -19,9 +19,17 @@ docs/evidenz-bewertung-anker.md. Changing any constant in this module is
 a method change: bump METHOD_VERSION and record the new fingerprint, or
 the pinning test fails.
 
+The claim component reads appraisal.evidence_certainty when the claim has
+been appraised and falls back to the legacy evidence_strength when it has
+not. The two are not translations of each other: certainty answers "how
+sure are we that this claim holds", the legacy value conflated design,
+quantity and effect direction. scripts/appraisal.py is the successor
+model; a legacy value keeps producing exactly the number it always did.
+
 Unknown is not the same as weak. A claim whose source is missing, whose
-source type has no weight, or whose evidence_strength is not one of the
-three anchored levels is *unscoreable*: claim_score returns None instead
+source type has no weight, whose certainty is 'unverifiable', or whose
+evidence_strength is not one of the anchored levels is *unscoreable*:
+claim_score returns None instead
 of quietly substituting a low number that reads like a bad score.
 reviewed_claim_scores drops those claims, and validate_data.py fails on
 any reviewed claim that cannot be scored, so an unscoreable claim is
@@ -59,7 +67,19 @@ SOURCE_WEIGHTS = {
     "web_resource": 0.25,
 }
 
+# Legacy claim vocabulary. Kept because the catalogue is stored in it;
+# see docs/evidenz-bewertung-anker.md on why a legacy value is not
+# reinterpreted as a certainty judgement.
 CLAIM_WEIGHTS = {"strong": 1.0, "moderate": 0.7, "low": 0.35}
+
+# The successor scale. very_low is a real, scoreable level -- weak
+# evidence is still evidence. `unverifiable` deliberately has no weight:
+# it says the source could not be identified, which is a statement about
+# traceability, not a low grade. Weighting it would put an unfindable
+# source on the same axis as a badly-run study. It therefore makes a
+# claim UNSCOREABLE, the same way a missing source does -- "unknown is
+# not weak", applied to the one case the old scale could not express.
+CERTAINTY_WEIGHTS = {"strong": 1.0, "moderate": 0.7, "low": 0.35, "very_low": 0.15}
 
 # A skill with this many supporting claims gets the full breadth factor.
 BREADTH_SATURATION = 6
@@ -73,7 +93,7 @@ CLAIM_COMPONENT_WEIGHT = 0.4
 # constant above changes: the stored evidence_score of an active skill
 # records the version that produced it, so two numbers computed under
 # different methods can never sit side by side unmarked.
-METHOD_VERSION = "1.1.0"
+METHOD_VERSION = "1.2.0"
 
 # The fingerprint each declared version must produce. It is derived from
 # the constants themselves, so editing a weight without bumping
@@ -82,6 +102,7 @@ METHOD_VERSION = "1.1.0"
 METHOD_FINGERPRINTS = {
     "1.0.0": "7e6e20f1eec2da83",
     "1.1.0": "75279e202834675b",
+    "1.2.0": "963ef4091391eaaa",
 }
 
 
@@ -90,6 +111,7 @@ def method_parameters() -> dict[str, Any]:
     return {
         "source_weights": SOURCE_WEIGHTS,
         "claim_weights": CLAIM_WEIGHTS,
+        "certainty_weights": CERTAINTY_WEIGHTS,
         "breadth_saturation": BREADTH_SATURATION,
         "breadth_floor": BREADTH_FLOOR,
         "contradiction_penalty": CONTRADICTION_PENALTY,
@@ -132,9 +154,30 @@ def claim_score_problem(
         source_type = sources[source_id].get("source_type")
         if source_type not in SOURCE_WEIGHTS:
             return f"source {source_id} has unweighted source_type {source_type!r}"
+    certainty = (claim.get("appraisal") or {}).get("evidence_certainty")
+    if certainty is not None:
+        if certainty == "unverifiable":
+            return "evidence_certainty is 'unverifiable': the source could not be identified"
+        if certainty not in CERTAINTY_WEIGHTS:
+            return f"evidence_certainty {certainty!r} has no anchored weight"
+        return None
     if claim.get("evidence_strength") not in CLAIM_WEIGHTS:
         return f"evidence_strength {claim.get('evidence_strength')!r} has no anchored weight"
     return None
+
+
+def claim_strength_weight(claim: dict[str, Any]) -> float:
+    """The claim component's weight, from the appraisal when there is one.
+
+    A claim that has been appraised is scored on its certainty; one that
+    has not falls back to its legacy evidence_strength. The fallback is
+    not a translation -- the legacy value keeps producing exactly the
+    number it always produced, and nothing pretends it means certainty.
+    """
+    certainty = (claim.get("appraisal") or {}).get("evidence_certainty")
+    if certainty is not None:
+        return CERTAINTY_WEIGHTS[certainty]
+    return CLAIM_WEIGHTS[claim["evidence_strength"]]
 
 
 def claim_score(claim: dict[str, Any], sources: dict[str, dict[str, Any]]) -> float | None:
@@ -150,7 +193,7 @@ def claim_score(claim: dict[str, Any], sources: dict[str, dict[str, Any]]) -> fl
         for source_id in claim["source_ids"]
     ]
     source_component = math.fsum(source_scores) / len(source_scores)
-    claim_component = CLAIM_WEIGHTS[claim["evidence_strength"]]
+    claim_component = claim_strength_weight(claim)
     return round(
         (source_component * SOURCE_COMPONENT_WEIGHT)
         + (claim_component * CLAIM_COMPONENT_WEIGHT),

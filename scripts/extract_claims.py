@@ -17,6 +17,7 @@ import sys
 from typing import Any
 
 import ai_provider
+import appraisal
 from common import (
     AGE_SCALE,
     EVIDENCE_STRENGTH_LIST,
@@ -163,6 +164,23 @@ CONTEXT_PLACEHOLDER_SUFFIX = "Verify during review."
 # an age in the abstract ("across grade levels", "across school ages", "two
 # primary cohorts"), so recovering them means inferring a band from a stage name
 # -- which is what v5 did, and it cost precision 0.94 -> 0.82.
+#
+# LEGACY as of the appraisal model (scripts/appraisal.py). Two things in this
+# prompt are now known to be wrong, and both are below in v7's own words:
+#
+#   - "a randomised controlled trial, systematic review or meta-analysis =>
+#     strong" derives evidence quality from the publication type. A systematic
+#     review of weak, heterogeneous primary studies is not strong evidence.
+#   - evidence_strength itself conflates design, quantity and effect direction,
+#     which is why a null finding could not be rated as anything but weak.
+#
+# The prompt is nonetheless FROZEN, and deliberately so. The provider cache
+# keys a fixture on the full prompt text (ai_provider.request_payload), so
+# editing one character invalidates all 50 committed fixtures under
+# tests/fixtures/ai/ and sends the offline eval live -- CI would go red for a
+# reason that has nothing to do with the model. Replacing it therefore requires
+# a recording run: see APPRAISAL_PROMPT_VERSION below for the successor prompt
+# and OPERATIONS.md "Re-recording" for the procedure.
 PREFILL_PROMPT_VERSION = "claim-prefill-v7"
 
 # Strict JSON Schema for the suggestion (enforced via output_config.format). It
@@ -220,6 +238,141 @@ a strength misleads the reviewer, abstaining does not.
 Response schema:
 {{"age_range": string|null, "outcome": string|null, "context": string|null, \
  "evidence_strength": {strength_schema}|null}}'''
+
+
+# --- Appraisal suggestion (successor to the pre-fill strength field) -------
+#
+# v1. Separately versioned and NOT wired into the default extraction path:
+# turning it on would add a second live call per claim and change the
+# byte-identical-with-provider-off guarantee. It is called explicitly, and
+# what it produces is a suggestion under claim["assist"] like every other.
+#
+# Three things this prompt does that claim-prefill-v7 does not:
+#   (a) It asks for the study DESIGN as described, and states outright that the
+#       publication type does not determine the answer.
+#   (b) It separates certainty from direction and magnitude, and says in as
+#       many words that a null finding is a finding.
+#   (c) It asks whether the source supports the claim AS WORDED, which is the
+#       check no metadata field can stand in for.
+APPRAISAL_PROMPT_VERSION = "claim-appraisal-v1"
+
+# The rated subset. The model is not asked for bibliographic fields: it cannot
+# verify them, and a model that invents a DOI is worse than one that leaves it
+# empty.
+APPRAISAL_SUGGESTION_FIELDS = (
+    "study_design",
+    "comparator",
+    "outcome_type",
+    "effect_direction",
+    "effect_magnitude",
+    "follow_up",
+    "risk_of_bias",
+    "directness",
+    "replication",
+    "consistency",
+    "heterogeneity",
+    "precision",
+    "claim_supported_by_source",
+    "evidence_certainty",
+    "age_range_explicit",
+    "grade_or_stage",
+    "sample_size",
+)
+
+
+def appraisal_output_schema() -> dict[str, Any]:
+    """Strict JSON Schema for the appraisal suggestion.
+
+    Generated from scripts/appraisal.py rather than written out, so the
+    model can never be offered a value validate_appraisal() would reject
+    -- the same guarantee PREFILL_OUTPUT_SCHEMA gets from
+    EVIDENCE_STRENGTH_VALUES, applied to eighteen vocabularies instead of
+    one.
+    """
+    full = appraisal.json_schema()["properties"]
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "required": list(APPRAISAL_SUGGESTION_FIELDS),
+        "properties": {field: full[field] for field in APPRAISAL_SUGGESTION_FIELDS},
+    }
+
+
+APPRAISAL_PROMPT_TEMPLATE = '''System: You appraise the evidence behind one claim taken from a study \
+abstract. Invent nothing. If the abstract does not state something, answer \
+"unknown" (or null) -- never the value that is merely typical for that kind of \
+study. Respond only as JSON following the given schema.
+
+User:
+Abstract:
+"""{abstract}"""
+
+The claim being appraised (do NOT assume it is correct -- it is what you are \
+checking):
+"""{statement}"""
+
+Appraise it on these dimensions:
+
+- study_design: the design the abstract DESCRIBES, from {study_designs}. The \
+publication type does not decide this and must not be used as a shortcut: a \
+paper published as a systematic review still gets the design its text \
+describes. If the abstract names no design, answer "unknown".
+- comparator, outcome_type, follow_up, replication, sample_size: as reported, \
+otherwise the unclear/unknown value or null. Do not infer a comparison group \
+that is not mentioned.
+- effect_direction: {effect_directions}. "null" means no difference was found. \
+That is a legitimate scientific result, not a weak one, and it must not lower \
+your certainty rating. Use "not_applicable" when nothing was measured.
+- effect_magnitude / risk_of_bias / consistency / heterogeneity / precision: \
+only when the abstract discusses them. An abstract that never mentions a \
+risk-of-bias assessment gets risk_of_bias "unknown", NOT "low".
+- directness: does the population, intervention, comparison and outcome \
+actually match what the claim asserts? A self-reported outcome behind a claim \
+about measured competence is at best partially_direct.
+- claim_supported_by_source: {claim_support}. This asks ONLY whether the \
+source supports the claim as worded -- independent of how good the source is. \
+A claim stated more causally than an uncontrolled design allows, or \
+generalised past the sample studied, is partially_supported at best.
+- evidence_certainty: {certainty_values}. The question is: how certain can we \
+be, from this evidence, that THIS claim holds? Not how large the effect is, \
+not how positive it is, not how respected the venue is. Use "unverifiable" \
+only when the source itself cannot be identified. Answer null if the abstract \
+does not say enough.
+- age_range_explicit: ages EXPLICITLY stated in the text, as "min-max" \
+(e.g. "22-55"). A school stage is not an age: "11th-grade students" or \
+"upper secondary" gives null here, because the same stage name covers \
+different years in different countries. Put the stage in grade_or_stage \
+instead, worded as the text words it.'''
+
+
+def appraisal_prompt(abstract: str, statement: str) -> str:
+    """Render the versioned appraisal prompt for *abstract*/*statement*."""
+    return APPRAISAL_PROMPT_TEMPLATE.format(
+        abstract=abstract.strip(),
+        statement=statement.strip(),
+        study_designs=", ".join(appraisal.STUDY_DESIGN_VALUES),
+        effect_directions=", ".join(appraisal.EFFECT_DIRECTION_VALUES),
+        claim_support=", ".join(appraisal.CLAIM_SUPPORT_VALUES),
+        certainty_values=", ".join(appraisal.CERTAINTY_VALUES),
+    )
+
+
+def suggest_appraisal(abstract: str, statement: str) -> dict[str, Any] | None:
+    """Ask the configured provider for an appraisal suggestion.
+
+    Returns None when no provider is configured or the response does not
+    validate -- a rejected suggestion is dropped rather than repaired,
+    the same rule the pre-fill path follows.
+    """
+    result = ai_provider.complete(
+        appraisal_prompt(abstract, statement), schema=appraisal_output_schema()
+    )
+    if not isinstance(result, dict):
+        return None
+    suggestion = {field: result.get(field) for field in APPRAISAL_SUGGESTION_FIELDS}
+    if appraisal.validate_appraisal(suggestion):
+        return None
+    return suggestion
 
 
 def prefill_prompt(abstract: str, statement: str, topics: list[str]) -> str:

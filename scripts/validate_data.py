@@ -8,6 +8,7 @@ from typing import Any
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+import appraisal
 from common import (
     ROOT,
     load_json,
@@ -78,6 +79,35 @@ def _check_sources(sources: list[dict[str, Any]], errors: list[str]) -> None:
             errors.append(f"sources duplicate title/year {key}: {', '.join(ids)}")
 
 
+def _check_appraisals(claims: list[dict[str, Any]], errors: list[str]) -> None:
+    """Check the appraisal block of every claim that carries one.
+
+    The JSON Schema already rejects unknown enum values. What it cannot
+    express is the part that matters: that a recorded certainty must not
+    contradict the appraisal it sits in, that an inferred age band must
+    carry its basis, and that a synthetic evaluation case must never
+    appear in the production catalogue. A synthetic abstract standing in
+    data/claims/ would be indistinguishable from measured evidence in the
+    dashboard, which is the one failure mode the provenance field exists
+    to prevent.
+    """
+    for claim in claims:
+        block = claim.get("appraisal")
+        if not block:
+            continue
+        claim_id = claim.get("id", "<missing id>")
+        for problem in appraisal.validate_appraisal(block):
+            errors.append(f"claims:{claim_id} appraisal {problem}")
+        for problem in appraisal.certainty_conflicts(block):
+            errors.append(f"claims:{claim_id} appraisal {problem}")
+        if block.get("source_provenance") == "synthetic_eval_case":
+            errors.append(
+                f"claims:{claim_id} is marked source_provenance "
+                "'synthetic_eval_case'; synthetic cases belong in eval/, never in "
+                "the production catalogue"
+            )
+
+
 def validate_repository() -> list[str]:
     errors: list[str] = []
     validators = _load_validators()
@@ -97,6 +127,7 @@ def validate_repository() -> list[str]:
         _check_unique(kind, records, errors)
 
     _check_sources(sources, errors)
+    _check_appraisals(claims, errors)
 
     source_ids = {source["id"] for source in sources}
     claim_ids = {claim["id"] for claim in claims}

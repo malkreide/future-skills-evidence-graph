@@ -322,12 +322,27 @@ LLM to *suggest* the manual review fields (`context`, `outcome`, `age_range`,
 `claim["assist"]["suggestions"]` with provenance; the real fields keep their
 placeholders and `statement`/`text_anchor` stay verbatim.
 
+**The pre-fill prompt `claim-prefill-v7` is legacy.** Its strength rubric maps
+the publication type onto an evidence level ("systematic review => strong"),
+which the appraisal model rejects: a review of weak, heterogeneous primary
+studies is not strong evidence. The successor is `claim-appraisal-v1`
+(`extract_claims.appraisal_prompt`), which asks for the described *design*,
+separates certainty from effect direction, and forbids inventing a
+risk-of-bias verdict. It is deliberately **not** wired into the default
+extraction path, and v7 is deliberately frozen: the provider cache keys a
+fixture on the full prompt text, so editing one character of v7 invalidates
+all 50 committed fixtures under `tests/fixtures/ai/` and sends the offline
+eval live. Switching over is therefore a **re-recording job**, not an edit —
+see "Re-recording" below.
+
 ```bash
 python scripts/eval_claim_prefill.py                 # offline field metrics (fixtures)
 python scripts/eval_claim_prefill.py --min-precision 0.8 \
   --min-evidence-strength-precision 0.7 --min-age-range-precision 0.8   # CI gate
 python scripts/eval_claim_prefill.py --write-fixtures # replay '_recorded' into the cache
 python scripts/eval_claim_prefill.py --lexical-text-scoring  # pre-semantic baseline
+python scripts/appraisal.py --migration-report       # what a legacy migration carries
+python scripts/eval_agreement.py --legacy-drift      # legacy labels vs appraisal
 ```
 
 During review, `promote_candidate.py` prints any suggestion and
@@ -740,6 +755,11 @@ reproducible `gold` itself is has never been measured, and that decides how the
 floors read: if two reviewers agree on `evidence_strength` only ~80% of the
 time, then the measured 0.80 is already at the label ceiling and the 0.10 of
 headroom is absorbing reviewer scatter rather than model regression.
+
+The prepared worksheet is `eval/claim_prefill_second_rater.json`. It now rates
+five appraisal fields (`evidence_certainty`, `claim_supported_by_source`,
+`study_design`, `effect_direction`, `age_range_explicit`) alongside the two
+legacy ones, so one blind pass measures both scales from the same reading.
 
 `scripts/eval_agreement.py` (`make agreement`) measures the label side —
 agreement, Cohen's kappa, a Wilson interval, and whether a comparison is

@@ -18,13 +18,34 @@
     "created_at"
   ],
   "properties": {
-    "id": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" },
-    "statement": { "type": "string", "minLength": 8 },
-    "source_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "text_anchor": { "type": "string" },
-    "context": { "type": "string" },
-    "age_range": { "type": "string" },
-    "outcome": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^claim-[a-z0-9-]+$"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 8
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "text_anchor": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string"
+    },
+    "age_range": {
+      "type": "string",
+      "description": "Legacy age band of unrecorded origin -- it may have been read off the source or inferred from a school stage. Successors are appraisal.age_range_explicit (reported ages only) and appraisal.age_range_inferred (+ age_inference_basis)."
+    },
+    "outcome": {
+      "type": "string"
+    },
     "evidence_type": {
       "type": "string",
       "enum": [
@@ -39,25 +60,67 @@
     },
     "evidence_strength": {
       "type": "string",
-      "enum": ["low", "moderate", "strong"]
+      "enum": [
+        "low",
+        "moderate",
+        "strong"
+      ],
+      "description": "DEPRECATED, kept for backward compatibility. Conflates study design, amount of evidence, replication and effect direction in one value. The successor is appraisal.evidence_certainty; see docs/evidenz-bewertung-anker.md. Not migrated automatically: a legacy 'moderate' does not determine a certainty level."
     },
-    "supports_skill_ids": { "type": "array", "items": { "type": "string" } },
-    "contradicts_skill_ids": { "type": "array", "items": { "type": "string" } },
-    "extraction_method": { "type": "string" },
-    "status": { "type": "string", "enum": ["candidate", "reviewed", "rejected"] },
-    "created_at": { "type": "string" },
-    "reviewed_at": { "type": ["string", "null"] },
+    "supports_skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contradicts_skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extraction_method": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "reviewed",
+        "rejected"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "assist": {
       "type": "object",
       "description": "Optional, opt-in AI assist annotations. Never required; ignored by validate_data.py and score_evidence.py.",
       "properties": {
-        "suggestions": { "type": "array", "items": { "type": "object" } },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
         "provenance": {
           "type": "object",
           "properties": {
-            "model": { "type": "string" },
-            "prompt_version": { "type": "string" },
-            "created_at": { "type": "string" }
+            "model": {
+              "type": "string"
+            },
+            "prompt_version": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            }
           },
           "additionalProperties": true
         },
@@ -65,14 +128,30 @@
           "type": "object",
           "description": "Non-binding skill-link suggestion from a separately versioned call. Advisory only: the real supports_skill_ids/contradicts_skill_ids stay empty until a reviewer passes --supports/--contradicts.",
           "properties": {
-            "supports_skill_ids": { "type": "array", "items": { "type": "string" } },
-            "contradicts_skill_ids": { "type": "array", "items": { "type": "string" } },
+            "supports_skill_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "contradicts_skill_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
             "provenance": {
               "type": "object",
               "properties": {
-                "model": { "type": "string" },
-                "prompt_version": { "type": "string" },
-                "created_at": { "type": "string" }
+                "model": {
+                  "type": "string"
+                },
+                "prompt_version": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                }
               },
               "additionalProperties": true
             }
@@ -81,8 +160,275 @@
         }
       },
       "additionalProperties": false
+    },
+    "appraisal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_provenance": {
+          "enum": [
+            "verified_real_source",
+            "unverified_source",
+            "synthetic_eval_case",
+            null
+          ]
+        },
+        "source_verified": {
+          "enum": [
+            "true",
+            "false",
+            "unknown",
+            null
+          ]
+        },
+        "study_design": {
+          "enum": [
+            "systematic_review",
+            "meta_analysis",
+            "rct",
+            "cluster_rct",
+            "quasi_experimental",
+            "matched_comparison",
+            "controlled_pre_post",
+            "uncontrolled_pre_post",
+            "cohort",
+            "cross_sectional",
+            "single_case",
+            "qualitative",
+            "descriptive",
+            "policy_report",
+            "working_paper",
+            "consensus_framework",
+            "other",
+            "unknown",
+            null
+          ]
+        },
+        "comparator": {
+          "enum": [
+            "active_control",
+            "passive_control",
+            "waitlist",
+            "business_as_usual",
+            "historical_control",
+            "matched_comparison",
+            "none",
+            "unclear",
+            null
+          ]
+        },
+        "outcome_type": {
+          "enum": [
+            "standardized_objective",
+            "objective_nonstandardized",
+            "behavioural",
+            "teacher_rating",
+            "self_report",
+            "administrative",
+            "mixed",
+            "unclear",
+            null
+          ]
+        },
+        "effect_direction": {
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "unclear",
+            "not_applicable",
+            null
+          ]
+        },
+        "effect_magnitude": {
+          "enum": [
+            "large",
+            "moderate",
+            "small",
+            "trivial",
+            "null",
+            "mixed",
+            "unknown",
+            null
+          ]
+        },
+        "risk_of_bias": {
+          "enum": [
+            "low",
+            "some_concerns",
+            "high",
+            "unknown",
+            null
+          ]
+        },
+        "directness": {
+          "enum": [
+            "direct",
+            "partially_direct",
+            "indirect",
+            "unknown",
+            null
+          ]
+        },
+        "replication": {
+          "enum": [
+            "single_study",
+            "multiple_studies",
+            "multiple_contexts",
+            "systematic_synthesis",
+            "unknown",
+            null
+          ]
+        },
+        "consistency": {
+          "enum": [
+            "consistent",
+            "mixed",
+            "inconsistent",
+            "unknown",
+            null
+          ]
+        },
+        "heterogeneity": {
+          "enum": [
+            "low",
+            "moderate",
+            "high",
+            "unknown",
+            null
+          ]
+        },
+        "precision": {
+          "enum": [
+            "adequate",
+            "imprecise",
+            "unknown",
+            null
+          ]
+        },
+        "follow_up": {
+          "enum": [
+            "none",
+            "immediate_post",
+            "delayed_post",
+            "longitudinal",
+            "unknown",
+            null
+          ]
+        },
+        "claim_supported_by_source": {
+          "enum": [
+            "supported",
+            "partially_supported",
+            "not_supported",
+            "cannot_determine",
+            null
+          ]
+        },
+        "evidence_certainty": {
+          "enum": [
+            "very_low",
+            "low",
+            "moderate",
+            "strong",
+            "unverifiable",
+            null
+          ]
+        },
+        "sample_size": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "effect_size": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "effect_size_metric": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence_interval": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "age_range_explicit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "age_range_inferred": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "age_inference_basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "grade_or_stage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country_or_jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authors": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "year": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "journal_or_publisher": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "description": "Multi-dimensional appraisal of this claim's evidence. Optional: legacy claims carry evidence_strength alone and stay readable without it. Every field is generated from scripts/appraisal.py, so this schema and validate_appraisal() can never permit different values."
     }
   },
   "additionalProperties": false
 }
-
