@@ -4,7 +4,17 @@
     "source_set": "claim_prefill",
     "rater": "",
     "labeled_at": "",
-    "blind": true
+    "blind": true,
+    "rated_fields": [
+      "evidence_certainty",
+      "claim_type",
+      "claim_supported_by_source",
+      "study_design",
+      "effect_direction",
+      "age_range_explicit",
+      "evidence_strength",
+      "age_range"
+    ]
   },
   "rubrik_evidence_certainty": {
     "strong": "Der konkrete Claim wird durch hochwertige, direkte und ausreichend präzise Evidenz gestützt: mehrere konsistente hochwertige Studien oder eine hochwertige Synthese, angemessenes Design für die behauptete Kausalität, dokumentiert geringes Bias-Risiko, ausreichende Präzision, und Population/Intervention/Vergleich/Outcome passen direkt zum Claim.",
