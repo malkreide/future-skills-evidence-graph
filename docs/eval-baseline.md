@@ -115,22 +115,48 @@ gleiche offene Frage.
 `scripts/eval_agreement.py` erzeugt einen **blinden Bewertungsbogen** und
 wertet ihn aus.
 
-**Der Bogen für die 50 Prefill-Fälle liegt bereits im Repository:**
-[`eval/claim_prefill_second_rater.json`](../eval/claim_prefill_second_rater.json).
-Er ist leer und wartet auf einen Durchgang — ausfüllen, `protocol.rater`
-und `protocol.labeled_at` setzen, auswerten:
+**Zwei Bögen liegen leer im Repository und warten auf einen Durchgang.**
+Welcher der richtige ist, hängt an der Frage:
+
+| Bogen | Fälle | Beantwortet |
+| --- | --- | --- |
+| [`eval/catalog_second_rater.json`](../eval/catalog_second_rater.json) | 59 begutachtete Katalog-Claims | Ist die Evidenzbewertung **im Dashboard** reproduzierbar? |
+| [`eval/claim_prefill_second_rater.json`](../eval/claim_prefill_second_rater.json) | 50 synthetische Eval-Fälle | Lassen sich die **CI-Schwellen** lesen? |
+
+Der Katalog-Bogen misst die Urteile, die live die Skill-Scores treiben,
+und ist deshalb der dringlichere. Er bewertet zusätzlich das alte
+`evidence_strength` — damit beantwortet ein Durchgang eine Frage, die der
+Eval-Bogen nicht stellen kann: **Ist die neue Skala reproduzierbarer als
+die, die sie ersetzt hat?**, an derselben Lektüre desselben Claims. Das
+alte `age_range` wird dort nicht bewertet: vier geprüfte Claims tragen
+darin die Zeichenkette `"Lehrende"`, und wer einen Defekt reproduziert,
+misst nichts.
+
+Ausfüllen, `protocol.rater` und `protocol.labeled_at` setzen, auswerten:
 
 ```powershell
-python scripts/eval_agreement.py --second-rater eval/claim_prefill_second_rater.json
+python scripts/eval_agreement.py --second-rater eval/catalog_second_rater.json
 ```
 
-Neu erzeugen (überschreibt einen begonnenen Bogen) oder den
-Relevanz-Bogen dazunehmen:
+Alle Bögen neu erzeugen (überschreibt begonnene): `make agreement-worksheet`.
+
+### Weniger Felder bewerten
+
+Sechs Urteilsfelder × 59 Fälle ist ein halber Arbeitstag. `--fields`
+verkleinert den Auftrag:
 
 ```powershell
-python scripts/eval_agreement.py --worksheet claim_prefill --out eval/claim_prefill_second_rater.json
-python scripts/eval_agreement.py --worksheet relevance --out eval/relevance_second_rater.json
+python scripts/eval_agreement.py --worksheet catalog \
+  --fields evidence_certainty,claim_type --out bogen.json
 ```
+
+Der gewählte Satz steht in `protocol.rated_fields`, und die Auswertung
+hält sich daran. **Das ist keine Bequemlichkeit, sondern eine
+Korrektheitsfrage:** Wer vorher zwei Felder ausfüllte und sechs leer
+liess, bekam für die sechs eine Übereinstimmung von 0,000 ausgewiesen —
+Arbeit, um die niemand gebeten hatte, gezählt als Widerspruch. Die
+Rubrik im Bogen schrumpft mit; ein unbekannter Feldname wird mit der
+Liste der verfügbaren abgelehnt.
 
 ### Was im Bogen steht
 
@@ -224,6 +250,22 @@ Kappa heraus. Die Anzahl der so entfernten Paare wird ausgewiesen.
 **Nicht-blinde Bewertungen** werden weiterhin als `PROVENANCE UNVERIFIED`
 gemeldet und nie als Baseline gezählt, unabhängig davon, wie hoch die
 Übereinstimmung ausfällt.
+
+### Ein konkreter Ablauf
+
+1. **Kalibrierrunde: 10 Fälle**, beide Seiten blind, danach besprechen,
+   wo ihr auseinanderlauft. Das fängt Missverständnisse über die Rubrik
+   ab, bevor die ganze Stichprobe verbraucht ist. Diese zehn dürfen
+   **nicht** in die Baseline — nach dem Gespräch ist die Unabhängigkeit
+   weg. Beim Katalog bleiben danach 49 gemessene Fälle, über den 40, die
+   eine Schwelle tragen können.
+2. **Blinder Durchgang** über den Rest.
+3. **Auswerten**, `protocol.rater` und `protocol.labeled_at` gesetzt.
+
+Die bewertende Person braucht **keine** Fachexpertise in KI oder
+Bildungsforschung. Sie muss ein Abstract lesen und eine geschriebene
+Rubrik anwenden können — die Rubrik liegt im Bogen. Das ist der Grund,
+warum die Anker überhaupt aufgeschrieben wurden.
 
 ### Protokoll
 

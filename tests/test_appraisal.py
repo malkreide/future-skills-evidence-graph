@@ -793,6 +793,146 @@ class WeightedKappaTests(unittest.TestCase):
         self.assertIn("skipped (null on either side): 49", "\n".join(comparison.report()))
 
 
+class CatalogWorksheetTests(unittest.TestCase):
+    """The worksheet over the claims that actually drive the dashboard."""
+
+    def setUp(self) -> None:
+        self.worksheet = ea.build_worksheet("catalog")
+
+    def test_it_covers_every_appraised_claim(self) -> None:
+        keys = {item["key"] for item in self.worksheet["labels"]}
+        self.assertEqual(keys, set(ea.primary_labels("catalog")))
+        self.assertGreaterEqual(len(keys), 59)
+
+    def test_it_withholds_the_review_written_fields(self) -> None:
+        # `context` and `text_anchor` are written during review and name
+        # the design outright -- "single-group study", "Systematic review
+        # synthesis". Handing either to a second rater hands them one of
+        # the answers, and the agreement would measure transcription.
+        for item in self.worksheet["labels"]:
+            with self.subTest(item["key"]):
+                self.assertNotIn("context", item)
+                self.assertNotIn("text_anchor", item)
+                self.assertNotIn("appraisal", item)
+                for field in ea.SECOND_RATER_FIELDS["catalog"]:
+                    self.assertIsNone(item[field])
+
+    def test_it_carries_the_source_abstract_a_rater_needs(self) -> None:
+        for item in self.worksheet["labels"]:
+            with self.subTest(item["key"]):
+                self.assertTrue(item["statement"])
+                self.assertTrue(item["abstract"])
+                self.assertTrue(item["source_type"])
+
+    def test_it_rates_the_legacy_scale_but_not_the_legacy_age_field(self) -> None:
+        # evidence_strength is rated so one pass can answer whether the
+        # successor scale is MORE reproducible. age_range is not: four
+        # reviewed claims hold "Lehrende" in it, and reproducing a defect
+        # measures nothing.
+        self.assertIn("evidence_strength", ea.SECOND_RATER_FIELDS["catalog"])
+        self.assertNotIn("age_range", ea.SECOND_RATER_FIELDS["catalog"])
+
+    def test_a_completed_pass_scores_against_the_stored_appraisals(self) -> None:
+        import tempfile
+
+        primary = ea.primary_labels("catalog")
+        for item in self.worksheet["labels"]:
+            for field in ea.SECOND_RATER_FIELDS["catalog"]:
+                item[field] = primary[item["key"]].get(field)
+        self.worksheet["protocol"].update(rater="t", labeled_at="2026-08-10", blind=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(self.worksheet), encoding="utf-8")
+            comparisons = ea.second_rater_comparisons(path)
+        self.assertEqual(len(comparisons), len(ea.SECOND_RATER_FIELDS["catalog"]))
+        for comparison in comparisons:
+            with self.subTest(comparison.field):
+                self.assertEqual(comparison.agreement, 1.0)
+                self.assertTrue(comparison.gate_ready())
+
+
+class NarrowedWorksheetTests(unittest.TestCase):
+    """A pass may ask for fewer fields without that reading as disagreement."""
+
+    def _completed(self, fields):
+        worksheet = ea.build_worksheet("catalog", fields)
+        primary = ea.primary_labels("catalog")
+        for item in worksheet["labels"]:
+            for field in worksheet["protocol"]["rated_fields"]:
+                item[field] = primary[item["key"]].get(field)
+        worksheet["protocol"].update(rater="t", labeled_at="2026-08-10", blind=True)
+        return worksheet
+
+    def test_a_narrowed_pass_is_scored_on_what_it_asked(self) -> None:
+        # Before protocol.rated_fields existed, filling in two fields and
+        # leaving six blank produced six fields at agreement 0.000 -- work
+        # nobody was asked for, reported as disagreement.
+        import tempfile
+
+        worksheet = self._completed(["evidence_certainty", "claim_type"])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            comparisons = ea.second_rater_comparisons(path)
+        self.assertEqual(
+            [c.field for c in comparisons], ["evidence_certainty", "claim_type"]
+        )
+        for comparison in comparisons:
+            with self.subTest(comparison.field):
+                self.assertEqual(comparison.agreement, 1.0)
+
+    def test_the_worksheet_asks_only_for_the_narrowed_fields(self) -> None:
+        worksheet = ea.build_worksheet("catalog", ["evidence_certainty"])
+        self.assertEqual(worksheet["protocol"]["rated_fields"], ["evidence_certainty"])
+        for item in worksheet["labels"]:
+            with self.subTest(item["key"]):
+                self.assertIn("evidence_certainty", item)
+                self.assertNotIn("study_design", item)
+
+    def test_the_rubric_narrows_with_the_fields(self) -> None:
+        narrowed = ea.build_worksheet("catalog", ["evidence_certainty", "claim_type"])
+        blocks = {key for key in narrowed if key.startswith("rubrik_")}
+        self.assertIn("rubrik_claim_type", blocks)
+        self.assertNotIn("rubrik_study_design", blocks)
+        # The legacy block only appears when a legacy field is rated.
+        self.assertNotIn("rubrik_legacy_felder", blocks)
+        self.assertIn(
+            "rubrik_legacy_felder",
+            ea.build_worksheet("catalog", ["evidence_certainty", "evidence_strength"]),
+        )
+
+    def test_every_rated_field_has_a_rubric_and_every_rubric_a_field(self) -> None:
+        blocks = set(ea._prefill_rubric())
+        mapped = {key for keys in ea.RUBRIC_FOR_FIELD.values() for key in keys}
+        self.assertEqual(blocks, mapped)
+        for set_name in ("claim_prefill", "catalog"):
+            for field in ea.SECOND_RATER_FIELDS[set_name]:
+                with self.subTest(set_name=set_name, field=field):
+                    self.assertIn(field, ea.RUBRIC_FOR_FIELD)
+
+    def test_an_unknown_field_is_rejected_with_the_alternatives(self) -> None:
+        with self.assertRaises(SystemExit) as caught:
+            ea.build_worksheet("catalog", ["evidence_certainty", "nonsense"])
+        message = str(caught.exception)
+        self.assertIn("nonsense", message)
+        self.assertIn("evidence_certainty", message)
+
+    def test_a_worksheet_without_the_declaration_still_scores_fully(self) -> None:
+        # Worksheets generated before protocol.rated_fields existed must
+        # keep working, and must be read as asking for everything.
+        import tempfile
+
+        worksheet = self._completed(None)
+        del worksheet["protocol"]["rated_fields"]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            comparisons = ea.second_rater_comparisons(path)
+        self.assertEqual(
+            [c.field for c in comparisons], ea.SECOND_RATER_FIELDS["catalog"]
+        )
+
+
 class WorksheetTests(unittest.TestCase):
     def setUp(self) -> None:
         self.worksheet = ea.build_worksheet("claim_prefill")
