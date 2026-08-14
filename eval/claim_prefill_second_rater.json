@@ -4,7 +4,9 @@
     "source_set": "claim_prefill",
     "rater": "",
     "labeled_at": "",
+    "notes": "",
     "blind": true,
+    "appraisal_method_at_rating": "1.2.0",
     "rated_fields": [
       "evidence_certainty",
       "claim_type",
@@ -25,11 +27,11 @@
   },
   "rubrik_evidence_certainty_hinweis": "Frage: Wie sicher kann man sich auf Basis der beschriebenen Evidenz sein, dass GENAU DIESE Aussage zutrifft? Nicht: wie gross oder wie positiv der Effekt ist. Ein sauber durchgefuehrter Nullbefund ist ein Befund und kann moderate oder hohe Sicherheit tragen. Der Publikationstyp allein entscheidet nichts -- ein systematischer Review aus schwachen, heterogenen Primaerstudien ist nicht 'strong'. Steht im Abstract zu wenig, ist null die richtige Antwort.",
   "rubrik_claim_supported_by_source": {
-    "supported": "Die Quelle sagt, was die Aussage behauptet.",
-    "partially_supported": "Die Aussage geht ueber die Quelle hinaus -- kausal staerker formuliert als das Design hergibt, ueber die Stichprobe hinaus verallgemeinert, oder Selbstauskunft als objektive Kompetenz ausgegeben.",
-    "not_supported": "Die Quelle traegt die Aussage nicht.",
-    "cannot_determine": "Aus dem Vorliegenden nicht entscheidbar.",
-    "_hinweis": "Hier wird NUR geprueft, ob die Quelle die Aussage traegt -- unabhaengig davon, wie gut die Quelle ist."
+    "supported": "Die Quelle sagt inhaltlich, was die Aussage behauptet — in derselben Stärke und über dieselbe Population.",
+    "partially_supported": "Die Aussage geht über die Quelle hinaus: kausal stärker formuliert, als das Design hergibt; über die Stichprobe hinaus verallgemeinert; oder Selbstauskunft als objektive Kompetenz ausgegeben.",
+    "not_supported": "Die Quelle trägt die Aussage nicht — sie sagt etwas anderes oder das Gegenteil.",
+    "cannot_determine": "Die Quelle äussert sich zum Gegenstand der Aussage **gar nicht**, oder der Auszug widerspricht sich selbst.",
+    "_hinweis": "Die Frage ist INHALTLICH: behauptet die Quelle, was die Aussage behauptet? Nicht: ist der Auszug ausfuehrlich genug, um es zu beweisen. KUERZE IST KEIN GRUND fuer cannot_determine -- ein Einzeiler, der die Aussage inhaltlich deckt, ergibt supported. Ob die Quelle auffindbar ist, misst source_verified; ob Population und Outcome zur Aussage passen, misst directness. Beides hier noch einmal zu bewerten, zaehlt es doppelt."
   },
   "rubrik_claim_type": "Welche Art von Aussage ist das? causal_effect, association, descriptive, normative, definitional, unknown. Behauptet sie eine Wirkung (causal_effect), einen Zusammenhang (association), beschreibt sie, was beobachtet wurde (descriptive), empfiehlt sie etwas (normative) oder legt sie einen Begriff fest (definitional)? Danach richtet sich, woran die Aussage gemessen wird.",
   "rubrik_study_design": "Das im Text beschriebene Design, aus: systematic_review, meta_analysis, narrative_review, psychometric_validation, rct, cluster_rct, quasi_experimental, matched_comparison, controlled_pre_post, uncontrolled_pre_post, cohort, cross_sectional, single_case, qualitative, descriptive, policy_report, working_paper, consensus_framework, other, unknown. Nicht vom Publikationstyp ableiten. Nennt der Text kein Design, 'unknown' -- nicht das wahrscheinlichste raten.",

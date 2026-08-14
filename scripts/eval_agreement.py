@@ -275,6 +275,7 @@ class Comparison:
         provenance: str,
         skipped: int = 0,
         calibration: bool = False,
+        documented: list[bool] | None = None,
     ) -> None:
         self.name = name
         self.field = field
@@ -287,11 +288,43 @@ class Comparison:
         # afterwards. Marked so a number from one cannot be quoted as the
         # measured ceiling.
         self.calibration = calibration
+        # Per pair: is this item named as a worked example in the anchors
+        # document? A rater who read that document was not blind for those,
+        # and their agreement is recall rather than judgement.
+        self.documented = documented or []
         # Items the second rater left null. Reported rather than dropped:
         # a field skipped forty times out of fifty says something about
         # the field, and an agreement figure computed on the remaining ten
         # would not show it.
         self.skipped = skipped
+
+    def _exposure_lines(self) -> list[str]:
+        """How much of the sample the methodology document gives away."""
+        if len(self.documented) != self.n or not any(self.documented):
+            return []
+        exposed = [p for p, d in zip(self.pairs, self.documented) if d]
+        clean = [p for p, d in zip(self.pairs, self.documented) if not d]
+        lines = [
+            f"worked examples: {len(exposed)}/{self.n} of these items are named "
+            "with their rating in docs/evidenz-bewertung-anker.md -- a rater who "
+            "read it was recalling, not judging, on those"
+        ]
+        if exposed:
+            hit = sum(1 for a, b in exposed if a == b)
+            lines.append(f"  agreement on the named items:   {hit}/{len(exposed)}")
+        if clean:
+            hit = sum(1 for a, b in clean if a == b)
+            note = (
+                f" -- below {MIN_N_FOR_GATE}, so the unexposed part alone cannot "
+                "carry a floor"
+                if len(clean) < MIN_N_FOR_GATE
+                else ""
+            )
+            lines.append(
+                f"  agreement on the rest:          {hit}/{len(clean)} "
+                f"= {hit / len(clean):.3f}{note}"
+            )
+        return lines
 
     def ordinal_pairs(self) -> tuple[list[tuple[Any, Any]], int]:
         """Pairs usable for weighted kappa, and how many were set aside.
@@ -381,6 +414,7 @@ class Comparison:
                 else f"linearly weighted kappa (ordinal): {weighted:.3f}{note}"
             )
         lines.extend(confusion_matrix(self.pairs))
+        lines.extend(self._exposure_lines())
         lines.append(f"one disagreement moves agreement by: {self.one_flip:.3f}")
         lines.append(f"provenance: {self.provenance}")
         if not self.independent:
@@ -475,6 +509,26 @@ def relevance_overlap() -> Comparison:
     )
 
 
+def documented_examples(set_name: str) -> set[str]:
+    """Item keys that the methodology document names as worked examples.
+
+    The anchors document teaches the rubric through boundary cases, and it
+    names them: "Katalogfall: `prefill-phonics-reception` (28 Trials,
+    ...) -> moderate". That is exactly what a rater should read to learn
+    the rule -- and it hands them the answer for those items.
+
+    Detected rather than maintained by hand, so the count stays right when
+    the document gains or loses an example. A rater who worked only from
+    the rubric carried inside the worksheet saw none of them; the report
+    cannot know which, so it states the exposure and lets the record say
+    what the rater actually read.
+    """
+    if not ANCHOR_DOC.exists():
+        return set()
+    text = ANCHOR_DOC.read_text(encoding="utf-8")
+    return {key for key in primary_labels(set_name) if key and key in text}
+
+
 def _item_untouched(label: dict[str, Any], rated_fields: list[str]) -> bool:
     """Whether the rater left this whole item alone.
 
@@ -506,9 +560,11 @@ def second_rater_comparisons(path: Path) -> list[Comparison]:
     # primary label would report six disagreements per item for work that
     # was never requested.
     rated_fields = resolve_fields(set_name, protocol.get("rated_fields"))
+    named = documented_examples(set_name)
     comparisons = []
     for field in rated_fields:
         pairs = []
+        documented = []
         skipped = 0
         for label in document.get("labels", []):
             key = label.get("key")
@@ -526,12 +582,14 @@ def second_rater_comparisons(path: Path) -> list[Comparison]:
                 skipped += 1
                 continue
             pairs.append((primary[key][field], label[field]))
+            documented.append(key in named)
         comparisons.append(
             Comparison(
                 name=f"{set_name}: primary vs second rater {rater}",
                 field=field,
                 pairs=pairs,
                 skipped=skipped,
+                documented=documented,
                 # A worksheet that was not filled in blind is not a second
                 # opinion; seeing the primary label makes agreement cheap.
                 independent=blind,
@@ -1087,7 +1145,21 @@ def main() -> int:
     print("## Summary\n")
     if usable:
         for comparison in usable:
-            print(f"- {comparison.name} ({comparison.field}): {comparison.agreement:.3f}")
+            # The exposure travels with the number. The detail block above
+            # carries it, but the summary is the part that gets quoted,
+            # and a bare 0.780 hides that a third of the sample was
+            # memorisable from the methodology document.
+            exposed = sum(1 for flag in comparison.documented if flag)
+            note = (
+                f"   [{exposed}/{comparison.n} named as worked examples in the "
+                "anchors document]"
+                if exposed
+                else ""
+            )
+            print(
+                f"- {comparison.name} ({comparison.field}): "
+                f"{comparison.agreement:.3f}{note}"
+            )
     else:
         print(
             "No comparison is usable as a baseline yet, so no CI floor may be\n"

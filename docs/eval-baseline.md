@@ -251,6 +251,47 @@ Kappa heraus. Die Anzahl der so entfernten Paare wird ausgewiesen.
 gemeldet und nie als Baseline gezählt, unabhängig davon, wie hoch die
 Übereinstimmung ausfällt.
 
+### Wer den Prefill-Bogen bewerten darf — und wer nicht mehr
+
+**17 der 50 Eval-Fälle stehen namentlich mit ihrer Bewertung in
+[docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md)** — als
+Grenzfälle 1 bis 17, also genau in dem Abschnitt, der die Rubrik erklärt.
+Wer ihn gelesen hat, erinnert sich dort, statt zu urteilen.
+
+Das ist kein Fehler des Dokuments: Eine Rubrik ohne Beispiele lehrt
+nichts. Es heisst aber, dass für den Prefill-Bogen zwei Sorten von
+Bewertenden zu unterscheiden sind:
+
+| | blind für |
+| --- | --- |
+| Hat **nur den Bogen** benutzt (die Rubrik reist darin mit) | alle 50 Fälle |
+| Hat das **Anker-Dokument** gelesen | 33 Fälle — und 33 liegt **unter** den 40, die eine Schwelle tragen |
+
+Der Bogen enthält die vollständige Rubrik, gerade damit die erste Variante
+möglich ist. Wer die Baseline für die CI-Schwellen messen will, sollte
+deshalb jemanden fragen, der mit dem Methodendokument noch nichts zu tun
+hatte.
+
+`eval_agreement.py` weist die Aufteilung selbst aus — erkannt aus dem
+Dokument, nicht aus einer gepflegten Liste, damit sie nicht veraltet:
+
+```
+worked examples: 17/50 of these items are named with their rating in
+docs/evidenz-bewertung-anker.md -- a rater who read it was recalling,
+not judging, on those
+  agreement on the named items:   17/17
+  agreement on the rest:          22/33 = 0.667 -- below 40, so the
+                                  unexposed part alone cannot carry a floor
+```
+
+Das Beispiel oben ist simuliert und zeigt, warum die Trennung nötig ist:
+Die Gesamtzahl läge bei 0,780 und sähe brauchbar aus.
+
+Der Katalog-Bogen ist davon **nicht** betroffen — keiner seiner 59 Fälle
+wird im Anker-Dokument genannt. Seine Teil-Exposition kam aus gelesenen
+PR-Beschreibungen und steht deshalb von Hand in `protocol.notes`; die
+lässt sich nicht automatisch erkennen.
+
 ### Die Kalibrierrunde, Schritt für Schritt
 
 **Kalibriert wird auf dem Eval-Set, gemessen wird auf dem Katalog.** So
