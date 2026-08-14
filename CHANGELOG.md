@@ -12,6 +12,30 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Added
+
+- **Der Bericht weist aus, welche Fälle das Methodendokument verrät.** Die
+  Anker-Dokumentation lehrt die Rubrik an benannten Grenzfällen — und
+  nennt dabei **17 der 50 Eval-Fälle mitsamt ihrer Bewertung**. Wer sie
+  gelesen hat, erinnert sich dort, statt zu urteilen. Die Auswertung
+  trennt jetzt „genannte Fälle" von „übrigen", erkannt aus dem Dokument
+  statt aus einer gepflegten Liste, und weist aus, dass die verbleibenden
+  33 unter den 40 liegen, die eine Schwelle tragen können. Die Angabe
+  steht auch in der Zusammenfassung, weil das der Teil ist, der zitiert
+  wird — eine nackte 0,780 verschweigt, dass ein Drittel der Stichprobe
+  auswendig lernbar war.
+  Der Katalog-Bogen ist nicht betroffen (0 von 59 im Dokument genannt);
+  seine Teilexposition stammt aus gelesenen PR-Beschreibungen und bleibt
+  deshalb von Hand in `protocol.notes`.
+
+### Fixed
+
+- **`eval/claim_prefill_second_rater.json` war wieder eine Generation
+  alt** — er trug noch den `cannot_determine`-Text, der κ = 0,039 erzeugt
+  hat, und keinen `appraisal_method_at_rating`. Neu erzeugt unter 1.2.0.
+  Dasselbe Versäumnis wie beim letzten Mal: eine Regeländerung
+  durchgezogen, aber nur einen der beiden Bögen neu geschrieben.
+
 ### Changed
 
 - **`claim_supported_by_source` geschärft (`APPRAISAL_VERSION` 1.2.0).**

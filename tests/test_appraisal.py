@@ -933,6 +933,78 @@ class NarrowedWorksheetTests(unittest.TestCase):
         )
 
 
+class WorkedExampleExposureTests(unittest.TestCase):
+    """The methodology document teaches with named cases -- and gives them away."""
+
+    def test_the_eval_set_is_substantially_exposed(self) -> None:
+        named = ea.documented_examples("claim_prefill")
+        total = len(ea.primary_labels("claim_prefill"))
+        self.assertGreaterEqual(len(named), 15)
+        # And what is left is below the size a floor needs, which is the
+        # whole reason this has to be reported rather than noticed later.
+        self.assertLess(total - len(named), ea.MIN_N_FOR_GATE)
+
+    def test_detection_follows_the_document(self) -> None:
+        # Derived, not maintained by hand: an example added to or removed
+        # from the document changes the count without anyone updating a
+        # list that would otherwise quietly go stale.
+        import tempfile
+        from pathlib import Path as _Path
+
+        original = ea.ANCHOR_DOC
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                doc = _Path(tmp) / "anker.md"
+                doc.write_text("nennt niemanden\n", encoding="utf-8")
+                ea.ANCHOR_DOC = doc
+                self.assertEqual(ea.documented_examples("claim_prefill"), set())
+                doc.write_text("Katalogfall: `prefill-adult-mooc`\n", encoding="utf-8")
+                self.assertEqual(
+                    ea.documented_examples("claim_prefill"), {"prefill-adult-mooc"}
+                )
+        finally:
+            ea.ANCHOR_DOC = original
+
+    def test_the_report_separates_exposed_from_clean(self) -> None:
+        import tempfile
+
+        worksheet = ea.build_worksheet("claim_prefill")
+        primary = ea.primary_labels("claim_prefill")
+        named = ea.documented_examples("claim_prefill")
+        for item in worksheet["labels"]:
+            for field in worksheet["protocol"]["rated_fields"]:
+                item[field] = primary[item["key"]].get(field)
+            # Disagree only where the document did NOT give the answer.
+            if item["key"] not in named:
+                item["claim_type"] = "unknown"
+        worksheet["protocol"].update(rater="t", labeled_at="2026-08-14", blind=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            comparison = next(
+                c for c in ea.second_rater_comparisons(path) if c.field == "claim_type"
+            )
+        report = "\n".join(comparison.report())
+        self.assertIn("worked examples:", report)
+        self.assertIn(f"agreement on the named items:   {len(named)}/{len(named)}", report)
+        self.assertIn("agreement on the rest:", report)
+        self.assertIn("cannot carry a floor", report)
+
+    def test_a_set_with_no_named_examples_says_nothing(self) -> None:
+        # The catalogue is not taught through named cases, so the block
+        # must not appear there and add noise.
+        self.assertEqual(ea.documented_examples("catalog"), set())
+        comparison = ea.Comparison(
+            name="t",
+            field="evidence_certainty",
+            pairs=[("low", "low")] * 5,
+            independent=True,
+            provenance="x",
+            documented=[False] * 5,
+        )
+        self.assertNotIn("worked examples", "\n".join(comparison.report()))
+
+
 class SupportAnchorTests(unittest.TestCase):
     """The anchor sharpened after it measured kappa 0.039."""
 
