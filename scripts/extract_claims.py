@@ -254,7 +254,13 @@ Response schema:
 #       many words that a null finding is a finding.
 #   (c) It asks whether the source supports the claim AS WORDED, which is the
 #       check no metadata field can stand in for.
-APPRAISAL_PROMPT_VERSION = "claim-appraisal-v1"
+#
+# v2: the claim_supported_by_source wording let "the abstract is too short to
+# tell" count as cannot_determine. The first measured second-rater pass put
+# that field at kappa 0.039 -- chance -- with 21 systematic disagreements on
+# frameworks and policy reports. The question is now stated as substantive,
+# and brevity is ruled out explicitly. See docs/evidenz-bewertung-anker.md.
+APPRAISAL_PROMPT_VERSION = "claim-appraisal-v2"
 
 # The rated subset. The model is not asked for bibliographic fields: it cannot
 # verify them, and a model that invents a DOI is worse than one that leaves it
@@ -330,9 +336,15 @@ risk-of-bias assessment gets risk_of_bias "unknown", NOT "low".
 actually match what the claim asserts? A self-reported outcome behind a claim \
 about measured competence is at best partially_direct.
 - claim_supported_by_source: {claim_support}. This asks ONLY whether the \
-source supports the claim as worded -- independent of how good the source is. \
-A claim stated more causally than an uncontrolled design allows, or \
-generalised past the sample studied, is partially_supported at best.
+source asserts, IN SUBSTANCE, what the claim asserts -- independent of how \
+good the source is and of how long the abstract is. A claim stated more \
+causally than an uncontrolled design allows, or generalised past the sample \
+studied, is partially_supported at best. BREVITY IS NOT A REASON for \
+cannot_determine: a one-line abstract that covers the claim in substance is \
+"supported". Reserve cannot_determine for an abstract that does not address \
+the claim's subject at all, or contradicts itself. Whether the source can be \
+located is source_verified; whether its population and outcome fit the claim \
+is directness -- do not charge either of them here a second time.
 - evidence_certainty: {certainty_values}. The question is: how certain can we \
 be, from this evidence, that THIS claim holds? Not how large the effect is, \
 not how positive it is, not how respected the venue is. Use "unverifiable" \

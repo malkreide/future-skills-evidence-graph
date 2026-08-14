@@ -45,7 +45,7 @@ positivem Ergebnis trug `moderate`.
 | `evidence_certainty` | Wie sicher ist die Aussage gestützt? | Wie gross oder wie positiv der Effekt ist. |
 | `effect_direction` | In welche Richtung geht der Befund? | Wie belastbar er ist. |
 | `effect_magnitude` | Wie gross ist er? | Ob er real ist. |
-| `claim_supported_by_source` | Sagt die Quelle, was die Aussage behauptet? | Wie gut die Quelle ist. |
+| `claim_supported_by_source` | Sagt die Quelle **inhaltlich**, was die Aussage behauptet? | Wie gut die Quelle ist — und ob der Auszug lang genug ist, um es zu belegen. |
 | `source_verified` / `source_provenance` | Lässt sich die Quelle überhaupt auffinden? | Ob die Aussage stimmt. |
 
 Die Trennung von `source_type` und `study_design` ist der Kern. Ein
@@ -68,6 +68,48 @@ Nachvollziehbarkeit statt über Stärke. Für die Interrater-Statistik heisst
 das: es zählt in die rohe Übereinstimmung und in Cohens Kappa, aber ein
 Paar, das es enthält, trägt keine ordinale Distanz und fällt aus dem
 gewichteten Kappa heraus (die Anzahl wird ausgewiesen).
+
+## Anker: `claim_supported_by_source`
+
+Die Frage ist **inhaltlich**: Behauptet die Quelle, was die Aussage
+behauptet? Nicht: Ist der gespeicherte Auszug ausführlich genug, um das
+zu beweisen.
+
+| `supported` | Die Quelle sagt inhaltlich, was die Aussage behauptet — in derselben Stärke und über dieselbe Population. |
+| `partially_supported` | Die Aussage geht über die Quelle hinaus: kausal stärker formuliert, als das Design hergibt; über die Stichprobe hinaus verallgemeinert; oder Selbstauskunft als objektive Kompetenz ausgegeben. |
+| `not_supported` | Die Quelle trägt die Aussage nicht — sie sagt etwas anderes oder das Gegenteil. |
+| `cannot_determine` | Die Quelle äussert sich zum Gegenstand der Aussage **gar nicht**, oder der Auszug widerspricht sich selbst. |
+
+**Kürze ist kein Grund für `cannot_determine`.** Ein Einzeiler-Abstract,
+der die Aussage inhaltlich deckt, ergibt `supported`. Wer die Knappheit
+des Auszugs hier bewertet, misst etwas, wofür es bereits eigene Felder
+gibt:
+
+- Ob die Quelle überhaupt auffindbar ist → `source_verified` /
+  `source_provenance`
+- Ob Population, Intervention, Vergleich und Outcome zur Aussage passen →
+  `directness`
+
+Beides hier noch einmal einfliessen zu lassen, zählt es doppelt und nimmt
+`claim_supported_by_source` seine eigene Aussage.
+
+### Warum dieser Anker geschärft wurde
+
+Der erste gemessene Zweitdurchgang (2026-08-14) ergab für dieses Feld
+**κ = 0,039** — praktisch Zufallsniveau, bei 21 Abweichungen, die nicht
+gestreut, sondern systematisch waren: Bei Rahmenwerken und
+Policy-Berichten stand `partially_supported` (12×) oder
+`cannot_determine` (8×) gegen `supported`.
+
+Der alte Ankertext liess beide Lesarten zu. `cannot_determine` hiess dort
+nur „aus dem Vorliegenden nicht entscheidbar", was einen knappen Auszug
+zu einem legitimen Grund machte. Das ist die eine Sorte Abweichung, die
+eine Änderung verlangt — eine mehrdeutige Rubrik, nicht eine
+Urteilsdifferenz.
+
+Die Festlegung ist **redaktionell**: Sie hätte auch andersherum ausfallen
+können, mit der Prüfbarkeit am Auszug als Kriterium. Ausschlaggebend war,
+dass diese Frage bereits zwei andere Felder beantworten.
 
 ## Zuerst: Was für eine Aussage ist das?
 
@@ -447,6 +489,7 @@ unter Regeln gelesen zu werden, die ihre Autorin nie gesehen hat.
 | --- | --- |
 | 1.0.0 | Erstfassung: fünfstufige `evidence_certainty`, GRADE-artige Herleitung. |
 | 1.1.0 | `claim_type` mit zweitem Herleitungspfad; `narrative_review` und `psychometric_validation` ergänzt. |
+| 1.2.0 | `claim_supported_by_source` geschärft, nachdem der erste gemessene Zweitdurchgang das Feld bei κ = 0,039 zeigte. Kein zulässiger Wert und keine gespeicherte Stufe ändert sich — geändert hat sich, welche von zwei Lesarten der Anker zulässt. |
 
 ### Versionsverlauf der Scoring-Methode (`METHOD_VERSION`)
 

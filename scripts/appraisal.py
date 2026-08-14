@@ -56,7 +56,16 @@ from typing import Any
 # 1.1.0  claim_type added, with a second derivation path for claims that
 #        assert no effect; study designs narrative_review and
 #        psychometric_validation added.
-APPRAISAL_VERSION = "1.1.0"
+# 1.2.0  claim_supported_by_source sharpened after the first measured
+#        second-rater pass put it at kappa 0.039. The old anchor let
+#        `cannot_determine` mean "the excerpt is too short to tell", which
+#        two other fields already answer -- source_verified for
+#        traceability, directness for PICO fit. The question is now
+#        explicitly substantive: does the source assert what the claim
+#        asserts? No permitted value changed, and no stored appraisal
+#        changed level; what changed is which of two readings the anchor
+#        licenses.
+APPRAISAL_VERSION = "1.2.0"
 
 
 # --- Controlled vocabularies ----------------------------------------------
