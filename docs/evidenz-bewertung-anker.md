@@ -499,10 +499,14 @@ Befund und ist keiner.
 
 ## Lücken
 
-- **Keine Inter-Rater-Baseline.** Es ist nicht gemessen, wie gut zwei
-  Personen bei derselben Claim dieselbe `evidence_certainty` vergeben
-  würden. `eval/claim_prefill_second_rater.json` ist der vorbereitete
-  Bogen; siehe [docs/eval-baseline.md](eval-baseline.md).
+- **Inter-Rater-Baseline: gemessen, mit einem klaren Defekt.** Ein blinder
+  Zweitdurchgang über alle 59 begutachteten Katalog-Claims (2026-08-14)
+  ergab für `evidence_certainty` κ = 0,50 (gewichtet 0,65) gegenüber
+  κ = 0,07 für die abgelöste `evidence_strength`. Für
+  `claim_supported_by_source` dagegen **κ = 0,039** — dort trägt der Anker
+  nicht (siehe [docs/eval-baseline.md](eval-baseline.md)). Für das
+  Eval-Set, an dem die CI-Schwellen hängen, ist die Baseline weiterhin
+  offen.
 - **Das Goldset erreicht nirgends `strong`.** Keiner der 50 Abstracts
   berichtet eine Bias-Prüfung, und ohne die verbietet der Guardrail
   `strong` auf einer Synthese. Das ist die beabsichtigte Wirkung und

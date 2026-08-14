@@ -380,6 +380,85 @@ Beide Sets sind dafür bereits gross genug — `claim_prefill` hat 50
 Beispiele, `relevance` 122. Es fehlt keine Datenerhebung, nur der zweite
 Durchgang.
 
+## Die erste gemessene Baseline (2026-08-14)
+
+Ein blinder Durchgang über alle 59 begutachteten Katalog-Claims liegt vor:
+[`eval/catalog_second_rater_completed.json`](../eval/catalog_second_rater_completed.json).
+Auswertung mit `python scripts/eval_agreement.py --second-rater
+eval/catalog_second_rater_completed.json`.
+
+| Feld | Übereinstimmung | Cohens κ | gewichtetes κ |
+| --- | --- | --- | --- |
+| `evidence_certainty` | 0,780 | 0,503 | **0,649** |
+| `claim_type` | 0,797 | 0,714 | — |
+| `study_design` | 0,780 | 0,750 | — |
+| `effect_direction` | 0,746 | 0,514 | — |
+| `claim_supported_by_source` | 0,644 | **0,039** | — |
+| `age_range_explicit` | 0,966 | 0,489 | — |
+| `evidence_strength` (Legacy) | **0,407** | **0,070** | — |
+
+n = 59, ein Umschlag bewegt 0,017 — über der Schwelle, ab der eine Zahl
+ein Gate tragen könnte.
+
+### Die neue Skala ist reproduzierbarer als die alte — aber der Vergleich ist schief
+
+`evidence_certainty` erreicht κ = 0,50, die abgelöste `evidence_strength`
+κ = 0,07 — praktisch Zufallsniveau. Das ist die Frage, für die der
+Katalog-Bogen gebaut wurde, und die Richtung ist eindeutig.
+
+**Der Faktor ist trotzdem überzeichnet.** Die 59 Certainty-Urteile stammen
+von einer Bewerterin, in einer Sitzung, nach einem Regelwerk. Die alten
+`evidence_strength`-Werte sind über Monate in verschiedenen
+Review-Sitzungen entstanden. Ein Teil des Abstands misst „ein konsistenter
+Bewerter gegen viele", nicht „bessere Skala gegen schlechtere".
+
+### Der eigentliche Befund: `claim_supported_by_source` trägt nicht
+
+κ = 0,039 bei 21 Abweichungen — und sie sind **systematisch**. Bei
+Rahmenwerken und Policy-Berichten vergab die Zweitbewertung
+`partially_supported` (12×) oder `cannot_determine` (8×), wo die primäre
+`supported` sagte.
+
+Die beiden Lesarten sind beide mit dem Ankertext vereinbar:
+
+- „Paraphrasiert die Aussage korrekt, was die Quelle sagt?" → `supported`
+- „Lässt sich das am Vorliegenden nachprüfen?" → bei einem
+  Einzeiler-Abstract eher `cannot_determine`
+
+Das ist ein **Rubrikdefekt**, keine Bewertungsstreuung — die einzige Sorte
+Abweichung, die eine Änderung verlangt. Der Ankertext muss sagen, ob die
+Frage auf den *Inhalt* der Quelle zielt oder auf die *Prüfbarkeit am
+vorliegenden Auszug*.
+
+Zwei kleinere Muster derselben Art: 8× `not_applicable` → `positive` bei
+`effect_direction`, und 5× `descriptive` → `policy_report` bei
+`study_design` — dort steht der Publikationstyp statt des Designs, also
+genau die Verwechslung, gegen die die Trennung gebaut wurde.
+
+### Grenzen dieser Zahl
+
+- **Keine Kalibrierrunde vorab.** Der Durchgang ging direkt über alle 59.
+  Die Abweichungen vermischen deshalb „Rubrik war unklar" mit „echte
+  Urteilsdifferenz"; sie lassen sich nur nachträglich mit `--explain`
+  sortieren, was für diese Messung folgenlos ist (sie ist bereits gebucht),
+  für die nächste aber nicht mehr geht.
+- **Teilweise nicht streng blind.** Dieselbe Person hatte im Verlauf der
+  Arbeit PR-Beschreibungen gelesen, die für rund neun der 59 Claims die
+  vergebene Stufe nannten. Nachgerechnet: diese neun stimmen zu **5/9**
+  überein, die übrigen 50 zu **41/50 = 0,820**. Die Einschränkung hat das
+  Ergebnis also nicht nach oben verzerrt.
+- **Ein formal ungültiger Wert** blieb stehen: `age_range_explicit: "4"`
+  statt einer Spanne (die Quelle nennt „average age of 4 years", einen
+  Mittelwert). Er wurde **nicht** korrigiert — eine Bewertung
+  nachträglich zu ändern wäre genau das Wegverhandeln, das die Messung
+  wertlos macht. Er zählt als Abweichung und gehört in die Aussprache.
+- **Gemessen sind die Katalog-Labels, nicht die des Eval-Sets.** Die
+  CI-Schwellen messen gegen `eval/claim_prefill_labeled.json`. Diese Zahl
+  darf **nicht** auf sie übertragen werden: das dortige Gold stammt aus
+  einer konsistenten Kuratierung, die Katalog-Legacy-Werte nicht. Wer die
+  Gates einordnen will, braucht den Prefill-Bogen — der liegt ausgefüllt
+  bereit.
+
 ## Was mit dem Ergebnis geschieht
 
 Sei **C** die gemessene Label-Übereinstimmung für ein Feld (die Decke) und

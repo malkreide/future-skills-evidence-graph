@@ -14,6 +14,41 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Erste gemessene Inter-Rater-Baseline** (2026-08-14). Ein blinder
+  Zweitdurchgang über alle 59 begutachteten Katalog-Claims liegt als
+  `eval/catalog_second_rater_completed.json` vor. `evidence_certainty`
+  erreicht κ = 0,50 (gewichtet 0,65), die abgelöste `evidence_strength`
+  κ = 0,07 — praktisch Zufallsniveau. Die Richtung ist eindeutig, der
+  Faktor überzeichnet: die Certainty-Urteile stammen von einer Person in
+  einer Sitzung, die Legacy-Werte aus Monaten verschiedener
+  Review-Sitzungen.
+  Der Befund, der Arbeit verlangt: **`claim_supported_by_source` liegt bei
+  κ = 0,039.** 21 Abweichungen, systematisch — bei Rahmenwerken und
+  Policy-Berichten steht `partially_supported`/`cannot_determine` gegen
+  `supported`. Beide Lesarten sind mit dem Ankertext vereinbar („stützt
+  die Quelle das inhaltlich?" gegen „ist das am vorliegenden Auszug
+  prüfbar?"), also ein Rubrikdefekt und keine Streuung.
+  Festgehalten sind auch die Grenzen: keine Kalibrierrunde vorab, ein
+  Teil der Fälle war durch gelesene PR-Beschreibungen nicht streng blind
+  (nachgerechnet: diese stimmen *seltener* überein, 5/9 gegen 41/50 — die
+  Zahl ist nicht nach oben verzerrt), und ein formal ungültiger Wert
+  blieb bewusst unkorrigiert, weil eine Bewertung nachträglich zu ändern
+  die Messung wertlos machte.
+
+### Fixed
+
+- **Der Standardbericht meldete weiterhin „keine Baseline vorhanden",
+  nachdem eine gemessen und eingecheckt war.** `make agreement` las nur
+  den Relevanz-Überlapp und, was per `--second-rater` übergeben wurde.
+  Ausgefüllte Bögen mit dem Namensmuster `*_second_rater_completed.json`
+  werden jetzt automatisch eingesammelt — leere Vorlagen ausdrücklich
+  nicht, die erzeugt `make agreement-worksheet` neu.
+- **`protocol.notes` statt Vorbehalt im Bewerternamen.** Die
+  Zusammenfassung druckt den Namen einmal pro Feld; ein Absatz darin
+  begräbt die Zahlen, die er einordnen soll.
+
+### Added
+
 - **Kalibrierrunde: `--only` und `--explain`.** Vor dem gemessenen
   Durchgang steht eine Runde, in der beide Seiten zehn Fälle bewerten und
   die Abweichungen besprechen. Dafür fehlten zwei Dinge. `--only` schneidet

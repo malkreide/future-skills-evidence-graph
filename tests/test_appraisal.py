@@ -1033,6 +1033,60 @@ class CalibrationTests(unittest.TestCase):
         self.assertIn("2 pair(s) excluded, holding null, unverifiable", report)
 
 
+class CompletedPassTests(unittest.TestCase):
+    """The measured baseline stored in eval/."""
+
+    def test_the_default_report_picks_up_completed_passes(self) -> None:
+        # Without this the summary kept printing "no comparison is usable
+        # as a baseline yet" after a baseline had been measured and
+        # committed -- the one sentence somebody would quote, saying the
+        # opposite of the truth.
+        paths = ea.completed_passes()
+        self.assertTrue(paths, "expected a completed second-rater pass in eval/")
+        for path in paths:
+            with self.subTest(path.name):
+                self.assertTrue(path.name.endswith("_second_rater_completed.json"))
+
+    def test_blank_templates_are_never_swept_up(self) -> None:
+        names = {path.name for path in ea.completed_passes()}
+        self.assertNotIn("catalog_second_rater.json", names)
+        self.assertNotIn("claim_prefill_second_rater.json", names)
+
+    def test_the_stored_pass_declares_its_rater_and_date(self) -> None:
+        for path in ea.completed_passes():
+            protocol = json.loads(path.read_text(encoding="utf-8"))["protocol"]
+            with self.subTest(path.name):
+                self.assertTrue(protocol.get("rater"), "rater must be named")
+                self.assertTrue(protocol.get("labeled_at"), "labeled_at must be set")
+
+    def test_a_caveat_lives_in_notes_not_in_the_rater_name(self) -> None:
+        # The summary prints the rater once per field; a paragraph there
+        # buries the numbers it is meant to qualify.
+        import tempfile
+
+        worksheet = ea.build_worksheet("catalog")
+        primary = ea.primary_labels("catalog")
+        for item in worksheet["labels"]:
+            for field in worksheet["protocol"]["rated_fields"]:
+                item[field] = primary[item["key"]].get(field)
+        worksheet["protocol"].update(
+            rater="kurz", labeled_at="2026-08-14", blind=True, notes="ein langer Vorbehalt"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            comparison = ea.second_rater_comparisons(path)[0]
+        self.assertIn("second rater kurz,", comparison.provenance)
+        self.assertIn("note: ein langer Vorbehalt", comparison.provenance)
+
+    def test_the_measured_pass_scores_as_a_baseline(self) -> None:
+        for path in ea.completed_passes():
+            for comparison in ea.second_rater_comparisons(path):
+                with self.subTest(path=path.name, field=comparison.field):
+                    self.assertGreaterEqual(comparison.n, ea.MIN_N_FOR_GATE)
+                    self.assertTrue(comparison.gate_ready())
+
+
 class WorksheetTests(unittest.TestCase):
     def setUp(self) -> None:
         self.worksheet = ea.build_worksheet("claim_prefill")
