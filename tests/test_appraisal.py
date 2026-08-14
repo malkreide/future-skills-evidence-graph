@@ -933,6 +933,98 @@ class NarrowedWorksheetTests(unittest.TestCase):
         )
 
 
+class SupportAnchorTests(unittest.TestCase):
+    """The anchor sharpened after it measured kappa 0.039."""
+
+    def test_the_rubric_is_read_from_the_document(self) -> None:
+        # Four places describe this field -- the module, the worksheet
+        # rubric, the extractor prompt and the methodology document. Only
+        # one may define it, or they drift.
+        rubric = ea.support_rubric()
+        self.assertEqual(set(rubric), set(ap.CLAIM_SUPPORT_VALUES))
+        doc = ea.ANCHOR_DOC.read_text(encoding="utf-8")
+        for value, definition in rubric.items():
+            with self.subTest(value):
+                self.assertGreater(len(definition), 30)
+                self.assertIn(definition, doc)
+        # And the worksheet must actually carry THOSE definitions. Checking
+        # support_rubric() alone would pass even if build_worksheet wrote
+        # its own copy, which is the drift this is meant to prevent.
+        block = dict(ea.build_worksheet("catalog")["rubrik_claim_supported_by_source"])
+        block.pop("_hinweis", None)
+        self.assertEqual(block, rubric)
+
+    def test_brevity_is_ruled_out_as_a_reason(self) -> None:
+        # The exact wording that produced 21 systematic disagreements:
+        # cannot_determine used to mean "not decidable from what is here",
+        # which made a one-line abstract a legitimate reason.
+        rubric = ea.support_rubric()
+        self.assertNotIn("Aus dem Vorliegenden nicht entscheidbar", rubric["cannot_determine"])
+        self.assertIn("gar nicht", rubric["cannot_determine"])
+        worksheet = ea.build_worksheet("catalog")
+        hint = worksheet["rubrik_claim_supported_by_source"]["_hinweis"]
+        self.assertIn("KUERZE IST KEIN GRUND", hint)
+        # And it points at the fields that DO answer that question, so the
+        # concern is not charged twice.
+        self.assertIn("source_verified", hint)
+        self.assertIn("directness", hint)
+
+    def test_the_prompt_carries_the_same_sharpening(self) -> None:
+        prompt = ec.appraisal_prompt("ABSTRACT", "CLAIM")
+        self.assertIn("BREVITY IS NOT A REASON", prompt)
+        self.assertIn("IN SUBSTANCE", prompt)
+        self.assertEqual(ec.APPRAISAL_PROMPT_VERSION, "claim-appraisal-v2")
+
+    def test_the_version_was_bumped_and_stamped(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        self.assertEqual(ap.APPRAISAL_VERSION, "1.2.0")
+        for claim in load_records("claims"):
+            if claim.get("appraisal"):
+                with self.subTest(claim["id"]):
+                    self.assertEqual(
+                        claim["appraisal"]["appraisal_method"], ap.APPRAISAL_VERSION
+                    )
+
+    def test_a_measured_pass_records_the_rules_it_measured(self) -> None:
+        # kappa 0.039 describes the anchor as it read in 1.1.0. Without
+        # this stamp the number would later be read as describing the
+        # sharpened one.
+        for path in ea.completed_passes():
+            protocol = json.loads(path.read_text(encoding="utf-8"))["protocol"]
+            with self.subTest(path.name):
+                self.assertTrue(protocol.get("appraisal_method_at_rating"))
+        worksheet = ea.build_worksheet("catalog")
+        self.assertEqual(
+            worksheet["protocol"]["appraisal_method_at_rating"], ap.APPRAISAL_VERSION
+        )
+
+    def test_the_rules_version_reaches_the_report(self) -> None:
+        for path in ea.completed_passes():
+            for comparison in ea.second_rater_comparisons(path):
+                with self.subTest(path.name, field=comparison.field):
+                    self.assertIn("appraisal rules", comparison.provenance)
+
+    def test_no_stored_judgement_changed(self) -> None:
+        # The sharpening changed which of two readings the anchor
+        # licenses, not the derivation. Every recorded value must still
+        # validate and still hold the guardrails.
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        supported = 0
+        for claim in load_records("claims"):
+            block = claim.get("appraisal")
+            if not block:
+                continue
+            with self.subTest(claim["id"]):
+                self.assertEqual(ap.validate_appraisal(block), [])
+                self.assertEqual(ap.certainty_conflicts(block), [])
+            supported += block["claim_supported_by_source"] == "supported"
+        self.assertEqual(supported, 57)
+
+
 class CalibrationTests(unittest.TestCase):
     """A calibration round must not be mistakable for a baseline."""
 

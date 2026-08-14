@@ -539,6 +539,14 @@ def second_rater_comparisons(path: Path) -> list[Comparison]:
                 provenance=(
                     f"second rater {rater}, blind={blind}, "
                     f"labeled_at={protocol.get('labeled_at') or '<unset>'}"
+                    # Which ruleset the pass actually measured. Without it a
+                    # kappa recorded against an anchor that has since been
+                    # sharpened reads as if it described the current one.
+                    + (
+                        f", appraisal rules {protocol['appraisal_method_at_rating']}"
+                        if protocol.get("appraisal_method_at_rating")
+                        else ""
+                    )
                     # A caveat about the pass belongs in the record, but
                     # not inside the rater's name -- the summary prints
                     # that per field, and a paragraph there buries the
@@ -593,6 +601,45 @@ ANCHOR_DOC = EVAL_DIR.parent / "docs" / "evidenz-bewertung-anker.md"
 
 
 ANCHOR_SECTION = "## Anker: `evidence_certainty`"
+SUPPORT_ANCHOR_SECTION = "## Anker: `claim_supported_by_source`"
+
+
+def _anchor_table(section: str, expected: set[str]) -> dict[str, str]:
+    """Read one two-column anchor table out of the methodology document.
+
+    Scoped to a section because the document carries several such tables;
+    a document-wide scan would pick up whichever came first.
+    """
+    text = ANCHOR_DOC.read_text(encoding="utf-8")
+    start = text.find(section)
+    if start < 0:
+        raise SystemExit(f"{ANCHOR_DOC}: section {section!r} not found")
+    end = text.find("\n## ", start + len(section))
+    body = text[start : end if end > 0 else len(text)]
+    rows = re.findall(r"^\|\s*`([a-z_]+)`\s*\|\s*(.+?)\s*\|\s*$", body, re.M)
+    rubric = {level: definition for level, definition in rows}
+    if set(rubric) != expected:
+        raise SystemExit(
+            f"{ANCHOR_DOC}: the {section} table defines {sorted(rubric)}, but the "
+            f"vocabulary is {sorted(expected)}. The worksheet must not ship with a "
+            "rubric that omits a permitted value."
+        )
+    return rubric
+
+
+def support_rubric() -> dict[str, str]:
+    """The claim_supported_by_source anchors, read out of the document.
+
+    Sharpened after the first measured pass put this field at kappa 0.039.
+    The old wording let `cannot_determine` mean "the excerpt is too short
+    to tell", which is a question two other fields already answer --
+    source_verified for traceability, directness for PICO fit. Reading the
+    definitions from the document rather than restating them here is what
+    keeps the four places that describe this field from drifting apart.
+    """
+    return _anchor_table(
+        SUPPORT_ANCHOR_SECTION, set(appraisal.CLAIM_SUPPORT_VALUES)
+    )
 
 
 def anchor_rubric() -> dict[str, str]:
@@ -610,21 +657,7 @@ def anchor_rubric() -> dict[str, str]:
     Raises if the table cannot be found, because shipping a worksheet
     with an empty rubric is worse than not shipping one.
     """
-    text = ANCHOR_DOC.read_text(encoding="utf-8")
-    start = text.find(ANCHOR_SECTION)
-    if start < 0:
-        raise SystemExit(f"{ANCHOR_DOC}: section {ANCHOR_SECTION!r} not found")
-    end = text.find("\n## ", start + len(ANCHOR_SECTION))
-    section = text[start : end if end > 0 else len(text)]
-    rows = re.findall(r"^\|\s*`([a-z_]+)`\s*\|\s*(.+?)\s*\|\s*$", section, re.M)
-    rubric = {level: definition for level, definition in rows}
-    if set(rubric) != set(appraisal.CERTAINTY_VALUES):
-        raise SystemExit(
-            f"{ANCHOR_DOC}: the {ANCHOR_SECTION} table defines {sorted(rubric)}, "
-            f"but the vocabulary is {sorted(appraisal.CERTAINTY_VALUES)}. The "
-            "worksheet must not ship with a rubric that omits a permitted value."
-        )
-    return rubric
+    return _anchor_table(ANCHOR_SECTION, set(appraisal.CERTAINTY_VALUES))
 
 
 def resolve_fields(set_name: str, requested: list[str] | None) -> list[str]:
@@ -734,6 +767,10 @@ def build_worksheet(
             # qualifies the numbers without being the rater's identity.
             "notes": "",
             "blind": True,
+            # Stamped when the sheet is generated: the rules a rater will
+            # apply are the rules in force now, and a later sharpening
+            # must not silently reinterpret what they measured.
+            "appraisal_method_at_rating": appraisal.APPRAISAL_VERSION,
             # A narrowed item set is a calibration round, not a baseline:
             # its cases get discussed afterwards, which ends their
             # independence. Recorded so a scored calibration sheet cannot
@@ -810,18 +847,15 @@ def _prefill_rubric() -> dict[str, Any]:
             "Steht im Abstract zu wenig, ist null die richtige Antwort."
         ),
         "rubrik_claim_supported_by_source": {
-            "supported": "Die Quelle sagt, was die Aussage behauptet.",
-            "partially_supported": (
-                "Die Aussage geht ueber die Quelle hinaus -- kausal staerker "
-                "formuliert als das Design hergibt, ueber die Stichprobe hinaus "
-                "verallgemeinert, oder Selbstauskunft als objektive Kompetenz "
-                "ausgegeben."
-            ),
-            "not_supported": "Die Quelle traegt die Aussage nicht.",
-            "cannot_determine": "Aus dem Vorliegenden nicht entscheidbar.",
+            **support_rubric(),
             "_hinweis": (
-                "Hier wird NUR geprueft, ob die Quelle die Aussage traegt -- "
-                "unabhaengig davon, wie gut die Quelle ist."
+                "Die Frage ist INHALTLICH: behauptet die Quelle, was die Aussage "
+                "behauptet? Nicht: ist der Auszug ausfuehrlich genug, um es zu "
+                "beweisen. KUERZE IST KEIN GRUND fuer cannot_determine -- ein "
+                "Einzeiler, der die Aussage inhaltlich deckt, ergibt supported. "
+                "Ob die Quelle auffindbar ist, misst source_verified; ob "
+                "Population und Outcome zur Aussage passen, misst directness. "
+                "Beides hier noch einmal zu bewerten, zaehlt es doppelt."
             ),
         },
         "rubrik_claim_type": (

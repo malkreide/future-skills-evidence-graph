@@ -12,6 +12,34 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **`claim_supported_by_source` geschärft (`APPRAISAL_VERSION` 1.2.0).**
+  Der erste gemessene Zweitdurchgang zeigte das Feld bei **κ = 0,039** —
+  Zufallsniveau, bei 21 systematischen Abweichungen. Ursache war der
+  Ankertext selbst: `cannot_determine` hiess dort „aus dem Vorliegenden
+  nicht entscheidbar", was einen knappen Auszug zu einem legitimen Grund
+  machte. Der Anker sagt jetzt, dass die Frage **inhaltlich** ist —
+  behauptet die Quelle, was die Aussage behauptet? — und schliesst Kürze
+  ausdrücklich aus. Begründung: Die Prüfbarkeit des Auszugs beantworten
+  bereits `source_verified` (Auffindbarkeit) und `directness` (Passung von
+  Population und Outcome); sie hier ein drittes Mal zu bewerten zählt sie
+  doppelt und nimmt dem Feld seine eigene Aussage. Die Festlegung ist
+  redaktionell und hätte auch andersherum ausfallen können.
+  **Kein zulässiger Wert und keine gespeicherte Stufe ändert sich** (57
+  `supported`, 2 `partially_supported` wie zuvor); 59 Claims und 50
+  Eval-Fälle sind auf 1.2.0 neu gestempelt. Prompt `claim-appraisal-v2`
+  trägt dieselbe Schärfung.
+- **Der Anker steht jetzt nur noch an einer Stelle.** Vier Orte
+  beschrieben das Feld — Modul, Bogen-Rubrik, Extraktor-Prompt,
+  Methodendokument. Die Rubrik liest die Definitionen jetzt wie schon die
+  Certainty-Anker aus `docs/evidenz-bewertung-anker.md`, statt sie zu
+  wiederholen.
+- **Gemessene Durchgänge halten fest, welche Regelversion sie gemessen
+  haben** (`protocol.appraisal_method_at_rating`, ausgewiesen im Bericht).
+  Ohne das läse sich die κ = 0,039 nach der Schärfung als Aussage über den
+  neuen Anker — sie beschreibt den alten.
+
 ### Added
 
 - **Erste gemessene Inter-Rater-Baseline** (2026-08-14). Ein blinder

@@ -14,7 +14,8 @@
       "age_range_explicit",
       "evidence_strength"
     ],
-    "notes": "Von Hand bewertet, ohne Zugriff auf data/claims/ waehrend der Bewertung. EINSCHRAENKUNG: dieselbe Person hatte im Verlauf der Arbeit PR-Beschreibungen gelesen, die fuer rund neun der 59 Claims die vergebene Stufe nannten (PR #213); fuer diese Faelle ist der Durchgang nicht streng blind. Nachgerechnet stimmen genau diese neun SELTENER ueberein (5/9) als die uebrigen 50 (41/50 = 0,820) -- die Zahl ist also nicht nach oben verzerrt. Ohne vorherige Kalibrierrunde."
+    "notes": "Von Hand bewertet, ohne Zugriff auf data/claims/ waehrend der Bewertung. EINSCHRAENKUNG: dieselbe Person hatte im Verlauf der Arbeit PR-Beschreibungen gelesen, die fuer rund neun der 59 Claims die vergebene Stufe nannten (PR #213); fuer diese Faelle ist der Durchgang nicht streng blind. Nachgerechnet stimmen genau diese neun SELTENER ueberein (5/9) als die uebrigen 50 (41/50 = 0,820) -- die Zahl ist also nicht nach oben verzerrt. Ohne vorherige Kalibrierrunde. Gemessen wurden die Regeln der Version 1.1.0; der Anker fuer claim_supported_by_source wurde daraufhin auf 1.2.0 geschaerft. Die hier gemessene Zahl beschreibt den ALTEN Anker.",
+    "appraisal_method_at_rating": "1.1.0"
   },
   "rubrik_evidence_certainty": {
     "strong": "Der konkrete Claim wird durch hochwertige, direkte und ausreichend präzise Evidenz gestützt: mehrere konsistente hochwertige Studien oder eine hochwertige Synthese, angemessenes Design für die behauptete Kausalität, dokumentiert geringes Bias-Risiko, ausreichende Präzision, und Population/Intervention/Vergleich/Outcome passen direkt zum Claim.",

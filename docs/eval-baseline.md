@@ -426,9 +426,19 @@ Die beiden Lesarten sind beide mit dem Ankertext vereinbar:
   Einzeiler-Abstract eher `cannot_determine`
 
 Das ist ein **Rubrikdefekt**, keine Bewertungsstreuung — die einzige Sorte
-Abweichung, die eine Änderung verlangt. Der Ankertext muss sagen, ob die
-Frage auf den *Inhalt* der Quelle zielt oder auf die *Prüfbarkeit am
-vorliegenden Auszug*.
+Abweichung, die eine Änderung verlangt.
+
+**Behoben in `APPRAISAL_VERSION` 1.2.0.** Der Anker sagt jetzt, dass die
+Frage auf den *Inhalt* zielt, und schliesst Kürze als Grund für
+`cannot_determine` ausdrücklich aus — die Prüfbarkeit des Auszugs
+beantworten `source_verified` und `directness`, und sie hier noch einmal
+zu bewerten zählt sie doppelt. Kein gespeicherter Wert ändert sich.
+
+**Die Zahlen oben messen die Regeln der Version 1.1.0.** Der Datensatz
+hält das in `protocol.appraisal_method_at_rating` fest, und der Bericht
+schreibt es zu jeder Vergleichszeile — sonst läse sich κ = 0,039 später
+als Aussage über den geschärften Anker. Ob die Schärfung wirkt, zeigt
+erst ein neuer Durchgang.
 
 Zwei kleinere Muster derselben Art: 8× `not_applicable` → `positive` bei
 `effect_direction`, und 5× `descriptive` → `policy_report` bei
