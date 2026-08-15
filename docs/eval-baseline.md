@@ -115,13 +115,18 @@ gleiche offene Frage.
 `scripts/eval_agreement.py` erzeugt einen **blinden Bewertungsbogen** und
 wertet ihn aus.
 
-**Zwei Bögen liegen leer im Repository und warten auf einen Durchgang.**
+**Drei Bögen liegen leer im Repository und warten auf einen Durchgang.**
 Welcher der richtige ist, hängt an der Frage:
 
 | Bogen | Fälle | Beantwortet |
 | --- | --- | --- |
+| [`eval/claim_prefill_calibration.json`](../eval/claim_prefill_calibration.json) | 10 Eval-Fälle, je eine Regel | **Zuerst ausfüllen.** Verstehen zwei Menschen die Rubrik gleich? Zählt nie als Baseline |
 | [`eval/catalog_second_rater.json`](../eval/catalog_second_rater.json) | 59 begutachtete Katalog-Claims | Ist die Evidenzbewertung **im Dashboard** reproduzierbar? |
 | [`eval/claim_prefill_second_rater.json`](../eval/claim_prefill_second_rater.json) | 50 synthetische Eval-Fälle | Lassen sich die **CI-Schwellen** lesen? |
+
+Die Reihenfolge ist nicht beliebig: Der Kalibrier-Bogen kommt vor jedem
+Messdurchgang. Sein Fehlen ist die erste Einschränkung, die unter der
+bisher einzigen gemessenen Baseline steht.
 
 Der Katalog-Bogen misst die Urteile, die live die Skill-Scores treiben,
 und ist deshalb der dringlichere. Er bewertet zusätzlich das alte
@@ -328,30 +333,36 @@ geht kein Katalogfall für die Messung verloren, und die Kalibrierfälle
 decken die Design-Leiter breiter ab, als der Katalog es könnte (dort
 behaupten nur 14 von 59 Aussagen überhaupt eine Wirkung).
 
-**Schritt 1 — Bogen erzeugen.** Diese zehn Fälle stellen je eine andere
-Regel auf die Probe; zusammen decken sie alle vier Certainty-Stufen, neun
+**Schritt 1 — Bogen holen.** Er liegt fertig als
+**[`eval/claim_prefill_calibration.json`](../eval/claim_prefill_calibration.json)**
+(erzeugt unter 1.3.0). Diese zehn Fälle stellen je eine andere Regel auf
+die Probe; zusammen decken sie alle vier Certainty-Stufen, neun
 Studiendesigns und drei `claim_type`-Werte ab:
 
 ```powershell
-python scripts/eval_agreement.py --worksheet claim_prefill --out kalibrierung.json --only `
-  prefill-handwriting-tablet,prefill-worked-examples-math,prefill-phonics-reception,`
-  prefill-self-regulation-elementary,prefill-financial-literacy-secondary,`
-  prefill-adhd-selfmonitor,prefill-physics-simulations,prefill-adult-mooc,`
-  prefill-policy-ai-ethics,prefill-collaboration-middle
+python scripts/eval_agreement.py --worksheet claim_prefill --only calibration `
+  --out eval/claim_prefill_calibration.json
 ```
+
+Die Fallliste steht **nur hier**, in der Tabelle unten. `--only
+calibration` liest sie aus diesem Abschnitt zurück, damit Anleitung,
+Makefile und abgelegter Bogen nicht drei verschiedene Zehnersets nennen —
+und damit dieselbe Liste, die als verbrannt gezählt wird, auch die ist,
+die im Bogen landet. Ein hier ausgetauschter Fall erreicht den Bogen ohne
+zweite Bearbeitung; ein vergessener Neuaufbau fällt im Test auf.
 
 | Fall | prüft |
 | --- | --- |
-| `handwriting-tablet` | Ein Nullbefund senkt die Sicherheit **nicht**. |
-| `worked-examples-math` | Ein gutes RCT bleibt `moderate` — ohne Replikation kein `strong`. |
-| `phonics-reception` | 28 Trials, konsistent — und trotzdem nicht `strong`, weil keine Bias-Prüfung berichtet ist. |
-| `self-regulation-elementary` | Hohe Heterogenität wertet eine Meta-Analyse ab. |
-| `financial-literacy-secondary` | Pre-Post ohne Kontrollgruppe. |
-| `adhd-selfmonitor` | Single-Case. |
-| `physics-simulations` | „11th grade" ergibt **keine** Altersspanne. |
-| `adult-mooc` | `association` statt `causal_effect`, und „aged 22 to 55" ist eine echte Altersangabe. |
-| `policy-ai-ethics` | Normative Aussage → Eignungspfad statt Design-Leiter. |
-| `collaboration-middle` | Design nicht berichtet → `null` ist die richtige Antwort. |
+| `prefill-handwriting-tablet` | Ein Nullbefund senkt die Sicherheit **nicht**. |
+| `prefill-worked-examples-math` | Ein gutes RCT bleibt `moderate` — ohne Replikation kein `strong`. |
+| `prefill-phonics-reception` | 28 Trials, konsistent — und trotzdem nicht `strong`, weil keine Bias-Prüfung berichtet ist. |
+| `prefill-self-regulation-elementary` | Hohe Heterogenität wertet eine Meta-Analyse ab. |
+| `prefill-financial-literacy-secondary` | Pre-Post ohne Kontrollgruppe. |
+| `prefill-adhd-selfmonitor` | Single-Case. |
+| `prefill-physics-simulations` | „11th grade" ergibt **keine** Altersspanne. |
+| `prefill-adult-mooc` | `association` statt `causal_effect`, und „aged 22 to 55" ist eine echte Altersangabe. |
+| `prefill-policy-ai-ethics` | Normative Aussage → Eignungspfad statt Design-Leiter. |
+| `prefill-collaboration-middle` | Design nicht berichtet → `null` ist die richtige Antwort. |
 
 Der Bogen trägt `protocol.calibration_subset: true`. Die Auswertung
 weigert sich damit, ihn als Baseline zu zählen, egal wie gut die

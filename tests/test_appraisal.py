@@ -945,11 +945,20 @@ class StoredWorksheetFreshnessTests(unittest.TestCase):
     """
 
     def _stored(self):
-        return sorted(
-            path
-            for path in (ea.EVAL_DIR).glob("*_second_rater.json")
-            if not path.name.endswith("_completed.json")
-        )
+        # Found by shape, not by filename. A glob for *_second_rater.json
+        # missed the calibration sheet the moment one was checked in --
+        # and a stale calibration sheet is the same three wasted hours,
+        # one round earlier.
+        found = []
+        for path in sorted(ea.EVAL_DIR.glob("*.json")):
+            document = json.loads(path.read_text(encoding="utf-8"))
+            if not isinstance(document, dict):
+                continue
+            protocol = document.get("protocol")
+            if isinstance(protocol, dict) and protocol.get("source_set"):
+                if not protocol.get("rater"):
+                    found.append(path)
+        return found
 
     def test_every_stored_blank_sheet_matches_the_current_rules(self) -> None:
         stored = self._stored()
@@ -970,6 +979,51 @@ class StoredWorksheetFreshnessTests(unittest.TestCase):
                         fresh[key],
                         f"{path.name}: {key} differs from the current rubric",
                     )
+
+    def test_the_calibration_sheet_holds_what_the_guide_picked(self) -> None:
+        # Three places could name the ten cases -- the guide, the Makefile
+        # and the stored sheet. Only the guide may, because it is the one
+        # that also writes down WHY each case is in there.
+        stored = json.loads(
+            (ROOT / "eval" / "claim_prefill_calibration.json").read_text("utf-8")
+        )
+        self.assertTrue(stored["protocol"]["calibration_subset"])
+        # Membership, not order: the worksheet keeps the source set's
+        # order, the guide keeps the order it explains the cases in.
+        self.assertEqual(
+            sorted(item["key"] for item in stored["labels"]),
+            sorted(ea.calibration_cases()),
+        )
+        self.assertEqual(len(stored["labels"]), 10)
+        # And it must hold no answers, like any blank sheet.
+        for item in stored["labels"]:
+            for field in stored["protocol"]["rated_fields"]:
+                with self.subTest(item["key"], field=field):
+                    self.assertIsNone(item[field])
+
+    def test_the_guide_is_the_only_source_of_the_ten(self) -> None:
+        # Derived, so a case swapped in the guide reaches the sheet
+        # without anyone editing a second list.
+        import tempfile
+        from pathlib import Path as _Path
+
+        original = ea.BASELINE_DOC
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                doc = _Path(tmp) / "baseline.md"
+                doc.write_text(
+                    ea.CALIBRATION_SECTION
+                    + "\n\n--only prefill-adult-mooc,prefill-vr-empathy\n\n### Ende\n"
+                    "prefill-phonics-reception steht hinter dem Abschnitt\n",
+                    encoding="utf-8",
+                )
+                ea.BASELINE_DOC = doc
+                self.assertEqual(
+                    ea.calibration_cases(),
+                    ["prefill-adult-mooc", "prefill-vr-empathy"],
+                )
+        finally:
+            ea.BASELINE_DOC = original
 
     def test_completed_passes_are_not_required_to_be_current(self) -> None:
         # The opposite rule for a measured pass: it recorded the rules it
