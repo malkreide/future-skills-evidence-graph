@@ -38,6 +38,33 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Changed
 
+- **`effect_direction` und `study_design` geschärft (`APPRAISAL_VERSION`
+  1.3.0).** Die zwei kleineren Muster derselben Messung, beide mit einer
+  Ursache im Regelwerk statt in den Personen.
+  `effect_direction` (8× `not_applicable` → `positive`): der Anker sagt
+  jetzt, dass die Richtung eines **gemessenen** Effekts gemeint ist, nicht
+  der Tonfall des Befunds — „positive attitudes toward the tool"
+  beschreibt Einstellungen und misst keine Wirkung. Ausdrücklich benannt
+  ist auch die Gegenrichtung, weil sonst der Spiegelbildfehler entstanden
+  wäre: berichtet die Quelle Ergebnisse, ist eine Richtung anzugeben, auch
+  wenn die Aussage beschreibend klingt. Beim Nachlesen der acht Fälle
+  hatte die primäre Bewertung 6× recht, die Zweitbewertung 2× — **diese
+  zwei sind in den Daten korrigiert** (`not_applicable` → `positive`). Das
+  ist folgenlos für jede Zahl: `effect_direction` erreicht die Herleitung
+  nicht, kein `evidence_certainty` und kein Skill-Score bewegt sich
+  dadurch (als Test hinterlegt; `score_evidence.py --write` meldet
+  „Updated 0 skill score(s)"). Die gemessene Baseline bleibt stehen wie
+  gemessen.
+  `study_design` (5× `descriptive` → `policy_report`): Ursache ist eine
+  Namenskollision im Vokabular — `policy_report`, `systematic_review` und
+  `working_paper` stehen in `source_type` **und** in `study_design` und
+  bedeuten dort Verschiedenes. Die Rubrik warnt jetzt namentlich vor genau
+  diesen drei (Konstante `appraisal.OVERLAPPING_VOCABULARY`, gegen die
+  echten Quelldaten geprüft, damit sie nicht veraltet) und sagt, was
+  `policy_report` als *Design* heisst: das Dokument berichtet keine eigene
+  Methode. Hier ändert sich kein gespeicherter Wert. Prompt
+  `claim-appraisal-v3` trägt beide Schärfungen; beide Bögen sind auf
+  1.3.0 neu erzeugt.
 - **`claim_supported_by_source` geschärft (`APPRAISAL_VERSION` 1.2.0).**
   Der erste gemessene Zweitdurchgang zeigte das Feld bei **κ = 0,039** —
   Zufallsniveau, bei 21 systematischen Abweichungen. Ursache war der

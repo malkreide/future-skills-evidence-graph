@@ -112,6 +112,15 @@ ORDINAL_SCALES: dict[str, tuple[str, ...]] = {
     "evidence_certainty": appraisal.ORDERED_CERTAINTY,
 }
 
+# Values that mean different things in source_type and study_design. The
+# first measured pass produced five disagreements from exactly this: a
+# rater who sees source_type 'policy_report' reaches for the identically
+# named design. The overlap is a flaw in the vocabulary, not in the
+# judgement, so the worksheet warns about it by name.
+OVERLAPPING_VOCABULARY = frozenset(
+    {"policy_report", "systematic_review", "working_paper"}
+)
+
 # Values that are legitimate ratings but sit off their field's ordinal
 # scale. `unverifiable` is the case that matters: it says the source could
 # not be identified, which is a statement about traceability, not a rung
@@ -660,6 +669,8 @@ ANCHOR_DOC = EVAL_DIR.parent / "docs" / "evidenz-bewertung-anker.md"
 
 ANCHOR_SECTION = "## Anker: `evidence_certainty`"
 SUPPORT_ANCHOR_SECTION = "## Anker: `claim_supported_by_source`"
+DIRECTION_ANCHOR_SECTION = "## Anker: `effect_direction`"
+DESIGN_ANCHOR_SECTION = "## Anker: `study_design`"
 
 
 def _anchor_table(section: str, expected: set[str]) -> dict[str, str]:
@@ -697,6 +708,21 @@ def support_rubric() -> dict[str, str]:
     """
     return _anchor_table(
         SUPPORT_ANCHOR_SECTION, set(appraisal.CLAIM_SUPPORT_VALUES)
+    )
+
+
+def direction_rubric() -> dict[str, str]:
+    """The effect_direction anchors, read out of the document.
+
+    Sharpened after a measured pass showed eight disagreements of the
+    shape not_applicable-vs-positive. Six were positive-sounding
+    descriptions with no measured effect, where the anchor did not carry;
+    two genuinely reported outcomes, where the second rater was right.
+    Both halves are now named, because an anchor that only fixed the
+    first half would have created the mirror-image error.
+    """
+    return _anchor_table(
+        DIRECTION_ANCHOR_SECTION, set(appraisal.EFFECT_DIRECTION_VALUES)
     )
 
 
@@ -927,16 +953,26 @@ def _prefill_rubric() -> dict[str, Any]:
         "rubrik_study_design": (
             "Das im Text beschriebene Design, aus: "
             + ", ".join(appraisal.STUDY_DESIGN_VALUES)
-            + ". Nicht vom Publikationstyp ableiten. Nennt der Text kein Design, "
-            "'unknown' -- nicht das wahrscheinlichste raten."
+            + ". Nennt der Text kein Design, 'unknown' -- nicht das "
+            "wahrscheinlichste raten. ACHTUNG, haeufigste Falle: "
+            + ", ".join(sorted(OVERLAPPING_VOCABULARY))
+            + " stehen in BEIDEN Vokabularen und bedeuten Verschiedenes. Den Wert "
+            "aus source_type NIE abschreiben. 'policy_report' als study_design "
+            "heisst: das Dokument berichtet KEINE eigene Methode. Beschreibt ein "
+            "Policy-Bericht eine Literaturrecherche, eine Befragung und Fallstudien, "
+            "ist sein Design diese Methode."
         ),
-        "rubrik_effect_direction": (
-            "Richtung des berichteten Effekts, aus: "
-            + ", ".join(appraisal.EFFECT_DIRECTION_VALUES)
-            + ". 'null' heisst: kein Unterschied gefunden -- ein legitimes "
-            "Ergebnis, keine schwache Evidenz. 'not_applicable', wenn gar kein "
-            "Effekt gemessen wurde (z. B. reine Designbeschreibung)."
-        ),
+        "rubrik_effect_direction": {
+            **direction_rubric(),
+            "_hinweis": (
+                "Gemeint ist die Richtung eines GEMESSENEN Effekts, nicht der "
+                "Tonfall des Befunds. 'Findings indicate positive attitudes' "
+                "beschreibt Einstellungen und misst keine Wirkung -> "
+                "not_applicable. Ohne Vergleich oder Vorher-Nachher gibt es keine "
+                "Richtung. Umgekehrt: berichtet die Quelle Ergebnisse, ist eine "
+                "Richtung anzugeben, auch wenn die Aussage beschreibend klingt."
+            ),
+        },
         "rubrik_age_range_explicit": (
             "NUR ausdruecklich im Text genannte Alterswerte, als \"von-bis\" in "
             "Jahren (z. B. \"22-55\"). Eine Schulstufe ist KEINE Altersangabe: "

@@ -481,10 +481,46 @@ schreibt es zu jeder Vergleichszeile — sonst läse sich κ = 0,039 später
 als Aussage über den geschärften Anker. Ob die Schärfung wirkt, zeigt
 erst ein neuer Durchgang.
 
-Zwei kleinere Muster derselben Art: 8× `not_applicable` → `positive` bei
-`effect_direction`, und 5× `descriptive` → `policy_report` bei
-`study_design` — dort steht der Publikationstyp statt des Designs, also
-genau die Verwechslung, gegen die die Trennung gebaut wurde.
+### Zwei kleinere Muster derselben Art — behoben in 1.3.0
+
+**`effect_direction`, 8× `not_applicable` → `positive`.** Die acht Fälle
+zerfallen beim Nachlesen in zwei ungleiche Hälften, und nur eine davon
+ist ein Rubrikdefekt:
+
+- **6× hatte die primäre Bewertung recht.** Die Abstracts beschreiben
+  positiv klingende Befunde („positive attitudes toward the tool",
+  „growing interest"), messen aber keine Wirkung. Ohne Vergleich oder
+  Vorher-Nachher gibt es keine Richtung. Der Anker sagte das nicht
+  ausdrücklich, also las die Zweitbewertung den Tonfall.
+- **2× hatte die Zweitbewertung recht.** Diese Quellen berichten
+  tatsächlich Ergebnisse, nur ist die Aussage beschreibend formuliert.
+
+Der geschärfte Anker nennt **beide** Hälften. Hätte er nur die erste
+benannt, wäre der Spiegelbildfehler entstanden: alles Beschreibende auf
+`not_applicable` zu ziehen. Die zwei zweiten Fälle wurden in den Daten
+korrigiert
+(`claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a`
+und `claim-interactive-tools-for-middle-school-students-ai-literacy-abstract-s4`,
+beide `not_applicable` → `positive`). Das ist zulässig, weil
+`effect_direction` die Herleitung nicht erreicht: kein
+`evidence_certainty` und kein Skill-Score bewegt sich dadurch — beides
+ist als Test hinterlegt, und `score_evidence.py --write` meldet danach
+„Updated 0 skill score(s)". Die gemessene Baseline oben bleibt
+unverändert stehen; korrigiert ist der Katalog, nicht die Messung.
+
+**`study_design`, 5× `descriptive` → `policy_report`.** Ursache ist ein
+Fehler im Vokabular, nicht in der Bewertung: `policy_report`,
+`systematic_review` und `working_paper` stehen in **beiden** Vokabularen —
+`source_type` und `study_design` — und bedeuten dort Verschiedenes. Wer
+den Bogen von oben nach unten ausfüllt, schreibt den Wert ab. Der
+Rubriktext warnt jetzt namentlich vor genau diesen drei Werten (die
+Konstante `appraisal.OVERLAPPING_VOCABULARY`, gegen die tatsächlichen
+Quelldaten geprüft, damit die Warnung nicht veraltet) und sagt, was
+`policy_report` als *Design* heisst: das Dokument berichtet **keine
+eigene Methode**. Beschreibt ein Policy-Bericht eine Literaturrecherche,
+eine Befragung und Fallstudien, ist das sein Design. Hier ändert sich
+kein gespeicherter Wert — die fünf Fälle tragen bereits das Design, nicht
+den Publikationstyp.
 
 ### Grenzen dieser Zahl
 
