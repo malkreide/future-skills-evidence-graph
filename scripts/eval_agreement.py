@@ -313,10 +313,15 @@ class Comparison:
             return []
         exposed = [p for p, d in zip(self.pairs, self.documented) if d]
         clean = [p for p, d in zip(self.pairs, self.documented) if not d]
+        docs = ", ".join(f"docs/{doc.name}" for doc in EXPOSURE_DOCS)
         lines = [
             f"worked examples: {len(exposed)}/{self.n} of these items are named "
-            "with their rating in docs/evidenz-bewertung-anker.md -- a rater who "
-            "read it was recalling, not judging, on those"
+            f"in {docs} today -- as an anchor with its rating, or as a case the "
+            "calibration round works through. They cannot serve as blind items "
+            "in a FUTURE pass. Whether THIS rater had read them, and whether "
+            "the mention even predates the rating, is what the provenance note "
+            "says -- the detector reads the documents as they stand now, not as "
+            "they stood on the rating date"
         ]
         if exposed:
             hit = sum(1 for a, b in exposed if a == b)
@@ -519,23 +524,32 @@ def relevance_overlap() -> Comparison:
 
 
 def documented_examples(set_name: str) -> set[str]:
-    """Item keys that the methodology document names as worked examples.
+    """Item keys that the documentation names, and so cannot measure blind.
 
     The anchors document teaches the rubric through boundary cases, and it
     names them: "Katalogfall: `prefill-phonics-reception` (28 Trials,
     ...) -> moderate". That is exactly what a rater should read to learn
     the rule -- and it hands them the answer for those items.
 
+    The baseline document exposes a second set the same way: the ten cases
+    of the calibration round. Those are not given away in writing, but a
+    calibration case is worked through with the primary rater afterwards,
+    which is the whole point of the round -- so it is spent either way.
+
     Detected rather than maintained by hand, so the count stays right when
-    the document gains or loses an example. A rater who worked only from
-    the rubric carried inside the worksheet saw none of them; the report
+    a document gains or loses an example. A rater who worked only from the
+    rubric carried inside the worksheet saw none of them; the report
     cannot know which, so it states the exposure and lets the record say
     what the rater actually read.
     """
-    if not ANCHOR_DOC.exists():
-        return set()
-    text = ANCHOR_DOC.read_text(encoding="utf-8")
-    return {key for key in primary_labels(set_name) if key and key in text}
+    keys = {key for key in primary_labels(set_name) if key}
+    named: set[str] = set()
+    for doc in EXPOSURE_DOCS:
+        if not doc.exists():
+            continue
+        text = doc.read_text(encoding="utf-8")
+        named |= {key for key in keys if key in text}
+    return named
 
 
 def _item_untouched(label: dict[str, Any], rated_fields: list[str]) -> bool:
@@ -665,6 +679,22 @@ def appraised_claims() -> list[dict[str, Any]]:
 
 
 ANCHOR_DOC = EVAL_DIR.parent / "docs" / "evidenz-bewertung-anker.md"
+BASELINE_DOC = EVAL_DIR.parent / "docs" / "eval-baseline.md"
+
+# Every document that can hand a rater an answer before they rate.
+#
+# Two different mechanisms, one consequence. The anchors document names
+# boundary cases together with the rating they earn, so a rater who read
+# it recalls rather than judges. The baseline document names the ten
+# cases of the calibration round, and a calibration case is discussed
+# afterwards by construction -- which burns it just as thoroughly, one
+# round later.
+#
+# Scanning only the first was an undercount: nine of the ten calibration
+# cases happen to also be anchors examples, so the gap showed up as a
+# single missing case and read like an off-by-one rather than like a
+# whole source of exposure going unread.
+EXPOSURE_DOCS = (ANCHOR_DOC, BASELINE_DOC)
 
 
 ANCHOR_SECTION = "## Anker: `evidence_certainty`"
@@ -1187,8 +1217,8 @@ def main() -> int:
             # memorisable from the methodology document.
             exposed = sum(1 for flag in comparison.documented if flag)
             note = (
-                f"   [{exposed}/{comparison.n} named as worked examples in the "
-                "anchors document]"
+                f"   [{exposed}/{comparison.n} now named in the methodology "
+                "docs, so unusable in a future pass]"
                 if exposed
                 else ""
             )

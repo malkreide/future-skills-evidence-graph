@@ -30,6 +30,26 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Fixed
 
+- **Die Expositionswarnung las nur eines von zwei Dokumenten.** Sie meldete
+  33 saubere Eval-Fälle; es sind **32**. Neben dem Anker-Dokument (17
+  Fälle mit ihrer Bewertung) verbrennt auch die Kalibrieranleitung in
+  `docs/eval-baseline.md` Fälle — ein Kalibrierfall wird nach der Runde
+  durchgesprochen, das ist sein Zweck. Weil 9 der 10 Kalibrierfälle
+  ohnehin Anker-Beispiele sind, sah die Lücke aus wie ein Abzählfehler und
+  war eine ganze ungelesene Quelle. Der Detektor liest jetzt beide
+  (`EXPOSURE_DOCS`).
+  Nebenbefund: der Katalog steht damit bei **57 von 59** statt 59 — die
+  zwei Claims der `effect_direction`-Korrektur stehen jetzt namentlich in
+  `docs/eval-baseline.md`.
+- **Der Bericht behauptete mehr, als er wissen kann.** Er schrieb, eine
+  Person, die ein genanntes Item bewertet hat, habe sich erinnert statt zu
+  urteilen. Der Detektor liest die Dokumente aber im *heutigen* Stand: die
+  zwei Katalog-Nennungen entstanden einen Tag **nach** der Bewertung, und
+  zwar aus deren eigener Auswertung. Die Warnung sagt jetzt, wofür sie
+  gilt (ein künftiger Durchgang) und verweist für das, was tatsächlich
+  gelesen wurde, auf das Protokoll des Durchgangs; dieses hält die
+  Zeitfolge nun ausdrücklich fest.
+
 - **`eval/claim_prefill_second_rater.json` war wieder eine Generation
   alt** — er trug noch den `cannot_determine`-Text, der κ = 0,039 erzeugt
   hat, und keinen `appraisal_method_at_rating`. Neu erzeugt unter 1.2.0.
