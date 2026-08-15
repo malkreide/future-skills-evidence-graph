@@ -552,6 +552,37 @@ def documented_examples(set_name: str) -> set[str]:
     return named
 
 
+CALIBRATION_SECTION = "### Die Kalibrierrunde, Schritt für Schritt"
+
+
+def calibration_cases(set_name: str = "claim_prefill") -> list[str]:
+    """The cases the calibration guide picks, read out of the guide.
+
+    Each one puts a different rule on the stand, and which ten they are is
+    a methodological choice that belongs in prose, next to the reason for
+    each pick. Reading them back out means the guide, the Makefile and the
+    stored worksheet cannot end up naming three different sets -- and it
+    is the same list documented_examples() counts as spent, so the two
+    numbers move together by construction.
+    """
+    text = BASELINE_DOC.read_text(encoding="utf-8")
+    start = text.find(CALIBRATION_SECTION)
+    if start < 0:
+        raise SystemExit(f"{BASELINE_DOC}: section {CALIBRATION_SECTION!r} not found")
+    end = text.find("\n### ", start + len(CALIBRATION_SECTION))
+    body = text[start : end if end > 0 else len(text)]
+    known = {key for key in primary_labels(set_name) if key}
+    seen: list[str] = []
+    for key in re.findall(r"[a-z][a-z0-9-]*-[a-z0-9-]+", body):
+        if key in known and key not in seen:
+            seen.append(key)
+    if not seen:
+        raise SystemExit(
+            f"{BASELINE_DOC}: the calibration section names no case of {set_name}"
+        )
+    return seen
+
+
 def _item_untouched(label: dict[str, Any], rated_fields: list[str]) -> bool:
     """Whether the rater left this whole item alone.
 
@@ -1142,7 +1173,10 @@ def main() -> int:
         "--only",
         help="Comma-separated item keys to include -- for a calibration round. "
         "Marks the worksheet protocol.calibration_subset, because its cases get "
-        "discussed afterwards and can no longer serve as a measured sample.",
+        "discussed afterwards and can no longer serve as a measured sample. "
+        "The literal value 'calibration' takes the cases the guide in "
+        "docs/eval-baseline.md names, so the sheet cannot drift from the "
+        "reasons written down next to each pick.",
     )
     parser.add_argument(
         "--fields",
@@ -1180,7 +1214,12 @@ def main() -> int:
 
     if args.worksheet:
         chosen = [f.strip() for f in args.fields.split(",")] if args.fields else None
-        only = [k.strip() for k in args.only.split(",")] if args.only else None
+        if args.only == "calibration":
+            only = calibration_cases(args.worksheet)
+        elif args.only:
+            only = [k.strip() for k in args.only.split(",")]
+        else:
+            only = None
         worksheet = json.dumps(
             build_worksheet(args.worksheet, chosen, only), indent=2, ensure_ascii=False
         )

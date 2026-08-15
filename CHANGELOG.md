@@ -113,6 +113,21 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Der Kalibrier-Bogen liegt fertig im Repository**
+  (`eval/claim_prefill_calibration.json`, 10 Fälle, unter 1.3.0 erzeugt).
+  Bisher stand er nur als Kommandozeile in der Anleitung, und die erste
+  gemessene Baseline entstand deshalb **ohne** Kalibrierrunde — ihre erste
+  dokumentierte Einschränkung. Die Fallliste steht weiterhin nur an einer
+  Stelle, nämlich in der Anleitung neben der Begründung für jede Wahl;
+  `--only calibration` liest sie von dort zurück, statt sie in Makefile
+  und Bogen zu wiederholen. Ein dort ausgetauschter Fall erreicht den
+  Bogen ohne zweite Bearbeitung.
+- **Die Frischeprüfung findet abgelegte Bögen an der Form, nicht am
+  Dateinamen.** Der bisherige Glob (`*_second_rater.json`) hätte den
+  Kalibrier-Bogen ab dem ersten Tag übersehen — und ein veralteter
+  Kalibrier-Bogen kostet dieselben drei Stunden wie ein veralteter
+  Messbogen, nur eine Runde früher.
+
 - **Erste gemessene Inter-Rater-Baseline** (2026-08-14). Ein blinder
   Zweitdurchgang über alle 59 begutachteten Katalog-Claims liegt als
   `eval/catalog_second_rater_completed.json` vor. `evidence_certainty`
