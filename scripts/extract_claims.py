@@ -260,7 +260,7 @@ Response schema:
 # that field at kappa 0.039 -- chance -- with 21 systematic disagreements on
 # frameworks and policy reports. The question is now stated as substantive,
 # and brevity is ruled out explicitly. See docs/evidenz-bewertung-anker.md.
-APPRAISAL_PROMPT_VERSION = "claim-appraisal-v2"
+APPRAISAL_PROMPT_VERSION = "claim-appraisal-v3"
 
 # The rated subset. The model is not asked for bibliographic fields: it cannot
 # verify them, and a model that invents a DOI is worse than one that leaves it
@@ -322,13 +322,22 @@ Appraise it on these dimensions:
 - study_design: the design the abstract DESCRIBES, from {study_designs}. The \
 publication type does not decide this and must not be used as a shortcut: a \
 paper published as a systematic review still gets the design its text \
-describes. If the abstract names no design, answer "unknown".
+describes. Note that {overlapping} appear in BOTH the source_type and the \
+study_design vocabularies and mean different things there -- never copy the \
+source_type across. As a DESIGN, "policy_report" means the document reports \
+no method of its own; a policy report that describes a literature review, a \
+survey and case studies has THAT as its design. If the abstract names no \
+design, answer "unknown".
 - comparator, outcome_type, follow_up, replication, sample_size: as reported, \
 otherwise the unclear/unknown value or null. Do not infer a comparison group \
 that is not mentioned.
-- effect_direction: {effect_directions}. "null" means no difference was found. \
-That is a legitimate scientific result, not a weak one, and it must not lower \
-your certainty rating. Use "not_applicable" when nothing was measured.
+- effect_direction: {effect_directions}. This is the direction of a MEASURED \
+effect, not the tone of the finding. "null" means no difference was found -- a \
+legitimate scientific result, not a weak one, and it must not lower your \
+certainty rating. Use "not_applicable" when no effect was estimated at all: \
+"positive attitudes toward the tool" describes attitudes and measures no \
+effect. But when the source does report outcomes, give their direction even if \
+the claim is worded descriptively.
 - effect_magnitude / risk_of_bias / consistency / heterogeneity / precision: \
 only when the abstract discusses them. An abstract that never mentions a \
 risk-of-bias assessment gets risk_of_bias "unknown", NOT "low".
@@ -365,6 +374,7 @@ def appraisal_prompt(abstract: str, statement: str) -> str:
         study_designs=", ".join(appraisal.STUDY_DESIGN_VALUES),
         effect_directions=", ".join(appraisal.EFFECT_DIRECTION_VALUES),
         claim_support=", ".join(appraisal.CLAIM_SUPPORT_VALUES),
+        overlapping=", ".join(sorted(appraisal.OVERLAPPING_VOCABULARY)),
         certainty_values=", ".join(appraisal.CERTAINTY_VALUES),
     )
 

@@ -65,7 +65,17 @@ from typing import Any
 #        asserts? No permitted value changed, and no stored appraisal
 #        changed level; what changed is which of two readings the anchor
 #        licenses.
-APPRAISAL_VERSION = "1.2.0"
+# 1.3.0  effect_direction and study_design sharpened after the same
+#        measured pass. effect_direction was read as the tone of the
+#        finding rather than the direction of a measured effect (8
+#        disagreements: 6 where the anchor did not carry, 2 where the
+#        second rater was right and the primary wrong -- both corrected).
+#        study_design collided with source_type: policy_report,
+#        systematic_review and working_paper appear in both vocabularies
+#        with different meanings, which produced 5 disagreements on one
+#        document. The overlap is a flaw in this vocabulary, not in
+#        anyone's judgement, so it is now named in the rubric.
+APPRAISAL_VERSION = "1.3.0"
 
 
 # --- Controlled vocabularies ----------------------------------------------
@@ -115,6 +125,13 @@ CLAIM_TYPE_VALUES = (
 # Claim types for which the design ladder applies. Everything else is
 # judged on fitness for purpose; see _fit_baseline.
 CAUSAL_CLAIM_TYPES = ("causal_effect",)
+
+# Values that also exist in the source_type vocabulary with a different
+# meaning. Kept here so the worksheet, the prompt and the documentation
+# warn about the same three names rather than three hand-kept lists.
+OVERLAPPING_VOCABULARY = frozenset(
+    {"policy_report", "systematic_review", "working_paper"}
+)
 
 STUDY_DESIGN_VALUES = (
     "systematic_review",

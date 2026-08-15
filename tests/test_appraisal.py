@@ -933,6 +933,53 @@ class NarrowedWorksheetTests(unittest.TestCase):
         )
 
 
+class StoredWorksheetFreshnessTests(unittest.TestCase):
+    """A checked-in blank worksheet must match the rules in force.
+
+    Twice now a rule change went in with only one of the worksheets
+    regenerated, and the second time it would have had a rater apply the
+    anchor the sharpening had just replaced. Both times the cause was
+    running the tool by hand for one sheet instead of `make
+    agreement-worksheet`. A test is the only thing that catches it before
+    somebody spends three hours on a stale rubric.
+    """
+
+    def _stored(self):
+        return sorted(
+            path
+            for path in (ea.EVAL_DIR).glob("*_second_rater.json")
+            if not path.name.endswith("_completed.json")
+        )
+
+    def test_every_stored_blank_sheet_matches_the_current_rules(self) -> None:
+        stored = self._stored()
+        self.assertTrue(stored, "expected blank worksheets in eval/")
+        for path in stored:
+            document = json.loads(path.read_text(encoding="utf-8"))
+            set_name = document["protocol"]["source_set"]
+            with self.subTest(path.name):
+                self.assertEqual(
+                    document["protocol"].get("appraisal_method_at_rating"),
+                    ap.APPRAISAL_VERSION,
+                    f"{path.name} is stale -- run `make agreement-worksheet`",
+                )
+                fresh = ea.build_worksheet(set_name)
+                for key in (k for k in fresh if k.startswith("rubrik_")):
+                    self.assertEqual(
+                        document.get(key),
+                        fresh[key],
+                        f"{path.name}: {key} differs from the current rubric",
+                    )
+
+    def test_completed_passes_are_not_required_to_be_current(self) -> None:
+        # The opposite rule for a measured pass: it recorded the rules it
+        # measured, and re-stamping it would rewrite history.
+        for path in ea.completed_passes():
+            protocol = json.loads(path.read_text(encoding="utf-8"))["protocol"]
+            with self.subTest(path.name):
+                self.assertTrue(protocol.get("appraisal_method_at_rating"))
+
+
 class WorkedExampleExposureTests(unittest.TestCase):
     """The methodology document teaches with named cases -- and gives them away."""
 
@@ -1005,6 +1052,104 @@ class WorkedExampleExposureTests(unittest.TestCase):
         self.assertNotIn("worked examples", "\n".join(comparison.report()))
 
 
+class DirectionAndDesignAnchorTests(unittest.TestCase):
+    """The two anchors sharpened in 1.3.0."""
+
+    def test_effect_direction_is_read_from_the_document(self) -> None:
+        rubric = ea.direction_rubric()
+        self.assertEqual(set(rubric), set(ap.EFFECT_DIRECTION_VALUES))
+        # The definitions must come OUT of the document. Comparing the
+        # rubric with the worksheet alone would pass on two identical
+        # copies that both ignore the document.
+        doc = ea.ANCHOR_DOC.read_text(encoding="utf-8")
+        for value, definition in rubric.items():
+            with self.subTest(value):
+                self.assertGreater(len(definition), 30)
+                self.assertIn(definition, doc)
+        block = dict(ea.build_worksheet("catalog")["rubrik_effect_direction"])
+        block.pop("_hinweis", None)
+        self.assertEqual(block, rubric)
+
+    def test_it_separates_a_measured_effect_from_a_positive_tone(self) -> None:
+        # Six of the eight disagreements were positive-sounding
+        # descriptions with nothing measured.
+        hint = ea.build_worksheet("catalog")["rubrik_effect_direction"]["_hinweis"]
+        self.assertIn("GEMESSENEN", hint)
+        self.assertIn("Tonfall", hint)
+        # And the mirror-image error is ruled out too: two of the eight
+        # DID report outcomes, and there the second rater was right.
+        self.assertIn("berichtet die Quelle Ergebnisse", hint)
+
+    def test_the_vocabulary_overlap_is_named_in_the_worksheet(self) -> None:
+        # Five disagreements came from three value names existing in both
+        # source_type and study_design. That is a flaw in the vocabulary,
+        # so the rubric warns about it by name.
+        rubric = ea.build_worksheet("catalog")["rubrik_study_design"]
+        self.assertIn("ACHTUNG", rubric)
+        self.assertIn("NIE abschreiben", rubric)
+        self.assertIn("KEINE eigene Methode", rubric)
+        # The names must appear IN THE WARNING, not merely somewhere in
+        # the rubric -- every design name is listed there anyway, so
+        # searching the whole string would pass without any warning at all.
+        warning = rubric[rubric.index("ACHTUNG") :]
+        for value in ap.OVERLAPPING_VOCABULARY:
+            with self.subTest(value):
+                self.assertIn(value, warning)
+
+    def test_the_overlap_constant_matches_reality(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        source_types = {s["source_type"] for s in load_records("sources")}
+        actual = source_types & set(ap.STUDY_DESIGN_VALUES)
+        self.assertEqual(actual, set(ap.OVERLAPPING_VOCABULARY))
+
+    def test_the_prompt_carries_both_sharpenings(self) -> None:
+        prompt = ec.appraisal_prompt("ABSTRACT", "CLAIM")
+        self.assertIn("not the tone of the finding", prompt)
+        self.assertIn("never copy the source_type across", prompt)
+        self.assertIn("reports no method of its own", prompt)
+        self.assertEqual(ec.APPRAISAL_PROMPT_VERSION, "claim-appraisal-v3")
+
+    def test_the_two_corrected_values_are_recorded(self) -> None:
+        # 1.3.0 changed two stored effect_direction values, because the
+        # sharpened anchor makes them wrong -- the sources do report
+        # outcomes. Unlike 1.2.0, this version does change data.
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        corrected = {
+            "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
+            "claim-interactive-tools-for-middle-school-students-ai-literacy-abstract-s4",
+        }
+        seen = 0
+        for claim in load_records("claims"):
+            block = claim.get("appraisal")
+            if not block:
+                continue
+            if claim["id"] in corrected:
+                seen += 1
+                with self.subTest(claim["id"]):
+                    self.assertEqual(block["effect_direction"], "positive")
+        self.assertEqual(seen, len(corrected))
+
+    def test_correcting_them_moved_no_certainty(self) -> None:
+        # effect_direction never reaches the derivation, so a correction
+        # there cannot move a score. That is the property that made it
+        # safe to fix data after a measurement.
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        for claim in load_records("claims"):
+            block = claim.get("appraisal")
+            if not block:
+                continue
+            with self.subTest(claim["id"]):
+                self.assertEqual(
+                    ap.derive_certainty(block)[0], block["evidence_certainty"]
+                )
+
+
 class SupportAnchorTests(unittest.TestCase):
     """The anchor sharpened after it measured kappa 0.039."""
 
@@ -1045,13 +1190,13 @@ class SupportAnchorTests(unittest.TestCase):
         prompt = ec.appraisal_prompt("ABSTRACT", "CLAIM")
         self.assertIn("BREVITY IS NOT A REASON", prompt)
         self.assertIn("IN SUBSTANCE", prompt)
-        self.assertEqual(ec.APPRAISAL_PROMPT_VERSION, "claim-appraisal-v2")
+        self.assertEqual(ec.APPRAISAL_PROMPT_VERSION, "claim-appraisal-v3")
 
     def test_the_version_was_bumped_and_stamped(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))
         from common import load_records
 
-        self.assertEqual(ap.APPRAISAL_VERSION, "1.2.0")
+        self.assertEqual(ap.APPRAISAL_VERSION, "1.3.0")
         for claim in load_records("claims"):
             if claim.get("appraisal"):
                 with self.subTest(claim["id"]):

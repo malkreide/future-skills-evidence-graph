@@ -6,7 +6,7 @@
     "labeled_at": "",
     "notes": "",
     "blind": true,
-    "appraisal_method_at_rating": "1.2.0",
+    "appraisal_method_at_rating": "1.3.0",
     "rated_fields": [
       "evidence_certainty",
       "claim_type",
@@ -34,8 +34,16 @@
     "_hinweis": "Die Frage ist INHALTLICH: behauptet die Quelle, was die Aussage behauptet? Nicht: ist der Auszug ausfuehrlich genug, um es zu beweisen. KUERZE IST KEIN GRUND fuer cannot_determine -- ein Einzeiler, der die Aussage inhaltlich deckt, ergibt supported. Ob die Quelle auffindbar ist, misst source_verified; ob Population und Outcome zur Aussage passen, misst directness. Beides hier noch einmal zu bewerten, zaehlt es doppelt."
   },
   "rubrik_claim_type": "Welche Art von Aussage ist das? causal_effect, association, descriptive, normative, definitional, unknown. Behauptet sie eine Wirkung (causal_effect), einen Zusammenhang (association), beschreibt sie, was beobachtet wurde (descriptive), empfiehlt sie etwas (normative) oder legt sie einen Begriff fest (definitional)? Danach richtet sich, woran die Aussage gemessen wird.",
-  "rubrik_study_design": "Das im Text beschriebene Design, aus: systematic_review, meta_analysis, narrative_review, psychometric_validation, rct, cluster_rct, quasi_experimental, matched_comparison, controlled_pre_post, uncontrolled_pre_post, cohort, cross_sectional, single_case, qualitative, descriptive, policy_report, working_paper, consensus_framework, other, unknown. Nicht vom Publikationstyp ableiten. Nennt der Text kein Design, 'unknown' -- nicht das wahrscheinlichste raten.",
-  "rubrik_effect_direction": "Richtung des berichteten Effekts, aus: positive, negative, null, mixed, unclear, not_applicable. 'null' heisst: kein Unterschied gefunden -- ein legitimes Ergebnis, keine schwache Evidenz. 'not_applicable', wenn gar kein Effekt gemessen wurde (z. B. reine Designbeschreibung).",
+  "rubrik_study_design": "Das im Text beschriebene Design, aus: systematic_review, meta_analysis, narrative_review, psychometric_validation, rct, cluster_rct, quasi_experimental, matched_comparison, controlled_pre_post, uncontrolled_pre_post, cohort, cross_sectional, single_case, qualitative, descriptive, policy_report, working_paper, consensus_framework, other, unknown. Nennt der Text kein Design, 'unknown' -- nicht das wahrscheinlichste raten. ACHTUNG, haeufigste Falle: policy_report, systematic_review, working_paper stehen in BEIDEN Vokabularen und bedeuten Verschiedenes. Den Wert aus source_type NIE abschreiben. 'policy_report' als study_design heisst: das Dokument berichtet KEINE eigene Methode. Beschreibt ein Policy-Bericht eine Literaturrecherche, eine Befragung und Fallstudien, ist sein Design diese Methode.",
+  "rubrik_effect_direction": {
+    "positive": "Der berichtete Effekt geht in die Richtung, die die Aussage behauptet.",
+    "negative": "Der berichtete Effekt geht in die Gegenrichtung.",
+    "null": "Kein Unterschied gefunden. Ein legitimes Ergebnis, keine schwache Evidenz.",
+    "mixed": "Mehrere Outcomes mit verschiedenen Richtungen.",
+    "unclear": "Ein Effekt wurde geschätzt, seine Richtung geht aus dem Text nicht hervor.",
+    "not_applicable": "Es wurde gar kein Effekt geschätzt.",
+    "_hinweis": "Gemeint ist die Richtung eines GEMESSENEN Effekts, nicht der Tonfall des Befunds. 'Findings indicate positive attitudes' beschreibt Einstellungen und misst keine Wirkung -> not_applicable. Ohne Vergleich oder Vorher-Nachher gibt es keine Richtung. Umgekehrt: berichtet die Quelle Ergebnisse, ist eine Richtung anzugeben, auch wenn die Aussage beschreibend klingt."
+  },
   "rubrik_age_range_explicit": "NUR ausdruecklich im Text genannte Alterswerte, als \"von-bis\" in Jahren (z. B. \"22-55\"). Eine Schulstufe ist KEINE Altersangabe: \"11th-grade students\" oder \"upper secondary\" ergibt null, nicht 16-17 -- dieselbe Stufenbezeichnung deckt je nach Land andere Jahre ab. Steht keine Altersangabe im Text, null.",
   "rubrik_legacy_felder": "evidence_strength und age_range sind die ALTEN Felder und werden nur mitgefuehrt, damit sich beide Skalen an derselben Lektuere vergleichen lassen. evidence_strength: low|moderate|strong nach der alten, vermischenden Rubrik. age_range: die alte Praxis inklusive aus der Schulstufe geschaetzter Spannen. Wer nur die neue Skala bewerten will, laesst beide null.",
   "labels": [

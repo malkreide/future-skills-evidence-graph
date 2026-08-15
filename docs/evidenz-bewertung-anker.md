@@ -43,7 +43,7 @@ positivem Ergebnis trug `moderate`.
 | `source_type` | In welcher Publikationsform steht das? | Wie gut die Studie ist. |
 | `study_design` | Welches methodische Design wird beschrieben? | In welchem Journal es erschien. |
 | `evidence_certainty` | Wie sicher ist die Aussage gestützt? | Wie gross oder wie positiv der Effekt ist. |
-| `effect_direction` | In welche Richtung geht der Befund? | Wie belastbar er ist. |
+| `effect_direction` | In welche Richtung geht ein **gemessener** Effekt? | Wie belastbar er ist — und wie positiv der Text klingt. |
 | `effect_magnitude` | Wie gross ist er? | Ob er real ist. |
 | `claim_supported_by_source` | Sagt die Quelle **inhaltlich**, was die Aussage behauptet? | Wie gut die Quelle ist — und ob der Auszug lang genug ist, um es zu belegen. |
 | `source_verified` / `source_provenance` | Lässt sich die Quelle überhaupt auffinden? | Ob die Aussage stimmt. |
@@ -110,6 +110,69 @@ Urteilsdifferenz.
 Die Festlegung ist **redaktionell**: Sie hätte auch andersherum ausfallen
 können, mit der Prüfbarkeit am Auszug als Kriterium. Ausschlaggebend war,
 dass diese Frage bereits zwei andere Felder beantworten.
+
+## Anker: `effect_direction`
+
+Die Richtung eines **gemessenen Effekts** — einer Veränderung oder eines
+Unterschieds, den die Quelle geschätzt hat. Nicht der Tonfall des
+Befunds.
+
+| `positive` | Der berichtete Effekt geht in die Richtung, die die Aussage behauptet. |
+| `negative` | Der berichtete Effekt geht in die Gegenrichtung. |
+| `null` | Kein Unterschied gefunden. Ein legitimes Ergebnis, keine schwache Evidenz. |
+| `mixed` | Mehrere Outcomes mit verschiedenen Richtungen. |
+| `unclear` | Ein Effekt wurde geschätzt, seine Richtung geht aus dem Text nicht hervor. |
+| `not_applicable` | Es wurde gar kein Effekt geschätzt. |
+
+**Ein positiv klingender Befund ist kein positiver Effekt.** „Findings
+indicate positive attitudes toward ChatGPT" beschreibt Einstellungen und
+misst keine Wirkung → `not_applicable`. „Future-oriented frameworks
+emphasize student agency" beschreibt, was Rahmenwerke betonen →
+`not_applicable`. Faustregel: Ohne Vergleich oder Vorher-Nachher gibt es
+keinen Effekt, dessen Richtung man angeben könnte.
+
+Umgekehrt gilt aber auch: Berichtet die Quelle **Ergebnisse**, ist eine
+Richtung anzugeben, selbst wenn die Aussage beschreibend formuliert ist.
+„The review revealed ... positive academic, affective and behavioral
+outcomes" berichtet Ergebnisse → `positive`, nicht `not_applicable`.
+
+## Anker: `study_design`
+
+`study_design` ist, **was der Text zu tun beschreibt** — niemals, in
+welcher Publikationsform er erschienen ist.
+
+**Drei Werte kommen in beiden Vokabularen vor und bedeuten
+Verschiedenes:** `policy_report`, `systematic_review`, `working_paper`.
+Sie stehen sowohl bei `source_type` (Publikationsform) als auch bei
+`study_design` (Methode). Der Wert aus `source_type` darf **nie**
+abgeschrieben werden.
+
+| Als `study_design` bedeutet … | … |
+| --- | --- |
+| `policy_report` | Das Dokument berichtet **keine eigene Methode** — kein Suchprotokoll, keine eigene Erhebung. |
+| `systematic_review` | Der Text beschreibt eine systematische Suche und Synthese. |
+| `working_paper` | Der Text beschreibt keine abgeschlossene Untersuchung, sondern ein Konzept oder einen Zwischenstand. |
+
+Ein als `policy_report` publiziertes Dokument, das eine Literaturrecherche,
+eine Ministeriumsbefragung und neun Länder-Fallstudien beschreibt, hat als
+Design **diese Methode** — nicht `policy_report`.
+
+### Warum diese beiden Anker geschärft wurden
+
+Der gemessene Zweitdurchgang (2026-08-14, Regeln 1.1.0) zeigte bei
+`effect_direction` **8 Abweichungen** vom Typ `not_applicable` gegen
+`positive` und bei `study_design` **5** vom Typ `descriptive` gegen
+`policy_report`.
+
+Beim Nachsehen zerfielen die acht in zwei Gruppen: **sechs** waren positiv
+klingende Beschreibungen ohne gemessenen Effekt — dort trug der Ankertext
+nicht. **Zwei** berichteten tatsächlich Ergebnisse; dort lag die
+Zweitbewertung richtig und die primäre falsch. Beide Gruppen sind im
+geschärften Anker jetzt getrennt benannt.
+
+Die fünf `study_design`-Abweichungen betrafen sämtlich denselben
+Policy-Bericht — und die Ursache ist die Namensgleichheit im Vokabular
+selbst, nicht das Urteil der bewertenden Person.
 
 ## Zuerst: Was für eine Aussage ist das?
 
