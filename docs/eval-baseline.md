@@ -253,44 +253,73 @@ gemeldet und nie als Baseline gezählt, unabhängig davon, wie hoch die
 
 ### Wer den Prefill-Bogen bewerten darf — und wer nicht mehr
 
-**17 der 50 Eval-Fälle stehen namentlich mit ihrer Bewertung in
-[docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md)** — als
-Grenzfälle 1 bis 17, also genau in dem Abschnitt, der die Rubrik erklärt.
-Wer ihn gelesen hat, erinnert sich dort, statt zu urteilen.
+**18 der 50 Eval-Fälle sind namentlich in der Dokumentation verbrannt.**
+Aus zwei Quellen, mit derselben Folge:
 
-Das ist kein Fehler des Dokuments: Eine Rubrik ohne Beispiele lehrt
-nichts. Es heisst aber, dass für den Prefill-Bogen zwei Sorten von
-Bewertenden zu unterscheiden sind:
+| Quelle | Fälle | Mechanismus |
+| --- | --- | --- |
+| [docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md) | 17 | Grenzfälle 1 bis 17 stehen dort **mit ihrer Bewertung**, im Abschnitt, der die Rubrik erklärt |
+| dieses Dokument, Kalibrieranleitung | 10 | die Kalibrierfälle werden nach der Runde durchgesprochen — das ist ihr Zweck |
+| **zusammen** | **18** | 9 der 10 Kalibrierfälle sind auch Anker-Beispiele |
+
+Das ist kein Fehler der Dokumente: Eine Rubrik ohne Beispiele lehrt
+nichts, und eine Kalibrierrunde ohne Aussprache kalibriert nichts. Es
+heisst aber, dass für den Prefill-Bogen zwei Sorten von Bewertenden zu
+unterscheiden sind:
 
 | | blind für |
 | --- | --- |
 | Hat **nur den Bogen** benutzt (die Rubrik reist darin mit) | alle 50 Fälle |
-| Hat das **Anker-Dokument** gelesen | 33 Fälle — und 33 liegt **unter** den 40, die eine Schwelle tragen |
+| Hat die **Methodendokumente** gelesen oder kalibriert | 32 Fälle — und 32 liegt **unter** den 40, die eine Schwelle tragen |
 
 Der Bogen enthält die vollständige Rubrik, gerade damit die erste Variante
 möglich ist. Wer die Baseline für die CI-Schwellen messen will, sollte
-deshalb jemanden fragen, der mit dem Methodendokument noch nichts zu tun
+deshalb jemanden fragen, der mit den Methodendokumenten noch nichts zu tun
 hatte.
 
-`eval_agreement.py` weist die Aufteilung selbst aus — erkannt aus dem
-Dokument, nicht aus einer gepflegten Liste, damit sie nicht veraltet:
+`eval_agreement.py` weist die Aufteilung selbst aus — erkannt aus den
+Dokumenten, nicht aus einer gepflegten Liste, damit sie nicht veraltet:
 
 ```
-worked examples: 17/50 of these items are named with their rating in
-docs/evidenz-bewertung-anker.md -- a rater who read it was recalling,
-not judging, on those
-  agreement on the named items:   17/17
-  agreement on the rest:          22/33 = 0.667 -- below 40, so the
+worked examples: 18/50 of these items are named in
+docs/evidenz-bewertung-anker.md, docs/eval-baseline.md today -- as an
+anchor with its rating, or as a case the calibration round works
+through. They cannot serve as blind items in a FUTURE pass. Whether
+THIS rater had read them, and whether the mention even predates the
+rating, is what the provenance note says -- the detector reads the
+documents as they stand now, not as they stood on the rating date
+  agreement on the named items:   18/18
+  agreement on the rest:          21/32 = 0.656 -- below 40, so the
                                   unexposed part alone cannot carry a floor
 ```
 
 Das Beispiel oben ist simuliert und zeigt, warum die Trennung nötig ist:
-Die Gesamtzahl läge bei 0,780 und sähe brauchbar aus.
+Die Gesamtzahl sähe mit rund 0,78 brauchbar aus.
 
-Der Katalog-Bogen ist davon **nicht** betroffen — keiner seiner 59 Fälle
-wird im Anker-Dokument genannt. Seine Teil-Exposition kam aus gelesenen
-PR-Beschreibungen und steht deshalb von Hand in `protocol.notes`; die
-lässt sich nicht automatisch erkennen.
+Der Detektor liest die Dokumente **im heutigen Stand**, nicht im Stand
+des Bewertungsdatums. Für einen künftigen Durchgang ist das die richtige
+Frage; für einen bereits gemessenen kann es anachronistisch sein — die
+zwei Katalog-Nennungen unten sind genau so ein Fall, sie entstanden erst
+*aus* der Auswertung. Was die bewertende Person tatsächlich gelesen hat,
+steht deshalb weiterhin im Protokoll des Durchgangs und nicht in dieser
+Zahl.
+
+**Bis August 2026 zählte der Detektor nur das Anker-Dokument** und meldete
+deshalb 33 statt 32. Der Fehler war klein, weil 9 der 10 Kalibrierfälle
+ohnehin Anker-Beispiele sind — er sah aus wie ein Abzählfehler und war
+eine ganze ungelesene Quelle.
+
+#### Der Katalog: 57 von 59
+
+Keiner der 59 Katalogfälle steht im Anker-Dokument. **Zwei** sind
+inzwischen hier verbrannt: die beiden Claims, deren `effect_direction`
+1.3.0 korrigiert hat, stehen weiter oben mit ihrem neuen Wert. Bleiben
+**57 saubere Fälle**, und das ist die grössere unbelastete Stichprobe von
+beiden.
+
+Die Teil-Exposition des ersten Durchgangs (rund neun Fälle aus gelesenen
+PR-Beschreibungen) betrifft nur die Person, die ihn gemacht hat, und steht
+von Hand in `protocol.notes` — automatisch erkennen lässt sie sich nicht.
 
 ### Die Kalibrierrunde, Schritt für Schritt
 
@@ -543,8 +572,41 @@ den Publikationstyp.
   CI-Schwellen messen gegen `eval/claim_prefill_labeled.json`. Diese Zahl
   darf **nicht** auf sie übertragen werden: das dortige Gold stammt aus
   einer konsistenten Kuratierung, die Katalog-Legacy-Werte nicht. Wer die
-  Gates einordnen will, braucht den Prefill-Bogen — der liegt ausgefüllt
-  bereit.
+  Gates einordnen will, braucht den Prefill-Bogen — der liegt **blank**
+  bereit und wartet auf eine Person, die die Methodendokumente nicht
+  gelesen hat.
+
+### Der nächste Durchgang: Katalog, andere Person
+
+Ob die Schärfungen 1.2.0 und 1.3.0 wirken, zeigt keine Codeänderung,
+sondern nur eine zweite Messung. Sie geht wieder über den **Katalog** —
+dasselbe Instrument wie die Zahlen oben, also der einzige Vergleich, bei
+dem eine Veränderung nicht auch mit „andere Fälle" erklärbar ist.
+
+Was gebraucht wird:
+
+1. **Eine Person, die nicht `malkreide` ist** und die PR-Beschreibungen zu
+   den Claims nicht gelesen hat. Für sie sind 57 der 59 Fälle sauber (die
+   zwei Ausnahmen oben); der erste Durchgang existiert bereits und ist für
+   dieselbe Person nicht wiederholbar.
+2. **Erst eine Kalibrierrunde, diesmal wirklich vorher.** Ihr Fehlen ist
+   die erste Einschränkung der Zahlen oben. Kalibriert wird auf dem
+   Eval-Set (siehe unten), nicht auf dem Katalog — sonst kostet sie zehn
+   Messfälle. Nach der Kalibrierrunde bleiben die 57 vollständig erhalten.
+3. **Der blanke Bogen** liegt als `eval/catalog_second_rater.json`, erzeugt
+   unter 1.3.0. Er trägt die geschärften Rubriken für
+   `claim_supported_by_source`, `effect_direction` und `study_design` —
+   genau die drei Felder, deren Reproduzierbarkeit gemessen werden soll.
+4. **Unter neuem Namen ablegen**, etwa
+   `eval/catalog_second_rater_2_completed.json`. Der bestehende Durchgang
+   darf nicht überschrieben werden: er ist die 1.1.0-Messung, gegen die
+   verglichen wird. `--second-rater` nimmt beide, und
+   `protocol.appraisal_method_at_rating` hält auseinander, welche Regeln
+   welcher Durchgang gemessen hat.
+
+Erwartung, damit sie nachher nicht nachträglich gebogen wird: steigt
+`claim_supported_by_source` von κ = 0,039 nicht deutlich, war die
+Diagnose „Rubrikdefekt" falsch und das Feld selbst ist das Problem.
 
 ## Was mit dem Ergebnis geschieht
 

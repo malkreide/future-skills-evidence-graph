@@ -991,26 +991,51 @@ class WorkedExampleExposureTests(unittest.TestCase):
         # whole reason this has to be reported rather than noticed later.
         self.assertLess(total - len(named), ea.MIN_N_FOR_GATE)
 
-    def test_detection_follows_the_document(self) -> None:
+    def test_detection_follows_the_documents(self) -> None:
         # Derived, not maintained by hand: an example added to or removed
-        # from the document changes the count without anyone updating a
+        # from a document changes the count without anyone updating a
         # list that would otherwise quietly go stale.
         import tempfile
         from pathlib import Path as _Path
 
-        original = ea.ANCHOR_DOC
+        original = ea.EXPOSURE_DOCS
         try:
             with tempfile.TemporaryDirectory() as tmp:
-                doc = _Path(tmp) / "anker.md"
-                doc.write_text("nennt niemanden\n", encoding="utf-8")
-                ea.ANCHOR_DOC = doc
+                anchors = _Path(tmp) / "anker.md"
+                baseline = _Path(tmp) / "baseline.md"
+                anchors.write_text("nennt niemanden\n", encoding="utf-8")
+                baseline.write_text("auch nicht\n", encoding="utf-8")
+                ea.EXPOSURE_DOCS = (anchors, baseline)
                 self.assertEqual(ea.documented_examples("claim_prefill"), set())
-                doc.write_text("Katalogfall: `prefill-adult-mooc`\n", encoding="utf-8")
+                anchors.write_text("Katalogfall: `prefill-adult-mooc`\n", "utf-8")
                 self.assertEqual(
                     ea.documented_examples("claim_prefill"), {"prefill-adult-mooc"}
                 )
+                # Each document contributes on its own -- a scan that
+                # stopped at the first would miss the second entirely.
+                baseline.write_text("Kalibrierfall: `prefill-vr-empathy`\n", "utf-8")
+                self.assertEqual(
+                    ea.documented_examples("claim_prefill"),
+                    {"prefill-adult-mooc", "prefill-vr-empathy"},
+                )
         finally:
-            ea.ANCHOR_DOC = original
+            ea.EXPOSURE_DOCS = original
+
+    def test_the_calibration_guide_is_counted_as_exposure(self) -> None:
+        # A calibration case is not printed with its answer, but it is
+        # worked through with the primary rater afterwards, so it is spent
+        # all the same. Nine of the ten also happen to be anchors
+        # examples, which is why scanning one document looked almost
+        # right: exactly one case separates the two readings.
+        named = ea.documented_examples("claim_prefill")
+        only_calibration = "prefill-collaboration-middle"
+        self.assertIn(only_calibration, named)
+        anchors = ea.ANCHOR_DOC.read_text(encoding="utf-8")
+        self.assertNotIn(only_calibration, anchors)
+        self.assertIn(only_calibration, ea.BASELINE_DOC.read_text(encoding="utf-8"))
+        # And the corrected arithmetic, which is what a reader quotes.
+        total = len(ea.primary_labels("claim_prefill"))
+        self.assertEqual((total, len(named), total - len(named)), (50, 18, 32))
 
     def test_the_report_separates_exposed_from_clean(self) -> None:
         import tempfile
@@ -1037,10 +1062,54 @@ class WorkedExampleExposureTests(unittest.TestCase):
         self.assertIn("agreement on the rest:", report)
         self.assertIn("cannot carry a floor", report)
 
+    def test_the_catalogue_lost_exactly_the_two_corrected_cases(self) -> None:
+        # The catalogue is not taught through named cases, so it started
+        # at zero. Writing up the 1.3.0 correction spent two of them: both
+        # IDs appear in eval-baseline.md together with their new
+        # effect_direction. Recorded here so the next pass over the
+        # catalogue knows its real size instead of assuming 59.
+        named = ea.documented_examples("catalog")
+        self.assertEqual(
+            named,
+            {
+                "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
+                "claim-interactive-tools-for-middle-school-students-ai-literacy-abstract-s4",
+            },
+        )
+        clean = len(ea.primary_labels("catalog")) - len(named)
+        self.assertEqual(clean, 57)
+        # Still the larger clean sample of the two, and still above the
+        # size a floor needs -- which is why the next pass goes here.
+        self.assertGreaterEqual(clean, ea.MIN_N_FOR_GATE)
+
+    def test_exposure_is_read_at_todays_state_and_says_so(self) -> None:
+        # The detector reads the documents as they stand now. For the
+        # completed catalogue pass that is anachronistic: both mentions
+        # were written the day AFTER the rating, and out of its own
+        # analysis. The report must not turn that into "this rater was
+        # recalling", and the pass itself must carry the timing.
+        comparison = ea.Comparison(
+            name="t",
+            field="evidence_certainty",
+            pairs=[("low", "low")] * 5,
+            independent=True,
+            provenance="x",
+            documented=[True] + [False] * 4,
+        )
+        report = "\n".join(comparison.report())
+        self.assertIn("today", report)
+        self.assertIn("not as they stood on the rating date", report)
+        for doc in ea.EXPOSURE_DOCS:
+            with self.subTest(doc.name):
+                self.assertIn(f"docs/{doc.name}", report)
+        pass_notes = json.loads(
+            (ROOT / "eval" / "catalog_second_rater_completed.json").read_text("utf-8")
+        )["protocol"]["notes"]
+        self.assertIn("NACHTRAG", pass_notes)
+        self.assertIn("juenger als das Bewertungsdatum", pass_notes)
+
     def test_a_set_with_no_named_examples_says_nothing(self) -> None:
-        # The catalogue is not taught through named cases, so the block
-        # must not appear there and add noise.
-        self.assertEqual(ea.documented_examples("catalog"), set())
+        # With nothing named, the block must not appear and add noise.
         comparison = ea.Comparison(
             name="t",
             field="evidence_certainty",
