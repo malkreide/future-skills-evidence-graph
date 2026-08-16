@@ -15,4 +15,4 @@
 # provider from the core without a single integration package.
 #
 # Pinned exactly, for the same supply-chain reason as requirements-dev.txt.
-langgraph==1.2.10
+langgraph==1.2.11
