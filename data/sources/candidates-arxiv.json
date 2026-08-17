@@ -837,5 +837,115 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-whose-doctor-does-the-ai-recommend-an-algorithm-audit-of-reputation-and",
+    "title": "Whose doctor does the AI recommend? An algorithm audit of reputation and demographic signals in large language model-assisted physician choice",
+    "authors": [
+      "Syeda Anshrah Gillani",
+      "Mirza Samad Ahmed Baig"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.14399v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Patients increasingly ask large language model (LLM) assistants which doctor to see, making these systems AI infomediaries: algorithms that intermediate one person's choice among other people and thereby decide, silently and at scale, which physicians become visible. We report a prespecified randomized algorithm audit of what causally moves those recommendations. Seven models (six open-weight; gpt-4o-mini) each chose among five synthetic family-medicine physician cards whose attributes were independently randomized across 3,024 choice sets, three patient personas, nine prompt paraphrases and nine experimental arms, yielding 40,068 scored responses; gender and ethnicity were signaled through names following correspondence-audit methodology. Reputation signals dominate: raising a rating from 3.9 to 4.7 increases choice probability by 31.4 percentage points (pp), and raising the fee from $90 to $190 lowers it by 20.0 pp. Demographic parity is rejected, but not in the direction human audit studies predict: female-signaled names gain 2.5 pp, and Hispanic-, South-Asian- and Black-signaled names gain 1.3-2.9 pp over White-signaled names, tilts worth $7-$14 per visit in fee-equivalent terms, and a content-free first-listed position is worth $11. Yet models mentioned gender or ethnicity in at most 0.03% of their stated reasons and abstained in 0.39% of trials, so these effects are invisible in the models' own explanations, and transparency obligations relying on model self-report would not detect them. One reasoning model failed the prespecified auditability gate outright. The frozen design makes the audit repeatable: any new model can be assessed against identical stimuli, making recurring behavioural audit, rather than self-reported explanation, the monitoring technology fit for purpose.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-epistemic-tensions-reframing-a-visualization-co-design-through-entanglem",
+    "title": "Epistemic Tensions: Reframing A Visualization Co-Design through Entanglement Theory",
+    "authors": [
+      "Wei Wei",
+      "Foroozan Daneshzand",
+      "Zezhong Wang",
+      "Erica Mattson",
+      "Jenny Farkas",
+      "Sarah Storteboom",
+      "Charles Perin",
+      "Sheelagh Carpendale"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.14364v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "In this work, we present how employing the lens of entanglement helped us examine and reframe epistemic tensions arising in a visualization co-design project. Entanglement theory challenges traditional assumptions in the visualization research community by emphasizing that knowledge is not produced through linear, isolated processes, but is inherently entangled with phenomena and apparatuses. While this perspective offers a compelling critique of conventional research practices, its practical value for visualization research remains underexplored. We apply the entanglement lens to examine and reframe the epistemic tensions that emerged in a longitudinal community-based visualization co-design project. Our experience shows that the entanglement perspective not only provides a richer understanding of these tensions, but also helps transform them into generative opportunities for methodological and theoretical reflection. Applying this lens enabled us to critically interrogate the language used in research, to develop a more nuanced understanding of visualization co-design, and to surface ``dark sides'' of conventional visualization design pipelines. These contributions illustrate the practical value of embracing entanglement as an epistemological lens for visualization research.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-human-and-artificial-intelligence-promoting-trustworthy-and-understandab",
+    "title": "Human and Artificial Intelligence - Promoting Trustworthy and Understandable Collaboration",
+    "authors": [
+      "Gilbert Drzyzga"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.14291v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Methods of Artificial Intelligence (AI) enable the personalization of information for individual user experiences in many domains; however, they can also conflict with established design principles, e.g., due to uncertainties regarding the real world. Building trust and understanding can serve as an approach to create a more balanced relationship between humans and AI. Building upon a pilot study, an online survey was conducted to investigate 12 individual aspects related to the topics of explainability and controllability. The results indicate that both topics, despite their different and numerous facets, are generally perceived as important by respondents; simultaneously, however, a wide dispersion of opinions is frequently observed. This could be an indication that, alongside a fundamental consensus, individual perspectives, technical knowledge and understanding, context-specific factors, or personal experiences play a role in the perception of such systems.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-estimation-of-calculation-errors-and-resolution-of-singularities",
+    "title": "Estimation of calculation errors and resolution of singularities",
+    "authors": [
+      "Victor Fadinger-Held",
+      "Daniel Windisch"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.14271v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "There are two possible answers to \"$(a+b)^2 = a^2 + b^2$\". Either \"this is completely wrong\" or \"I assume, you are in characteristic $2$\". If we go for the first answer, we could ask ourselves: \"How wrong is it actually?\" In this expository article, we introduce and use resolution of singularities and the real log canonical threshold (RLCT) as a measure for such errors. The RLCT is an invariant with connections to the minimal model program and, as recently discovered and investigated, to Bayesian statistics and machine learning. Inspired by typical mistakes from high school mathematics, we compute this invariant for several classes of examples, among them the error arising from the \"freshman's dream\" above and from a flawed computation of means in elementary statistics. In some examples, we highlight how a computer algebra software can be used in order to solve this problem.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
