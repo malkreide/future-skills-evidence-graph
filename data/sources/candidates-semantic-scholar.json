@@ -7553,5 +7553,926 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-brief-prompt-engineering-clinic-substantially-improves-ai-literacy-and-r",
+    "title": "Brief Prompt-Engineering Clinic Substantially Improves AI Literacy and Reduces Technology Anxiety in First-Year Teacher-Education Students: A Pre\u2013Post Pilot Study",
+    "authors": [
+      "Roberto Carlos D\u00e1vila-Mor\u00e1n",
+      "Juan Manuel S\u00e1nchez Soto",
+      "Henri Emmanuel L\u00f3pez G\u00f3mez",
+      "Manuel Silva Infantes",
+      "Andr\u00e9s Arias Lizares",
+      "Lupe Maril\u00fa Huanca Rojas",
+      "Simon Jose Cama Flores"
+    ],
+    "year": 2025,
+    "doi": "10.3390/educsci15081010",
+    "url": "https://www.semanticscholar.org/paper/bd2e2fa3f7a558d9e1a990696c0e90d5200b97ca",
+    "openalex_id": null,
+    "semantic_scholar_id": "bd2e2fa3f7a558d9e1a990696c0e90d5200b97ca",
+    "eric_id": null,
+    "publisher": "Education sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Generative AI tools such as ChatGPT are reshaping educational practice, yet first-year teacher-education students often lack the prompt-engineering skills and confidence required to use them responsibly. This pilot study examined whether a concise three-session clinic on prompt engineering could simultaneously boost AI literacy and reduce technology anxiety in prospective teachers. Forty-five freshmen in a Peruvian teacher-education program completed validated Spanish versions of a 12-item AI-literacy scale and a 12-item technology-anxiety scale one week before and after the intervention; normality-checked pre\u2013post differences were analysed with paired-samples t-tests, Cohen\u2019s d, and Pearson correlations. AI literacy rose by 0.70 \u00b1 0.46 points (t (44) = \u22126.10, p < 0.001, d = 0.91), while technology anxiety fell by 0.58 \u00b1 0.52 points (t (44) = \u22123.82, p = 0.001, d = 0.56); individual gains were inversely correlated (r = \u22120.46, p = 0.002). These findings suggest that integrating micro-level prompt-engineering clinics in the first semester can help future teachers engage critically and comfortably with generative AI and guide curriculum designers in updating teacher-training programs.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-an-analysis-of-elementary-school-teachers-needs-for-using-generative-ai",
+    "title": "An Analysis of Elementary School Teachers\u2019 Needs for Using Generative AI to Support Elementary Students\u2019 Self-Regulated Learning",
+    "authors": [
+      "Jong Han",
+      "Hyeonwoo Lee"
+    ],
+    "year": 2026,
+    "doi": "10.35510/jer.2026.48.2.9",
+    "url": "https://www.semanticscholar.org/paper/9a6c9aef4904c84b15b99e891b1af7369f4597b9",
+    "openalex_id": null,
+    "semantic_scholar_id": "9a6c9aef4904c84b15b99e891b1af7369f4597b9",
+    "eric_id": null,
+    "publisher": "The Institute of Educational Research Chonnam National University",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The purpose of this study was to analyze elementary school teachers\u2019 perceptions and needs regarding the use of generative AI to support elementary students\u2019 self-regulated learning and to exploratively examine how needs priorities varied according to teachers\u2019 levels of perception of generative AI use. A survey was administered to 418 elementary school teachers to investigate their overall perceptions of generative AI use, the perceived importance and current level of use of generative AI for supporting self-regulated learning, and open-ended responses regarding each phase of self-regulated learning. The collected data were analyzed using frequency analysis, descriptive statistics, paired-samples t-tests, effect size calculations, Borich needs assessment, Locus for Focus analysis, and content analysis of the open-ended responses. The results indicated that the participating teachers generally held positive perceptions of the educational potential of generative AI; however, their experiences had not yet sufficiently extended to its systematic use in supporting students\u2019 self-regulated learning. The Borich needs assessment identified high-priority needs for support in modifying learning strategies, preventing learning disengagement, monitoring comprehension, enhancing self-efficacy, and planning learning strategies. The analysis by perception level showed that the lower-perception group placed relatively greater emphasis on immediate performance support, whereas the higher-perception group expressed stronger needs for support that connected pre-learning planning, monitoring during learning, and post-learning reflection and strategy modification. These findings suggest that the use of generative AI should be designed flexibly by considering teachers\u2019 perception levels, instructional contexts, and students\u2019 developmental levels of self-regulated learning.",
+    "topics": [
+      "ai literacy",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-media-literacy-group-for-adolescents-in-child-and-adolescent-psy",
+    "title": "Digital Media Literacy Group for Adolescents in Child and Adolescent Psychiatry: Prospective Multicenter Single-Arm Feasibility Study",
+    "authors": [
+      "Ira-Katharina Petras",
+      "Sarah W\u00fcllner",
+      "Katharin Hermenau",
+      "Kathleen Meerkamp",
+      "M. Siniatchkin"
+    ],
+    "year": 2025,
+    "doi": "10.2196/90484",
+    "url": "https://www.semanticscholar.org/paper/dbf28a2c0da1c18445f03237cc59ceca23324a7b",
+    "openalex_id": null,
+    "semantic_scholar_id": "dbf28a2c0da1c18445f03237cc59ceca23324a7b",
+    "eric_id": null,
+    "publisher": "JMIR Formative Research",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Abstract Background Digital media literacy (DML) may help adolescents to handle online risks, misinformation, digital violence, and problematic media use more reflectively. However, structured interventions for adolescents in child and adolescent psychiatry (CAP), particularly in inpatient and day-treatment settings, remain scarce. Objective This study evaluated the feasibility, acceptability, and perceived usefulness of a manualized DML group for adolescents in CAP and explored preliminary changes in digital self-efficacy and critical media literacy (CML). Methods A prospective single-arm feasibility study with an embedded pretest-posttest and session-level process evaluation was conducted across 3 CAP clinics in Germany. The intervention comprised 6 weekly 60-minute, manualized modules covering data protection, social media use, and digital violence. Sessions were delivered in an open-group format by trained clinical staff. Recruitment was embedded in routine care, and clinical group participation was independent of study evaluation. Adolescents and facilitators completed paper-and-pencil questionnaires at baseline (T1), after each session, and post intervention or discharge (T2). Analyses were primarily descriptive; exploratory pre-post analyses used paired t tests. Results The analytic feasibility sample comprised 121 adolescents who attended at least 1 module. T1 data were available for n=60 and T2 data for n=38. Overall, adolescents attended a median of 2 modules (IQR 1\u20103; mean 2.46, SD 1.65, range 1\u20106), and 45 attended at least 3 modules. Session-level ratings indicated moderate to high acceptability. Facilitator-rated manual fidelity was moderate to high. Retrospective T2 ratings indicated moderate to high helpfulness (n=38; mean 3.55, SD 1.18; median 4.0, IQR 3.0-4.0) and satisfaction (n=38; mean 3.79, SD 1.07; median 4.0, IQR 3.0-5.0), with no significant differences between completers and noncompleters for helpfulness (U=125.00; P=.60) or satisfaction (U=122.00; P=.53). Among completers (\u22653 modules and T2 data; n=28), didactic method acceptability was moderate (mean 2.85, SD 0.60), and perceived learning was moderate to high (mean 3.33, SD 0.95). Exploratory pre-post analyses indicated an increase in perceived self-efficacy for recognizing misinformation (n=21; T1 mean 2.94, SD 0.59; T2 mean 3.38, SD 0.63; t20=2.58; Hedges g=0.56, 95% CI 0.09\u20101.02; P=.02). Overall CML increased descriptively (P=.07), whereas digital media self-efficacy did not change significantly (P=.27). Conclusions Our manualized DML group was feasible and acceptable in routine CAP. Open-group delivery and variable treatment stays limited intervention exposure and data completeness. Findings suggest that brief DML groups may address safety- and knowledge-oriented competencies, but controlled mixed methods studies with systematic recruitment and missing-data documentation are needed.",
+    "topics": [
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-skills-development-and-workforce-readiness-in-the-21st-century-a",
+    "title": "DIGITAL SKILLS DEVELOPMENT AND WORKFORCE READINESS IN THE 21ST CENTURY: A PHYSICS EDUCATION PERSPECTIVE",
+    "authors": [
+      "Abdullahi Ndaman Minin"
+    ],
+    "year": 2026,
+    "doi": "10.54473/ijtret.2026.10402",
+    "url": "https://www.semanticscholar.org/paper/5ea3afde0e3e2a31dd5e6e3d8815e690e7649664",
+    "openalex_id": null,
+    "semantic_scholar_id": "5ea3afde0e3e2a31dd5e6e3d8815e690e7649664",
+    "eric_id": null,
+    "publisher": "International Journal Of Trendy Research In Engineering And Technology",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Digital competence has become one of the defining measures of workforce readiness in the twenty-first century, with fluency in digital tools and computational thinking increasingly treated as being on par with, or more important than, conventional literacy when assessing employability. This paper considers digital skills development and workforce readiness through the lens of physics education, a discipline whose core methods, quantitative reasoning, data handling, and structured problem-solving, align closely with computational thinking. Drawing on literature published between 2020 and 2026, the paper reviews Nigeria's digital skills policy landscape, including the 2023 National Digital Skills Framework and National Digital Literacy Framework, together with World Bank projections indicating that around twenty-eight million Nigerian workers will need digital-skills training by 2030 . It also considers how the 2025 national curriculum reform brought programming, artificial intelligence, and data science into the curriculum alongside a newly structured physics syllabus, creating an opening to link computational and physics teaching more deliberately than earlier curricula allowed. The paper finds that, notwithstanding reasonably coherent national policy, implementation continues to lag behind ambition because of limited digital infrastructure, underprepared teachers, and a persistent disconnect between policy intent and what actually happens in classrooms. It argues that physics education is unusually well placed to help narrow this gap, provided computational tools are woven directly into physics teaching rather than left as a separate, parallel track.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-engaging-minority-high-school-students-in-ai-enhanced-mobile-app-design",
+    "title": "Engaging Minority High School Students in AI-Enhanced Mobile App Design: Cultivating CS Interest and AI Ethics Through Project-Based Learning",
+    "authors": [
+      "Jung Won Hur",
+      "Jay N. Bhuyan",
+      "Cassandra Thomas",
+      "Fan Wu"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3770761.3777238",
+    "url": "https://www.semanticscholar.org/paper/881e57c2a4e09bdb65d30263286d60e432aec680",
+    "openalex_id": null,
+    "semantic_scholar_id": "881e57c2a4e09bdb65d30263286d60e432aec680",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This study shares lessons learned from a culturally responsive program designed to broaden computer science (CS) participation and build foundational AI literacy among minority high school students from low-income communities. The program emphasized collaborative, project-based app design as a strategy to foster CS interest and develop AI literacy skills. The program included two phases: a one-month summer academy and a semester-long fall project. In the summer academy, 42 students engaged in MIT App Inventor programming, Agile software development, and AI lessons covering machine learning concepts and AI ethics. In the fall, 26 students continued in bi-weekly online Zoom meetings, collaboratively designing personally meaningful mobile app prototypes, such as a hair-care recommendation app for Black women and a mental-health support app for teenagers. Evaluation methods included surveys, focus group interviews, and app design presentations. Results indicated participants' growth in problem-solving, time management, and collaboration, as well as an increased interest in CS career pathways previously not envisioned. However, students encountered several challenges, particularly in using and integrating AI. These included fear or hesitation in using AI, over-reliance on AI for research or solutions, and a tendency to focus on coding without understanding how AI works. This work highlights both the promise and the complexities of promoting AI literacy through mobile app design in pre-college settings. We emphasize the need for scaffolded instruction that supports students in understanding the fundamentals and applications of AI through concrete, youth-relevant activities, while reinforcing the critical role of human judgment when working with AI.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-intotherabbithole-a-web-application-for-teaching-middle-school-students",
+    "title": "IntoTheRabbitHole: A Web Application for Teaching Middle School Students About Search Algorithms",
+    "authors": [
+      "Pragathi Durga Rajarajan",
+      "Fred G. Martin"
+    ],
+    "year": 2025,
+    "doi": "10.1145/3724363.3729080",
+    "url": "https://www.semanticscholar.org/paper/4f73e6a5cd9181c36e46d2556a1a3fb52c60e45f",
+    "openalex_id": null,
+    "semantic_scholar_id": "4f73e6a5cd9181c36e46d2556a1a3fb52c60e45f",
+    "eric_id": null,
+    "publisher": "Annual Conference on Innovation and Technology in Computer Science Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) technology rapidly advances and integrates further into everyday life, building AI literacy in children is now more important than ever. AI literacy includes understanding key AI concepts such as search algorithms, which are foundational and have wide-ranging real-world applications. To support curricula that foster AI and computational literacy in K-12 students, we developed a novel, easy-to-use software tool to introduce this foundational topic by teaching two search algorithms to middle school children. We present IntoTheRabbitHole, an interactive web application where users help a rabbit find its carrot to learn about Depth First Search (DFS) and Breadth First Search (BFS). In this work, our research questions were: (RQ1) Can we develop an engaging and enjoyable web application to teach search algorithms?; (RQ2) Could we find evidence of student learning of Depth First Search and Breadth First Search from using our application?; and (RQ3) How do students compare Depth First Search and Breadth First Search after interacting with IntoTheRabbitHole? We collected both quantitative and qualitative data on student use of IntoTheRabbitHole at an after-school AI program. We found that IntoTheRabbitHole was successful in fostering an understanding of both DFS and BFS. Furthermore, we obtained a statistically significant result showing that interaction with IntoTheRabbitHole led to better performance on a DFS traversal pre- and post-survey item, indicating that many students learned DFS through interaction with our tool.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-gaming-towards-understanding-shifting-ai-perceptions-in-high-school-stud",
+    "title": "Gaming Towards Understanding: Shifting AI Perceptions in High School Students",
+    "authors": [
+      "Bryan Wallace",
+      "Jane Awuah",
+      "J. Uchidiuno"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3770761.3777357",
+    "url": "https://www.semanticscholar.org/paper/45168ccdd26d73ff75c73b1b0badda673418e9f5",
+    "openalex_id": null,
+    "semantic_scholar_id": "45168ccdd26d73ff75c73b1b0badda673418e9f5",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Students' perceptions of AI are often shaped by commercialized and fictional depictions of AI, leading to misuse, underuse, and over-reliance on AI tools. Such preconceptions place additional burdens on K-12 AI curricula to not only educate students on foundational AI knowledge components, but also uncover and reshape students' understanding of AI. To understand ways to uncover and address students' AI misconceptions in formal learning settings, we conducted a study that taught foundational AI concepts using a formal AI curriculum, games, interactive activities, and scenario-based challenges to high school girls. We analyzed student dialog and survey responses data to observe shifts in their perceptions and understanding of AI. Our findings indicate that unstructured AI activities effectively scaffold student reflection and metacognition on AI topics, contributing to significant shifts in perception. This work provides insights for designing engaging and effective AI curricula that address students' misunderstandings of AI.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-from-hate-speech-to-societal-empowerment-a-pedagogical-journey-through-c",
+    "title": "From Hate Speech to Societal Empowerment: A Pedagogical Journey Through Computational Thinking and NLP for High School Students",
+    "authors": [
+      "Alessandra Teresa Cignarella",
+      "Elisa Chierchiello",
+      "Chiara Ferrando",
+      "Simona Frenda",
+      "Soda Marem Lo",
+      "Andrea Marra"
+    ],
+    "year": 2024,
+    "doi": "10.18653/v1/2024.teachingnlp-1.7",
+    "url": "https://www.semanticscholar.org/paper/74bf5aebfc9c1cfb41b20438345390418c1166de",
+    "openalex_id": null,
+    "semantic_scholar_id": "74bf5aebfc9c1cfb41b20438345390418c1166de",
+    "eric_id": null,
+    "publisher": "TEACHINGNLP",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The teaching laboratory we have created integrates methodologies to address the topic of hate speech on social media among students while fostering computational thinking and AI education for societal impact. We provide a foundational understanding of hate speech and introduce computational concepts using matrices, bag of words, and practical exercises in platforms like Colaboratory. Additionally, we emphasize the application of AI, particularly in NLP, to address real-world challenges. Through retrospective evaluation, we assess the efficacy of our approach, aiming to empower students as proactive contributors to societal betterment. With this paper we present an overview of the laboratory\u2019s structure, the primary materials used, and insights gleaned from six editions conducted to the present date.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-driven-mychatct-enhancing-computational-thinking-and-coding-skills-in",
+    "title": "AI-Driven myChatCT: Enhancing Computational Thinking and Coding Skills in High School Education",
+    "authors": [
+      "Kuan-Yeh Lin",
+      "Po-hsun Cheng",
+      "Li\u2010Wei Chen"
+    ],
+    "year": 2025,
+    "doi": "10.1109/EDUCON62633.2025.11016419",
+    "url": "https://www.semanticscholar.org/paper/3cd27e46c885ca083d5f481797d43810930c1fbc",
+    "openalex_id": null,
+    "semantic_scholar_id": "3cd27e46c885ca083d5f481797d43810930c1fbc",
+    "eric_id": null,
+    "publisher": "IEEE Global Engineering Education Conference",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Recently the education system has progressively emphasized computational thinking (CT) and coding skills. The curriculum progresses from foundational tools like Scratch in elementary education to more complex languages such as Python and C++ in senior high school. However, traditional teaching methods often fail to engage students effectively, hindering their development of critical coding skills. This research evaluates the effectiveness of myChatCT, an artificial intelligence (AI)-enabled learning assistant designed to enhance CT and coding skills among high school students. A distinctive feature of myChatCT is its integration of activity diagrams, bridging the gap between students' cognitive processes and their visual representations, along with the corresponding programming code. This not only clarifies complex concepts but also promotes deeper understanding and engagement. The study involved four distinct cohorts of high school students who completed coding tasks both with and without the assistance of myChatCT. A mixed-methods approach was employed, combining quantitative assessments of coding performance with qualitative feedback on learning experiences. The results revealed a significant improvement in performance metrics among students using myChatCT, as evidenced by higher accuracy rates and faster completion times. Qualitative feedback revealed that students felt more confident in their coding abilities and were more motivated to engage with programming concepts when supported by myChatCT. These findings underscore myChatCT's potential as a valuable educational tool that can facilitate deeper understanding and engagement in coding education, preparing high school students for a technology-driven future. By leveraging AI capabilities and visual aids, myChatCT not only enhances students' coding skills but also fosters a more interactive and supportive learning environment. This research contributes to the growing body of literature on AI application in education, emphasizing the significance of innovative pedagogical approaches in improving student learning experiences and outcomes within an evolving educational landscape. Ultimately, the integration of tools like myChatCT represents a significant step forward in addressing the challenges of traditional education, paving the way for a more effective and engaging learning experience in the digital age.",
+    "topics": [
+      "ai literacy",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-generative-ai-teaching-assistant-for-personalized-learning-in-medical",
+    "title": "A generative AI teaching assistant for personalized learning in medical education",
+    "authors": [
+      "Thomas Thesen",
+      "Soonbong Park"
+    ],
+    "year": 2025,
+    "doi": "10.1038/s41746-025-02022-1",
+    "url": "https://www.semanticscholar.org/paper/7365e7a141573a68231f9aa2538bef258b166756",
+    "openalex_id": null,
+    "semantic_scholar_id": "7365e7a141573a68231f9aa2538bef258b166756",
+    "eric_id": null,
+    "publisher": "npj Digital Medicine",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Medical education faces a scalability crisis, where rising class sizes strain individualized instruction, while students increasingly adopt unvalidated Generative AI (GenAI) tools for individualized learning support. This study investigated how medical students integrate constrained GenAI systems into their self-directed learning practices using Retrieval-Augmented Generation (RAG), which limits large language model responses to instructor-curated materials, thereby reducing hallucinations while maintaining pedagogical utility. We deployed a RAG-based teaching assistant in a medical school basic science course across two consecutive cohorts, examining usage patterns, conversation content, and student feedback to understand adoption and learning behaviors. Students demonstrated strategic, context-dependent usage, with engagement intensifying during high-stakes assessment periods and substantial after-hours utilization. Users primarily sought clarification on foundational concepts and valued the system\u2019s continuous availability and source-grounded responses. However, knowledge-base constraints that ensured accuracy also limited broader inquiries, creating tension between reliability and comprehensiveness that shaped how students incorporated the tool into their study routines. These findings provide empirical evidence of how medical students navigate constrained AI tools for self-directed learning, informing institutional strategies for integrating these technologies into pedagogical frameworks.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-and-application-of-elementary-school-ai-education-program-us",
+    "title": "Development and Application of Elementary School AI Education Program Using the International Baccalaureate (IB) Primary Years Programme (PYP) Approach",
+    "authors": [
+      "Bomi Kim",
+      "Eun Go",
+      "Woojong Moon",
+      "Bong-chul Kim",
+      "J. Kim"
+    ],
+    "year": 2024,
+    "doi": "10.5430/jct.v13n2p83",
+    "url": "https://www.semanticscholar.org/paper/eabcc6696d3ab23648b871334345973496d26b35",
+    "openalex_id": null,
+    "semantic_scholar_id": "eabcc6696d3ab23648b871334345973496d26b35",
+    "eric_id": null,
+    "publisher": "Journal of Curriculum and Teaching",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The objective of this study is to enhance elementary school students' foundational understanding of artificial intelligence (AI) and to foster their Computational thinking. This goal was realized through the creation of an AI education program integrating the ADDIE model and the International Baccalaureate (IB) Primary Years Programme (PYP) teaching methodology. Before developing the educational program, we conducted a preliminary needs analysis with 60 fifth-grade students from IB World School P Elementary and 36 staff members, aligning with the stages of the ADDIE model. Drawing from the outcomes of this preliminary needs analysis, we opted for the transdisciplinary theme 'How the world works,' as it resonated most aptly with AI-related content, as determined by participating educators. Real-life AI-based concepts were seamlessly woven into the educational material. Throughout the program, students actively engaged in exploratory activities centered on the chosen transdisciplinary theme and central concept. Collaborating on team projects, they collectively tackled problem-solving processes, completing activities and assignments aimed at fostering self-directed learning. To assess the effectiveness of the developed educational program on students' computational thinking, pre- and post-tests were administered. Validation results underscored that the program made a significant contribution to the enhancement of Computational Thinking among the participating students.",
+    "topics": [
+      "ai literacy",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-enhanced-chatbot-for-student-support-in-robotics-and-control-educatio",
+    "title": "AI-enhanced Chatbot for Student Support in Robotics and Control Education",
+    "authors": [
+      "Martina Morano",
+      "L. Screpanti",
+      "Benedetta Castagna",
+      "L. Cesaretti",
+      "D. Scaradozzi"
+    ],
+    "year": 2025,
+    "doi": "10.1109/MED64031.2025.11073475",
+    "url": "https://www.semanticscholar.org/paper/b99272d953c4456db9137551db324cffbcf9e106",
+    "openalex_id": null,
+    "semantic_scholar_id": "b99272d953c4456db9137551db324cffbcf9e106",
+    "eric_id": null,
+    "publisher": "2025 33rd Mediterranean Conference on Control and Automation (MED)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The introduction of control theory in education, beginning in primary school, is an essential step toward preparing students for 21st-century challenges. Control theory\u2019s inclusion in STEAM education is critical as a foundational element of technological and engineering advancements. Teaching these concepts to young learners requires innovative methods that balance accessibility, engagement, and adaptability. This study integrates an AI-enhanced chatbot to support Educational Robotics activities with the potential to create digital twins of learning classrooms. A total of 39 primary school students participated in the first experimental session. Questionnaire responses revealed high levels of engagement and interest, with the majority of students expressing enthusiasm for the chatbot as a companion. Finally, by leveraging data from AI-student interactions, the proposed infrastructure can model individual learning paths and classroom dynamics, enabling precise interventions and dynamic insights. This capability holds the potential not only to enhance educational outcomes but also to support teachers by providing real-time feedback on student progress, enabling them to adapt their instructional strategies effectively, and providing a scalable framework for advancing control education and STEAM learning.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-fostering-ai-literacy-through-strategic-play-a-competitive-pathfinding-g",
+    "title": "Fostering AI Literacy Through Strategic Play: A Competitive Pathfinding Game for Middle School",
+    "authors": [
+      "Claire Aguiar",
+      "Dan Carpenter",
+      "Jessica Vandenberg",
+      "Wookhee Min",
+      "Veronica Catet\u00e9",
+      "Bradford W. Mott"
+    ],
+    "year": 2025,
+    "doi": "10.1109/CoG64752.2025.11114117",
+    "url": "https://www.semanticscholar.org/paper/e4e55dea431fbde4075396b7f1d20ddc8ca0eba8",
+    "openalex_id": null,
+    "semantic_scholar_id": "e4e55dea431fbde4075396b7f1d20ddc8ca0eba8",
+    "eric_id": null,
+    "publisher": "2025 IEEE Conference on Games (CoG)",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Recent years have seen a growing interest in the introduction of foundational AI concepts into K-12 education. Although game-based learning is widely used across educational domains, its potential to support students in developing core AI understandings remains an active area of exploration. This paper presents a competitive two-player game designed to foster AI literacy among middle school students through a focus on search algorithms. In the game, students take turns editing a shared grid-based environment to observe how their actions affect their chosen algorithm's output and runtime. Through strategic gameplay and algorithm comparison, students engage in hands-on reasoning about pathfinding efficiency and decisionmaking. To evaluate the game's effectiveness, we conducted a classroom study with 40 middle school students and analyzed their responses to pre- and post-activity surveys. Results indicate increased understanding of pathfinding and high levels of engagement. While preliminary, these findings demonstrate a promising playful pathway to AI literacy and offer a foundation for future classroom-centered AI education.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-literacy-for-young-learners-a-co-designed-robotics-unit-for-students",
+    "title": "AI Literacy for Young Learners: A Co-Designed Robotics Unit for Students to Discover the World Beyond Human Senses",
+    "authors": [
+      "Nicole M. Hutchins",
+      "Latoya Chandler",
+      "Yuhan Lin",
+      "Jason Mckenna",
+      "Aimee DeFoe",
+      "Maya Israel"
+    ],
+    "year": 2025,
+    "doi": "10.1145/3641555.3705015",
+    "url": "https://www.semanticscholar.org/paper/deb7dbb9ecd9f8343d03ff03775765359e5b35bb",
+    "openalex_id": null,
+    "semantic_scholar_id": "deb7dbb9ecd9f8343d03ff03775765359e5b35bb",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This demo introduces a hands-on robotics module designed to cultivate AI literacy in elementary students through computational thinking and robotics. Co-designed with 20 elementary school teachers and instructional coaches, the module helps students differentiate between artificial intelligence and human intelligence, focusing on the AI4K12 Big Idea of Perception, and specifically how our senses differ from a robot's sensors. The centerpiece of the curriculum is the \"alien planet\" task, where students program a robot to explore an unseen planet created by a peer, using its sensors to identify objects like \"aliens\" (green), \"water\" (blue), and \"unique materials\" (red). This activity not only builds critical thinking and problem-solving skills but also introduces foundational AI concepts, such as how machines perceive the world differently than humans. By connecting to other subjects like art (e.g., hue values) and linking to students' real-world experiences, the module offers a truly interdisciplinary and relevant approach to early AI education.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-assessing-machine-learning-understanding-in-high-school-healthcare-ai-cu",
+    "title": "Assessing Machine Learning understanding in High School Healthcare AI curriculum",
+    "authors": [
+      "Michael Cassidy",
+      "Jessica M. Karch",
+      "J. Hammerman",
+      "Carlo Pinciroli",
+      "B. Price",
+      "Brandy Jackson",
+      "Luk Hendrik",
+      "Kathryn Jessen Eller"
+    ],
+    "year": 2026,
+    "doi": "10.3389/fcomp.2026.1868904",
+    "url": "https://www.semanticscholar.org/paper/4a37a54f9a7c4f4bb124df48119ecd6bfa77984f",
+    "openalex_id": null,
+    "semantic_scholar_id": "4a37a54f9a7c4f4bb124df48119ecd6bfa77984f",
+    "eric_id": null,
+    "publisher": "Frontiers of Computer Science",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "\n Artificial intelligence (AI) and machine learning (ML) increasingly shape decision-making in high-impact domains such as healthcare, yet most secondary students lack opportunities to understand how these systems function or reproduce inequities. Advancing AI literacy in K\u201312 education requires context-rich curricula paired with valid assessments that measure students\u2019 understanding of foundational ML concepts. This study developed and provided initial validation evidence for an assessment of foundational ML understanding while examining student learning within a context-based healthcare AI curriculum.\n \n \n We conducted a multi-year study in which high school students engaged in an 18-lesson curriculum integrating data science, AI, and ML through authentic healthcare applications. Students analyzed real-world datasets, built and evaluated ML models, and participated in a collaborative datathon with healthcare and data science professionals. A curriculum-aligned assessment measuring foundational ML concepts was administered before and after instruction, and psychometric analyses, as well as multiple linear and multilevel regression models were used to evaluate assessment quality and changes in student learning.\n \n \n \n Students entered the curriculum with limited but non-random knowledge of ML concepts and demonstrated statistically significant gains following instruction. The assessment also demonstrated improved reliability and item discrimination following instruction, suggesting that students developed more coherent conceptual knowledge of ML. At the same time, the findings identified several issues with the assessment and some of its items that warrant further refinement.\n \n \n \n This study provides initial validation evidence for one of the few assessments of foundational ML concepts developed for secondary students and provides evidence that a context-based healthcare curriculum can support foundational ML learning. The findings also highlight the importance of addressing both authentic contexts and continued assessment development to support the technical and societal dimensions of improving AI literacy.\n",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-introducing-ai-without-computers-hands-on-literacy-and-ethical-sense-mak",
+    "title": "Introducing AI Without Computers: Hands-On Literacy and Ethical Sense-Making for Young Learners",
+    "authors": [
+      "Hasti Darabipourshiraz",
+      "Maalvika Bhat",
+      "Duri Long"
+    ],
+    "year": 2025,
+    "doi": "10.1145/3706599.3719876",
+    "url": "https://www.semanticscholar.org/paper/3ca31c51bee889ff3d325432317be5841db6e6c2",
+    "openalex_id": null,
+    "semantic_scholar_id": "3ca31c51bee889ff3d325432317be5841db6e6c2",
+    "eric_id": null,
+    "publisher": "CHI Extended Abstracts",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Middle school students encounter AI daily, yet they often lack the tools to critically examine AI\u2019s influence on their lives. We seek to address this issue by designing activities where learners engage with AI in personally relevant contexts and \"unplugged\" interactions foster collaborative ethical reasoning. We present novel designs of four unplugged activities that address learning objectives such as recognizing AI, understanding AI\u2019s capabilities, and reasoning about AI ethics. We conducted a secondary analysis of data collected during a five-day summer workshop with middle school students where our \u2019unplugged\u2019 activities were integrated into an existing curriculum. Teacher feedback suggests that the activities were engaging and fostered conceptual understanding. Student surveys revealed growth in students\u2019 comprehension of foundational AI concepts and ethical reasoning; however, abstract concepts were not as well understood. This study contributes a model for designing interactive AI education interventions that emphasize personal relevance and collaborative ethical reasoning.",
+    "topics": [
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-for-everyone-engaging-middle-schoolers-through-collaborative-ethical",
+    "title": "AI for Everyone: Engaging Middle Schoolers through Collaborative, Ethical, and Multimodal AI Learning",
+    "authors": [
+      "Kayleigh Stallings",
+      "N. Tian",
+      "Elif Yayla Ercek",
+      "Haven Kotara",
+      "Devin Marinelli",
+      "Pragathi Durga Rajarajan",
+      "Dan Schumacher",
+      "I. Sanusi",
+      "Fred G. Martin"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3770762.3772627",
+    "url": "https://www.semanticscholar.org/paper/a7970b9c31ef743822b12ce955f4246093cbe762",
+    "openalex_id": null,
+    "semantic_scholar_id": "a7970b9c31ef743822b12ce955f4246093cbe762",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Early exposure to artificial intelligence (AI) and machine learning (ML) is essential for preparing students to navigate and shape a technology-driven world. This paper presents the design, imple- mentation, and evaluation of a four-day ''AI for Everyone!'' summer camp, which introduced 33 middle school students to foundational AI and ML concepts through interactive games, hands-on projects, and collaborative activities. Each instructor contributed a unique learning module on topics including Convolutional Neural Net- works, Deep Fakes, Decision Trees, and Reinforcement Learning, with integrated discussions on ethical implications. Effectiveness was assessed using pre- and post-camp surveys, structured inter- views, embedded evaluation tools, and instructor reflections. Quan- titative results showed a statistically significant increase in students' awareness of bias in AI (p = 0.014, n = 29) following the interven- tion. Qualitative data indicated gains in conceptual understanding and enthusiasm for AI, with students most engaged by game-based activities, tangible projects, and peer collaboration. Instructors, also researchers, conducted small-group cognitive interviews to deepen student learning through real-world ethical discussions. Findings highlight that an inclusive, flexible, and interactive approach builds both conceptual understanding and also increases enthusiasm for AI among middle school students. This paper provides a detailed camp design and practical guidance for others developing informal AI/ML education experiences for young learners.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "learner"
+  },
+  {
+    "id": "src-shaping-ai-interest-in-rural-middle-schools-with-unplugged-learning-gend",
+    "title": "Shaping AI Interest in Rural Middle Schools with Unplugged Learning: Gender Differences and Teacher Insights",
+    "authors": [
+      "Hansol Lim",
+      "D. Boulden",
+      "Jessica Vandenberg",
+      "Veronica Catet\u00e9",
+      "Wookhee Min",
+      "Bradford W. Mott"
+    ],
+    "year": 2025,
+    "doi": "10.1609/aaai.v39i28.35188",
+    "url": "https://www.semanticscholar.org/paper/83a1882f9d589aae9358e6d4fe4666287aeb545d",
+    "openalex_id": null,
+    "semantic_scholar_id": "83a1882f9d589aae9358e6d4fe4666287aeb545d",
+    "eric_id": null,
+    "publisher": "AAAI Conference on Artificial Intelligence",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Adoption of artificial intelligence (AI) is at an inflection point. With daily use of AI escalating due to widely available software tools, educators, researchers, and policymakers must adapt swiftly to changing educational needs. While think tanks and Big Tech companies often promote the notion that AI serves as a powerful tool for democratizing access to knowledge and opportunities, our work in rural communities underscores the disparity in access to AI education and related opportunities. In this paper, we report on our experience introducing foundational AI concepts to rural middle school students using an unplugged game-based learning activity. By providing engaging learning experiences to rural populations, we hope to broaden interest in and understanding of AI technologies. To this end, we conducted a classroom study in which two middle school teachers implemented our unplugged AI learning activity with their students. Analyzing survey data from 60 of the participating students, we explore the impact of the activity on their interest in AI, their conceptual understanding, and examine potential gender differences. Additionally, we share insights from the teachers who participated in our professional development sessions in preparation for the classroom implementations.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-teaching-ai-for-social-good-youth-centered-critical-ai-literacy",
+    "title": "Teaching AI for Social Good: Youth-Centered Critical AI Literacy",
+    "authors": [
+      "Hyejeong Lee",
+      "Suraj Bandela",
+      "Tiffany Emanuel",
+      "James Hernandez"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3770761.3777284",
+    "url": "https://www.semanticscholar.org/paper/9184727cd7d42eafef316215c2aa9d19eccb085a",
+    "openalex_id": null,
+    "semantic_scholar_id": "9184727cd7d42eafef316215c2aa9d19eccb085a",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examines the design and implementation of the D3 (Decode, Discover, Design) curriculum, a culturally relevant AI and data literacy program for middle school students. Sixty students from a low-SES, predominantly Hispanic school in the southern United States participated in this project. The curriculum integrated three complementary perspectives: AI literacy, AI for social good, and culturally relevant computing. During the Decode and Discover phases, students learned foundational AI and NLP concepts while analyzing real-world community data. In the Design phase, students created digital artifacts that addressed issues. Mixed methods results revealed significant gains in AI knowledge and more positive attitudes toward AI. Students also demonstrated agency, civic engagement, and awareness of algorithmic bias. The study demonstrates the potential of culturally relevant computing and AI for social good, offering a transferable model for community-anchored, equity-focused AI education.",
+    "topics": [
+      "ai literacy",
+      "data literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-needs-analysis-for-developing-interactive-multimedia-to-enhance-literacy",
+    "title": "Needs Analysis for Developing Interactive Multimedia to Enhance Literacy and Numeracy Skills in Students with Special Needs",
+    "authors": [
+      "F. Sarnita",
+      "K. Suma",
+      "I. N. Tika",
+      "I. Candiasa"
+    ],
+    "year": 2025,
+    "doi": "10.32789/edcon.2024.3103",
+    "url": "https://www.semanticscholar.org/paper/20f51d22aee7e78cff7e64b6d9704d0d0ebc9eba",
+    "openalex_id": null,
+    "semantic_scholar_id": "20f51d22aee7e78cff7e64b6d9704d0d0ebc9eba",
+    "eric_id": null,
+    "publisher": "Proceedings of the International Conference on Teaching, Education and Learning",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Abstract: Special needs students at Baiturrahman Sondosia SLB rely on Braille and printed books for reading and arithmetic, which presents challenges in grasping complex concepts such as the structure and relative sizes of planets in the solar system. This limitation affects their engagement with reading, comprehension, and arithmetic, while also highlighting the lack of diverse learning media in the school. This study evaluated the literacy and numeracy skills of 19 special needs students (blind and deaf) aged 14\u201316 years, comprising 12 girls and 7 boys. The research involved a two-hour session attended by parents and teachers, with 12 parents and one teacher responding to a survey questionnaire. The findings revealed that blind and deaf students possess foundational literacy and numeracy skills that can be further enhanced through innovative approaches. To address these needs, this research utilized the MIT App Inventor Version 2, incorporating Artificial Intelligence (AI) to develop interactive multimedia focused on the solar system. This approach demonstrates potential for improving student engagement and learning outcomes in literacy and numeracy.\nKeywords: Special Needs Students, Multimedia Interactive, literacy, numeration.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-on-teaching-image-recognition-to-children-at-a-summer-camp",
+    "title": "On Teaching Image Recognition to Children at a Summer Camp",
+    "authors": [
+      "Pragathi Durga Rajarajan",
+      "Fred G. Martin"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3770762.3772635",
+    "url": "https://www.semanticscholar.org/paper/2712f62d464d60ed7e9f7f549a24c350bbf85437",
+    "openalex_id": null,
+    "semantic_scholar_id": "2712f62d464d60ed7e9f7f549a24c350bbf85437",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "It is becoming increasingly essential to develop and implement K-12 artificial intelligence (AI) education initiatives as AI technologies permeate into and transform different aspects of society. Image recognition is a foundational AI concept due to its broad applications, making it important to explore effective ways to introduce it to children. In this work, we conducted a session on image recognition at an AI-focused summer camp for middle school students. We introduced concepts including computer representation of images, feature extraction, and model prediction. We evaluated AI-See, a novel web application we developed to teach kids about kernels and matrix multiplication. In this work, our research questions were: (RQ1) What evidence is there of student learning of aspects of image recognition?; (RQ2) How can software-based and unplugged activities complement each other?; and (RQ3) Can we design an engaging and fun session for teaching image recognition? Analysis of the collected quantitative and qualitative data showed that many students developed a strong understanding of different aspects of image recognition, including computer representation of images, feature maps, kernels, and matrix math. Two-proportion z-tests revealed statistically significant improvement in performance from pre- to post-survey on four out of five multiple choice items about feature maps and kernels, indicating effective learning on these concepts through our session.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-human-centred-framework-for-teacher-professional-development-in-ai-sup",
+    "title": "A Human-Centred Framework for Teacher Professional Development in AI-Supported Science Teaching",
+    "authors": [
+      "K. Kotsis"
+    ],
+    "year": 2026,
+    "doi": "10.59324/jaitd.2026.2(3).02",
+    "url": "https://www.semanticscholar.org/paper/485fe0c04e89338621ff2c359438fe39f6545dfe",
+    "openalex_id": null,
+    "semantic_scholar_id": "485fe0c04e89338621ff2c359438fe39f6545dfe",
+    "eric_id": null,
+    "publisher": "Journal of Artificial Intelligence and Technological Development",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) has moved from a peripheral innovation to an everyday presence in science education, where generative models, adaptive tutors, virtual laboratories, and data-rich simulations increasingly shape how learners encounter scientific knowledge. However, science teachers remain unevenly prepared to make pedagogically, ethically, and scientifically defensible decisions about these tools. Existing professional development often focuses on technical familiarity with AI applications, while giving less attention to the disciplinary practices of science teaching, such as inquiry, modelling, experimentation, data interpretation, evidence-based argumentation, and assessment. This article proposes a human-centred framework for teacher professional development in AI-supported science teaching. The framework is organised around five interlocking dimensions: foundational AI and data literacy contextualised in science; pedagogical content knowledge for AI-mediated inquiry; ethics, equity, and human agency; design competence for adaptive use and AI-supported assessment; and sustained, collaborative professional learning. Developed as a conceptual synthesis, the framework draws on the UNESCO AI Competency Framework for Teachers, recent extensions of TPACK into intelligent-TPACK and AI-TPACK, Human-Centric Artificial Intelligence Pedagogy, and emerging empirical studies on AI-supported classroom practice. It contributes by translating broad AI competency models into a science education-oriented professional development structure that foregrounds inquiry, modelling, experimentation, evidence-based reasoning, ethical judgement, and teacher agency. The article contributes to the literature by translating broad AI competency models into a science education-oriented professional development structure. It illustrates the framework through science-specific classroom scenarios and proposes a phased implementation roadmap from acquisition to deepening and creation. The article argues that effective AI-supported science teaching depends less on access to tools alone than on cultivating teachers who can critically evaluate, adapt, and humanize AI in the service of authentic scientific inquiry.",
+    "topics": [
+      "ai literacy",
+      "data literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-language-teacher-ai-literacy-insights-from-collaborations-with-chatgpt",
+    "title": "Language teacher AI literacy: insights from collaborations with ChatGPT",
+    "authors": [
+      "Weiming Liu"
+    ],
+    "year": 2025,
+    "doi": "10.1515/jccall-2024-0030",
+    "url": "https://www.semanticscholar.org/paper/91782e809e4c963badb0046d647d54dd5f10a86d",
+    "openalex_id": null,
+    "semantic_scholar_id": "91782e809e4c963badb0046d647d54dd5f10a86d",
+    "eric_id": null,
+    "publisher": "Journal of China Computer-Assisted Language Learning",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Abstract The transformative potential of generative artificial intelligence (GenAI) in language education highlights the importance of AI literacy among teachers to ensure its ethical and effective integration into teaching practices. Although studies have examined the application of AI in language education, there is a lack of comprehensive reviews focusing on the interaction between language teachers and ChatGPT, a GenAI tool, particularly in fostering human\u2013AI collaboration within educational contexts. This review addresses this gap by synthesising findings from empirical studies. The Scopus database was used as the primary source for this review. A total of 19 journal articles, published between 2023 and 2024, were identified. The review first analyses the research participants and research methods of the selected studies. Key themes are organised into five dimensions: AI foundations and applications, AI ethics, a human-centred mindset, AI pedagogy and AI for professional development, which are derived from the framework proposed by Miao and Cukurova (2024. AI competency Framework for teachers. Paris, France: UNESCO). This review adopts their framework as an analytical lens for evaluating both the opportunities and challenges associated with integrating ChatGPT into language education. The findings highlight the importance of a balanced approach to AI integration to safeguard educational integrity. By offering actionable insights for teachers, curriculum designers and policymakers, this review presents a roadmap for the responsible adoption of AI in language education, ensuring that teachers remain central to the learning process.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-adoption-of-artificial-intelligence-in-teaching-and-teacher-professional",
+    "title": "Adoption of artificial intelligence in teaching and teacher professional development: Pedagogical impacts, ethical risks, and challenges",
+    "authors": [
+      "Rabi Bara'u"
+    ],
+    "year": 2026,
+    "doi": "10.70593/deepsci.0203006",
+    "url": "https://www.semanticscholar.org/paper/72f8eb2f5685d18c15590529a5a7055ce40ee1eb",
+    "openalex_id": null,
+    "semantic_scholar_id": "72f8eb2f5685d18c15590529a5a7055ce40ee1eb",
+    "eric_id": null,
+    "publisher": "International Journal of Applied Resilience and Sustainability",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Artificial Intelligence in Education has led to the emergence of the pressing necessity to comprehend the implementation of AI in pedagogy and educator professional growth with references to its effects on pedagogy, ethical issues, as well as systemic concerns. The current work uses the PRISMA framework to conduct a systematic review of the newest literature on the subject of Generative AI in Teaching, AI Adoption in Education, and Teacher Professional Development with an emphasis placed on the emerging trends of AI-supported instruction, personalized learning systems, and educator AI literacy. With an overview indicative of growth in integration of AI in educational settings through technological progression in adaptive learning systems, intelligent tutoring systems and AI-enabled curriculum design as well as rising institutional investment in digital pedagogical change, the review outlines a stark rise in the pace of AI integration in education. The study methodology combine Technology Acceptance Model and Unified Theory of Acceptance and Use of Technology to determine teacher adoption behaviors. The results indicate that AI increases instruction effectiveness, AI-based assessment, and facilitates data-driven teaching with learning analytics, as well as transforms the role of a teacher into an instructor with reduced control and collaboration with AI. Nevertheless, the review suggests key obstacles such as insufficient training and upskilling of the teachers, biased access to professional learning ecosystems, and the gaps in AI governance in schools. The sustainable AI integration should be based on a balance which will integrate technology innovation with the aims of pedagogy, ethical AI in educating and inclusive digital equity in adopting AI.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
+  },
+  {
+    "id": "src-classroom-ready-ai-in-the-humanities-an-ethics-by-design-e-course-and-a",
+    "title": "Classroom-Ready AI in the Humanities: An Ethics-by-Design e-Course and a STE(A)M Digital Lab for Teacher Professional Development",
+    "authors": [
+      "T. Kouvara",
+      "V. Fotopoulos",
+      "T. Orphanoudakis",
+      "Enik\u0151 Nagy",
+      "Fernando Antunez Cid",
+      "Antonio da Silva",
+      "K. Maniadaki",
+      "Anca Petriuc"
+    ],
+    "year": 2026,
+    "doi": "10.12681/icodl.8642",
+    "url": "https://www.semanticscholar.org/paper/c46145b7bb0b249c2d74bd88746f5fc870a68d0d",
+    "openalex_id": null,
+    "semantic_scholar_id": "c46145b7bb0b249c2d74bd88746f5fc870a68d0d",
+    "eric_id": null,
+    "publisher": "\u0394\u03b9\u03b5\u03b8\u03bd\u03ad\u03c2 \u03a3\u03c5\u03bd\u03ad\u03b4\u03c1\u03b9\u03bf \u03b3\u03b9\u03b1 \u03c4\u03b7\u03bd \u0391\u03bd\u03bf\u03b9\u03ba\u03c4\u03ae &amp; \u03b5\u03be \u0391\u03c0\u03bf\u03c3\u03c4\u03ac\u03c3\u03b5\u03c9\u03c2 \u0395\u03ba\u03c0\u03b1\u03af\u03b4\u03b5\u03c5\u03c3\u03b7",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "European policy expects AI-supported, data-informed teaching, yet distance PD often treats AI literacy, pedagogy, and ethics as parallel tracks. This study presents TENSILE, an Erasmus+ KA2 model for ethics-by-design, humanities-anchored AI PD that integrates the Community of Inquiry (CoI), TPACK, and evidence-based PD levers. The design comprises a six-module asynchronous Moodle e-course and a STEAM Digital Lab with curated tools, templates, and 25 classroom-ready use cases in language and literature-from rule-based OULIPO generators to lightweight Python/NLP and MLforKids to Scratch classifiers that keep model behaviour observable. Safeguards (privacy, transparency/provenance, fairness, and human oversight) are embedded as routine gates, with public artefacts (model/data cards, decision logs, human-vs-model tables) supporting critique and transfer. The theory of change aligns with EU risk-based AI governance and international guidance, focusing on enhancing AI literacy, integrating techno-pedagogical approaches, and promoting ethical practice. Evaluation triangulates pilot artefacts with validated self-report instruments (TAICS, AICO_edu) to examine competence shifts and fidelity of enactment. The contribution is a replicable, low-bandwidth-friendly template that elevates the humanities as first-class sites for AI-mediated inquiry and supports scalable mentoring and community building across diverse infrastructure contexts.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-ai-in-teacher-training-and-professional-development-a-tool-for-continuou",
+    "title": "AI in Teacher Training and Professional Development: A Tool for Continuous Learning and Skill Enhancement",
+    "authors": [
+      "Fahim Shezad",
+      "R. Goswami",
+      "A. Shaheen",
+      "Imran Khan"
+    ],
+    "year": 2025,
+    "doi": "10.47067/real.v8i1.416",
+    "url": "https://www.semanticscholar.org/paper/7176455a7d9249ccf350170eea976f828b042571",
+    "openalex_id": null,
+    "semantic_scholar_id": "7176455a7d9249ccf350170eea976f828b042571",
+    "eric_id": null,
+    "publisher": "Review of Education, Administration &amp; Law",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examines the effectiveness of artificial intelligence in teacher professional development and training, with specific emphasis on how it influences individualized learning, continuous skill improvement, and ethics. A quantitative approach was utilized to collect information from 244 Pakistani university teachers through a standardized questionnaire. The correlation test (r = 0.336, p < 0.01) indicated a positive moderate relationship between AI-based learning tools and teacher training success, which implies that teachers find AI to be useful. Regression analysis (R\u00b2 = 0.006, p = 0.219) indicated a weak predictive relationship between AI and the effectiveness of teaching, which implies that AI is not fully responsible for improving the effectiveness of teaching. The findings indicate the need for blended models of learning, AI literacy education, and ethical application of AI to achieve the full potential benefits of AI. The present study contributes to increasing research studies on artificial intelligence in education and indicates additional research studies on long-term adoption and impacts of AI in different learning environments.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-exploring-emergent-ai-tpack-competencies-in-a-two-week-ai-literacy-modul",
+    "title": "Exploring emergent AI-TPACK competencies in a two-week AI literacy module for preservice teachers",
+    "authors": [
+      "T. Aldemir",
+      "Ali Bicer",
+      "Sel\u00e7uk K\u0131l\u0131n\u00e7",
+      "Jewoong Moon",
+      "M. Kwok"
+    ],
+    "year": 2025,
+    "doi": "10.1016/j.tate.2025.105231",
+    "url": "https://www.semanticscholar.org/paper/55fe0d30c61c76b2753aca1747087c1bc53a3662",
+    "openalex_id": null,
+    "semantic_scholar_id": "55fe0d30c61c76b2753aca1747087c1bc53a3662",
+    "eric_id": null,
+    "publisher": "Teaching and Teacher Education : An International Journal of Research and Studies",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This exploratory case study examined a two-week, ethics-integrated AI literacy module for preservice teachers ( n = 29) in a required technology-integration course. Five standards-aligned activities were mapped to AI-TPACK (AI-TK, AI-TPK, AI-TCK, AI-CK, ethics) and AI-literacy dimensions (know, use, evaluate, ethical awareness, create). Analysis of reflections, tool-audit rubrics, lesson plans, and surveys revealed five patterns: (1) rapid gains in foundational AI knowledge and confidence, (2) movement from generic caution to teacher-directed ethical strategies, (3) a shift from generic caution to teacher-directed ethical strategies, (4) emerging subject-specific applications, and (5) nascent yet incomplete AI-TPACK integration: accuracy checks were routine, but bias detection remained weak. Findings indicate that even brief, carefully scaffolded professional development can initiate multidimensional AI competence when ethics is woven into every task. However, deeper bias-critical work and consecutive cycles are required to consolidate holistic, discipline-anchored AI practice.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-teacher-professional-development-for-a-future-with-generative-artificial",
+    "title": "Teacher professional development for a future with generative artificial intelligence \u2013 an integrative literature review",
+    "authors": [
+      "A. Brand\u00e3o",
+      "L. Pedro",
+      "Nelson Zagalo"
+    ],
+    "year": 2024,
+    "doi": "10.1344/der.2024.45.151-157",
+    "url": "https://www.semanticscholar.org/paper/1066b1354bfa863ff6bf7da27e6b5f309afcd703",
+    "openalex_id": null,
+    "semantic_scholar_id": "1066b1354bfa863ff6bf7da27e6b5f309afcd703",
+    "eric_id": null,
+    "publisher": "Digital Education Review",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Artificial Intelligence (AI) has been part of every citizen's life for several years. Still, the emergence of generative AI (GenAI), accessible to all, has raised discussions about the ethical issues they raise, particularly in education. GenAI tools generate content according to user requests, but are students using these tools ethically and safely? Can teachers guide students in this use and use these tools in their teaching activities? This paper argues that teacher professional development (TPD) is an essential key trigger in adopting these emerging technologies. The paper will present an integrative literature review that discusses the components of TPD that may empower teachers to guide their students towards the ethical and safe use of GenAI. According to the literature review, one key component of TPD should be AI literacy, which involves understanding AI, its capabilities and limitations, and its potential benefits and drawbacks in education. Another essential component is hands-on activities that engage teachers, their peers, and students in actively using these tools during the training process. The paper will discuss the advantages of working with GenAI tools and designing lesson plans to implement them critically in the classroom.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-challenges-and-coping-strategies-for-teacher-professional-development-in",
+    "title": "Challenges and coping strategies for teacher professional development in the era of intelligence \u2014\u2014 Analysis of the impact of artificial intelligence technology",
+    "authors": [
+      "Na Li"
+    ],
+    "year": 2025,
+    "doi": "10.63887/jse.2025.1.3.9",
+    "url": "https://www.semanticscholar.org/paper/6ea23e4c727b15174f0716ed7b96d652b1c7ecab",
+    "openalex_id": null,
+    "semantic_scholar_id": "6ea23e4c727b15174f0716ed7b96d652b1c7ecab",
+    "eric_id": null,
+    "publisher": "Journal of Sociology and Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In the wave of the digital intelligence era, artificial intelligence (AI) technology has deeply integrated into the education sector, reshaping the educational ecosystem and bringing profound changes to teachers 'professional development. The new teaching models, vast knowledge resources, and intelligent evaluation systems driven by AI not only provide opportunities for educational innovation but also pose challenges to teachers, such as a weakened role in teaching, increased pressure to update knowledge, and the need to reconstruct teaching evaluation models. This article, based on the impact of AI technology on education, systematically analyzes the key challenges faced by teachers' professional development in the digital intelligence era. It proposes strategies from dimensions such as reshaping teaching abilities, updating knowledge systems, and enhancing evaluation literacy, aiming to help teachers adapt to the demands of the digital intelligence era, achieve the iterative upgrade of their professional capabilities, and contribute to building a high-quality education system.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-enhancing-ai-literacy-a-collaborative-self-study-of-elementary-teacher-e",
+    "title": "Enhancing AI Literacy: A Collaborative Self-Study of Elementary Teacher Educators",
+    "authors": [
+      "Shuling Yang",
+      "A. Banks"
+    ],
+    "year": 2024,
+    "doi": "10.1080/17425964.2024.2434213",
+    "url": "https://www.semanticscholar.org/paper/f50ecb64a1cd61a1a123dd276cf43e48867eefbf",
+    "openalex_id": null,
+    "semantic_scholar_id": "f50ecb64a1cd61a1a123dd276cf43e48867eefbf",
+    "eric_id": null,
+    "publisher": "Studying Teacher Education: journal of self-study of teacher education practices",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT This self-study highlights the collaborative journey of two elementary teacher educators from a rural institution as they navigated the integration of Generative AI (GenAI) into teaching and research. To grow their AI literacy, they engaged in reflective practices, collaborative discussions, and hands-on implementation of GenAI technologies. Through this process, they documented their experiences with AI-driven chatbots, offering insights into their learnings and concerns. Their reflections underscored the importance of understanding GenAI\u2019s role in education, the challenges of integrating GenAI tools effectively, and the potential of GenAI in teaching and learning. The educators concluded that while GenAI can augment human capabilities, it cannot replace human expertise due to its limitations. By capturing their journey, this study contributed to the growing discourse on AI literacy among teacher educators, emphasizing the need for upskilling and ongoing professional development in the face of rapidly evolving technologies.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-building-global-ai-literacy-preparing-teachers-for-the-future-of-ai-driv",
+    "title": "Building Global AI Literacy: Preparing Teachers for the Future of AI-Driven Classrooms",
+    "authors": [
+      "Jake Renzella",
+      "N. Banks",
+      "Alexandra Vassar"
+    ],
+    "year": 2025,
+    "doi": "10.1145/3641555.3705101",
+    "url": "https://www.semanticscholar.org/paper/c71b339893924d86a92a1824c5a8de1f34d1fee1",
+    "openalex_id": null,
+    "semantic_scholar_id": "c71b339893924d86a92a1824c5a8de1f34d1fee1",
+    "eric_id": null,
+    "publisher": "Technical Symposium on Computer Science Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) continues to transform industries and impact daily life, it's crucial for K-12 students to be AI literate. However, many teachers feel unprepared to teach AI-related concepts. This session will focus on strategies to equip teachers with the knowledge and confidence they need to bring AI into their classrooms. Drawing on insights from the Day of AI, which has provided AI education to half a million students and professional development to thousands of teachers worldwide, the session will explore successful models for scaling teacher training in AI. Topics will include debunking common misconceptions about AI, addressing logistical challenges, and offering practical, adaptable resources that allow teachers to integrate AI into a variety of subjects. Attendees will have the opportunity to share their experiences and insights, particularly focusing on how to overcome barriers to teaching AI, such as lack of prior technical expertise or insufficient time to devote to professional development. The session will emphasise the importance of creating a collaborative and supportive network for developing and sharing AI teaching resources. Through interactive discussions, participants will collaboratively explore strategies to expand AI literacy and develop teacher confidence, aiming to create a sustainable model for equipping educators to teach AI at scale. This session will foster community engagement, promote shared learning, and serve as a launchpad for continued collaboration on AI education.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-building-ai-literacy-for-sustainable-teacher-education",
+    "title": "Building AI Literacy for Sustainable Teacher Education",
+    "authors": [
+      "Olivia R\u00fctti-Joy",
+      "Georg Winder",
+      "Horst Biedermann"
+    ],
+    "year": 2023,
+    "doi": "10.21240/zfhe/18-04/10",
+    "url": "https://www.semanticscholar.org/paper/b3c267a6b6f8b850597ffc3d019b179c2e53bdc8",
+    "openalex_id": null,
+    "semantic_scholar_id": "b3c267a6b6f8b850597ffc3d019b179c2e53bdc8",
+    "eric_id": null,
+    "publisher": "Zeitschrift f\u00fcr Hochschulentwicklung",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This article highlights the significance of AI Literacy for promoting sustainable teacher education in an AI-driven world. Given the rapid progress of AI, a crucial aspect of organisational development for teacher education institutions involves fostering AI Literacy among teaching staff, and enabling them to use and teach AI ethically and responsibly. We underscore the necessity for teacher education institutions to create opportunities for developing AI Literacy as a fundamental goal for sustainable development. Further, we explore recommendations for sustainable organisational and professional development as well as future research directions.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
   }
 ]

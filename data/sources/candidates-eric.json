@@ -8293,5 +8293,143 @@
     "reviewed_at": null,
     "relevance_score": 0.9,
     "audience": "educator"
+  },
+  {
+    "id": "src-the-implications-of-generative-artificial-intelligence-for-mathematics-e",
+    "title": "The Implications of Generative Artificial Intelligence for Mathematics Education",
+    "authors": [
+      "Candace Walkington"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1111/ssm.18356",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1513396",
+    "publisher": "School Science and Mathematics",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Generative artificial intelligence has become prevalent in discussions of educational technology, particularly in the context of mathematics education. These AI models can engage in human-like conversation and generate answers to complex questions in real-time, with education reports accentuating their potential to make teachers' work more efficient and improve student learning. This paper provides a review of the current literature on generative AI in mathematics education, focusing on four areas: generative AI for mathematics problem-solving, generative AI for mathematics tutoring and feedback, generative AI to adapt mathematical tasks, and generative AI to assist mathematics teachers in planning. The paper discusses ethical and logistical issues that arise with the application of generative AI in mathematics education, and closes with some observations, recommendations, and future directions.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-political-conversations-with-social-groups-and-digital-civic-engagement",
+    "title": "Political Conversations with Social Groups and Digital Civic Engagement among Adolescents: The Moderating Role of Digital Literacy, Gender, and Socioeconomic Status",
+    "authors": [
+      "Ma Glenda Lopez Wui",
+      "Jessica Sandra R. Claudio",
+      "Jie Zhang",
+      "Carl Russel R. Reyes",
+      "Rosselle Trishia M. Reyes",
+      "Enrique Nino P. Leviste"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://doi.org/10.3102/2187742",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED682051",
+    "publisher": "AERA Online Paper Repository",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "This study examined how adolescents' political conversations with teachers and classmates, parents/guardians, and friends, and personal characteristics such as digital literacy, gender, and socio-economic status (SES) relate to digital civic engagement (CE). Study participants were 1,005 grades 9-10 students (mean age=15.5 years-old; girls=73.8%) from private (48.8%) and public (51.2%) high schools in the Philippines. Students answered self-reported questionnaires assessing their digital CE, political conversations with the aforementioned social groups, and digital literacy. Findings show that political conversations with social groups uniquely predicted digital CE over and above digital literacy, gender, and SES. Likewise, high-SES students demonstrated higher levels of political conversations with social groups and digital CE than low-SES students. Implications for social justice in digital CE were discussed.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-principals-artificial-intelligence-literacy-and-leadership-self-efficacy",
+    "title": "Principals' Artificial Intelligence Literacy and Leadership Self-Efficacy: The Technology Acceptance Model",
+    "authors": [
+      "Mehmet &#x015E;&#x00FC;kr&#x00FC; Belliba&#x015F;",
+      "Mustafa &#x00D6;zgenel",
+      "Aras Bozkurt"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s40299-025-01059-w",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1512839",
+    "publisher": "Asia-Pacific Education Researcher",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As the integration of artificial intelligence (AI) into education attracts substantial attention, school principals are encouraged to develop AI literacy to enhance their leadership knowledge, skills, and competencies. However, little research has been devoted to understanding whether perceptions and the use of AI tools can improve principals' leadership self-efficacy. This study examined how AI literacy predicts principals' leadership self-efficacy through the technology acceptance model. Specifically, it explored the relationships between perceived usefulness, perceived ease of use, intention to use AI, AI literacy, and leadership self-efficacy. Data were collected from 213 school principals and assistant principals in T&#x00FC;rkiye and analysed using structural equation modelling. The findings revealed significant relationships among school leaders' technology acceptance, AI literacy, and leadership efficacy. Both perceived usefulness and ease of use significantly predicted the intention to use AI, which in turn was related to AI literacy. Finally, AI literacy was a significant but weak predictor of school principals' leadership self-efficacy. This study contributes to the growing body of research on AI in educational leadership by providing empirical evidence on how technology acceptance and AI literacy facilitate principals' development of better self-efficacy in school leadership practices.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-from-digital-literacy-to-ai-literacy-developing-a-comprehensive-framewor",
+    "title": "From Digital Literacy to AI Literacy: Developing a Comprehensive Framework for the Age of Artificial Intelligence",
+    "authors": [
+      "Maria Ranieri",
+      "Gabriele Biagini",
+      "Stefano Cuomo"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.2478/rem-2026-0005",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1512920",
+    "publisher": "Research on Education and Media",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) increasingly permeates various sectors, existing digital literacy frameworks prove insufficient for addressing the unique challenges posed by autonomous, data-driven AI systems. This study aims to develop a comprehensive AI literacy framework that extends traditional digital literacy models to encompass the competencies required for effective and ethical engagement with AI technologies. Through a multi-phase research process conducted between 2022 and 2025, we employed two scoping reviews and one systematic literature review. The first phase analysed 35 articles on AI literacy conceptualization, the second examined 12 studies on AI literacy assessment tools, and the third systematically reviewed 87 studies from an initial pool of 323 records across major databases including Web of Science, SCOPUS, ERIC, and IEEE Xplore. Building on Calvani et al. (2009) digital literacy framework, we propose an AI literacy framework with four interconnected dimensions: cognitive (understanding AI concepts and mechanisms), operational (practical skills for AI interaction and application), critical (evaluating AI-generated content and societal impacts), and ethical (navigating moral implications and responsible AI use). The framework addresses key gaps in how AI literacy is conceptualized, moving beyond tool-based competencies to include understanding of autonomous systems. The transition from digital to AI literacy represents a paradigm shift requiring new competencies for educational, professional, and societal contexts. The framework provides a foundation for curriculum development, assessment design, and policy formulation to ensure individuals can critically engage with AI technologies while addressing their ethical and social implications.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "learner"
+  },
+  {
+    "id": "src-from-traditional-to-ai-enhanced-science-learning-real-time-organ-recogni",
+    "title": "From Traditional to AI-Enhanced Science Learning: Real-Time Organ Recognition with YOLOv8",
+    "authors": [
+      "G&#x00FC;ls&#x00FC;m Me&#x00E7;o",
+      "Asl&#x0131; G&#x00F6;rg&#x00FC;l&#x00FC;"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s42330-026-00497-y",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1513768",
+    "publisher": "Canadian Journal of Science, Mathematics and Technology Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study was conducted using an adopted design-based research (DBR) approach to investigate the impact of artificial intelligence (AI)-supported object recognition technology on middle school students' learning of the \"Systems in Our Body\" unit. A dataset capable of identifying human organs was developed using the YOLOv8 algorithm and the Roboflow platform, and this dataset was integrated into the instructional process. The research consisted of four main stages: initial design, pilot implementation, revision, and main implementation. During the pilot implementation, both technical and pedagogical issues were identified, leading to the redesign of the lesson scenario. The main implementation was carried out with 5th grade students. A quasi-experimental pretest-posttest control group design was used to measure the effectiveness of the intervention. In addition, qualitative data were collected through a focus group interview with the experimental group students. Quantitative findings revealed that the AI-supported dataset significantly improved students' academic achievement. Qualitative findings indicated positive changes in students' cognitive and affective development. The study suggests that AI-assisted instructional tools can enhance science learning processes and increase classroom engagement. These findings suggest that AI-supported image recognition can foster both conceptual understanding and motivation in science education.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]

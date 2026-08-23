@@ -7247,5 +7247,219 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "educator"
+  },
+  {
+    "id": "src-computational-thinking-in-early-childhood-education-the-impact-of-progra",
+    "title": "Computational thinking in early childhood education: The impact of programming a tangible robot on developing debugging knowledge",
+    "authors": [
+      "Anastasia Misirli",
+      "Vassilis Komis"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.ecresq.2023.05.014",
+    "url": "https://openalex.org/W4381888487",
+    "openalex_id": "https://openalex.org/W4381888487",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Early Childhood Research Quarterly",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "The present study investigates the debugging process of 526 children in preschool (4\u20136 aged) when programming a tangible robot. When a child is involved in programming, it is needed to identify and correct errors, or in other words, debug a program. Debugging is a high-level thinking skill and is an essential component closely related to developing Computational Thinking in early childhood education. Though the debugging process is a cognitive function in programming investigated by many researchers in recent decades, most studies are conducted either in primary, secondary education, or higher education concerning beginners or experts in programming. Very few reviews, and some focus on preschool education. Our study set out the following objectives: 1) How do children identify the existence of error and locate it? 2) What types of errors emerge when coding? 3) What type of error is complex for novice programmers? 4) What strategies are developed by novice programmers to debug effectively? and 5) What types of knowledge do novice programmers construct by debugging the tangible robot Bee-Bot? The study follows an iterative model of a design-based research approach. It uses multiple case studies to collect qualitative and quantitative data. The programming intervention was implemented by 30 educators in their classrooms and was based on a scenario-based teaching design. The debugging process was analysed using Klahr & Craven's framework (1988): 1) test and evaluate program, 2) identify bug, 3) represent program, 4) locate bug and 5) correct bug. The main finding is the construction and development of syntactic and semantic knowledge.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-tools-for-assessing-teacher-digital-literacy-a-review",
+    "title": "Tools for assessing teacher digital literacy: a review",
+    "authors": [
+      "Lan Anh Thuy Nguyen",
+      "Anita Hab\u00f3k"
+    ],
+    "year": 2023,
+    "doi": "10.1007/s40692-022-00257-5",
+    "url": "https://openalex.org/W4317434409",
+    "openalex_id": "https://openalex.org/W4317434409",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Computers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract With the rapid advancement of technology, digital literacy has become a key component in educators\u2019 professional development. A wide range of assessment tools has been developed to measure teacher digital literacy; however, there has been no previous attempt to systematically synthesize and scrutinize those tools to improve evaluation of this ability among educators. The current study reviews literature on instruments that assess teacher digital literacy with the purposes of ascertaining the main aspects of it that recent researchers focus on in their evaluation, instrument types used for assessment, and the reliability and validity report, as well as the frameworks or models used to design assessment tools. The review selected 33 English-language publications in the field of educational technology from peer-reviewed journals indexed in the Education Resources Information Center (ERIC), Web of Science, and Scopus. The study period spanned from 2011 to 2022 with the objective of reviewing the tools used to assess teacher digital competence. The major findings demonstrate that scholars focus on digital competence in teachers\u2019 use of educational technology, teaching and learning, professional development, and support for learners through digital competence. Other researchers emphasize the ability of educators to apply technology to the assessment of learner outcomes or to empower students in using technology to enhance learning. Additionally, self-evaluation instruments are common, whereas a few studies promote subjective evaluation in combination with objective assessment to provide a comprehensive understanding of teacher digital competence. The results form the basis for several recommendations for future research for the further examination of teacher digital literacy.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-toolbox-of-individual-level-interventions-against-online-misinformation",
+    "title": "Toolbox of individual-level interventions against online misinformation",
+    "authors": [
+      "Anastasia Kozyreva",
+      "Philipp Lorenz-Spreen",
+      "Stefan M. Herzog",
+      "Ullrich K. H. Ecker",
+      "Stephan Lewandowsky",
+      "Ralph Hertwig",
+      "Ayesha Ali",
+      "Joseph B. Bak-Coleman",
+      "Sarit Barzilai",
+      "Melisa Basol",
+      "Adam J. Berinsky",
+      "Cornelia Betsch",
+      "John Cook",
+      "Lisa K. Fazio",
+      "Michael Geers",
+      "Andrew M. Guess",
+      "Haifeng Huang",
+      "Horacio Larreguy",
+      "Rakoen Maertens",
+      "Folco Panizza",
+      "Gordon Pennycook",
+      "David G. Rand",
+      "Steve Rathje",
+      "Jason Reifler",
+      "Philipp Schmid",
+      "Mark D. Smith",
+      "Briony Swire\u2010Thompson",
+      "Paula Szewach",
+      "Sander van der Linden",
+      "Sam Wineburg"
+    ],
+    "year": 2024,
+    "doi": "10.1038/s41562-024-01881-0",
+    "url": "https://openalex.org/W4396870527",
+    "openalex_id": "https://openalex.org/W4396870527",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Nature Human Behaviour",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-effects-of-the-blended-learning-model-on-preservice-teachers-academic-ac",
+    "title": "Effects of the blended learning model on preservice teachers\u2019 academic achievements and twenty-first century skills",
+    "authors": [
+      "Cihad \u015eent\u00fcrk"
+    ],
+    "year": 2020,
+    "doi": "10.1007/s10639-020-10340-y",
+    "url": "https://openalex.org/W3091064963",
+    "openalex_id": "https://openalex.org/W3091064963",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Education and Information Technologies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-artificial-intelligence-in-religious-education-ethical-pedagogical-and-t",
+    "title": "Artificial Intelligence in Religious Education: Ethical, Pedagogical, and Theological Perspectives",
+    "authors": [
+      "Christos Papakostas"
+    ],
+    "year": 2025,
+    "doi": "10.3390/rel16050563",
+    "url": "https://openalex.org/W4410008136",
+    "openalex_id": "https://openalex.org/W4410008136",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Religions",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This study investigates the integration of Artificial Intelligence (AI) in Religious Education (RE), a field traditionally rooted in spiritual formation and human interaction. Amid increasing digital transformation in education, theological institutions are exploring AI tools for teaching, assessment, and pastoral engagement. Using a critical literature review and analysis of institutional case studies, the paper examines the historical development of AI in education, current applications in general and theological contexts, and the ethical challenges it introduces, especially regarding decision making, data privacy, and bias as well as didactically grounded opportunities such as AI-mediated dialogic simulations. The study identifies both the pedagogical advantages of AI, such as personalization and administrative efficiency, and the risks of theological distortion, overreliance, and epistemic conformity. It presents a range of real-world implementations from institutions like Harvard Divinity School and the Oxford Centre for Digital Theology, highlighting best practices and cautionary approaches. The findings suggest that AI can enrich RE when deployed thoughtfully and ethically, but it must not replace the relational and formational aspects central to RE. The paper concludes by recommending policy development, ethical oversight, and interdisciplinary collaboration to guide responsible integration. This research contributes to the growing discourse on how AI can be aligned with the spiritual and intellectual goals of RE in a rapidly evolving digital age.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-and-challenges-of-education-for-responsible-ai",
+    "title": "The role and challenges of education for responsible AI",
+    "authors": [
+      "Virginia Dignum"
+    ],
+    "year": 2021,
+    "doi": "10.14324/lre.19.1.01",
+    "url": "https://openalex.org/W3120685978",
+    "openalex_id": "https://openalex.org/W3120685978",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "London Review of Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Artificial intelligence (AI) is impacting education in many different ways. From virtual assistants for personalized education, to student or teacher tracking systems, the potential benefits of AI for education often come with a discussion of its impact on privacy and well-being. At the same time, the social transformation brought about by AI requires reform of traditional education systems. This article discusses what a responsible, trustworthy vision for AI is and how this relates to and affects education.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-pre-service-teachers-dual-perspectives-on-generative-ai-benefits-challen",
+    "title": "Pre-service Teachers' Dual Perspectives on Generative AI: Benefits, Challenges, and Integrating into Teaching and Learning",
+    "authors": [
+      "Haesol Bae",
+      "Jaesung Hur",
+      "Jaesung Park",
+      "Gi Woong Choi",
+      "Jewoong Moon"
+    ],
+    "year": 2024,
+    "doi": "10.24059/olj.v28i3.4543",
+    "url": "https://openalex.org/W4402118358",
+    "openalex_id": "https://openalex.org/W4402118358",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Online Learning",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This study examined pre-service teachers' perspectives on integrating generative AI (GenAI) tools into their own learning and teaching practices. Discussion posts from asynchronous online courses on ChatGPT were analyzed using the Diffusion of Innovations framework to explore familiarity, willingness to apply ChatGPT to instruction, potential benefits, challenges, and concerns about using GenAI in teaching and learning. The course discussions significantly increased pre-service teachers' awareness and foundational knowledge while reducing anxiety towards AI technologies. However, despite exposure to ChatGPT, only a few confirmed intentions to adopt AI tools in their teaching practices, potentially reflecting lingering uncertainties evidenced by emotional responses, such as worry and concern. Professional development in AI literacy can address these uncertainties and enhance GenAI familiarity. The study offers insights into responsible GenAI adoption in education and how higher education can leverage ChatGPT to enhance pre-service teacher learning.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-17",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
   }
 ]
