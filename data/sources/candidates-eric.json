@@ -8431,5 +8431,94 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-ai-competence-domains-and-experience-based-differences-among-science-and",
+    "title": "AI Competence Domains and Experience-Based Differences among Science and Technology Teachers Investigated Using Structural Equation Modeling",
+    "authors": [
+      "Sivakorn Malakul",
+      "Cheeraporn Sangkawetai",
+      "Niramis Painprasert",
+      "Wachirapan Thongwichit"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s44217-026-01403-2",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514038",
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examined the structural relationships between domains of AI competence and age-adjusted differences based on computer science teaching experience among science and technology teachers. Grounded in Bandura's Social Cognitive Theory, AI competence was conceptualized as a multidimensional configuration of interrelated domains relevant to instructional practice. A quantitative, nonexperimental, cross-sectional design was employed, with data collected from 1105 secondary school science and technology teachers in Thailand. Four domains of AI competence were examined: Human-Centered AI (HC), Ethics and Social Impact (ET), Knowledge and Applications (KN), and Classroom Implementation (CL). Structural equation modeling was used to examine structural associations among the AI competence domains, with model fit indices indicating acceptable to good fit (&#x03C7;&#x00B2;/df = 46.50, CFI = 0.96, TLI = 0.95, RMSEA = 0.07, SRMR = 0.03). Repeated measures ANCOVA was conducted to examine age-adjusted differences in AI competence by computer science teaching experience. The results indicated that the four AI competence domains were structurally interconnected, forming an integrated configuration. The HC and ET domains were closely associated with conceptual understanding of AI, while Knowledge and Applications showed strong associations with CL. Teachers with greater computer science teaching experience reported higher levels of perceived AI competence across domains, whereas differences between adjacent experience groups were not statistically significant. These findings suggest that teachers' AI competence is best understood as a structured configuration of interrelated domains, providing empirical evidence to inform future research and professional development in AI education.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u",
+    "title": "A Thematic Synthesis of Emerging Research on English Language Teachers' Use of ChatGPT for Language Teaching",
+    "authors": [
+      "Ismail Xodabande"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s44217-026-01520-y",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514191",
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The integration of ChatGPT and other generative AI technologies into English as a Foreign Language (EFL) education has rapidly transformed pedagogical practices, teacher development, and student engagement. This thematic review synthesizes findings from thirteen recent empirical studies conducted between 2023 and 2024, offering a comprehensive examination of EFL teachers' experiences, perceptions, and uses of ChatGPT in diverse educational contexts. Methodologically, the review is an integrative thematic synthesis of empirical studies, drawing on an inductive thematic analysis to consolidate and interpret evidence rather than to provide a narrative overview. The review identifies four major thematic strands: ChatGPT as a catalyst for teacher creativity, reflective practice, and pedagogical innovation; the development of professional AI competence and gaps in teacher education; ChatGPT role in enhancing teacher self-efficacy, student engagement, and psychological support; and the ethical concerns and pedagogical risks associated with AI integration. Studies were identified through searches of Scopus, Web of Science Core Collection, ERIC, and Google Scholar and were included when they reported primary data, focused explicitly on ChatGPT use in EFL teaching, learning, or teacher development, involved English language teachers as participants, and were published in English between 2023 and 2024 (n = 13). By critically mapping the benefits and challenges reported across contexts, this review highlights the urgent need for systematic AI literacy development, ethical guidelines, and equitable access strategies in EFL education. Beyond consolidating reported practices, opportunities, and risks, the synthesis clarifies enabling conditions and constraints shaping responsible uptake, thereby strengthening the conceptual contribution of the review to teacher education and AI governance discussions in language education. It also points to key directions for future research, including the exploration of culturally responsive AI applications, longitudinal impacts on professional growth, and the development of assessment tools for AI-mediated pedagogical competence. The findings aim to inform educators, researchers, and policymakers seeking to integrate ChatGPT thoughtfully and responsibly into language education while preserving the humanistic dimensions of teaching and learning.",
+    "topics": [
+      "ai literacy",
+      "creativity",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-empowering-precollege-data-science-education-with-an-innovative-learning",
+    "title": "Empowering Precollege Data Science Education with an Innovative Learning Portal",
+    "authors": [
+      "Mohammad Assadi Shalmani",
+      "Craig Berg",
+      "Michael J. Carvan III",
+      "Renee A. Hesselbach",
+      "David Petering",
+      "Kevin Schiebenes",
+      "Rekha Shukla",
+      "Henry G. Tomasiewicz",
+      "Daniel N. Weber",
+      "Jake Luo"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s44217-026-01537-3",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514139",
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Background: Data science education in K-12 settings often lacks authentic, hands-on experiences that allow students to meaningfully engage with data practices such as data collection, organization, visualization, and interpretation. Project-based learning provides a pedagogically grounded approach for developing these skills by situating data work within real scientific inquiry. The NIH SEPA-funded WInSTEP-SEPA (Wisconsin Inquiry-based Science Teacher Education Partnership--Science Education Partnership Award) portal was designed to operationalize this approach by embedding data science and data literacy instruction directly into environmental health research projects conducted by high school students. Methods: A multidisciplinary team of scientists, educators, and developers co-designed a web-based portal that supports student-led experimental design, structured data entry, visualization, and cross-study data exploration. The portal explicitly scaffolds core data literacy and introductory data science practices, including data generation, data management aligned with FAIR (Findable, Accessible, Interoperable, Reusable) principles, descriptive statistics, and graphical analysis. Learning outcomes were evaluated using matched pre- and post-instruction student surveys focused on data literacy and FAIR principles, along with teacher feedback. Results: Our portal successfully supported hands-on data science and data literacy learning for students. High school students used the portal to investigate the effects of environmental exposures such as nicotine, caffeine, and ethanol on zebrafish embryo development. Students actively engaged in collecting, organizing, visualizing, and interpreting their own experimental data and comparing results across studies. Moreover, our pre-post survey analysis showed statistically significant gains in students' understanding of foundational data literacy concepts, particularly related to the meaning of data and FAIR data practices. Conclusion: By integrating hands-on experimentation with structured data workflows, the WInSTEP-SEPA portal connects project-based learning to concrete data science and data literacy practices in K-12 education. The evaluation demonstrates measurable improvements in students' data literacy and supports the portal's effectiveness as a scalable model for introducing authentic, data-driven scientific inquiry in secondary classrooms.",
+    "topics": [
+      "data literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
   }
 ]

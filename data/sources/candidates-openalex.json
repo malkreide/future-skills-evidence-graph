@@ -7461,5 +7461,91 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "educator"
+  },
+  {
+    "id": "src-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a",
+    "title": "Do AI chatbots improve students learning outcomes? Evidence from a meta\u2010analysis",
+    "authors": [
+      "Rong Wu",
+      "Zhonggen Yu"
+    ],
+    "year": 2023,
+    "doi": "10.1111/bjet.13334",
+    "url": "https://openalex.org/W4367849331",
+    "openalex_id": "https://openalex.org/W4367849331",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "British Journal of Educational Technology",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Abstract Artificial intelligence (AI) chatbots are gaining increasing popularity in education. Due to their increasing popularity, many empirical studies have been devoted to exploring the effects of AI chatbots on students' learning outcomes. The proliferation of experimental studies has highlighted the need to summarize and synthesize the inconsistent findings about the effects of AI chatbots on students' learning outcomes. However, few reviews focused on the meta\u2010analysis of the effects of AI chatbots on students' learning outcomes. The present study performed a meta\u2010analysis of 24 randomized studies utilizing Stata software (version 14). The main goal of the current study was to meta\u2010analytically examine the effects of AI chatbots on students' learning outcomes and the moderating effects of educational levels and intervention duration. The results indicated that AI chatbots had a large effect on students' learning outcomes. Moreover, AI chatbots had a greater effect on students in higher education, compared to those in primary education and secondary education. In addition, short interventions were found to have a stronger effect on students' learning outcomes than long interventions. It could be explained by the argument that the novelty effects of AI chatbots could improve learning outcomes in short interventions, but it has worn off in the long interventions. Future designers and educators should make attempt to increase students' learning outcomes by equipping AI chatbots with human\u2010like avatars, gamification elements and emotional intelligence. Practitioner notes What is already known about this topic In recent years, artificial intelligence (AI) chatbots have been gaining increasing popularity in education. Studies undertaken so far have provided conflicting evidence concerning the effects of AI chatbots on students' learning outcomes. There has remained a paucity of meta\u2010analyses synthesizing the contradictory findings about the effects of AI chatbots on students' learning outcomes. What this paper adds This study, through meta\u2010analysis, synthesized these recent findings about the effects of AI chatbots on students' learning outcomes. This study found that AI chatbots could have a large effect on students' learning outcomes. This study found that the effects of AI chatbots were moderated by educational levels and intervention duration. Implications for practice and/or policy AI chatbot designers could make AI chatbots better by equipping AI chatbots with human\u2010like avatars, gamification elements and emotional intelligence Practitioners and/or teachers should draw attention to the positive and negative effects of AI chatbots on students. Considering the importance of ChatGPT, more research is required to develop a better understanding of the effects of ChatGPT in education. More research is needed to examine the mechanisms underlying the effects of AI chatbots on students' learning outcomes.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-interplay-between-teachers-trust-in-artificial-intelligence-and-digi",
+    "title": "The interplay between teachers\u2019 trust in artificial intelligence and digital competence",
+    "authors": [
+      "Margarida Lucas",
+      "Yidi Zhang",
+      "Pedro Bem\u2010Haja",
+      "Paulo Nuno Vicente"
+    ],
+    "year": 2024,
+    "doi": "10.1007/s10639-024-12772-2",
+    "url": "https://openalex.org/W4398139642",
+    "openalex_id": "https://openalex.org/W4398139642",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Education and Information Technologies",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract This study examines the relation between K-12 teachers\u2019 trust in artificial intelligence (TAI), their knowledge of AI (KAI), and their digital competence (DC). It further examines the relation between TAI and age, sex, teaching experience and International Standard Classification of Education (ISCED) levels. The study employed a comprehensive and validated instrument and used a sample of 211 primary and secondary school teachers. The results show that there is a significant positive relation between all three variables and that KAI is a robust and substantial predictor of TAI. In the absence of KAI, the significant relation between DC and TAI ceases to exist. In addition, teachers with different levels of DC do not show significant differences in their attitudes towards AI. Results further show that TAI is independent of age, sex, teaching experience and ISCED level in this sample of teachers. The study contributes valuable insights into the complex interplay between teachers\u2019 TAI, their KAI, and their DC, providing practical implications for policy, teacher preparation and professional development in the rapidly evolving landscape of AI integration in education.",
+    "topics": [
+      "ai literacy",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-crowdless-future-generative-ai-and-creative-problem-solving",
+    "title": "The Crowdless Future? Generative AI and Creative Problem-Solving",
+    "authors": [
+      "L\u00e9onard Boussioux",
+      "Jacqueline N. Lane",
+      "Miaomiao Zhang",
+      "Vladimir Ja\u0107imovi\u0107",
+      "Karim R. Lakhani"
+    ],
+    "year": 2024,
+    "doi": "10.1287/orsc.2023.18430",
+    "url": "https://openalex.org/W4401533174",
+    "openalex_id": "https://openalex.org/W4401533174",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Organization Science",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The rapid advances in generative artificial intelligence (AI) open up attractive opportunities for creative problem-solving through human-guided AI partnerships. To explore this potential, we initiated a crowdsourcing challenge focused on sustainable, circular economy business ideas generated by the human crowd (HC) and collaborative human-AI efforts using two alternative forms of solution search. The challenge attracted 125 global solvers from various industries, and we used strategic prompt engineering to generate the human-AI solutions. We recruited 300 external human evaluators to judge a randomized selection of 13 out of 234 solutions, totaling 3,900 evaluator-solution pairs. Our results indicate that while human crowd solutions exhibited higher novelty\u2014both on average and for highly novel outcomes\u2014human-AI solutions demonstrated superior strategic viability, financial and environmental value, and overall quality. Notably, human-AI solutions cocreated through differentiated search, where human-guided prompts instructed the large language model to sequentially generate outputs distinct from previous iterations, outperformed solutions generated through independent search. By incorporating \u201cAI in the loop\u201d into human-centered creative problem-solving, our study demonstrates a scalable, cost-effective approach to augment the early innovation phases and lays the groundwork for investigating how integrating human-AI solution search processes can drive more impactful innovations. Funding: This work was supported by Harvard Business School (Division of Research and Faculty Development) and the Laboratory for Innovation Science at Harvard (LISH) at the Digital Data and Design (D 3 ) Institute at Harvard. Supplemental Material: The online appendix is available at https://doi.org/10.1287/orsc.2023.18430 .",
+    "topics": [
+      "ai literacy",
+      "creativity",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "learner"
   }
 ]

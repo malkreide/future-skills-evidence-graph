@@ -36662,5 +36662,1867 @@
     "status": "candidate",
     "created_at": "2026-08-17",
     "reviewed_at": null
+  },
+  {
+    "id": "claim-on-detector-machine-learning-for-beam-induced-background-rejection-at-a",
+    "statement": "We investigate the potential of on-detector Machine Learning for BIB rejection in the vertex detector, exploiting pixel cluster shapes to distinguish background from collision products.",
+    "source_ids": [
+      "src-on-detector-machine-learning-for-beam-induced-background-rejection-at-a"
+    ],
+    "text_anchor": "abstract, sentence 3: \"We investigate the potential of on-detector Machine Learning for BIB rejection in the vertex detector, exploiting pixel cluster shapes to distinguish background from collision products.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-human-ai-collaboration-in-requirements-engineering-evidence-of-the-negat",
+    "statement": "However, empirical evidence on the effects of LLMs when used as collaborative assistants in human-performed RI remains scarce.",
+    "source_ids": [
+      "src-human-ai-collaboration-in-requirements-engineering-evidence-of-the-negat"
+    ],
+    "text_anchor": "abstract, sentence 4: \"However, empirical evidence on the effects of LLMs when used as collaborative assistants in human-performed RI remains scarce.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-advanced-linear-algebra-with-applications-part-i-numerical-linear-algebr",
+    "statement": "We treat norms, factorisations, conditioning and floating-point arithmetic; sparse matrices arising from finite differences, from graphs and from machine learning; stationary iterations and the smoothing property; the conjugate gradient and Lanczos methods, with spectral clustering and regularisation by early stopping; Arnoldi and GMRES, with PageRank and large least squares; and finally preconditioning, Schwarz domain decomposition and multigrid.",
+    "source_ids": [
+      "src-advanced-linear-algebra-with-applications-part-i-numerical-linear-algebr"
+    ],
+    "text_anchor": "abstract, sentence 7: \"We treat norms, factorisations, conditioning and floating-point arithmetic; sparse matrices arising from finite differences, from graphs and from machine learning; stationary iterations and the smoothing property; the conjugate gradient and Lanczos methods, with spectral clustering and regularisation by early stopping; Arnoldi and GMRES, with PageRank and large least squares; and finally preconditioning, Schwarz domain decomposition and multigrid.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-who-trusts-ai-with-their-emotions-trust-formation-and-sociodemographic-v",
+    "statement": "We find that users experience empathy and anthropomorphism as a unified \"Humanlikeness\" construct, and that Privacy, Personalization, and Humanlikeness drive Trust while Perceived Bias degrades it.",
+    "source_ids": [
+      "src-who-trusts-ai-with-their-emotions-trust-formation-and-sociodemographic-v"
+    ],
+    "text_anchor": "abstract, sentence 4: \"We find that users experience empathy and anthropomorphism as a unified \"Humanlikeness\" construct, and that Privacy, Personalization, and Humanlikeness drive Trust while Perceived Bias degrades it.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-who-trusts-ai-with-their-emotions-trust-formation-and-sociodemographic-v-2",
+    "statement": "Notably, adoption logic diverges across groups: Privacy shapes women's trust more than men's, Anglosphere (UK, USA) users respond more positively to Humanlikeness than Europeans, and educated and higher-income users require Trust to engage, whereas older adults and lower socioeconomic groups bypass it entirely, relying on perceived practical benefits (e.g., 24/7 availability, non-judgmental support).",
+    "source_ids": [
+      "src-who-trusts-ai-with-their-emotions-trust-formation-and-sociodemographic-v"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Notably, adoption logic diverges across groups: Privacy shapes women's trust more than men's, Anglosphere (UK, USA) users respond more positively to Humanlikeness than Europeans, and educated and higher-income users require Trust to engage, whereas older adults and lower socioeconomic groups bypass it entirely, relying on perceived practical benefits (e.g., 24/7 availability, non-judgmental support).\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-machine-learning-predictions-of-the-hessian-matrix-for-peptides-chains-a",
+    "statement": "Machine learning methods can be a shortcut to tackle efficiently the computational difficulties.",
+    "source_ids": [
+      "src-machine-learning-predictions-of-the-hessian-matrix-for-peptides-chains-a"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Machine learning methods can be a shortcut to tackle efficiently the computational difficulties.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-dorsal-hand-images-for-immersive-xr-and-privacy-preserving-age-assurance",
+    "statement": "These findings position dorsal hand morphometrics as an effective and more privacy-preserving biometric modality for in-session age assurance in XR.",
+    "source_ids": [
+      "src-dorsal-hand-images-for-immersive-xr-and-privacy-preserving-age-assurance"
+    ],
+    "text_anchor": "abstract, sentence 10: \"These findings position dorsal hand morphometrics as an effective and more privacy-preserving biometric modality for in-session age assurance in XR.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-dorsal-hand-images-for-immersive-xr-and-privacy-preserving-age-assurance-2",
+    "statement": "This both breaks immersion and introduces the privacy risk of sharing face pictures with third parties, which leaves XR platforms without a viable path to continuous, in-session and privacy-preserving age assurance.",
+    "source_ids": [
+      "src-dorsal-hand-images-for-immersive-xr-and-privacy-preserving-age-assurance"
+    ],
+    "text_anchor": "abstract, sentence 4: \"This both breaks immersion and introduces the privacy risk of sharing face pictures with third parties, which leaves XR platforms without a viable path to continuous, in-session and privacy-preserving age assurance.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-bridging-semantics-and-behavior-an-agent-based-evolutionary-model-of-top",
+    "statement": "The framework also has practical potential for misinformation resilience, opinion forecasting, and adaptive content curation.",
+    "source_ids": [
+      "src-bridging-semantics-and-behavior-an-agent-based-evolutionary-model-of-top"
+    ],
+    "text_anchor": "abstract, sentence 12: \"The framework also has practical potential for misinformation resilience, opinion forecasting, and adaptive content curation.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci",
+    "statement": "Many modern machine learning models can be understood as kernel-based function-space models, including Gaussian processes and neural tangent kernels.",
+    "source_ids": [
+      "src-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Many modern machine learning models can be understood as kernel-based function-space models, including Gaussian processes and neural tangent kernels.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci-2",
+    "statement": "In scientific machine learning, differential operators are increasingly used to encode physical structure directly into such models.",
+    "source_ids": [
+      "src-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci"
+    ],
+    "text_anchor": "abstract, sentence 2: \"In scientific machine learning, differential operators are increasingly used to encode physical structure directly into such models.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci-3",
+    "statement": "However, it has remained unclear under which conditions these constructions are valid machine learning models, i.e. preserve positive semi-definiteness, and whether observed instabilities arise from ill-posed modeling or numerical effects.",
+    "source_ids": [
+      "src-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci"
+    ],
+    "text_anchor": "abstract, sentence 3: \"However, it has remained unclear under which conditions these constructions are valid machine learning models, i.e. preserve positive semi-definiteness, and whether observed instabilities arise from ill-posed modeling or numerical effects.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-personalized-privacy-control-in-llms-via-attention-head-intervention-abs",
+    "statement": "Our method significantly improves adherence to user-specific privacy preferences by reducing cases where the model fails to follow the given policy.",
+    "source_ids": [
+      "src-personalized-privacy-control-in-llms-via-attention-head-intervention"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Our method significantly improves adherence to user-specific privacy preferences by reducing cases where the model fails to follow the given policy.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-personalized-privacy-control-in-llms-via-attention-head-intervention-abs-2",
+    "statement": "The rise of agentic AI enables LLMs to access diverse user data, raising critical privacy concerns.",
+    "source_ids": [
+      "src-personalized-privacy-control-in-llms-via-attention-head-intervention"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The rise of agentic AI enables LLMs to access diverse user data, raising critical privacy concerns.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-personalized-privacy-control-in-llms-via-attention-head-intervention-abs-3",
+    "statement": "Prior work on contextual privacy studies whether LLMs regulate information disclosure according to context-dependent norms.",
+    "source_ids": [
+      "src-personalized-privacy-control-in-llms-via-attention-head-intervention"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Prior work on contextual privacy studies whether LLMs regulate information disclosure according to context-dependent norms.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-distilling-black-box-machine-learning-into-a-small-self-explaining-langu",
+    "statement": "Learning analytics increasingly relies on flexible machine learning (ML), but the model opacity and the burden of deployment prevent these tools from reaching educational practice.",
+    "source_ids": [
+      "src-distilling-black-box-machine-learning-into-a-small-self-explaining-langu"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Learning analytics increasingly relies on flexible machine learning (ML), but the model opacity and the burden of deployment prevent these tools from reaching educational practice.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is-abstr",
+    "statement": "Phase I of our socio-technical audit tested ChatGPT (GPT-5.2), Meta AI, and Perplexity AI on a 60-case battery regarding the Indian Contract Act, 1872, and the shift toward statutory enforcement of specific performance.",
+    "source_ids": [
+      "src-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Phase I of our socio-technical audit tested ChatGPT (GPT-5.2), Meta AI, and Perplexity AI on a 60-case battery regarding the Indian Contract Act, 1872, and the shift toward statutory enforcement of specific performance.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is-abstr-2",
+    "statement": "Meta AI proved most vulnerable (31.7% HCER), frequently misapplying pre-amendment rules with a 9.1/10 mean confidence, followed by Perplexity (15.0%) and ChatGPT (6.7%).",
+    "source_ids": [
+      "src-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Meta AI proved most vulnerable (31.7% HCER), frequently misapplying pre-amendment rules with a 9.1/10 mean confidence, followed by Perplexity (15.0%) and ChatGPT (6.7%).\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is-abstr-3",
+    "statement": "Furthermore, while 81.6% knew submitting hallucinated cases can lead to contempt-of-court, 71.1% received no formal training on ethical AI use.",
+    "source_ids": [
+      "src-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is"
+    ],
+    "text_anchor": "abstract, sentence 9: \"Furthermore, while 81.6% knew submitting hallucinated cases can lead to contempt-of-court, 71.1% received no formal training on ethical AI use.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-competence-domains-and-experience-based-differences-among-science-and",
+    "statement": "Four domains of AI competence were examined: Human-Centered AI (HC), Ethics and Social Impact (ET), Knowledge and Applications (KN), and Classroom Implementation (CL).",
+    "source_ids": [
+      "src-ai-competence-domains-and-experience-based-differences-among-science-and"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Four domains of AI competence were examined: Human-Centered AI (HC), Ethics and Social Impact (ET), Knowledge and Applications (KN), and Classroom Implementation (CL).\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u",
+    "statement": "The review identifies four major thematic strands: ChatGPT as a catalyst for teacher creativity, reflective practice, and pedagogical innovation; the development of professional AI competence and gaps in teacher education; ChatGPT role in enhancing teacher self-efficacy, student engagement, and psychological support; and the ethical concerns and pedagogical risks associated with AI integration.",
+    "source_ids": [
+      "src-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The review identifies four major thematic strands: ChatGPT as a catalyst for teacher creativity, reflective practice, and pedagogical innovation; the development of professional AI competence and gaps in teacher education; ChatGPT role in enhancing teacher self-efficacy, student engagement, and psychological support; and the ethical concerns and pedagogical risks associated with AI integration.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, creativity, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u-2",
+    "statement": "The findings aim to inform educators, researchers, and policymakers seeking to integrate ChatGPT thoughtfully and responsibly into language education while preserving the humanistic dimensions of teaching and learning.",
+    "source_ids": [
+      "src-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u"
+    ],
+    "text_anchor": "abstract, sentence 9: \"The findings aim to inform educators, researchers, and policymakers seeking to integrate ChatGPT thoughtfully and responsibly into language education while preserving the humanistic dimensions of teaching and learning.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u-3",
+    "statement": "This thematic review synthesizes findings from thirteen recent empirical studies conducted between 2023 and 2024, offering a comprehensive examination of EFL teachers' experiences, perceptions, and uses of ChatGPT in diverse educational contexts.",
+    "source_ids": [
+      "src-a-thematic-synthesis-of-emerging-research-on-english-language-teachers-u"
+    ],
+    "text_anchor": "abstract, sentence 2: \"This thematic review synthesizes findings from thirteen recent empirical studies conducted between 2023 and 2024, offering a comprehensive examination of EFL teachers' experiences, perceptions, and uses of ChatGPT in diverse educational contexts.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-precollege-data-science-education-with-an-innovative-learning",
+    "statement": "Moreover, our pre-post survey analysis showed statistically significant gains in students' understanding of foundational data literacy concepts, particularly related to the meaning of data and FAIR data practices.",
+    "source_ids": [
+      "src-empowering-precollege-data-science-education-with-an-innovative-learning"
+    ],
+    "text_anchor": "abstract, sentence 10: \"Moreover, our pre-post survey analysis showed statistically significant gains in students' understanding of foundational data literacy concepts, particularly related to the meaning of data and FAIR data practices.\"",
+    "context": "Auto-extracted candidate; matched topics: data literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-precollege-data-science-education-with-an-innovative-learning-2",
+    "statement": "The evaluation demonstrates measurable improvements in students' data literacy and supports the portal's effectiveness as a scalable model for introducing authentic, data-driven scientific inquiry in secondary classrooms.",
+    "source_ids": [
+      "src-empowering-precollege-data-science-education-with-an-innovative-learning"
+    ],
+    "text_anchor": "abstract, sentence 12: \"The evaluation demonstrates measurable improvements in students' data literacy and supports the portal's effectiveness as a scalable model for introducing authentic, data-driven scientific inquiry in secondary classrooms.\"",
+    "context": "Auto-extracted candidate; matched topics: data literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-precollege-data-science-education-with-an-innovative-learning-3",
+    "statement": "Background: Data science education in K-12 settings often lacks authentic, hands-on experiences that allow students to meaningfully engage with data practices such as data collection, organization, visualization, and interpretation.",
+    "source_ids": [
+      "src-empowering-precollege-data-science-education-with-an-innovative-learning"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Background: Data science education in K-12 settings often lacks authentic, hands-on experiences that allow students to meaningfully engage with data practices such as data collection, organization, visualization, and interpretation.\"",
+    "context": "Auto-extracted candidate; matched topics: data literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a",
+    "statement": "Abstract Artificial intelligence (AI) chatbots are gaining increasing popularity in education.",
+    "source_ids": [
+      "src-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Abstract Artificial intelligence (AI) chatbots are gaining increasing popularity in education.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a-2",
+    "statement": "Practitioner notes What is already known about this topic In recent years, artificial intelligence (AI) chatbots have been gaining increasing popularity in education.",
+    "source_ids": [
+      "src-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a"
+    ],
+    "text_anchor": "abstract, sentence 12: \"Practitioner notes What is already known about this topic In recent years, artificial intelligence (AI) chatbots have been gaining increasing popularity in education.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a-3",
+    "statement": "Considering the importance of ChatGPT, more research is required to develop a better understanding of the effects of ChatGPT in education.",
+    "source_ids": [
+      "src-do-ai-chatbots-improve-students-learning-outcomes-evidence-from-a-meta-a"
+    ],
+    "text_anchor": "abstract, sentence 19: \"Considering the importance of ChatGPT, more research is required to develop a better understanding of the effects of ChatGPT in education.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-crowdless-future-generative-ai-and-creative-problem-solving-abstract",
+    "statement": "By incorporating \u201cAI in the loop\u201d into human-centered creative problem-solving, our study demonstrates a scalable, cost-effective approach to augment the early innovation phases and lays the groundwork for investigating how integrating human-AI solution search processes can drive more impactful innovations.",
+    "source_ids": [
+      "src-the-crowdless-future-generative-ai-and-creative-problem-solving"
+    ],
+    "text_anchor": "abstract, sentence 7: \"By incorporating \u201cAI in the loop\u201d into human-centered creative problem-solving, our study demonstrates a scalable, cost-effective approach to augment the early innovation phases and lays the groundwork for investigating how integrating human-AI solution search processes can drive more impactful innovations.\"",
+    "context": "Auto-extracted candidate; matched topics: creativity. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-crowdless-future-generative-ai-and-creative-problem-solving-abstract-2",
+    "statement": "The rapid advances in generative artificial intelligence (AI) open up attractive opportunities for creative problem-solving through human-guided AI partnerships.",
+    "source_ids": [
+      "src-the-crowdless-future-generative-ai-and-creative-problem-solving"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The rapid advances in generative artificial intelligence (AI) open up attractive opportunities for creative problem-solving through human-guided AI partnerships.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, creativity. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-crowdless-future-generative-ai-and-creative-problem-solving-abstract-3",
+    "statement": "Notably, human-AI solutions cocreated through differentiated search, where human-guided prompts instructed the large language model to sequentially generate outputs distinct from previous iterations, outperformed solutions generated through independent search.",
+    "source_ids": [
+      "src-the-crowdless-future-generative-ai-and-creative-problem-solving"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Notably, human-AI solutions cocreated through differentiated search, where human-guided prompts instructed the large language model to sequentially generate outputs distinct from previous iterations, outperformed solutions generated through independent search.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-interactive-effects-of-ehealth-literacy-and-mental-health-literacy-o",
+    "statement": "We found that MHL acts like a catalyst; it enhances the value of digital skills, helping teenagers become more competent at finding, understanding, and using online MeHL support effectively.",
+    "source_ids": [
+      "src-the-interactive-effects-of-ehealth-literacy-and-mental-health-literacy-o"
+    ],
+    "text_anchor": "abstract, sentence 16: \"We found that MHL acts like a catalyst; it enhances the value of digital skills, helping teenagers become more competent at finding, understanding, and using online MeHL support effectively.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-interactive-effects-of-ehealth-literacy-and-mental-health-literacy-o-2",
+    "statement": "In practice, this means integrated intervention programs that teach digital skills and mental health knowledge together are likely to be much more effective in fighting SMA and reducing distress than teaching either one alone.",
+    "source_ids": [
+      "src-the-interactive-effects-of-ehealth-literacy-and-mental-health-literacy-o"
+    ],
+    "text_anchor": "abstract, sentence 17: \"In practice, this means integrated intervention programs that teach digital skills and mental health knowledge together are likely to be much more effective in fighting SMA and reducing distress than teaching either one alone.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-machine-learning-to-senior-primary-students-evaluating-a-course",
+    "statement": "Quantitative analysis, supported by Wilcoxon signed-rank tests, revealed significant improvements in students\u2019 conceptual understanding of machine learning and deep learning.",
+    "source_ids": [
+      "src-teaching-machine-learning-to-senior-primary-students-evaluating-a-course"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Quantitative analysis, supported by Wilcoxon signed-rank tests, revealed significant improvements in students\u2019 conceptual understanding of machine learning and deep learning.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-machine-learning-to-senior-primary-students-evaluating-a-course-2",
+    "statement": "Qualitative feedback demonstrated the course\u2019s effectiveness, with hands-on activities using AlphAI robots proving effective in deepening comprehension and enabling practical application of machine learning methods.",
+    "source_ids": [
+      "src-teaching-machine-learning-to-senior-primary-students-evaluating-a-course"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Qualitative feedback demonstrated the course\u2019s effectiveness, with hands-on activities using AlphAI robots proving effective in deepening comprehension and enabling practical application of machine learning methods.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-machine-learning-to-senior-primary-students-evaluating-a-course-3",
+    "statement": "These insights emphasise the value of interactive, hands-on learning strategies in AI literacy education in preparing young students for an AI-driven future.",
+    "source_ids": [
+      "src-teaching-machine-learning-to-senior-primary-students-evaluating-a-course"
+    ],
+    "text_anchor": "abstract, sentence 6: \"These insights emphasise the value of interactive, hands-on learning strategies in AI literacy education in preparing young students for an AI-driven future.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-implementation-of-digital-word-wall-media-based-on-local-culture-in-impr",
+    "statement": "The difficulties faced by students include information comprehension, critical thinking, and ethical development.",
+    "source_ids": [
+      "src-implementation-of-digital-word-wall-media-based-on-local-culture-in-impr"
+    ],
+    "text_anchor": "abstract, sentence 2: \"The difficulties faced by students include information comprehension, critical thinking, and ethical development.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig",
+    "statement": "Based on the findings, the research put forward suggestions and recommendations for enhancing RE implementation and its influence on students' AI literacy.",
+    "source_ids": [
+      "src-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Based on the findings, the research put forward suggestions and recommendations for enhancing RE implementation and its influence on students' AI literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig-2",
+    "statement": "To embrace the opportunities and meet the challenges of the future intelligent society, countries around the world are actively developing artificial intelligence (AI) education across primary and secondary schools, aiming to cultivate student' AI literacy.",
+    "source_ids": [
+      "src-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig"
+    ],
+    "text_anchor": "abstract, sentence 1: \"To embrace the opportunities and meet the challenges of the future intelligent society, countries around the world are actively developing artificial intelligence (AI) education across primary and secondary schools, aiming to cultivate student' AI literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig-3",
+    "statement": "To bridge this gap, this study proposed an AI literacy assessment framework for primary and secondary school students, and conducted a nationwide survey.",
+    "source_ids": [
+      "src-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig"
+    ],
+    "text_anchor": "abstract, sentence 4: \"To bridge this gap, this study proposed an AI literacy assessment framework for primary and secondary school students, and conducted a nationwide survey.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-structural-relationship-between-middle-school-students-generative-ai",
+    "statement": "First, quantitative generative AI use experience was positively associated with generative AI literacy.",
+    "source_ids": [
+      "src-the-structural-relationship-between-middle-school-students-generative-ai"
+    ],
+    "text_anchor": "abstract, sentence 5: \"First, quantitative generative AI use experience was positively associated with generative AI literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-structural-relationship-between-middle-school-students-generative-ai-2",
+    "statement": "Second, generative AI literacy was positively associated with academic self-efficacy, perceived usefulness of generative AI for learning, and subjective well-being.",
+    "source_ids": [
+      "src-the-structural-relationship-between-middle-school-students-generative-ai"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Second, generative AI literacy was positively associated with academic self-efficacy, perceived usefulness of generative AI for learning, and subjective well-being.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-structural-relationship-between-middle-school-students-generative-ai-3",
+    "statement": "Third, quantitative use experience had a small direct association with perceived usefulness of generative AI for learning, but it was not directly associated with academic self-efficacy or subjective well-being.",
+    "source_ids": [
+      "src-the-structural-relationship-between-middle-school-students-generative-ai"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Third, quantitative use experience had a small direct association with perceived usefulness of generative AI for learning, but it was not directly associated with academic self-efficacy or subjective well-being.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s",
+    "statement": "This qualitative study explored the factors that shaped academic resilience during the COVID-19 pandemic to strengthen the global literature on resilience and postpandemic policy and practice in education.",
+    "source_ids": [
+      "src-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s"
+    ],
+    "text_anchor": "abstract, sentence 2: \"This qualitative study explored the factors that shaped academic resilience during the COVID-19 pandemic to strengthen the global literature on resilience and postpandemic policy and practice in education.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s-2",
+    "statement": "Academic resilience is crucial in today\u2019s crisis-prone society.",
+    "source_ids": [
+      "src-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Academic resilience is crucial in today\u2019s crisis-prone society.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s-3",
+    "statement": "Through thematic analysis, seven overarching themes emerged from the data: (1) achievement-oriented characteristics, (2) high aspirations, (3) COVID-19-driven adaptability, (4) self-directed learning in the use of online resources, (5) healthy family functioning, (6) role models, and (7) social support in the context of a giving culture.",
+    "source_ids": [
+      "src-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Through thematic analysis, seven overarching themes emerged from the data: (1) achievement-oriented characteristics, (2) high aspirations, (3) COVID-19-driven adaptability, (4) self-directed learning in the use of online resources, (5) healthy family functioning, (6) role models, and (7) social support in the context of a giving culture.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-impact-of-the-different-types-of-dance-cheerleading-on-the-physical",
+    "statement": "The results showed that different types of cheerleading had a significant effect on secondary school students' physical ability, adaptability and level of resistance to frustration.",
+    "source_ids": [
+      "src-the-impact-of-the-different-types-of-dance-cheerleading-on-the-physical"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The results showed that different types of cheerleading had a significant effect on secondary school students' physical ability, adaptability and level of resistance to frustration.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-impact-of-the-different-types-of-dance-cheerleading-on-the-physical-2",
+    "statement": "It is recommended that schools and educational organizations should strengthen the promotion of cheerleading activities while paying attention to the differences in gender and types of cheerleading in order to improve the overall physical fitness of students and develop their teamwork spirit.",
+    "source_ids": [
+      "src-the-impact-of-the-different-types-of-dance-cheerleading-on-the-physical"
+    ],
+    "text_anchor": "abstract, sentence 5: \"It is recommended that schools and educational organizations should strengthen the promotion of cheerleading activities while paying attention to the differences in gender and types of cheerleading in order to improve the overall physical fitness of students and develop their teamwork spirit.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res",
+    "statement": "The scientific novelty of the study lies in conceptualising neuroplasticity as an economically significant factor that determines a child\u2019s capacity to restore cognitive resources, improve educational outcomes, and subsequently develop higher labour productivity and adaptability in the labour market.",
+    "source_ids": [
+      "src-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res"
+    ],
+    "text_anchor": "abstract, sentence 3: \"The scientific novelty of the study lies in conceptualising neuroplasticity as an economically significant factor that determines a child\u2019s capacity to restore cognitive resources, improve educational outcomes, and subsequently develop higher labour productivity and adaptability in the labour market.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res-2",
+    "statement": "Such environments foster self-regulation, critical thinking, emotional intelligence, and collaboration skills \u2014 competencies that are increasingly essential in a knowledge-based economy and a rapidly transforming labour market.",
+    "source_ids": [
+      "src-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Such environments foster self-regulation, critical thinking, emotional intelligence, and collaboration skills \u2014 competencies that are increasingly essential in a knowledge-based economy and a rapidly transforming labour market.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, collaboration, self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res-3",
+    "statement": "The study draws on a theoretical and analytical review of contemporary research in neuroscience, economics of education, and trauma psychology, combined with systems thinking and structured logical analysis, to trace causal links between psycho-emotional safety, students\u2019 cognitive functioning, educational outcomes, and long-term labour productivity.",
+    "source_ids": [
+      "src-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res"
+    ],
+    "text_anchor": "abstract, sentence 2: \"The study draws on a theoretical and analytical review of contemporary research in neuroscience, economics of education, and trauma psychology, combined with systems thinking and structured logical analysis, to trace causal links between psycho-emotional safety, students\u2019 cognitive functioning, educational outcomes, and long-term labour productivity.\"",
+    "context": "Auto-extracted candidate; matched topics: systems thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality",
+    "statement": "Objective: Developing teacher resilience is an important factor from the aspect of increasing the quality of education and thus, achieving Sustainable Development Goal 4: Quality Education.",
+    "source_ids": [
+      "src-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Objective: Developing teacher resilience is an important factor from the aspect of increasing the quality of education and thus, achieving Sustainable Development Goal 4: Quality Education.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality-2",
+    "statement": "Research Implications: The practical and theoretical implications of this research are discussed, providing insights into how the results can be applied or influence practices in promoting teacher resilience at both school and national levels and improving work conditions for vocational school teachers.",
+    "source_ids": [
+      "src-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Research Implications: The practical and theoretical implications of this research are discussed, providing insights into how the results can be applied or influence practices in promoting teacher resilience at both school and national levels and improving work conditions for vocational school teachers.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality-3",
+    "statement": "It provides unique data about vocational school teacher resilience and suggests a relationship between teacher resilience and school size.",
+    "source_ids": [
+      "src-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality"
+    ],
+    "text_anchor": "abstract, sentence 10: \"It provides unique data about vocational school teacher resilience and suggests a relationship between teacher resilience and school size.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-family-functioning-resilience-and-cognitive-distortion-among-secondary-s",
+    "statement": "In conclusion, this study has builds a significant theoretical framework about family functioning, resilience, and cognitive distortion among students, as well as being able to contribute to various parties such as school management, counsellors, parents, and researchers in order to produce future leaders who capable in various aspects.",
+    "source_ids": [
+      "src-family-functioning-resilience-and-cognitive-distortion-among-secondary-s"
+    ],
+    "text_anchor": "abstract, sentence 10: \"In conclusion, this study has builds a significant theoretical framework about family functioning, resilience, and cognitive distortion among students, as well as being able to contribute to various parties such as school management, counsellors, parents, and researchers in order to produce future leaders who capable in various aspects.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-family-functioning-resilience-and-cognitive-distortion-among-secondary-s-2",
+    "statement": "The findings showed a significant relation between family functioning, resilience, and cognitive distortion.",
+    "source_ids": [
+      "src-family-functioning-resilience-and-cognitive-distortion-among-secondary-s"
+    ],
+    "text_anchor": "abstract, sentence 9: \"The findings showed a significant relation between family functioning, resilience, and cognitive distortion.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-family-functioning-resilience-and-cognitive-distortion-among-secondary-s-3",
+    "statement": "However, family functioning also plays a role in developing students' resilience and positive thinking.",
+    "source_ids": [
+      "src-family-functioning-resilience-and-cognitive-distortion-among-secondary-s"
+    ],
+    "text_anchor": "abstract, sentence 2: \"However, family functioning also plays a role in developing students' resilience and positive thinking.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-scenario-based-learning-its-implication-to-emotional-resilience-and-acad",
+    "statement": "Thus, the study implies that while traditional methods of instruction may have better short-term quantitative gains in objective testing, the use of learner-centered methods such as Scenario-Based Learning can help learners improve their emotional resilience.",
+    "source_ids": [
+      "src-scenario-based-learning-its-implication-to-emotional-resilience-and-acad"
+    ],
+    "text_anchor": "abstract, sentence 11: \"Thus, the study implies that while traditional methods of instruction may have better short-term quantitative gains in objective testing, the use of learner-centered methods such as Scenario-Based Learning can help learners improve their emotional resilience.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-scenario-based-learning-its-implication-to-emotional-resilience-and-acad-2",
+    "statement": "The results revealed that learners that were exposed to SBL had Very High emotional resilience with high marks in stress management and adaptability.",
+    "source_ids": [
+      "src-scenario-based-learning-its-implication-to-emotional-resilience-and-acad"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The results revealed that learners that were exposed to SBL had Very High emotional resilience with high marks in stress management and adaptability.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-exploring-educators-and-students-perspectives-on-skills-to-foster-greate",
+    "statement": "Furthermore, the research offers actionable recommendations for educators and school leaders to create a supportive learning environment that promotes resilience and wellbeing.",
+    "source_ids": [
+      "src-exploring-educators-and-students-perspectives-on-skills-to-foster-greate"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Furthermore, the research offers actionable recommendations for educators and school leaders to create a supportive learning environment that promotes resilience and wellbeing.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-exploring-educators-and-students-perspectives-on-skills-to-foster-greate-2",
+    "statement": "Findings revealed a consensus on the importance of problem-focused strategies, including time management, problem-solving, adaptability, and self-efficacy, with emotion-focused strategies such as emotional intelligence, cognitive reframing, and growth mindset.",
+    "source_ids": [
+      "src-exploring-educators-and-students-perspectives-on-skills-to-foster-greate"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Findings revealed a consensus on the importance of problem-focused strategies, including time management, problem-solving, adaptability, and self-efficacy, with emotion-focused strategies such as emotional intelligence, cognitive reframing, and growth mindset.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-exploring-educators-and-students-perspectives-on-skills-to-foster-greate-3",
+    "statement": "The study highlights the need to integrate metacognitive strategies into the curriculum to equip students with practical tools for resilience, thereby fostering their ability to navigate academic challenges effectively.",
+    "source_ids": [
+      "src-exploring-educators-and-students-perspectives-on-skills-to-foster-greate"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The study highlights the need to integrate metacognitive strategies into the curriculum to equip students with practical tools for resilience, thereby fostering their ability to navigate academic challenges effectively.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-holistic-education-management-and-students-adaptive-abilities-a-case-stu",
+    "statement": "Second, Project-Based Learning fosters critical thinking, creativity, and teamwork.",
+    "source_ids": [
+      "src-holistic-education-management-and-students-adaptive-abilities-a-case-stu"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Second, Project-Based Learning fosters critical thinking, creativity, and teamwork.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, creativity, collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-holistic-education-management-and-students-adaptive-abilities-a-case-stu-2",
+    "statement": "Findings reveal four key components that support student adaptability.",
+    "source_ids": [
+      "src-holistic-education-management-and-students-adaptive-abilities-a-case-stu"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Findings reveal four key components that support student adaptability.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-holistic-education-management-and-students-adaptive-abilities-a-case-stu-3",
+    "statement": "First, the integration of academic, character, social, and spiritual elements in the curriculum enhances students\u2019 academic and social resilience.",
+    "source_ids": [
+      "src-holistic-education-management-and-students-adaptive-abilities-a-case-stu"
+    ],
+    "text_anchor": "abstract, sentence 6: \"First, the integration of academic, character, social, and spiritual elements in the curriculum enhances students\u2019 academic and social resilience.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-enhancing-resilience-of-nursing-education-during-war-policy-implications",
+    "statement": "Six main themes were identified: Management and leadership under uncertainty; Resilience and preparedness; Supporting well-being and inclusivity; Adaptability and innovation in the educational process; Fostering a sense of community; and Engagement of students and faculties in the crisis response.",
+    "source_ids": [
+      "src-enhancing-resilience-of-nursing-education-during-war-policy-implications"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Six main themes were identified: Management and leadership under uncertainty; Resilience and preparedness; Supporting well-being and inclusivity; Adaptability and innovation in the educational process; Fostering a sense of community; and Engagement of students and faculties in the crisis response.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-enhancing-resilience-of-nursing-education-during-war-policy-implications-2",
+    "statement": "This requires collaborative decision-making, leveraging diverse perspectives, fostering inclusivity, and enhancing the effectiveness of responses.",
+    "source_ids": [
+      "src-enhancing-resilience-of-nursing-education-during-war-policy-implications"
+    ],
+    "text_anchor": "abstract, sentence 11: \"This requires collaborative decision-making, leveraging diverse perspectives, fostering inclusivity, and enhancing the effectiveness of responses.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-school-to-work-transition-the-role-of-life-satisfaction-risk-perception",
+    "statement": "Five core constructs were defined through literature review: Dealing with Uncertainty, Risk Preference, Adaptability and Resilience, Education and Support, and Life Satisfaction.",
+    "source_ids": [
+      "src-school-to-work-transition-the-role-of-life-satisfaction-risk-perception"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Five core constructs were defined through literature review: Dealing with Uncertainty, Risk Preference, Adaptability and Resilience, Education and Support, and Life Satisfaction.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-school-to-work-transition-the-role-of-life-satisfaction-risk-perception-2",
+    "statement": "Adaptability and resilience emerged as the most influential factor (\u03b2 = 0.557).",
+    "source_ids": [
+      "src-school-to-work-transition-the-role-of-life-satisfaction-risk-perception"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Adaptability and resilience emerged as the most influential factor (\u03b2 = 0.557).\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk",
+    "statement": "The findings portray the importance of implementing metacognitive skills within the curriculum, thereby equipping students with practical tools to build resilience and navigate academic challenges more effectively.",
+    "source_ids": [
+      "src-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The findings portray the importance of implementing metacognitive skills within the curriculum, thereby equipping students with practical tools to build resilience and navigate academic challenges more effectively.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk-2",
+    "statement": "In addition, the study offers practical recommendations for educators and school leaders to foster supportive educational environments that nurture both resilience and wellbeing.",
+    "source_ids": [
+      "src-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk"
+    ],
+    "text_anchor": "abstract, sentence 5: \"In addition, the study offers practical recommendations for educators and school leaders to foster supportive educational environments that nurture both resilience and wellbeing.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk-3",
+    "statement": "Participants identified problem-focused strategies including time management, problem-solving, adaptability, and self-efficacy, as well as emotion-focused strategies such as emotional regulation and emotional intelligence, cognitive reframing, a growth mindset, and mindfulness.",
+    "source_ids": [
+      "src-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Participants identified problem-focused strategies including time management, problem-solving, adaptability, and self-efficacy, as well as emotion-focused strategies such as emotional regulation and emotional intelligence, cognitive reframing, a growth mindset, and mindfulness.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-supporting-the-self-regulated-learning-of-primary-school-students-with-a",
+    "statement": "This study implemented and evaluated the innovative use of a performance-based assessment platform to support the development of self-regulated learning (SRL) in senior primary students as they completed programming tasks.",
+    "source_ids": [
+      "src-supporting-the-self-regulated-learning-of-primary-school-students-with-a"
+    ],
+    "text_anchor": "abstract, sentence 1: \"This study implemented and evaluated the innovative use of a performance-based assessment platform to support the development of self-regulated learning (SRL) in senior primary students as they completed programming tasks.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-relationship-between-self-regulated-learning-and-task-aversiveness-with",
+    "statement": "The results reveal a correlation coefficient (R= 0.732, p<0.01) between self-regulated learning, task aversiveness, and academic procrastination, supporting the acceptance of the major hypothesis.",
+    "source_ids": [
+      "src-relationship-between-self-regulated-learning-and-task-aversiveness-with"
+    ],
+    "text_anchor": "abstract, sentence 8: \"The results reveal a correlation coefficient (R= 0.732, p<0.01) between self-regulated learning, task aversiveness, and academic procrastination, supporting the acceptance of the major hypothesis.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-relationship-between-self-regulated-learning-and-task-aversiveness-with-2",
+    "statement": "Furthermore, the analysis of the first minor hypothesis indicates a significant negative relationship between self-regulated learning and academic procrastination (rx1y = 0.645, p<0.01), while the second minor hypothesis shows a significant negative relationship between task aversiveness and academic procrastination (rx2y= 0.698, p<0.01).",
+    "source_ids": [
+      "src-relationship-between-self-regulated-learning-and-task-aversiveness-with"
+    ],
+    "text_anchor": "abstract, sentence 9: \"Furthermore, the analysis of the first minor hypothesis indicates a significant negative relationship between self-regulated learning and academic procrastination (rx1y = 0.645, p<0.01), while the second minor hypothesis shows a significant negative relationship between task aversiveness and academic procrastination (rx2y= 0.698, p<0.01).\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-relationship-between-self-regulated-learning-and-task-aversiveness-with-3",
+    "statement": "The hypotheses of the study are as follows: 1) Major Hypothesis: There is a relationship between self-regulated learning and task aversiveness with academic procrastination among ADEM students; 2) First Minor Hypothesis: There is a negative relationship between self-regulated learning and academic procrastination among ADEM students; 3) Second Minor Hypothesis: There is a negative relationship between task aversiveness and academic procrastination among ADEM students.",
+    "source_ids": [
+      "src-relationship-between-self-regulated-learning-and-task-aversiveness-with"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The hypotheses of the study are as follows: 1) Major Hypothesis: There is a relationship between self-regulated learning and task aversiveness with academic procrastination among ADEM students; 2) First Minor Hypothesis: There is a negative relationship between self-regulated learning and academic procrastination among ADEM students; 3) Second Minor Hypothesis: There is a negative relationship between task aversiveness and academic procrastination among ADEM students.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-contribution-of-artificial-intelligence-ai-tools-to-chinese-junior-m",
+    "statement": "Recently, the use of artificial intelligence (AI) technologies has developed many aspects of education, as reported by several studies.",
+    "source_ids": [
+      "src-the-contribution-of-artificial-intelligence-ai-tools-to-chinese-junior-m"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Recently, the use of artificial intelligence (AI) technologies has developed many aspects of education, as reported by several studies.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-contribution-of-artificial-intelligence-ai-tools-to-chinese-junior-m-2",
+    "statement": "To fill the gaps, this study took an interventional mixed\u2010methods research design to find out the contributions of AI tools to students' self\u2010regulated learning (SRL).",
+    "source_ids": [
+      "src-the-contribution-of-artificial-intelligence-ai-tools-to-chinese-junior-m"
+    ],
+    "text_anchor": "abstract, sentence 3: \"To fill the gaps, this study took an interventional mixed\u2010methods research design to find out the contributions of AI tools to students' self\u2010regulated learning (SRL).\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-mediating-role-of-chinese-junior-high-school-students-learning-attit",
+    "statement": "The results indicate that female and urban school students significantly outperform their male and rural counterparts in terms of classroom management, self-regulated learning, learning attitudes, and parental involvement in education.",
+    "source_ids": [
+      "src-the-mediating-role-of-chinese-junior-high-school-students-learning-attit"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The results indicate that female and urban school students significantly outperform their male and rural counterparts in terms of classroom management, self-regulated learning, learning attitudes, and parental involvement in education.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-mediating-role-of-chinese-junior-high-school-students-learning-attit-2",
+    "statement": "Classroom management has a significant positive impact on self-regulated learning, and learning attitudes and parental involvement in education are partial mediators between classroom management and self-regulated learning.",
+    "source_ids": [
+      "src-the-mediating-role-of-chinese-junior-high-school-students-learning-attit"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Classroom management has a significant positive impact on self-regulated learning, and learning attitudes and parental involvement in education are partial mediators between classroom management and self-regulated learning.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-development-of-learning-media-based-on-malangan-ethnomathematics-to",
+    "statement": "Self-regulated learning (SLR) is one of the important things in students' education and self-development.",
+    "source_ids": [
+      "src-the-development-of-learning-media-based-on-malangan-ethnomathematics-to"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Self-regulated learning (SLR) is one of the important things in students' education and self-development.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-role-of-perceived-social-support-on-self-regulated-learning-of-high",
+    "statement": "This indicates that perceived social support contributes 18.5% to students\u2019 self-regulated learning.",
+    "source_ids": [
+      "src-the-role-of-perceived-social-support-on-self-regulated-learning-of-high"
+    ],
+    "text_anchor": "abstract, sentence 10: \"This indicates that perceived social support contributes 18.5% to students\u2019 self-regulated learning.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-role-of-perceived-social-support-on-self-regulated-learning-of-high-2",
+    "statement": "In conclusion, perceived social support plays a significant role in enhancing students\u2019 self-regulated learning in Islamic boarding schools.",
+    "source_ids": [
+      "src-the-role-of-perceived-social-support-on-self-regulated-learning-of-high"
+    ],
+    "text_anchor": "abstract, sentence 12: \"In conclusion, perceived social support plays a significant role in enhancing students\u2019 self-regulated learning in Islamic boarding schools.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-role-of-perceived-social-support-on-self-regulated-learning-of-high-3",
+    "statement": "In the context of Islamic boarding schools, education not only focuses on the acquisition of knowledge and skills, but also emphasizes the cultivation of values, ethics, and religious commitment.",
+    "source_ids": [
+      "src-the-role-of-perceived-social-support-on-self-regulated-learning-of-high"
+    ],
+    "text_anchor": "abstract, sentence 3: \"In the context of Islamic boarding schools, education not only focuses on the acquisition of knowledge and skills, but also emphasizes the cultivation of values, ethics, and religious commitment.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teacher-and-student-related-factors-supporting-primary-school-students-s",
+    "statement": "This study investigates how teachers' strategies and learners' behavior contribute to the development of self-regulated skills (SRL) in primary education.",
+    "source_ids": [
+      "src-teacher-and-student-related-factors-supporting-primary-school-students-s"
+    ],
+    "text_anchor": "abstract, sentence 1: \"This study investigates how teachers' strategies and learners' behavior contribute to the development of self-regulated skills (SRL) in primary education.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public",
+    "statement": "This study investigates the implementation of Self-Regulated Learning (SRL) in a sixth-grade classroom at a public primary school in Singaraja.",
+    "source_ids": [
+      "src-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public"
+    ],
+    "text_anchor": "abstract, sentence 1: \"This study investigates the implementation of Self-Regulated Learning (SRL) in a sixth-grade classroom at a public primary school in Singaraja.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public-2",
+    "statement": "Teachers played a vital role in fostering these practices through scaffolding and guidance, while group activities promoted collaboration and critical thinking.",
+    "source_ids": [
+      "src-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Teachers played a vital role in fostering these practices through scaffolding and guidance, while group activities promoted collaboration and critical thinking.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public-3",
+    "statement": "Independent material selection was observed to enhance engagement, critical thinking, and digital literacy, aligning with modern educational frameworks like Indonesia\u00e2\u20ac\u2122s Merdeka Belajar initiative.",
+    "source_ids": [
+      "src-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Independent material selection was observed to enhance engagement, critical thinking, and digital literacy, aligning with modern educational frameworks like Indonesia\u00e2\u20ac\u2122s Merdeka Belajar initiative.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-students-through-self-regulated-learning-effects-on-islamic-r",
+    "statement": "The study focuses on understanding how critical components of Self-Regulation Learning, such as strategy cognitive, metacognitive strategies, and motivation, contribute to improved academic performance in subjects in Islamic Religious Education.",
+    "source_ids": [
+      "src-empowering-students-through-self-regulated-learning-effects-on-islamic-r"
+    ],
+    "text_anchor": "abstract, sentence 2: \"The study focuses on understanding how critical components of Self-Regulation Learning, such as strategy cognitive, metacognitive strategies, and motivation, contribute to improved academic performance in subjects in Islamic Religious Education.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-students-through-self-regulated-learning-effects-on-islamic-r-2",
+    "statement": "The analysis revealed a significant positive correlation between self-regulated learning and academic success (r: 0.75).",
+    "source_ids": [
+      "src-empowering-students-through-self-regulated-learning-effects-on-islamic-r"
+    ],
+    "text_anchor": "abstract, sentence 10: \"The analysis revealed a significant positive correlation between self-regulated learning and academic success (r: 0.75).\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-empowering-students-through-self-regulated-learning-effects-on-islamic-r-3",
+    "statement": "The findings of this study underscore the importance of self-regulated learning as a powerful tool for boosting academic success.",
+    "source_ids": [
+      "src-empowering-students-through-self-regulated-learning-effects-on-islamic-r"
+    ],
+    "text_anchor": "abstract, sentence 14: \"The findings of this study underscore the importance of self-regulated learning as a powerful tool for boosting academic success.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-self-regulated-learning-levels-among-elementary-education-students-thorn",
+    "statement": "The results indicate varying levels of self-regulated learning among undergraduate students of elementary school teacher education: 36.1% exhibited very high SRL, 40.7% high, 21.3% moderate, and 1.9% low.",
+    "source_ids": [
+      "src-self-regulated-learning-levels-among-elementary-education-students-thorn"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The results indicate varying levels of self-regulated learning among undergraduate students of elementary school teacher education: 36.1% exhibited very high SRL, 40.7% high, 21.3% moderate, and 1.9% low.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-self-regulated-learning-levels-among-elementary-education-students-thorn-2",
+    "statement": "Students with strong self-regulated learning (SRL) skills can effectively regulate their motivation and learning strategies to achieve academic success.",
+    "source_ids": [
+      "src-self-regulated-learning-levels-among-elementary-education-students-thorn"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Students with strong self-regulated learning (SRL) skills can effectively regulate their motivation and learning strategies to achieve academic success.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-self-regulated-learning-levels-among-elementary-education-students-thorn-3",
+    "statement": "This study contributes to a deeper understanding of SRL in hybrid settings, helping students enhance self-regulation and enabling them to better manage, stay motivated, and achieve their academic goals.",
+    "source_ids": [
+      "src-self-regulated-learning-levels-among-elementary-education-students-thorn"
+    ],
+    "text_anchor": "abstract, sentence 9: \"This study contributes to a deeper understanding of SRL in hybrid settings, helping students enhance self-regulation and enabling them to better manage, stay motivated, and achieve their academic goals.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-students-motivational-trajectories-in-vocational-education-effects-of-a",
+    "statement": "In the present study, the motivational development of vocational students in a learning environment promoting self-regulated learning (SRL) was examined in comparison to a control group with regular, teacher-centered instruction.",
+    "source_ids": [
+      "src-students-motivational-trajectories-in-vocational-education-effects-of-a"
+    ],
+    "text_anchor": "abstract, sentence 2: \"In the present study, the motivational development of vocational students in a learning environment promoting self-regulated learning (SRL) was examined in comparison to a control group with regular, teacher-centered instruction.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-students-motivational-trajectories-in-vocational-education-effects-of-a-2",
+    "statement": "Motivation is central for successful learning processes and lifelong learning.",
+    "source_ids": [
+      "src-students-motivational-trajectories-in-vocational-education-effects-of-a"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Motivation is central for successful learning processes and lifelong learning.\"",
+    "context": "Auto-extracted candidate; matched topics: self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-integrating-gpt-4o-as-an-ai-tool-into-k-12-contexts-assessing-its-long-t",
+    "statement": "Grounded in self\u2010determination theory (SDT), this longitudinal study examined the potential of GPT\u20104o, an artificial intelligence (AI) tool, in K\u201012 school contexts by assessing its long\u2010term impact on high school students' self\u2010regulated learning (SRL) and task engagement.",
+    "source_ids": [
+      "src-integrating-gpt-4o-as-an-ai-tool-into-k-12-contexts-assessing-its-long-t"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Grounded in self\u2010determination theory (SDT), this longitudinal study examined the potential of GPT\u20104o, an artificial intelligence (AI) tool, in K\u201012 school contexts by assessing its long\u2010term impact on high school students' self\u2010regulated learning (SRL) and task engagement.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, self-regulation. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null
   }
 ]
