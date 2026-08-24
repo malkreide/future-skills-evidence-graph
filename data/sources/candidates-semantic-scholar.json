@@ -8474,5 +8474,829 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "educator"
+  },
+  {
+    "id": "src-the-interactive-effects-of-ehealth-literacy-and-mental-health-literacy-o",
+    "title": "The Interactive Effects of eHealth Literacy and Mental Health Literacy on Social Media Addiction and Depression-Anxiety-Stress in Adolescents: Cross-Sectional Study",
+    "authors": [
+      "Yuting Xu",
+      "Zuosong Chen"
+    ],
+    "year": 2025,
+    "doi": "10.2196/81741",
+    "url": "https://www.semanticscholar.org/paper/d2ca77cfba3266434789d624bc3efd693f2e1cda",
+    "openalex_id": null,
+    "semantic_scholar_id": "d2ca77cfba3266434789d624bc3efd693f2e1cda",
+    "eric_id": null,
+    "publisher": "Journal of Medical Internet Research",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Background Chinese adolescents are navigating a complex digital environment amidst a growing mental health crisis. While health literacy is recognized as protective, previous research has primarily examined eHealth literacy (eHL) and mental health literacy (MHL) in isolation, leaving their synergistic effects and the integrative mechanism of mental eHealth literacy (MeHL) on social media addiction (SMA) and depression-anxiety-stress (DASS) largely unexplored. Objective This study aimed to investigate how eHL and MHL work through MeHL to reduce SMA and DASS in adolescents. We specifically tested whether having stronger MHL makes an adolescent's eHL more effective at building their overall MeHL. Methods A cross-sectional survey was conducted among 855 high school students (mean age 16.38, SD 0.86 years; 52.5%, 449/855 male) from 5 Chinese provinces, selected via stratified cluster random sampling. Participants completed validated scales for eHL, MHL, MeHL, SMA, and DASS. Data were analyzed using structural equation modeling (SEM) and Hayes' PROCESS macro (model 7) with cluster-robust SEs, controlling for age and gender. The significance of indirect and conditional effects was assessed using bias-corrected bootstrap CIs based on 5000 resamples. Results The results revealed distinct pathways. SEM path analysis indicated that both eHL (\u03b2=\u20130.152, 95% CI \u20130.270 to \u20130.034; P=.01) and MHL (\u03b2=\u20130.261, 95% CI \u20130.360 to \u20130.162; P<.001) were negatively associated with SMA. In contrast, only MHL demonstrated a significant negative association with DASS (\u03b2=\u20130.590, 95% CI \u20130.647 to \u20130.533; P<.001), whereas the link from eHL was nonsignificant (\u03b2=\u20130.011, 95% CI \u20130.102 to 0.080; P=.81). Bootstrapping tests confirmed that MeHL served as a significant mediator, with significant indirect paths from both eHL (SMA: \u03b2=\u20130.062, 95% CI \u20130.125 to \u20130.010, P=.01; DASS: \u03b2=\u20130.037, 95% CI \u20130.072 to \u20130.009, P=.008) and MHL (SMA: \u03b2=\u20130.045, 95% CI \u20130.090 to \u20130.008, P=.01; DASS: \u03b2=\u20130.027, 95% CI \u20130.053 to \u20130.007, P=.007). A key finding was the significant interactive association of eHL and MHL with MeHL (\u03b2=0.067, 95% CI 0.010-0.124; P<.05). This moderated mediation was supported, as the protective indirect paths from eHL (via MeHL) to both SMA and DASS were significantly stronger at higher levels of MHL. Conclusions Unlike previous research that examined them separately, this study shows that eHL and MHL work best when combined. We found that MHL acts like a catalyst; it enhances the value of digital skills, helping teenagers become more competent at finding, understanding, and using online MeHL support effectively. In practice, this means integrated intervention programs that teach digital skills and mental health knowledge together are likely to be much more effective in fighting SMA and reducing distress than teaching either one alone.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-teaching-machine-learning-to-senior-primary-students-evaluating-a-course",
+    "title": "Teaching Machine Learning to Senior Primary Students: Evaluating a Course for AI Literacy in a Hong Kong Primary School",
+    "authors": [
+      "Siu Cheung Kong",
+      "Yin Yang",
+      "So Sum Chow"
+    ],
+    "year": 2025,
+    "doi": "10.58459/icce.2025.6011",
+    "url": "https://www.semanticscholar.org/paper/8f0fe8df18f1787a5a6506ac3ffff30085f18a84",
+    "openalex_id": null,
+    "semantic_scholar_id": "8f0fe8df18f1787a5a6506ac3ffff30085f18a84",
+    "eric_id": null,
+    "publisher": "IEEE International Conference on Consumer Electronics",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examines the effectiveness of a machine-learning course designed to enhance artificial intelligence (AI) literacy among 145 sixth-grade students in a Hong Kong primary school. The six-hour course introduced foundational AI concepts, including supervised learning (artificial neural networks and K-nearest neighbours) and reinforcement learning, with hands-on activities featuring AlphAI robots. Quantitative analysis, supported by Wilcoxon signed-rank tests, revealed significant improvements in students\u2019 conceptual understanding of machine learning and deep learning. Qualitative feedback demonstrated the course\u2019s effectiveness, with hands-on activities using AlphAI robots proving effective in deepening comprehension and enabling practical application of machine learning methods. The findings show how the course demystifies AI for young learners, encouraging critical engagement with its \"black box\" nature. These insights emphasise the value of interactive, hands-on learning strategies in AI literacy education in preparing young students for an AI-driven future.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-implementation-of-digital-word-wall-media-based-on-local-culture-in-impr",
+    "title": "Implementation of Digital Word Wall Media Based on Local Culture in Improving Reading Literacy of Elementary School Students",
+    "authors": [
+      "Harita Nuzul Apriyani",
+      "A. Nisa",
+      "Akbar Al Masjid",
+      "H. Zulfiati",
+      "Insanul Qisti Bariyyah"
+    ],
+    "year": 2025,
+    "doi": "10.37680/qalamuna.v17i1.6369",
+    "url": "https://www.semanticscholar.org/paper/aba1e58704f3aee707edf017f6fe2050ea1fae92",
+    "openalex_id": null,
+    "semantic_scholar_id": "aba1e58704f3aee707edf017f6fe2050ea1fae92",
+    "eric_id": null,
+    "publisher": "Qalamuna. Jurnal pendidikan, sosial, dan agama",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This study analyzes students' reading skills decline at SD Negeri 2 Rejoso based on the education quality report card for the past three years. The difficulties faced by students include information comprehension, critical thinking, and ethical development. The study aimed to improve reading literacy skills using Word Wall digital learning media integrated with local culture in Gondang Winangun. The method used was a Systematic Literature Review (SLR), which analyzed 25 journal articles from 2019 to 2024. Inclusion criteria included articles that addressed the use of digital media in reading learning, while exclusion criteria eliminated irrelevant studies or did not focus on the primary education context. The data analysis techniques used were qualitative and quantitative analysis. The review results showed that 80% of the articles analyzed reported improvement in students' reading ability after applying Word Wall media. This finding confirms the importance of developing and implementing locally relevant digital learning media to improve reading literacy among primary school students.",
+    "topics": [
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-survey-on-robotics-education-and-its-impact-on-the-artificial-intellig",
+    "title": "A Survey on Robotics Education and its Impact on the Artificial Intelligence Literacy Among Primary and Secondary School Students",
+    "authors": [
+      "Jinyi Chen",
+      "Ying Zhao",
+      "Axi Wang",
+      "Shuling Li"
+    ],
+    "year": 2025,
+    "doi": "10.1109/ICETM67477.2025.11413430",
+    "url": "https://www.semanticscholar.org/paper/ea246512f05cc1d33053de4a3f2ad03b274a2bc2",
+    "openalex_id": null,
+    "semantic_scholar_id": "ea246512f05cc1d33053de4a3f2ad03b274a2bc2",
+    "eric_id": null,
+    "publisher": "International Conference on Education Technology Management",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "To embrace the opportunities and meet the challenges of the future intelligent society, countries around the world are actively developing artificial intelligence (AI) education across primary and secondary schools, aiming to cultivate student' AI literacy. Robotics education (RE) constitutes essential part of AI education, and considerable practical experience in this field has been accumulated. However, survey research that comprehensively investigates the current status of RE implementation and its impact on students' AI literacy on nationwide scale remains relatively scarce. To bridge this gap, this study proposed an AI literacy assessment framework for primary and secondary school students, and conducted a nationwide survey. A total of 417 valid questionnaires were collected from primary and secondary school students spanning 21 provinces, municipalities, and autonomous regions. Employing quantitative statistical analysis and comparative methods, the study examined the distribution of class size, learning frequency and learning motivation in current RE implementation, and analyzed the various impacts of RE on students' AI literacy across different educational stages, class size and learning frequency. Based on the findings, the research put forward suggestions and recommendations for enhancing RE implementation and its influence on students' AI literacy.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-structural-relationship-between-middle-school-students-generative-ai",
+    "title": "The Structural Relationship Between Middle School Students' Generative AI Use Experience, Academic Self-Perceptions, and Subjective Well-Being: Focusing on the Indirect Effects of Generative AI Literacy",
+    "authors": [
+      "Ki-Yong Lee",
+      "GunNam Lee"
+    ],
+    "year": 2026,
+    "doi": "10.69742/cer.2026.12.2.141",
+    "url": "https://www.semanticscholar.org/paper/e6f1f33c891feb5a6cd489d5d24282ce6be74cc3",
+    "openalex_id": null,
+    "semantic_scholar_id": "e6f1f33c891feb5a6cd489d5d24282ce6be74cc3",
+    "eric_id": null,
+    "publisher": "Convergence Education Research Institute, Korea National University of Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examined the structural associations between middle school students' generative AI use experience and their academic self-perceptions and subjective well-being, with a particular focus on the indirect pathways of generative AI literacy. Data were drawn from the raw dataset and codebook of the study on adolescents' generative AI use and literacy conducted by Lee et al. (2024). The analytic sample consisted of 1,778 middle school students who had experience using generative AI. \nThe findings were as follows. First, quantitative generative AI use experience was positively associated with generative AI literacy. Second, generative AI literacy was positively associated with academic self-efficacy, perceived usefulness of generative AI for learning, and subjective well-being. Third, quantitative use experience had a small direct association with perceived usefulness of generative AI for learning, but it was not directly associated with academic self-efficacy or subjective well-being. These findings suggest that students' literacy in critically evaluating, communicating with, creatively applying, and ethically using generative AI may be more closely related to academic and psychological variables than the amount of use itself. Because this study used cross-sectional data, the findings should be interpreted as structural associations rather than causal effects.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-factors-affecting-academic-resilience-during-crises-cases-of-secondary-s",
+    "title": "Factors Affecting Academic Resilience During Crises: Cases of Secondary School Students in Phuket, Thailand",
+    "authors": [
+      "Ratchanok Uicheng",
+      "P. Chobphon"
+    ],
+    "year": 2024,
+    "doi": "10.5539/ies.v17n3p51",
+    "url": "https://www.semanticscholar.org/paper/8a451eb256982197721a3e39738cc1ec7b03da5d",
+    "openalex_id": null,
+    "semantic_scholar_id": "8a451eb256982197721a3e39738cc1ec7b03da5d",
+    "eric_id": null,
+    "publisher": "International Education Studies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Academic resilience is crucial in today\u2019s crisis-prone society. This qualitative study explored the factors that shaped academic resilience during the COVID-19 pandemic to strengthen the global literature on resilience and postpandemic policy and practice in education. This study adopted a multiple-case study design, with the application of replication logic and data collection via semistructured interviews. The case studies featured interviews with three academically resilient students in Phuket and nine relevant informants, including parents, homeroom teachers, and local stakeholders. These interviews covered various factors surrounding personal qualities, families, peer groups, schools and teachers, communities and cultures, and the pandemic. Through thematic analysis, seven overarching themes emerged from the data: (1) achievement-oriented characteristics, (2) high aspirations, (3) COVID-19-driven adaptability, (4) self-directed learning in the use of online resources, (5) healthy family functioning, (6) role models, and (7) social support in the context of a giving culture.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-impact-of-the-different-types-of-dance-cheerleading-on-the-physical",
+    "title": "The Impact of the Different Types of Dance Cheerleading on the Physical Aspect, Adaptive Ability and Level of Resilience of Middle School Students",
+    "authors": [
+      "Juanjuan Chen"
+    ],
+    "year": 2024,
+    "doi": "10.54097/erg9kg97",
+    "url": "https://www.semanticscholar.org/paper/f7aacf31dce931b8f1a854912b450305075c7546",
+    "openalex_id": null,
+    "semantic_scholar_id": "f7aacf31dce931b8f1a854912b450305075c7546",
+    "eric_id": null,
+    "publisher": "Journal of Education and Educational Research",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The purpose of this study is to compare the effects of different types of dance cheerleading on the physical fitness and health level of junior high school students in Kaili City, and to explore the relationship between its effects on physical fitness, adaptive ability and level of resistance to frustration. The subjects of the investigation included students in the Street Dance Cheerleading group, Jazz Cheerleading group and Flower Ball Cheerleading group, participating in the \"Physical Education and Health\" course. Through the research design of description-comparison-correlation, the data were collected by questionnaire method and analyzed using mathematical statistics software. The results showed that different types of cheerleading had a significant effect on secondary school students' physical ability, adaptability and level of resistance to frustration. It is recommended that schools and educational organizations should strengthen the promotion of cheerleading activities while paying attention to the differences in gender and types of cheerleading in order to improve the overall physical fitness of students and develop their teamwork spirit.",
+    "topics": [
+      "collaboration",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-economics-of-education-and-neuroplasticity-how-school-shapes-the-res",
+    "title": "The Economics of Education and Neuroplasticity: How School Shapes the Resilience and Productivity of Future Generations",
+    "authors": [
+      "Olena Palchuk"
+    ],
+    "year": 2026,
+    "doi": "10.15407/dse2026.01.046",
+    "url": "https://www.semanticscholar.org/paper/ac0058a5b2aba673ac4b8babff3ca199b198636a",
+    "openalex_id": null,
+    "semantic_scholar_id": "ac0058a5b2aba673ac4b8babff3ca199b198636a",
+    "eric_id": null,
+    "publisher": "Demography and social economy",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The article aims to provide an interdisciplinary rationale for trauma-informed education as a mechanism for building resilient human capital in the context of war and post-war recovery in Ukraine. The study draws on a theoretical and analytical review of contemporary research in neuroscience, economics of education, and trauma psychology, combined with systems thinking and structured logical analysis, to trace causal links between psycho-emotional safety, students\u2019 cognitive functioning, educational outcomes, and long-term labour productivity. The scientific novelty of the study lies in conceptualising neuroplasticity as an economically significant factor that determines a child\u2019s capacity to restore cognitive resources, improve educational outcomes, and subsequently develop higher labour productivity and adaptability in the labour market. The findings demonstrate that chronic stress and traumatic experiences undermine learning capacity through impairments in emotional regulation, attention and executive functioning, which in turn lead to lower educational attainment and reduced economic productivity in adulthood. The article argues that trauma-informed education, when embedded in pedagogical practices, school governance, and student support systems, helps create safe and neuroplastically favourable learning environments. Such environments foster self-regulation, critical thinking, emotional intelligence, and collaboration skills \u2014 competencies that are increasingly essential in a knowledge-based economy and a rapidly transforming labour market. The paper concludes that investment in trauma-informed education and children\u2019s psycho-emotional recovery programmes should be treated as a macroeconomic priority, as it reduces long-term GDP losses associated with unrealised skills and strengthens the foundations of a resilient and innovation-driven economy.",
+    "topics": [
+      "critical thinking",
+      "collaboration",
+      "self-regulation",
+      "systems thinking",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-vocational-school-teacher-resilience-in-the-context-of-ensuring-quality",
+    "title": "Vocational School Teacher Resilience in the Context of Ensuring Quality Education (SDG 4) According to the Variable of School Size",
+    "authors": [
+      "Silvia Barnov\u00e1",
+      "Gabriela Gabrhelov\u00e1",
+      "Denis Barna",
+      "Sl\u00e1vka Kr\u00e1sna",
+      "Peter Van\u010do",
+      "Katar\u00edna Zem\u00e1nkov\u00e1"
+    ],
+    "year": 2025,
+    "doi": "10.47172/2965-730x.sdgsreview.v5.n03.pe04565",
+    "url": "https://www.semanticscholar.org/paper/b566711ded31837e5c575da0af0c74242250228d",
+    "openalex_id": null,
+    "semantic_scholar_id": "b566711ded31837e5c575da0af0c74242250228d",
+    "eric_id": null,
+    "publisher": "Journal of Lifestyle and SDGs Review",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Objective: Developing teacher resilience is an important factor from the aspect of increasing the quality of education and thus, achieving Sustainable Development Goal 4: Quality Education. The objective of this study is to investigate whether there is an association between vocational school teacher resilience and the size of vocational schools, as measured by the number of enrolled students, with the aim of filling the gap in existing knowledge.\n\u00a0\nMethod: In the present study, a quantitative research design was utilised. The Connor-Davidson Resilience Scale CD-RISC-25SLOVAK was administered online to 474 VET teachers in Slovakia through Google Forms. Statistical analyses were carried out using SPSS 22.00 software.\n\u00a0\nResults and Discussion: A thorough data analysis revealed that the scores achieved by the participating teachers working in larger schools (with more than 200 students) were statistically significantly higher in five of the seven dimensions ((Hardiness; Coping; Adaptability/Flexibility; Meaningfulness/Purpose; and Optimism) measured by CD-RISC-25SLOVAK. No statistically significant differences were revealed in dimensions of Regulation of emotions and cognition and Self-efficacy.\n\u00a0\nResearch Implications: The practical and theoretical implications of this research are discussed, providing insights into how the results can be applied or influence practices in promoting teacher resilience at both school and national levels and improving work conditions for vocational school teachers.\n\u00a0\nOriginality/Value: This study contributes to current knowledge by exploring an area on the periphery of researchers' interests. It provides unique data about vocational school teacher resilience and suggests a relationship between teacher resilience and school size.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-family-functioning-resilience-and-cognitive-distortion-among-secondary-s",
+    "title": "Family Functioning, Resilience, and Cognitive Distortion among Secondary School Students",
+    "authors": [
+      "Siti Hajar Mohamad Yusoff",
+      "M. S. Ismail",
+      "N. Rahman",
+      "Mohd Rahim Ariffin",
+      "Y. Don",
+      "M. Kasa"
+    ],
+    "year": 2019,
+    "doi": "10.6007/ijarbss/v9-i11/6591",
+    "url": "https://www.semanticscholar.org/paper/e2b61d390f9cd088b362bb527fbf23d6556a7316",
+    "openalex_id": null,
+    "semantic_scholar_id": "e2b61d390f9cd088b362bb527fbf23d6556a7316",
+    "eric_id": null,
+    "publisher": "Semantic Scholar",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "In line with the National Education Philosophy (NEP), the Malaysian Education Blueprint (20132025) was launched in order to produce students who are capable of thinking constructively and able to face the obstacles, while developing leadership skills and potential in students. However, family functioning also plays a role in developing students' resilience and positive thinking. Therefore, this study is to identify the relationship between family functioning, resilience, and cognitive distortion among students. The quantitative approach was used in this study, while the cross-sectional surveys applied in the data collection process. The instruments used were Family Adaptability and Cohesion Evaluation Scales III, Resilient Scale, and Cognitive Distortion Scale. A total of 376 respondents from daily secondary school students in the Northern Zone Malaysia were participated in this study. Systematic random sampling and disproportionate stratified random sampling had been used. Quantitative data were analysed by Pearson Correlation using the Statistical Package for Social Science for Windows (SPSS). The findings showed a significant relation between family functioning, resilience, and cognitive distortion. In conclusion, this study has builds a significant theoretical framework about family functioning, resilience, and cognitive distortion among students, as well as being able to contribute to various parties such as school management, counsellors, parents, and researchers in order to produce future leaders who capable in various aspects.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-scenario-based-learning-its-implication-to-emotional-resilience-and-acad",
+    "title": "Scenario-Based Learning: Its Implication to Emotional Resilience and Academic Performance of Grade 10 Students in Contemporary Issues Subject",
+    "authors": [
+      "Genevieve C. Sarongon"
+    ],
+    "year": 2026,
+    "doi": "10.47772/ijriss.2026.100300134",
+    "url": "https://www.semanticscholar.org/paper/81073c6a64a91913405de0ec6b62a0300917a3f0",
+    "openalex_id": null,
+    "semantic_scholar_id": "81073c6a64a91913405de0ec6b62a0300917a3f0",
+    "eric_id": null,
+    "publisher": "International journal of research and innovation in social science",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Education in the twenty-first century should focus on educating the whole learner. The goal of learning should not just be to help learners strive to achieve academic excellence in school but should also help develop other facets of the learner such as building emotional intelligence and improving one\u2019s higher-order thinking skills. This quantitative experimental study aimed to explore if Scenario-Based Learning can help improve the emotional resilience and Contemporary Issues performance of Grade 10 learners.\nThe research was based on Vygotsky\u2019s Zone of Proximal Development Theory, Bandura\u2019s Social Cognitive Theory, and Positive Psychology. The study used a Pretest\u2013post test control group design. Data were obtained from students who were taught traditionally and those who have experienced Scenario-Based Learning. The results revealed that learners that were exposed to SBL had Very High emotional resilience with high marks in stress management and adaptability. When gathering data on academic performance both groups had improved scores from pretest to post test. When doing a mean gain analysis, the study showed that there was a greater increase in objective test performance from pre to post in the control group. Although independent samples t-tests showed that there is no significant difference between the groups\u2019 post test scores, ANCOVA showed a statistically significant difference on the dependent variable when having pretest scores as the covariate. Thus, the study implies that while traditional methods of instruction may have better short-term quantitative gains in objective testing, the use of learner-centered methods such as Scenario-Based Learning can help learners improve their emotional resilience.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-exploring-educators-and-students-perspectives-on-skills-to-foster-greate",
+    "title": "Exploring Educators\u2019 and Students\u2019 Perspectives on Skills to Foster Greater Academic Resilience",
+    "authors": [
+      "Josephine Ebejer Grech"
+    ],
+    "year": 2025,
+    "doi": "10.12973/ejper.8.4.191",
+    "url": "https://www.semanticscholar.org/paper/a08795d80736c9f818d33cb6c10679aab4266ddc",
+    "openalex_id": null,
+    "semantic_scholar_id": "a08795d80736c9f818d33cb6c10679aab4266ddc",
+    "eric_id": null,
+    "publisher": "European Journal of Psychology and Educational Research",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores the perspectives of 12 students and 12 educators on the essential skills required to manage academic stressors such as workloads and deadlines in post-secondary education. Using a qualitative inductive approach, semi-structured interviews and focus groups were conducted to identify and classify these skills within Lazarus and Folkman\u2019s Transactional Theory of Stress and Coping. Findings revealed a consensus on the importance of problem-focused strategies, including time management, problem-solving, adaptability, and self-efficacy, with emotion-focused strategies such as emotional intelligence, cognitive reframing, and growth mindset. The study highlights the need to integrate metacognitive strategies into the curriculum to equip students with practical tools for resilience, thereby fostering their ability to navigate academic challenges effectively. Furthermore, the research offers actionable recommendations for educators and school leaders to create a supportive learning environment that promotes resilience and wellbeing. The findings contribute to the ongoing discourse on student support by providing insights into how Maltese academic post-secondary schools can better prepare students for the demands of higher education and professional life. Future research should examine the long-term impact of resilience-building initiatives in post-secondary settings.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-holistic-education-management-and-students-adaptive-abilities-a-case-stu",
+    "title": "Holistic Education Management and Students\u2019 Adaptive Abilities: A Case Study at State Senior High School 10 Medan",
+    "authors": [
+      "Diana Diana",
+      "Mesiono Mesiono",
+      "Achyar Zein"
+    ],
+    "year": 2026,
+    "doi": "10.35445/alishlah.v17i4.8602",
+    "url": "https://www.semanticscholar.org/paper/2a204af0b1c5079d856696e3c62690095be673ac",
+    "openalex_id": null,
+    "semantic_scholar_id": "2a204af0b1c5079d856696e3c62690095be673ac",
+    "eric_id": null,
+    "publisher": "Al-Ishlah: Jurnal Pendidikan",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores how holistic education management contributes to students\u2019 adaptive abilities in academic and social contexts at State Senior High School 10 Medan. In the face of 21st-century challenges, adaptability has become a critical skill, and holistic education offers a promising framework. Using a qualitative case study design, data were collected through interviews, observations, and document analysis involving school leaders, teachers, students, and parents. Thematic analysis was employed to interpret patterns related to curriculum, pedagogy, collaboration, and school culture. Findings reveal four key components that support student adaptability. First, the integration of academic, character, social, and spiritual elements in the curriculum enhances students\u2019 academic and social resilience. Second, Project-Based Learning fosters critical thinking, creativity, and teamwork. Third, collaboration among schools, families, and communities strengthens social support and broadens learning experiences. Fourth, an inclusive school culture promotes empathy, tolerance, and flexible social skills. These practices significantly contribute to students\u2019 adaptive capacities but face constraints such as limited teacher competence and insufficient policy support. The study confirms that adaptability emerges from the integration of holistic curriculum, innovative learning, collaborative partnerships, and inclusive culture. It highlights the need for coherent education policies and sustained teacher development to scale such practices.",
+    "topics": [
+      "critical thinking",
+      "creativity",
+      "collaboration",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-enhancing-resilience-of-nursing-education-during-war-policy-implications",
+    "title": "Enhancing resilience of nursing education during war: policy implications from a qualitative study",
+    "authors": [
+      "Ilya Kagan",
+      "Odeya Cohen"
+    ],
+    "year": 2025,
+    "doi": "10.1186/s13584-025-00732-1",
+    "url": "https://www.semanticscholar.org/paper/f6b332f95abb8b3ef7a102b590243ce652d74353",
+    "openalex_id": null,
+    "semantic_scholar_id": "f6b332f95abb8b3ef7a102b590243ce652d74353",
+    "eric_id": null,
+    "publisher": "Israel Journal of Health Policy Research",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Education of nurses may be compromised during a crisis. On October 7, 2023, the \u201cIron Swords\u201d war broke out in Israel. The academic year was postponed, and nursing education was disrupted. Despite the acknowledged importance of continuing nurse training during emergencies, research on this topic is scarce. To examine nursing school management activities and describe the adaptive strategies of academic frameworks during the war in Israel. This qualitative study was conducted in nursing schools in Israel that were directly affected by the Iron Swords War (October 7, 2023). We interviewed five of the seven chairs of nursing departments in Iron Swords conflict zones, content analyzed the interview text, and employed COREQ reporting guidelines for this qualitative study. Six main themes were identified: Management and leadership under uncertainty; Resilience and preparedness; Supporting well-being and inclusivity; Adaptability and innovation in the educational process; Fostering a sense of community; and Engagement of students and faculties in the crisis response. One of the most remarkable findings was the blending of personal and professional roles, as manifested in the immediate response and re-organization by the academic and administrative staff. The ability of academia to maintain function and make decisions under conditions of uncertainty is of paramount importance. This requires collaborative decision-making, leveraging diverse perspectives, fostering inclusivity, and enhancing the effectiveness of responses. Maintaining routines creates a feeling of belonging, promotes setting and realization of goals, provides meaning, and maintains motivation. The results provide insights into the management of nursing education during prolonged emergencies and health policy implications. Although focused on a war scenario, the findings have broader implications and offer strategies applicable to more general crises.",
+    "topics": [
+      "collaboration",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-school-to-work-transition-the-role-of-life-satisfaction-risk-perception",
+    "title": "School-to-work transition: The role of life satisfaction, risk perception, and resilience in youth career decision-making",
+    "authors": [
+      "P. Stanimirovi\u0107",
+      "Tea Borozan",
+      "Katarina Petrovi\u0107",
+      "D. Bjelica",
+      "Zorica M. Mitrovi\u0107",
+      "M. Mihi\u0107",
+      "Dejan Petrovi\u0107",
+      "An\u0111elija \u0110or\u0111evi\u0107 Tomi\u0107"
+    ],
+    "year": 2025,
+    "doi": "10.1371/journal.pone.0339485",
+    "url": "https://www.semanticscholar.org/paper/66f4e04deec83ce255fb7bbc277a456765425a82",
+    "openalex_id": null,
+    "semantic_scholar_id": "66f4e04deec83ce255fb7bbc277a456765425a82",
+    "eric_id": null,
+    "publisher": "PLoS ONE",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Young people often face uncertainty during the transition from education to work, along with high unemployment and job dissatisfaction, which is addressed in the EU Youth Strategy, highlighting the need for better career support. This study aimed to identify main factors influencing youth career decisions and to develop a decision-making model. Five core constructs were defined through literature review: Dealing with Uncertainty, Risk Preference, Adaptability and Resilience, Education and Support, and Life Satisfaction. Data were collected from 673 engineering students. Regression analysis was used to test the proposed model and hypotheses, while Mann-Whitney and Kruskal-Wallis tests examined group differences. The developed model accounts for 46.2% (R\u00b2\u2009=\u20090.462) of the variability in students\u2019 career choices. Adaptability and resilience emerged as the most influential factor (\u03b2\u2009=\u20090.557). Certain differences, for specific constructs, were also observed in relation to different groups of family income, gender and extracurricular activity engagement. The model supports more informed career decisions and provides insights that may help improve career guidance and educational policy. The findings also may contribute to bridging theory and practice in career development research. The study is limited by its sample, which included only engineering students from the Republic of Serbia, potentially restricting the generalizability of the results.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-case-study-of-post-secondary-educators-and-students-perspectives-on-sk",
+    "title": "A Case Study of Post-Secondary Educators\u2019 and Students\u2019 Perspectives on Skills and Pedagogical Approaches to Foster Greater Academic Resilience",
+    "authors": [
+      "Josephine Ebejer Grech"
+    ],
+    "year": 2026,
+    "doi": "10.33422/ejte.v8i1.1729",
+    "url": "https://www.semanticscholar.org/paper/0b84542b6ee5da88da8b72fc1792ca16e7e53f8d",
+    "openalex_id": null,
+    "semantic_scholar_id": "0b84542b6ee5da88da8b72fc1792ca16e7e53f8d",
+    "eric_id": null,
+    "publisher": "European Journal of Teaching and Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores the views of twelve post-secondary students and twelve educators in a post-secondary school in Malta regarding the skills necessary to manage academic stressors, particularly those stemming from workloads and deadlines. Employing a qualitative, inductive methodology, the research utilised semi-structured interviews and focus groups to identify and categorise these skills within the framework of Lazarus and Folkman\u2019s (1984) Transactional Theory of Stress and Coping. Participants identified problem-focused strategies including time management, problem-solving, adaptability, and self-efficacy, as well as emotion-focused strategies such as emotional regulation and emotional intelligence, cognitive reframing, a growth mindset, and mindfulness. The findings portray the importance of implementing metacognitive skills within the curriculum, thereby equipping students with practical tools to build resilience and navigate academic challenges more effectively. In addition, the study offers practical recommendations for educators and school leaders to foster supportive educational environments that nurture both resilience and wellbeing. These insights contribute to the wider discourse on student support, highlighting how this Maltese post-secondary school might better prepare learners for the rigours of higher education and the professional world. The research concludes by recommending future studies to investigate the long-term outcomes of resilience-building interventions in this post-secondary setting.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-gamifying-mobile-based-science-education-enhancing-self-regulated-learni",
+    "title": "Gamifying mobile-based science education: enhancing self-regulated learning skills in middle school students",
+    "authors": [
+      "H. Ates",
+      "Cansu \u015eahin K\u00f6lemen"
+    ],
+    "year": 2025,
+    "doi": "10.1007/s10639-025-13731-1",
+    "url": "https://www.semanticscholar.org/paper/70a9ad68c765f143328e782f88cfe496dadaeb39",
+    "openalex_id": null,
+    "semantic_scholar_id": "70a9ad68c765f143328e782f88cfe496dadaeb39",
+    "eric_id": null,
+    "publisher": "Education and Information Technologies : Official Journal of the IFIP technical committee on Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-supporting-the-self-regulated-learning-of-primary-school-students-with-a",
+    "title": "Supporting the Self-Regulated Learning of Primary School Students With a Performance-Based Assessment Platform for Programming Education",
+    "authors": [
+      "S. Kong",
+      "Bowen Liu"
+    ],
+    "year": 2023,
+    "doi": "10.1177/07356331221143832",
+    "url": "https://www.semanticscholar.org/paper/aff49857bd94f8edc1d0a2f6ec302fe0f682e7c9",
+    "openalex_id": null,
+    "semantic_scholar_id": "aff49857bd94f8edc1d0a2f6ec302fe0f682e7c9",
+    "eric_id": null,
+    "publisher": "Journal of educational computing research",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This study implemented and evaluated the innovative use of a performance-based assessment platform to support the development of self-regulated learning (SRL) in senior primary students as they completed programming tasks. We embedded SRL support features into a performance-based assessment platform as scaffolding to help the students implement problem-solving strategies. A mixed-methods approach was adopted to evaluate the intervention. The students\u2019 perceptions of their SRL skills after working through the programming tasks were measured by a survey of 45 students. The quantitative results suggested that the students benefited from the performance-based assessment platform in developing their SRL skills. A thematic analysis of interview data from 20 students further indicated that the embedded SRL scaffolding and automatic marking function helped them to solve the programming tasks. The results demonstrate that a well-designed performance-based assessment platform with embedded SRL support can be an effective tool for developing students\u2019 SRL. The qualitative results further revealed that algorithmic thinking is an aspect of programming for which students need more SRL support.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-motivational-dimension-of-self-regulated-learning-and-life-satisfact",
+    "title": "The motivational dimension of self-regulated learning and life satisfaction in secondary school students: effects of an adventure education programme",
+    "authors": [
+      "Estrella Gonz\u00e1lez Melero",
+      "A. Baena Extremera",
+      "Antonio Granero Gallegos",
+      "Jos\u00e9 Antonio S\u00e1nchez Fuentes"
+    ],
+    "year": 2026,
+    "doi": "10.1080/14729679.2026.2618246",
+    "url": "https://www.semanticscholar.org/paper/a8ed2a38fc8f83187d27fa3a6ca7012f14ab6d25",
+    "openalex_id": null,
+    "semantic_scholar_id": "a8ed2a38fc8f83187d27fa3a6ca7012f14ab6d25",
+    "eric_id": null,
+    "publisher": "Journal of Adventure Education and Outdoor Learning",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-relationship-between-self-regulated-learning-and-task-aversiveness-with",
+    "title": "RELATIONSHIP BETWEEN SELF-REGULATED LEARNING AND TASK AVERSIVENESS WITH ACADEMIC PROCRASTINATION IN HIGH SCHOOL STUDENTS IN THE AFFIRMATION PROGRAM FOR SECONDARY EDUCATION",
+    "authors": [
+      "Jequelin Ribka Lorohoema Soumilena",
+      "E. Widyorini",
+      "Praharesti Eryani"
+    ],
+    "year": 2023,
+    "doi": "10.36728/cijgc.v4i2.2576",
+    "url": "https://www.semanticscholar.org/paper/a4137b0279dbf336ff820f7fc0a9565605c80bd4",
+    "openalex_id": null,
+    "semantic_scholar_id": "a4137b0279dbf336ff820f7fc0a9565605c80bd4",
+    "eric_id": null,
+    "publisher": "Counsenesia Indonesian Journal Of Guidance and Counseling",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Procrastination is the habit of purposeful delay and the avoidance of tasks that are inherently unnecessary. In the realm of education, this behavior is identified as academic procrastination. This study aims to examine the relationship between self-regulated learning, task aversiveness, and academic procrastination among high school students enrolled in the Affirmative Education Program (abbreviated into: ADEM). The hypotheses of the study are as follows: 1) Major Hypothesis: There is a relationship between self-regulated learning and task aversiveness with academic procrastination among ADEM students; 2) First Minor Hypothesis: There is a negative relationship between self-regulated learning and academic procrastination among ADEM students; 3) Second Minor Hypothesis: There is a negative relationship between task aversiveness and academic procrastination among ADEM students. Participants in this research were 44 eleventh and twelfth-grade ADEM students selected through Incidental Sampling technique. Data collection involved the use of scales measuring academic procrastination, self-regulated learning, and task aversiveness. Data analysis included the application of the double correlation analysis technique to test the major hypothesis and the Product Moment analysis to test the minor hypotheses. The results reveal a correlation coefficient (R= 0.732, p<0.01) between self-regulated learning, task aversiveness, and academic procrastination, supporting the acceptance of the major hypothesis. Furthermore, the analysis of the first minor hypothesis indicates a significant negative relationship between self-regulated learning and academic procrastination (rx1y = 0.645, p<0.01), while the second minor hypothesis shows a significant negative relationship between task aversiveness and academic procrastination (rx2y= 0.698, p<0.01). In conclusion, the minor hypotheses of the study are accepted.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-contribution-of-artificial-intelligence-ai-tools-to-chinese-junior-m",
+    "title": "The Contribution of Artificial Intelligence (\n AI\n ) Tools to Chinese Junior Middle School Students' Self\u2010Regulated Learning (\n SRL\n ): An Interventional Mixed\u2010Methods Study",
+    "authors": [
+      "Xiaohuan Zhang",
+      "Yongliang Wang"
+    ],
+    "year": 2025,
+    "doi": "10.1111/ejed.70322",
+    "url": "https://www.semanticscholar.org/paper/a0796f906c85db0b4606b365793728f960338aa1",
+    "openalex_id": null,
+    "semantic_scholar_id": "a0796f906c85db0b4606b365793728f960338aa1",
+    "eric_id": null,
+    "publisher": "European Journal of Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "\n \n Recently, the use of artificial intelligence (AI) technologies has developed many aspects of education, as reported by several studies. However, little research has been done on the impact of AI\u2010mediated education on junior middle school students' psycho\u2010affective factors and behaviours. To fill the gaps, this study took an interventional mixed\u2010methods research design to find out the contributions of AI tools to students' self\u2010regulated learning (SRL). A sample of 78 Chinese junior middle school students completed a questionnaire on SRL before and after an intervention period powered by AI tools. They were assigned to control (\n n\n \u2009=\u200939) and experimental (\n n\n \u2009=\u200939) groups. The results of the t\u2010test indicated a significant increase in the SRL mean score of the experimental group from pre\u2010test to post\u2010test, suggesting the efficacy of the intervention. Moreover, the results of thematic analysis, in the qualitative phase, revealed that AI technologies had contributed to Chinese junior middle school students' SRL by \u2018enhancing classroom engagement\u2019, \u2018providing personalised learning path\u2019, \u2018offering real\u2010time and adaptive feedback\u2019, and \u2018encouraging an autonomous reflection on learning\u2019. The findings are distinctly discussed, and implications are provided for the theory and practice of AI in junior middle school education. Directions are also provided for different stakeholders to encourage an AI\u2010powered education that takes learner psychology into account.\n",
+    "topics": [
+      "ai literacy",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-mediating-role-of-chinese-junior-high-school-students-learning-attit",
+    "title": "The Mediating Role of Chinese Junior High School Students\u2019 Learning Attitudes and Parental Educational Involvement between Classroom Management and Self-regulated Learning",
+    "authors": [
+      "Kaiju Zhang"
+    ],
+    "year": 2025,
+    "doi": "10.57239/pjlss-2025-23.1.00372",
+    "url": "https://www.semanticscholar.org/paper/01a0e5f95655d629d3e08eda81b553221aea8deb",
+    "openalex_id": null,
+    "semantic_scholar_id": "01a0e5f95655d629d3e08eda81b553221aea8deb",
+    "eric_id": null,
+    "publisher": "Pakistan journal of life and social sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The aim of this study is to explore the influence of classroom management on the self-regulated learning of Chinese junior high school students, using their attitude toward learning and their parents\u2019 involvement in their education as mediators. Two urban and two rural junior high schools in China were chosen as samples using a stratified sampling method. 803 valid responses were collected from the 820 questionnaires distributed. The results indicate that female and urban school students significantly outperform their male and rural counterparts in terms of classroom management, self-regulated learning, learning attitudes, and parental involvement in education. Classroom management has a significant positive impact on self-regulated learning, and learning attitudes and parental involvement in education are partial mediators between classroom management and self-regulated learning.\u00a0 Article visualizations:",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-development-of-learning-media-based-on-malangan-ethnomathematics-to",
+    "title": "The Development of Learning Media Based on Malangan Ethnomathematics to Support Self-Regulated Learning of Junior High School Students",
+    "authors": [
+      "M. Nashihul Mukminin",
+      "Vita Kusumasari"
+    ],
+    "year": 2025,
+    "doi": "10.33603/e.v12i1.9726",
+    "url": "https://www.semanticscholar.org/paper/9c537a94c3798f5b2fa719746a1a370b7c18c07b",
+    "openalex_id": null,
+    "semantic_scholar_id": "9c537a94c3798f5b2fa719746a1a370b7c18c07b",
+    "eric_id": null,
+    "publisher": "Euclid",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Self-regulated learning (SLR) is one of the important things in students' education and self-development. However, based on previous researchers, students' SLR abilities are still quite low. Thus, the purpose of this research is to develop mathematics learning media based on Malangan cultural ethnomathematics to support SLR for junior high school students. The research procedure uses the ADDIE development model. The results of the study obtained Etno-Pro media on valid ratio and proportion material with an average media validity of 3.15 and an average material validity of 3.18. The practicality test results through teacher and student response questionnaires obtained an average of 3.7 with high practicality criteria. As many as 90.9% of students got a complete score with an average student test score of 87.4. The results also that there was an increase in students' SLR skills. This shows that Etno-Pro media can support students' SLR.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-perceived-social-support-on-self-regulated-learning-of-high",
+    "title": "The Role of Perceived Social Support on Self-Regulated Learning of High School Students at Islamic Boarding Schools",
+    "authors": [
+      "Agistni Sarah Sakinah",
+      "Tamanna Quraishi",
+      "Tang Eng Loong"
+    ],
+    "year": 2025,
+    "doi": "10.59535/es.v3i1.424",
+    "url": "https://www.semanticscholar.org/paper/1e0e4afcfea50ce6ecedc5d7a7abb969c51182d8",
+    "openalex_id": null,
+    "semantic_scholar_id": "1e0e4afcfea50ce6ecedc5d7a7abb969c51182d8",
+    "eric_id": null,
+    "publisher": "Education Specialist",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Education plays a fundamental role in improving the quality of life. It enables individuals to develop themselves intellectually, socially, and morally. In the context of Islamic boarding schools, education not only focuses on the acquisition of knowledge and skills, but also emphasizes the cultivation of values, ethics, and religious commitment. The goal is to shape Muslim individuals who are faithful, pious, possess good character, contribute positively to society, and uphold the values of Islam. One key factor that influences students\u2019 learning behavior is perceived social support. This study aims to examine the role of perceived social support in fostering self-regulated learning among high school students in Islamic boarding schools. This research adopts a quantitative approach using correlational methods to assess the relationship between variables. Data were collected through the distribution of a transadapted perceived social support scale among high school students enrolled in Islamic boarding schools. The results revealed a statistically significant relationship, with a p-value of 0.000 (p < 0.05), a correlation coefficient (R) of 0.430, and a coefficient of determination (R\u00b2) of 0.185. This indicates that perceived social support contributes 18.5% to students\u2019 self-regulated learning. Further analysis of sub-scales showed the following contributions: teachers (11.1%), friends (9.5%), people at school (9.2%), classmates (8.9%), and parents (6.1%). In conclusion, perceived social support plays a significant role in enhancing students\u2019 self-regulated learning in Islamic boarding schools. These findings underscore the importance of fostering supportive environments, especially from educators and peers, to improve students' independent learning capabilities.",
+    "topics": [
+      "self-regulation",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-teacher-and-student-related-factors-supporting-primary-school-students-s",
+    "title": "Teacher- and student-related factors supporting primary school students' self-regulated learning",
+    "authors": [
+      "Jovita Matulaitien\u0117",
+      "Lina Kaminskien\u0117",
+      "Ona Monkevi\u010dien\u0117",
+      "Erno Lehtinen"
+    ],
+    "year": 2025,
+    "doi": "10.3389/feduc.2025.1503867",
+    "url": "https://www.semanticscholar.org/paper/d27336486a045101a26150a86e852071f4cfb030",
+    "openalex_id": null,
+    "semantic_scholar_id": "d27336486a045101a26150a86e852071f4cfb030",
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This study investigates how teachers' strategies and learners' behavior contribute to the development of self-regulated skills (SRL) in primary education. The development of SRL in this level of education is not well investigated, yet SRL skills are important indicators of students' success in later years of their studies. The study responds to the scientific and practical problem related to the fact that teachers are not sufficiently familiar with the teaching of SRL in the classroom. The article is based on the data gained from self-reported questionnaires on SRL development for fourth graders (n = 253) and their class teachers (n = 16) in Lithuania. Multiple regression analysis was used to analyse the survey data and to identify the interaction relationships between the participants. Four main predictors of the development of SRL skills in primary education were identified including teachers' attitudes toward teaching, teachers' support strategies for students, learning environment and students' perceived teacher support. The results indicate that students' perceived teacher support and learning situations modeled by teachers through the learning environment significantly impact the development of SRL skills in primary education.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-investigation-of-self-regulated-learning-in-grade-6-students-of-a-public",
+    "title": "INVESTIGATION OF SELF-REGULATED LEARNING IN GRADE 6 STUDENTS OF A PUBLIC PRIMARY SCHOOL IN SINGARAJA IN TEACHING-LEARNING PROCESS",
+    "authors": [
+      "Gede Krisna Widiadharma",
+      "Ni Putu Desi Tresnayanti",
+      "N. Pradnyani",
+      "M. Santosa",
+      "Gde Arys Bayu Rewa"
+    ],
+    "year": 2025,
+    "doi": "10.32503/proficiency.v7i1.6479",
+    "url": "https://www.semanticscholar.org/paper/b51920dad8efa984724858781eedba5d510c401d",
+    "openalex_id": null,
+    "semantic_scholar_id": "b51920dad8efa984724858781eedba5d510c401d",
+    "eric_id": null,
+    "publisher": "Jurnal Pendidikan Bahasa Inggris Proficiency",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study investigates the implementation of Self-Regulated Learning (SRL) in a sixth-grade classroom at a public primary school in Singaraja. Employing a qualitative case study approach, data were collected through classroom observations and semi-structured interviews with teachers and students. The findings reveal that SRL strategies, including goal setting, self-monitoring, and self-reflection, empower students to become active participants in their education. Teachers played a vital role in fostering these practices through scaffolding and guidance, while group activities promoted collaboration and critical thinking. Independent material selection was observed to enhance engagement, critical thinking, and digital literacy, aligning with modern educational frameworks like Indonesia\u00e2\u20ac\u2122s Merdeka Belajar initiative. However, challenges such as varying levels of student readiness, limited research skills, and insufficient familiarity with digital tools were noted, highlighting the need for structured teacher support. The study emphasizes the importance of balancing independence and guidance to maximize SRL\u00e2\u20ac\u2122s benefits, preparing students for lifelong learning and adaptability in dynamic educational contexts.",
+    "topics": [
+      "critical thinking",
+      "digital competence",
+      "collaboration",
+      "self-regulation",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
+  },
+  {
+    "id": "src-empowering-students-through-self-regulated-learning-effects-on-islamic-r",
+    "title": "EMPOWERING STUDENTS THROUGH SELF-REGULATED LEARNING: EFFECTS ON ISLAMIC RELIGIOUS EDUCATION PERFORMANCE",
+    "authors": [
+      "Najmi Hayati",
+      "Siti Marpuah",
+      "Rendika"
+    ],
+    "year": 2025,
+    "doi": "10.55197/qjssh.v6si2.990",
+    "url": "https://www.semanticscholar.org/paper/6c971a682787e45731605e91a53f91b978d8c2b4",
+    "openalex_id": null,
+    "semantic_scholar_id": "6c971a682787e45731605e91a53f91b978d8c2b4",
+    "eric_id": null,
+    "publisher": "Quantum Journal of Social Sciences and Humanities",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This research investigates the role of self-regulated learning in enhancing academic success among high school students. The study focuses on understanding how critical components of Self-Regulation Learning, such as strategy cognitive, metacognitive strategies, and motivation, contribute to improved academic performance in subjects in Islamic Religious Education. This research was conducted in SMA Negeri 2 Teluk Meranti, Riau, Indonesia, from January through July 2024. The study employed a quantitative research design with a correlational approach. A sample of 55 high school students was selected through simple random sampling. Data were gathered using a validated self-regulated learning questionnaire and students' academic records. The questionnaire assessed students' proficiency in Self-Regulation Learning strategies, including strategy cognitive, metacognitive strategies, and motivation for their learning. Academic success was measured through the students' grade point averages. Pearson correlation and multiple regression analyses explored the relationship between Self-Regulation Learning and academic success. The analysis revealed a significant positive correlation between self-regulated learning and academic success (r: 0.75). The regression analysis indicated that self-regulated learning explained 56% of student score variance. They were found to be the most influential predictors of academic success, highlighting their critical role in the learning process. This indicates that a substantial portion of the variability in academic performance scores is accounted for by the cognitive strategies, metacognitive strategies, and motivation included in the model. The findings of this study underscore the importance of self-regulated learning as a powerful tool for boosting academic success. Students who effectively use Self-Regulation Learning strategies tend to achieve higher academic outcomes. The study suggests integrating Self-Regulation Learning skill development into educational programs could significantly enhance students' academic performance. Educators are encouraged to incorporate Self-Regulation Learning training into the curriculum to equip students with the necessary skills to manage their learning and achieve academic excellence.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-self-regulated-learning-levels-among-elementary-education-students-thorn",
+    "title": "Self-regulated learning levels among elementary education students: Thorndike's law of readiness analysis in hybrid learning",
+    "authors": [
+      "Roy Ardiansyah",
+      "Ainun Nafisah",
+      "Rizqi Karisma Rahmadian",
+      "Mujiati Candrarini"
+    ],
+    "year": 2025,
+    "doi": "10.12928/fundadikdas.v8i1.12744",
+    "url": "https://www.semanticscholar.org/paper/78dbb68563a24a9363689ba2c87ee674f3f00243",
+    "openalex_id": null,
+    "semantic_scholar_id": "78dbb68563a24a9363689ba2c87ee674f3f00243",
+    "eric_id": null,
+    "publisher": "Jurnal Fundadikdas (Fundamental Pendidikan Dasar)",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Students with strong self-regulated learning (SRL) skills can effectively regulate their motivation and learning strategies to achieve academic success. However, many students face significant challenges in their academic journey, especially experiencing stress from heavy coursework loads during hybrid learning, which often causes delays and disrupts their academic progress, resulting in students' SRL not being as expected. This study aims to assess the self-regulated learning levels of elementary school teacher education (PGSD) students in hybrid learning environments from the perspective of Thorndike's Law of Readiness. \u00a0\u00a0Using a quantitative survey approach, data were collected from 108 undergraduate students of elementary school teacher education at Universitas Sebelas Maret using questionnaires. This study employed content validity through expert judgment and Cronbach Alpha for reliability testing. Data analysis was conducted using descriptive statistics. \u00a0The results indicate varying levels of self-regulated learning among undergraduate students of elementary school teacher education: 36.1% exhibited very high SRL, 40.7% high, 21.3% moderate, and 1.9% low. Analysis through Thorndike's Law of Readiness indicates that most students are well-prepared to handle their responsibilities in hybrid learning environments. \u00a0\u00a0This study contributes to a deeper understanding of SRL in hybrid settings, helping students enhance self-regulation and enabling them to better manage, stay motivated, and achieve their academic goals.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-students-motivational-trajectories-in-vocational-education-effects-of-a",
+    "title": "Students\u2019 motivational trajectories in vocational education: Effects of a self-regulated learning environment",
+    "authors": [
+      "Tanja Held",
+      "Mathias Mejeh"
+    ],
+    "year": 2024,
+    "doi": "10.1016/j.heliyon.2024.e29526",
+    "url": "https://www.semanticscholar.org/paper/8825dc008c7547abef7fa4a9f9badb76eed079b8",
+    "openalex_id": null,
+    "semantic_scholar_id": "8825dc008c7547abef7fa4a9f9badb76eed079b8",
+    "eric_id": null,
+    "publisher": "Heliyon",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Motivation is central for successful learning processes and lifelong learning. In the present study, the motivational development of vocational students in a learning environment promoting self-regulated learning (SRL) was examined in comparison to a control group with regular, teacher-centered instruction. The first aim was to examine the development of the dispositional and situational motivation of vocational students. The second aim was to gain a deeper understanding of the students' motivational experiences and the factors of the learning environment that promote and impede motivation. For this purpose, a mixed-methods design was applied. Through multilevel analysis, we investigated the development of dispositional motivation between the beginning and the end of the first year of vocational education (N = 159), as well as the development of situational motivation over the first 14 weeks using weekly motivation measures (N = 119). In addition, we interviewed 19 students from the SRL-promoting and regular school settings. The quantitative results revealed significant changes in dispositional and situational motivation over time. The qualitative results showed that the three basic psychological needs (relatedness, competence, and autonomy) were central determinants of the students\u2019 motivation in both learning environments\u2014albeit to varying extents. Overall, the SRL-promoting learning environment has positive effects on student motivation, but interindividual differences must be considered. Moreover, the results shed light on the coexistence of different motivation regulations within students and interindividual differences in the interpretation of the satisfaction of the three basic psychological needs.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-integrating-gpt-4o-as-an-ai-tool-into-k-12-contexts-assessing-its-long-t",
+    "title": "Integrating \u2018\n GPT\n \u20104o\u2019 as an\n AI\n Tool Into K\u201012 Contexts: Assessing Its Long\u2010Term Effects on Students' Self\u2010Regulated Learning (\n SRL\n ) and Task Engagement Through Latent Growth Curve Modelling",
+    "authors": [
+      "Jie Zhang",
+      "Ali Derakhshan"
+    ],
+    "year": 2025,
+    "doi": "10.1111/ejed.70329",
+    "url": "https://www.semanticscholar.org/paper/460b1b295ba46b0760806bbc451699de0368ab78",
+    "openalex_id": null,
+    "semantic_scholar_id": "460b1b295ba46b0760806bbc451699de0368ab78",
+    "eric_id": null,
+    "publisher": "European Journal of Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "\n \n Grounded in self\u2010determination theory (SDT), this longitudinal study examined the potential of GPT\u20104o, an artificial intelligence (AI) tool, in K\u201012 school contexts by assessing its long\u2010term impact on high school students' self\u2010regulated learning (SRL) and task engagement. Furthermore, the study tracked the developmental trajectory of these constructs over the course of a semester through latent growth curve modelling (LGCM). In doing so, a total of 165 high school students, assigned to either a treatment group (\n n\n \u2009=\u2009100) or a control group (\n n\n \u2009=\u200965), took part in this research. Students' SRL skills and task engagement were assessed at three separate intervals using two reliable questionnaires. The LGCM findings revealed a continuous upward trajectory in the outcomes of both treatment and control groups. The results derived from a \u2018multivariate analysis of variance\u2019 (MANOVA) further indicated that students in the treatment group showed significantly greater improvements in both SRL and task engagement. Our study contributes to the growing body of literature supporting the integration of AI tools in K\u201012 school contexts to optimise students' learning outcomes.\n",
+    "topics": [
+      "ai literacy",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
   }
 ]

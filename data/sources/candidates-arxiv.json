@@ -947,5 +947,342 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-on-detector-machine-learning-for-beam-induced-background-rejection-at-a",
+    "title": "On-Detector Machine Learning for Beam-Induced Background Rejection at a 10 TeV Muon Collider",
+    "authors": [
+      "Daniel Abadjiev",
+      "Eliza Howard",
+      "Tsz Ngong You",
+      "Ryan Michaud",
+      "Benjamin Ryan Roberts",
+      "Benjamin Rosser",
+      "Karri Folan Di Petrillo",
+      "Anthony Badea",
+      "Doug Berry",
+      "Arghya Ranjan Das",
+      "Jennet Dickinson",
+      "Giuseppe Di Guglielmo",
+      "Harshul Gupta",
+      "Farah Fahim",
+      "Abhijith Gandrakota",
+      "Lindsey Gray",
+      "James Hirschauer",
+      "David Jiang",
+      "Shiqi Kuang",
+      "Ron Lipton",
+      "Mira Littmann",
+      "Miaoyuan Liu",
+      "Nicholas Manganelli",
+      "Petar Maksimovic",
+      "Corrinne Mills",
+      "Mark S. Neubauer",
+      "Aidan Nicholas",
+      "Benjamin Parpillon",
+      "Jannicke Pearkes",
+      "Adam Quinn",
+      "Danush Shekar",
+      "Ricardo Silvestre",
+      "Chinar Syal",
+      "Morris Swartz",
+      "Nhan Tran",
+      "Amit Trivedi",
+      "Keith Ulmer",
+      "Mohammad Abrar Wadud",
+      "Benjamin Weiss"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21327v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "A 10 TeV Muon Collider is a compelling candidate for a future energy-frontier facility, offering unprecedented opportunities to explore the fundamental laws of particle physics. Muon decays in the collider ring produce intense beam-induced background (BIB) that can overwhelm detector occupancy and exceed readout bandwidth constraints. We investigate the potential of on-detector Machine Learning for BIB rejection in the vertex detector, exploiting pixel cluster shapes to distinguish background from collision products. We study three classes of lightweight neural-network architectures, and evaluate their implementation feasibility using high-level synthesis. Selected architectures achieve 88 to 90% data reduction at 99% signal efficiency, while requiring hardware resources compatible with potential ASIC implementation. These results demonstrate the potential of performing substantial BIB rejection directly in the pixel readout, providing a strategy for meeting the tracker readout requirements at a future Muon Collider.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-human-ai-collaboration-in-requirements-engineering-evidence-of-the-negat",
+    "title": "Human-AI Collaboration in Requirements Engineering: Evidence of the Negative Effect of LLMs on Requirements Inspection",
+    "authors": [
+      "Giovanna Broccia",
+      "Julian Frattini",
+      "Chetan Arora",
+      "Maurice H. ter Beek",
+      "Alessandro Fantechi",
+      "Andreas Vogelsang",
+      "Alessio Ferrari"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21298v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Background. Requirements inspection (RI) is a well-established practice for detecting potential defects in requirements artifacts early in the software lifecycle. Recent advances in large language models (LLMs) have stimulated interest in their potential to support requirements engineering (RE) tasks. However, empirical evidence on the effects of LLMs when used as collaborative assistants in human-performed RI remains scarce. Aims. We aim to investigate the impact of LLM support on human-performed RI, considering inspection effectiveness in terms of smell identification and severity classification (i.e., nocuous vs innocuous), as well as inspection duration. Method. We conducted a controlled crossover design experiment with 34 participants, who inspected textual specifications with and without LLM support, identifying and classifying requirements smells while recording inspection time. We analyzed the data using one Bayesian regression model per outcome variable, accounting for validity threats induced by the crossover design as well as covariates and mediators. Results. Results show that LLM support negatively affects smell detection accuracy but has no significant effect on smell classification or task duration. A learning effect is present across experimental periods, but reduced when RI is first performed with LLM support. Conclusions. Our findings provide empirical evidence that LLM support does not necessarily improve performance and may, instead, hinder it for novice inspectors. Moreover, the results suggest that learning RI with LLM-support from the beginning may slow down the skill acquisition process, implying threats for LLM-supported learning.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-advanced-linear-algebra-with-applications-part-i-numerical-linear-algebr",
+    "title": "Advanced Linear Algebra with Applications - Part I (Numerical linear algebra for PDEs, machine learning, and data assimilation)",
+    "authors": [
+      "Victorita Dolean",
+      "Jemima Tabeart"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21234v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "These lecture notes form the first part of a master's-level course on advanced numerical linear algebra. Their aim is not only to present the classical algorithms, but to show why the subject has become considerably more central than it was a generation ago. Numerical linear algebra grew up alongside the numerical solution of partial differential equations, and for a long time that is where its large sparse systems came from. Ranking the nodes of a network, assimilating observations into a weather forecast, and fitting a model to a large noisy data set now lead to problems of the same kind: too large to factorise, structured, and accessible only through matrix-vector products. Strikingly few ideas are needed for all of them. Each chapter therefore develops a standard topic and then puts it to work outside its original setting. We treat norms, factorisations, conditioning and floating-point arithmetic; sparse matrices arising from finite differences, from graphs and from machine learning; stationary iterations and the smoothing property; the conjugate gradient and Lanczos methods, with spectral clustering and regularisation by early stopping; Arnoldi and GMRES, with PageRank and large least squares; and finally preconditioning, Schwarz domain decomposition and multigrid. We assume a first course in linear algebra. Every section closes with a summary of what should be retained and every chapter with exercises, several drawn from past examinations. Accompanying Python code reproduces the numerical illustrations.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-who-trusts-ai-with-their-emotions-trust-formation-and-sociodemographic-v",
+    "title": "Who Trusts AI with Their Emotions? Trust Formation and Sociodemographic Variation in LLM Use for Emotional Support",
+    "authors": [
+      "Natalia Amat-Lefort",
+      "Mert Yazan",
+      "Amanda Cercas Curry",
+      "Flor Miriam Plaza-del-Arco"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21220v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Trust in AI for emotional support is not universal; it is shaped by who users are, where they come from, and what they value. Yet research in this area lacks validated psychometric instruments for assessing user perceptions in affective AI contexts and large-scale evidence on how trust formation varies across user segments. To address these gaps, we develop and validate a seven-construct psychometric scale, test a Structural Equation Model (SEM) linking system attributes to Trust and Perceived Benefits as mediators of Actual System Use, and conduct a Multi-Group Analysis (MGA) across five sociodemographic dimensions (gender, age, education, socioeconomic status, cross-national region), drawing on 1,343 active users from seven countries. We find that users experience empathy and anthropomorphism as a unified \"Humanlikeness\" construct, and that Privacy, Personalization, and Humanlikeness drive Trust while Perceived Bias degrades it. Notably, adoption logic diverges across groups: Privacy shapes women's trust more than men's, Anglosphere (UK, USA) users respond more positively to Humanlikeness than Europeans, and educated and higher-income users require Trust to engage, whereas older adults and lower socioeconomic groups bypass it entirely, relying on perceived practical benefits (e.g., 24/7 availability, non-judgmental support). Our findings extend technology acceptance theory and inform the equitable design of emotional support AI.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-machine-learning-predictions-of-the-hessian-matrix-for-peptides-chains-a",
+    "title": "Machine learning predictions of the Hessian matrix for peptides chains and small proteins",
+    "authors": [
+      "Giorgio Domenichini"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21322v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Molecular Hessians have a key role in describing molecular vibrations, trajectories and optimization paths. An explicit calculation of them through standard quantum mechanical methods can be computationally expensive for medium-large systems, and in many applications not even needed. Machine learning methods can be a shortcut to tackle efficiently the computational difficulties. This paper will present a ML model able to predict the Hessian matrix of biological system made of thousands of atoms. The method, based on learning the Hessian in internal coordinates is intrinsically invariant to molecular rotations and translations, and has a very good scaling with the systems' size. The training was performed on a dataset of simple aminoacids, as they constitute the building blocks of larger proteins. From the predicted Hessian matrix it is possible to calculate thermochemical properties within the harmonic approximations, among them enthalpies, entropies, Gibbs' free energies, and zero point vibrational energies.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-dorsal-hand-images-for-immersive-xr-and-privacy-preserving-age-assurance",
+    "title": "Dorsal Hand Images for Immersive (XR) and Privacy-preserving Age Assurance and Child Safety",
+    "authors": [
+      "Riccardo Bovo",
+      "George Loukas",
+      "Josh P. Davis"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21009v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Ensuring that Extended Reality (XR) environments are age-appropriate is an important regulatory and safety challenge. However, current age assurance operates only at registration and cannot verify the age of the active user during a session. Face-based approaches, the dominant solution in social media and adult platforms, are impractical in XR, because they require removing the headset and taking a self-captured image, often on a mobile app. This both breaks immersion and introduces the privacy risk of sharing face pictures with third parties, which leaves XR platforms without a viable path to continuous, in-session and privacy-preserving age assurance. We propose the dorsal part of the hand as an alternative to the face, by exploiting the egocentric cameras that XR headsets inherently and naturally use to capture gesture interactions. To evaluate this, we collect an age- and sex-stratified, ethnodiverse dataset of 436 participants spanning the minor--adult boundary, captured under unconstrained lighting and orientation conditions. To characterise what is achievable with off-the-shelf methods at the minor--adult boundary, we evaluate standard neural network architectures for age assurance at the legally critical 18-year threshold. Analysis confirms performance is robust to skin-tone variation. On this dataset, the challenge-31 operating point achieves zero minor admission, making the system a viable first-stage filter for age assurance. These findings position dorsal hand morphometrics as an effective and more privacy-preserving biometric modality for in-session age assurance in XR.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-bridging-semantics-and-behavior-an-agent-based-evolutionary-model-of-top",
+    "title": "Bridging Semantics and Behavior: An Agent-Based Evolutionary Model of Topic Competition with BERTopic",
+    "authors": [
+      "Blekanov I.",
+      "Gubar E.",
+      "Fan X"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.20996v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Understanding how information spreads and opinions evolve on social media is a core challenge in computational social science. Users constantly face competing topics, yet their decisions to engage are shaped by social learning, perceived utility, and cognitive limits. Traditional models often separate content from behavior, missing how individual cognition and social interaction jointly drive large-scale discourse. We propose a language-independent computational framework that bridges semantic topic modeling with evolutionary game theory and agent-based simulation. Using BERTopic, we extract coherent topics from a large Weibo dataset. We then quantify engagement through a unified metric based on likes, comments, and reposts. In NetLogo, agents update topic preferences via local imitation, guided by payoff comparisons and behavioral noise---mirroring real-world bounded rationality. Tests on two real-world datasets show that our model successfully replicates observed topic diffusion trends. It highlights how social learning frequency and payoff sensitivity shape public attention. Our results demonstrate that micro-level mechanisms---imitation and noise-tolerant choice---can produce emergent macro-level patterns. This work contributes to human-computer interaction by linking semantic analysis with behavioral simulation, offering insights into the cognitive and social foundations of online collective behavior. The framework also has practical potential for misinformation resilience, opinion forecasting, and adaptive content curation.",
+    "topics": [
+      "critical thinking",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-resolving-positive-semi-definiteness-in-physics-informed-kernels-for-sci",
+    "title": "Resolving positive semi-definiteness in physics-informed kernels for scientific machine learning",
+    "authors": [
+      "J. Moser",
+      "C. Albert",
+      "S. Ranftl"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.20985v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Many modern machine learning models can be understood as kernel-based function-space models, including Gaussian processes and neural tangent kernels. In scientific machine learning, differential operators are increasingly used to encode physical structure directly into such models. However, it has remained unclear under which conditions these constructions are valid machine learning models, i.e. preserve positive semi-definiteness, and whether observed instabilities arise from ill-posed modeling or numerical effects. Here, we establish a simple and sufficient condition for positive semi-definiteness: for linear differential operators of order m, the base kernel must be m-times continuously differentiable. Crucially, this guarantee holds for operators with non-constant and even discontinuous coefficients. Examples are ubiquitous in physical systems, including diffusion, material elasticity, wave propagation in inhomogeneous media, and quantum systems. We conclude that remaining instabilities are attributable to numerical issues, providing a unifying validity foundation for operator-informed kernel methods.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-personalized-privacy-control-in-llms-via-attention-head-intervention",
+    "title": "Personalized Privacy Control in LLMs via Attention Head Intervention",
+    "authors": [
+      "Junseok Kim",
+      "Nakyeong Yang",
+      "Kyomin Jung"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21209v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The rise of agentic AI enables LLMs to access diverse user data, raising critical privacy concerns. Prior work on contextual privacy studies whether LLMs regulate information disclosure according to context-dependent norms. However, acceptable disclosure boundaries may vary across users even within the same context. To address this limitation, we introduce \\textit{personalized privacy}, which incorporates user-specific disclosure preferences into privacy control. We further present P3Bench~(\\textbf{P}ersonalized \\textbf{P}rivacy \\textbf{P}reservation \\textbf{Bench}mark), a novel benchmark extending contextual privacy policies with personalized disclosure policies. Experiments show that prompt-based policies fail to reliably enforce personalized privacy policies, with Qwen2.5-7B and Gemma3-4B showing average policy ignorance ratios of 51.25\\% and 74.28\\%, respectively. Finally, to address this problem, we propose \\textsc{Repair}, a robust inference-time attention head intervention method that adjusts disclosure behavior toward policy-consistent responses. Our method significantly improves adherence to user-specific privacy preferences by reducing cases where the model fails to follow the given policy.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-distilling-black-box-machine-learning-into-a-small-self-explaining-langu",
+    "title": "Distilling Black-Box Machine Learning into a Small, Self-Explaining Language Model for Learning Analytics",
+    "authors": [
+      "Chenguang Pan",
+      "Airui Meng",
+      "Youmi Suk"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21165v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Learning analytics increasingly relies on flexible machine learning (ML), but the model opacity and the burden of deployment prevent these tools from reaching educational practice. We propose a two-stage fine-tuning pipeline that distills a fitted black-box estimator and its post hoc interpretation (the mentor) into a small, open-weight large language model (LLM; the mentee) that returns an individual-level estimate and explains in natural language. The design is estimator-agnostic and paired with a faithfulness-first evaluation framework that audits every narration against the attribution it claims to describe. We design a simulation study that separates distillation loss from estimator loss by comparing an oracle mentor with a realistic ML mentor. Given an oracle signal, distillation with a two-billion-parameter LLM model is nearly lossless in recovering the effect surface (r > .90), perfectly ranking the important variables, and citing no spurious covariate. Under a realistic estimator, almost all remaining error originates upstream. We find that fluency is no evidence of correctness since narration quality is independent of signal quality, and decision quality collapses toward the majority action in severely imbalanced settings. Applied to a nationally representative dataset, the pipeline recovers the finding that advanced mathematics coursework benefits students least likely to enroll in four-year college the most, with 98.8% of narrations passing the audit and no fabricated quantities. The result is a single fine-tuned LLM that predicts and explains offline on a commodity laptop, so student records never leave the machine.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-can-legal-ai-know-when-it-is-wrong-and-do-students-know-when-it-is",
+    "title": "Can Legal AI Know When It Is Wrong? And Do Students Know When It Is?",
+    "authors": [
+      "Angel Mary John",
+      "Vipin Kumar Singh",
+      "Jerrin Thomas Panachakel"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.21089v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Integrating Large Language Models (LLMs) into the Indian judiciary promises access to justice but introduces severe risks. We identify the 'inertia of confidence'--an overconfidence phenomenon analogous to the Dunning-Kruger effect where LLMs provide incorrect legal verdicts with near-maximum confidence, driven by a hypothesized 'precedent overfitting' bias. Phase I of our socio-technical audit tested ChatGPT (GPT-5.2), Meta AI, and Perplexity AI on a 60-case battery regarding the Indian Contract Act, 1872, and the shift toward statutory enforcement of specific performance. We introduce the High-Confidence Error Rate (HCER) to quantify incorrect verdicts delivered with dangerous certainty (>= 9 on a 1-10 scale). All models struggled with statutory updates. Meta AI proved most vulnerable (31.7% HCER), frequently misapplying pre-amendment rules with a 9.1/10 mean confidence, followed by Perplexity (15.0%) and ChatGPT (6.7%). Phase II investigated human vulnerability to this overconfidence via a survey of Indian law students (N=380). Verification often functions as a reactive adaptation to machine hallucinations: students encountering fabricated citations reported higher verification scores (4.2/5) than those with no such encounters (2.8/5). Furthermore, while 81.6% knew submitting hallucinated cases can lead to contempt-of-court, 71.1% received no formal training on ethical AI use. We propose shifting toward adversarial legal research pedagogy and implementing source-grounded verification architectures to prevent systemic professional negligence.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-24",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
