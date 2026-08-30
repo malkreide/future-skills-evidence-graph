@@ -12,12 +12,12 @@ scikit-learn==1.9.0
 # (scripts/ai_provider.py). It is imported lazily and only when AI_PROVIDER=anthropic;
 # when AI_PROVIDER is in {none, cache} (the default and the test/CI mode) the import
 # path stays standard-library only and this package is never imported.
-anthropic==0.125.0
+anthropic==1.1.0
 # openai is the same kind of dependency for AI_PROVIDER=openai: lazily imported,
 # only inside its adapter, never touched in {none, cache} mode. It exists so the
 # provider choice can be MEASURED (scripts/compare_providers.py) instead of
 # assumed -- not because the pipeline needs it.
-openai==3.3.1
+openai==3.5.0
 # NOTE: AI_PROVIDER=ollama deliberately has NO entry here. That adapter talks to
 # a local server over urllib, so the keyless, local provider -- the one a
 # contributor without an API budget can actually run -- costs this file nothing.
@@ -33,10 +33,10 @@ sentence-transformers==6.0.0
 # (scripts/extract_pdf_text.py), which an operator runs to prepare a report for
 # scripts/ingest_reports.py. It is imported lazily and only when actually parsing
 # a PDF; the importer itself takes plaintext and stays standard-library only.
-pypdf==6.16.1
+pypdf==6.16.2
 # ddgs (DuckDuckGo search) is the OPTIONAL open-source, keyless web-search tier of
 # the source-URL resolver (scripts/resolve_source_url.py, Option B). It is imported
 # lazily and only when a report has no URL and the keyless catalogues (Crossref/
 # OpenAlex) miss; absent it, that tier is a graceful no-op. The importers and the
 # core resolver stay standard-library only.
-ddgs==9.15.0
+ddgs==9.16.0
