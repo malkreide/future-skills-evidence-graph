@@ -8520,5 +8520,87 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "educator"
+  },
+  {
+    "id": "src-change-management-and-ai-tools-in-literacy-instruction",
+    "title": "Change Management and AI Tools in Literacy Instruction",
+    "authors": [
+      "Cherise McBride",
+      "Amanda Wortman",
+      "Stefani Pautz Stephenson",
+      "Kelly McNeil",
+      "Rebecca Banks"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED682387",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED682387",
+    "publisher": "Digital Promise",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "This report examines a research-practice-industry partnership (RPIP) between Digital Promise, three school districts, and Coursemojo--an AI-powered English language arts (ELA) instructional assistant. Grounded in John Kotter's 8-Step Process for Leading Change and the Digital Promise AI Literacy Framework, the study explores how change management and AI literacy support high-fidelity technology implementation in fifth through eighth grades. The report emphasizes a \"human-in-the-loop\" approach, demonstrating that AI tools must be mediated by educator expertise to amplify student voice, protect productive struggle, and support diverse learners. This partnership model provides a scalable roadmap for school districts leveraging emerging technologies to close persistent literacy gaps while keeping pedagogical priorities and human expertise at the center. [This report was produced with Coursemojo.]",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-ai-in-the-arts-and-humanities-bridging-artificial-intelligence-and-the-h",
+    "title": "AI in the Arts and Humanities: Bridging Artificial Intelligence and the Humanities through Design",
+    "authors": [
+      "Scott Barton",
+      "Jason Scuilla"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1002/ace.70025",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514641",
+    "publisher": "New Directions for Adult and Continuing Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) becomes embedded in creative and professional practice, questions of meaning, judgment, and responsibility remain central. This article situates AI within the humanities by framing it as a cognitive extension that participates in human thinking and practice. Drawing on hermeneutics and heuretics, the paper examines how meaning is interpreted and how new possibilities are generated through design. Design is presented as a mediating discipline that brings traditions of interpretation, empathy, and ethical judgment into relation with computational systems that accelerate exploration and variation. Through this lens, AI participates in creative cognition by supporting interpretation, iteration, and invention while leaving responsibility for meaning-making with human designers. The article further argues that AI reshapes practice by increasing decision density and intensifying demands for interpretive judgment. Grounded in humanistic and design traditions, this work clarifies how design bridges AI and the humanities through judgment and ethical responsibility.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-nurturing-tomorrow-s-leaders-exploring-emotional-intelligence-s-influenc",
+    "title": "Nurturing Tomorrow's Leaders: Exploring Emotional Intelligence's Influence on Career Adaptability with Resilience as a Mediating Variable",
+    "authors": [
+      "Caner Do&#x011F;rusever",
+      "Mehmet Ali Pad&#x0131;r"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1177/10384162261431780",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514451",
+    "publisher": "Australian Journal of Career Development",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Adolescence is a critical period in acquiring a vocational identity. During this period, adolescents who experience a crisis related to their vocational identity need to make decisions that allow them to successfully navigate their vocational development and climb the steps toward becoming future leaders by making informed decisions. Thus, the current study aims to investigate the mediating role of psychological resilience in the relationship between adolescents' emotional intelligence (EI) and career adaptability, with 580 adolescents voluntarily participating in the study. Mediation analyses were conducted to test EI's indirect effect on career adaptability through resilience. According to our findings, resilience serves as a mediating variable between EI and career adaptability. The findings from our study provide essential practical insights for career counselors working with adolescents. As our findings indicate, practitioners can be more successful at enhancing career adaptability by adopting an approach that focuses on increasing EI and resilience skills.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]

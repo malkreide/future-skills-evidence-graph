@@ -7547,5 +7547,66 @@
     "reviewed_at": null,
     "relevance_score": 0.85,
     "audience": "learner"
+  },
+  {
+    "id": "src-artificial-intelligence-in-education-challenges-and-opportunities-for-su",
+    "title": "Artificial intelligence in education : challenges and opportunities for sustainable development",
+    "authors": [
+      "Francesc Pedr\u00f3",
+      "Miguel Subosa",
+      "Axel Rivas",
+      "Paula Valverde"
+    ],
+    "year": 2019,
+    "doi": null,
+    "url": "https://openalex.org/W2942193471",
+    "openalex_id": "https://openalex.org/W2942193471",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "MINISTERIO DE EDUCACI\u00d3N",
+    "source_type": "peer_reviewed_article",
+    "license": "other-oa",
+    "abstract": "Artificial Intelligence is a booming technological domain capable of altering every aspect of our social interactions. In education, AI has begun producing new teaching and learning solutions that are now undergoing testing in different contexts. AI requires advanced infrastructures and an ecosystem of thriving innovators, but what about the urgencies of developing countries? Will they have to wait for the \u201cluxury\u201d of AI? Or should AI be a priority to tackle as soon as possible to reduce the digital and social divide?These are some of the questions guiding this document. In this regard, this urgent discussion should be taken up with a clear picture of what is happening and what can be done. This document gathers examples of how AI has been introduced in education worldwide, particularly in developing countries. It also sows the seeds of debates and discussions in the context of the 2019 Mobile Learning Week and beyond, as part of the multiple ways to accomplish Sustainable Development Goal 4, which targets education. The first section of this document analyses how AI can be used to improve learning outcomes. It presents examples of how AI technology can help education systems use data to improve educational equity and quality in the developing world. The section is divided into two topics that address pedagogical and system-wide solutions:i) AI to promote personalisation and better learning outcomes, exploring how AI can favour access to education, collaborative environments and intelligent tutoring systems to support teachers. We briefly introduce cases from countries such as China, Uruguay, Brazil, South Africa and Kenya as examples experimental solutions conceived from public policies, philanthropic and private organisations. ii) Data analytics in Education Management Information Systems (EMIS). Here we present opportunities for improving a state\u2019s capacity to manage large-scale educational systems by increasing data from schools and learning, presenting cases from United Arab Emirates, Kenya, Bhutan, Kyrgyzstan and Chile.The second section \u201cPreparing learners to thrive in an AI-saturated future\u201d explores the different means by which governments and educational institutions are rethinking and reworking educational programmes to prepare learners for the increasing presence of AI in all aspects of human activity. Based on examples from different contexts, the section is also divided into two main parts: i) \u201cA new curriculum for a digital and AI powered world\u201d elaborates further on the importance of advancing in digital competency frameworks for teachers and students. Some current initiatives are presented such as the \u201cGlobal Framework to Measure Digital Literacy\u201d and \u201cICT Competencies and Standards from the Pedagogical Dimension\u201d. The discussion of the curricular dimension is broadened to include new experiences for developing computational thinking in schools with examples from the European Union, United Kingdom, Estonia, Argentina, Singapore and Malaysia.ii) The second part is more focused on strengthening AI capacities through post-basic education and training. How can each country prepare the conditions for an AI-powered world? Here we present some of the most advanced cases from developed countries who are generating comprehensive plans to tackle this question, namely France, South Korea and China. We also present some cases from the technical and vocational education and training sector and some opportunities from non-formal and informal learning scenarios.The last section addresses the challenges and policy implications that should be part of the global and local conversations regarding the possibilities and risks of introducing AI in education and preparing students for an AI-powered context. Six challenges are presented: The first challenge lies in developing a comprehensive view of public policy on AI for sustainable development. The complexity of the technological conditions needed to advance in this field require the alignment of multiple factors and institutions. Public policies have to work in partnership at international and national levels to create an ecosystem of AI that serves sustainable development. The second challenge is to ensure inclusion and equity for AI in education. The least developed countries are at risk of suffering new technological, economic and social divides with the development of AI. Some main obstacles such as basic technological infrastructure must be faced to establish the basic conditions for implementing new strategies that take advantage of AI to improve learning.The third challenge is to prepare teachers for an AI-powered education while preparing AI to understand education, though this must nevertheless be a two-way road: teachers must learn new digital skills to use AI in a pedagogical and meaningful way and AI developers must learn how teachers work and create solutions that are sustainable in real-life environments. The fourth challenge is to develop quality and inclusive data systems. If we are headed towards the datafication of education, the quality of data should be our chief concern. It \u0301s essential to develop state capabilities to improve data collection and systematisation. AI developments should be an opportunity to increase the importance of data in educational system management.The fifth challenge is to make research on AI in education significant. While it can be reasonably expected that research on AI in education will increase in the coming years, it is nevertheless worth recalling the difficulties that the education sector has had in taking stock of educational research in a significant way both for practice and policy-making.The sixth challenge deals with ethics and transparency in data collection, use and dissemination. AI opens many ethical concerns regarding access to education system, recommendations to individual students, personal data concentration, liability, impact on work, data privacy and ownership of data feeding algorithms. AI regulation will thus require public discussion on ethics, accountability, transparency and security.The document ends with an open invitation to create new discussions around the uses, possibilities and risks of AI in education for sustainable development.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "collaboration",
+      "ethics",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "educator"
+  },
+  {
+    "id": "src-teachers-trust-in-ai-powered-educational-technology-and-a-professional-d",
+    "title": "Teachers' trust in AI \u2010powered educational technology and a professional development program to improve it",
+    "authors": [
+      "Tanya Nazaretsky",
+      "Moriah Ariely",
+      "Mutlu Cukurova",
+      "Giora Alexandron"
+    ],
+    "year": 2022,
+    "doi": "10.1111/bjet.13232",
+    "url": "https://openalex.org/W4229456833",
+    "openalex_id": "https://openalex.org/W4229456833",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "British Journal of Educational Technology",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "Abstract Evidence from various domains underlines the critical role that human factors, and especially trust, play in adopting technology by practitioners. In the case of Artificial Intelligence (AI) powered tools, the issue is even more complex due to practitioners' AI\u2010specific misconceptions, myths and fears (e.g., mass unemployment and privacy violations). In recent years, AI has been incorporated increasingly into K\u201012 education. However, little research has been conducted on the trust and attitudes of K\u201012 teachers towards the use and adoption of AI\u2010powered Educational Technology (AI\u2010EdTech). This paper sheds light on teachers' trust in AI\u2010EdTech and presents effective professional development strategies to increase teachers' trust and willingness to apply AI\u2010EdTech in their classrooms. Our experiments with K\u201012 science teachers were conducted around their interactions with a specific AI\u2010powered assessment tool (termed AI\u2010Grader) using both synthetic and real data. The results indicate that presenting teachers with some explanations of (i) how AI makes decisions, particularly compared to the human experts, and (ii) how AI can complement and give additional strengths to teachers, rather than replacing them, can reduce teachers' concerns and improve their trust in AI\u2010EdTech. The contribution of this research is threefold. First, it emphasizes the importance of increasing teachers' theoretical and practical knowledge about AI in educational settings to gain their trust in AI\u2010EdTech in K\u201012 education. Second, it presents a teacher professional development program (PDP), as well as the discourse analysis of teachers who completed it. Third, based on the results observed, it presents clear suggestions for future PDPs aiming to improve teachers' trust in AI\u2010EdTech. Practitioner notes What is already known about this topic Human factors, and especially trust, play a critical role in practitioners' adoption of technology. In recent years, AI has been incorporated increasingly into K\u201012 education. Little research has been conducted on the trust and attitudes of K\u201012 teachers towards the use and adoption of AI\u2010powered Educational Technology. What this paper adds This research emphasizes the importance of increasing teachers' theoretical and practical knowledge about AI in educational settings to gain their trust in AI\u2010EdTech in K\u201012 education. It presents a teacher professional development program (PDP) to increase teachers' trust in AI\u2010EdTech, as well as the discourse analysis of teachers who completed it. It presents clear suggestions for future PDPs aiming at improving teachers' trust in AI\u2010EdTech. Implications for practice and/or policy Pre\u2010 and in\u2010service teacher education programs that aim to increase teachers' trust in AI\u2010EdTech should include a section providing teachers with a basic understanding of AI. PDPs aimed to increase teachers' trust in AI\u2010EdTech should focus on concrete pedagogical tasks and specific AI\u2010powered tools that are considered by teachers as helpful and worth the effort to learn. AI\u2010EdTech should not restrict teachers to follow specific pedagogical scenarios, but rather provide teachers with the freedom to design and implement various types of pedagogies that meet their preferences, students' needs, and classroom reality. Teacher agency is key to gaining their trust. AI\u2010EdTech should allow teachers to review, modify, and if necessary, override AI\u2010based recommendations before they are sent to students.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
   }
 ]
