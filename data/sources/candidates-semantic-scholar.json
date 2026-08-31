@@ -9298,5 +9298,36 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "learner"
+  },
+  {
+    "id": "src-cultivating-ai-literacy-among-high-school-students-through-generative-ai",
+    "title": "Cultivating AI literacy among high school students through generative AI as a collaborative partner",
+    "authors": [
+      "Jung Won Hur",
+      "Jay Bhuyan",
+      "Fan Wu",
+      "Cassandra Thomas",
+      "Kai S. Koong"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s44217-026-02092-7",
+    "url": "https://www.semanticscholar.org/paper/bb11c48f5354dd4c5245c8d54cee6b8db4cf0794",
+    "openalex_id": null,
+    "semantic_scholar_id": "bb11c48f5354dd4c5245c8d54cee6b8db4cf0794",
+    "eric_id": null,
+    "publisher": "Discover Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Despite growing emphasis on AI literacy education, empirical research examining how secondary students engage with and apply AI concepts in authentic project-based learning environments remains limited, particularly among students from historically underserved communities. This mixed-methods study examined African American high school students\u2019 experiences in an AI-enhanced mobile app design project in which generative AI served as a collaborative design partner. Grounded in AI literacy frameworks, the program combined foundational AI instruction with a four-month project-based experience focused on designing AI-enhanced mobile applications. Qualitative data included focus group interviews, student design artifacts, presentations, and researcher field notes, while quantitative data included pre- and post-AI literacy assessments and surveys. Analysis of student design artifacts and presentations revealed that participants demonstrated emerging understanding of AI concepts by proposing AI-enabled features such as recommendation systems, chatbots, and information verification tools within their mobile app designs. Survey results indicated improvements in professional skills, particularly in collaboration, communication, and problem-solving. Knowledge assessment results showed modest but non-significant changes in students\u2019 conceptual AI knowledge, with variation in individual learning trajectories. The study also identified several instructional challenges, including differences in students\u2019 technological readiness and tensions surrounding AI use, ranging from overreliance to avoidance of AI use due to concerns about academic penalties. These findings highlight the potential of AI-enhanced project-based learning to support students\u2019 development and application of AI literacy while underscoring the need for instructional scaffolding to guide students\u2019 effective and ethical use of AI as a collaborative partner in K-12 learning environments.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
   }
 ]
