@@ -1284,5 +1284,623 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-a-guided-inquiry-approach-to-students-co-designing-generative-ai-course",
+    "title": "A Guided Inquiry Approach to Students Co-Designing Generative AI Course Policies",
+    "authors": [
+      "Ashish Hingle",
+      "Aditya Johri"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28501v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "As generative AI (GenAI) use among students increases, educators face growing questions about how to support learning while addressing ethical and institutional concerns. This exploratory study examines a guided inquiry activity in which students co-designed a GenAI course policy. Students first developed individual policy proposals focused on appropriate and ethical use of GenAI, then collaboratively refined them by incorporating diverse stakeholder perspectives. The following research questions guided the study: 1) what practical factors do students prioritize in their GenAI use policies, and how do they justify these choices? and 2) how do participants reflect on the policy design process? Participants first completed readings, then used GenAI to brainstorm initial policy ideas. Next, they articulated their own perspectives through a written assignment and a course policy they designed individually. Finally, they incorporated diverse stakeholder perspectives by collaborating with peers to develop a collective policy. Analysis of student artifacts and group discussions showed that participants prioritized training for students and instructors, standardized procedures for disclosing AI use, and stronger institutional support. Participants also wanted greater involvement in GenAI-related decision-making. They described the policy design process as a way to engage with multiple perspectives and the inherent trade-offs involved in governing AI use. This study offers pedagogical insights into how policy co-design activities can surface student values, concerns, and sensemaking about GenAI in educational contexts.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-a-high-and-variable-dimensional-measurement-of-the-z-jets-differential-c",
+    "title": "A High- and Variable-Dimensional Measurement of the $Z$+jets Differential Cross Section with the ATLAS Experiment and Artificial Intelligence",
+    "authors": [
+      "Kevin Greif"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28449v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Proton-proton collisions at the Large Hadron Collider (LHC) offer the opportunity to observe the interactions of fundamental particles at very high energy scales. The high collision rate and large number of final state particles produced per collision imply that the datasets produced by detectors such as the ATLAS experiment are large and high dimensional. The complexity of these datasets calls for the use of novel data analysis techniques which can exploit all of the available information to illuminate known interactions and search for new ones. This thesis presents applications of artificial intelligence (AI) techniques to improve the physics results of the ATLAS experiment. It centers on a full-phase-space measurement of the Z+jets production cross section at the LHC, where the cross section is measured differential in the kinematics of every final state charged particle through the use of an AI-based unfolding algorithm. This is the first such measurement performed at the LHC, which provides a complete experimental characterization of the Z+jets production process and a proof-of-principle for the further pursuit of such measurements on a host of LHC processes.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-prove2me-an-open-collaborative-platform-for-scaling-math-formalization",
+    "title": "Prove2Me: An Open Collaborative Platform for Scaling Math Formalization",
+    "authors": [
+      "Shuze Chen",
+      "Kunal Marwaha",
+      "Xiaoyang Lu",
+      "Henry Yuen",
+      "Tianyi Peng"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28433v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Proof assistants such as Lean 4 promise the paradigm of formally verified mathematics, but large-scale formalization projects have faced major barriers to entry, including the need for expertise in formal verification (as well as the underlying mathematics) and the significant time required for writing formal proofs. AI coding agents have dramatically reduced these barriers; human users can now use natural language to prompt agents to write complex proofs in Lean. This opens up the intriguing possibility of internet-scale mathematical collaboration involving both humans and AI agents, where correctness is machine-checked. To realize this possibility, we introduce Prove2Me (https://prove2.me), an open collaborative platform for formalizing mathematics. Users launch formalization \"missions\", to which AI agents contribute formal proofs toward completion. We designed mechanisms and a specialized harness in Prove2Me that enable large-scale collaboration so that agents can build on one another's work and freely reuse existing results. In doing so, Prove2Me aims to turn math formalization into a scalable, crowd-sourced effort open to anyone with an agent.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-machine-learning-assisted-multiscale-topology-optimization-of-functional",
+    "title": "Machine-learning-assisted multiscale topology optimization of functionally graded superimposed lattice structures",
+    "authors": [
+      "Prashant Kumar Gupta",
+      "Jonathan Stollberg",
+      "Dominik Schillinger",
+      "Mohammad Ashraf Iqbal"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28513v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Functionally graded lattice structures enable lightweight designs with spatially tunable stiffness and density, but their use in multiscale topology optimization is limited by the cost of repeated computational homogenization. This work presents a machine learning-assisted multiscale optimization framework for regular superimposed lattice structures. The unit cell is formed by combining body-centered cubic, face-centered cubic, and simple cubic lattice components, each controlled by an independent geometric parameter. Offline computational homogenization is used to generate effective stiffness data, which are then used to train a Cholesky-constrained neural network surrogate. This representation reconstructs the homogenized stiffness tensor in a physically admissible form. A separate neural network is trained to predict relative density from Monte Carlo-based density estimates. We incorporate our surrogates into a two-stage topology optimization strategy. First, a macroscale topology is obtained using the solid isotropic material with penalization (SIMP) method. The resulting solid region is then used for microscale lattice optimization, where the local lattice parameters are updated using the method of moving asymptotes (MMA). The trained stiffness and density surrogates replace repeated online homogenization during this stage. The method is demonstrated on a three-dimensional Messerschmitt-B\u00f6lkow-Blohm (MBB) beam benchmark, producing spatially varying lattice parameters and relative density fields consistent with compliance minimization under a material constraint.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-real-time-musculoskeletal-surrogates-for-pediatric-cerebral-palsy-a-cred",
+    "title": "Real-Time Musculoskeletal Surrogates for Pediatric Cerebral Palsy: a Credibility Pilot",
+    "authors": [
+      "Mohammad Arif Ul Alam"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28371v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Real-time musculoskeletal (MSK) surrogates could support personalized rehabilitation for children with cerebral palsy (CP), but their credibility depends on subject-wise evaluation, low inference latency, and calibrated uncertainty. We develop a subject-conditioned causal neural surrogate using OpenSim-derived static parameters, temporal joint kinematics, true muscle capacities, and training-only perturbations. On a real pediatric CP gait dataset comprising nine children, we use leave-one-subject-out validation on six development subjects and evaluate a frozen configuration once on three locked test subjects. The surrogate accurately reproduces musculotendon lengths (R-square = 0.92 in development validation and approximately 0.95 on locked subjects; nRMSE < 8%) while requiring only sub-millisecond to few-millisecond neural inference, well below a 100 ms interactive-rehabilitation target. In contrast, direct muscle-force estimation remains unstable at this small, heterogeneous scale: pooled metrics can overstate within-subject, per-muscle accuracy. A Monte Carlo credibility pilot further shows that propagating only +/-5% anthropometry and muscle-capacity variation produces severely overconfident nominal 90% intervals (approximately 4% force coverage and below 1% MT-length coverage). These results establish a leakage-free evaluation and credibility framework for pediatric MSK surrogates, while identifying force modeling and epistemic uncertainty as the central next challenges for clinically credible digital twins.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-generative-ai-alignment-with-hinduism-s-theological-plurality-and-sacred",
+    "title": "Generative AI Alignment with Hinduism's Theological Plurality and Sacred Representation",
+    "authors": [
+      "Dipto Das",
+      "Arpita Kundu",
+      "Nusrat Jahan Mim",
+      "Shion Guha",
+      "Syed Ishtiaque Ahmed"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28228v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Generative AI systems are increasingly used to answer personal questions and mediate everyday practices, including religion. However, existing discussions around AI alignment and ethics have largely centered secular, Western, and Abrahamic assumptions about religion, offering limited attention to other faith-based traditions. In this paper, we examine how Hindu users engage with generative AI systems in relation to their religious knowledge, belief, and practice. Drawing on 15 semi-structured interviews with Bangladeshi Hindu participants, we analyze how users interpret AI-generated religious representations, scriptural explanations, devotional interactions, and synthetic religious media. We found that AI can be both accessible and ethically troubling. While AI supported scriptural inquiry, devotional visualization, and religious storytelling, our study also identified concerns about theological flattening, cultural misrepresentation, devotional manipulation, and the simulation of sacred presence and authority. We conclude by arguing that religious alignment in generative AI requires interpretive alignment: systems that disclose their limits, preserve plurality, and avoid simulating sacred authority and sycophantic personalization.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-physics-constrained-machine-learning-sub-grid-scale-modeling-approach",
+    "title": "A physics-constrained machine-learning sub-grid-scale modeling approach for turbulent premixed flames",
+    "authors": [
+      "Seung Won Suh",
+      "Jonathan F. MacArt",
+      "Luke N. Olson",
+      "Jonathan B. Freund"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28525v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "A physics-embedded training framework is used to close the sub-grid-scale dynamics of turbulent premixed flames. The trained model augments the resolved flow equations and is trained to match its predicted flow field to trusted data. An end-to-end optimization of the coupled resolved equations and embedded model leads to a model that is robust and effective for a freely propagating premixed flame in turbulence, modeled by a single-species, single-step, and irreversible chemical reaction. Important constraints are built into the training formulation for conservation, scalar boundedness, and equivariance. The model is scaled based on the residual of the resolved flow equations to focus its influence where the closure is needed. It outperforms other cases considered --- no-model, dynamic closure, and the same machine learning model trained directly to fit the residual data --- for a long-time simulation, correcting the turbulence dissipation and flame kinematics. Finally, it is shown how the prediction-based training better informs the model than the precise residual data.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-recovering-software-architecture-intent-from-historical-work-items-using",
+    "title": "Recovering Software Architecture Intent from Historical Work Items using Generative AI: A Mixed-Methods Industry Case Study",
+    "authors": [
+      "Dominik Storck",
+      "Tobias Eisenreich",
+      "Stefan Wagner"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3843775.3844549",
+    "url": "https://arxiv.org/abs/2608.28403v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Software architecture is often only partially captured in code, while much of the design intent lives in evolving project artifacts. In agile projects, work items, user stories, and related tracking documents preserve valuable traces of that intent, but they rarely support direct architectural analysis. This work investigates the recovery of C4 architecture diagrams from historical agile work items using an LLM-based pipeline. The semi-automatic five-step workflow employs a prompt chain, bidirectional traceability, and Chain-of-Thought reasoning to transform unstructured Azure DevOps work items into visual artifacts. Evaluated on two industry projects, we use a mixed-methods design combining qualitative expert interviews with a quantitative stability analysis. Practitioners perceive the generated architectural baselines as accurate and highly useful for system comprehension. Strictly bound by their input data, the artifacts mirror the documented intent, thereby surfacing discrepancies and architectural drift when compared to the implemented reality. Quantitatively, the workflow exhibits high stability for architectural entities but lower stability for their relationships, with relative variance compounding across generation steps. The proposed workflow demonstrates the practical viability of LLM-assisted architectural recovery based on development process artifacts.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-sustainability-of-open-source-machine-learning-robustness-assessment-too",
+    "title": "Sustainability of Open-Source Machine Learning Robustness Assessment Tools: A Repository Mining Study",
+    "authors": [
+      "Joshua Owotogbe",
+      "Indika Kumara",
+      "Willem-Jan van den Heuvel",
+      "Damian Tamburri"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28396v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Robustness evaluation is essential for deploying machine-learning (ML) systems in real-world settings, where models may face adversarial perturbations, distribution shifts, and other operational stressors. Many open-source tools, including Adversarial Robustness Toolbox, Foolbox, and Robustness Gym, support robustness testing and evaluation. However, little is known about how these tools are maintained, publicly engaged with, and sustained over time, even though practitioners may rely on them to select evaluation dependencies, reproduce robustness assessments, and provide evidence for AI assurance. We present an empirical study of the open-source robustness tooling ecosystem. Starting from a curated seed set derived from prior work, we systematically searched GitHub and identified 28 robustness-tool repositories. We analyzed repository artifacts to characterize observable community engagement, maintenance activity, and project longevity using established software-engineering metrics. Our results show that engagement and maintenance are unevenly distributed, with sustained activity concentrated in a small subset of repositories. At the data collection date of January 21, 2026, five repositories were classified as active, 22 as inactive, and one as archived. These findings highlight the need to treat robustness tools as evolving software systems.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-blind-men-and-the-elephant-probing-the-epistemic-myopia-of-llms-under-lo",
+    "title": "Blind Men and the Elephant: Probing the Epistemic Myopia of LLMs under Long-Tail Divergent Knowledge",
+    "authors": [
+      "Zhuoshi Pan",
+      "Junru Lu",
+      "Yan Qian",
+      "H. Vicky Zhao",
+      "Di Yin",
+      "Xing Sun"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.28478v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Factual question answering (QA) typically assumes a single canonical answer, obscuring whether large language models (LLMs) retain divergent accounts of long-tail facts. To address this gap, we introduce ElephantBench, a closed-book knowledge probe comprising 1,094 questions generated through an auditable graph-based pipeline. The pipeline retrieves related documents from a low-exposure web corpus, identifies naturally occurring disagreements, and converts them into multi-account QA records. Each answer is verified against the originating documents and authoritative public web sources and is then reviewed by human annotators. Across 32 models, even the strongest model recovers both accounts on only 52.4% of questions, while on nearly all remaining questions it recalls one account but omits the other. Scaling model size and inference-time reasoning improve recall but do not eliminate this incompleteness. Corpus analysis further shows that exposure imbalance favors the dominant account, whereas greater minority-side exposure is associated with more complete recall. These findings establish ElephantBench as a reproducible knowledge probe for diagnosing epistemic myopia in parametric memory. More broadly, our graph-based benchmark construction pipeline provides an efficient and scalable way to turn long-tail corpora into source-traceable knowledge probes, supporting efforts to evaluate and advance the epistemic rigour of next-generation LLMs. Code is available at https://github.com/Tencent/ElephantBench.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-tracing-the-cosmic-origins-machine-learning-reconstruction-of-the-primor",
+    "title": "Tracing the Cosmic Origins: Machine Learning Reconstruction of the Primordial Density Field from EoR Observations",
+    "authors": [
+      "Anchal Saxena",
+      "P. Daniel Meerburg",
+      "Guochao Sun",
+      "Tzu-Ching Chang",
+      "Llu\u00eds Mas-Ribas"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05412v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Reconstructing the initial conditions of the Universe from late-time tracers would unlock cosmological information buried by non-linear structure formation and astrophysics. We reconstruct the initial density field at $z\\sim300$ from simulated 21-cm and CO(1-0) line-intensity maps at $z\\sim8$ generated with LIMFAST. Using a three-dimensional U-Net, we reconstruct the initial conditions and evaluate its impact on cosmological parameter constraints. The two tracers probe complementary environments: 21-cm emission traces neutral, low-density regions of the intergalactic medium, while CO traces overdense, star-forming regions. To emulate realistic observations, we model instrumental effects for SKA1-Low- and COMAP-ERA-like surveys, including finite angular resolution and thermal noise. We assess reconstruction performance through the cross-correlation coefficient between reconstructed and true initial density fields, $|C(k)|$. In the noiseless case, combining both tracers delivers the most accurate recovery across ionisation states, with $|C(k)| \\gtrsim$ 0.90 for $k \\lesssim$ 0.75 Mpc$^{-1}$. With observational effects, small-scale information is degraded, but combining tracers still achieves $|C(k)| \\gtrsim$ 0.70 for $k \\lesssim$ 0.3 Mpc$^{-1}$. To quantify information gain, we perform simulation-based inference of cosmological parameters from power-spectrum summaries before and after reconstruction. In both noiseless and noisy settings, reconstruction tightens parameter constraints: uncertainties on $\u03c3_8$ and $n_{\\rm s}$ improve by $\\sim2\\times$, with smaller but consistent gains for other parameters. This is further confirmed using Kullback-Leibler divergence diagnostics for an ensemble of observations. These results indicate that joint analysis of future 21-cm and CO surveys, combined with such reconstruction, can partially recover otherwise inaccessible cosmological information.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-design-docs-are-all-you-need-an-ai-native-machine-learning-performance-t",
+    "title": "Design Docs Are All You Need: An AI-native Machine-Learning Performance Tool",
+    "authors": [
+      "Samuel Kushnir",
+      "Kimia Noorbakhsh",
+      "Kavya Sreedhar",
+      "Liqun Cheng",
+      "Ming Liu",
+      "Parthasarathy Ranganathan",
+      "Mohammad Alizadeh",
+      "Fred Kjolstad",
+      "Suvinay Subramanian"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05364v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Machine-learning performance modeling is a uniquely hostile terrain for long-lived software: the assumptions baked into today's abstractions are invalidated by tomorrow's models and systems, forcing perpetual refactoring of performance-modeling frameworks. Meanwhile, AI coding agents have become fast and capable enough that regenerating an entire library is cheaper than paying down the tech debt of incrementally patching it. We describe SMART, a rigorous symbolic performance-modeling library for ML systems whose main branch contains almost no code: the repository is a DAG of self-contained natural-language design docs, coding sub-agents regenerate the implementation from only the docs on new version updates, and every human change is a natural-language edit to a doc--self-documenting by construction. Two ingredients make regeneration reliable: (i) a design-doc style built around step-by-step worked examples that act as in-context demonstrations for the generating agents, and (ii) a minimal, recursively defined operator IR with symbolic (SymPy) cost expressions, a fast analytical roll-up mode for large sweeps, and a slow modulo-scheduling mode for fine-grained schedule studies. Regenerated implementations reproduce hand-audited reference models--including DeepSeek-V3 serving on a TPU pod slice--to round-off precision, suggesting that design docs--not code--can be the durable artifact for ML-systems co-design tools.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-of-a-humanoid-robot-prototype-for-multimodal-human-robot-int",
+    "title": "Development of a Humanoid Robot Prototype for Multimodal Human-Robot Interaction",
+    "authors": [
+      "Thang Tran Viet",
+      "Thanh Nguyen Canh",
+      "Huy Uong Gia",
+      "Phuc Dinh Van",
+      "Son Tran Duc",
+      "Ngoc Minh Do",
+      "Xiem HoangVan"
+    ],
+    "year": 2026,
+    "doi": "10.1109/RIVF68649.2025.11364526",
+    "url": "https://arxiv.org/abs/2609.05361v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Human-robot interaction (HRI) enables intuitive and intelligent collaboration between humans and robots in real-world environments. This paper introduces a humanoid robot prototype designed as a flexible testbed for developing and integrating artificial intelligence (AI) modules in HRI tasks. The system features a 12 degree-of-freedom (DOFs) dual-arm mechanism and a 2 DOFs head with an expressive LCD screen to express facial emotions. All hardware components are controlled by a custom-designed controller board with real-time AI processing supported by an onboard Jetson module. The system incorporates three AI modules: (1) gesture recognition using MediaPipe Pose and an LSTM classifier, (2) object detection with YOLO and 3D localization, and (3) voice-command processing through speech recognition and large language model(LLM)-based semantic parsing. The platform is validated through experiments on positioning accuracy, with results showing average manipulation errors of approximately 1.83 cm. To demonstrate its versatility, experimental results show over 90% task accuracy, with gesture recognition reaching 96%, speech recognition reaching 92%. The results confirm the effectiveness of the proposed system as a reproducible and accessible humanoid platform for research and prototyping in HRI.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-moral-advice-as-interactional-negotiation-framing-user-pressure-and-soci",
+    "title": "Moral Advice as Interactional Negotiation: Framing, User Pressure, and Social Position in Large Language Model Responses",
+    "authors": [
+      "Minne Chen",
+      "Yourong Yao"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05345v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "As conversational AI becomes a source of everyday guidance, LLMs increasingly participate in the interpretation and legitimation of morally contested choices. We examine LLM moral advice as an interactional negotiation shaped by framing, sustained user pressure, and the moral subject's social position. Using GPT-4o-mini as an illustrative case, we conducted a factorial vignette experiment with a pre-specified three-round protocol. The model received eldercare dilemmas that varied in framing and persona, followed by two user challenges. We analyzed 1,620 configuration-framing cells, each repeated three times, yielding 4,860 conversational runs. Caregiving affirmation produced near-uniform endorsement, whereas non-caregiving framing produced more variable baseline stances. When users challenged caregiving endorsement, 90.1% of configurations shifted after one round. Non-caregiving framing produced more resistant and unstable trajectories. Never (27.9%) and Late (25.6%) accommodations were more common than Early accommodations (16.5%), and only 14.32% of configurations achieved perfect trajectory consistency, compared with 62.72% under caregiving framing. Advice also varied with social position. Female personas received more support for non-caregiving decisions, while the presence of sisters increased accommodation. The GPT-4o-mini case shows that LLM moral advice can develop through a partially stable negotiation between normative response tendencies and user pressure rather than express a fixed ethical framework. The framework and design support comparative research across models and moral domains. Such instability raises social, ethical, and technical concerns, as users may treat advice that is difficult to scrutinize as objective.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-for-computational-design-science-a-responsible-human-ai-framework-and",
+    "title": "AI for Computational Design Science: A Responsible Human-AI Framework and Case Study on Short-Form Video Safety Surveillance",
+    "authors": [
+      "Wenli Zhang",
+      "Jiaheng Xie",
+      "Zhihe Pan",
+      "Yidong Chai",
+      "Xiao Fang",
+      "Sudha Ram"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05270v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) is transforming not only what information systems researchers design, but also how design research is conducted. Yet existing literature offers limited guidance for computational design science (CDS) when AI actively participates in problem formulation, resource construction, design search, evaluation, and knowledge abstraction. We develop AI for Computational Design Science (AI4CDS), a five-phase methodological framework in which AI expands problem and design search while researchers retain responsibility for domain grounding, admissibility, verification, and scientific judgment. Collaboration is governed by graduated trust, reversibility, auditability, and differentiated reproducibility. We instantiate AI4CDS through ChildRiskGuard, an interpretable artifact for detecting short-form videos inappropriate for children, while documenting AI interactions, rejected alternatives, corrections, and audit trails. The case translates audience-dependent safety and explanation faithfulness into three technical challenges and develops an artifact that separates generic from child-specific risk, represents distinct developmental-risk mechanisms, and makes concept-level explanations part of the predictive computation. ChildRiskGuard achieves an F1 score of 0.769, substantially outperforming direct application of a general-purpose content-safety model while remaining competitive with strong benchmarks. The primary contribution is AI4CDS as a responsible framework for AI-enabled CDS; ChildRiskGuard provides process and artifact evidence of how AI-expanded, researcher-governed design can generate and evaluate novel computational design knowledge.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-towards-federated-green-and-resilient-6g-non-terrestrial-networks",
+    "title": "Towards Federated, Green, and Resilient 6G Non-Terrestrial Networks",
+    "authors": [
+      "Sarath Babu",
+      "Victor Ba\u00f1os-Gonzalez",
+      "Mario Cordina",
+      "Debabrata Dalai",
+      "Tomaso de Cola",
+      "Franco Davoli",
+      "Etienne Victor Depasquale",
+      "Ashutosh Dutta",
+      "Hesham ElBakoury",
+      "Michael A. Enright",
+      "Giovanni Giambene",
+      "Sumit Goswami",
+      "Ramesh Gupta",
+      "Wael Jaafar",
+      "Eman Hammad",
+      "B. S. Manoj",
+      "Tony Li",
+      "Manuel M. H. Roth",
+      "Paresh Saxena",
+      "Pat Scanlan",
+      "Zhili Sun",
+      "Daniele Tarchi",
+      "Saviour Zammit"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05184v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This study focuses on future Non-Terrestrial Networks (NTN) integrated with Terrestrial Networks (TN) for future 5G/6G systems. NTN envisions a 3D architecture, where Low Earth Orbit (LEO) satellite networks will play a key role in bridging the digital divide, complementing the gradual terrestrial 5G/6G rollout concentrated in high-density and high-traffic areas, by ensuring service continuity across broad geographic regions and providing coverage in case of emergencies or in remote areas. In this context, we address networking issues for the integration and federation of Terrestrial and Non-Terrestrial Network (T-NTN) in line with the IMT-2030 vision, focusing on interoperability, spectrum coexistence, unified control and management, and service continuity. Federation is a complementary approach to integration that enables distinct satellite systems to cooperate through agreements, potentially unified satellite terminals, and common resource management. We show that system federation significantly enhances both latency performance and connectivity robustness compared with non-federated LEO architectures. This paper also investigates the challenges and possible solutions for adopting the Open-RAN architecture for T-NTN, including routing options for mega-LEO systems, edge intelligence, and energy efficiency as critical elements for sustainability. Finally, we address the security, privacy, and resilience aspects of federated T-NTN architectures with emphasis on zero-trust, secure routing, trustworthy edge intelligence, Post-Quantum Cryptography (PQC), and Quantum Key Distribution (QKD).",
+    "topics": [
+      "ethics",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-generative-ai-gold-rush-in-theoretical-and-computational-research",
+    "title": "The Generative AI Gold Rush in Theoretical and Computational Research",
+    "authors": [
+      "Xiaoshn Nee",
+      "Haobo Zhong",
+      "Xiaomin Ni"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.04872v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Generative AI is changing the production conditions of theoretical and computational research, but its sys tem level effects require measures that separate plat form growth, field specific divergence, and production structure. We assemble 2,080 monthly observations for twenty arXiv archives from January 2018 through Au gust 2026 and a separate pseudonymized Mathematics author panel. A regularized convex synthetic control fitted through December 2025 identifies the January August 2026 anomaly, while spatial placebos, prior year pseudo holdouts, donor refits, and alternative preperiods assess comparative robustness. Mathematics recorded 47,127 list entries, 33.5% above 2025 and 11.9% above a synthetic counterfactual of 42,113 entries. Qualified donor and preperiod designs yield 9.6% to 14.9%, and Mathematics has the largest RMSPE ratio among fifteen eligible placebo archives. Subfield growth is broad, with 29 of 30 primary math.* categories expanding. The author panel shows a marked thickening of the repeated output tail. The share of active author units produc ing at least five submissions rose from 2.45% to 3.80%, while the ten submission tail rose from 0.21% to 0.49%. These results document a new and unusually large 2026 Mathematics production regime shift. Its timing and production structure, combined with independent evi dence on AI diffusion and verifiable research tasks, are consistent with delayed diffusion and capability thresh old mechanisms. The comparative design identifies the anomaly, and separate triangulation evaluates AI related explanations. The findings locate verification, selection, and attention as central constraints for research gover nance.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-trust-aware-adaptive-disclosure-for-inference-privacy-preservation-in-mu",
+    "title": "Trust-Aware Adaptive Disclosure for Inference Privacy Preservation in Multi-Agent Networks",
+    "authors": [
+      "Puspanjali Ghoshal",
+      "Tobias J. Oechtering"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05340v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Agent based systems are increasingly deployed in information critical systems including healthcare management systems, and smart grids. In this paper, we consider a multi-agent system where each agent has a latent goal that needs to be kept hidden from observing adversaries. More specifically, this paper studies privacy-preserving consensus in networked multi-agent systems under goal inference attacks. We propose a Trust-Aware Privacy Control framework that adapts message disclosure based on the dynamic trust relationships between agents. The proposed method controls information release using a trust-dependent stochastic policy. This enables a tradeoff between consensus performance and privacy preservation. Experiments demonstrate that the proposed method reduces adversarial goal inference accuracy compared to representative baselines, while maintaining competitive consensus utility, thereby highlighting the effectiveness of trust-aware mechanisms in privacy preservation of the agents in multi-agent systems.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-what-matters-in-on-policy-distillation-a-perspective-on-data-efficiency",
+    "title": "What Matters in On-Policy Distillation? A Perspective on Data Efficiency and Data Selection",
+    "authors": [
+      "Zhinan Hou",
+      "Jiaqi Zhang",
+      "Xunliang Cai",
+      "Keyou You"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05198v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "On-Policy Distillation (OPD) has emerged as a widely adopted post-training paradigm for enhancing large language models in reasoning domains. However, the data-centric mechanisms in OPD remain relatively underexplored. This paper presents a empirical study of data efficiency and data selection in OPD. We begin by investigating an extreme setting: training OPD on only one example, namely 1-shot OPD. Surprisingly, we find that 1-shot OPD is consistently effective across all sampled training examples and harder examples often yield superior performance gain. We next investigate what actually drives the student model's improvement in the training data. Our analysis reveals that the improvement is not driven by high token entropy, but the longer CoT paths which hard problems naturally generate. Training on longer CoT can help maintain closer alignment with the teacher over a long reasoning horizon, and learn critical thinking patterns usually missing in short CoTs, such as reflection (e.g., ``Alternatively''). Based on these insights, we propose a simple data selection method that selects only hard examples for training, where even ``unsolvable'' examples that completely exceed the teacher's capability can be successfully used. Our experiments conducted on four models ranging from 1.5B to 7B show that training the student model on only 8 selected hard examples matches the performance of the 17K dataset baseline.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-can-large-language-models-anticipate-behavioral-responses-to-social-poli",
+    "title": "Can Large Language Models Anticipate Behavioral Responses to Social Policies? A Case of Pension Enrollment Prediction among China's Flexible Workers",
+    "authors": [
+      "Yumiao Li",
+      "Peixin Liu",
+      "Donglin Di",
+      "Chen Li",
+      "Runhuan Feng"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05189v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Assessing the impacts of social policy changes is a widely acknowledged challenge for policymakers. Econometric methods can be unreliable when extrapolating to hypothetical scenarios, while field pilot programs are highly costly. In this paper, we propose using large language models (LLMs) as policy-assessment tools adapted from general-purpose models. We present FlexPension-LLM, the first domain-specialized large language model for a hierarchical pension-enrollment prediction task among flexible workers in China, and introduce DKI-RDistill, which injects policy-grounded cues into the prompt, including Probit-derived marginal effects and hukou-province pension rules. The method then uses LoRA/SFT to distill rationale-augmented supervision into an open-weight MoE student, with teacher errors corrected by regenerating those cases under ground-truth labels. On a CHFS 2019 blind split, FlexPension-LLM achieves 0.9316 Composite F1, surpassing its Claude Sonnet 4.5 teacher and 15 of 17 baselines, and is statistically indistinguishable from Claude Opus 4.6. Across four external surveys, it averages 0.7549 Composite F1 and shows the narrowest performance range among the strongest systems. Component analysis shows that gains come mainly from policy-grounded cue injection and error-filtered supervision, while rationales provide decision traces that can be checked against policy rules.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-human-in-the-loop-framework-for-ai-assisted-scoring-in-large-scale-wri",
+    "title": "A Human-in-the-Loop Framework for AI-Assisted Scoring in Large-Scale Writing Assessment",
+    "authors": [
+      "Mar\u00eda Eugenia Curi",
+      "Germ\u00e1n Capdehourat",
+      "Isabel Amigo",
+      "Magdalena Romano",
+      "Rosana Serra",
+      "Adri\u00e1n Silveira",
+      "Andr\u00e9s Peri"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2609.05143v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The integration of artificial intelligence (AI), particularly large language models (LLMs), into educational assessment has opened new opportunities to enhance the efficiency and scalability of grading processes. This study presents the design and validation of an AI-assisted scoring framework for written responses in a large-scale national assessment. The proposed approach focuses on short written texts of approximately 150-200 words and incorporates a human-in-the-loop strategy to preserve assessment quality while reducing manual workload. The study is grounded in a real operational context, using data from two recent editions of a nationwide test, each comprising approximately 5,000 student responses. We analyze the alignment between AI-generated scores and human raters across multiple rubric dimensions, as well as the impact of the proposed decision flow on pass/fail outcomes. Results show moderate to high agreement between the model and human evaluations in most dimensions, supporting the feasibility of AI assistance in this setting. Moreover, the proposed correction workflow identifies cases where human review is most valuable, enabling a more efficient allocation of expert effort. The findings suggest that AI-assisted scoring can be safely integrated into large-scale assessment processes only when combined with carefully designed human oversight. The paper concludes by discussing practical implications for deployment in national assessment systems and outlining future research directions, including longitudinal monitoring of model-human alignment and the analysis of potential cognitive bias introduced by AI-supported review workflows.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
