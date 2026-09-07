@@ -8520,5 +8520,181 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "educator"
+  },
+  {
+    "id": "src-change-management-and-ai-tools-in-literacy-instruction",
+    "title": "Change Management and AI Tools in Literacy Instruction",
+    "authors": [
+      "Cherise McBride",
+      "Amanda Wortman",
+      "Stefani Pautz Stephenson",
+      "Kelly McNeil",
+      "Rebecca Banks"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED682387",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED682387",
+    "publisher": "Digital Promise",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "This report examines a research-practice-industry partnership (RPIP) between Digital Promise, three school districts, and Coursemojo--an AI-powered English language arts (ELA) instructional assistant. Grounded in John Kotter's 8-Step Process for Leading Change and the Digital Promise AI Literacy Framework, the study explores how change management and AI literacy support high-fidelity technology implementation in fifth through eighth grades. The report emphasizes a \"human-in-the-loop\" approach, demonstrating that AI tools must be mediated by educator expertise to amplify student voice, protect productive struggle, and support diverse learners. This partnership model provides a scalable roadmap for school districts leveraging emerging technologies to close persistent literacy gaps while keeping pedagogical priorities and human expertise at the center. [This report was produced with Coursemojo.]",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-ai-in-the-arts-and-humanities-bridging-artificial-intelligence-and-the-h",
+    "title": "AI in the Arts and Humanities: Bridging Artificial Intelligence and the Humanities through Design",
+    "authors": [
+      "Scott Barton",
+      "Jason Scuilla"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1002/ace.70025",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514641",
+    "publisher": "New Directions for Adult and Continuing Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) becomes embedded in creative and professional practice, questions of meaning, judgment, and responsibility remain central. This article situates AI within the humanities by framing it as a cognitive extension that participates in human thinking and practice. Drawing on hermeneutics and heuretics, the paper examines how meaning is interpreted and how new possibilities are generated through design. Design is presented as a mediating discipline that brings traditions of interpretation, empathy, and ethical judgment into relation with computational systems that accelerate exploration and variation. Through this lens, AI participates in creative cognition by supporting interpretation, iteration, and invention while leaving responsibility for meaning-making with human designers. The article further argues that AI reshapes practice by increasing decision density and intensifying demands for interpretive judgment. Grounded in humanistic and design traditions, this work clarifies how design bridges AI and the humanities through judgment and ethical responsibility.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-nurturing-tomorrow-s-leaders-exploring-emotional-intelligence-s-influenc",
+    "title": "Nurturing Tomorrow's Leaders: Exploring Emotional Intelligence's Influence on Career Adaptability with Resilience as a Mediating Variable",
+    "authors": [
+      "Caner Do&#x011F;rusever",
+      "Mehmet Ali Pad&#x0131;r"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1177/10384162261431780",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1514451",
+    "publisher": "Australian Journal of Career Development",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Adolescence is a critical period in acquiring a vocational identity. During this period, adolescents who experience a crisis related to their vocational identity need to make decisions that allow them to successfully navigate their vocational development and climb the steps toward becoming future leaders by making informed decisions. Thus, the current study aims to investigate the mediating role of psychological resilience in the relationship between adolescents' emotional intelligence (EI) and career adaptability, with 580 adolescents voluntarily participating in the study. Mediation analyses were conducted to test EI's indirect effect on career adaptability through resilience. According to our findings, resilience serves as a mediating variable between EI and career adaptability. The findings from our study provide essential practical insights for career counselors working with adolescents. As our findings indicate, practitioners can be more successful at enhancing career adaptability by adopting an approach that focuses on increasing EI and resilience skills.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-preservice-teachers-artificial-intelligence-competence-a-network-and-lat",
+    "title": "Preservice Teachers' Artificial Intelligence Competence: A Network and Latent Profile Analyses",
+    "authors": [
+      "Bernard Yaw Sekyi Acquah",
+      "Francis Arthur",
+      "Francis Obeng Gyedu",
+      "Emmanuel Quayson",
+      "Eric Boateng",
+      "Silas Afutu Quaye",
+      "Sharon Abam Nortey"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1111/ejed.70735",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1516189",
+    "publisher": "European Journal of Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The rapid integration of artificial intelligence (AI) in education has increased the need for teachers who possess multidimensional AI competencies. However, empirical evidence on preservice teachers' AI competence remains limited, particularly within developing-country contexts such as Sub-Saharan Africa. This study examined preservice teachers' AI competence in Ghana by exploring the structural relationships among AI competence indicators, assessing overall competence levels, identifying latent competence profiles and determining whether gender differences exist across six domains of AI competence: 'AI Knowledge, AI Pedagogy, AI Assessment, AI Ethics, Human-Centred Education, and Professional Engagement'. A descriptive cross-sectional survey design was adopted, and data were collected from 509 preservice teachers who had completed AI-related modules in a Ghanaian university. The instrument was validated through confirmatory factor analysis, and data were analysed using network analysis (NA), descriptive statistics, latent profile analysis (LPA) and Mann-Whitney U tests. The network analysis revealed a moderately interconnected competence structure, with pedagogical and assessment-related indicators functioning as central bridging nodes. Descriptive results indicated that preservice teachers reported generally high AI competence across all domains, with Human-Centred Education and Professional Engagement recording the highest mean scores. The LPA identified two competence profiles: a smaller high-competence group (38.5%) and a larger moderately high competence group (61.5%). Finally, the Mann-Whitney U tests revealed no statistically significant gender differences across the six competence domains. The findings highlight the multidimensional and heterogeneous nature of AI competence and underscore the need for differentiated training approaches to strengthen AI integration within teacher education programmes.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-young-scholar-s-on-the-beat-multimodal-composition-as-a-form-of-critical",
+    "title": "\"Young Scholar[s] on the Beat\": Multimodal Composition as a Form of Critical AI Literacy Pedagogy",
+    "authors": [
+      "Sarah K. Burriss",
+      "Blaine E. Smith",
+      "Hannah H. Ziegler",
+      "Ana Villanueva",
+      "Menton Deweese",
+      "Angela Eeds"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1002/jaal.70064",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1515464",
+    "publisher": "Journal of Adolescent & Adult Literacy",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "\"AI literacy\" includes both technical competencies and critical engagement with social and ethical dimensions of AI, but \"literacy\" approaches are underrepresented in how we conceptualize and teach its core components. In this paper, we focus on youth multimodal composition as a form of AI literacy pedagogy, analyzing the video products and written reflections of 22 11th grade students who composed video public service announcements about AI ethics issues of their choosing. In our findings, we report on trends in student video content, including (1) the overwhelmingly negative portrayals of AI, especially related to school-based surveillance and punitive treatment relating to AI; (2) the complex interdependence of human and machine responsibility for harm; and (3) the persistence of students' messages of hope in the face of their cynical representations. Next, we show how students (1) experienced composition as joyful, creative collaboration and (2) connected composition and AI literacy learning. We discuss the implications of these findings for critical AI literacy pedagogy, offering suggestions for future practice and highlighting areas for further development and pedagogical innovation.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-exploring-ai-in-higher-education-reflections-on-research-informed-practi",
+    "title": "Exploring AI in Higher Education: Reflections on Research-Informed Practices for Teaching and Learning",
+    "authors": [
+      "Angela Elkordy",
+      "Stuart I. Carrier",
+      "Jack Denny",
+      "Donna Wakefield",
+      "Ayn F. Keneman"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1515612",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1515612",
+    "publisher": "i.e.: inquiry in education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This article examines how faculty at a college of education are integrating generative artificial intelligence (AI) tools into graduate and doctoral educator preparation programs. Drawing on faculty inquiry and course-based observations across multiple contexts--including early childhood education, secondary education, special education, and doctoral programs in education--the article synthesizes emerging lessons and practices of AI literacy development, pedagogical approaches, and instructional design. We present an evidence-informed, reflective account of faculty practice through the lens of the scholarship of teaching, exploring how educators are navigating AI content, literacy, and practices in real courses, what students are learning, and what instructional decisions support thoughtful, critical AI use. Three shared themes emerge: the importance of developing professional judgment alongside technical familiarity with AI, the necessity of addressing equity and ethics explicitly rather than incidentally, and the value of positioning AI as a thinking partner and collaborator rather than a replacement for human expertise. The article concludes with practical implications for faculty seeking to integrate AI in ways that are forthright about uncertainty, grounded in pedagogical purpose, and attentive to learners' diverse needs.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
   }
 ]

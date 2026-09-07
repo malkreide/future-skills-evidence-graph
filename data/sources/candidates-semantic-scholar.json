@@ -9298,5 +9298,119 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "learner"
+  },
+  {
+    "id": "src-cultivating-ai-literacy-among-high-school-students-through-generative-ai",
+    "title": "Cultivating AI literacy among high school students through generative AI as a collaborative partner",
+    "authors": [
+      "Jung Won Hur",
+      "Jay Bhuyan",
+      "Fan Wu",
+      "Cassandra Thomas",
+      "Kai S. Koong"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s44217-026-02092-7",
+    "url": "https://www.semanticscholar.org/paper/bb11c48f5354dd4c5245c8d54cee6b8db4cf0794",
+    "openalex_id": null,
+    "semantic_scholar_id": "bb11c48f5354dd4c5245c8d54cee6b8db4cf0794",
+    "eric_id": null,
+    "publisher": "Discover Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Despite growing emphasis on AI literacy education, empirical research examining how secondary students engage with and apply AI concepts in authentic project-based learning environments remains limited, particularly among students from historically underserved communities. This mixed-methods study examined African American high school students\u2019 experiences in an AI-enhanced mobile app design project in which generative AI served as a collaborative design partner. Grounded in AI literacy frameworks, the program combined foundational AI instruction with a four-month project-based experience focused on designing AI-enhanced mobile applications. Qualitative data included focus group interviews, student design artifacts, presentations, and researcher field notes, while quantitative data included pre- and post-AI literacy assessments and surveys. Analysis of student design artifacts and presentations revealed that participants demonstrated emerging understanding of AI concepts by proposing AI-enabled features such as recommendation systems, chatbots, and information verification tools within their mobile app designs. Survey results indicated improvements in professional skills, particularly in collaboration, communication, and problem-solving. Knowledge assessment results showed modest but non-significant changes in students\u2019 conceptual AI knowledge, with variation in individual learning trajectories. The study also identified several instructional challenges, including differences in students\u2019 technological readiness and tensions surrounding AI use, ranging from overreliance to avoidance of AI use due to concerns about academic penalties. These findings highlight the potential of AI-enhanced project-based learning to support students\u2019 development and application of AI literacy while underscoring the need for instructional scaffolding to guide students\u2019 effective and ethical use of AI as a collaborative partner in K-12 learning environments.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-08-31",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-teaching-machine-learning-and-computational-thinking-in-secondary-educat",
+    "title": "Teaching Machine Learning and Computational Thinking in Secondary Education: Hands-On vs. Video-Based Approaches",
+    "authors": [
+      "Line Have Musaeus",
+      "Luke Connelly",
+      "K. Bilstrup",
+      "M. Kaspersen",
+      "Peter Musaeus"
+    ],
+    "year": 2026,
+    "doi": "10.1145/3801749.3801762",
+    "url": "https://www.semanticscholar.org/paper/bfa5a6ab7bfce2e1ac2f93455f1c86a246c4f6df",
+    "openalex_id": null,
+    "semantic_scholar_id": "bfa5a6ab7bfce2e1ac2f93455f1c86a246c4f6df",
+    "eric_id": null,
+    "publisher": "Proceedings of the 20th WiPSCE Conference on Primary and Secondary Computing Education Research",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "CT has become widely researched in secondary education over the past two decades. With AI now emerging alongside CT as a core element of curricula, there is a growing need for research-based teaching strategies. Instructional mode is known to affect student learning, but its impact on students\u2019 understanding and use of CT and AI concepts remains underexplored. A quasi-experimental pilot study compared hands-on and video-based teaching in machine learning among 32 upper-secondary students. Both groups received a brief introductory lecture on supervised machine learning concepts. The hands-on group engaged in collaborative activities with digital and unplugged tools to generate training data, train, and fine-tune models, using experimentation to support reflection. The video-based group instead viewed curated, publicly available educational videos, after which both groups participated in whole-class discussions and peer presentations. The hands-on group demonstrated significantly greater conceptual clarity (p <.05) and reported higher confidence in applying machine learning concepts to problem-solving. This pilot study compared hands-on and video-based teaching in secondary school informatics. The results indicate that hands-on learning supports students\u2019 conceptual clarity and confidence, offering evidence to inspire teachers to combine practical experimentation with video and inform research on how to integrate both approaches in curriculum design.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-imagining-culturally-and-linguistically-sustaining-ai-literacy-in-k-12-s",
+    "title": "Imagining Culturally and Linguistically Sustaining AI Literacy in K-12 Schools: A Participatory Design-Based Approach to Phenomenography",
+    "authors": [
+      "Kali Peracchia"
+    ],
+    "year": null,
+    "doi": "10.56902/etdcrp.2026.115",
+    "url": "https://www.semanticscholar.org/paper/755dd29974b7e09cad0d9aec21f33bbec5759828",
+    "openalex_id": null,
+    "semantic_scholar_id": "755dd29974b7e09cad0d9aec21f33bbec5759828",
+    "eric_id": null,
+    "publisher": "Semantic Scholar",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores the qualitative variation in how educators in Denver Public Schools (DPS) design, implement and conceive of culturally and linguistically (CLS) sustaining approaches to AI literacy through a design-based research (DBR) phenomenographic study. This research grounded in a Digital Intersectional Feminist conceptual framework responds to global calls for participatory CLS AI literacy, national mandates for AI integration into education, and local demands from staff, students, and families to center ethics, equity, and inclusion. Through a 45-hour professional development unit (PDU), participants co-design, implement, and refine contextualized, interdisciplinary AI-infused lessons through DBR communities of practice. Phenomenographic data analysis captures the variation in educators\u2019 conceptions of AI curriculum across diverse settings while also mapping how educators move from technical integration toward more critical, humanizing, and participatory approaches to AI literacy. Findings offer practical tools, community-centered structures, and theoretical insights into supporting ethical, equitable, and inclusive AI literacy in K-12 schools.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-teacher-ai-literacy-and-readiness-for-ai-enhanced-instruction-a-scoping",
+    "title": "Teacher AI Literacy and Readiness for AI-Enhanced Instruction: A Scoping Review of Competencies, Barriers, and Professional Development in Education",
+    "authors": [
+      "Jose Antonio Rojas Guill\u00e9n"
+    ],
+    "year": 2026,
+    "doi": "10.26803/ijlter.25.8.21",
+    "url": "https://www.semanticscholar.org/paper/452e4876c8c3e41a2c5669f0ef7aa01c9648dc50",
+    "openalex_id": null,
+    "semantic_scholar_id": "452e4876c8c3e41a2c5669f0ef7aa01c9648dc50",
+    "eric_id": null,
+    "publisher": "International Journal of Learning, Teaching and Educational Research",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The growing presence of artificial intelligence (AI) in classrooms has placed teacher preparation in a challenging position, as educators are expected to utilize tools that influence lesson design, instruction, assessment, feedback, and student support, while formal training has not always advanced at the same pace. Consequently, the central question is no longer whether AI will become integrated into educational practice, but what preparation enables teachers to use it with pedagogical judgment, ethical awareness, and institutional support. This scoping review examined recent literature on teacher AI literacy and readiness for AI-enhanced instruction, focusing on required competences, barriers to classroom use, theoretical models, and professional development responses. Searches were conducted in Web of Science and Scopus databases for studies published from January 2021 to April 2026, following a PRISMA-ScR-oriented process. After duplicate removal, screening, eligibility assessment, and thematic analysis, 70 studies were included. The findings indicate that teacher AI literacy extends beyond technical knowledge to include understanding system capabilities and limitations, adapting tools to classroom needs, critically evaluating generated outputs, and determining when AI use genuinely supports learning. Readiness is shaped by self-efficacy, perceived usefulness, institutional support, resources, infrastructure, and the preservation of professional responsibility. The evidence also reveals a mismatch between structural barriers and the short-term training commonly offered, highlighting the need for sustained, contextualized, and practice-based professional development.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-07",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
   }
 ]
