@@ -14,6 +14,16 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Vorlage für `protocol.notes`** in `docs/eval-baseline.md`. Die Notiz
+  ist das einzige Feld, das festhält, *warum* eine gemessene Zahl mit
+  Vorbehalt zu lesen ist, und sie war bisher unstrukturiert. Vier Angaben
+  in fester Reihenfolge, drei ausgefüllte Beispiele (sauber, mit
+  Einschränkung, ohne Kalibrierrunde) und die drei Regeln, an denen ihr
+  Wert hängt: vor dem Blick auf die Zahlen schreiben, beziffern, und
+  betroffene Fälle getrennt nachrechnen, wenn sie benennbar sind. Das
+  Vokabular folgt dem bestehenden Durchgang (`EINSCHRAENKUNG:`), statt ein
+  zweites einzuführen.
+
 - **Der Bericht weist aus, welche Fälle das Methodendokument verrät.** Die
   Anker-Dokumentation lehrt die Rubrik an benannten Grenzfällen — und
   nennt dabei **17 der 50 Eval-Fälle mitsamt ihrer Bewertung**. Wer sie
@@ -29,6 +39,17 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   deshalb von Hand in `protocol.notes`.
 
 ### Fixed
+
+- **Eine umbrochene Notiz zerlegte den Bericht.** `protocol.notes` wird
+  von Hand in eine JSON-Datei getippt; ein Zeilenumbruch darin brach die
+  Einrückung jedes folgenden Vergleichsblocks. Die Notiz wird beim
+  Ausgeben zu einer Zeile zusammengefaltet, statt die Eingabe zu
+  reglementieren.
+- **`docs/eval-baseline.md` behauptete weiterhin, beide Sets seien gross
+  genug.** Das galt vor der Expositionsrechnung: `claim_prefill` hat roh
+  50 Fälle, für eine Person mit gelesenen Methodendokumenten aber nur 32
+  — zu wenig für eine Schwelle. Der Katalog steht bei 57 und ist damit
+  das einzige Set, das eine trägt.
 
 - **Die Expositionswarnung las nur eines von zwei Dokumenten.** Sie meldete
   33 saubere Eval-Fälle; es sind **32**. Neben dem Anker-Dokument (17

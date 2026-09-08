@@ -450,6 +450,64 @@ Selbstkonsistenz (Test-Retest) und ist eine **Obergrenze** für die
 5. Einzelne Felder dürfen `null` bleiben; übersprungene Positionen werden
    nicht verglichen.
 
+### Wie `protocol.notes` zu formulieren ist
+
+Die Notiz landet im Bericht als **eine Zeile** unter jeder Vergleichszeile
+(`note: …`). Also ein Absatz, keine Zeilenumbrüche. Vier Angaben, in dieser
+Reihenfolge:
+
+```
+Von Hand bewertet, [welche Unterlagen benutzt wurden]. EINSCHRAENKUNG:
+[entweder "keine bekannt" oder die Einschraenkung, beziffert und mit
+Quelle]. [Kalibrierrunde ja/nein, mit Datum].
+```
+
+Die Regelversion gehört **nicht** hinein — dafür trägt der Bogen
+`protocol.appraisal_method_at_rating`, und zwei Quellen für dieselbe
+Angabe laufen auseinander.
+
+**Sauberer Durchgang:**
+
+> Von Hand bewertet, nur mit der im Bogen mitgelieferten Rubrik. Kein
+> Zugriff auf `data/claims/`, die Methodendokumente oder
+> PR-Beschreibungen vor oder während der Bewertung. EINSCHRAENKUNG: keine
+> bekannt. Kalibrierrunde am 2026-09-06 durchgefuehrt, Aussprache
+> abgeschlossen.
+
+**Mit einer Einschränkung:**
+
+> Von Hand bewertet, nur mit der im Bogen mitgelieferten Rubrik.
+> EINSCHRAENKUNG: die bewertende Person hatte im August das Dashboard
+> benutzt und dort fuer geschaetzt 6 der 59 Claims die angezeigte Stufe
+> gesehen;
+> welche genau, ist nicht rekonstruierbar. Kalibrierrunde am 2026-09-06.
+
+**Ohne Kalibrierrunde** — dann ausdrücklich, weil es die Abweichungen
+uninterpretierbar macht:
+
+> … Ohne vorherige Kalibrierrunde; Abweichungen vermischen deshalb
+> „Rubrik war unklar" mit echter Urteilsdifferenz.
+
+Drei Regeln, an denen der Wert der Notiz hängt:
+
+1. **Vor dem Blick auf die Zahlen schreiben.** Danach formuliert ist sie
+   keine Einschränkung mehr, sondern eine Erklärung für ein Ergebnis, das
+   nicht gefällt. Die Notiz gehört in dieselbe Sitzung wie die letzte
+   bewertete Position.
+2. **Beziffern, auch grob.** „War teilweise nicht blind" ist wertlos.
+   „Geschätzt 6 von 59, welche genau nicht rekonstruierbar" ist brauchbar
+   — die Unsicherheit über die Zahl gehört mit hinein, sie ersetzt die
+   Zahl nicht.
+3. **Betroffene Fälle getrennt nachrechnen, wenn sie benennbar sind.** Der
+   Durchgang von 2026-08-14 tut das: die neun exponierten Fälle stimmen zu
+   5/9 überein, die übrigen 50 zu 41/50. Damit ist *gezeigt*, dass die
+   Einschränkung nicht nach oben verzerrt hat — ungleich stärker, als sie
+   nur zu erwähnen. Sind die Fälle nicht benennbar, gehört genau das in
+   die Notiz statt einer Schätzung.
+
+Nicht in `protocol.rater` schreiben. Dort steht nur der Name; ein Satz
+darin macht jede Berichtszeile unlesbar.
+
 ### Wie viele Fälle es braucht
 
 Nach demselben Massstab, den OPERATIONS.md an die eigenen Schwellen legt
@@ -457,9 +515,13 @@ Nach demselben Massstab, den OPERATIONS.md an die eigenen Schwellen legt
 **mindestens 40 doppelt beurteilte Fälle pro Feld**. Darunter meldet das
 Werkzeug „independent but underpowered" und nennt die fehlende Anzahl.
 
-Beide Sets sind dafür bereits gross genug — `claim_prefill` hat 50
-Beispiele, `relevance` 122. Es fehlt keine Datenerhebung, nur der zweite
-Durchgang.
+Roh sind alle Sets gross genug — `claim_prefill` hat 50 Beispiele,
+`catalog` 59, `relevance` 122. Für eine Person, die die Methodendokumente
+gelesen hat, zählt aber nur der unbelastete Teil, und dann bleibt von
+`claim_prefill` **32** übrig, also zu wenig (siehe „Wer den Prefill-Bogen
+bewerten darf"). Der Katalog steht bei **57** und trägt damit als
+einziges Set eine Schwelle. Es fehlt also keine Datenerhebung — aber die
+Wahl des Sets ist keine Geschmacksfrage mehr.
 
 ## Die erste gemessene Baseline (2026-08-14)
 
