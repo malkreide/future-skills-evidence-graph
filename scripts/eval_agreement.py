@@ -663,7 +663,15 @@ def second_rater_comparisons(path: Path) -> list[Comparison]:
                     # not inside the rater's name -- the summary prints
                     # that per field, and a paragraph there buries the
                     # numbers it is meant to qualify.
-                    + (f"\n  note: {protocol['notes']}" if protocol.get("notes") else "")
+                    # Collapsed to one line rather than policed on the
+                    # way in: the note is written by hand, and a rater who
+                    # wraps it across lines should not silently break the
+                    # indentation of every comparison block below it.
+                    + (
+                        f"\n  note: {' '.join(protocol['notes'].split())}"
+                        if protocol.get("notes")
+                        else ""
+                    )
                 ),
             )
         )

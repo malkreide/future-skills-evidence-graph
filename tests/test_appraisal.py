@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -1271,6 +1272,68 @@ class DirectionAndDesignAnchorTests(unittest.TestCase):
                 self.assertEqual(
                     ap.derive_certainty(block)[0], block["evidence_certainty"]
                 )
+
+
+class ProtocolNotesTests(unittest.TestCase):
+    """The hand-written caveat that qualifies a measured pass."""
+
+    def _report_for(self, notes: str) -> str:
+        worksheet = ea.build_worksheet("catalog")
+        primary = ea.primary_labels("catalog")
+        for item in worksheet["labels"]:
+            for field in worksheet["protocol"]["rated_fields"]:
+                item[field] = primary[item["key"]].get(field)
+        worksheet["protocol"].update(
+            rater="t", labeled_at="2026-09-06", blind=True, notes=notes
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            comparison = ea.second_rater_comparisons(path)[0]
+        return "\n".join(comparison.report())
+
+    def test_a_wrapped_note_does_not_break_the_report(self) -> None:
+        # The note is typed by hand into a JSON file. Someone will wrap it
+        # across lines, and the report indents one line per comparison --
+        # so it is collapsed on the way out rather than policed on the way
+        # in. The words must all survive that collapse.
+        wrapped = "Von Hand bewertet.\nEINSCHRAENKUNG: keine\n\tbekannt."
+        report = self._report_for(wrapped)
+        note_lines = [ln for ln in report.split("\n") if ln.strip().startswith("note:")]
+        self.assertEqual(len(note_lines), 1)
+        self.assertIn(
+            "note: Von Hand bewertet. EINSCHRAENKUNG: keine bekannt.",
+            report,
+        )
+        for word in wrapped.split():
+            with self.subTest(word):
+                self.assertIn(word, note_lines[0])
+
+    def test_the_note_stays_out_of_the_rater_name(self) -> None:
+        # The summary prints the rater per field. A paragraph there buries
+        # the numbers it is meant to qualify -- which is how it once
+        # shipped, so the stored pass is checked for it too.
+        report = self._report_for("EINSCHRAENKUNG: keine bekannt.")
+        self.assertIn("second rater t,", report)
+        stored = json.loads(
+            (ROOT / "eval" / "catalog_second_rater_completed.json").read_text("utf-8")
+        )["protocol"]
+        self.assertNotIn(" ", stored["rater"])
+        self.assertIn("EINSCHRAENKUNG", stored["notes"].upper())
+
+    def test_the_guide_shows_how_to_write_one(self) -> None:
+        doc = ea.BASELINE_DOC.read_text(encoding="utf-8")
+        section = doc[doc.index("### Wie `protocol.notes` zu formulieren ist") :]
+        section = section[: section.index("\n### ")]
+        for required in ("EINSCHRAENKUNG", "Kalibrierrunde", "keine Zeilenumbr"):
+            with self.subTest(required):
+                self.assertIn(required, section)
+        # The three rules that make the note worth anything, not just its
+        # shape: written before the numbers, quantified, split out.
+        self.assertIn("Vor dem Blick auf die Zahlen", section)
+        self.assertIn("Beziffern", section)
+        self.assertIn("getrennt nachrechnen", section)
+        self.assertIn("appraisal_method_at_rating", section)
 
 
 class SupportAnchorTests(unittest.TestCase):
