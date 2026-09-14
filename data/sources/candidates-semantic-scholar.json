@@ -9412,5 +9412,83 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "educator"
+  },
+  {
+    "id": "src-the-timing-of-digital-games-in-stem-instruction-effects-on-learning-outc",
+    "title": "The timing of digital games in STEM instruction: effects on learning outcomes, collaborative problem-solving, intrinsic motivation, cognitive load, and learning behavior",
+    "authors": [
+      "Ching-huei Chen",
+      "Cheng-Huan Chen"
+    ],
+    "year": 2025,
+    "doi": "10.1080/02635143.2025.2561992",
+    "url": "https://www.semanticscholar.org/paper/30583a8e2a07504e06cf1941025044ead8bc3fd7",
+    "openalex_id": null,
+    "semantic_scholar_id": "30583a8e2a07504e06cf1941025044ead8bc3fd7",
+    "eric_id": null,
+    "publisher": "Research in Science &amp; Technological Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT Background The integration of digital game-based learning (DGBL) into science, technology, engineering, and mathematics (STEM) education has been shown to enhance engagement, motivation, and learning outcomes. However, the optimal timing for implementing DGBL within STEM instruction remains underexplored. Understanding whether gameplay before or after instruction yields better cognitive and affective outcomes can inform more effective instructional design. Purpose This study examines the effects of the timing of DGBL\u2014before versus after STEM instruction\u2014on secondary school students\u2019 learning outcomes, collaborative problem-solving, intrinsic motivation, cognitive load, and learning behaviors. Sample Participants were 62 secondary school students from a public school, randomly assigned to either a \u2018gameplay before instruction\u2019 group or a \u2018gameplay after instruction\u2019 group. Design and methods A quasi-experimental design was employed. Both groups engaged in the same STEM learning content and digital game, but the sequence of gameplay and instruction differed. Data were collected using pre- and post-tests for learning outcomes, questionnaires for intrinsic motivation and cognitive load, collaborative problem-solving assessments, and in-game behavior logs. One-way analysis of covariance (ANCOVA), ANOVA and the lag sequence analysis were conducted to examine group differences. Results The findings revealed that students who played the game after STEM instruction demonstrated significantly higher learning outcomes and collaborative problem-solving performance compared to those who played before instruction. The post-instruction gameplay group also reported greater intrinsic motivation and exhibited more strategic in-game behaviors, suggesting deeper engagement. No significant differences were found in cognitive load between groups, indicating that the timing effect was not due to differences in perceived task difficulty. Conclusion Implementing DGBL after STEM instruction can enhance students\u2019 understanding, application of scientific concepts, and collaborative problem-solving. This sequencing allows students to connect gameplay experiences with prior conceptual knowledge, increasing authenticity and perceived relevance. Educators designing STEM curricula should consider integrating gameplay after instruction to maximize both cognitive and motivational benefits.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-combining-creative-problem-solving-with-science-fiction-films-to-promote",
+    "title": "Combining Creative Problem Solving with Science Fiction Films to Promote Creative Thinking in Science Education",
+    "authors": [
+      "Xu-Ping Xiong",
+      "Shanzhang Ren"
+    ],
+    "year": 2025,
+    "doi": "10.1007/s11191-025-00700-w",
+    "url": "https://www.semanticscholar.org/paper/ed645492a170a771f431990614fe76fd9c6a03c6",
+    "openalex_id": null,
+    "semantic_scholar_id": "ed645492a170a771f431990614fe76fd9c6a03c6",
+    "eric_id": null,
+    "publisher": "Science Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-literacy-and-culturally-responsive-lesson-design-in-early-childhood-t",
+    "title": "AI literacy and culturally responsive lesson design in early childhood teacher education",
+    "authors": [
+      "Seongryeong Yu",
+      "Xin Li"
+    ],
+    "year": 2026,
+    "doi": "10.1080/10476210.2026.2642691",
+    "url": "https://www.semanticscholar.org/paper/459daad6cc3f6b6aff4be1fef5bf671aff7d1c5b",
+    "openalex_id": null,
+    "semantic_scholar_id": "459daad6cc3f6b6aff4be1fef5bf671aff7d1c5b",
+    "eric_id": null,
+    "publisher": "Teaching Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT In early childhood education (ECE), the primary focus of AI-related learning concerns teacher candidates\u2019 professional AI literacy. This qualitative case study examines how preservice ECE teacher candidates engaged with generative AI (GenAI) tools while designing culturally responsive lesson plans. Drawing on the Technological Pedagogical Content Knowledge (TPACK) framework as an analytic lens, the study involved 50 teacher candidates at two U.S. universities participating in an AI-integrated curriculum with a focal sample of five participants selected for in-depth analysis. Data from lesson plans, reflective journals, interviews, and online discussions show that teacher candidates approached AI tools with interest but often struggled to align AI-generated content with students\u2019 cultural contexts, identify and address issues of bias or misrepresentation, and make pedagogically appropriate adaptations without targeted guidance. These findings illustrate how preservice teachers develop AI literacy through iterative processes of evaluation, reflection, and adaptation of AI-generated materials, highlighting both the opportunities and challenges that GenAI introduces for culturally responsive lesson design in ECE.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
   }
 ]

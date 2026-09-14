@@ -39721,5 +39721,480 @@
     "status": "candidate",
     "created_at": "2026-09-07",
     "reviewed_at": null
+  },
+  {
+    "id": "claim-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni",
+    "statement": "This study addresses an implementation problem for informatics education: whether teachers' reported participation in AI-related professional learning, interpreted as realised access to one professional learning condition for teacher AI literacy, is associated with declared need or instead follows existing patterns of digital, professional and organisational advantage.",
+    "source_ids": [
+      "src-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni"
+    ],
+    "text_anchor": "abstract, sentence 1: \"This study addresses an implementation problem for informatics education: whether teachers' reported participation in AI-related professional learning, interpreted as realised access to one professional learning condition for teacher AI literacy, is associated with declared need or instead follows existing patterns of digital, professional and organisational advantage.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni-2",
+    "statement": "The findings suggest that equitable teacher AI literacy requires deliberate opportunity structures, not only competence frameworks or voluntary participation in professional learning.",
+    "source_ids": [
+      "src-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni"
+    ],
+    "text_anchor": "abstract, sentence 11: \"The findings suggest that equitable teacher AI literacy requires deliberate opportunity structures, not only competence frameworks or voluntary participation in professional learning.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni-3",
+    "statement": "Digital self-efficacy and professional collaboration were consistently associated with higher participation.",
+    "source_ids": [
+      "src-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Digital self-efficacy and professional collaboration were consistently associated with higher participation.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-integration-in-teacher-training-advancing-functi",
+    "statement": "The article concludes that responsible AI integration can strengthen education quality, optimize teacher workload, and create equitable and adaptive learning environments.",
+    "source_ids": [
+      "src-artificial-intelligence-integration-in-teacher-training-advancing-functi"
+    ],
+    "text_anchor": "abstract, sentence 8: \"The article concludes that responsible AI integration can strengthen education quality, optimize teacher workload, and create equitable and adaptive learning environments.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-integration-in-teacher-training-advancing-functi-2",
+    "statement": "However, the study also identifies major challenges such as the risk of reducing teachers' professional roles, increased plagiarism, and data privacy concerns.",
+    "source_ids": [
+      "src-artificial-intelligence-integration-in-teacher-training-advancing-functi"
+    ],
+    "text_anchor": "abstract, sentence 6: \"However, the study also identifies major challenges such as the risk of reducing teachers' professional roles, increased plagiarism, and data privacy concerns.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-artificial-intelligence-integration-in-teacher-training-advancing-functi-3",
+    "statement": "Ethical AI literacy emerges as a crucial component of teacher training programs, emphasizing the importance of developing educators' critical, ethical, and reflective skills to use AI safely and effectively.",
+    "source_ids": [
+      "src-artificial-intelligence-integration-in-teacher-training-advancing-functi"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Ethical AI literacy emerges as a crucial component of teacher training programs, emphasizing the importance of developing educators' critical, ethical, and reflective skills to use AI safely and effectively.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat",
+    "statement": "The analysis highlights a significant increase in research output during global disruptions, such as the COVID-19 pandemic, underscoring the growing relevance of career resilience in addressing contemporary challenges.",
+    "source_ids": [
+      "src-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The analysis highlights a significant increase in research output during global disruptions, such as the COVID-19 pandemic, underscoring the growing relevance of career resilience in addressing contemporary challenges.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat-2",
+    "statement": "These findings aim to support educators, policymakers, and researchers in enhancing graduate employability and adaptability in dynamic labor markets.",
+    "source_ids": [
+      "src-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat"
+    ],
+    "text_anchor": "abstract, sentence 6: \"These findings aim to support educators, policymakers, and researchers in enhancing graduate employability and adaptability in dynamic labor markets.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat-3",
+    "statement": "Through a comprehensive bibliometric analysis, this study investigates the evolution of career resilience research in technical and vocational education and training (TVET) from 1969 to 2024.",
+    "source_ids": [
+      "src-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Through a comprehensive bibliometric analysis, this study investigates the evolution of career resilience research in technical and vocational education and training (TVET) from 1969 to 2024.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter",
+    "statement": "Findings Digital literacy is a multidisciplinary field that widely embraces literacy, ICT, the Internet, computer skill proficiency, science, nursing, health, and language education.",
+    "source_ids": [
+      "src-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Findings Digital literacy is a multidisciplinary field that widely embraces literacy, ICT, the Internet, computer skill proficiency, science, nursing, health, and language education.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter-2",
+    "statement": "Practical implications To shed light on the findings, using customized digital literacy curriculums and technology is critical for learners at different ages to nurture digital literacy according to their learning aims.",
+    "source_ids": [
+      "src-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter"
+    ],
+    "text_anchor": "abstract, sentence 9: \"Practical implications To shed light on the findings, using customized digital literacy curriculums and technology is critical for learners at different ages to nurture digital literacy according to their learning aims.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter-3",
+    "statement": "Abstract Purpose Digital literacy and related fields have received interests from scholars and practitioners for more than 20 years; nonetheless, academic communities need to systematically review how the fields have developed.",
+    "source_ids": [
+      "src-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Abstract Purpose Digital literacy and related fields have received interests from scholars and practitioners for more than 20 years; nonetheless, academic communities need to systematically review how the fields have developed.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-disinformation-and-misinformation-triangle-abstract-s3",
+    "statement": "Findings Following the epidemiological disease triangle model, the three interacting causal factors are translated into the digital news context: the virulent pathogens are falsifications, clickbait, satirical \u201cfakes\u201d and other deceptive or misleading news content; the susceptible hosts are information-overloaded, time-pressed news readers lacking media literacy skills; and the conducive environments are polluted poorly regulated social media platforms that propagate and encourage the spread of various \u201cfakes.\u201d Originality/value The three types of interventions \u2013 automation, education and regulation \u2013 are proposed as a set of holistic measures to reveal, and potentially control, predict and prevent further proliferation of the epidemic.",
+    "source_ids": [
+      "src-disinformation-and-misinformation-triangle"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Findings Following the epidemiological disease triangle model, the three interacting causal factors are translated into the digital news context: the virulent pathogens are falsifications, clickbait, satirical \u201cfakes\u201d and other deceptive or misleading news content; the susceptible hosts are information-overloaded, time-pressed news readers lacking media literacy skills; and the conducive environments are polluted poorly regulated social media platforms that propagate and encourage the spread of various \u201cfakes.\u201d Originality/value The three types of interventions \u2013 automation, education and regulation \u2013 are proposed as a set of holistic measures to reveal, and potentially control, predict and prevent further proliferation of the epidemic.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-disinformation-and-misinformation-triangle-abstract-s2",
+    "statement": "Design/methodology/approach The proposed disinformation and misinformation triangle is a conceptual model that identifies the three minimal causal factors occurring simultaneously to facilitate the spread of the epidemic at the societal level.",
+    "source_ids": [
+      "src-disinformation-and-misinformation-triangle"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Design/methodology/approach The proposed disinformation and misinformation triangle is a conceptual model that identifies the three minimal causal factors occurring simultaneously to facilitate the spread of the epidemic at the societal level.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-disinformation-and-misinformation-triangle-abstract-s1",
+    "statement": "Purpose The purpose of this paper is to treat disinformation and misinformation (intentionally deceptive and unintentionally inaccurate misleading information, respectively) as a socio-cultural technology-enabled epidemic in digital news, propagated via social media.",
+    "source_ids": [
+      "src-disinformation-and-misinformation-triangle"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Purpose The purpose of this paper is to treat disinformation and misinformation (intentionally deceptive and unintentionally inaccurate misleading information, respectively) as a socio-cultural technology-enabled epidemic in digital news, propagated via social media.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-development-and-validation-of-a-self-report-measure-of-epistemic-trust-a",
+    "statement": "Main findings suggest intriguing links between the ETMCQ and developmental psychopathology constructs and are consistent with thinking on the role of epistemic stance in undermining adaptation and increasing the developmental risk of mental health problems.",
+    "source_ids": [
+      "src-development-and-validation-of-a-self-report-measure-of-epistemic-trust"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Main findings suggest intriguing links between the ETMCQ and developmental psychopathology constructs and are consistent with thinking on the role of epistemic stance in undermining adaptation and increasing the developmental risk of mental health problems.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-development-and-validation-of-a-self-report-measure-of-epistemic-trust-a-2",
+    "statement": "Post-hoc analysis identified that different attachment styles were associated with differences in epistemic stance.",
+    "source_ids": [
+      "src-development-and-validation-of-a-self-report-measure-of-epistemic-trust"
+    ],
+    "text_anchor": "abstract, sentence 10: \"Post-hoc analysis identified that different attachment styles were associated with differences in epistemic stance.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-development-and-validation-of-a-self-report-measure-of-epistemic-trust-a-3",
+    "statement": "In addition, Trust was not associated with reduced levels of mental health symptoms and did not moderate the impact of childhood adversity-findings are congruent with the suggestion that the reduction of mistrust and credulity may be crucial common factors in promoting resilience and the effectiveness of psychotherapeutic interventions.",
+    "source_ids": [
+      "src-development-and-validation-of-a-self-report-measure-of-epistemic-trust"
+    ],
+    "text_anchor": "abstract, sentence 11: \"In addition, Trust was not associated with reduced levels of mental health symptoms and did not moderate the impact of childhood adversity-findings are congruent with the suggestion that the reduction of mistrust and credulity may be crucial common factors in promoting resilience and the effectiveness of psychotherapeutic interventions.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-transforming-education-a-comprehensive-review-of-generative-artificial-i",
+    "statement": "ChatGPT emerges as a dominant GAI tool, and the analysis reveals significant and exponential growth in GAI research in 2023.",
+    "source_ids": [
+      "src-transforming-education-a-comprehensive-review-of-generative-artificial-i"
+    ],
+    "text_anchor": "abstract, sentence 7: \"ChatGPT emerges as a dominant GAI tool, and the analysis reveals significant and exponential growth in GAI research in 2023.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-transforming-education-a-comprehensive-review-of-generative-artificial-i-2",
+    "statement": "In the ever-evolving era of technological advancements, generative artificial intelligence (GAI) emerges as a transformative force, revolutionizing education.",
+    "source_ids": [
+      "src-transforming-education-a-comprehensive-review-of-generative-artificial-i"
+    ],
+    "text_anchor": "abstract, sentence 1: \"In the ever-evolving era of technological advancements, generative artificial intelligence (GAI) emerges as a transformative force, revolutionizing education.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-transforming-education-a-comprehensive-review-of-generative-artificial-i-3",
+    "statement": "Ethical considerations, interdisciplinary collaboration, and responsible technology use are highlighted, emphasizing the need for transparent GAI models and addressing biases.",
+    "source_ids": [
+      "src-transforming-education-a-comprehensive-review-of-generative-artificial-i"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Ethical considerations, interdisciplinary collaboration, and responsible technology use are highlighted, emphasizing the need for transparent GAI models and addressing biases.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-timing-of-digital-games-in-stem-instruction-effects-on-learning-outc",
+    "statement": "Results The findings revealed that students who played the game after STEM instruction demonstrated significantly higher learning outcomes and collaborative problem-solving performance compared to those who played before instruction.",
+    "source_ids": [
+      "src-the-timing-of-digital-games-in-stem-instruction-effects-on-learning-outc"
+    ],
+    "text_anchor": "abstract, sentence 10: \"Results The findings revealed that students who played the game after STEM instruction demonstrated significantly higher learning outcomes and collaborative problem-solving performance compared to those who played before instruction.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-timing-of-digital-games-in-stem-instruction-effects-on-learning-outc-2",
+    "statement": "Conclusion Implementing DGBL after STEM instruction can enhance students\u2019 understanding, application of scientific concepts, and collaborative problem-solving.",
+    "source_ids": [
+      "src-the-timing-of-digital-games-in-stem-instruction-effects-on-learning-outc"
+    ],
+    "text_anchor": "abstract, sentence 13: \"Conclusion Implementing DGBL after STEM instruction can enhance students\u2019 understanding, application of scientific concepts, and collaborative problem-solving.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-literacy-and-culturally-responsive-lesson-design-in-early-childhood-t",
+    "statement": "These findings illustrate how preservice teachers develop AI literacy through iterative processes of evaluation, reflection, and adaptation of AI-generated materials, highlighting both the opportunities and challenges that GenAI introduces for culturally responsive lesson design in ECE.",
+    "source_ids": [
+      "src-ai-literacy-and-culturally-responsive-lesson-design-in-early-childhood-t"
+    ],
+    "text_anchor": "abstract, sentence 5: \"These findings illustrate how preservice teachers develop AI literacy through iterative processes of evaluation, reflection, and adaptation of AI-generated materials, highlighting both the opportunities and challenges that GenAI introduces for culturally responsive lesson design in ECE.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-literacy-and-culturally-responsive-lesson-design-in-early-childhood-t-2",
+    "statement": "ABSTRACT In early childhood education (ECE), the primary focus of AI-related learning concerns teacher candidates\u2019 professional AI literacy.",
+    "source_ids": [
+      "src-ai-literacy-and-culturally-responsive-lesson-design-in-early-childhood-t"
+    ],
+    "text_anchor": "abstract, sentence 1: \"ABSTRACT In early childhood education (ECE), the primary focus of AI-related learning concerns teacher candidates\u2019 professional AI literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null
   }
 ]

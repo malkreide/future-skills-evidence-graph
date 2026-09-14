@@ -8696,5 +8696,90 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "educator"
+  },
+  {
+    "id": "src-can-teacher-ai-literacy-reach-those-who-need-it-most-professional-learni",
+    "title": "Can Teacher AI Literacy Reach Those Who Need It Most? Professional Learning, Realised Access, and Cumulative Advantage in TALIS 2024",
+    "authors": [
+      "F. Javier Murillo",
+      "Angel C. Herrero"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1516204",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1516204",
+    "publisher": "Informatics in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study addresses an implementation problem for informatics education: whether teachers' reported participation in AI-related professional learning, interpreted as realised access to one professional learning condition for teacher AI literacy, is associated with declared need or instead follows existing patterns of digital, professional and organisational advantage. The study does not measure teacher AI literacy, AI competence, computing teaching practice, computational-thinking instruction or classroom implementation directly. Rather, it analyses reported participation in AI-related professional learning as a realised opportunity condition for developing teacher AI literacy at scale. Using TALIS 2024 data from 108,136 lower-secondary teachers nested within 10,840 schools across 55 education systems, three-level multilevel linear probability models and random slopes at the education-system level were estimated. Results showed substantial cross-system inequality in reported participation. Variance decomposition located 8.5% of total variation at the education-system level and 9.7% at the school level. Declared need was only partially associated with reported participation: teachers reporting low or moderate need were more likely to have participated in AI-related professional learning than those reporting no need, whereas teachers with the highest need showed no significant advantage. Digital self-efficacy and professional collaboration were consistently associated with higher participation. At the school level, digital resource shortages and school digital leadership support were significant predictors. Random-slope estimates showed that the association between high declared need and participation varied significantly across education systems. The findings suggest that equitable teacher AI literacy requires deliberate opportunity structures, not only competence frameworks or voluntary participation in professional learning.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-artificial-intelligence-integration-in-teacher-training-advancing-functi",
+    "title": "Artificial Intelligence Integration in Teacher Training: Advancing Functional and Professional Competencies for Quality Education (Sustainable Development Goal 4)",
+    "authors": [
+      "Zukhra Mukhambetaliyeva",
+      "Assem Uzakova",
+      "Nurdos Koktalov",
+      "Hiroki Fujii"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1516697",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1516697",
+    "publisher": "Science Education International",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This article explores the integration of artificial intelligence (AI) into teacher education as a key driver for enhancing professional and functional competencies in alignment with Sustainable Development Goal 4 (quality education). The study highlights that AI technologies, when responsibly embedded into the educational process, can transform teaching practices, promote inclusivity, and foster innovation in learning. Through a mixed-method approach involving content analysis and pilot implementation using the &#x00AB;Aitalim&#x00BB; platform, the research investigates teachers' digital competencies, ethical considerations, and readiness to apply AI in their professional activities. Results indicate that 42.4% of educators frequently use AI tools for lesson planning, assessment, and material creation, while 35.6% apply them occasionally. The integration of AI demonstrates significant potential in improving efficiency, supporting individualized learning, and enhancing student engagement. However, the study also identifies major challenges such as the risk of reducing teachers' professional roles, increased plagiarism, and data privacy concerns. Ethical AI literacy emerges as a crucial component of teacher training programs, emphasizing the importance of developing educators' critical, ethical, and reflective skills to use AI safely and effectively. The article concludes that responsible AI integration can strengthen education quality, optimize teacher workload, and create equitable and adaptive learning environments. This requires comprehensive policy support, professional development, and continuous assessment frameworks to align with United Nations Educational, Scientific and Cultural Organization's AI Competency Framework for Teachers and the European Digital Competence of Educators model.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-career-resilience-in-tvet-a-bibliometric-analysis-of-trends-and-implicat",
+    "title": "Career Resilience in TVET: A Bibliometric Analysis of Trends and Implications (1969-2024)",
+    "authors": [
+      "Sangin Juat",
+      "Amalia Madihie",
+      "Salleh Amat"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1516170",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1516170",
+    "publisher": "Journal of Education and Learning (EduLearn)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Through a comprehensive bibliometric analysis, this study investigates the evolution of career resilience research in technical and vocational education and training (TVET) from 1969 to 2024. Using data from 1019 articles retrieved from Scopus, the study examines publication trends, influential authors, prominent journals, co-authorship networks, and keyword co-occurrence patterns. Key themes identified include career adaptability, psychological factors such as self-esteem and life satisfaction, workplace dynamics like job satisfaction and engagement, and the pivotal role of education in promoting resilience. The analysis highlights a significant increase in research output during global disruptions, such as the COVID-19 pandemic, underscoring the growing relevance of career resilience in addressing contemporary challenges. By leveraging tools like biblioMagika&#x00AE; and VOSviewer, this study provides critical insights into the interplay between career resilience and vocational education, offering actionable recommendations for integrating resilience-focused strategies into TVET curricula. These findings aim to support educators, policymakers, and researchers in enhancing graduate employability and adaptability in dynamic labor markets.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]
