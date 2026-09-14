@@ -7700,5 +7700,151 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "educator"
+  },
+  {
+    "id": "src-a-scientometric-study-of-digital-literacy-ict-literacy-information-liter",
+    "title": "A Scientometric Study of Digital Literacy, ICT Literacy, Information Literacy, and Media Literacy",
+    "authors": [
+      "Hyejin Park",
+      "Han Sung Kim",
+      "Han Woo Park"
+    ],
+    "year": 2020,
+    "doi": "10.2478/jdis-2021-0001",
+    "url": "https://openalex.org/W3045711543",
+    "openalex_id": "https://openalex.org/W3045711543",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Data and Information Science",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract Purpose Digital literacy and related fields have received interests from scholars and practitioners for more than 20 years; nonetheless, academic communities need to systematically review how the fields have developed. This study aims to investigate the research trends of digital literacy and related concepts since the year of 2000, especially in education. Design/methodology/approach The current study analyzes keywords, co-authorship, and cited publications in digital literacy through the scientometric method. The journal articles have been retrieved from the WoS (Web of Science) using four keywords: \u201cDigital literacy,\u201d \u201cICT literacy,\u201d \u201cinformation literacy,\u201d and \u201cmedia literacy.\u201d Further, keywords, publications, and co-authorship are examined and further classified into clusters for more in-depth investigation. Findings Digital literacy is a multidisciplinary field that widely embraces literacy, ICT, the Internet, computer skill proficiency, science, nursing, health, and language education. The participants, or study subjects, in digital literacy research range from primary students to professionals, and the co-authorship clusters are distinctive by countries in America and Europe. Research limitations This paper analyzes one fixed chunk of a dataset obtained by searching for all four keywords at once. Further studies will retrieve the data from diverse disciplines and will trace the change of the leading research themes by time spans. Practical implications To shed light on the findings, using customized digital literacy curriculums and technology is critical for learners at different ages to nurture digital literacy according to their learning aims. They need to cultivate their understanding of the social impact of exploiting technology and computational thinking. To increase the originality of digital literacy-related studies, researchers from different countries and cultures may collaborate to investigate a broader range of digital literacy environments. Originality/value The present study reviews research trends in digital literacy and related areas by performing a scientometric study to analyze multidimensional aspects in the fields, including keywords, journal titles, co-authorship, and cited publications.",
+    "topics": [
+      "digital competence",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-disinformation-and-misinformation-triangle",
+    "title": "Disinformation and misinformation triangle",
+    "authors": [
+      "Victoria L. Rubin"
+    ],
+    "year": 2019,
+    "doi": "10.1108/jd-12-2018-0209",
+    "url": "https://openalex.org/W2978591550",
+    "openalex_id": "https://openalex.org/W2978591550",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Documentation",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Purpose The purpose of this paper is to treat disinformation and misinformation (intentionally deceptive and unintentionally inaccurate misleading information, respectively) as a socio-cultural technology-enabled epidemic in digital news, propagated via social media. Design/methodology/approach The proposed disinformation and misinformation triangle is a conceptual model that identifies the three minimal causal factors occurring simultaneously to facilitate the spread of the epidemic at the societal level. Findings Following the epidemiological disease triangle model, the three interacting causal factors are translated into the digital news context: the virulent pathogens are falsifications, clickbait, satirical \u201cfakes\u201d and other deceptive or misleading news content; the susceptible hosts are information-overloaded, time-pressed news readers lacking media literacy skills; and the conducive environments are polluted poorly regulated social media platforms that propagate and encourage the spread of various \u201cfakes.\u201d Originality/value The three types of interventions \u2013 automation, education and regulation \u2013 are proposed as a set of holistic measures to reveal, and potentially control, predict and prevent further proliferation of the epidemic. Partial automated solutions with natural language processing, machine learning and various automated detection techniques are currently available, as exemplified here briefly. Automated solutions assist (but not replace) human judgments about whether news is truthful and credible. Information literacy efforts require further in-depth understanding of the phenomenon and interdisciplinary collaboration outside of the traditional library and information science, incorporating media studies, journalism, interpersonal psychology and communication perspectives.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "digital competence",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-and-validation-of-a-self-report-measure-of-epistemic-trust",
+    "title": "Development and validation of a self-report measure of epistemic trust",
+    "authors": [
+      "Chlo\u00eb Campbell",
+      "Michal Tanzer",
+      "Rob Saunders",
+      "Thomas Booker",
+      "Elizabeth Allison",
+      "Elizabeth Li",
+      "Claire O\u2019Dowda",
+      "Patrick Luyten",
+      "Peter Fonagy"
+    ],
+    "year": 2021,
+    "doi": "10.1371/journal.pone.0250264",
+    "url": "https://openalex.org/W3152777658",
+    "openalex_id": "https://openalex.org/W3152777658",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "PLoS ONE",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Epistemic trust (ET) refers to trust in communicated knowledge. This paper describes the development and validation of a new self-report questionnaire, the Epistemic Trust, Mistrust and Credulity Questionnaire (ETMCQ). We report on two studies (Study 1, n = 500; Study 2, n = 705) examining the psychometric properties of the ETMCQ and the relationship between EMTCQ scores (i.e., an individual's epistemic stance) and exposure to adverse childhood experiences, mental health symptoms, attachment, mentalizing and general self-efficacy. The factor structure of the ETMCQ was examined using Exploratory and Confirmatory Factor Analyses, and its reliability and test-retest reliability were tested. Both studies yielded three correlated yet distinct factors-Trust, Mistrust and Credulity-and confirmed the reliability and validity of the ETMCQ. Preregistered hypotheses were confirmed and replicated across both studies. Main findings suggest intriguing links between the ETMCQ and developmental psychopathology constructs and are consistent with thinking on the role of epistemic stance in undermining adaptation and increasing the developmental risk of mental health problems. Mistrust and Credulity scores were associated with childhood adversity and higher scores on the global psychopathology severity index and both factors partially mediated the link between early adversity and mental health symptoms. Mistrust and Credulity were positively associated with difficulties in understanding mental states and insecure attachment styles. Post-hoc analysis identified that different attachment styles were associated with differences in epistemic stance. In addition, Trust was not associated with reduced levels of mental health symptoms and did not moderate the impact of childhood adversity-findings are congruent with the suggestion that the reduction of mistrust and credulity may be crucial common factors in promoting resilience and the effectiveness of psychotherapeutic interventions. This investigation and the ETMCQ provide an empirical measure of what until now has been largely a theoretical concept and open new avenues for future research.",
+    "topics": [
+      "critical thinking",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-transforming-education-a-comprehensive-review-of-generative-artificial-i",
+    "title": "Transforming Education: A Comprehensive Review of Generative Artificial Intelligence in Educational Settings through Bibliometric and Content Analysis",
+    "authors": [
+      "Zied Bahroun",
+      "Chiraz Anane",
+      "Vian Ahmed",
+      "Andrew Zacca"
+    ],
+    "year": 2023,
+    "doi": "10.3390/su151712983",
+    "url": "https://openalex.org/W4386251129",
+    "openalex_id": "https://openalex.org/W4386251129",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Sustainability",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "In the ever-evolving era of technological advancements, generative artificial intelligence (GAI) emerges as a transformative force, revolutionizing education. This review paper, guided by the PRISMA framework, presents a comprehensive analysis of GAI in education, synthesizing key insights from a selection of 207 research papers to identify research gaps and future directions in the field. This study begins with a content analysis that explores GAI\u2019s transformative impact in specific educational domains, including medical education and engineering education. The versatile applications of GAI encompass assessment, personalized learning support, and intelligent tutoring systems. Ethical considerations, interdisciplinary collaboration, and responsible technology use are highlighted, emphasizing the need for transparent GAI models and addressing biases. Subsequently, a bibliometric analysis of GAI in education is conducted, examining prominent AI tools, research focus, geographic distribution, and interdisciplinary collaboration. ChatGPT emerges as a dominant GAI tool, and the analysis reveals significant and exponential growth in GAI research in 2023. Moreover, this paper identifies promising future research directions, such as GAI-enhanced curriculum design and longitudinal studies tracking its long-term impact on learning outcomes. These findings provide a comprehensive understanding of GAI\u2019s potential in reshaping education and offer valuable insights to researchers, educators, and policymakers interested in the intersection of GAI and education.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-industrial-revolution-4-0-and-education",
+    "title": "Industrial Revolution 4.0 and Education",
+    "authors": [
+      "Aida Aryani Shahroom",
+      "Norhayati Hussin"
+    ],
+    "year": 2018,
+    "doi": "10.6007/ijarbss/v8-i9/4593",
+    "url": "https://openalex.org/W2954330623",
+    "openalex_id": "https://openalex.org/W2954330623",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Academic Research in Business and Social Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The purpose of this paper is to discuss what happen to education system in the era of Industrial revolution 4.0 (IR 4.0).Information management is the most challenging issue faced by any organisations in developing countries.Everybody has an excessive number of wellsprings of leisure activity.Our brains are always being rewired because of diminished capacities to focus.What we realize among our education won't keep going for the whole career as the technologies is speeding up.Indeed, even schools are not extremely supportive in picking profession way.The fourth Industrial Revolution (IR 4.0) has changed the landscape of educational innovation.IR 4.0 is controlled by artificial intelligence and digital physical frameworks that make human-machine interface more universal.Quick revolution in innovation has delivered another model of education for the future \u2500 Education 4.0.To prepare graduates for future life and work achieved by IR 4.0 where more smart robots will supplant people in certain activity divisions, education should harness on pertinent information and abilities that couldn't be replaced by robots.Innovation interruption that produces Education 4.0 that focuses on educational development and skill has made future learning more customized, hyper, intelligent, portable, worldwide and virtual.Past the 21st century abilities, advanced skill and development, for example, Artificial Intelligence (AI), huge information and examination, distributed computing and portable arrangement, online networking, the Internet of Things (IoT), Virtual Reality (VR) and Augmented Reality (AR) with computerized pleasures are in a general sense changing the flow of education and instructional advances landscape into new type of computerized teaching method and smart classroom.IR 4.0 that detonated exponentially has rambled the future learning into wonderland.Sci-fi moves toward becoming science certainty \u2500 where creative energy knows no bound; and virtual and augmented reality is crawling into smart classroom.Self-sufficient and intelligent robots, rambles, vehicles and classrooms are joys of the day.As cutting edge educators, we have to investigate new and creative approaches to utilizing educational innovation to upgrade future learning.In this regards, this introduction hypothesizes the requirement for instructors to re-examine their old originations of instructing and learning and upgrade their understudies' learning encounters so they meet the requirements of Education 4.0.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-14",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]
