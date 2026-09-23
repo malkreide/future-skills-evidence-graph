@@ -28,7 +28,6 @@
   Unit-Tests grün.
 - **PR ohne jeden Check** ist selten ein Repo ohne CI, meistens ein
   Merge-Konflikt: GitHub berechnet dafür keinen Merge-Commit und startet nichts.
-- Ein Codex-Review auf einem PR wird **beantwortet oder behoben**, nie ignoriert.
 
 ## Repository-Gates
 - **Befund:** Weder die Workflows noch eine `.pre-commit-config.yaml` enthalten
