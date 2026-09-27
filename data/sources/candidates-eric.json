@@ -8781,5 +8781,55 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "learner"
+  },
+  {
+    "id": "src-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu",
+    "title": "Critical Thinking, Disillusion, and Dissent: Information Literacy in a Refused Knowledge Information Landscape",
+    "authors": [
+      "Madelene Logren"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1516108",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1516108",
+    "publisher": "Journal of Information Literacy",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study explores information literacy (IL) within a community organised around contested beliefs, challenging the assumption that IL reduces susceptibility to misinformation. It assumes a sociocultural perspective on IL, conceptualising IL practices as shaped by and taking place within intersubjectively created information landscapes imbued with values, beliefs, and practices that determine what is considered appropriate engagement with information. Employing reflexive thematic analysis to qualitatively analyse social media content (text and images) published by a Swedish network of nurses active in the COVID-19 dissent milieu, the study finds that critical engagement with information is central for shaping the network's information landscape. The types of interrogative questions often found in guides or frameworks for critical thinking and source criticism are shown to be part of how information is approached and evaluated within the landscape. Furthermore, within the network's information landscape, critical thinking is expressed as a moral good and is encouraged both as an approach to truth and as a morally good act. Following this, the study suggests that in this information landscape, belief in contested knowledge may be an effect of IL practices rather than a lack of them. The study contributes to the discussion on the role of IL as a solution for misinformation belief, showing how IL practices can function to sustain, rather than diminish, belief in contested knowledge.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-preparing-students-for-the-generative-artificial-intelligence-future-int",
+    "title": "Preparing Students for the Generative Artificial Intelligence Future: Integrating Artificial Intelligence Literacy in Sport Management Education",
+    "authors": [
+      "Alanna Harman"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://doi.org/10.1123/smej.2024-0018",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1516769",
+    "publisher": "Sport Management Education Journal",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) becomes increasingly embedded in everyday life, there is a growing expectation that graduates are savvy in utilizing these tools. However, arguably, more important than simply understanding how to utilize these tools is fostering AI literacy, that is, developing the skill to utilize AI tools and the ability to critically assess their utility. This paper introduces an assignment that utilizes ChatGPT to promote critical engagement with course content and a generative AI tool. By engaging students in tasks that require interaction with AI tools like ChatGPT, educators can nurture both technical skills and the ability to discern the appropriate application and limitations of AI, an essential skill for preparing students for the complexities of the modern technological landscape.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]

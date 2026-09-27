@@ -40196,5 +40196,214 @@
     "status": "candidate",
     "created_at": "2026-09-14",
     "reviewed_at": null
+  },
+  {
+    "id": "claim-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu",
+    "statement": "The types of interrogative questions often found in guides or frameworks for critical thinking and source criticism are shown to be part of how information is approached and evaluated within the landscape.",
+    "source_ids": [
+      "src-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu"
+    ],
+    "text_anchor": "abstract, sentence 4: \"The types of interrogative questions often found in guides or frameworks for critical thinking and source criticism are shown to be part of how information is approached and evaluated within the landscape.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu-2",
+    "statement": "Furthermore, within the network's information landscape, critical thinking is expressed as a moral good and is encouraged both as an approach to truth and as a morally good act.",
+    "source_ids": [
+      "src-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Furthermore, within the network's information landscape, critical thinking is expressed as a moral good and is encouraged both as an approach to truth and as a morally good act.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu-3",
+    "statement": "The study contributes to the discussion on the role of IL as a solution for misinformation belief, showing how IL practices can function to sustain, rather than diminish, belief in contested knowledge.",
+    "source_ids": [
+      "src-critical-thinking-disillusion-and-dissent-information-literacy-in-a-refu"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The study contributes to the discussion on the role of IL as a solution for misinformation belief, showing how IL practices can function to sustain, rather than diminish, belief in contested knowledge.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-preparing-students-for-the-generative-artificial-intelligence-future-int",
+    "statement": "As artificial intelligence (AI) becomes increasingly embedded in everyday life, there is a growing expectation that graduates are savvy in utilizing these tools.",
+    "source_ids": [
+      "src-preparing-students-for-the-generative-artificial-intelligence-future-int"
+    ],
+    "text_anchor": "abstract, sentence 1: \"As artificial intelligence (AI) becomes increasingly embedded in everyday life, there is a growing expectation that graduates are savvy in utilizing these tools.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-preparing-students-for-the-generative-artificial-intelligence-future-int-2",
+    "statement": "However, arguably, more important than simply understanding how to utilize these tools is fostering AI literacy, that is, developing the skill to utilize AI tools and the ability to critically assess their utility.",
+    "source_ids": [
+      "src-preparing-students-for-the-generative-artificial-intelligence-future-int"
+    ],
+    "text_anchor": "abstract, sentence 2: \"However, arguably, more important than simply understanding how to utilize these tools is fostering AI literacy, that is, developing the skill to utilize AI tools and the ability to critically assess their utility.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-preparing-students-for-the-generative-artificial-intelligence-future-int-3",
+    "statement": "By engaging students in tasks that require interaction with AI tools like ChatGPT, educators can nurture both technical skills and the ability to discern the appropriate application and limitations of AI, an essential skill for preparing students for the complexities of the modern technological landscape.",
+    "source_ids": [
+      "src-preparing-students-for-the-generative-artificial-intelligence-future-int"
+    ],
+    "text_anchor": "abstract, sentence 4: \"By engaging students in tasks that require interaction with AI tools like ChatGPT, educators can nurture both technical skills and the ability to discern the appropriate application and limitations of AI, an essential skill for preparing students for the complexities of the modern technological landscape.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-inquiry-based-learning-in-stem-education-the-impact-of-generative-ai-bas",
+    "statement": "Although the widespread adoption of generative artificial intelligence (GenAI) presents new opportunities to improve this situation, empirical evidence regarding how it facilitates problem posing in inquiry-based learning remains limited.",
+    "source_ids": [
+      "src-inquiry-based-learning-in-stem-education-the-impact-of-generative-ai-bas"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Although the widespread adoption of generative artificial intelligence (GenAI) presents new opportunities to improve this situation, empirical evidence regarding how it facilitates problem posing in inquiry-based learning remains limited.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-inquiry-based-learning-in-stem-education-the-impact-of-generative-ai-bas-2",
+    "statement": "Epistemic network analysis further showed that the experimental group developed a more integrated network structure, whereas the control group exhibited a pattern of local clustering.",
+    "source_ids": [
+      "src-inquiry-based-learning-in-stem-education-the-impact-of-generative-ai-bas"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Epistemic network analysis further showed that the experimental group developed a more integrated network structure, whereas the control group exhibited a pattern of local clustering.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew",
+    "statement": "The results show that students\u2019 AI literacy exhibited significant multi-stage peak evolution: rapid early increases in textual depth and cultural integration, successive mid-term peaks in emotional engagement and ethical critique, later expansion of originality capabilities, and, by Week 8, the achievement of closed-loop internalization of cognition\u2013emotion\u2013responsibility through meta-reflection.",
+    "source_ids": [
+      "src-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew"
+    ],
+    "text_anchor": "abstract, sentence 5: \"The results show that students\u2019 AI literacy exhibited significant multi-stage peak evolution: rapid early increases in textual depth and cultural integration, successive mid-term peaks in emotional engagement and ethical critique, later expansion of originality capabilities, and, by Week 8, the achievement of closed-loop internalization of cognition\u2013emotion\u2013responsibility through meta-reflection.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew-2",
+    "statement": "The rapid development of generative artificial intelligence GenAI brings opportunities to K-12 education while simultaneously exacerbating the digital divide in low-resource regions.",
+    "source_ids": [
+      "src-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The rapid development of generative artificial intelligence GenAI brings opportunities to K-12 education while simultaneously exacerbating the digital divide in low-resource regions.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew-3",
+    "statement": "Centered on Seymour Papert\u2019s constructionism theory, it proposes the \u201cOffline GenAI Maker Education Peak Progressive Framework.\u201d Through an 8-week progressive curriculum basic narrative \u2192 cultural multimodal \u2192 emotional companionship \u2192 ethical guardianship \u2192 comprehensive originality \u2192 meta-reflection, a quasi-experimental intervention was conducted in a Grade 10 class N=50 at a rural high school in Hebei Province.",
+    "source_ids": [
+      "src-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Centered on Seymour Papert\u2019s constructionism theory, it proposes the \u201cOffline GenAI Maker Education Peak Progressive Framework.\u201d Through an 8-week progressive curriculum basic narrative \u2192 cultural multimodal \u2192 emotional companionship \u2192 ethical guardianship \u2192 comprehensive originality \u2192 meta-reflection, a quasi-experimental intervention was conducted in a Grade 10 class N=50 at a rural high school in Hebei Province.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null
   }
 ]

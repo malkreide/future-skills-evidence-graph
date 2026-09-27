@@ -9490,5 +9490,62 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "educator"
+  },
+  {
+    "id": "src-inquiry-based-learning-in-stem-education-the-impact-of-generative-ai-bas",
+    "title": "Inquiry-based learning in STEM education: the impact of generative AI-based Chatbots on primary school students\u2019 problem posing ability in science",
+    "authors": [
+      "Zhicheng Dai",
+      "Fei-Yan Huang",
+      "Junxia Xiong",
+      "Yue Yang",
+      "Qian Zhang",
+      "Xian Peng"
+    ],
+    "year": 2026,
+    "doi": "10.1186/s40594-026-00631-0",
+    "url": "https://www.semanticscholar.org/paper/e84072f027ac8aa86306881a38d9d79d846d3537",
+    "openalex_id": null,
+    "semantic_scholar_id": "e84072f027ac8aa86306881a38d9d79d846d3537",
+    "eric_id": null,
+    "publisher": "International Journal of STEM Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Problem posing serves as the starting point for inquiry-based learning in science, technology, engineering, and mathematics (STEM) education. However, it has not received sufficient attention in primary science education practices. Although the widespread adoption of generative artificial intelligence (GenAI) presents new opportunities to improve this situation, empirical evidence regarding how it facilitates problem posing in inquiry-based learning remains limited. This study employed a quasi-experimental design to systematically compare the effects of GenAI-based chatbots and search engines on primary school students\u2019 problem posing ability in science. A total of 97 third-grade students from a primary school in central China were randomly assigned by class to the experimental group (N\u2009=\u200948, using a GenAI-based chatbot) and the control group (N\u2009=\u200949, using a search engine). Following three rounds of progressive problem-based inquiry learning, students\u2019 problem posing ability, cognitive network structures, and learning experiences were analyzed and evaluated. Results showed that the use of chatbots significantly improved problem quality (t\u2009=\u20092.47, p\u2009=\u20090.015) and overall problem posing ability (t\u2009=\u20093.07, p\u2009=\u20090.003). Epistemic network analysis further showed that the experimental group developed a more integrated network structure, whereas the control group exhibited a pattern of local clustering. In addition, the experimental group reported lower cognitive load and higher technology acceptance. Overall, GenAI-based chatbots significantly outperformed search engines in facilitating problem posing. This study reveals the potential of GenAI in STEM education, providing empirical evidence for introducing GenAI tools into inquiry-based learning in primary science classrooms.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-rural-high-school-zero-cost-offline-generative-ai-maker-education-framew",
+    "title": "Rural High School Zero-Cost Offline Generative AI Maker Education Framework: Design, Implementation, and Research on AI Literacy Evolution in Rural China",
+    "authors": [
+      "Xia Yang"
+    ],
+    "year": 2026,
+    "doi": "10.66053/jaaie.v2i1.481",
+    "url": "https://www.semanticscholar.org/paper/d73cd09f0294aec6dfe249c809e77a96f637a281",
+    "openalex_id": null,
+    "semantic_scholar_id": "d73cd09f0294aec6dfe249c809e77a96f637a281",
+    "eric_id": null,
+    "publisher": "Journal of Applied Artificial Intelligence in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The rapid development of generative artificial intelligence GenAI brings opportunities to K-12 education while simultaneously exacerbating the digital divide in low-resource regions. This study addresses the realities of backward infrastructure and unstable networks in Chinese rural high schools by designing and validating a fully localized, zero-cost offline GenAI maker education framework. It utilizes the Ollama offline engine, Open WebUI interface, and text adventure game templates to achieve multimodal interaction in network-free environments. Centered on Seymour Papert\u2019s constructionism theory, it proposes the \u201cOffline GenAI Maker Education Peak Progressive Framework.\u201d Through an 8-week progressive curriculum basic narrative \u2192 cultural multimodal \u2192 emotional companionship \u2192 ethical guardianship \u2192 comprehensive originality \u2192 meta-reflection, a quasi-experimental intervention was conducted in a Grade 10 class N=50 at a rural high school in Hebei Province. The results show that students\u2019 AI literacy exhibited significant multi-stage peak evolution: rapid early increases in textual depth and cultural integration, successive mid-term peaks in emotional engagement and ethical critique, later expansion of originality capabilities, and, by Week 8, the achievement of closed-loop internalization of cognition\u2013emotion\u2013responsibility through meta-reflection. All dimensions showed pre- and post-intervention effect sizes of Cohen\u2019s d > 3.2 p < 0.001, using a researcher-developed 5-point standardized scale; due to the extremely low baseline among rural students and the narrow scoring range, a certain ceiling effect exists. All 50 students produced complete original interactive games that met the preset evaluation standards. The study validates the localized pathway of constructionism in low-resource contexts in the digital era, fills the empirical gap in fully offline GenAI education for rural high schools, and provides a replicable Chinese solution for educational equity in the Global South",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-21",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
   }
 ]
