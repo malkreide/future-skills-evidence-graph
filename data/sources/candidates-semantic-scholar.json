@@ -9547,5 +9547,60 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "learner"
+  },
+  {
+    "id": "src-the-effects-of-ai-convergence-education-based-on-community-connected-pro",
+    "title": "The Effects of AI Convergence Education Based on Community-Connected Project Learning on Middle School Students' AI Literacy",
+    "authors": [
+      "Dagyeom Lee",
+      "Youngjun Lee",
+      "Soyul Yi"
+    ],
+    "year": 2026,
+    "doi": "10.14352/jkaie.2026.30.4.751",
+    "url": "https://www.semanticscholar.org/paper/7e0870526195ddbecbab26b4b48852435164c304",
+    "openalex_id": null,
+    "semantic_scholar_id": "7e0870526195ddbecbab26b4b48852435164c304",
+    "eric_id": null,
+    "publisher": "Journal of the Korean Association of Information Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-generative-ai-in-supporting-science-and-numeracy-literacy-am",
+    "title": "The Role of Generative AI in Supporting Science and Numeracy Literacy Among Elementary School Students",
+    "authors": [
+      "A. Ghazali",
+      "M. Simanjuntak",
+      "Manto Lumban Gaol"
+    ],
+    "year": 2026,
+    "doi": "10.66324/ijphss.v1i4.243",
+    "url": "https://www.semanticscholar.org/paper/74ce777896ed47ca8011900b24d8dd2dac3ba490",
+    "openalex_id": null,
+    "semantic_scholar_id": "74ce777896ed47ca8011900b24d8dd2dac3ba490",
+    "eric_id": null,
+    "publisher": "International Journal of Pedagogical, Humanities and Social Studies",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The development of Generative Artificial Intelligence (GenAI) in primary education opens up new opportunities in improving the quality of learning, especially in the aspects of science literacy and numeracy of elementary school students which are still challenges in 21st century education. This study aims to analyze the role of GenAI in supporting science literacy and numeracy of elementary school students based on a literature review. The research method used is a non-systematic literature review with a thematic analysis approach to various scientific studies relevant to GenAI, science literacy, and numeracy literacy. The results of the study show that GenAI plays an important role in improving understanding of science concepts through visualization, simulation, and contextual explanation, as well as supporting numeracy literacy through adaptive exercises, context-based questions, and instant feedback according to students\u2019 abilities. In addition, GenAI also contributes to creating more personalized and interactive learning. However, its implementation still faces challenges such as the risk of misinformation (hallucination), algorithm bias, limited access to technology, and teachers\u2019 readiness to integrate technology. In conclusion, GenAI has great potential in supporting the improvement of science literacy and numeracy of elementary school students, but its success is highly dependent on teacher roles, learning design, and appropriate educational policies. Unlike prior studies, which largely address GenAI in higher education or general digital learning contexts, this review contributes novelty by specifically connecting GenAI to science literacy and numeracy simultaneously within the elementary school context, an area that remains limited in the existing literature.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
   }
 ]
