@@ -8831,5 +8831,108 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-what-students-need-to-thrive-in-a-data-and-ai-driven-world-perspectives",
+    "title": "What Students Need to Thrive in a Data- and AI-Driven World: Perspectives from Parents and Educators",
+    "authors": [
+      "Grady Deacon",
+      "Kara Conroy",
+      "Hannah Weissman"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED682667",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED682667",
+    "publisher": "Mathematica",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) and data-driven technologies are becoming part of students' everyday learning and future careers. As AI use in schools grows, educators, parents, and policymakers are working to identify the knowledge and skills students need to evaluate information, reason with data, and use AI responsibly. To better understand these perspectives, Mathematica and Data Science for Everyone surveyed parents, teachers, school administrators, and state and local education agency staff between February and March 2026. [This report was created with Data Science 4 Everyone.]",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-science-identity-and-ai-chatbots-a-systematic-review-of-empirical-studie",
+    "title": "Science Identity and AI Chatbots: A Systematic Review of Empirical Studies in Science Education",
+    "authors": [
+      "Kason Ka Ching Cheung"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s10956-026-10295-8",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1517612",
+    "publisher": "Journal of Science Education and Technology",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "A systematic review methodology was used to review publications on the emerging use of AI chatbots in science classroom, using the traditional and refined model of science identity. The traditional model of science identity entails how an individual recognises himself or herself as a science person, while the refined model of science identity more ambitiously considers how an individual was being recognised as doing science by AI chatbots and their peers. Thus, the traditional model of science identity entails interest, performance/competence and recognition. Whereas in the refined model, science identity is defined as entailing \"disciplinary epistemic affect, students' self-competence in scientific practices\" as well as \"recognition as a 'science person' by peers and chatbots.\" This review aims to identify strengths and weaknesses of 19 studies in terms of training AI chatbots, technical pedagogical design, targeted outcomes and changes in these outcomes. Results show that AI chatbots in these studies mostly target outcomes and pedagogical design regarding students' interest in science, while their attention to disciplinary epistemic affect, students' self-competence in scientific practices and recognition as a \"science person\" is minimal. Hence, this review proposes incorporating the refined model of science identity into pedagogical design, teacher education and curriculum development in the use of AI chatbots in science education.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-young-people-s-teachers-and-families-use-of-generative-ai-to-support-lit",
+    "title": "Young People's, Teachers' and Families' Use of Generative AI to Support Literacy in 2026",
+    "authors": [],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED682722",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED682722",
+    "publisher": "National Literacy Trust",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "Amid ongoing debates about the impact of AI on education, generative AI tools are becoming a routine part of life for many young people in 2026. As engagement increases, attitudes are changing. Implications of generative AI for contemporary literacy practices has been explored since early 2023. This summary brings together survey data from 40,543 young people aged 13 to 18, 2,567 teachers, and 3,073 parents of children aged 5 to 18, with insights from focus groups and interviews to look in more depth at how AI is being used, experienced and understood in relation to learning and literacy in 2026. Findings show that for some, AI tools are changing how they engage with information, ideas and writing, while for others, they are used less critically or are actively avoided.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-bridging-ai-literacy-and-ai-pedagogy-in-teacher-education-and-profession",
+    "title": "Bridging AI Literacy and AI Pedagogy in Teacher Education and Professional Development: A Multiple Case Study of AI in Education (AIEd) Certificate Programs",
+    "authors": [
+      "Chaoran Wang",
+      "Meina Zhu"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://doi.org/10.70725/638212rjkdxq",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1517127",
+    "publisher": "Journal of Technology and Teacher Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "While research has increasingly examined teachers' attitudes and classroom practices related to AI, teacher preparation and professional development at programmatic level remain underexplored. This multiple case study investigates how three early-established AI in Education (AIED) certificate programs in the US contextualize and design AI-related learning, focusing on the connection between AI literacy and AI pedagogy. Our cross-case analysis identifies distinct ways in which these programs cultivate teachers' capacities to lead, design, and teach with AI. Building on these findings, we propose an AI literacy-pedagogy nexus as a framework for curricular models that position AI literacy and pedagogy as co-evolving through conceptual-ethical grounding, design-application, and collaborative mediation. This nexus supports teachers' reflective and adaptive engagement with AI beyond an acquisition of technical skills but as a continuous practice of inquiry, reflection, and ethical response. The study provides empirical and conceptual insights for AI relevant teacher education and professional development.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
   }
 ]

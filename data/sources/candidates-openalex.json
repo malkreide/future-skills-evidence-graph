@@ -7846,5 +7846,30 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "learner"
+  },
+  {
+    "id": "src-robotics-and-computational-thinking-in-primary-school",
+    "title": "Robotics and computational thinking in primary school",
+    "authors": [
+      "Christina Chalmers"
+    ],
+    "year": 2018,
+    "doi": "10.1016/j.ijcci.2018.06.005",
+    "url": "https://openalex.org/W2810441541",
+    "openalex_id": "https://openalex.org/W2810441541",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Child-Computer Interaction",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-09-28",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]
