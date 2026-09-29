@@ -1026,6 +1026,25 @@ class StoredWorksheetFreshnessTests(unittest.TestCase):
         finally:
             ea.BASELINE_DOC = original
 
+    def test_no_sheet_sends_its_rater_to_the_answer_key(self) -> None:
+        # The embedded README once called the anchors document "the full
+        # version" of the rubric. That document names boundary cases WITH
+        # their ratings -- nine of the ten calibration cases among them --
+        # so the sheet itself told a blind rater where the answers were.
+        # Checked on the generator and on every stored sheet, because the
+        # rubric comparison above never looks at the README.
+        exposing = [f"docs/{doc.name}" for doc in ea.EXPOSURE_DOCS]
+        sheets = [("generated", ea.build_worksheet("claim_prefill"))] + [
+            (path.name, json.loads(path.read_text(encoding="utf-8")))
+            for path in self._stored()
+        ]
+        for name, sheet in sheets:
+            readme = sheet["_README"]
+            with self.subTest(name):
+                for doc in exposing:
+                    self.assertNotIn(doc, readme)
+                self.assertIn("do NOT open the methodology documents", readme)
+
     def test_completed_passes_are_not_required_to_be_current(self) -> None:
         # The opposite rule for a measured pass: it recorded the rules it
         # measured, and re-stamping it would rewrite history.

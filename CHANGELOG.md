@@ -40,6 +40,21 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Fixed
 
+- **Die Bögen schickten ihre bewertende Person zum Lösungsschlüssel.** Das
+  eingebettete `_README` jedes Bewertungsbogens nannte
+  `docs/evidenz-bewertung-anker.md` „the full version" der Rubrik. Genau
+  dieses Dokument lehrt an benannten Fällen **mitsamt ihrer Bewertung** —
+  darunter 9 der 10 Kalibrierfälle. Wer der Anweisung im Bogen folgte,
+  erinnerte sich statt zu urteilen, und die Kalibrierrunde hätte scheinbare
+  Übereinstimmung statt Rubrik-Unklarheiten gezeigt. Das `_README` sagt
+  jetzt, dass die Rubrik im Bogen vollständig ist und die
+  Methodendokumente nicht geöffnet werden sollen; alle drei Bögen sind neu
+  erzeugt. Aufgefallen beim Vorbereiten der ersten Übergabe an eine
+  externe Person. Die Frischeprüfung verglich nur die `rubrik_*`-Felder
+  und hätte einen veralteten README-Satz nie bemerkt; ein eigener Test
+  prüft ihn jetzt im Generator und in jedem abgelegten Bogen.
+
+
 - **Eine umbrochene Notiz zerlegte den Bericht.** `protocol.notes` wird
   von Hand in eine JSON-Datei getippt; ein Zeilenumbruch darin brach die
   Einrückung jedes folgenden Vergleichsblocks. Die Notiz wird beim
