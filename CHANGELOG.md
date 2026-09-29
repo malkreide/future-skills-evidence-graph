@@ -14,6 +14,25 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Bewertungsbögen als Excel** (`scripts/worksheet_xlsx.py`, Export und
+  Import). Ein JSON-Bogen im Texteditor ist für die meisten Bewertenden
+  der falsche Arbeitsplatz: ein vergessenes Anführungszeichen macht die
+  Datei unlesbar. Die Excel-Fassung hat eine Auswahlliste pro Feld und die
+  Rubrik als eigenes Blatt; der Import übersetzt die ausgefüllte Datei
+  zurück in genau das JSON, das `--second-rater` auswertet. Geschützt ist
+  dabei die Messung: exportiert wird nur ein leerer Bogen, das Original
+  reist mit Prüfsumme mit und nur die Antworten werden übernommen,
+  zugeordnet über die Fall-ID; ein von Excel in ein Datum verwandeltes
+  `10-12` wird zurückgewiesen statt zurückgeraten. `openpyxl` ist neu in
+  `requirements-dev.txt`, gepinnt, und wird nur in diesem Skript geladen.
+  Beim Bauen gefunden: das erste Formatbeispiel handelte von einem
+  Leseprogramm — einer der zehn Kalibrierfälle ist eine Leseförderung.
+  Das Beispiel ist jetzt themenfremd und zeigt nur Einträge, die keine
+  Rubrikentscheidung vorwegnehmen. Ebenso ausgeblendet ist die Spalte mit
+  der Fall-ID, weil manche IDs das Design (`…-rct`) oder den Dokumenttyp
+  (`policy-…`) verraten; der Import liest sie trotzdem.
+
+
 - **Vorlage für `protocol.notes`** in `docs/eval-baseline.md`. Die Notiz
   ist das einzige Feld, das festhält, *warum* eine gemessene Zahl mit
   Vorbehalt zu lesen ist, und sie war bisher unstrukturiert. Vier Angaben
