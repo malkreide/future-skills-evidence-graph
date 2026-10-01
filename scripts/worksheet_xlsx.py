@@ -294,10 +294,11 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
 
     ws.column_dimensions["A"].width = 5
     ws.column_dimensions["B"].width = 14
-    # Hidden, not removed: import matches answers by this ID. Some IDs
-    # carry a hint -- 'prefill-coding-secondary-rct' names the design,
-    # 'prefill-policy-ai-ethics' the document type -- and a rater has
-    # no use for them; the case number is what they talk about.
+    # Hidden, not removed: import matches answers by this ID. Worksheets
+    # now carry opaque IDs (eval_agreement.rater_key), so it no longer
+    # leaks anything -- but a hash is noise to a rater, and the case
+    # number is what they talk about. A workbook exported from an older
+    # sheet still holds real IDs here, which is one more reason to hide it.
     ws.column_dimensions["B"].hidden = True
     for offset, field in enumerate(context):
         ws.column_dimensions[_col(3 + offset)].width = CONTEXT_WIDTHS.get(field, 20)

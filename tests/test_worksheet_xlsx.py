@@ -296,9 +296,9 @@ class WorkbookShapeTests(_Workbook):
                 self.assertEqual(ws.cell(2, index).protection.locked, name not in rated)
 
     def test_the_case_id_is_kept_but_out_of_sight(self) -> None:
-        # Import needs the ID; the rater should not read it. Some IDs name
-        # the design ("-rct") or the document type ("policy-"), and two end
-        # in "-null" although their direction is not_applicable.
+        # Import needs the ID; the rater has no use for it. Worksheets
+        # carry opaque IDs now, but a workbook made from an older sheet
+        # still holds real ones -- some of which name the answer.
         wb, col = self.open()
         ws = wb[wx.SHEET_RATING]
         self.assertEqual(col["Fall-ID"], 2)

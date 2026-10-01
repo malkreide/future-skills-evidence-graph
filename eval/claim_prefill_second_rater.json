@@ -48,7 +48,7 @@
   "rubrik_legacy_felder": "evidence_strength und age_range sind die ALTEN Felder und werden nur mitgefuehrt, damit sich beide Skalen an derselben Lektuere vergleichen lassen. evidence_strength: low|moderate|strong nach der alten, vermischenden Rubrik. age_range: die alte Praxis inklusive aus der Schulstufe geschaetzter Spannen. Wer nur die neue Skala bewerten will, laesst beide null.",
   "labels": [
     {
-      "key": "prefill-ai-literacy-primary",
+      "key": "case-ac71cafa19",
       "statement": "We find that structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs.",
       "abstract": "We synthesise 18 classroom studies of AI literacy instruction in European primary schools. We find that structured AI literacy lessons improve pupils' ability to critically evaluate machine-generated outputs. Effects were consistent across the reviewed interventions.",
       "source_type": "systematic_review",
@@ -62,7 +62,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-coding-secondary-rct",
+      "key": "case-040271bc57",
       "statement": "Students in the treatment group showed significantly higher computational thinking scores than controls.",
       "abstract": "A randomised controlled trial with 240 secondary students in Germany evaluated a block-based programming curriculum. Students in the treatment group showed significantly higher computational thinking scores than controls. The intervention ran for one semester.",
       "source_type": "peer_reviewed_article",
@@ -76,7 +76,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-collaboration-middle",
+      "key": "case-9ad6d69f3b",
       "statement": "Results indicate that sustained group projects improved students' collaboration and peer-feedback skills.",
       "abstract": "This study examined project-based collaborative learning in middle-school science classrooms across three districts. Results indicate that sustained group projects improved students' collaboration and peer-feedback skills. Teachers reported higher engagement.",
       "source_type": "peer_reviewed_article",
@@ -90,7 +90,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-data-literacy-highschool",
+      "key": "case-c61c3e7c8f",
       "statement": "Post-test scores improved, with the largest gains for students with low prior numeracy.",
       "abstract": "We taught a data literacy module to 95 high-school students and measured changes in their ability to interpret charts and detect misleading statistics. Post-test scores improved, with the largest gains for students with low prior numeracy. The module lasted six weeks.",
       "source_type": "peer_reviewed_article",
@@ -104,7 +104,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-self-regulation-elementary",
+      "key": "case-23d55413b8",
       "statement": "The evidence suggests that explicit goal-setting and self-monitoring routines modestly improve task persistence.",
       "abstract": "A meta-analysis of 32 studies investigated self-regulated learning interventions for elementary pupils. The evidence suggests that explicit goal-setting and self-monitoring routines modestly improve task persistence. Heterogeneity across studies was high.",
       "source_type": "systematic_review",
@@ -118,7 +118,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-creativity-design",
+      "key": "case-ffc647b9ec",
       "statement": "The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric.",
       "abstract": "In a quasi-experimental design, two secondary cohorts followed a design-thinking unit. The treatment cohort produced more original and more feasible solutions on a standardised creativity rubric. Sample size was modest at 84 students.",
       "source_type": "peer_reviewed_article",
@@ -132,7 +132,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-digital-citizenship",
+      "key": "case-9171927b0b",
       "statement": "It argues that media-evaluation skills should be introduced earlier, but it presents no new measured learning outcomes.",
       "abstract": "This policy report reviews national digital citizenship curricula. It argues that media-evaluation skills should be introduced earlier, but it presents no new measured learning outcomes. Recommendations target ministries of education.",
       "source_type": "policy_report",
@@ -146,7 +146,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-physics-simulations",
+      "key": "case-8be336627e",
       "statement": "Students using simulations demonstrated deeper conceptual understanding on a transfer test.",
       "abstract": "We compared interactive simulations to traditional lectures for teaching mechanics to 11th-grade physics students. Students using simulations demonstrated deeper conceptual understanding on a transfer test. The study involved four classes.",
       "source_type": "peer_reviewed_article",
@@ -160,7 +160,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-reading-comprehension",
+      "key": "case-5a1398b54d",
       "statement": "Results show consistent, moderate improvements in comprehension across 21 studies.",
       "abstract": "A systematic review of reciprocal teaching examined its effect on reading comprehension in upper-primary classrooms. Results show consistent, moderate improvements in comprehension across 21 studies. The approach was robust to different text genres.",
       "source_type": "systematic_review",
@@ -174,7 +174,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-ai-tutor-math",
+      "key": "case-9ea3768643",
       "statement": "Students using the tutor solved more problems correctly than a worksheet control group.",
       "abstract": "An adaptive AI tutoring system was deployed for algebra practice with 310 secondary students over eight weeks. Students using the tutor solved more problems correctly than a worksheet control group. Gains were largest among initially struggling students.",
       "source_type": "peer_reviewed_article",
@@ -188,7 +188,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-emotional-regulation",
+      "key": "case-c841bd092e",
       "statement": "Children in the program showed improved emotional regulation and fewer conflicts.",
       "abstract": "A classroom social-emotional learning program for early primary children was evaluated with teacher ratings. Children in the program showed improved emotional regulation and fewer conflicts. The study used a waitlist control.",
       "source_type": "peer_reviewed_article",
@@ -202,7 +202,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-robotics-club",
+      "key": "case-f4eff4033a",
       "statement": "We present a six-step design for the club's activities.",
       "abstract": "This working paper describes an after-school robotics club and reports preliminary engagement data. We present a six-step design for the club's activities. No comparison group or learning outcome was measured.",
       "source_type": "working_paper",
@@ -216,7 +216,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-writing-feedback",
+      "key": "case-5749a43198",
       "statement": "Students who received automated feedback revised more substantively and improved essay quality scores.",
       "abstract": "We studied automated writing feedback for argumentative essays among 150 high-school students. Students who received automated feedback revised more substantively and improved essay quality scores. Improvements held at a delayed post-test.",
       "source_type": "peer_reviewed_article",
@@ -230,7 +230,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-inquiry-biology",
+      "key": "case-11d6b93426",
       "statement": "Students in the inquiry condition retained more conceptual knowledge after six months.",
       "abstract": "Guided-inquiry biology lessons were compared with direct instruction in lower-secondary classrooms. Students in the inquiry condition retained more conceptual knowledge after six months. Engagement measures also favoured inquiry.",
       "source_type": "peer_reviewed_article",
@@ -244,7 +244,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-gamified-vocab",
+      "key": "case-c95ff48b3c",
       "statement": "Children using the app learned and retained more vocabulary than those using flashcards.",
       "abstract": "A gamified vocabulary app was trialled with primary English-language learners. Children using the app learned and retained more vocabulary than those using flashcards. The trial ran for four weeks with 120 pupils.",
       "source_type": "peer_reviewed_article",
@@ -258,7 +258,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-peer-tutoring",
+      "key": "case-2177b7bea0",
       "statement": "Findings indicate small-to-moderate gains in achievement for both tutors and tutees.",
       "abstract": "This review synthesises peer-tutoring programs in secondary mathematics. Findings indicate small-to-moderate gains in achievement for both tutors and tutees. Effects were stronger in structured, well-monitored programs.",
       "source_type": "systematic_review",
@@ -272,7 +272,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-handwriting-tablet",
+      "key": "case-6a2d12f810",
       "statement": "Both groups improved legibility, with no significant difference between conditions.",
       "abstract": "We compared tablet-based and paper-based handwriting instruction for first graders. Both groups improved legibility, with no significant difference between conditions. The study followed 60 children over a term.",
       "source_type": "peer_reviewed_article",
@@ -286,7 +286,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-flipped-classroom",
+      "key": "case-ef1eeef2c5",
       "statement": "Students completed more practice in class and achieved higher exam scores than in the prior traditional year.",
       "abstract": "A flipped-classroom model was implemented in upper-secondary chemistry. Students completed more practice in class and achieved higher exam scores than in the prior traditional year. The comparison was non-randomised.",
       "source_type": "peer_reviewed_article",
@@ -300,7 +300,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-mindset-intervention",
+      "key": "case-fe443e99e4",
       "statement": "A review of growth-mindset interventions across school ages reports that effects on achievement are small and concentrated among disadvantaged students.",
       "abstract": "A review of growth-mindset interventions across school ages reports that effects on achievement are small and concentrated among disadvantaged students. Many studies had methodological limitations. The authors urge cautious interpretation.",
       "source_type": "systematic_review",
@@ -314,7 +314,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-coding-unplugged",
+      "key": "case-8c5449581a",
       "statement": "Pupils improved on algorithmic-thinking tasks compared with a control class.",
       "abstract": "An unplugged computing curriculum was evaluated with early-primary pupils who had no computer access. Pupils improved on algorithmic-thinking tasks compared with a control class. The intervention used physical games and cards.",
       "source_type": "peer_reviewed_article",
@@ -328,7 +328,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-vr-history",
+      "key": "case-9ce2d34016",
       "statement": "Students reported high engagement, but knowledge-test gains did not differ from a video condition.",
       "abstract": "A virtual-reality history experience was tested with secondary students. Students reported high engagement, but knowledge-test gains did not differ from a video condition. The sample comprised two classes.",
       "source_type": "peer_reviewed_article",
@@ -342,7 +342,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-adult-mooc",
+      "key": "case-3742da6a23",
       "statement": "Learners who set weekly goals completed more modules.",
       "abstract": "This study analysed completion patterns in a university MOOC for adult professionals. Learners who set weekly goals completed more modules. The cohort ranged from 22 to 55 years old.",
       "source_type": "peer_reviewed_article",
@@ -356,7 +356,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-early-numeracy-preschool",
+      "key": "case-c88de6dc84",
       "statement": "Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison.",
       "abstract": "We evaluated a manipulatives-based number-sense program with 130 preschool children in two countries. Children in the program showed stronger early numeracy, particularly in counting and magnitude comparison. The program ran for ten weeks with trained educators.",
       "source_type": "peer_reviewed_article",
@@ -370,7 +370,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-phonics-reception",
+      "key": "case-f0df5d9b95",
       "statement": "The evidence consistently shows improved word reading and decoding accuracy.",
       "abstract": "A systematic review of 28 trials examined systematic synthetic phonics in the first years of formal schooling. The evidence consistently shows improved word reading and decoding accuracy. Effects were robust across languages with transparent orthographies.",
       "source_type": "systematic_review",
@@ -384,7 +384,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-cyber-safety-middle",
+      "key": "case-211e3bc537",
       "statement": "Students who completed it reported fewer risky online disclosures and better password practices at a two-month follow-up.",
       "abstract": "A cyber-safety curriculum was delivered to middle-school students across eleven schools. Students who completed it reported fewer risky online disclosures and better password practices at a two-month follow-up. The design was a matched-school comparison.",
       "source_type": "peer_reviewed_article",
@@ -398,7 +398,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-financial-literacy-secondary",
+      "key": "case-5be9c0fe61",
       "statement": "Players improved their budgeting knowledge and reported greater confidence managing money.",
       "abstract": "A budgeting simulation game was trialled with 180 secondary students to teach personal finance. Players improved their budgeting knowledge and reported greater confidence managing money. The study used a pre-post design without a control group.",
       "source_type": "peer_reviewed_article",
@@ -412,7 +412,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-music-cognition",
+      "key": "case-f8768e7bd7",
       "statement": "The trained group showed modest gains in working memory and inhibitory control.",
       "abstract": "A small quasi-experiment gave 48 primary children weekly music training and measured executive-function tasks. The trained group showed modest gains in working memory and inhibitory control. The sample was small and not randomised.",
       "source_type": "peer_reviewed_article",
@@ -426,7 +426,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-debate-civics",
+      "key": "case-210196ab62",
       "statement": "Students improved measurably in argument quality and willingness to consider opposing views.",
       "abstract": "Structured classroom debate was introduced in upper-secondary civics lessons across six schools. Students improved measurably in argument quality and willingness to consider opposing views. Teachers implemented a common debate protocol.",
       "source_type": "peer_reviewed_article",
@@ -440,7 +440,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-dyslexia-app",
+      "key": "case-dcbd794cf6",
       "statement": "App users improved decoding speed and accuracy more than the comparison group.",
       "abstract": "A multisensory reading app for children with dyslexia was evaluated against standard remediation. App users improved decoding speed and accuracy more than the comparison group. The trial enrolled 72 children over twelve weeks.",
       "source_type": "peer_reviewed_article",
@@ -454,7 +454,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-adhd-selfmonitor",
+      "key": "case-5b9c7537c7",
       "statement": "Using the tool, students reduced off-task behaviour and completed more independent work.",
       "abstract": "A tablet self-monitoring tool was tested with primary students showing attention difficulties. Using the tool, students reduced off-task behaviour and completed more independent work. The study used a single-case multiple-baseline design.",
       "source_type": "peer_reviewed_article",
@@ -468,7 +468,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-gifted-acceleration",
+      "key": "case-8d1ff4489b",
       "statement": "Across the evidence, accelerated students achieved more without social-emotional harm.",
       "abstract": "This systematic review synthesised studies of academic acceleration for high-ability students. Across the evidence, accelerated students achieved more without social-emotional harm. The review covered both grade-skipping and subject acceleration.",
       "source_type": "systematic_review",
@@ -482,7 +482,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-outdoor-science",
+      "key": "case-119a0e70b5",
       "statement": "Outdoor learners gained more environmental knowledge and reported more positive attitudes to science.",
       "abstract": "A place-based outdoor science unit was compared with classroom-only instruction in two primary cohorts. Outdoor learners gained more environmental knowledge and reported more positive attitudes to science. The comparison was quasi-experimental.",
       "source_type": "peer_reviewed_article",
@@ -496,7 +496,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-spaced-retrieval",
+      "key": "case-c0c7299bee",
       "statement": "Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study.",
       "abstract": "A review of spaced retrieval practice in schools analysed its effect on durable learning. Findings show that distributing retrieval over time reliably improves long-term retention compared with massed study. The benefit held across subjects and school ages.",
       "source_type": "systematic_review",
@@ -510,7 +510,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-translanguaging-bilingual",
+      "key": "case-5b97725393",
       "statement": "Pupils allowed to draw on both languages understood science content better and participated more.",
       "abstract": "We studied translanguaging pedagogy in bilingual primary classrooms over a school year. Pupils allowed to draw on both languages understood science content better and participated more. The study used teacher logs and content assessments.",
       "source_type": "peer_reviewed_article",
@@ -524,7 +524,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-ai-feedback-coding",
+      "key": "case-08e2a86f2b",
       "statement": "Students using it fixed bugs faster and submitted more working programs than a control class.",
       "abstract": "An AI tool giving real-time feedback on student code was deployed in lower-secondary computing. Students using it fixed bugs faster and submitted more working programs than a control class. The deployment lasted seven weeks.",
       "source_type": "peer_reviewed_article",
@@ -538,7 +538,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-misinformation-game",
+      "key": "case-627e9611fd",
       "statement": "Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later.",
       "abstract": "An inoculation 'prebunking' game was tested with secondary students to build resistance to misinformation. Players became better at spotting manipulation techniques in headlines, with gains persisting two weeks later. The trial randomised classes to game or control.",
       "source_type": "peer_reviewed_article",
@@ -552,7 +552,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-chatbot-design-null",
+      "key": "case-6b83b80ba4",
       "statement": "We detail the dialogue-management design and planned classroom integration.",
       "abstract": "This working paper outlines the architecture of a conversational chatbot for language practice. We detail the dialogue-management design and planned classroom integration. No learning outcomes were measured in this phase.",
       "source_type": "working_paper",
@@ -566,7 +566,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-formative-assessment",
+      "key": "case-bc27ae5f88",
       "statement": "The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels.",
       "abstract": "A synthesis of classroom formative-assessment studies examined effects on attainment. The evidence indicates that frequent, feedback-rich formative assessment raises achievement across grade levels. Effects were larger when feedback was specific and actionable.",
       "source_type": "systematic_review",
@@ -580,7 +580,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-game-fractions",
+      "key": "case-3dbc97be8a",
       "statement": "Players developed stronger conceptual understanding of fractions than a worksheet group.",
       "abstract": "A digital game targeting fraction concepts was trialled with upper-primary pupils. Players developed stronger conceptual understanding of fractions than a worksheet group. The four-week trial involved 110 pupils.",
       "source_type": "peer_reviewed_article",
@@ -594,7 +594,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-pair-programming",
+      "key": "case-ab8d75030a",
       "statement": "Paired students solved problems more successfully and reported higher confidence.",
       "abstract": "Pair programming was introduced in a secondary computing course and compared with solo work. Paired students solved problems more successfully and reported higher confidence. The study ran across two terms with rotating pairs.",
       "source_type": "peer_reviewed_article",
@@ -608,7 +608,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-ar-anatomy",
+      "key": "case-aa76e4d5ad",
       "statement": "Students using the app were more engaged, but post-test anatomy knowledge did not differ between conditions.",
       "abstract": "An augmented-reality anatomy app was compared with a textbook in upper-secondary biology. Students using the app were more engaged, but post-test anatomy knowledge did not differ between conditions. The sample comprised three classes.",
       "source_type": "peer_reviewed_article",
@@ -622,7 +622,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-policy-ai-ethics",
+      "key": "case-878caf90c2",
       "statement": "It recommends clearer guidance for teachers and students but reports no measured learning outcomes.",
       "abstract": "This policy report reviews how school systems address the ethics of AI use in classrooms. It recommends clearer guidance for teachers and students but reports no measured learning outcomes. The report targets regional education authorities.",
       "source_type": "policy_report",
@@ -636,7 +636,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-mother-tongue-literacy",
+      "key": "case-f28d5f53c7",
       "statement": "The evidence shows that initial literacy in the home language improves early reading outcomes.",
       "abstract": "A review examined mother-tongue-based instruction in the early grades of multilingual countries. The evidence shows that initial literacy in the home language improves early reading outcomes. Transfer to the second language was also supported.",
       "source_type": "systematic_review",
@@ -650,7 +650,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-worked-examples-math",
+      "key": "case-73729dc1c8",
       "statement": "Students given worked examples learned more efficiently and scored higher on a delayed test.",
       "abstract": "A randomised study compared worked examples with conventional problem-solving for teaching algebra. Students given worked examples learned more efficiently and scored higher on a delayed test. The trial involved 200 lower-secondary students.",
       "source_type": "peer_reviewed_article",
@@ -664,7 +664,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-vr-empathy",
+      "key": "case-1e7b8cc23b",
       "statement": "Immediately afterwards students reported higher empathy, but the effect was not measured beyond the session.",
       "abstract": "A virtual-reality perspective-taking experience was tested with secondary students to foster empathy. Immediately afterwards students reported higher empathy, but the effect was not measured beyond the session. The study had no active control.",
       "source_type": "peer_reviewed_article",
@@ -678,7 +678,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-notetaking-longhand",
+      "key": "case-55bb7faa91",
       "statement": "Students taking longhand notes recalled slightly more conceptual content on a later quiz.",
       "abstract": "We compared longhand and laptop note-taking among lower-secondary students during science lessons. Students taking longhand notes recalled slightly more conceptual content on a later quiz. Differences were small and varied by topic.",
       "source_type": "peer_reviewed_article",
@@ -692,7 +692,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-girls-coding-club",
+      "key": "case-49cccdf9cb",
       "statement": "Participants reported higher coding self-efficacy and interest in computing careers.",
       "abstract": "An all-girls coding club ran weekly across a school year in an underserved district. Participants reported higher coding self-efficacy and interest in computing careers. Engagement was measured by surveys and attendance.",
       "source_type": "peer_reviewed_article",
@@ -706,7 +706,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-mindfulness-attention",
+      "key": "case-20a4123a32",
       "statement": "Children in the program showed improved sustained attention on a standardised task.",
       "abstract": "A classroom mindfulness program was evaluated with a cluster-randomised design in primary schools. Children in the program showed improved sustained attention on a standardised task. Twelve classes participated over eight weeks.",
       "source_type": "peer_reviewed_article",
@@ -720,7 +720,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-adult-digital-literacy",
+      "key": "case-203ce1defa",
       "statement": "Participants improved their ability to use online public services after the course.",
       "abstract": "This study evaluated a community digital-literacy course for adult learners aged 25 to 55. Participants improved their ability to use online public services after the course. The evaluation used pre- and post-course assessments.",
       "source_type": "peer_reviewed_article",
@@ -734,7 +734,7 @@
       "age_range": null
     },
     {
-      "key": "prefill-stem-camp-null",
+      "key": "case-1779c69144",
       "statement": "We outline the project sequence and share preliminary interest-survey responses.",
       "abstract": "This working paper describes the curriculum design of a two-week summer STEM camp. We outline the project sequence and share preliminary interest-survey responses. No learning outcomes were measured.",
       "source_type": "working_paper",

@@ -59,6 +59,24 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Fixed
 
+- **Bewertungsbögen verrieten Antworten über die Fall-ID.** Der Bogen
+  zeigte jedem Fall seine echte ID, und einige davon wurden mit der
+  Antwort im Kopf vergeben: eine endet auf `-rct` und nennt das Design,
+  eine beginnt mit dem Dokumenttyp, und zwei enden auf `-null`, obwohl
+  ihre `effect_direction` `not_applicable` ist. Diese beiden zeigten also
+  in die falsche Richtung. (Die IDs stehen hier bewusst nicht
+  ausgeschrieben: eine Nennung mit Antwort verbrennt den Fall.) Die Bögen tragen jetzt
+  undurchsichtige IDs (`eval_agreement.rater_key`, ein Hash aus Datensatz
+  und echter ID). Die Auswertung rechnet ihn nach und braucht deshalb
+  keine Zuordnungstabelle im Bogen. Alle drei abgelegten Bögen sind neu
+  erzeugt, und ein Test stellt sicher, dass keiner eine echte ID enthält,
+  egal an welcher Stelle. Der gemessene Durchgang vom 2026-08-14 trägt
+  echte IDs und wertet Zeile für Zeile identisch aus (gesamter Bericht vor
+  und nach der Änderung verglichen). `--explain` zeigt nach der Bewertung
+  beide IDs. Ein bereits exportierter Excel-Bogen mit echten IDs lässt
+  sich weiterhin zurücklesen.
+
+
 - **Die Bögen schickten ihre bewertende Person zum Lösungsschlüssel.** Das
   eingebettete `_README` jedes Bewertungsbogens nannte
   `docs/evidenz-bewertung-anker.md` „the full version" der Rubrik. Genau
