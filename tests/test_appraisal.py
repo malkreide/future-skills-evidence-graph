@@ -767,7 +767,7 @@ class WeightedKappaTests(unittest.TestCase):
         import tempfile
 
         worksheet = ea.build_worksheet("claim_prefill")
-        primary = ea.primary_labels("claim_prefill")
+        primary = ea.primary_by_rater_key("claim_prefill")
         for item in worksheet["labels"]:
             for field in ea.SECOND_RATER_FIELDS["claim_prefill"]:
                 item[field] = primary[item["key"]].get(field)
@@ -802,7 +802,7 @@ class CatalogWorksheetTests(unittest.TestCase):
 
     def test_it_covers_every_appraised_claim(self) -> None:
         keys = {item["key"] for item in self.worksheet["labels"]}
-        self.assertEqual(keys, set(ea.primary_labels("catalog")))
+        self.assertEqual(keys, set(ea.primary_by_rater_key("catalog")))
         self.assertGreaterEqual(len(keys), 59)
 
     def test_it_withholds_the_review_written_fields(self) -> None:
@@ -836,7 +836,7 @@ class CatalogWorksheetTests(unittest.TestCase):
     def test_a_completed_pass_scores_against_the_stored_appraisals(self) -> None:
         import tempfile
 
-        primary = ea.primary_labels("catalog")
+        primary = ea.primary_by_rater_key("catalog")
         for item in self.worksheet["labels"]:
             for field in ea.SECOND_RATER_FIELDS["catalog"]:
                 item[field] = primary[item["key"]].get(field)
@@ -857,7 +857,7 @@ class NarrowedWorksheetTests(unittest.TestCase):
 
     def _completed(self, fields):
         worksheet = ea.build_worksheet("catalog", fields)
-        primary = ea.primary_labels("catalog")
+        primary = ea.primary_by_rater_key("catalog")
         for item in worksheet["labels"]:
             for field in worksheet["protocol"]["rated_fields"]:
                 item[field] = primary[item["key"]].get(field)
@@ -993,7 +993,7 @@ class StoredWorksheetFreshnessTests(unittest.TestCase):
         # order, the guide keeps the order it explains the cases in.
         self.assertEqual(
             sorted(item["key"] for item in stored["labels"]),
-            sorted(ea.calibration_cases()),
+            sorted(ea.rater_key("claim_prefill", key) for key in ea.calibration_cases()),
         )
         self.assertEqual(len(stored["labels"]), 10)
         # And it must hold no answers, like any blank sheet.
@@ -1052,6 +1052,94 @@ class StoredWorksheetFreshnessTests(unittest.TestCase):
             protocol = json.loads(path.read_text(encoding="utf-8"))["protocol"]
             with self.subTest(path.name):
                 self.assertTrue(protocol.get("appraisal_method_at_rating"))
+
+
+class RaterKeyTests(unittest.TestCase):
+    """A worksheet never shows a rater the real ID of a case."""
+
+    # IDs that were written with the answer in mind. Named here so the
+    # test says what it protects against, not just that IDs are hashed.
+    TELLING = {
+        "prefill-coding-secondary-rct": "names the design",
+        "prefill-policy-ai-ethics": "names the document type",
+        "prefill-chatbot-design-null": "says null, gold is not_applicable",
+        "prefill-stem-camp-null": "says null, gold is not_applicable",
+    }
+
+    def _blank_sheets(self):
+        return [
+            (path.name, path.read_text(encoding="utf-8"))
+            for path in StoredWorksheetFreshnessTests()._stored()
+        ]
+
+    def test_no_stored_sheet_contains_a_real_id_anywhere(self) -> None:
+        # Anywhere, not just in "key": a real ID in the README, a rubric
+        # or a protocol field would be the same leak by another door.
+        for name, text in self._blank_sheets():
+            document = json.loads(text)
+            set_name = document["protocol"]["source_set"]
+            for key in ea.primary_labels(set_name):
+                with self.subTest(name, key=key):
+                    self.assertNotIn(key, text)
+
+    def test_the_telling_ids_are_gone_from_every_sheet(self) -> None:
+        for name, text in self._blank_sheets():
+            for key, why in self.TELLING.items():
+                with self.subTest(name, key=key, why=why):
+                    self.assertNotIn(key, text)
+
+    def test_a_pass_keyed_the_old_way_still_scores_as_measured(self) -> None:
+        # The catalogue pass of 2026-08-14 carries real IDs. It is the
+        # only measured baseline there is, so it must score exactly as
+        # it did -- n and agreement pinned, not just "something comes out".
+        path = ROOT / "eval" / "catalog_second_rater_completed.json"
+        keys = [item["key"] for item in json.loads(path.read_text("utf-8"))["labels"]]
+        self.assertTrue(set(keys) <= set(ea.primary_labels("catalog")))
+        certainty = next(
+            c for c in ea.second_rater_comparisons(path) if c.field == "evidence_certainty"
+        )
+        self.assertEqual(certainty.n, 59)
+        self.assertAlmostEqual(certainty.agreement, 46 / 59)
+
+    def test_a_pass_keyed_the_new_way_scores_every_item(self) -> None:
+        # The failure a hash invites is silent: a key that resolves to
+        # nothing is skipped, and n=0 looks like a rater who skipped it all.
+        import tempfile
+
+        worksheet = ea.build_worksheet("catalog")
+        primary = ea.primary_by_rater_key("catalog")
+        for item in worksheet["labels"]:
+            for field in worksheet["protocol"]["rated_fields"]:
+                item[field] = primary[item["key"]].get(field)
+        worksheet["protocol"].update(rater="t", labeled_at="2026-10-01", blind=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            for comparison in ea.second_rater_comparisons(path):
+                with self.subTest(comparison.field):
+                    self.assertEqual(comparison.n, len(worksheet["labels"]))
+                    self.assertEqual(comparison.agreement, 1.0)
+
+    def test_the_key_is_stable_and_differs_between_sets(self) -> None:
+        key = "prefill-adult-mooc"
+        self.assertEqual(ea.rater_key("claim_prefill", key), ea.rater_key("claim_prefill", key))
+        self.assertNotEqual(ea.rater_key("claim_prefill", key), ea.rater_key("catalog", key))
+        self.assertRegex(ea.rater_key("claim_prefill", key), r"^case-[0-9a-f]{10}$")
+
+    def test_explain_names_the_real_case_after_the_fact(self) -> None:
+        # --explain runs after the rating, deliberately. There the real ID
+        # is what the conversation needs, so it is shown next to the hash.
+        import tempfile
+
+        worksheet = ea.build_worksheet("claim_prefill", None, ["prefill-adult-mooc"])
+        worksheet["protocol"].update(rater="t", labeled_at="2026-10-01", blind=True)
+        worksheet["labels"][0]["claim_type"] = "association"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "w.json"
+            path.write_text(json.dumps(worksheet), encoding="utf-8")
+            text = "\n".join(ea.explain_report(path))
+        self.assertIn("prefill-adult-mooc", text)
+        self.assertIn(ea.rater_key("claim_prefill", "prefill-adult-mooc"), text)
 
 
 class WorkedExampleExposureTests(unittest.TestCase):
@@ -1115,13 +1203,14 @@ class WorkedExampleExposureTests(unittest.TestCase):
         import tempfile
 
         worksheet = ea.build_worksheet("claim_prefill")
-        primary = ea.primary_labels("claim_prefill")
+        primary = ea.primary_by_rater_key("claim_prefill")
         named = ea.documented_examples("claim_prefill")
+        named_keys = {ea.rater_key("claim_prefill", key) for key in named}
         for item in worksheet["labels"]:
             for field in worksheet["protocol"]["rated_fields"]:
                 item[field] = primary[item["key"]].get(field)
             # Disagree only where the document did NOT give the answer.
-            if item["key"] not in named:
+            if item["key"] not in named_keys:
                 item["claim_type"] = "unknown"
         worksheet["protocol"].update(rater="t", labeled_at="2026-08-14", blind=True)
         with tempfile.TemporaryDirectory() as tmp:
@@ -1298,7 +1387,7 @@ class ProtocolNotesTests(unittest.TestCase):
 
     def _report_for(self, notes: str) -> str:
         worksheet = ea.build_worksheet("catalog")
-        primary = ea.primary_labels("catalog")
+        primary = ea.primary_by_rater_key("catalog")
         for item in worksheet["labels"]:
             for field in worksheet["protocol"]["rated_fields"]:
                 item[field] = primary[item["key"]].get(field)
@@ -1454,7 +1543,7 @@ class CalibrationTests(unittest.TestCase):
 
     def _round(self, keys=None, fields=None):
         worksheet = ea.build_worksheet("claim_prefill", fields, keys or self.KEYS)
-        primary = ea.primary_labels("claim_prefill")
+        primary = ea.primary_by_rater_key("claim_prefill")
         for item in worksheet["labels"]:
             for field in worksheet["protocol"]["rated_fields"]:
                 item[field] = primary[item["key"]].get(field)
@@ -1472,7 +1561,8 @@ class CalibrationTests(unittest.TestCase):
     def test_only_narrows_the_items(self) -> None:
         worksheet = ea.build_worksheet("claim_prefill", None, self.KEYS)
         self.assertEqual(
-            [item["key"] for item in worksheet["labels"]], self.KEYS
+            [item["key"] for item in worksheet["labels"]],
+            [ea.rater_key("claim_prefill", key) for key in self.KEYS],
         )
 
     def test_a_calibration_round_is_never_a_baseline(self) -> None:
@@ -1579,7 +1669,7 @@ class CompletedPassTests(unittest.TestCase):
         import tempfile
 
         worksheet = ea.build_worksheet("catalog")
-        primary = ea.primary_labels("catalog")
+        primary = ea.primary_by_rater_key("catalog")
         for item in worksheet["labels"]:
             for field in worksheet["protocol"]["rated_fields"]:
                 item[field] = primary[item["key"]].get(field)

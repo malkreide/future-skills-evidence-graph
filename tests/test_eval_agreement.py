@@ -162,13 +162,13 @@ class WorksheetTests(unittest.TestCase):
         for set_name in ea.SECOND_RATER_FIELDS:
             with self.subTest(set_name):
                 keys = {item["key"] for item in ea.build_worksheet(set_name)["labels"]}
-                self.assertEqual(keys, set(ea.primary_labels(set_name)))
+                self.assertEqual(keys, set(ea.primary_by_rater_key(set_name)))
 
 
 class SecondRaterScoringTests(unittest.TestCase):
     def _write(self, tmp: Path, blind: bool, flips: int) -> Path:
         worksheet = ea.build_worksheet("claim_prefill")
-        gold = ea.primary_labels("claim_prefill")
+        gold = ea.primary_by_rater_key("claim_prefill")
         rotate = {"low": "moderate", "moderate": "strong", "strong": "low"}
         for index, item in enumerate(worksheet["labels"]):
             for field in ea.SECOND_RATER_FIELDS["claim_prefill"]:

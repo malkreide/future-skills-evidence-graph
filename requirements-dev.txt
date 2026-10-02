@@ -40,3 +40,8 @@ pypdf==6.19.0
 # OpenAlex) miss; absent it, that tier is a graceful no-op. The importers and the
 # core resolver stay standard-library only.
 ddgs==9.16.0
+# openpyxl is only needed to hand a blind second-rater worksheet out as Excel
+# and to read the filled workbook back (scripts/worksheet_xlsx.py). It is
+# imported lazily inside that script; the scorer (eval_agreement.py) and the
+# pipeline keep reading and writing plain JSON and stay standard-library only.
+openpyxl==3.1.5

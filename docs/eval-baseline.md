@@ -415,6 +415,65 @@ python scripts/eval_agreement.py --second-rater eval/catalog_second_rater.json
 Die zehn Kalibrierfälle stammen aus dem Eval-Set und tauchen dort nicht
 auf; alle 59 Katalogfälle bleiben messbar.
 
+### Kein Bogen zeigt die echte Fall-ID
+
+Jeder Fall trägt im Bogen eine undurchsichtige ID (`case-3f9c2e1a5b`), nicht
+seine echte. Einige echte IDs wurden mit der Antwort im Kopf vergeben: eine
+endet auf `-rct` und nennt so das Design, eine beginnt mit dem
+Dokumenttyp, und zwei enden auf `-null`, obwohl ihre richtige
+`effect_direction` `not_applicable` ist. Diese beiden Hinweise zeigen also
+sogar in die falsche Richtung.
+
+Die IDs stehen hier absichtlich nicht ausgeschrieben. Dieses Dokument zählt
+zu denen, die einen Fall verbrennen, wenn sie ihn mit seiner Antwort
+nennen, und „endet auf `-rct`" ist eine Antwort.
+
+Die Bogen-ID ist ein Hash aus Datensatz und echter ID. Die Auswertung
+rechnet ihn nach und braucht deshalb keine Zuordnungstabelle im Bogen, die
+die echten IDs wieder in genau die Datei schreiben würde, die bewertet
+wird. Durchgänge mit echten IDs, wie der gemessene vom 2026-08-14, werten
+unverändert aus. `--explain` läuft bewusst erst nach der Bewertung und
+zeigt beide IDs nebeneinander, weil das Gespräch über den Fall geführt
+wird, nicht über seinen Hash.
+
+### Excel statt JSON
+
+Wer nicht im Texteditor arbeiten will, bekommt denselben Bogen als Excel:
+eine Auswahlliste pro Feld, die Rubrik als eigenes Blatt, Name und Datum
+auf dem ersten Blatt.
+
+```powershell
+python scripts/worksheet_xlsx.py export eval/claim_prefill_calibration.json --out Kalibrierbogen.xlsx
+# ... ausfüllen lassen, zurückbekommen ...
+python scripts/worksheet_xlsx.py import Kalibrierbogen_ausgefuellt.xlsx `
+  --out eval/claim_prefill_calibration_completed.json
+python scripts/eval_agreement.py --second-rater eval/claim_prefill_calibration_completed.json
+```
+
+Drei Eigenschaften, die die Messung schützen, nicht den Komfort:
+
+- **Exportiert wird nur ein leerer Bogen.** Ein Bogen mit auch nur einer
+  Antwort, ein abgeschlossener Durchgang oder das gelabelte Eval-Set wird
+  abgelehnt — sonst sähe die bewertende Person Antworten.
+- **Verändern lassen sich nur die Antworten.** Der Bogen, aus dem die
+  Excel-Datei entstand, reist unsichtbar und mit Prüfsumme darin mit. Der
+  Import füllt die Antworten in *dieses* Original, statt es aus dem Blatt
+  nachzubauen: eine gelöschte Zeile, ein verändertes Abstract, verschobene
+  Spalten oder ein anderer Regelstand sind ein Fehler, keine stille
+  Änderung des Instruments. Zugeordnet wird über die Fall-ID, nicht über
+  die Zeile. Die ID-Spalte ist ausgeblendet, nicht entfernt: wer bewertet,
+  spricht über die laufende Nummer.
+- **Excels eigene Umwandlungen werden abgewiesen, nicht zurückgeraten.**
+  Ein getipptes `10-12` wird in vielen Spracheinstellungen zum 10.
+  Dezember. Die Altersspalten sind deshalb als Text formatiert, und der
+  Import weist ein Datum oder eine Zahl an dieser Stelle mit Zeilenangabe
+  zurück.
+
+Der Import meldet alle Probleme auf einmal, damit ein fehlerhafter Bogen
+eine Rückfrage kostet und nicht eine pro Fehler. Leere Zellen werden zu
+`null`; der Wert `null` in `effect_direction` (Nullbefund) bleibt davon
+unterschieden.
+
 ### Wer bewerten kann
 
 **Keine Fachexpertise in KI oder Bildungsforschung nötig.** Die Person

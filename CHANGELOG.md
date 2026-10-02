@@ -14,6 +14,25 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Bewertungsbögen als Excel** (`scripts/worksheet_xlsx.py`, Export und
+  Import). Ein JSON-Bogen im Texteditor ist für die meisten Bewertenden
+  der falsche Arbeitsplatz: ein vergessenes Anführungszeichen macht die
+  Datei unlesbar. Die Excel-Fassung hat eine Auswahlliste pro Feld und die
+  Rubrik als eigenes Blatt; der Import übersetzt die ausgefüllte Datei
+  zurück in genau das JSON, das `--second-rater` auswertet. Geschützt ist
+  dabei die Messung: exportiert wird nur ein leerer Bogen, das Original
+  reist mit Prüfsumme mit und nur die Antworten werden übernommen,
+  zugeordnet über die Fall-ID; ein von Excel in ein Datum verwandeltes
+  `10-12` wird zurückgewiesen statt zurückgeraten. `openpyxl` ist neu in
+  `requirements-dev.txt`, gepinnt, und wird nur in diesem Skript geladen.
+  Beim Bauen gefunden: das erste Formatbeispiel handelte von einem
+  Leseprogramm — einer der zehn Kalibrierfälle ist eine Leseförderung.
+  Das Beispiel ist jetzt themenfremd und zeigt nur Einträge, die keine
+  Rubrikentscheidung vorwegnehmen. Ebenso ausgeblendet ist die Spalte mit
+  der Fall-ID, weil manche IDs das Design (`…-rct`) oder den Dokumenttyp
+  (`policy-…`) verraten; der Import liest sie trotzdem.
+
+
 - **Vorlage für `protocol.notes`** in `docs/eval-baseline.md`. Die Notiz
   ist das einzige Feld, das festhält, *warum* eine gemessene Zahl mit
   Vorbehalt zu lesen ist, und sie war bisher unstrukturiert. Vier Angaben
@@ -39,6 +58,24 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   deshalb von Hand in `protocol.notes`.
 
 ### Fixed
+
+- **Bewertungsbögen verrieten Antworten über die Fall-ID.** Der Bogen
+  zeigte jedem Fall seine echte ID, und einige davon wurden mit der
+  Antwort im Kopf vergeben: eine endet auf `-rct` und nennt das Design,
+  eine beginnt mit dem Dokumenttyp, und zwei enden auf `-null`, obwohl
+  ihre `effect_direction` `not_applicable` ist. Diese beiden zeigten also
+  in die falsche Richtung. (Die IDs stehen hier bewusst nicht
+  ausgeschrieben: eine Nennung mit Antwort verbrennt den Fall.) Die Bögen tragen jetzt
+  undurchsichtige IDs (`eval_agreement.rater_key`, ein Hash aus Datensatz
+  und echter ID). Die Auswertung rechnet ihn nach und braucht deshalb
+  keine Zuordnungstabelle im Bogen. Alle drei abgelegten Bögen sind neu
+  erzeugt, und ein Test stellt sicher, dass keiner eine echte ID enthält,
+  egal an welcher Stelle. Der gemessene Durchgang vom 2026-08-14 trägt
+  echte IDs und wertet Zeile für Zeile identisch aus (gesamter Bericht vor
+  und nach der Änderung verglichen). `--explain` zeigt nach der Bewertung
+  beide IDs. Ein bereits exportierter Excel-Bogen mit echten IDs lässt
+  sich weiterhin zurücklesen.
+
 
 - **Die Bögen schickten ihre bewertende Person zum Lösungsschlüssel.** Das
   eingebettete `_README` jedes Bewertungsbogens nannte

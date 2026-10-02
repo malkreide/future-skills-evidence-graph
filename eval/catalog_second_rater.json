@@ -47,7 +47,7 @@
   "rubrik_legacy_felder": "evidence_strength und age_range sind die ALTEN Felder und werden nur mitgefuehrt, damit sich beide Skalen an derselben Lektuere vergleichen lassen. evidence_strength: low|moderate|strong nach der alten, vermischenden Rubrik. age_range: die alte Praxis inklusive aus der Schulstufe geschaetzter Spannen. Wer nur die neue Skala bewerten will, laesst beide null.",
   "labels": [
     {
-      "key": "claim-a-scoping-review-of-empirical-research-on-ai-literacy-assessments-abstra",
+      "key": "case-50ecd68ed6",
       "statement": "The results showed that (1) most research focused on assessing primary and secondary school students' AI literacy; (2) most studies used questionnaires, followed by surveys; (3) most studies used computer-based tests, followed by paper-based tests; (4) most studies assessed participants' AI knowledge, followed by AI ethics; and (5) only a few studies reported evidence of the reliability and effectiveness of their assessments.",
       "source_title": "A Scoping Review of Empirical Research on AI Literacy Assessments",
       "source_type": "peer_reviewed_article",
@@ -61,7 +61,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-ai-child-rights-ethics",
+      "key": "case-21b84bc191",
       "statement": "Children need developmentally appropriate understanding of AI rights, safety, privacy, inclusion, and accountability issues.",
       "source_title": "Policy Guidance on AI for Children",
       "source_type": "policy_report",
@@ -75,7 +75,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-ai-education-teacher-augmentation",
+      "key": "case-14b57ac189",
       "statement": "AI in education is most defensible when it augments human teaching and learning judgment rather than replacing human responsibility.",
       "source_title": "Intelligence Unleashed: An Argument for AI in Education",
       "source_type": "policy_report",
@@ -89,7 +89,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-ai-literacy-human-centered",
+      "key": "case-6b07d2af26",
       "statement": "AI literacy for students should include understanding AI capabilities, limitations, ethical implications, and human-centered use.",
       "source_title": "AI Competency Framework for Students",
       "source_type": "framework",
@@ -103,7 +103,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-ai-literacy-k12-systematic-review",
+      "key": "case-0319caee3d",
       "statement": "A systematic review of K-12 AI literacy concludes that learners can develop AI literacy across conceptual understanding, hands-on use, and ethical awareness, but that integration into curricula and teacher preparation remains limited.",
       "source_title": "AI literacy in K-12: a systematic literature review",
       "source_type": "systematic_review",
@@ -117,7 +117,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-ai-literacy-multidimensional",
+      "key": "case-c0baf48497",
       "statement": "AI literacy is multidimensional and combines conceptual understanding, practical use, evaluation, ethics, and social implications.",
       "source_title": "Conceptualizing AI Literacy: An Exploratory Review",
       "source_type": "conceptual_review",
@@ -131,7 +131,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-an-epistemic-network-analysis-ena-of-secondary-school-students-metacogni",
+      "key": "case-66ea0857e7",
       "statement": "These findings enhance our understanding of the dynamics of secondary school students’ metacognition in AI education and provide evidence-based insights into gender- and experience-related differences, guiding the development of tailored pedagogical strategies in AI education.",
       "source_title": "An Epistemic Network Analysis (ENA) of Secondary School Students’ Metacognition in Learning Generative AI",
       "source_type": "peer_reviewed_article",
@@ -145,7 +145,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-artificial-intelligence-ai-literacy-education-in-secondary-schools-a-rev",
+      "key": "case-1e04c8d5f5",
       "statement": "ABSTRACT Artificial intelligence (AI) literacy has emerged to equip students with digital skills for effective evaluation, communication, collaboration, and ethical use of AI in online, home, and workplace settings.",
       "source_title": "Artificial intelligence (AI) literacy education in secondary schools: a review",
       "source_type": "systematic_review",
@@ -159,7 +159,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-artificial-intelligence-ai-literacy-in-early-childhood-education-an-inte",
+      "key": "case-0835f75524",
       "statement": "This study aimed to evaluate the impact of an eight-week AI literacy program on young children's AI literacy, AI-related creativity, and their perceptions of the AI4KG program.",
       "source_title": "Artificial Intelligence (AI) Literacy in Early Childhood Education: An Intervention Study in Hong Kong",
       "source_type": "peer_reviewed_article",
@@ -173,7 +173,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-artificial-intelligence-literacy-education-in-primary-schools-a-review-a",
+      "key": "case-865df3487a",
       "statement": "The review revealed that (1) AI literacy encompasses a fluid conceptual understanding of digital literacy in terms of interacting and collaborating with AI, computational thinking, critical data literacy, and AI ethics; (2) constructionism, the constructivist theoretical framework, and the ARCS (Attention, Relevance, Confidence, and Satisfaction) model of instructional design were the dominant means of constructing the research design of the selected studies; (3) constructivist methodologies, project-based learning, programming, and human-agent interaction were commonly used by the selected studies, and AI learning tools, particularly intelligent agents, were often adopted in AI literacy teaching and learning research; (4) mixed-research methods were the most common, with surveys, interviews, and artifacts being employed to evaluate students' learning outcomes; and (5) there were positive academic, affective, and behavioral educational outcomes, as well as course satisfaction.",
       "source_title": "Artificial Intelligence Literacy Education in Primary Schools: A Review",
       "source_type": "peer_reviewed_article",
@@ -187,7 +187,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-assessing-the-state-of-media-literacy-policy-in-u-s-k-12-schools-abstrac",
+      "key": "case-fa5bb19d9a",
       "statement": "Findings reveal that not only is there an overall dearth of K-12 media literacy policy, but definitions and corresponding resources remain sparse and varied.",
       "source_title": "Assessing the state of media literacy policy in U.S. K-12 schools",
       "source_type": "peer_reviewed_article",
@@ -201,7 +201,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-chatbots-as-pedagogical-co-support-exploring-teachers-practices-and-perc-2",
+      "key": "case-b7cae9ece5",
       "statement": "The study further found that AI literacy and technical competence, digital literacy and ICT integration, ethical awareness, pedagogical creativity, and lifelong learning are central competencies for effective GenAI integration.",
       "source_title": "Chatbots as pedagogical co-support: Exploring teachers’ practices and perceptions of GenAI in foreign language education",
       "source_type": "peer_reviewed_article",
@@ -215,7 +215,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-chatgpt-output-verification",
+      "key": "case-290b1faae9",
       "statement": "A rapid review of ChatGPT in education finds clear potential to support learning alongside recurring risks of inaccurate or fabricated output, underscoring the need for learners to verify AI-generated content.",
       "source_title": "What Is the Impact of ChatGPT on Education? A Rapid Review of the Literature",
       "source_type": "systematic_review",
@@ -229,7 +229,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-children-s-mental-models-of-ai-reasoning-implications-for-ai-literacy-ed",
+      "key": "case-3fa88c42d0",
       "statement": "As artificial intelligence (AI) advances in reasoning capabilities, most recently with the emergence of Large Reasoning Models (LRMs), understanding how children conceptualize AI’s reasoning processes becomes critical for fostering AI literacy.",
       "source_title": "Children's Mental Models of AI Reasoning: Implications for AI Literacy Education",
       "source_type": "peer_reviewed_article",
@@ -243,7 +243,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-collaboration-social-contract",
+      "key": "case-111a423cd8",
       "statement": "Education for shared futures emphasizes cooperation, collective problem solving, and social responsibility.",
       "source_title": "Reimagining Our Futures Together: A New Social Contract for Education",
       "source_type": "policy_report",
@@ -257,7 +257,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-creative-thinking-assessable",
+      "key": "case-fde917e890",
       "statement": "Creative thinking can be defined and assessed as a learnable capability rather than treated only as innate talent.",
       "source_title": "PISA 2022 Results Volume III: Creative Minds, Creative Schools",
       "source_type": "policy_report",
@@ -271,7 +271,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-critical-thinking-ai-outputs",
+      "key": "case-e4b951255d",
       "statement": "Generative AI use in education increases the need for learners to question output reliability, provenance, bias, and appropriateness.",
       "source_title": "Guidance for Generative AI in Education and Research",
       "source_type": "policy_report",
@@ -285,7 +285,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-critical-thinking-domain-specific",
+      "key": "case-9e0c24118c",
       "statement": "Critical thinking is largely domain-specific: general reasoning strategies taught in isolation transfer poorly to new content areas, so teaching it as a standalone generic skill has limited effect.",
       "source_title": "Critical Thinking: Why Is It So Hard to Teach?",
       "source_type": "conceptual_review",
@@ -299,7 +299,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-data-literacy-digital-problem-solving",
+      "key": "case-1d28a45fc5",
       "statement": "Digital problem solving and information competence require interpreting data, using digital tools, and judging the limits of digitally mediated evidence.",
       "source_title": "DigComp 2.2: The Digital Competence Framework for Citizens",
       "source_type": "framework",
@@ -313,7 +313,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-developing-a-holistic-ai-literacy-framework-for-children-abstract-s4",
+      "key": "case-e9a2db3bd6",
       "statement": "Our findings led to the development of a holistic AI literacy framework for children, which contains three high-level dimensions and eight content areas of AI literacy: AI awareness (AI definition, AI application, and AI history), AI mechanics (AI input, learning procedure, and AI output), and AI impacts (AI implication and responsible practice).",
       "source_title": "Developing a Holistic AI Literacy Framework for Children",
       "source_type": "peer_reviewed_article",
@@ -327,7 +327,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-development-and-validation-of-an-artificial-intelligence-literacy-assess",
+      "key": "case-68b2b2f4a3",
       "statement": "The findings suggest that the AI4KGA can evaluate children's learning outcomes in terms of AI literacy.",
       "source_title": "Development and Validation of an Artificial Intelligence Literacy Assessment for Kindergarten Children",
       "source_type": "peer_reviewed_article",
@@ -341,7 +341,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-digital-competence-information-literacy",
+      "key": "case-909d1b60fb",
       "statement": "Digital competence includes finding, evaluating, managing, communicating, creating, and safely using digital information.",
       "source_title": "DigComp 2.2: The Digital Competence Framework for Citizens",
       "source_type": "framework",
@@ -355,7 +355,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-early-childhood-ai-concepts",
+      "key": "case-b43f361617",
       "statement": "Young children can develop age-appropriate understanding of basic AI concepts when learning is concrete, playful, and embedded in familiar everyday contexts.",
       "source_title": "Artificial Intelligence (AI) literacy in early childhood education: The challenges and opportunities",
       "source_type": "conceptual_review",
@@ -369,7 +369,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-effect-of-generative-ai-tools-on-critical-thinking-and-sustainable-learn",
+      "key": "case-2b78aa485e",
       "statement": "The study finds that generative AI tools, when used with purposeful metacognitive scaffolding, support, and do not replace critical thinking and sustainable learning.",
       "source_title": "Effect of Generative AI Tools on Critical Thinking and Sustainable Learning Skills among Secondary School Students in Swat, Pakistan",
       "source_type": "peer_reviewed_article",
@@ -383,7 +383,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-equity-foundational-learning",
+      "key": "case-14671adc1e",
       "statement": "Future learning systems still depend on equitable access and strong foundational learning, so future skills should not replace core literacy and numeracy.",
       "source_title": "Realizing the Future of Learning: From Learning Poverty to Learning for Everyone, Everywhere",
       "source_type": "policy_report",
@@ -397,7 +397,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-family-algorithmic-awareness",
+      "key": "case-76f91b80fc",
       "statement": "Children build algorithmic awareness - recognizing that everyday smart devices make data-driven decisions - through guided, social exploration, including with family members.",
       "source_title": "Family as a Third Space for AI Literacies: How do children and parents learn about AI together?",
       "source_type": "peer_reviewed_article",
@@ -411,7 +411,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-fostering-ai-literacy-overcoming-concerns-and-nurturing-confidence-among",
+      "key": "case-33c8f22edb",
       "statement": "However, targeted AI literacy education enhanced preservice teachers' awareness and confidence in teaching AI.",
       "source_title": "Fostering AI Literacy: Overcoming Concerns and Nurturing Confidence among Preservice Teachers",
       "source_type": "peer_reviewed_article",
@@ -425,7 +425,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-future-schools-technology-human-skills",
+      "key": "case-00ae33ab24",
       "statement": "Future-oriented school models connect technology fluency with interpersonal, creative, and self-directed learning capabilities.",
       "source_title": "Schools of the Future: Defining New Models of Education for the Fourth Industrial Revolution",
       "source_type": "policy_report",
@@ -439,7 +439,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-generative-ai-responsible-use",
+      "key": "case-901e0f2cfd",
       "statement": "Using generative AI responsibly requires learners to understand how such systems produce content, to verify outputs, to protect personal data, and to respect age and data-protection limits.",
       "source_title": "Guidance for Generative AI in Education and Research",
       "source_type": "policy_report",
@@ -453,7 +453,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-insights-from-educators-integrating-ai-literacy-into-media-literacy-educ",
+      "key": "case-fe7b91b7f7",
       "statement": "Through in-depth interviews with junior high school teachers in Hong Kong who participated in a media and artificial intelligence literacy program intervention, this research highlights the importance of prioritizing values and ethics education over technical proficiency when incorporating artificial intelligence (AI) into media literacy training.",
       "source_title": "Insights from Educators: Integrating AI Literacy into Media Literacy Education in Practice",
       "source_type": "peer_reviewed_article",
@@ -467,7 +467,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-interactive-tools-for-middle-school-students-ai-literacy-abstract-s4",
+      "key": "case-9204c1fa73",
       "statement": "A mixed method study with seven students (ages 10–14) revealed their early intuitions about AI systems and shifts in views on bias and ethics, providing preliminary evidence that interactive tools can make these concepts tangible for middle school students.",
       "source_title": "Interactive Tools for Middle School Students AI Literacy",
       "source_type": "peer_reviewed_article",
@@ -481,7 +481,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-investigation-of-digital-competencies-and-artificial-intelligence-litera",
+      "key": "case-b046f23d94",
       "statement": "These findings highlight the interconnection between digital skills and AI literacy among future special education teachers.",
       "source_title": "Investigation of Digital Competencies and Artificial Intelligence Literacy of Special Education Students",
       "source_type": "peer_reviewed_article",
@@ -495,7 +495,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-k12-ai-big-ideas",
+      "key": "case-93ffe4173e",
       "statement": "K-12 learners benefit from age-appropriate concepts about perception, representation, learning, natural interaction, and societal impact of AI.",
       "source_title": "Envisioning AI for K-12: What Should Every Child Know about AI?",
       "source_type": "peer_reviewed_article",
@@ -509,7 +509,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-kindergarten-parents-apos-perceptions-of-the-use-of-ai-technologies-and",
+      "key": "case-0d8fdd9d5d",
       "statement": "We found that the four main challenges that parents reported their children encountered when learning about AI literacy are limited comprehension ability, time constraints, the difficulty of the AI learning content, and uncertainty regarding the appropriateness of AI learning content for children.",
       "source_title": "Kindergarten Parents&apos; Perceptions of the Use of AI Technologies and AI Literacy Education: Positive Views but Practical Concerns",
       "source_type": "peer_reviewed_article",
@@ -523,7 +523,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-labor-market-analytical-ai-resilience",
+      "key": "case-046a179d32",
       "statement": "Labor-market forecasts point to rising importance of analytical thinking, AI and big data, resilience, flexibility, and lifelong learning.",
       "source_title": "The Future of Jobs Report 2025",
       "source_type": "policy_report",
@@ -537,7 +537,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-learning-science-metacognition",
+      "key": "case-f4981b9414",
       "statement": "Learning science identifies metacognition and self-regulation as important for transfer, adaptive learning, and deeper understanding.",
       "source_title": "How People Learn II: Learners, Contexts, and Cultures",
       "source_type": "book",
@@ -551,7 +551,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-middle-school-train-evaluate-ml",
+      "key": "case-b4ca226cf7",
       "statement": "Middle school students who completed a dedicated AI curriculum were able to train and evaluate simple machine learning models and articulate how training data shapes model behavior and societal impact.",
       "source_title": "Developing Middle School Students' AI Literacy",
       "source_type": "peer_reviewed_article",
@@ -565,7 +565,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-professional-development-for-teachers-in-ai-literacy-education-teaching",
+      "key": "case-0195588e6c",
       "statement": "The findings suggest that the integration of using robots to teach machine learning and guided by a transdisciplinary pedagogical design AEER motivated teachers to teach AI literacy in senior primary and junior secondary schools.",
       "source_title": "Professional Development for Teachers in AI Literacy Education: Teaching Machine Learning to Senior Primary and Junior Secondary Students",
       "source_type": "peer_reviewed_article",
@@ -579,7 +579,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-prompt-engineering-as-a-21st-century-literacy-a-k-12-curriculum-design-a",
+      "key": "case-b5f30f1e73",
       "statement": "The paper also addresses the significant ethical considerations inherent in PE education, including algorithmic bias, data privacy, and student agency, and outlines essential competencies and professional development models for empowering educators.",
       "source_title": "Prompt Engineering as a 21st-Century Literacy: A K-12 Curriculum Design and Assessment Framework",
       "source_type": "peer_reviewed_article",
@@ -593,7 +593,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-research-on-digital-literacy-cultivation-strategies-for-primary-and-seco",
+      "key": "case-0bf7cf4e41",
       "statement": "This study is based on the theory of critical digital literacy and combined with the local practice in China -the Education Community Model in Zhejiang Province, to analyze the advantages and disadvantages of policies under this model for cultivating digital literacy among primary and secondary school students in the era of generative AI.",
       "source_title": "Research on Digital Literacy Cultivation Strategies for Primary and Secondary School Teachers and Students in the Generative AI Era",
       "source_type": "peer_reviewed_article",
@@ -607,7 +607,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-rethinking-ai-literacy-how-high-school-students-navigate-chatgpt-in-engl",
+      "key": "case-6f75bb5ce8",
       "statement": "Findings indicate positive attitudes toward ChatGPT, with high scorers demonstrating robust engagement, adaptability, and ethical awareness in using the tool for English learning.",
       "source_title": "Rethinking AI literacy: How high school students navigate ChatGPT in English language learning",
       "source_type": "peer_reviewed_article",
@@ -621,7 +621,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a",
+      "key": "case-c1da63d5a8",
       "statement": "At the primary level, commonly adopted pedagogical approaches include playful learning, learning by doing, learning from mistakes, and working in small groups.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -635,7 +635,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-11",
+      "key": "case-7728f0981c",
       "statement": "Lamprou and Repenning (2018) report dramatic rises in Swiss teachers' confidence to teach coding and develop CT skills after a 14-week ITE course taken to prepare them for the introduction of these subjects as mandatory for student study.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -649,7 +649,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-2",
+      "key": "case-2efc0111a7",
       "statement": "At the lower secondary level, approaches focus on fostering problem-solving and logical thinking skills, promoting student autonomy/agency through project-based learning, game-based approaches, pairprogramming, and learning individually.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -663,7 +663,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-3",
+      "key": "case-8059ad73c9",
       "statement": "The value of debugging as a strategy is exploited both at primary and lower secondary level to create a culture of learning-through-error, encouraging students to re-evaluate the significance of mistakes as a means for furthering their expertise.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -677,7 +677,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-4",
+      "key": "case-9c4d09a7a1",
       "statement": "By controlling robots or constructing programs through a sequence of instructions, learners gradually move from being passive consumers of technology to being creators of digital objects.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -691,7 +691,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-5",
+      "key": "case-a7ae145b9f",
       "statement": "Evidence collected from in-depth case studies involving nine European countries shows that basic CS concepts integrated into curricula centre around the relationship between \"Algorithms\" and \"Programming\", addressed at different levels of age-appropriate complexity.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -705,7 +705,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-6",
+      "key": "case-00dda4393c",
       "statement": "In the initial years of primary school (students aged 5-7), learners' cognitive development with respect to the different facets of Computational Thinking (CT) skills development is best addressed through work on spatial skills and physical computing, e.g., robots.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -719,7 +719,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-7",
+      "key": "case-e734f0b329",
       "statement": "Rijke et al. (2018, p. 86) \"Older students were found to do better on the abstraction task than students in the youngest age group. [...] No differences in performance on the decomposition task were found, either between age groups, or between males and females.\"",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -733,7 +733,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-reviewing-computational-thinking-in-compulsory-education-state-of-play-a-9",
+      "key": "case-1a7d5748bb",
       "statement": "Bower et al. (2017) found evidence that teachers participating in training workshops improve their basic grasp of CT content, pedagogy, and technology in a relatively short time, and (significantly) benefited from heightened confidence in dealing with these areas.",
       "source_title": "Reviewing Computational Thinking in Compulsory Education: State of play and practices from computing education",
       "source_type": "policy_report",
@@ -747,7 +747,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-student-agency-transformative-competencies",
+      "key": "case-820560ebbf",
       "statement": "Future-oriented education frameworks emphasize student agency, responsibility, creating new value, reconciling tensions, and taking action.",
       "source_title": "OECD Learning Compass 2030",
       "source_type": "framework",
@@ -761,7 +761,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-survey-on-digital-literacy-ai-in-education-and-tech-driven-pedagogy-skil",
+      "key": "case-5f7a0a78f6",
       "statement": "Significant findings summarize the fact that the secondary school educators have moderate levels of digital literacy to use in their classes and provide a techno-savvy and student-friendly digital environment.",
       "source_title": "Survey on Digital Literacy, AI in Education and Tech-Driven Pedagogy Skills among Secondary School Educators",
       "source_type": "systematic_review",
@@ -775,7 +775,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-the-integration-of-generative-artificial-intelligence-in-secondary-educa",
+      "key": "case-3f6ccbe78d",
       "statement": "The review also identifies significant improvements in areas such as student motivation, autonomy, critical thinking, and digital competence.",
       "source_title": "The integration of generative artificial intelligence in secondary education: A systematic review",
       "source_type": "peer_reviewed_article",
@@ -789,7 +789,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-the-role-of-ai-literacy-and-media-education-interventions-in-deconstruct",
+      "key": "case-d3f0215ce9",
       "statement": "Findings indicate that even a short onetime intervention can produce measurable improvements in students’ critical thinking, awareness of AI generated content, and ability to assess digital authenticity.",
       "source_title": "The Role of AI Literacy and Media Education Interventions in Deconstructing Deepfakes",
       "source_type": "peer_reviewed_article",
@@ -803,7 +803,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-towards-an-ai-literate-future-a-systematic-literature-review-exploring-e",
+      "key": "case-94d58338c1",
       "statement": "Our findings reveal that AI literacy extends beyond technical proficiency to encompass ethical considerations, societal impacts, and practical applications.",
       "source_title": "Towards an AI-Literate Future: A Systematic Literature Review Exploring Education, Ethics, and Applications",
       "source_type": "peer_reviewed_article",
@@ -817,7 +817,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-trustworthy-ai-risk-reasoning",
+      "key": "case-01fc24942b",
       "statement": "Trustworthy AI requires identifying, measuring, and managing risks, which can be translated into learner-facing ethical technology judgment.",
       "source_title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
       "source_type": "framework",
@@ -831,7 +831,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s",
+      "key": "case-ce3f085b32",
       "statement": "They stressed child protection, accessibility, and equality, while identifying risks such as cyberbullying, harmful content, addiction, and privacy concerns.",
       "source_title": "Who Owns The Metaverse — Who Is Excluded – Who Gets Hurt?” – Young Generation’S Insights On Metaverse Ethics",
       "source_type": "peer_reviewed_article",
@@ -845,7 +845,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-who-owns-the-metaverse-who-is-excluded-who-gets-hurt-young-generation-s-2",
+      "key": "case-e29b342b49",
       "statement": "Findings reveal a strong ethical orientation among youth and their readiness to engage in designing inclusive, safe, and equitable digital futures, expanding IS research beyond organizational contexts.",
       "source_title": "Who Owns The Metaverse — Who Is Excluded – Who Gets Hurt?” – Young Generation’S Insights On Metaverse Ethics",
       "source_type": "peer_reviewed_article",
@@ -859,7 +859,7 @@
       "evidence_strength": null
     },
     {
-      "key": "claim-young-children-ai-perceptions",
+      "key": "case-b7fa662f2e",
       "statement": "Hands-on AI activities measurably changed young children's perceptions of intelligent agents, improving their ability to reason about what such systems can and cannot do.",
       "source_title": "A is for Artificial Intelligence: The Impact of Artificial Intelligence Activities on Young Children's Perceptions of Robots",
       "source_type": "peer_reviewed_article",
