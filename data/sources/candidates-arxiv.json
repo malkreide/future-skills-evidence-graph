@@ -1902,5 +1902,219 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-a-secure-dtof-lidar-soc-with-dual-domain-fingerprinting-and-event-driven",
+    "title": "A Secure dToF LiDAR SoC with Dual-Domain Fingerprinting and Event-Driven AFE Circuit Achieving Sensor-Level Attack Resilience",
+    "authors": [
+      "Risa Nonaka",
+      "Ryoya Matsuno",
+      "Shota Nagai",
+      "Satomi Miyagi",
+      "Yuki Hayakawa",
+      "Ryo Suzuki",
+      "Kazuma Ikeda",
+      "Ozora Sako",
+      "Rokuto Nagata",
+      "Ryo Yoshida",
+      "Shimpei Ando",
+      "Wenlun Zhang",
+      "Kentaro Yoshioka"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.03562v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Recent studies have shown that most commercial direct time-of-flight (dToF) LiDARs can be spoofed by injecting high-frequency laser pulses into the receiver, which can erase pedestrians from the point cloud. This paper presents the first dToF LiDAR system-on-chip (SoC) with integrated sensor-level hardware security against spoofing attacks. We propose Dual-Domain Fingerprinting (DDF), which emits laser pulse pairs whose time interval and amplitude ratio are both randomized and authenticates received echoes in this two-dimensional space, so that spoofed signals are rejected before they corrupt the ranging result. An Event-Driven AFE (ED-AFE) activates the ADC only around pulse peaks: it digitizes three samples around each peak with a triggered ADC at 1-GHz sampling and applies parabolic interpolation, achieving 1-cm distance resolution with a 99% reduction in ADC power. A time-modulated laser driver controls the laser amplitude from 10% to 100% by modulating the charge time of a laser capacitor, providing the microsecond-order amplitude modulation required by DDF. A LiDAR system with a 16-channel 65-nm CMOS prototype SoC demonstrates up to 120-m ranging and an AFE power of 3.1 mW per channel, 60% lower than prior art. In a proof-of-concept experiment in which the dual-domain authentication is applied to measured sensor data, 73% of the point cloud is protected under spoofing attack, compared with 0% without DDF.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-co-designing-ai-for-mental-health-support-with-young-adults-of-color-yoc",
+    "title": "Co-Designing AI For Mental Health Support With Young Adults of Color (YOC): Needs, Expectations, and Implications for AI Literacy",
+    "authors": [
+      "Elaine Dabin Jeon",
+      "John Bosco S. Bunyi",
+      "Hannah Kim",
+      "Renkai Ma",
+      "Yaman Yu",
+      "Michal Luria",
+      "Jason Yip",
+      "Alexis Hiniker",
+      "Katie Davis",
+      "Angel Hsing-Chi Hwang"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.02812v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Young adults of color (YOC) face heightened mental health challenges and barriers to care while navigating developmental and life transitions. Situated between youth-oriented safeguards and adult-oriented AI systems, little is known about how they use AI chatbots for mental health and well-being support or how sociocultural contexts shape their expectations, concerns, and design preferences. We conducted a two-day co-design workshop with 13 Asian, Black, and Hispanic/Latino/a young adults aged 18--24. Participants found generic chatbot advice to flatten their lived experiences; rather than making incorrect assumptions, they wanted more opportunities for identity-informed disclosure. Preferences for YOC-centered personalization also revealed gaps in privacy and AI literacy. Participants negotiated different therapeutic roles for chatbots and sought greater AI accountability and user agency, highlighting blurred boundaries between clinical and non-clinical AI-mediated support. Findings suggest directions for integrating AI literacy with mental health literacy and centering YOC's experiences in the privacy calculus.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-divergence-controls-entropy-in-distillation",
+    "title": "Divergence controls entropy in distillation",
+    "authors": [
+      "Nicolas Zucchet",
+      "Scott W. Linderman"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.03529v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Distillation has become a core primitive of large language model training, but its properties are not yet well understood. We take an entropic perspective, studying how the entropy of the student depends on the data and the divergence that define the distillation objective. We prove that forward KL inflates the entropy of the student above that of the teacher. Since cross-entropy training is a special case, this yields an identity that we verify quantitatively in pretraining and supervised finetuning. Other divergences come with no such guarantee: reverse KL deflates entropy until the gap between student and teacher gets too large, and interpolating between the two changes entropy smoothly early in training but abruptly at convergence. The lower entropy of on-policy distillation comes from token-level reverse KL, not from on-policy sampling. The divergence therefore acts as an implicit entropy regularizer, whose role is clearest in self-distillation: as conditioning on privileged information deflates entropy, the divergence hyperparameters that work best are those that compensate for it.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-pocofl-policy-compliant-federated-learning",
+    "title": "PoCoFL: POlicy-COmpliant Federated Learning",
+    "authors": [
+      "Dominik Roy George",
+      "Varesh Mishra",
+      "Aysajan Abidin"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.03650v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Federated Learning (FL) is a privacy-oriented learning paradigm that enables collaborative model training while keeping training data local to participating clients. However, it does not guarantee that clients submit policy-compliant contributions or that aggregators process admitted contributions correctly. Existing verifiable FL systems tailor validation rules to specific FL settings, learning workflows, and cryptographic constructions, limiting their applicability across network topologies, participant roles, and aggregation semantics. In this paper, we present PoCoFL, a policy-compliant federated learning framework that separates three aspects: (i) FL type, (ii) policy semantics, and (iii) cryptographic realisation. We provide a formalisation that captures client and aggregation requirements as policy-dependent relations. Clients prove compliance of their contributions using commitments and non-interactive zero-knowledge proofs, while aggregators prove that the recorded set of admitted contributions was processed according to the selected aggregation policy. We demonstrate PoCoFL through four formal instantiations: (i) vanilla, (ii) continual, (iii) personalised, and (iv) threshold-encrypted federated learning. We evaluate the effects of policy enforcement on the learning objectives of vanilla, personalised, and continual FL. We further implement proof-of-concept realisations of all four instantiations, demonstrating the versatility and practical feasibility of PoCoFL. Overall, these results show that PoCoFL can capture complex policy representations while remaining network-topology agnostic.",
+    "topics": [
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-amortized-structured-stochastic-variational-inference-for-gaussian-proce",
+    "title": "Amortized Structured Stochastic Variational Inference for Gaussian Process Latent Variable Models",
+    "authors": [
+      "Maksym Tretiakov",
+      "Sarah Lucie Filipp",
+      "Vincent Fortuin",
+      "Ruth Misener",
+      "Ruby Sedgwick",
+      "James Odgers"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.03647v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Many machine learning methods aim to approximate the lower-dimensional manifold on which the data lives. A desirable feature of such methods is that they should capture the epistemic uncertainty of this learned manifold. One model that achieves this is the Gaussian Process Latent Variable Model, in which a Gaussian Process (GP) mapping from the latent space provides an estimate of the uncertainty of the manifold. However, the effectiveness of this uncertainty estimation is limited by the mean-field variational approximation between the GP inducing points and the latent variables. In this work, we apply Amortized Structured Stochastic Variational Inference to allow the variational posterior for the latent space to be conditionally dependent on the value of the inducing points. We demonstrate that this more flexible variational posterior improves several metrics relating to the reconstruction of points on the data manifold.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-becoming-suspicious-across-borders-algorithmic-extraterritoriality-and-a",
+    "title": "Becoming Suspicious Across Borders: Algorithmic Extraterritoriality and AI-Driven Financial Surveillance",
+    "authors": [
+      "Georgios Pavlidis",
+      "Savvas Chatzichristofis",
+      "Eleni Gavriil"
+    ],
+    "year": 2026,
+    "doi": "10.5204/lthj.4716",
+    "url": "https://arxiv.org/abs/2610.03425v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Suspicion is an important, yet elusive concept in anti-money laundering and counter-terrorist financing (AML/CFT), which allows for intervention below the threshold of proof. In its traditional form, suspicion can be understood as a situated legal judgement by human actors within identifiable jurisdictions. It is argued that this understanding is no longer adequate. As artificial intelligence (AI) becomes an integral part of financial surveillance, suspicion is increasingly produced through data-driven processes. This transformation is epistemic, but also spatial. Since AI-driven financial surveillance operates through transnational data infrastructures, regulatory reach is less a matter of where conduct occurs than a question of whether such conduct becomes visible within data systems. This article develops the concept of algorithmic extraterritoriality, understood as a form of regulatory power mediated by data infrastructures rather than formal assertions of jurisdiction. Moreover, since individuals are increasingly constituted as datafied subjects of suspicion, they are rendered governable through dispersed and opaque processes of evaluation. This constitutes a challenge for accountability and contestability because suspicion becomes more difficult to locate, explain or contest.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-privdev-mapping-static-analysis-data-types-to-dpv",
+    "title": "PrivDev: Mapping Static-Analysis Data Types to DPV",
+    "authors": [
+      "Simon Bernbeck",
+      "Ricardo Ramalho",
+      "Matheus Amendoeira",
+      "Juliana Alves Pereira"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.03518v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Static-analysis scanners can identify personal-data types in source code, but they lack mechanisms to connect these findings to standardized privacy vocabularies. PrivDev maps 122 Bearer CLI data types to Data Privacy Vocabulary Personal Data (DPV-PD) categories and links them to potentially relevant GDPR provisions. Our approach combines deterministic mapping for 43 exact-label matches with a retrieval-grounded Large Language Model (LLM) to resolve the remaining 79 non-trivial mappings. The resulting RDF knowledge graph contains 118 ODRL policy resources that were structurally validated using SHACL. The artifact passed five complementary validation gates that cover structural correctness, query consistency, retrieval quality, LLM-based assessment, and human evaluation. In human evaluation, nine annotators produced 711 judgments, yielding a raw agreement of 0.72, Gwet's AC1 of 0.68, and Gwet's AC2 of 0.88. Our results indicate that the proposed mappings are plausible and reproducible, while also revealing ambiguities in scanner-defined data-type labels and coverage gaps in DPV-PD.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
