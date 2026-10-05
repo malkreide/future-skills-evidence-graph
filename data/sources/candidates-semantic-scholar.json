@@ -9602,5 +9602,204 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "educator"
+  },
+  {
+    "id": "src-designing-school-based-positive-recreational-and-digital-media-literacy",
+    "title": "Designing School-Based Positive Recreational and Digital Media Literacy Activities for Preventing Risk Behaviors among Thai Adolescents: A Qualitative Study with School Stakeholders",
+    "authors": [
+      "Kanlapruk Polsorn",
+      "T. Chirasatienpon",
+      "Chatchawan Jongkham",
+      "Watsatree Diteeyont"
+    ],
+    "year": 2026,
+    "doi": "10.5539/hes.v16n4p232",
+    "url": "https://www.semanticscholar.org/paper/075eabbccf5275867304d5235c14aa2cd3521907",
+    "openalex_id": null,
+    "semantic_scholar_id": "075eabbccf5275867304d5235c14aa2cd3521907",
+    "eric_id": null,
+    "publisher": "Higher Education Studies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Adolescents increasingly navigate an interconnected digital environment where offline risk behaviors such as substance use, and gambling are mediated and amplified by online media. This qualitative study examined the lived experiences of Thai adolescents facing interconnected digital risks and evaluated stakeholder perspectives on school-based prevention initiatives. Data were collected through four focus group discussions and six in-depth interviews with school administrators, health and information and communication technology teachers (ICT teacher), guidance counsellors, general students, and identified at-risk (N = 32) in Bangkok, Thailand. Thematic analysis revealed four primary themes: (1) the clustering of digital risk behaviors (online gambling, vaping, legalized cannabis, and scam exposure); (2) the role of algorithmic marketing and peer channels in lowering perceived risk; (3) stakeholder preferences for interactive, game-based workshops and student-led digital media creation over passive lectures; and (4) operational and ethical prerequisites for integrating prevention programs into school routines without punitive sanctions. The findings demonstrated that enhancing multi-dimensional critical digital media literacy encompassing content evaluation, commercial intent analysis, and ethical digital citizenship\u2014serves as a vital protective mechanism. Practical recommendations for school-based implementation and multidisciplinary collaboration are discussed.",
+    "topics": [
+      "digital competence",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-beyond-unesco-a-comparative-framework-analysis-and-growth-ladder-model-o",
+    "title": "Beyond UNESCO: A Comparative Framework Analysis and Growth Ladder Model of AI Competency for Higher Education Teacher Professional Development",
+    "authors": [
+      "B. Tandon",
+      "Aakriti Singh",
+      "Adit Gupta"
+    ],
+    "year": 2026,
+    "doi": "10.66053/jaaie.v2i1.394",
+    "url": "https://www.semanticscholar.org/paper/dd7a6c64812c059c6933835d54e774176f1a0514",
+    "openalex_id": null,
+    "semantic_scholar_id": "dd7a6c64812c059c6933835d54e774176f1a0514",
+    "eric_id": null,
+    "publisher": "Journal of Applied Artificial Intelligence in Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) is rapidly reshaping professional practice across higher education; however, most faculty lack structured, theoretically grounded frameworks to support responsible and pedagogically effective AI integration. This study addresses this gap through a four-phase comparative analysis of six international AI competency frameworks: UNESCO (2024), ISTE (2023), DigCompEdu with AI Extensions (2023), OECD Learning Compass (2019), Asia Society\u2013OECD Global Competence (2018), and China\u2019s National AI Teacher Competency Framework (2024), using systematic thematic coding with substantial inter-rater reliability (\u03ba = 0.82). The analysis identified six critical gaps: cultural contextualization, economic adaptability, infrastructure flexibility, multilingual provision, indigenous knowledge integration, and disability accessibility. An adapted framework was developed by synthesizing three theoretical traditions\u2013extended Technological Pedagogical Content Knowledge (TPACK), Adult Learning Theory, and Social Constructivism\u2013selected for their collective capacity to address these gaps. Central to the model is the Growth Ladder, a four-level progression comprising Acquire, Adapt, Act, and Create, grounded in established models of teacher expertise and organized across five competency domains. A further theoretical contribution is the collective professional trajectory, which reframes AI competency development as a bidirectional process through which individual educator growth shapes and is shaped by institutional and community contexts. Unlike existing frameworks that treat cultural diversity or developmental progression in isolation, the adapted framework combines culturally responsive competency descriptors with explicit economic scalability principles, embedding Indigenous knowledge integration and multilingual provision as required dimensions absent from current international models. The framework is presented as a theoretically derived model intended for empirical validation using the Delphi method.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-teachers-and-generative-ai-a-systematic-review-of-adoption-competence-pr",
+    "title": "Teachers and Generative AI: A Systematic Review of Adoption, Competence, Professional Development, and Socio-Technical Experiences",
+    "authors": [
+      "Sara Ayubian",
+      "G\u00e9nesis Aguilar Ch\u00e1vez",
+      "Ernestina Wiafe",
+      "Vajiheh Shahsavari",
+      "Nelofar Khamisani",
+      "Noor Us Subah Sohail Quidwai",
+      "Dillon Simmons",
+      "Ambyr Rios",
+      "Farhan Sadique",
+      "J. Clark"
+    ],
+    "year": 2026,
+    "doi": "10.3390/educsci16091501",
+    "url": "https://www.semanticscholar.org/paper/d964cf83131a1d2b5c3221293ddc381df2171d7c",
+    "openalex_id": null,
+    "semantic_scholar_id": "d964cf83131a1d2b5c3221293ddc381df2171d7c",
+    "eric_id": null,
+    "publisher": "Education sciences",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Generative artificial intelligence (AI) has rapidly become integrated into teaching, yet evidence on how teachers actually adopt, experience, and implement it remains fragmented. This systematic review synthesizes 105 peer-reviewed empirical studies published since 2023, identified through a PRISMA-guided search of three leading educational technology journals indexed in Scopus and Web of Science. The findings show pronounced geographical disparities: research is concentrated in China, Turkey, the United States, and Spain, while Africa and Oceania are markedly underrepresented, skewing the evidence base toward high-resource systems. Across studies, AI literacy, pedagogical knowledge, and self-efficacy, often theorized through the Technological Pedagogical Content Knowledge (TPACK) framework, are the strongest predictors of effective integration. Adoption depends less on technological access than on socio-technical conditions: institutional support, leadership, professional development, trust, and teacher autonomy. Most studies use cross-sectional self-reports that capture intention rather than practice, leaving classroom implementation, longitudinal change, and equity barriers underexamined. This study argues that effective integration requires aligning technological, human, and organizational systems and outlines an agenda for context-sensitive, practice-oriented research.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-humanistic-science-education-and-epistemic-agency-in-phenomena-driven-cl",
+    "title": "Humanistic science education and epistemic agency in phenomena-driven classrooms",
+    "authors": [
+      "P. A. Oemig"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s44217-026-01853-8",
+    "url": "https://www.semanticscholar.org/paper/74f3eeab293e1b564bbb58a191d760c722e4676f",
+    "openalex_id": null,
+    "semantic_scholar_id": "74f3eeab293e1b564bbb58a191d760c722e4676f",
+    "eric_id": null,
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Science education in the United States has undergone significant changes over the past two centuries and over the last quarter century has evolved into a learner-centered, inquiry-based shift. Yet this shift remains unevenly realized in schools. This perspective article offers a conceptual synthesis. The paper examines the transformation from traditional content transmission to teaching strategies that engage students\u2019 thinking, foster critical analysis, and empower learners to interpret both natural and sociopolitical dimensions of scientific inquiry. I propose incorporating a humanistic and phenomena-driven approach to educate the whole child. Drawing on historical perspectives, current frameworks such as the Next Generation Science Standards (NGSS) and the Framework for K\u201312 Science Education, socioscientific issues scholarship, and recent studies on equity and inclusion in STEM, this paper argues that science education should not focus on the transmission of canonical knowledge but on preparing students for scientific literacy, ethical reasoning, civic engagement, and lifelong problem solving. The article illustrates how anchoring phenomena can support three-dimensional learning that integrates disciplinary core ideas, science and engineering practices, and crosscutting concepts. Recent empirical and policy literature is woven into the discussion to highlight the ongoing need for humanistic science education that is responsive to both scientific advances and civic engagement.",
+    "topics": [
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-effectiveness-of-differentiated-learning-in-improving-literacy-and-numer",
+    "title": "Effectiveness of Differentiated Learning in Improving Literacy and Numeracy of Primary School Students",
+    "authors": [
+      "N. Indrawatiningsih",
+      "Siti Qomariyah",
+      "Andina Rahma Nubita",
+      "Lailatul Muarofah"
+    ],
+    "year": 2024,
+    "doi": "10.9734/ajess/2024/v50i51337",
+    "url": "https://www.semanticscholar.org/paper/9296b6a6f130b7e6379264274023a5f8d329a50c",
+    "openalex_id": null,
+    "semantic_scholar_id": "9296b6a6f130b7e6379264274023a5f8d329a50c",
+    "eric_id": null,
+    "publisher": "Asian Journal of Education and Social Studies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Literacy and numeracy are one of the critical thinking skills in solving daily life problems that must be possessed by every individual. Based on data obtained from PISA, the level of literacy and numeracy skills in Indonesia is still relatively low, which ranks 62nd out of 70 countries. Therefore, efforts are needed to improve literacy and numeracy skills, one of which is through Differentiated Learning Activities. This study aims to determine the effectiveness of differentiated learning implementation in improving students' literacy and numeracy skills. The subjects of this study were fifth grade students one of elementary school in Pasuruan with a total of 18 students. The instruments used in this study were pretest and post-test sheets, observation sheets, and documentation. The method used in this research is an experiment with a pre-experimental design (One Group Pretest-Posttest) using the t test. Data collection techniques are observation, tests (pretest and posttest), and documentation. This study found that the application of differentiated learning can improve the literacy and numeracy skills of elementary school students. This is obtained from the results of the t test which shows that literacy skills obtained a significance value = 0.04452 and numeracy skills obtained a significance value = 0.000938 with \u03b1 = 0.05. Based on the test criteria that the significance value <0.05 means that differentiated learning can improve students' literacy and numeracy skills. In addition, the average score of the post-test results on literacy skills is 73.611. While the average score of the post-test results on numeracy skills is 70.277 so that the average result of normalized gain with a literacy ability value of 0.53 and a numeracy ability value of 0.58. The differentiated learning activities that have been carried out can improve students' literacy and numeracy skills.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-relationship-between-school-age-students-literacy-skills-and-digital",
+    "title": "The relationship between school-age students\u2019 literacy skills and digital well-being: a systematic review",
+    "authors": [
+      "Zeynep Arkan",
+      "M. Bal"
+    ],
+    "year": 2025,
+    "doi": "10.1186/s40359-025-03573-4",
+    "url": "https://www.semanticscholar.org/paper/56416b90af88291cf284e8a17112db0552b80bfc",
+    "openalex_id": null,
+    "semantic_scholar_id": "56416b90af88291cf284e8a17112db0552b80bfc",
+    "eric_id": null,
+    "publisher": "BMC Psychology",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This systematic review examines the relationship between literacy skills and digital well-being among school-age students. Digital technology has transformed education and daily life, creating opportunities and challenges. Understanding how literacy skills influence students\u2019 ability to safely and effectively navigate digital environments is crucial for educational policy and practice. The study followed the PRISMA 2020 guidelines and searched five databases (WoS, Scopus, ERIC, EBSCO Teacher Reference Center, and H.W. Wilson) for the relevant peer-reviewed articles. Of the 798 initial articles, 17 met our inclusion criteria. Studies were assessed using the Mixed Methods Appraisal Tool (MMAT) for methodological quality, with data analyzed thematically to identify patterns in the relationship between literacy and digital well-being. The analysis revealed four key themes: (1) digital competence correlates positively with well-being, improving psychological health, and reducing cyber aggression; (2) demographic factors influence digital well-being, with females demonstrating higher awareness; (3) educational interventions using game-based learning and augmented reality effectively improve digital literacy and well-being; and (4) online risks typically originate from immediate social environments rather than strangers, requiring a balance between the technology\u2019s social benefits and overuse effects. The findings demonstrate a strong relationship between literacy skills and digital well-being among K-12 students. Educational interventions should integrate critical thinking with technical skills, adopt gender-sensitive approaches, and address digital access inequalities. Recommendations include developing longitudinal studies across socioeconomic contexts, exploring AI\u2019s impacts on digital well-being, and providing comprehensive teacher training to support students\u2019 healthy digital development.",
+    "topics": [
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-a-systematic-literature-review-of-contextual-understanding-and-digital-l",
+    "title": "A Systematic Literature Review of Contextual Understanding and Digital Literacy of Elementary School Students through H5P-Based Learning Media",
+    "authors": [
+      "Andhi Bagus Setiyawan"
+    ],
+    "year": 2026,
+    "doi": "10.20961/shes.v9i1.117977",
+    "url": "https://www.semanticscholar.org/paper/075e03d20beb714c88ce30bb9ea3c92bc49acce3",
+    "openalex_id": null,
+    "semantic_scholar_id": "075e03d20beb714c88ce30bb9ea3c92bc49acce3",
+    "eric_id": null,
+    "publisher": "Social, Humanities, and Educational Studies (SHEs): Conference Series",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The rapid development of digital technology in education demands the strengthening of 21st-century competencies, particularly contextual understanding and digital literacy among elementary school students. Contextual understanding enables students to relate learning concepts to real-life situations, while digital literacy supports their ability to access, evaluate, and utilize information effectively in a digital environment. However, previous studies indicate that these competencies have not been optimally developed, especially in learning abstract topics such as Exploring Earth and Space. Therefore, interactive, context-based learning media are needed to bridge this gap. One potential solution is the HTML5 Package (H5P), a web-based platform that enables the creation of interactive learning content and formative assessment tools.\u00a0This study aims to analyze and synthesize research on students\u2019 contextual understanding and digital literacy using H5P-based learning media. The method employed is a Systematic Literature Review (SLR) following the PRISMA procedure, which includes identification, screening, eligibility, and inclusion stages. Data were collected from the Google Scholar database, covering publications from 2020 to 2025 using the keywords \u201ccontextual understanding,\u201d \u201cdigital literacy,\u201d and \u201cH5P.\u201d Selected articles were filtered based on predetermined inclusion and exclusion criteria.\u00a0The findings reveal that contextual learning approaches consistently improve students\u2019 conceptual understanding by linking learning materials to real-life experiences. Meanwhile, students\u2019 digital literacy levels vary, with a predominance in basic technical skills, while higher-order skills such as critical thinking and information evaluation remain underdeveloped. The integration of H5P has been shown to enhance student engagement, strengthen conceptual understanding, and foster digital literacy through interactive content and immediate feedback. Therefore, H5P-based learning media have strong potential as an innovative solution to integrate contextual understanding and digital literacy in elementary education.",
+    "topics": [
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-05",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
   }
 ]
