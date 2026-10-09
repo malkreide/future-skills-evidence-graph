@@ -14,6 +14,21 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Added
 
+- **Vergleich zwischen mehreren Bewertenden** (`eval_agreement.py
+  --between`). Bisher wurde jede Person nur mit der gespeicherten
+  Bewertung verglichen. Bei mehreren Zweitbewertenden fehlte damit genau
+  der Vergleich, der zwei Befunde trennt: Sind sich die Leute einig und
+  nur die gespeicherte Lesart weicht ab, liegt das Problem bei ihr. Sind
+  sie sich auch untereinander uneinig, entscheidet die Rubrik den Fall
+  nicht. Der Bericht nimmt die gespeicherte Bewertung als eine Stimme
+  unter mehreren auf und weist pro Feld Fleiss' κ (mit und ohne die
+  gespeicherte Bewertung), paarweises Cohens κ und jeden nicht
+  einstimmigen Fall mit allen Antworten aus, einsortiert in eine der
+  beiden Sorten. Fleiss' κ ist gegen das publizierte Beispiel aus Fleiss
+  (1971) geprüft (0,210), nicht nur gegen eine eigene Rechnung.
+  Anlass: Drei Personen sind für die Kalibrierrunde angefragt.
+
+
 - **Bewertungsbögen als Excel** (`scripts/worksheet_xlsx.py`, Export und
   Import). Ein JSON-Bogen im Texteditor ist für die meisten Bewertenden
   der falsche Arbeitsplatz: ein vergessenes Anführungszeichen macht die

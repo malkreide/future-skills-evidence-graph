@@ -220,6 +220,45 @@ def weighted_kappa(
     return (observed - expected) / (1 - expected)
 
 
+def fleiss_kappa(ratings: list[list[Any]]) -> float | None:
+    """Chance-corrected agreement among more than two raters. None if undefined.
+
+    *ratings* holds one list per item, each with one answer per rater; every
+    item must carry the same number of answers. Cohen's kappa is defined for
+    one pair only, and averaging it over pairs gives a number nobody has
+    derived the chance correction for. Fleiss' kappa answers the question
+    for the whole group directly: how much more often do two raters, drawn
+    at random, agree on an item than their overall use of the categories
+    would predict?
+
+    A null answer is a category like any other, consistent with the rest of
+    this module: inside an item a rater worked on, "no answer is possible"
+    is a judgement. Undefined, like Cohen's, when everyone used a single
+    category -- that is an unusable sample, not perfect agreement.
+    """
+    if not ratings:
+        return None
+    raters = len(ratings[0])
+    if raters < 2 or any(len(item) != raters for item in ratings):
+        return None
+    items = len(ratings)
+    categories = {value for item in ratings for value in item}
+    per_item = []
+    totals = {category: 0 for category in categories}
+    for item in ratings:
+        counts = {category: item.count(category) for category in set(item)}
+        for category, count in counts.items():
+            totals[category] += count
+        per_item.append(
+            (math.fsum(c * c for c in counts.values()) - raters) / (raters * (raters - 1))
+        )
+    observed = math.fsum(per_item) / items
+    expected = math.fsum((total / (items * raters)) ** 2 for total in totals.values())
+    if math.isclose(expected, 1.0):
+        return None
+    return (observed - expected) / (1 - expected)
+
+
 # Above this many categories a square matrix is wider than a terminal and
 # almost all of it is zeros. study_design alone uses eighteen.
 MAX_MATRIX_CATEGORIES = 6
@@ -1183,6 +1222,225 @@ def explain_report(path: Path) -> list[str]:
     return lines
 
 
+PRIMARY_NAME = "primary (stored)"
+
+
+def _load_pass(path: Path) -> dict[str, Any]:
+    document = json.loads(path.read_text(encoding="utf-8"))
+    protocol = document.get("protocol", {})
+    set_name = protocol.get("source_set")
+    if set_name not in SECOND_RATER_FIELDS:
+        raise SystemExit(
+            f"{path}: protocol.source_set must be one of {sorted(SECOND_RATER_FIELDS)}, "
+            f"got {set_name!r}"
+        )
+    return {"path": path, "document": document, "protocol": protocol, "set": set_name}
+
+
+def between_raters_report(paths: list[Path]) -> list[str]:
+    """Compare several completed passes with each other, not only with the stored labels.
+
+    --second-rater measures each person against the stored appraisal. With
+    one second rater that is all there is. With several it leaves out the
+    comparison that tells two very different findings apart:
+
+    * the second raters agree with EACH OTHER and all differ from the
+      stored label -- the stored reading is the odd one out;
+    * the second raters disagree among themselves as well -- the rubric
+      does not settle the question.
+
+    Both look identical when every person is only compared with the stored
+    label. This report puts the stored appraisal in as one rater among
+    several, and adds Fleiss' kappa, pairwise agreement and a per-item
+    sorting into exactly those two kinds.
+
+    Like --explain it is meant for AFTER all passes are in: it lists items
+    with every rater's answer, including the stored one.
+    """
+    if len(paths) < 2:
+        raise SystemExit(
+            "--between needs at least two completed passes; one pass against the "
+            "stored labels is what --second-rater already reports"
+        )
+    resolved = [path.resolve() for path in paths]
+    if len(set(resolved)) != len(resolved):
+        raise SystemExit(
+            "--between got the same file twice; it would agree with itself by "
+            "construction"
+        )
+    passes = [_load_pass(path) for path in paths]
+    sets = {p["set"] for p in passes}
+    if len(sets) != 1:
+        raise SystemExit(
+            "--between compares passes over the same items, but these come from "
+            f"different sets: {sorted(sets)}"
+        )
+    set_name = sets.pop()
+    primary = primary_labels(set_name)
+    lookup = _primary_key_lookup(set_name, primary)
+
+    warnings: list[str] = []
+    names: list[str] = []
+    for p in passes:
+        name = p["protocol"].get("rater") or p["path"].stem
+        if name in names:
+            warnings.append(
+                f"rater name {name!r} appears twice. If this is the same person "
+                "rating twice, the comparison measures self-consistency, which is "
+                "an upper bound on agreement between people -- not the same thing."
+            )
+            name = f"{name} ({p['path'].name})"
+        names.append(name)
+    versions = {p["protocol"].get("appraisal_method_at_rating") for p in passes}
+    if len(versions) > 1:
+        warnings.append(
+            "the passes were rated under different rules versions "
+            f"({', '.join(sorted(str(v) for v in versions))}); a disagreement may be "
+            "two rulebooks rather than two readings"
+        )
+    not_blind = [n for n, p in zip(names, passes) if not p["protocol"].get("blind")]
+    calibration = any(p["protocol"].get("calibration_subset") for p in passes)
+
+    # Fields: what every pass was asked, in the order the first pass asked it.
+    asked = [resolve_fields(set_name, p["protocol"].get("rated_fields")) for p in passes]
+    fields = [f for f in asked[0] if all(f in a for a in asked[1:])]
+
+    # Items: those every pass actually worked on. An item one rater left
+    # untouched cannot enter a group statistic -- Fleiss needs the same
+    # number of answers per item -- so it is dropped for all, and counted.
+    answers: list[dict[str, dict[str, Any]]] = []
+    for p, rated in zip(passes, asked):
+        mine: dict[str, dict[str, Any]] = {}
+        for label in p["document"].get("labels", []):
+            key = lookup.get(label.get("key"))
+            if key is None or _item_untouched(label, rated):
+                continue
+            mine[key] = label
+        answers.append(mine)
+    every = set(primary)
+    for mine in answers:
+        every &= set(mine)
+    offered = set().union(*(set(m) for m in answers))
+    dropped = len(offered - every)
+    order = [k for k in primary if k in every]
+
+    raters = [PRIMARY_NAME] + names
+    lines = [
+        f"# Between raters: {set_name}, {len(names)} completed passes + the stored labels",
+        "",
+        "raters: " + ", ".join(raters),
+        f"items rated by all: {len(order)}"
+        + (f"   (dropped {dropped} that at least one rater left untouched)" if dropped else ""),
+    ]
+    if calibration:
+        lines.append(
+            "calibration round: these numbers describe how the rubric is read, "
+            "not a baseline"
+        )
+    if not_blind:
+        lines.append(
+            f"NOT INDEPENDENT: {', '.join(not_blind)} declared blind=false; agreement "
+            "involving them is cheap"
+        )
+    for warning in warnings:
+        lines.append(f"WARNING: {warning}")
+    lines += [
+        "",
+        "How to read it: if the second raters agree with each other but not with",
+        "the stored label, the stored reading is the outlier. If they also split",
+        "among themselves, the rubric does not settle the question -- the only",
+        "kind of disagreement that calls for sharpening an anchor.",
+        "",
+        "Run this only after ALL passes are in: it shows every rater's answer.",
+        "",
+    ]
+
+    summary: list[str] = []
+    for field in fields:
+        rows = [
+            [primary[k].get(field)] + [mine[k].get(field) for mine in answers]
+            for k in order
+            if field in primary[k]
+        ]
+        keys = [k for k in order if field in primary[k]]
+        lines.append(f"## {field}  (n={len(rows)})")
+        if not rows:
+            lines += ["no items to compare", ""]
+            continue
+        everyone = fleiss_kappa(rows)
+        seconds = fleiss_kappa([row[1:] for row in rows])
+
+        def fmt(value: float | None) -> str:
+            return "undefined (one category only)" if value is None else f"{value:.3f}"
+
+        lines.append(f"fleiss' kappa, all {len(raters)} raters:          {fmt(everyone)}")
+        lines.append(f"fleiss' kappa, second raters only ({len(names)}): {fmt(seconds)}")
+        lines.append("pairwise agreement (cohen's kappa):")
+        among: list[float] = []
+        against: list[float] = []
+        for i in range(len(raters)):
+            for j in range(i + 1, len(raters)):
+                pair = Comparison(
+                    name="", field=field,
+                    pairs=[(row[i], row[j]) for row in rows],
+                    independent=True, provenance="",
+                )
+                kappa = cohens_kappa(pair.pairs)
+                extra = ""
+                if field in ORDINAL_SCALES:
+                    usable, excluded = pair.ordinal_pairs()
+                    weighted = weighted_kappa(usable, ORDINAL_SCALES[field])
+                    if weighted is not None:
+                        extra = f", weighted {weighted:.3f}"
+                        if excluded:
+                            extra += f" ({excluded} off-scale pair(s) excluded)"
+                (against if i == 0 else among).append(pair.agreement)
+                lines.append(
+                    f"  {raters[i]} ~ {raters[j]}: {pair.agreement:.3f} "
+                    f"({pair.agreements}/{pair.n}), kappa {fmt(kappa)}{extra}"
+                )
+
+        unanimous, outlier, split = [], [], []
+        for key, row in zip(keys, rows):
+            others = row[1:]
+            if len(set(row)) == 1:
+                unanimous.append(key)
+            elif len(set(others)) == 1:
+                outlier.append((key, row))
+            else:
+                split.append((key, row))
+        lines.append(
+            f"items: {len(unanimous)} unanimous, {len(outlier)} where only the stored "
+            f"label differs, {len(split)} where the second raters split"
+        )
+
+        def show(entries: list[tuple[str, list[Any]]]) -> None:
+            for key, row in entries:
+                answers_shown = ", ".join(
+                    f"{name}={'null' if value is None else value}"
+                    for name, value in zip(raters, row)
+                )
+                lines.append(f"    {key}: {answers_shown}")
+
+        if outlier:
+            lines.append("  only the stored label differs (the stored reading is the outlier):")
+            show(outlier)
+        if split:
+            lines.append("  second raters split (the rubric does not settle it):")
+            show(split)
+        lines.append("")
+        mean_among = sum(among) / len(among) if among else None
+        mean_against = sum(against) / len(against) if against else None
+        summary.append(
+            f"- {field}: second raters among themselves {mean_among:.3f}, "
+            f"against the stored label {mean_against:.3f}; "
+            f"{len(outlier)} stored-outlier, {len(split)} split"
+        )
+
+    lines += ["## Summary (mean pairwise agreement)", ""] + summary
+    return lines
+
+
 def legacy_drift_report() -> list[str]:
     """Where the frozen legacy labels and the appraisal disagree.
 
@@ -1265,6 +1523,15 @@ def main() -> int:
         "items you still intend to measure.",
     )
     parser.add_argument(
+        "--between",
+        nargs="+",
+        metavar="FILE",
+        help="Compare two or more completed passes with each other AND with the "
+        "stored labels: Fleiss' kappa, pairwise agreement, and which items split "
+        "the second raters versus only the stored label. Run after all passes "
+        "are in -- it shows every rater's answer.",
+    )
+    parser.add_argument(
         "--legacy-drift",
         action="store_true",
         help="Report where the legacy labels and the appraisal disagree on the "
@@ -1274,6 +1541,10 @@ def main() -> int:
 
     if args.explain:
         print("\n".join(explain_report(Path(args.explain))))
+        return 0
+
+    if args.between:
+        print("\n".join(between_raters_report([Path(p) for p in args.between])))
         return 0
 
     if args.legacy_drift:
