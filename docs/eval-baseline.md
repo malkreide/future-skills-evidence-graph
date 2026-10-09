@@ -415,6 +415,65 @@ python scripts/eval_agreement.py --second-rater eval/catalog_second_rater.json
 Die zehn Kalibrierfälle stammen aus dem Eval-Set und tauchen dort nicht
 auf; alle 59 Katalogfälle bleiben messbar.
 
+### Mehrere Bewertende: untereinander vergleichen
+
+`--second-rater` vergleicht jede Person mit der gespeicherten Bewertung.
+Bei einer Person ist das alles, was es gibt. Bei mehreren fehlt damit der
+Vergleich, der zwei sehr verschiedene Befunde auseinanderhält:
+
+| Muster | Bedeutung | Was zu tun ist |
+| --- | --- | --- |
+| Die Zweitbewertenden sind sich einig, weichen aber alle von der gespeicherten Bewertung ab | Die gespeicherte Lesart ist der Ausreisser | Die gespeicherte Bewertung prüfen, nicht die Rubrik |
+| Die Zweitbewertenden sind sich auch untereinander uneinig | Die Rubrik entscheidet den Fall nicht | Ankertext schärfen |
+
+Solange jede Person nur mit der gespeicherten Bewertung verglichen wird,
+sehen beide Fälle gleich aus.
+
+```powershell
+python scripts/eval_agreement.py --between renato.json simon.json esen.json
+```
+
+Der Bericht nimmt die gespeicherte Bewertung als eine Stimme unter
+mehreren auf und weist pro Feld aus:
+
+- **Fleiss' κ** für alle Bewertenden zusammen und noch einmal nur für die
+  Zweitbewertenden. Liegt der zweite Wert deutlich über dem ersten,
+  stimmen die Leute untereinander besser überein als mit der
+  gespeicherten Bewertung.
+- **Paarweise Übereinstimmung** mit Cohens κ für jedes Paar,
+  einschliesslich der gespeicherten Bewertung; für `evidence_certainty`
+  zusätzlich gewichtet.
+- **Jeden nicht einstimmigen Fall**, einsortiert in eine der beiden Sorten
+  oben, mit allen Antworten nebeneinander.
+
+Als „uneinig" zählt ein Fall, sobald die Zweitbewertenden nicht alle
+dasselbe sagen. Das gilt auch dann, wenn zwei von dreien
+übereinstimmen und die dritte Person der gespeicherten Bewertung folgt.
+Einen solchen Fall der gespeicherten Lesart anzulasten, hiesse, ihr eine
+Frage vorzuwerfen, die die Rubrik offenlässt.
+
+Zum Ablauf:
+
+- **Erst ausführen, wenn alle abgegeben haben.** Der Bericht zeigt jede
+  Antwort, auch die gespeicherte. Wer ihn sieht, bevor er selbst bewertet
+  hat, ist nicht mehr blind.
+- **Ein Fall, den eine Person ganz unberührt gelassen hat, fällt für alle
+  heraus** und wird gezählt. Fleiss' κ braucht pro Fall gleich viele
+  Antworten.
+- **Durchgänge mit echten und mit undurchsichtigen Fall-IDs** lassen sich
+  mischen; beide werden auf denselben Fall zurückgeführt.
+- **Excel-Rückgaben** zuerst mit `worksheet_xlsx.py import` ins JSON
+  übersetzen, dann vergleichen.
+- **Gewarnt** wird bei `blind: false`, bei verschiedenen Regelversionen und
+  bei zweimal demselben Namen: Dann misst der Vergleich die
+  Selbstkonsistenz einer Person, nicht die Übereinstimmung zwischen
+  Personen. Abgelehnt werden eine einzelne Datei, zweimal dieselbe Datei
+  und Durchgänge aus verschiedenen Sets.
+
+Für die Kalibrierrunde ersetzt das Schritt 4 nicht, sondern bereitet ihn
+vor: `--between` zeigt, *welche* Fälle besprochen werden müssen,
+`--explain` liefert für jeden die Begründung der gespeicherten Bewertung.
+
 ### Kein Bogen zeigt die echte Fall-ID
 
 Jeder Fall trägt im Bogen eine undurchsichtige ID (`case-3f9c2e1a5b`), nicht
