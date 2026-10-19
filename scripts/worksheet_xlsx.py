@@ -47,8 +47,8 @@ import appraisal
 
 # 1: five lines of instructions above the protocol.
 # 2: step-by-step instructions for a rater who has never done this, so the
-#    protocol moved down. A rater given format 1 could not tell what she
-#    was meant to do.
+#    protocol moved down. A rater given format 1 could not tell what the
+#    task was.
 FORMAT_VERSION = 2
 
 # Which drop-down each rated field gets. Fields not listed here are free
@@ -89,8 +89,8 @@ CONTEXT_LABELS = {
 # The text columns stay frozen while the rater scrolls through the answers,
 # so their width decides how many answer columns fit beside them. Format 1
 # froze 163 characters on the catalogue sheet: on a laptop that left no
-# room for a single answer column. The abstract keeps enough width that the longest
-# catalogue abstract still fits Excel's maximum row height.
+# room for a single answer column. The abstract keeps enough width that
+# the longest catalogue abstract still fits Excel's maximum row height.
 CONTEXT_WIDTHS = {"statement": 30, "source_title": 20, "abstract": 64, "source_type": 14}
 ANSWER_WIDTH = 18
 AGE_WIDTH = 12
