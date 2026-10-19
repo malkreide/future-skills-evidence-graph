@@ -545,6 +545,14 @@ Drei Eigenschaften, die die Messung schützen, nicht den Komfort:
   Import weist ein Datum oder eine Zahl an dieser Stelle mit Zeilenangabe
   zurück.
 
+Seit Format 2 erklärt das erste Blatt die Aufgabe Schritt für Schritt, und
+die Textspalten im Blatt «Bewertung» sind schmaler, damit auf einem Laptop
+mindestens drei Antwortspalten neben dem Text Platz haben. Das Protokoll
+steht deshalb weiter unten. Ein Bogen im Format 1, der schon verschickt
+wurde, wird trotzdem eingelesen: Der Import liest das Format aus dem
+versteckten Blatt und sucht das Protokoll dort, wo dieses Format es
+hingelegt hat.
+
 Der Import meldet alle Probleme auf einmal, damit ein fehlerhafter Bogen
 eine Rückfrage kostet und nicht eine pro Fehler. Leere Zellen werden zu
 `null`; der Wert `null` in `effect_direction` (Nullbefund) bleibt davon

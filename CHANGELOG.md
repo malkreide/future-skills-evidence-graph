@@ -45,6 +45,29 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   versteckten Original fest `"1.3.0"` und wäre mit der neuen Version
   wirkungslos durchgelaufen; er liest die Version jetzt aus dem Modul und
   prüft, dass die Änderung greift.
+- **Das erste Blatt des Excel-Bogens erklärt die Aufgabe Schritt für
+  Schritt (Bogenformat 2).** Format 1 setzte voraus, dass man die Aufgabe
+  kennt. Jetzt stehen dort Zweck, «Bearbeitung aktivieren», wo gelesen und
+  wo geantwortet wird, die Zahl der gelben Spalten, «null» heisst leer
+  (mit der Ausnahme `effect_direction`), Unsicherheit ist kein Grund für
+  eine leere Zelle, Fragen zum Inhalt werden notiert statt gestellt, und
+  kein Austausch mit anderen Bewertenden vor der Abgabe. Schritte, die
+  der Bogen nicht betrifft, fallen weg: ohne `effect_direction` keine
+  Ausnahme, ohne ALT-Spalte kein Hinweis darauf. Das Feld «Notizen» sagt
+  ausdrücklich, dass Fragen zum Inhalt nicht dorthin gehören, weil die
+  Notiz als Vorbehalt unter jeder Vergleichszeile erscheint. Im Blatt
+  «Bewertung» sind die fixierten Textspalten schmaler und die Ansicht
+  steht auf 90 %. Auf einem Laptop mit 1366 Pixeln Breite passen damit
+  vier statt zwei Antwortspalten neben den Kalibrierbogen und drei neben
+  den Katalogbogen, wo vorher keine einzige Platz hatte. Das Protokoll steht deshalb weiter unten.
+  **Ein Bogen im Format 1, der schon verschickt wurde, wird weiterhin
+  eingelesen**: Der Import liest das Format aus dem versteckten Blatt.
+  Belegt mit einem echten Format-1-Bogen, aufgenommen vor der Änderung
+  (`tests/fixtures/worksheets/`), der auch seine Regelversion 1.3.0
+  behält. Tests halten fest: Die Schritte enden vor dem Protokoll, und
+  mehr Schritte als Platz bricht den Export ab. Mindestens drei
+  Antwortspalten sind sichtbar, und keine Textzeile stösst an Excels
+  Höhengrenze, an der das Ende eines Abstracts verschwände.
 
 ### Added
 

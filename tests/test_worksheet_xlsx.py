@@ -315,7 +315,7 @@ class WorkbookShapeTests(_Workbook):
         first, last = wx._col(col[rated[0]]), wx._col(col[rated[-1]])
         rows = len(self.original["labels"]) + 1
         self.assertEqual(
-            wb[wx.SHEET_INSTRUCTIONS]["C17"].value,
+            wb[wx.SHEET_INSTRUCTIONS][wx.PROGRESS_CELL].value,
             f"=COUNTA('{wx.SHEET_RATING}'!{first}2:{last}{rows})",
         )
 
@@ -359,6 +359,129 @@ class WorkbookShapeTests(_Workbook):
                     self.assertIn(text, texts)
 
 
+class LegacyFormatTests(unittest.TestCase):
+    """A workbook handed out before format 2 must still come back.
+
+    The fixture was exported by the format-1 exporter and filled like a
+    rater fills it (see tests/fixtures/worksheets/README.md). Format 2
+    moved the protocol cells; a workbook already with a rater has them
+    where format 1 put them.
+    """
+
+    FIXTURE = ROOT / "tests" / "fixtures" / "worksheets" / "kalibrierbogen_format1_ausgefuellt.xlsx"
+
+    def test_a_format_1_workbook_reads_back_with_its_protocol(self) -> None:
+        self.assertEqual(openpyxl.load_workbook(self.FIXTURE)[wx.SHEET_META]["B1"].value, 1)
+        back = wx.import_workbook(self.FIXTURE)
+        self.assertEqual(back["protocol"]["rater"], "Fixture Format 1")
+        self.assertEqual(back["protocol"]["labeled_at"], "2026-10-19")
+        self.assertIs(back["protocol"]["blind"], True)
+        self.assertEqual(back["labels"][0]["evidence_certainty"], "unverifiable")
+        self.assertIsNone(back["labels"][1]["evidence_certainty"])
+
+    def test_it_keeps_the_rules_it_was_rated_under(self) -> None:
+        # The answers were given under the 1.3.0 rubric. Reading them back
+        # must not restamp them with today's rules.
+        back = wx.import_workbook(self.FIXTURE)
+        self.assertEqual(back["protocol"]["appraisal_method_at_rating"], "1.3.0")
+
+
+class InstructionsSheetTests(_Workbook):
+    """The first sheet a rater sees, written for someone new to this."""
+
+    def _text(self, wb) -> str:
+        ins = wb[wx.SHEET_INSTRUCTIONS]
+        return "\n".join(str(c.value) for row in ins.iter_rows() for c in row if c.value)
+
+    def test_the_steps_end_before_the_protocol(self) -> None:
+        # The calibration sheet asks for every field, so it gets every
+        # conditional step: the longest instructions there are.
+        wb, _ = self.open()
+        ins = wb[wx.SHEET_INSTRUCTIONS]
+        heading = int(wx.PROTOCOL_CELLS["rater"][1:]) - 2
+        self.assertEqual(ins[f"A{heading}"].value, "Protokoll (gelbe Felder ausfüllen)")
+        used = [r for r in range(wx.STEP_ROWS.start, heading) if ins[f"A{r}"].value]
+        self.assertLess(max(used), heading - 1)
+        self.assertGreaterEqual(len(used), 9)
+
+    def test_more_steps_than_rows_is_refused(self) -> None:
+        original = wx.STEP_ROWS
+        try:
+            wx.STEP_ROWS = range(8, 12)
+            with self.assertRaises(ValueError):
+                wx.export_workbook(copy.deepcopy(self.original), self.tmp / "zu_lang.xlsx")
+        finally:
+            wx.STEP_ROWS = original
+
+    def test_the_steps_speak_of_what_this_sheet_asks(self) -> None:
+        wb, _ = self.open()
+        full = self._text(wb)
+        self.assertIn(f"Es sind {len(self.original['protocol']['rated_fields'])} gelbe Spalten", full)
+        self.assertIn("Einzige Ausnahme: In effect_direction", full)
+        self.assertIn("«ALT:»", full)
+        narrowed = ea.build_worksheet("claim_prefill", ["evidence_certainty", "claim_type"])
+        path = self.tmp / "eng.xlsx"
+        wx.export_workbook(narrowed, path)
+        text = self._text(openpyxl.load_workbook(path))
+        self.assertIn("Es sind 2 gelbe Spalten", text)
+        self.assertNotIn("effect_direction", text)
+        self.assertNotIn("«ALT:»", text)
+
+    def test_content_questions_go_to_the_debrief_not_the_notes(self) -> None:
+        # The notes cell is the caveat the report prints under every
+        # comparison. A question about a case would land there as one.
+        wb, _ = self.open()
+        ins = wb[wx.SHEET_INSTRUCTIONS]
+        notes_row = int(wx.PROTOCOL_CELLS["notes"][1:])
+        self.assertIn("nicht hierher", ins[f"D{notes_row}"].value)
+        self.assertIn("nicht mit anderen Bewertenden", self._text(wb))
+
+
+class LaptopFitTests(unittest.TestCase):
+    """The text columns are frozen; the answers have to fit beside them.
+
+    Assumed screen: a 1366-pixel laptop at 100 % scaling, which leaves
+    about 1300 pixels for the grid. Format 1 froze so much text that the
+    catalogue sheet showed no answer column at all there, the calibration
+    sheet two -- and a rater who sees no yellow cell does not know what to
+    do.
+    """
+
+    GRID_PX = 1300
+
+    def _visible_answer_columns(self, source: Path) -> int:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bogen.xlsx"
+            wx.export_workbook(_load(source), path)
+            ws = openpyxl.load_workbook(path)[wx.SHEET_RATING]
+        zoom = (ws.sheet_view.zoomScale or 100) / 100
+        frozen_to = openpyxl.utils.column_index_from_string(ws.freeze_panes.rstrip("0123456789"))
+        px = lambda width: width * 7 + 5  # noqa: E731 -- Excel's character-to-pixel rule
+        frozen = 30 + sum(
+            px(ws.column_dimensions[wx._col(i)].width)
+            for i in range(1, frozen_to)
+            if not ws.column_dimensions[wx._col(i)].hidden
+        )
+        answer = px(ws.column_dimensions[wx._col(frozen_to)].width)
+        return int((self.GRID_PX / zoom - frozen) // answer)
+
+    def test_at_least_three_answer_columns_are_in_view(self) -> None:
+        for source in (CALIBRATION, CATALOGUE):
+            with self.subTest(source.name):
+                self.assertGreaterEqual(self._visible_answer_columns(source), 3)
+
+    def test_no_text_row_is_cut_off_at_excels_height_limit(self) -> None:
+        # Narrower columns mean taller rows, and Excel stops at 409
+        # points. A row that hits it hides the end of its abstract.
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bogen.xlsx"
+            wx.export_workbook(_load(CATALOGUE), path)
+            ws = openpyxl.load_workbook(path)[wx.SHEET_RATING]
+        for row in range(2, ws.max_row + 1):
+            with self.subTest(row=row):
+                self.assertLess(ws.row_dimensions[row].height, 409)
+
+
 class RaterGuideTests(_Workbook):
     """The printed step-by-step guide that goes out with the workbook.
 
@@ -392,7 +515,7 @@ class RaterGuideTests(_Workbook):
         shown = [wx.SHEET_INSTRUCTIONS, wx.SHEET_RATING, wx.SHEET_RUBRIC]
         shown += [wx.CONTEXT_LABELS[c] for c in wx.CONTEXT_LABELS]
         shown += [ins[ref.replace("C", "B")].value for ref in wx.PROTOCOL_CELLS.values()]
-        shown.append(ins["B17"].value)
+        shown.append(ins[wx.PROGRESS_CELL.replace("C", "B")].value)
         shown += {
             dv.errorTitle
             for dv in wb[wx.SHEET_RATING].data_validations.dataValidation
