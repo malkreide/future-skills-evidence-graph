@@ -27,6 +27,7 @@ import openpyxl  # noqa: E402
 
 CALIBRATION = ROOT / "eval" / "claim_prefill_calibration.json"
 CATALOGUE = ROOT / "eval" / "catalog_second_rater.json"
+GUIDE = ROOT / "docs" / "anleitung-bewertungsbogen.md"
 
 
 def _load(path: Path) -> dict:
@@ -353,6 +354,74 @@ class WorkbookShapeTests(_Workbook):
             for text in (value.values() if isinstance(value, dict) else [value]):
                 with self.subTest(key):
                     self.assertIn(text, texts)
+
+
+class RaterGuideTests(_Workbook):
+    """The printed step-by-step guide that goes out with the workbook.
+
+    It reaches the rater alongside the sheet, so it is held to the sheet's
+    rule: nothing in it may lead to an answer. And it describes the
+    workbook to someone who has never seen one, so every label it tells
+    them to look for must be one the workbook actually shows.
+    """
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.guide = GUIDE.read_text(encoding="utf-8")
+
+    def test_the_guide_does_not_send_its_rater_to_the_answer_key(self) -> None:
+        for doc in ea.EXPOSURE_DOCS:
+            with self.subTest(doc.name):
+                self.assertNotIn(doc.stem, self.guide)
+        for set_name in ("claim_prefill", "catalog"):
+            for key in ea.primary_labels(set_name):
+                with self.subTest(set_name, key=key):
+                    self.assertNotIn(key, self.guide)
+
+    def test_each_column_is_asked_the_question_the_sheet_asks(self) -> None:
+        for field in [*wx.VOCABULARIES, *sorted(wx.AGE_FIELDS)]:
+            with self.subTest(field):
+                self.assertIn(f"| {field} | {wx.FIELD_HINTS[field]} |", self.guide)
+
+    def test_every_label_the_guide_points_to_is_in_the_workbook(self) -> None:
+        wb, col = self.open()
+        ins = wb[wx.SHEET_INSTRUCTIONS]
+        shown = [wx.SHEET_INSTRUCTIONS, wx.SHEET_RATING, wx.SHEET_RUBRIC]
+        shown += [wx.CONTEXT_LABELS[c] for c in wx.CONTEXT_LABELS]
+        shown += [ins[ref.replace("C", "B")].value for ref in wx.PROTOCOL_CELLS.values()]
+        shown.append(ins["B17"].value)
+        shown += {
+            dv.errorTitle
+            for dv in wb[wx.SHEET_RATING].data_validations.dataValidation
+            if dv.type == "list"
+        }
+        for text in shown:
+            with self.subTest(text):
+                self.assertIn(text, self.guide)
+        self.assertIn("Nr", col)
+        self.assertIn("«Nr»", self.guide)
+
+    def test_null_is_a_listed_value_only_where_the_guide_says(self) -> None:
+        # The guide tells the rater that "null" in the rubric means an
+        # empty cell, and names effect_direction as the one column whose
+        # list offers "null" itself. True only while no other list does.
+        with_null = [f for f, values in wx.VOCABULARIES.items() if "null" in values]
+        self.assertEqual(with_null, ["effect_direction"])
+        self.assertIn("Einzige Ausnahme ist die Spalte effect_direction", self.guide)
+
+    def test_the_columns_it_lets_go_are_the_ones_the_rubric_lets_go(self) -> None:
+        # "Die Spalten mit «ALT:» darfst du ganz leer lassen" restates the
+        # rubric. It holds only while the rubric still says so and "ALT:"
+        # marks exactly the legacy fields.
+        legacy = {f for f, hint in wx.FIELD_HINTS.items() if hint.startswith("ALT:")}
+        self.assertEqual(legacy, {"evidence_strength", "age_range"})
+        for path in (CALIBRATION, CATALOGUE):
+            with self.subTest(path.name):
+                self.assertIn(
+                    "Wer nur die neue Skala bewerten will, laesst beide null",
+                    _load(path)["rubrik_legacy_felder"],
+                )
+        self.assertIn("«ALT:»", self.guide)
 
 
 if __name__ == "__main__":
