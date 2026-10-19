@@ -149,13 +149,42 @@ abgeschrieben werden.
 
 | Als `study_design` bedeutet … | … |
 | --- | --- |
-| `policy_report` | Das Dokument berichtet **keine eigene Methode** — kein Suchprotokoll, keine eigene Erhebung. |
-| `systematic_review` | Der Text beschreibt eine systematische Suche und Synthese. |
-| `working_paper` | Der Text beschreibt keine abgeschlossene Untersuchung, sondern ein Konzept oder einen Zwischenstand. |
+| `systematic_review` | Eine Übersicht über bestehende Studien, die offenlegt, wie gesucht und ausgewählt wurde: Datenbanken, Suchbegriffe, Einschlusskriterien oder die Zahl der einbezogenen Studien. Auch Scoping- und Rapid Reviews. |
+| `meta_analysis` | Eine systematische Übersicht, die die Ergebnisse mehrerer Studien statistisch zu einem gemeinsamen Effekt zusammenrechnet. |
+| `narrative_review` | Eine Übersicht, ein Essay oder ein konzeptioneller Beitrag, der nicht offenlegt, wie die Quellen gefunden wurden. Auch Positionspapiere und Beiträge, die aus der Literatur ein Modell oder einen Rahmen vorschlagen. |
+| `psychometric_validation` | Ein Test, Fragebogen oder anderes Messinstrument wird entwickelt oder geprüft. Untersucht wird, ob es zuverlässig und gültig misst, nicht, ob eine Massnahme wirkt. |
+| `rct` | Die Teilnehmenden werden einzeln per Zufall einer Massnahme oder einem Vergleich zugeteilt. Der Text muss die Zufallszuteilung nennen («randomised», «randomly assigned»). |
+| `cluster_rct` | Wie rct, aber ganze Gruppen werden per Zufall zugeteilt, zum Beispiel Klassen oder Schulen («cluster-randomised»). |
+| `quasi_experimental` | Eine Gruppe mit Massnahme wird mit einer Vergleichsgruppe verglichen: ohne Massnahme, mit einer anderen Massnahme, auf der Warteliste oder ein früherer Jahrgang. Eine Zufallszuteilung wird nicht berichtet. Das ist der Normalfall für einen Vergleich ohne Zufall, auch wenn vorher und nachher gemessen wurde. |
+| `matched_comparison` | Wie quasi_experimental, aber der Text bezeichnet das Design selbst als gematchten Vergleich: Die Vergleichsgruppe wurde gezielt nach ähnlichen Merkmalen ausgewählt. |
+| `controlled_pre_post` | Messung vorher und nachher in einer Gruppe mit Massnahme und in einer Vergleichsgruppe, wenn der Text das Design ausdrücklich so nennt («controlled before-and-after»). Ohne diese Bezeichnung gilt ein solcher Vergleich als quasi_experimental. |
+| `uncontrolled_pre_post` | Nur eine Gruppe erhält eine Massnahme. Der Text nennt eine Messung vorher und nachher oder eine gemessene Veränderung, oder er sagt ausdrücklich, dass es keine Vergleichsgruppe gab. |
+| `cohort` | Eine Gruppe wird über längere Zeit begleitet und mehrmals untersucht, ohne dass die Forschenden eine Massnahme zuteilen. Das englische Wort «cohort» allein heisst oft nur Gruppe oder Jahrgang und macht noch keine Kohortenstudie. |
+| `cross_sectional` | Daten werden einmal erhoben oder ausgewertet, etwa mit Fragebogen, Test oder vorhandenen Daten, um einen Stand, Unterschiede zwischen Gruppen oder Zusammenhänge zu beschreiben. Keine zugeteilte Massnahme, kein Vorher-Nachher. |
+| `single_case` | Eine oder wenige Personen werden wiederholt gemessen, meist in Phasen mit und ohne Massnahme (Einzelfalldesign, etwa «multiple baseline»). |
+| `qualitative` | Interviews, Fokusgruppen, Beobachtungen, Fallstudien oder offene Antworten werden inhaltlich ausgewertet. Ergebnis sind Themen, Muster oder Erfahrungen, keine gemessenen Grössen. |
+| `descriptive` | Der Text beschreibt, was es gibt oder was gemacht wurde, ohne Vergleich und ohne gemessene Veränderung: Bestandsaufnahmen, Überblicke über Lehrpläne oder Praxis, Dokumentenanalysen, Berichte über die Umsetzung eines Programms. |
+| `policy_report` | Das Dokument berichtet keine eigene Methode — kein Suchprotokoll, keine eigene Erhebung. Empfehlungen, Leitlinien, Strategien oder Prognosen, ohne zu sagen, wie sie gewonnen wurden. |
+| `working_paper` | Der Text beschreibt keine abgeschlossene Untersuchung, sondern ein Konzept oder einen Zwischenstand, etwa den Aufbau eines eigenen Programms oder Werkzeugs, ohne gemessene Ergebnisse. |
+| `consensus_framework` | Ein Kompetenz- oder Referenzrahmen, den eine Organisation, ein Gremium oder eine Fachgemeinschaft herausgibt. Er legt fest, was zu einem Bereich gehört; er belegt, worauf man sich geeinigt hat, nicht, dass etwas wirkt. |
+| `other` | Der Text beschreibt ein Vorgehen, das zu keinem anderen Wert passt. |
+| `unknown` | Der Text sagt nicht, wie das Ergebnis zustande kam: weder eine Vergleichsgruppe noch eine Messung vorher und nachher noch eine andere erkennbare Methode. |
 
 Ein als `policy_report` publiziertes Dokument, das eine Literaturrecherche,
 eine Ministeriumsbefragung und neun Länder-Fallstudien beschreibt, hat als
 Design **diese Methode** — nicht `policy_report`.
+
+**Wenn mehrere Werte passen,** gilt diese Reihenfolge:
+
+1. **Der Teil, auf dem die Aussage beruht.** Beschreibt ein Dokument
+   mehrere Methoden oder zitiert es eine einzelne Studie, zählt die
+   Methode des Teils, aus dem die Aussage stammt.
+2. **Die Bezeichnung im Text.** Nennt der Text sein Design selbst
+   («quasi-experimental design», «single-case design»), gilt diese
+   Bezeichnung. Die drei Doppelbegriffe oben zählen nur, wenn sie das
+   Vorgehen beschreiben, nicht die Publikationsform.
+3. **Sonst `unknown`.** Ist kein Vorgehen erkennbar, nicht das
+   wahrscheinlichste raten.
 
 ### Warum diese beiden Anker geschärft wurden
 
@@ -173,6 +202,48 @@ geschärften Anker jetzt getrennt benannt.
 Die fünf `study_design`-Abweichungen betrafen sämtlich denselben
 Policy-Bericht — und die Ursache ist die Namensgleichheit im Vokabular
 selbst, nicht das Urteil der bewertenden Person.
+
+### Warum seit 1.4.0 jedes Design definiert ist
+
+Bis 1.3.0 zählte die Rubrik die zwanzig Werte nur auf und definierte drei
+davon. Wer die Begriffe aus der Methodenlehre kennt, kam damit zurecht.
+Für die Kalibrierrunde sind aber Personen ohne diese Ausbildung angefragt,
+und der Bogen verbietet ihnen das Nachschlagen. Den Unterschied zwischen
+`quasi_experimental` und `matched_comparison` hätten sie raten müssen,
+und geratene Antworten messen nicht, ob die Rubrik trägt.
+
+Die Definitionen beschreiben die Praxis, nach der die gespeicherten
+Begutachtungen entstanden sind, und die Absicht, die `appraisal.py` für
+`narrative_review` und `psychometric_validation` festhält. Drei
+Festlegungen sind **redaktionell** und hätten anders ausfallen können:
+
+- **`quasi_experimental` ist der Normalfall für jeden Vergleich ohne
+  Zufall.** `matched_comparison` und `controlled_pre_post` gelten nur,
+  wenn der Text das Design selbst so nennt. Sonst überlappen die drei
+  Werte, und zwei Bewertende könnten denselben Text verschieden einordnen,
+  ohne dass eine von beiden falsch läge.
+- **Eine Übersicht ist `systematic_review`, wenn sie ihre Auswahl
+  offenlegt**, wobei die Zahl der einbezogenen Studien genügt. Sonst ist
+  sie `narrative_review`.
+- **`uncontrolled_pre_post` verlangt einen Hinweis auf die Messung**: ein
+  Vorher-Nachher, eine gemessene Veränderung oder das ausdrückliche Fehlen
+  einer Vergleichsgruppe. Eine blosse Erfolgsmeldung ohne Angabe, wie sie
+  zustande kam, ist `unknown`.
+
+Geprüft wurden alle gespeicherten Begutachtungen. Die 59 im Katalog passen
+zu den Definitionen, ausgehend von dem, was die primäre Bewertung über
+jede Studie wusste: Mehrere stützen sich auf Kontext, der über das
+Abstract hinausgeht, den ein Zweitbewertender also nicht sieht. Die 59
+sind deshalb auf 1.4.0 neu gestempelt.
+
+**Das Eval-Gold bleibt auf 1.3.0.** Acht der fünfzig Fälle fielen unter
+den Definitionen anders aus, keiner davon in der Kalibrierrunde. Fünf
+davon sind Übersichten ohne offengelegte Suche, die `systematic_review`
+tragen, weil es `narrative_review` bei ihrer Bewertung noch nicht gab.
+Die übrigen drei liegen an den Grenzen zwischen `quasi_experimental`,
+`uncontrolled_pre_post` und `unknown`. Ob das Gold angepasst wird, ist eine
+eigene Entscheidung: Es trägt die CI-Schwellen, und eine Korrektur dort
+verschiebt gemessene Zahlen.
 
 ## Zuerst: Was für eine Aussage ist das?
 
@@ -553,6 +624,8 @@ unter Regeln gelesen zu werden, die ihre Autorin nie gesehen hat.
 | 1.0.0 | Erstfassung: fünfstufige `evidence_certainty`, GRADE-artige Herleitung. |
 | 1.1.0 | `claim_type` mit zweitem Herleitungspfad; `narrative_review` und `psychometric_validation` ergänzt. |
 | 1.2.0 | `claim_supported_by_source` geschärft, nachdem der erste gemessene Zweitdurchgang das Feld bei κ = 0,039 zeigte. Kein zulässiger Wert und keine gespeicherte Stufe ändert sich — geändert hat sich, welche von zwei Lesarten der Anker zulässt. |
+| 1.3.0 | `effect_direction` und `study_design` geschärft: Richtung eines gemessenen Effekts statt Tonfall; Warnung vor den drei Werten, die auch `source_type` kennt. |
+| 1.4.0 | Jedes der zwanzig `study_design` definiert, mit Vorrangregeln für Texte, auf die mehrere Werte passen. Kein zulässiger Wert ändert sich; 59 Katalog-Begutachtungen geprüft und neu gestempelt, das Eval-Gold bleibt auf 1.3.0 (siehe «Warum seit 1.4.0 jedes Design definiert ist»). |
 
 ### Versionsverlauf der Scoring-Methode (`METHOD_VERSION`)
 

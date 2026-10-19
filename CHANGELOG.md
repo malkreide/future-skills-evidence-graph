@@ -12,6 +12,40 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **Jedes Studiendesign ist definiert (`APPRAISAL_VERSION` 1.4.0).** Die
+  Rubrik zählte zwanzig `study_design`-Werte auf und definierte drei. Für
+  die Kalibrierrunde sind Personen ohne Methodenausbildung angefragt, und
+  der Bogen verbietet ihnen das Nachschlagen; zwischen
+  `quasi_experimental` und `matched_comparison` hätten sie raten müssen.
+  Der Anker in `docs/evidenz-bewertung-anker.md` definiert jetzt alle
+  zwanzig, der Bogen liest sie von dort wie die übrigen Anker und zeigt
+  im Blatt «Rubrik» eine Zeile pro Design. Dazu kommen drei Vorrangregeln
+  für Texte, auf die mehrere Werte passen: der Teil, auf dem die Aussage
+  beruht; die Bezeichnung im Text; sonst `unknown`. Drei Festlegungen
+  sind redaktionell und im Anker begründet: `quasi_experimental` ist der
+  Normalfall jedes Vergleichs ohne Zufall; eine Übersicht ist
+  `systematic_review`, wenn sie ihre Auswahl offenlegt; ein
+  `uncontrolled_pre_post` braucht einen Hinweis auf die Messung. Kein
+  zulässiger Wert ändert sich. **Die 59 Katalog-Begutachtungen** sind
+  gegen die Definitionen geprüft und auf 1.4.0 neu gestempelt. **Das
+  Eval-Gold bleibt auf 1.3.0:** Acht der fünfzig Fälle fielen unter den
+  Definitionen anders aus, keiner davon in der Kalibrierrunde. Fünf sind
+  Übersichten ohne offengelegte Suche, die `systematic_review` tragen,
+  weil es `narrative_review` bei ihrer Bewertung noch nicht gab; drei
+  liegen an den Grenzen zwischen Vergleich, Vorher-Nachher und
+  unbekanntem Design. Ob das Gold angepasst wird, ist offen, denn es trägt
+  die CI-Schwellen. Ein Test hält es auf 1.3.0, bis das entschieden ist.
+  Der Extraktor-Prompt bleibt `claim-appraisal-v3`; ihn anzupassen
+  verlangt eine neue Aufzeichnung. Alle drei leeren Bögen sind neu
+  erzeugt. Ein Bogen von 1.3.0, der schon verschickt wurde, ist nicht mehr
+  zu verwenden; `--between` warnt, wenn Durchgänge verschiedener
+  Regelversionen gemischt werden. Nebenbei: Ein Test ersetzte im
+  versteckten Original fest `"1.3.0"` und wäre mit der neuen Version
+  wirkungslos durchgelaufen; er liest die Version jetzt aus dem Modul und
+  prüft, dass die Änderung greift.
+
 ### Added
 
 - **Vergleich zwischen mehreren Bewertenden** (`eval_agreement.py

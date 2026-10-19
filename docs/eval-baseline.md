@@ -335,7 +335,8 @@ behaupten nur 14 von 59 Aussagen überhaupt eine Wirkung).
 
 **Schritt 1 — Bogen holen.** Er liegt fertig als
 **[`eval/claim_prefill_calibration.json`](../eval/claim_prefill_calibration.json)**
-(erzeugt unter 1.3.0). Diese zehn Fälle stellen je eine andere Regel auf
+(erzeugt unter 1.4.0; ein Bogen von 1.3.0 hat noch keine Definitionen der
+Studiendesigns und ist nicht mehr auszugeben). Diese zehn Fälle stellen je eine andere Regel auf
 die Probe; zusammen decken sie alle vier Certainty-Stufen, neun
 Studiendesigns und drei `claim_type`-Werte ab:
 
@@ -801,7 +802,7 @@ Was gebraucht wird:
    Eval-Set (siehe unten), nicht auf dem Katalog — sonst kostet sie zehn
    Messfälle. Nach der Kalibrierrunde bleiben die 57 vollständig erhalten.
 3. **Der blanke Bogen** liegt als `eval/catalog_second_rater.json`, erzeugt
-   unter 1.3.0. Er trägt die geschärften Rubriken für
+   unter 1.4.0. Er trägt die geschärften Rubriken für
    `claim_supported_by_source`, `effect_direction` und `study_design` —
    genau die drei Felder, deren Reproduzierbarkeit gemessen werden soll.
 4. **Unter neuem Namen ablegen**, etwa

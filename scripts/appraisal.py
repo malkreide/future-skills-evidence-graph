@@ -75,7 +75,15 @@ from typing import Any
 #        with different meanings, which produced 5 disagreements on one
 #        document. The overlap is a flaw in this vocabulary, not in
 #        anyone's judgement, so it is now named in the rubric.
-APPRAISAL_VERSION = "1.3.0"
+# 1.4.0  every study_design defined, with precedence rules for a text
+#        that fits more than one. Raters without methods training had
+#        twenty bare names and no permission to look them up. No value
+#        changed. The 59 catalogue appraisals were checked against the
+#        definitions and restamped; the eval gold keeps 1.3.0, because
+#        eight of its fifty cases read differently under them (five
+#        reviews labelled before narrative_review existed, three at the
+#        quasi-experimental / pre-post / unknown boundaries).
+APPRAISAL_VERSION = "1.4.0"
 
 
 # --- Controlled vocabularies ----------------------------------------------

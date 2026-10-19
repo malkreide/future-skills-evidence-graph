@@ -877,6 +877,18 @@ def direction_rubric() -> dict[str, str]:
     )
 
 
+def design_rubric() -> dict[str, str]:
+    """The study_design definitions, read out of the document.
+
+    Until 1.4.0 the rubric listed twenty design names and defined three.
+    A rater with methods training could manage; the calibration raters
+    have none and may not look anything up, so they were left guessing
+    between, say, quasi_experimental and matched_comparison -- and a
+    guessed answer measures nothing about the rubric.
+    """
+    return _anchor_table(DESIGN_ANCHOR_SECTION, set(appraisal.STUDY_DESIGN_VALUES))
+
+
 def anchor_rubric() -> dict[str, str]:
     """The evidence_certainty anchors, read out of the methodology document.
 
@@ -1112,18 +1124,25 @@ def _prefill_rubric() -> dict[str, Any]:
             "empfiehlt sie etwas (normative) oder legt sie einen Begriff fest "
             "(definitional)? Danach richtet sich, woran die Aussage gemessen wird."
         ),
-        "rubrik_study_design": (
-            "Das im Text beschriebene Design, aus: "
-            + ", ".join(appraisal.STUDY_DESIGN_VALUES)
-            + ". Nennt der Text kein Design, 'unknown' -- nicht das "
-            "wahrscheinlichste raten. ACHTUNG, haeufigste Falle: "
-            + ", ".join(sorted(OVERLAPPING_VOCABULARY))
-            + " stehen in BEIDEN Vokabularen und bedeuten Verschiedenes. Den Wert "
-            "aus source_type NIE abschreiben. 'policy_report' als study_design "
-            "heisst: das Dokument berichtet KEINE eigene Methode. Beschreibt ein "
-            "Policy-Bericht eine Literaturrecherche, eine Befragung und Fallstudien, "
-            "ist sein Design diese Methode."
-        ),
+        "rubrik_study_design": {
+            **design_rubric(),
+            "_hinweis": (
+                "Gemeint ist das im Text beschriebene Vorgehen, nie die "
+                "Publikationsform. Passen mehrere Werte, gilt diese Reihenfolge: "
+                "(1) Beruht die Aussage auf einem bestimmten Teil des Dokuments "
+                "(einer zitierten Studie, den Fallstudien, der Befragung), zaehlt "
+                "die Methode dieses Teils. (2) Nennt der Text sein Design selbst, "
+                "gilt diese Bezeichnung. (3) Ist kein Vorgehen erkennbar, "
+                "'unknown' -- nicht das wahrscheinlichste raten. ACHTUNG, "
+                "haeufigste Falle: "
+                + ", ".join(sorted(OVERLAPPING_VOCABULARY))
+                + " stehen in BEIDEN Vokabularen und bedeuten Verschiedenes. Den "
+                "Wert aus source_type NIE abschreiben. 'policy_report' als "
+                "study_design heisst: das Dokument berichtet KEINE eigene Methode. "
+                "Beschreibt ein Policy-Bericht eine Literaturrecherche, eine "
+                "Befragung und Fallstudien, ist sein Design diese Methode."
+            ),
+        },
         "rubrik_effect_direction": {
             **direction_rubric(),
             "_hinweis": (

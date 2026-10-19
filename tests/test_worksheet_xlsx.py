@@ -234,7 +234,10 @@ class ImportGuardTests(_Workbook):
     def test_an_edited_hidden_original_fails_its_checksum(self) -> None:
         wb, _ = self.open()
         meta = wb[wx.SHEET_META]
-        meta["A5"] = str(meta["A5"].value).replace('"1.3.0"', '"9.9.9"', 1)
+        original = str(meta["A5"].value)
+        meta["A5"] = original.replace(f'"{ap.APPRAISAL_VERSION}"', '"9.9.9"', 1)
+        # The edit must land, or this test passes on an untouched sheet.
+        self.assertNotEqual(meta["A5"].value, original)
         self.sign(wb)
         problems = self.problems(wb)
         self.assertIn("checksum", problems[0])

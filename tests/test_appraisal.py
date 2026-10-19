@@ -1316,7 +1316,7 @@ class DirectionAndDesignAnchorTests(unittest.TestCase):
         # Five disagreements came from three value names existing in both
         # source_type and study_design. That is a flaw in the vocabulary,
         # so the rubric warns about it by name.
-        rubric = ea.build_worksheet("catalog")["rubrik_study_design"]
+        rubric = ea.build_worksheet("catalog")["rubrik_study_design"]["_hinweis"]
         self.assertIn("ACHTUNG", rubric)
         self.assertIn("NIE abschreiben", rubric)
         self.assertIn("KEINE eigene Methode", rubric)
@@ -1342,6 +1342,62 @@ class DirectionAndDesignAnchorTests(unittest.TestCase):
         self.assertIn("never copy the source_type across", prompt)
         self.assertIn("reports no method of its own", prompt)
         self.assertEqual(ec.APPRAISAL_PROMPT_VERSION, "claim-appraisal-v3")
+
+    # --- 1.4.0: every design defined ------------------------------------
+
+    def test_every_design_is_defined_in_the_document(self) -> None:
+        # Until 1.4.0 the rater got twenty names and three definitions.
+        rubric = ea.design_rubric()
+        self.assertEqual(set(rubric), set(ap.STUDY_DESIGN_VALUES))
+        doc = ea.ANCHOR_DOC.read_text(encoding="utf-8")
+        for value, definition in rubric.items():
+            with self.subTest(value):
+                self.assertGreater(len(definition), 30)
+                self.assertIn(definition, doc)
+        # The worksheet carries THOSE definitions, not a copy of its own.
+        block = dict(ea.build_worksheet("catalog")["rubrik_study_design"])
+        block.pop("_hinweis", None)
+        self.assertEqual(block, rubric)
+
+    def test_the_rater_gets_the_precedence_rules(self) -> None:
+        # Several values can fit one text. Without an order, two raters
+        # who both read the definitions correctly could still disagree.
+        hint = ea.build_worksheet("catalog")["rubrik_study_design"]["_hinweis"]
+        rules = [
+            hint.index("(1) Beruht die Aussage auf einem bestimmten Teil"),
+            hint.index("(2) Nennt der Text sein Design selbst"),
+            hint.index("(3) Ist kein Vorgehen erkennbar, 'unknown'"),
+        ]
+        self.assertEqual(rules, sorted(rules))
+
+    def test_the_definitions_read_as_plain_text_in_the_sheet(self) -> None:
+        # The rubric reaches the rater as cell text in Excel, where
+        # Markdown is not rendered: "**per Zufall**" shows its asterisks.
+        for value, definition in ea.design_rubric().items():
+            with self.subTest(value):
+                self.assertNotIn("**", definition)
+                self.assertNotIn("`", definition)
+
+    def test_the_design_anchor_names_no_case(self) -> None:
+        # The definitions are written for every case at once. A case named
+        # here would be given away to anyone who reads the anchor, and
+        # leave the blind sets one item smaller.
+        doc = ea.ANCHOR_DOC.read_text(encoding="utf-8")
+        start = doc.index(ea.DESIGN_ANCHOR_SECTION)
+        section = doc[start : doc.index("\n## ", start + 1)]
+        for set_name in ("claim_prefill", "catalog"):
+            for key in ea.primary_labels(set_name):
+                with self.subTest(set_name, key=key):
+                    self.assertNotIn(key, section)
+
+    def test_the_eval_gold_keeps_the_rules_it_was_checked_under(self) -> None:
+        # Eight eval cases read differently under the 1.4.0 definitions.
+        # Until someone decides them, the gold must not claim the new
+        # rules: a blanket restamp would say they were checked.
+        gold = json.loads((ROOT / "eval" / "claim_prefill_labeled.json").read_text("utf-8"))
+        for example in gold["examples"]:
+            with self.subTest(example["id"]):
+                self.assertEqual(example["gold_appraisal"]["appraisal_method"], "1.3.0")
 
     def test_the_two_corrected_values_are_recorded(self) -> None:
         # 1.3.0 changed two stored effect_direction values, because the
@@ -1490,7 +1546,7 @@ class SupportAnchorTests(unittest.TestCase):
         sys.path.insert(0, str(ROOT / "scripts"))
         from common import load_records
 
-        self.assertEqual(ap.APPRAISAL_VERSION, "1.3.0")
+        self.assertEqual(ap.APPRAISAL_VERSION, "1.4.0")
         for claim in load_records("claims"):
             if claim.get("appraisal"):
                 with self.subTest(claim["id"]):
