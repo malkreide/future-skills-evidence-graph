@@ -28,6 +28,27 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   (1971) geprüft (0,210), nicht nur gegen eine eigene Rechnung.
   Anlass: Drei Personen sind für die Kalibrierrunde angefragt.
 
+- **Schritt-für-Schritt-Anleitung zum Excel-Bogen**
+  (`docs/anleitung-bewertungsbogen.md`). Eine angefragte Bewertende
+  verstand nach Erhalt des Bogens nicht, was zu tun war. Die Anleitung
+  erklärt nur die Bedienung: Datei speichern, «Bearbeitung aktivieren»,
+  die drei Blätter, Auswahllisten, Altersformat, Protokoll, Rückgabe. Zum
+  Inhalt sagt sie nichts, denn Hilfe, die nur eine Person bekommt, macht
+  die Bewertenden untereinander unvergleichbar. Inhaltliche Fragen werden
+  notiert und in der Aussprache besprochen. Zwei Stolperstellen benennt
+  sie ausdrücklich: Die Rubrik sagt an mehreren Stellen «null», die Listen
+  bieten «null» aber nur in `effect_direction` an (überall sonst heisst
+  es «Zelle leer lassen»). Und die Textspalten links sind fixiert und
+  zusammen rund 130 Zeichen breit, sodass auf einem Laptop-Bildschirm nur
+  zwei oder drei der gelben Spalten zu sehen sind. Tests halten die
+  Anleitung am Bogen fest: Sie nennt kein Methodendokument und keine
+  echte Fall-ID, jede Spalte mit der Frage, die der Bogen stellt, und nur
+  Beschriftungen, die der Bogen zeigt. Dabei gefunden: Wer die
+  ALT-Spalten leer lässt, wie die Rubrik es erlaubt, erhält für
+  `evidence_strength` eine Übereinstimmung von 0,000, weil eine leere
+  Zelle in einem bearbeiteten Fall als Antwort zählt. Das Vorgehen
+  dagegen steht in `docs/eval-baseline.md`.
+
 
 - **Bewertungsbögen als Excel** (`scripts/worksheet_xlsx.py`, Export und
   Import). Ein JSON-Bogen im Texteditor ist für die meisten Bewertenden

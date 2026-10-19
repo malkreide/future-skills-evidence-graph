@@ -509,6 +509,22 @@ python scripts/worksheet_xlsx.py import Kalibrierbogen_ausgefuellt.xlsx `
 python scripts/eval_agreement.py --second-rater eval/claim_prefill_calibration_completed.json
 ```
 
+Für die bewertende Person gibt es eine Schritt-für-Schritt-Anleitung:
+[anleitung-bewertungsbogen.md](anleitung-bewertungsbogen.md). Sie erklärt
+nur die Bedienung, nichts zum Inhalt, und geht als PDF oder Ausdruck mit,
+nicht als Link ins Repository: In diesem Ordner liegen Dokumente, die
+Fälle mit ihrer Bewertung nennen, dieses eingeschlossen. Alle Bewertenden
+einer Runde bekommen dieselbe Fassung. Fragen zum Inhalt beantwortet sie
+bewusst nicht; die Person notiert sie für die Aussprache (Schritt 4).
+
+Die Anleitung erlaubt, die Spalten mit «ALT:» leer zu lassen, weil die
+Rubrik es erlaubt. Die Auswertung zählt eine leere Zelle in einem
+bearbeiteten Fall aber als Antwort `null` und weist dann für
+`evidence_strength` eine Übereinstimmung von 0,000 aus. Bleiben die
+ALT-Spalten leer, vor dem Auswerten `evidence_strength` und `age_range`
+aus `protocol.rated_fields` der importierten Datei streichen;
+`--second-rater` hält sich daran.
+
 Drei Eigenschaften, die die Messung schützen, nicht den Komfort:
 
 - **Exportiert wird nur ein leerer Bogen.** Ein Bogen mit auch nur einer
