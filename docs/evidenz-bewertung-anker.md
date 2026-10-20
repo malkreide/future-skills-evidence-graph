@@ -242,8 +242,13 @@ davon sind Übersichten ohne offengelegte Suche, die `systematic_review`
 tragen, weil es `narrative_review` bei ihrer Bewertung noch nicht gab.
 Die übrigen drei liegen an den Grenzen zwischen `quasi_experimental`,
 `uncontrolled_pre_post` und `unknown`. Ob das Gold angepasst wird, ist eine
-eigene Entscheidung: Es trägt die CI-Schwellen, und eine Korrektur dort
-verschiebt gemessene Zahlen.
+eigene Entscheidung, denn das Design ist dort nicht das einzige Feld, das
+sich bewegt: Bei allen acht ergäbe die Herleitung danach eine andere
+Sicherheit, bei den fünf Übersichten `very_low` statt `moderate` oder
+`low`. Die gespeicherte `evidence_certainty` wäre also mitzuprüfen. Die
+CI-Schwellen berührt das nicht; sie messen die alten Felder unter `gold`.
+Das Eval-Gold unter `gold_appraisal` liest nur die Auswertung der
+Zweitbewertung.
 
 ## Zuerst: Was für eine Aussage ist das?
 

@@ -35,8 +35,11 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   Übersichten ohne offengelegte Suche, die `systematic_review` tragen,
   weil es `narrative_review` bei ihrer Bewertung noch nicht gab; drei
   liegen an den Grenzen zwischen Vergleich, Vorher-Nachher und
-  unbekanntem Design. Ob das Gold angepasst wird, ist offen, denn es trägt
-  die CI-Schwellen. Ein Test hält es auf 1.3.0, bis das entschieden ist.
+  unbekanntem Design. Ob das Gold angepasst wird, ist offen: Mit dem
+  Design änderte sich bei allen acht auch die hergeleitete Sicherheit,
+  die gespeicherte wäre also mitzuprüfen. Die CI-Schwellen berührt das
+  nicht, sie messen die alten Felder. Ein Test hält das Gold auf 1.3.0,
+  bis das entschieden ist.
   Der Extraktor-Prompt bleibt `claim-appraisal-v3`; ihn anzupassen
   verlangt eine neue Aufzeichnung. Alle drei leeren Bögen sind neu
   erzeugt. Ein Bogen von 1.3.0, der schon verschickt wurde, ist nicht mehr
