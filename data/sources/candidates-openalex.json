@@ -13162,5 +13162,493 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "educator"
+  },
+  {
+    "id": "src-constructing-ai-literacy-a-hands-on-approach-for-school-children",
+    "title": "Constructing AI Literacy: A Hands-On Approach for School Children",
+    "authors": [
+      "Leonard Busuttil"
+    ],
+    "year": 2025,
+    "doi": "10.15388/infedu.2025.26",
+    "url": "https://openalex.org/W7117486229",
+    "openalex_id": "https://openalex.org/W7117486229",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Informatics in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This narrative literature review examines constructionist approaches to AI literacy education for school-aged children, synthesizing research from 2009\u20132024 to develop a pedagogical framework grounded in hands-on learning principles. Through systematic analysis of studies retrieved from Web of Science, Scopus, IEEE Xplore, and ACM Digital Library, five interconnected themes emerged: active hands-on learning, project-based inquiry, ethics integration, age-appropriate scaffolding, and teacher support with accessible tools. The findings demonstrate that constructionist methodologies \u2013 emphasizing learning through creating AI-powered artifacts \u2013 effectively foster conceptual understanding, ethical reasoning, and critical agency among young learners. The review reveals that AI literacy develops most effectively when students actively manipulate and experiment with AI systems rather than passively consuming theoretical content. Age-differentiated strategies are essential, with primary students benefiting from embodied analogies and narrative contexts, while secondary students engage with collaborative design projects addressing real-world challenges. Teacher preparation and accessible tools emerge as critical implementation factors. This framework provides educators and policymakers with evidence-based guidance for integrating meaningful AI literacy experiences into K-12 curricula through constructionist pedagogies.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-impact-of-generative-ai-on-personalized-learning-a-multi-phase-study",
+    "title": "THE IMPACT OF GENERATIVE AI ON PERSONALIZED LEARNING: A MULTI-PHASE STUDY ON STUDENT ENGAGEMENT AND LEARNING OUTCOMES IN SECONDARY SCHOOLS IN EBONYI STATE",
+    "authors": [
+      "Beatrice Adanna Achilike",
+      "Emmanuel Patrick Agbasiere"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://openalex.org/W7220544489",
+    "openalex_id": "https://openalex.org/W7220544489",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Association of Educational Management and Policy Practitioners",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "This study explores the potential of generative AI to revolutionize education. Through a mixed- methods approach, including surveys and a controlled experiment, it examines students' and teachers' perceptions of personalized learning and the role of technology. Findings indicate a strong desire for hands- on learning and tailored instruction. The intervention group, exposed to generative AI, demonstrated higher post-test scores and reduced score variability compared to the control group. However, challenges such as data collection limitations and the need for comprehensive teacher training surfaced. The research emphasizes the importance of a holistic approach to AI integration, considering ethical implications, user experience, and ongoing evaluation to maximize its benefits for student learning and achievement.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-does-gender-influence-the-learning-process-of-computational-thinking-in",
+    "title": "Does Gender Influence the Learning Process of Computational Thinking in Secondary Education?",
+    "authors": [
+      "L\u00eda Garc\u00eda P\u00e9rez",
+      "David Rold\u00e1n \u00c1lvarez",
+      "Jos\u00e9 M. Ca\u00f1as"
+    ],
+    "year": 2025,
+    "doi": "10.1002/cae.70050",
+    "url": "https://openalex.org/W4410505149",
+    "openalex_id": "https://openalex.org/W4410505149",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Computer Applications in Engineering Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "ABSTRACT The gender gap in STEM disciplines both in the workplace and in university education is still a reality. Computational thinking (CT) is deeply related to these disciplines. CT is fundamental to problem\u2010solving and critical thinking, skills that are core to STEM disciplines. CT involves skills like algorithmic thinking, pattern recognition, and abstraction, all of which are necessary for tasks in fields such as engineering, computer science, mathematics, and science. It is important to understand gender differences, if any, in the acquisition of CT skills, so that we can develop more effective teaching strategies for all. This study analyses the gender differences in the development of CT skills (measured with a standard test) in 149 students of a Spanish secondary school, in three courses between 12 and 14 years old, before and after classroom work sessions with a 3D robotics simulator. In the empirical evidence a relevant a priori gender difference was detected in the first course, likely related with prior experiences on computer programming, but boys and girls finish the first year with similar CT levels. Disparate results appear for second year (male students improve more) and third year (female students improve more) which demands further study.",
+    "topics": [
+      "critical thinking",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-literacy-and-social-media-awareness-among-adolescents-a-case-stu",
+    "title": "Digital Literacy and Social Media Awareness among Adolescents: A Case Study on Adolescents in Serang City",
+    "authors": [
+      "Husnan Nurjuman",
+      "Ronny Yudhi Septa Priana"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://openalex.org/W7220505686",
+    "openalex_id": "https://openalex.org/W7220505686",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Jurnal Penelitian Ilmu Pendidikan Indonesia",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-sa",
+    "abstract": "The development of digital technology has encouraged teenagers to become active users of social media in their daily lives. However, the high intensity of use is not always accompanied by adequate awareness of ethics, information security, and the social impact of digital activities. This study aims to analyze the level of awareness of teenagers in using social media and how digital literacy affects their mindset and behavior in the digital space. This study uses a qualitative approach with a case study method in Serang City. Data were collected through in-depth interviews with 12 teenagers aged 15\u201318 years from various educational backgrounds, as well as observations of their social media usage habits. Data analysis was carried out thematically to identify patterns of awareness, understanding of digital risks, and reflective abilities in interacting on social media. The results of the study show that most teenagers have a functional understanding of social media, but have not shown critical awareness of its impact, both on themselves and their social environment. The digital literacy they have tends to be technical and comes from personal experience or peer environment, while support from family and formal education is still minimal. This study recommends the importance of integrating digital literacy education into the school curriculum and strengthening the role of the family in forming a healthy and responsible social media culture",
+    "topics": [
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-stages-of-development-of-professional-competence-of-future-english-teach",
+    "title": "Stages of Development of Professional Competence of Future English Teachers With the Help of Artificial Intelligence Tools",
+    "authors": [
+      "Botirova Zebo Xakimjon Kizi"
+    ],
+    "year": 2024,
+    "doi": null,
+    "url": "https://openalex.org/W7215210343",
+    "openalex_id": "https://openalex.org/W7215210343",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Excellencia: International Multi-disciplinary Journal of Education (2994-9521)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This article explores the stages of professional competence development among future English teachers, emphasizing the integration of artificial intelligence (AI) tools. It analyzes various types of teacher competence, including pedagogical, linguistic, and technological skills, highlighting how AI can enhance these competencies. The study employs a mixed-methods approach to assess the effectiveness of AI tools in teacher education programs. Results indicate that AI significantly contributes to the development of essential teaching skills, fostering a more effective learning environment. The findings underline the necessity of incorporating AI tools into teacher training curricula to prepare educators for modern classroom challenges.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-critical-thinking-as-a-twenty-first-century-skill",
+    "title": "Critical Thinking as a Twenty First Century Skill",
+    "authors": [
+      "Dr. Hukamdad",
+      "Rafaqat Ali Akbar"
+    ],
+    "year": 2023,
+    "doi": null,
+    "url": "https://openalex.org/W7217052396",
+    "openalex_id": "https://openalex.org/W7217052396",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Educational Research & Social Sciences Review (JERSSR)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc",
+    "abstract": "This research is aimed at focusing the importance of critical thinking as a twenty first century skill. This work also targeted at providing Quranic and Western concept of critical thinking skill i.e. one of the most important skills of twenty first century. Quranic means the concept given in Quran and Western concept means the concept and ideas given by Western writers, scholars and researchers about critical thinking skill. It serves as a pioneer work on critical thinking as a twenty first century skill in perspective of Quranic and West. Critical thinking skill possesses immense significance as a twenty first skill for human beings. It throws light on the views of Western writers and researchers and Quran on critical thinking. It deals with the capability to think rationally and its importance is enhanced as the paramount ability which substantiates that this skill to be mastered by new generation. At one end this work is conceptions of West about critical thinking and at the second end it draws attention to verses of Quran which focus on concept of critical thinking and its importance. Critical thinking is higher order thinking. Critical Thinking is self-directed, self-disciplined, self-monitored, and self-corrective thinking. Various approaches of critical thinking have been presented by researchers. The Holy Quran persuades and supports us to employ our capability to examine, assess, and evaluate. The holy Quran encourages human beings to think critically.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-of-an-ai-literacy-assessment-tool-for-teachers-and-students",
+    "title": "Development of an AI Literacy Assessment Tool for Teachers and Students Based on the UNESCO AI Competency Framework",
+    "authors": [
+      "Mi-Ja Nam",
+      "Bomi Choi"
+    ],
+    "year": 2026,
+    "doi": "10.30916/kera.64.2.337",
+    "url": "https://openalex.org/W7164152492",
+    "openalex_id": "https://openalex.org/W7164152492",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OpenAlex",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study developed and validated an AI literacy assessment tool for teachers and students based on the UNESCO AI Competency Framework. AI literacy was reconceptualized as a broad concept that goes beyond technical proficiency to include human-centered thinking, AI ethics, and social responsibility, and the study took an integrated approach to teachers\u2019 and students\u2019 AI literacy from an educational perspective. The assessment tool for teachers consists of 45 items across 15 components in five domains: human-centered thinking, AI ethics, AI technology and applications, AI pedagogy, and professional development. The tool for students consists of 36 items across 12 components in four domains: human-centered thinking, AI ethics, AI technology and applications, and AI system design. The model\u2019s fit was assessed and its validity verified using a sample of 4,044 middle and high school students and 772 teachers in Gyeonggi Province. The results showed that the AVE and CR values for all domains exceeded the benchmark, confirming the model\u2019s validity and reliability. By assessing the AI literacy of both teachers and students within the same theoretical framework, this tool suggests that it can serve as foundational data for future AI literacy education, teacher professional development, and the formulation of related policies in school settings. Furthermore, it can be utilized as foundational data for setting the direction of AI literacy education and developing customized educational programs.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-effects-of-collaborative-inquiry-on-collaborative-problem-solving-abilit",
+    "title": "EFFECTS OF COLLABORATIVE INQUIRY ON COLLABORATIVE PROBLEM SOLVING ABILITY OF LOWER SECONDARY SCHOOL STUDENTS",
+    "authors": [
+      "Kornkanok Lertdechapat",
+      "Parinda Limpanont Promratana"
+    ],
+    "year": 2019,
+    "doi": null,
+    "url": "https://openalex.org/W7220121113",
+    "openalex_id": "https://openalex.org/W7220121113",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Education and Innovation",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Collaborative problem solving (CPS) ability refers to the capacity of an individual to engage and attempt to solve problem with group members collaboratively. The crucial features of teaching strategies enhancing CPS ability should consist of communicating, managing conflict, organizing a team, building consensus, and managing process. Collaborative inquiry (CI) is claimed to be effective to enhance students\u2019 CPS ability. However, the research on effects of CI is still limited. This study aimed to study CPS ability of students who learned science through CI and compare with students who learned science through 5E instructional model by using quasi-experimental research. The samples were 37 students who learned science through CI. 3-level scoring rubrics were used to collect students\u2019 CPS ability and then analyzed by using mean and SD. Effect size and independent sample t-test were used to compare CPS ability between two mentioned groups of students. The result revealed that students who learned science through CI had higher mean score of CPS ability than another group at .05 level of significance and their CPS was considered as high level. They deeply discussed the problem situations in which help them to solve problems efficiently. They were encouraged to give feedback about task-doing that covered the actual performance. From these results, teachers should consider the students\u2019 roles for completing tasks collaboratively. Further studies may explore the effect of teamwork which has relevant features to CI and effects of gender and learning styles on CPS.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-epistemic-vigilance-online-textual-inaccuracy-and-children-s-selective-t",
+    "title": "Epistemic vigilance online: Textual inaccuracy and children's selective trust in webpages",
+    "authors": [
+      "Shiri Einav",
+      "Alexandria Levey",
+      "Priya Patel",
+      "Abigail Westwood"
+    ],
+    "year": 2020,
+    "doi": "10.1111/bjdp.12335",
+    "url": "https://openalex.org/W3020742574",
+    "openalex_id": "https://openalex.org/W3020742574",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "British Journal of Developmental Psychology",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "In this age of 'fake news', it is crucial that children are equipped with the skills to identify unreliable information online. Our study is the first to examine whether children are influenced by the presence of inaccuracies contained in webpages when deciding which sources to trust. Forty-eight 8- to 10-year-olds viewed three pairs of webpages, relating to the same topics, where one webpage per pair contained three obvious inaccuracies (factual, typographical, or exaggerations, according to condition). The paired webpages offered conflicting claims about two novel facts. We asked participants questions pertaining to the novel facts to assess whether they systematically selected answers from the accurate sources. Selective trust in the accurate webpage was found in the typos condition only. This study highlights the limitations of 8- to 10-year-olds in critically evaluating the accuracy of webpage content and indicates a potential focus for educational intervention. Statement of contribution What is already known on this subject? Children display early epistemic vigilance towards spoken testimony. They use speakers' past accuracy when deciding whom to trust regarding novel information. Little is known about children's selective trust towards web-based sources. What does this study add? This study is the first to examine whether textual inaccuracy affects children's trust in webpages. Typos but not semantic errors led to reduced trust in a webpage compared to an accurate source. Children aged 8-10 years show limited evaluation of the accuracy of online content.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-strengthening-elementary-school-teachers-digital-competence-through-ai-b",
+    "title": "Strengthening Elementary School Teachers\u2019 Digital Competence through AI-Based Instructional Design Training in Indonesia\u2019s 3T Regions",
+    "authors": [
+      "Hanafiah Hanafiah",
+      "Didi Sudrajat",
+      "Shaumiwaty Shaumiwaty",
+      "Rizkia Shaulita",
+      "Pascalian Hadi Pradana"
+    ],
+    "year": 2026,
+    "doi": "10.55299/ijcs.v5i1.1852",
+    "url": "https://openalex.org/W7216213480",
+    "openalex_id": "https://openalex.org/W7216213480",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Community Service (IJCS)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This quantitative study investigates the effectiveness of an artificial intelligence (AI)-based instructional design training program in strengthening the digital competence of elementary school teachers in Indonesia\u2019s frontier, outermost, and underdeveloped (3T) regions. Education quality and access in 3T regions remain constrained by geographical isolation, limited infrastructure, and uneven professional development opportunities for teachers. Building on the European Digital Competence Framework for Educators (DigCompEdu) and its six areas of educator digital competence, the study designed a structured training program that introduced teachers to generative AI tools for lesson planning, resource development, and assessment. A one-group pretest\u2013posttest design was implemented with 120 elementary school teachers from several 3T districts. Data were collected using a Likert-scale digital competence questionnaire adapted from DigCompEdu and analyzed with descriptive statistics and paired-sample t-tests. Findings show statistically significant improvements in teachers\u2019 overall digital competence scores across all six DigCompEdu areas, with the largest gains in \u201cTeaching and learning\u201d and \u201cFacilitating learners\u2019 digital competence.\u201d The results indicate that contextually grounded AI-based instructional design training can be an effective strategy to narrow digital competence gaps between teachers in peripheral and non-peripheral regions. Implications for policy, teacher professional development, and further research on AI-supported pedagogy in disadvantaged contexts are discussed.",
+    "topics": [
+      "ai literacy",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-philosophical-underpinnings-of-digital-citizenship-through-a-postdigital",
+    "title": "Philosophical underpinnings of digital citizenship through a postdigital lens: Implications for teacher educators\u2019 professional digital competence",
+    "authors": [
+      "Alex \u00d6rtegren"
+    ],
+    "year": 2023,
+    "doi": "10.1007/s10639-023-11965-5",
+    "url": "https://openalex.org/W4383105504",
+    "openalex_id": "https://openalex.org/W4383105504",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Education and Information Technologies",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract Embedded in society, digital infrastructure has changed citizens\u2019 lives. Young people therefore need to develop digital competence and digital citizenship, and schools have an important role in this regard. To prepare new schoolteachers for this role, teacher educators (TEDs) need professional digital competence (PDC) that includes knowledge, competences, and a conceptual understanding to teach teaching for digital citizenship. In light of the limited body of research on theorizing digital citizenship in relation to TEDs\u2019 PDC, this paper critically analyzes three conceptualizations of digital citizenship. Being potentially normative and part of the latest phase of development in the field, these conceptualizations could shape TEDs\u2019 PDC and practice. In a qualitative content analysis of the selected conceptualizations, this paper uses a postdigital lens to bring into focus and critically analyze aspects of philosophical underpinnings related to socio-technical relations. The results show that conceptualizations of digital citizenship convey different understandings of human\u2013technology relations and the knowledge and competences necessary to exercise digital citizenship. These differences have far-reaching implications for TEDs\u2019 PDC in ways that could impact students\u2019 opportunities to develop digital competence and digital citizenship. Therefore, TEDs\u2019 PDC needs to include a critical understanding of digital citizenship, and the post-pandemic juncture of \u201cnew normal\u201d provides opportunities to rethink and reframe PDC. To this end, a postdigital lens can shift the focus to how PDC is contingent on the shifting entanglements in which pedagogical activities are situated and orchestrated, and how these relate to broader issues of injustice in society.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-trading-privacy-for-personalisation-ethical-trust-and-high-school-studen",
+    "title": "Trading privacy for personalisation: Ethical trust and high school students\u2019 intention to use AI in education",
+    "authors": [
+      "Sowmya Eashwaran",
+      "Manojkrishnan Champettil",
+      "Jiya Vivek"
+    ],
+    "year": 2026,
+    "doi": "10.56879/ijbm.v5i4.164",
+    "url": "https://openalex.org/W7221309337",
+    "openalex_id": "https://openalex.org/W7221309337",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Business and Management (IJBM)",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Educational AI tools personalise learning by drawing on sensitive student data, yet the privacy calculus assumes that people can freely weigh benefits against risks and decline when risks dominate. This assumption is doubtful for adolescents, who have limited ability to scrutinise institutional data practices and little scope to opt out when AI is embedded in schooling. This study examines how perceived personalisation benefits, perceived data sensitivity and privacy concerns relate to high school students\u2019 intention to use AI, and tests whether ethical trust, defined as confidence that an AI system will handle personal data responsibly, transparently and in the user\u2019s interest, links privacy concerns to intention. Survey data from 323 students across IB, A Level, CBSE, American and other curriculums were analysed using partial least squares structural equation modelling. Perceived benefits strongly predicted ethical trust (\u03b2 = .605, p < .001) and intention to use AI directly (\u03b2 = .454, p < .001). Perceived data sensitivity raised privacy concerns (\u03b2 = .563, p < .001), and privacy concerns modestly reduced ethical trust (\u03b2 of negative .185, p = .002). Ethical trust in turn predicted intention to use AI (\u03b2 = .453, p < .001), whereas the direct effect of privacy concerns on intention was negligible (\u03b2 = .023, p = .507). The model explained 65.9% of the variance in intention. The pattern indicates that privacy concern shapes adoption through eroded trust rather than through avoidance, and that usefulness can build trust without proof of trustworthy data practices. Limitations include the cross sectional design, self reported intentions and weaker measurement of data sensitivity. Schools and providers should therefore demonstrate responsible data governance rather than simply reassure students.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-power-of-resilience-in-21st-century-education-how-growth-mindset-and",
+    "title": "The Power of Resilience in 21st-Century Education: How Growth Mindset and Mental Well-being Support Teachers and Students",
+    "authors": [
+      "Malai Boonma"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://openalex.org/W7219969766",
+    "openalex_id": "https://openalex.org/W7219969766",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Nakhon Ratchasima Journal of Humanities and Social Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "In the evolving landscape of 21st-century education, resilience has emerged as a critical factor in ensuring both academic success and emotional well-being for teachers and students. This paper examines the interconnection between resilience, growth mindset, and mental well-being, emphasizing their collective role in fostering adaptability, perseverance, and self-efficacy. A growth mindset as conceptualized that empowers individuals to view challenges as opportunities for development, increasing motivation and long-term achievement. Simultaneously, mental well-being serves as a foundation for emotional regulation and stress management, essential for sustaining engagement in learning and teaching. Teacher resilience is crucial for preventing burnout, maintaining instructional effectiveness, and fostering a positive learning environment, while student resilience equips learners with problem-solving skills and emotional stability, allowing them to cope with setbacks and persist through adversity. By implementing resilience-building strategies, such as social-emotional learning, psychological support systems, and inclusive school cultures. The educational institutions can create a foundation for sustainable, future-ready learning environments. This paper underscores the necessity of prioritizing resilience through a holistic approach, demonstrating how its integration into education not only strengthens individual success but also enhances the adaptability and sustainability of modern educational systems in an increasingly complex world.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-implementation-of-the-independent-curriculum-and-self-regulated-learning",
+    "title": "IMPLEMENTATION OF THE INDEPENDENT CURRICULUM AND SELF-REGULATED LEARNING BY STUDENTS IN ISLAMIC RELIGIOUS EDUCATION AND MORAL EDUCATION SUBJECTS AT STATE SENIOR HIGH SCHOOL 5 OGAN KOMERING ULU",
+    "authors": [
+      "Asparita Asparita",
+      "Siti Maratus Solekah",
+      "Mahfudz Mahfudz"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "https://openalex.org/W7221302153",
+    "openalex_id": "https://openalex.org/W7221302153",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Jurnal Konseling Pendidikan Islam",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This study aims to analyze the implementation of the Merdeka Curriculum and its relationship with the development of students\u2019 self-regulated learning (SRL). Employing a descriptive qualitative approach with a case study method, data were collected through in-depth interviews, participatory observation, and documentation at a senior high school in OKU Regency. The findings reveal that the Merdeka Curriculum encourages active student engagement through project-based learning, reflection, and differentiated strategies. Its implementation provides space for students to set learning goals, monitor progress, and evaluate outcomes independently. A positive correlation is found between the curriculum and the development of SRL skills, especially among students who receive strong support from teachers and their learning environment. However, disparities persist due to differences in social background and teachers\u2019 pedagogical readiness. The study concludes that the Merdeka Curriculum holds great potential in shaping autonomous lifelong learners, provided that systemic support is strengthened through teacher training, structured reflection practices, and school-family collaboration.",
+    "topics": [
+      "collaboration",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-undoing-systems-of-exclusion-exploring-inclusive-leadership-and-systems",
+    "title": "Undoing systems of exclusion: exploring inclusive leadership and systems thinking in two inclusive elementary schools",
+    "authors": [
+      "David Edward DeMatthews"
+    ],
+    "year": 2020,
+    "doi": "10.1108/jea-02-2020-0044",
+    "url": "https://openalex.org/W3095444456",
+    "openalex_id": "https://openalex.org/W3095444456",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Educational Administration",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Purpose Most education systems were not initially designed to include students with disabilities. However, over the past 25 years, great strives have been taken to ensure students with disabilities have access to the general education classroom and to important social, emotional and academic opportunities. Within the USA, researchers have begun to focus on the principal's role in creating and sustaining effective inclusive schools. The purpose of this article is to examine the leadership practices and perceptions associated with creating effective inclusive schools for students with disabilities. Design/methodology/approach This qualitative study examined how two elementary school principals created an effective inclusive school and how they understood the challenges and change processes associated with inclusion. Each principal was interviewed and observed four times over one school year. Teachers and district administrators were also interviewed to gain insights into the school's progress with inclusion and to verify principals\u2019 interview data. Findings This study added to existing research by identifying the following leadership practices critical to creating effective inclusive schools: (1) creating a culture of change-oriented collaboration, (2) planning and evaluating, (3) building capacity and (4) developing/revising plans. The principals felt that these practices enabled inclusion to take root, despite challenges and the chaotic nature of life in schools. A total of three additional themes emerged related to how principals understood change processes and challenges associated with inclusion: collaborative inquiry, information flow and crises/distractions/fatigue. Practical implications Several key leadership practices were identified in this study, including practices associated to systems thinking (ST). These practices hold promise and might be applied to thoughtfully design inclusive reforms. Faculty in principal preparation programs might also consider exposing aspiring leaders to the literature on leadership for effective inclusive schools as well as systems thinking. Originality/value The paper identifies the leadership practices of two principals who created effective inclusive schools. The paper is unique as it applies a ST lens to the investigation of leadership for inclusion.",
+    "topics": [
+      "collaboration",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-generative-ai-in-teacher-education-educators-perceptions-of-transformati",
+    "title": "Generative AI in teacher education: Educators\u2019 perceptions of transformative potentials and the triadic nature of AI literacy explored through AI-enhanced methods",
+    "authors": [
+      "Christopher Neil Prilop",
+      "Dana-Kristin Mah",
+      "Lucas Jasper Jacobsen",
+      "Rasmus R. Hansen",
+      "Kira Elena Weber",
+      "Fabian Hoya"
+    ],
+    "year": 2025,
+    "doi": "10.1016/j.caeai.2025.100471",
+    "url": "https://openalex.org/W4414044291",
+    "openalex_id": "https://openalex.org/W4414044291",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Computers and Education Artificial Intelligence",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "The release of ChatGPT in November 2022 has sparked discussions about integrating Generative Artificial Intelligence (GenAI) into teacher education. Teacher educators, as key facilitators of pre-service teacher learning, play a critical role in shaping the successful adoption of GenAI. Their perceptions guide curriculum redesign, define promoted practices, and shape how pre-service teachers experience educational uses of GenAI tools, potentially multiplying its impact across future classrooms. This mixed-methods study explored Danish teacher educators\u2019 perceptions of GenAI (n = 91), focusing on its transformative potential and the knowledge pre-service teachers need to acquire. Innovative methods, including GenAI-supported thematic analysis and Natural Language Processing, were used to analyze qualitative and quantitative survey data. Findings reveal diverse perceptions, ranging from enthusiasm for fostering innovative teaching to concerns about ethics, assessment, and safeguarding basic skills. Concerning GenAI\u2019s potential, three key themes emerged: AI literacy, AI didactics, and AI assessment. Regarding required knowledge, teacher educators emphasized multifaceted AI literacies (AI as a teaching tool, as teaching content, and as a learning tool) framed within ethical, cultural, and democratic contexts. Mediation analyses showed that GenAI use mediated the link between both intrinsic motivation and confidence, and perceptions of its potential. Importantly, teacher educators identified a pressing need for both formal professional development and informal, collaborative learning opportunities. This study extends the TPACK framework by incorporating the triadic nature of AI literacy and emphasizes the importance of preparing educators to engage critically and responsibly with GenAI in education. \u2022 Explores teacher educators\u2019 perceptions of the impact of AI. \u2022 Uses GenAI-enhanced thematic analysis and NLP in a mixed-methods study. \u2022 Teacher educators show mixed views on GenAI\u2019s role in teacher education. \u2022 Three themes identified: AI literacy, AI didactics, and AI assessment. \u2022 Triadic AI literacy model expands TPACK with ethical-democratic framing.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-ai-robots-promote-south-korean-preschoolers-ai-literacy-and-computationa",
+    "title": "AI robots promote South Korean preschoolers' AI literacy and computational thinking",
+    "authors": [
+      "Boram Lee",
+      "Seulki Ku",
+      "Kwangman Ko"
+    ],
+    "year": 2025,
+    "doi": "10.1111/fare.13189",
+    "url": "https://openalex.org/W4410791061",
+    "openalex_id": "https://openalex.org/W4410791061",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Family Relations",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT Objective Using a mixed\u2010methods approach, we explored the role of AI humanoid robots in the development of child AI literacy and computational thinking. We also examined teachers' and parents' experiences and perceptions of AI robots. Background The rapid development of AI has fundamentally transformed the way families live, learn, and work. Thus, it is crucial to examine the experiences of young children and their families with AI. Method The study involved 73 five\u2010year\u2010old children from low\u2010income, rural areas in South Korea, along with their teachers and parents. Children were divided into two groups: one exposed to an AI robot for 6 months and the other for 18 months. Data were collected through assessments of children's AI literacy and computational thinking, as well as interviews with eight teachers and eight parents. Results The initial exposure group showed an improvement on the perceived intelligence dimension of AI literacy. Children in both initial exposure and extended exposure groups increased computational thinking over time. Teachers and parents noted that interactions with AI robots promoted cognitive skills and knowledge, such as problem\u2010solving and technology familiarity. However, they also expressed concerns about the potential impacts of AI on holistic development. Conclusion This study highlights the developmental benefits and challenges of AI robots in early childhood education for underserved populations. Implications Such efforts are essential to ensure equitable opportunities for all children, contributing to school success and preparing them for a future society where AI is prevalent in daily life.",
+    "topics": [
+      "ai literacy",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-academic-experiences-and-resilience-of-graduate-school-students",
+    "title": "Academic Experiences and Resilience of Graduate School Students",
+    "authors": [
+      "Jockyline O. Aruelo",
+      "Catherine G. Malon"
+    ],
+    "year": 2026,
+    "doi": "10.67001/jeri.2026.07.t8q3xm",
+    "url": "https://openalex.org/W7221520806",
+    "openalex_id": "https://openalex.org/W7221520806",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Educational Research Innovation and Multidisciplinary Studies",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This qualitative phenomenological study explored the academic experiences and resilience of graduate students at Southern Capital College (SCC), Misamis Occidental. Fifteen purposively selected graduate students participated in semi-structured interviews. Thematic analysis revealed that their academic experiences were shaped by balancing multiple roles, academic pressure and workload, meaningful and transformative learning, professional and career development, supportive learning relationships, personal sacrifices, and the development of resilience and adaptability. Resilience was demonstrated through persistence amid multiple responsibilities, endurance through academic challenges, self-discipline, inner motivation, support systems, faith, and growth through adversity. Students navigated these demands through strategic time management, organized study practices, problem-solving, support-seeking, psychological and spiritual coping, personal responsibility, and adaptive decision-making. The findings show that resilience among graduate students is not simply endurance but an active process of adaptation, reflection, support-seeking, and sustained commitment. The study underscores the value of responsive academic support, mentoring, flexible learning arrangements, and institutional practices that recognize the intersecting professional, academic, and personal responsibilities of graduate learners.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]

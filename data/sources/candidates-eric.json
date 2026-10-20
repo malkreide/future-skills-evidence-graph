@@ -8934,5 +8934,201 @@
     "reviewed_at": null,
     "relevance_score": 0.9,
     "audience": "educator"
+  },
+  {
+    "id": "src-teacher-readiness-by-design-for-ai-rich-interactive-learning",
+    "title": "Teacher Readiness-by-Design for AI-Rich Interactive Learning",
+    "authors": [
+      "Tendai Charles"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1002/jcal.70316",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1519284",
+    "publisher": "Journal of Computer Assisted Learning",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Background: Artificial intelligence (AI)-rich educational technologies are expanding rapidly, yet teacher readiness is still commonly represented through adoption, confidence or competence constructs that do not explain the quality of the learning designs produced. Objective: This conceptual article develops readiness-by-design as an enactment-oriented capability: teachers' capacity to mobilise professional resources through design mediation, within an enabling institutional and policy ecology, to create pedagogically aligned, inclusive and ethically defensible AI-mediated learning. Approach: An iterative theory-building synthesis integrates research on technology acceptance, teacher digital competence, AI literacy, TPACK, teacher design capacity and agency, responsible AI, institutional support and instructional design. The literature-identification and construct-integration logic is made explicit, and recent empirical studies from 2024 to 2026 are used to interrogate the framework. Contribution and Conclusions: The framework is distinctive because it specifies design mediation as the mechanism linking teacher resources to observable instructional design quality, positions policy clarity and institutional support as moderating conditions, incorporates feedback from enacted designs and treats K-12 and higher education as boundary conditions. Six directional propositions, candidate indicators and a design-based professional-learning model provide a basis for empirical validation.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-navigating-ai-in-education-foundational-suggestions-for-leveraging-ai-in",
+    "title": "Navigating AI in Education: Foundational Suggestions for Leveraging AI in Teaching and Learning",
+    "authors": [
+      "Jihyun Kim",
+      "Stephanie Kelly",
+      "Andrew Prahl"
+    ],
+    "year": 2025,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1080/03634523.2024.2447235",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1518535",
+    "publisher": "Communication Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence (AI) becomes increasingly integral to the classroom, it is essential for educators to thoughtfully engage with its growing role in education. Rather than viewing AI as a threat or universal solution, it should be regarded as a resource that brings both challenges and opportunities, shaping pedagogical practice. To navigate these complexities, fostering discussions about AI's role in communication education is imperative. In this article, the authors propose initiating this dialogue by presenting foundational suggestions for leveraging AI in teaching and learning, along with critical needs for research and institutional support.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-developing-and-validating-an-ai-literacy-instrument-for-elementary-schoo",
+    "title": "Developing and Validating an AI Literacy Instrument for Elementary School Students: A Psychometric Study Using the ADDIE Framework",
+    "authors": [
+      "Mhel Cedric D. Bendo",
+      "Torang Siregar"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED682820",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED682820",
+    "publisher": "Online Submission",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) literacy has emerged as a critical competency in elementary education as learners increasingly engage with AI-mediated and technology-rich learning environments. This study developed and validated a multidimensional AI literacy instrument for elementary school students using a research and development approach grounded in the ADDIE framework and informed by AI literacy, constructivist learning, and digital citizenship theories. The instrument comprised five dimensions: AI recognition, conceptual understanding, functional application, evaluation and creation, and AI ethics. Content validation by four experts demonstrated strong theoretical relevance across all dimensions. Empirical testing involving 250 Indonesian elementary school students examined the instrument's psychometric properties. Exploratory factor analysis supported a five-factor structure with acceptable factor loadings and sampling adequacy (KMO > 0.80; Bartlett's test, p < 0.001), explaining a substantial proportion of total variance. Reliability analysis indicated satisfactory internal consistency across retained subscales (Cronbach's a > 0.70), although conceptual understanding required minor item revision. Descriptive findings revealed stronger competencies in ethical AI use and functional application than in conceptual understanding of AI processes. The study contributes a psychometrically grounded and developmentally appropriate instrument supporting AI literacy assessment, curriculum innovation, instructional evaluation, and responsible AI integration within primary education contexts for early twenty-first-century educational transformation.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-exploring-ai-literacy-reliance-and-ethical-practices-of-secondary-level",
+    "title": "Exploring AI Literacy, Reliance, and Ethical Practices of Secondary Level Students in Using Generative AI",
+    "authors": [
+      "Allan Deanmacgy S. Cruz",
+      "Paul Christian J. Manrique",
+      "Jonalyn M. Mendeja"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s44217-026-01890-3",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1520263",
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Generative artificial intelligence (AI) is rapidly changing education, creating opportunities and challenges. With this technology now widely available to secondary students, it is crucial to explore how they are using it. To explore secondary level students' AI literacy, AI reliance, and ethical practices when using generative AI, the researchers collected data from a sample of 595 secondary level students from a private institution using an adopted 20-item Generative AI Literacy Assessment (GLAT) and a researcher made tool for AI reliance and ethical practices with 5-point rating scale. Findings revealed that the students' mean AI literacy score was 8.71 out of 20, indicating a limited understanding of generative AI. The mean for AI reliance was found to be 2.91, while the mean for ethical practices was 3.88. Multiple linear regression analyses indicated that AI literacy and ethical practices significantly predict AI reliance, accounting for 6.02% of the variance in reliance (R[subscript 2] = 0.0602, p-value < 0.001). Specifically, AI literacy was a significant negative predictor of AI reliance, suggesting that as students' knowledge increases, their reliance decreases. However, ethical practices was a significant positive predictor of AI reliance, suggesting that more ethical students tend to also be more reliant on the technology. Furthermore, both AI literacy and AI reliance were found to be significant positive predictors of ethical practices, explaining 9.13% of the variance in ethical practices (R[subscript 2] = 0.0913, p-value < 0.001). This suggests a direct link where higher AI literacy leads to more ethical behavior, and that students who are more reliant on AI also tend to exhibit more ethical practices. The findings highlight the complex relationship between students' AI knowledge, reliance, and behavior, providing a foundation for targeted educational interventions.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-collaborative-ai-to-support-data-science-instruction",
+    "title": "Collaborative AI to Support Data Science Instruction",
+    "authors": [
+      "Mic Fenech",
+      "Amelia Farid",
+      "Emma Anderson",
+      "Grace C. Lin",
+      "Disha Chauhan",
+      "Brandon Hanks"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://dx.doi.org/10.5951/MTLT.2025.0176",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1518544",
+    "publisher": "Mathematics Teacher: Learning and Teaching PK-12",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Recent years have seen a rising recognition of the importance of data science learning at the high school level. While emphasizing data science in high school can help develop a skilled workforce in the United States (Wang & Degol, 2017), significant challenges to teaching and learning data science at the high school level still remain. Among these is that students must simultaneously learn significant mathematical content while at the same time grappling with skills that are needed to engage in data cleaning and analysis, coding, using novel software, and more. The interdisciplinary nature of data science means that teachers who are trained in one subject area, such as mathematics, may have difficulty supporting students with other aspects of data science, such as computer science. In this article, the authors propose a solution to this persistent challenge by investigating the use of a collaborative artificial intelligence (AI) chatbot to support the nonmathematical work of students engaging in data science. This study examined how students utilized AI in an online, student-centered learning environment to develop skills relevant to data science. In addition to teaching how to collect, organize, manipulate, analyze, and interpret data, another goal of this workshop was to have students grapple with the mathematical principles that underly the statistical tasks required in data science while becoming critical consumers of the data they encounter in everyday life.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-career-adaptability-and-career-resilience-a-systems-perspective",
+    "title": "Career Adaptability and Career Resilience: A Systems Perspective",
+    "authors": [
+      "Mary McMahon",
+      "Peyman Abkhezr"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s10775-025-09739-1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1520143",
+    "publisher": "International Journal for Educational and Vocational Guidance",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Amidst constant societal, environmental and labour market changes, people are urged to be resilient and adaptable in their careers. Career guidance often portrays career resilience and adaptability as measurable traits, overlooking the privileging, discriminating, oppressing or marginalising impact of multiple systems (e.g. social, economic, political and educational) on them. The systems theory framework of career development offers a holistic view of the complex systems influencing career adaptability and resilience. This conceptual article proposes systems thinking as a perspective that links career adaptability and resilience with social justice towards more effectively addressing the needs of a diversifying population.",
+    "topics": [
+      "systems thinking",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-unpacking-the-effect-of-classroom-social-environment-on-self-regulated-l",
+    "title": "Unpacking the Effect of Classroom Social Environment on Self-Regulated Learning in Mathematical Education: The Mediation of Self-Efficacy",
+    "authors": [
+      "Juan Cai",
+      "Free De Backer",
+      "Geert Vandermeersche",
+      "Shihua Li",
+      "Koen Lombaerts"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1007/s10649-026-10486-5",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1518642",
+    "publisher": "Educational Studies in Mathematics",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Self-regulated learning has shown to have a positive impact on student mathematics learning and academic achievement. However, insufficient attention has been given to what can be done to help students become effective self-regulated mathematics learners. The research underscores the critical role of classroom social environments in promoting students' self-regulated learning in mathematics education. This study aims to examine the relationships between four classroom social environment factors (teacher emotional support, teacher academic support, student cooperation, and student cohesiveness) and students' self-regulated learning. The study also investigates the unique mediating role of self-efficacy in mathematics learning. Using structural equation modeling with data from 1,640 Chinese elementary and secondary students, we found that student cooperation and teacher academic support were the strongest direct predictors of\u00a0self-regulated learning. At the same time, self-efficacy emerged as a significant mediator, linking classroom social environment factors to improved self-regulated learning. By addressing both the \"why\" (theoretical importance\u00a0of classroom social environment factors) and the \"how\" (novel mediation mechanisms), this study offers a nuanced roadmap for optimizing mathematics learning.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]
