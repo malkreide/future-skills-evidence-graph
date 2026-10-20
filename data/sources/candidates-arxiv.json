@@ -2116,5 +2116,294 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-accuracy-of-vibrational-properties-of-machine-learning-force-fields-for",
+    "title": "Accuracy of Vibrational Properties of Machine-Learning Force Fields for Molecular Crystal Transformations",
+    "authors": [
+      "Natalia Goncharova",
+      "Oskar Schweighofer",
+      "Johannes Hoja"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.13902v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Machine-learning force fields (MLFFs) enable the calculation of transformation pathways in molecular crystals at a fraction of the computational cost of density functional theory (DFT). However, a good agreement in energies and structures does not necessarily imply an accurate description of vibrational properties, which are essential for characterizing transition states and determining free energies at finite temperatures. Herein, we assess the accuracy of system-specific SO3krates MLFFs trained on PBE+MBD reference data for describing vibrational properties of molecular crystal transformations. As examples, we consider a polymorph transition of 1,4-diiodobenzene and a single-crystal-to-single-crystal Diels-Alder reaction. The transition state structures obtained from solid-state nudged-elastic-band (NEB) calculations with the MLFFs exhibit a single imaginary $\u0393$-point frequency associated with the respective transformation. Compared with PBE+MBD, the mean absolute errors of $\u0393$-point vibrational frequencies and relative harmonic free energies at 300 K are about 3 cm$^{-1}$ and 1 kJ/mol, respectively. Furthermore, we compare for the Diels-Alder reaction a collective transformation pathway with a sequential one, in which individual diene-dienophile pairs react successively, and demonstrate that PBE0+MBD single-point corrections can significantly affect the predicted reaction energetics. These results demonstrate that system-specific MLFFs can reproduce not only the energies and forces but also the local curvature of the potential-energy surface with high accuracy, enabling reliable calculations of harmonic vibrational free energies, providing a basis for extending the studies of molecular crystal transformations to larger supercells.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-an-annealing-based-quantum-neural-network-with-discrete-wavelet-transfor",
+    "title": "An Annealing-based Quantum Neural Network with Discrete Wavelet Transforms for Enhanced Air Pollution Nowcasting",
+    "authors": [
+      "Otto Menegasso Pires",
+      "Andr\u00e9 Saimon",
+      "Daniela Herrmann",
+      "Prashant Kumar",
+      "Marcelo Moret",
+      "Erick Giovani Sperandio Nascimento"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.13882v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Air pollution poses a significant threat to public health, exacerbated by the rapid industrialization and urbanization of modern society. While traditional deep learning offers predictive capabilities, recent advancements in quantum machine learning (QML) present a compelling alternative. Here, we introduce a scalable hybrid framework that integrates variational quantum circuits with quantum annealing. Leveraging a neuromorphic quantum computing platform to transcend the qubit limitations of the NISQ era, we model particulate matter (PM$_{2.5}$) dynamics using high-density urban data from the UK. We demonstrate that our Quantum Neural Networks (QNNs) exhibit an intrinsic resilience to input volatility, significantly outperforming classical baselines (MLP and LSTM) on raw, high-entropy environmental data. Furthermore, we successfully scaled the model to 172 qubits, observing a synergistic enhancement when coupled with wavelet decomposition that achieves state-of-the-art predictive fidelity. These findings establish a critical benchmark for quantum utility, proving that scalable, neuromorphic quantum machine learning can now address complex, non-linear real-world problems.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-proactive-agentic-orchestration",
+    "title": "Proactive Agentic Orchestration",
+    "authors": [
+      "Xueyang Feng",
+      "Chaozhuo Li",
+      "Xiaohe Bo",
+      "Jiakai Tang",
+      "Chenxi Li",
+      "Qiwei Ye",
+      "Xu Chen"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.13485v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Agentic orchestration delegates tasks to sub-agents with independent contexts, providing a key path to extending the effective execution horizon of large language model agents. However, existing orchestration methods face two limitations: in execution, current methods fix sub-agents' goals and harnesses at creation time, limiting their adaptability to dynamic real-world environments; in optimization, sparse and delayed feedback constrains effective learning of the orchestration policy. To address these limitations, we introduce POrchestra, an on-the-fly proactive agentic orchestration framework. It allows sub-agents to proactively communicate with the orchestrator at any logical point to request harness adjustments while maintaining continuity of local execution. This mechanism not only enables sub-agents to adapt seamlessly to dynamic environments but also naturally inspires On-Policy Orchestration Distillation (OPOD) based on hindsight feedback. OPOD attributes sub-agents' proactive revision requests back to preceding orchestration decisions to derive targeted improvement signals, and leverages these signals as process supervision alongside the final reward to optimize the orchestration policy. We evaluate POrchestra on three long-horizon agent benchmarks spanning deep research, dynamic digital assistance, and software engineering. POrchestra improves task success by an average of 9.1% relative to the strongest baseline; combined with OPOD, it improves small-orchestrator success by an average of 10.0% relative to existing training baselines. POrchestra also achieves a more favorable cost-performance trade-off. Our code is publicly available at https://github.com/XueyangFeng/POrchestra.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-stacked-intelligent-metasurface-based-multimodal-feature-fusion-for-coll",
+    "title": "Stacked Intelligent Metasurface-Based MultiModal Feature Fusion for Collaborative Inference in Edge Networks",
+    "authors": [
+      "Yushi Wang",
+      "Zhengxin Yu",
+      "Guhan Zheng",
+      "Haris Pervaiz",
+      "Zheyi Chen",
+      "Shunqing Zhang"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.13364v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "In navigating the challenges of computational and communication overhead within the 6G-era Collaborative Inference (CI), this paper explores the feasibility of employing Stacked Intelligent Metasurface (SIM) to perform CI, termed SIM-CI. The SIM functions as a physical computing unit, receiving multi-user Over-The-Air (OTA) aggregated features within the same spectrum. It thus executes the necessary spatial-frequency combining and inference in a single physical wave propagation.SIM-CI also incorporates a tri-heterogeneity robustness adapter to address the network heterogeneity, such as multi-modal data and user inference models, as well as a quality-aware contrastive approach that align features from different modalities and extraction levels into a unified feature space. Considering the heterogeneous and dynamic channels, we further integrate Channel State Information (CSI) as an additional input into the adapter design, enabling users' early perception of potential channel states. Moreover, to maximally mitigate the impact of channel variations, we design a new hybrid beamforming network that combines the robustness of model-driven pre-equalization with the adaptability of data-driven learning. Experimental results demonstrate the effectiveness of our SIM-CI compared to digital-domain inference, achieving 98.6\\% accuracy to conversional digital-domain CI approaches under various heterogeneous conditions, while reducing computational energy by 25\\% and requiring 75\\% fewer transmission time slots.",
+    "topics": [
+      "collaboration",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-artificial-intelligence-assisted-systems-biology-reconstruction-of-diabe",
+    "title": "Artificial Intelligence-Assisted Systems Biology Reconstruction of Diabetic Bone Marrow Dysfunction",
+    "authors": [
+      "Paolo Madeddu"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.13721v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This study aimed to reconstruct a regulatory network suitable for systems biology analysis of diabetic bone marrow. Three artificial intelligence large language models independently analysed 18 Discovery and 43 Validation publications. Investigator guided integration produced a frozen network of 62 biological entities and 79 directed interactions. Open source software Gephi created a visual representation before and after main node removal. The plausibility of the reconstructed interactions was tested against independent curated knowledge resources, including the Kyoto Encyclopedia of Genes and Genomes, connectomeDB2025, Reactome, and Gene Ontology. Further analysis examined physiological correspondence, missing edge sensitivity, and graph constrained interrogation. Functional modules encompassed endothelial perivascular support, stem cell retention and trafficking, neural circadian regulation, inflammatory myelopoiesis, metabolic stress, and epigenetic regulation. They intersected through shared effects on endothelial function and stem cell behaviour. The endothelium was the principal connecting node. Computational removal of the endothelial node increased network fragmentation and diameter, while average directed path length remained essentially unchanged. External resources supported 60/79 interactions (75.9%); 19 remained unresolved, with none classified as contradictory. Complementary assessments supported biological plausibility and faithful interrogation of the reconstructed network. This investigator led dialogue with artificial intelligence provides a foundation for a systems level understanding of diabetic bone marrow dysfunction. The approach may facilitate the generation of testable hypotheses and the identification of mechanistic targets for coordinated restoration of disrupted niche interactions.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-12",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-explainable-machine-learning-analysis-of-temperature-effects-on-mechanic",
+    "title": "Explainable Machine Learning Analysis of Temperature Effects on Mechanical Strength of Fiber-Reinforced High-Performance Concrete",
+    "authors": [
+      "Jagaran Chakma",
+      "Zhiguang Zhou",
+      "Badhan Chakma",
+      "Priyanta Chakma"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.23811v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Predicting the compressive strength of fiber-reinforced high-performance concrete subjected to temperature exposure is challenging because to the intricate interdependencies of mixture composition, fiber properties, curing conditions, and temperature. A data-driven framework to predict compressive strength utilizing 1,204 experimental records containing a diverse array of material designs and exposure situations. This study evaluates eight machine-learning models and demonstrate that ensemble approaches routinely surpass individual learners. Both gradient boosting and extreme gradient boosting exhibit superior performance on unseen data, each attaining a R^2 of 0.903. Gradient boosting produces the minimal root mean square error (6.67 MPa), whereas extreme gradient boosting achieves the lowest mean absolute error (3.97 MPa) and mean absolute percentage error (10.60%). The models are further interpreted utilizing Shapley additive explanations and partial dependence analysis, which reveal temperature as the primary factor influencing compressive strength, succeeded by fine aggregate, superplasticizer, cement content, water-to-binder ratio, and water content. Strength diminishes significantly with rising temperature, albeit the extent of deterioration is contingent upon the specific combination design. The best performing models are subsequently implemented in a Python-based graphical user interface for expedited prediction. Our findings offer a precise and comprehensible methodology for evaluating temperature-dependent compressive strength and facilitate the practical, data-driven design of fiber-reinforced high-performance concrete.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-task-aware-kernel-stein-certificates-for-renyi-differential-privacy",
+    "title": "Task-aware Kernel Stein certificates for R\u00e9nyi differential privacy",
+    "authors": [
+      "Leoni Carla Wirth",
+      "Tara Trautwein",
+      "Gesine Reinert"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.23798v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "R\u00e8nyi differential privacy, based on R\u00e8nyi divergence, has become a notion of choice for privacy guarantees. However, outside the Gaussian setting, R\u00e8nyi divergence can be difficult to compute. In particular, R\u00e8nyi differential privacy guarantees that exploit task-specific information, as in R\u00e8nyi Pufferfish privacy, can be challenging. Here we use kernel Stein discrepancies based on escort distributions to provide certificates for R\u00e8nyi differential privacy. By designing the kernel to focus on the relevant privacy directions, we also derive task-aware privacy certificates. We provide exact identities for Gaussian and Laplace mechanisms and bounds for exponential mechanisms, with separate task-aware guarantees. A real data set example illustrates how the protected comparison set and the released subspace jointly determine the resulting certificates.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-in-human-memories-technology-creativity-and-self-determination-an-ethica",
+    "title": "In Human Memories. Technology, Creativity and Self-Determination: An Ethical Proposal",
+    "authors": [
+      "Francesco Vitucci",
+      "Giuseppe Silvi",
+      "Francesco Abbrescia",
+      "Anthony Di Furia",
+      "Francesco Scagliola"
+    ],
+    "year": 2026,
+    "doi": "10.54103/3034-8781/26627",
+    "url": "https://arxiv.org/abs/2610.23651v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This research investigates the role of artificial intelligence (AI) in modern compositional practices, with a particular focus on two case studies: Convergence (2020/21) by Alexander Schubert, for String Ensemble and AI System, and In Human Memories (2024) by Francesco Vitucci, for four cellos and one electroacoustic player, whose installation was created by the Electronic Music School of the \"N. Piccinni\" Conservatory of Bari. The initial historical survey traces the evolving use of technology in composition, revealing how the search for new expressive possibilities has driven the development of technological tools through experimentation. The appearance of AI marks a fundamental shift: no longer just a tool, AI now poses questions and challenges to the composer. Engaging with AI becomes an exploration of an unknown entity, whose full capabilities are still largely undiscovered. This new interaction leads composers to confront AI not merely as a passive resource but as a participant in the creative process, outlining an ethical path to reclaim technology as a creative tool. In Human Memories reflects this dynamic, demonstrating how AI can serve as both inspiration and a driving force in shaping contemporary music.",
+    "topics": [
+      "ai literacy",
+      "creativity",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.85,
+    "audience": "learner"
+  },
+  {
+    "id": "src-presencebench-an-exploratory-evaluation-of-large-language-model-adaptati",
+    "title": "PresenceBench: An Exploratory Evaluation of Large Language Model Adaptation to User State",
+    "authors": [
+      "Pe\u00f1a Arroyo Gallego",
+      "Mauro Ruiz Moreno",
+      "Alejandro Acien",
+      "Sergio Romero-Tapiador",
+      "Teresa Arroyo-Gallego"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.23625v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Presence-aware intelligence is the capacity of an AI system's intelligence layer to adapt appropriately to the functional state of the person it serves (here readiness, flow, and stability) while preserving task quality and safety. We introduce PresenceBench, an instrument for measuring it. PresenceBench evaluates how the intelligence layer uses a supplied state, not how that state is sensed, and breaks the capability into measurable properties. Two are tested here. Receptivity: does the model take up the state and give a better response than with no signal? Specificity: does any improvement depend on the correct state, rather than on extra structured context? A third, adaptation across states, is a required endpoint not measured in this release. A five-arm causal design answers both questions, against each model's own baseline and an equally structured mismatched-state control, scored by a correctness-gated human paired comparison. The exploratory evaluation covered four models across eighteen single-turn, six fixed three-turn and six simulated natural-conversation scenarios. Supplying a synthetic state, raw or translated into a response policy, gave human-preference point estimates above 0.5 for all four models (Claude Sonnet 5, DeepSeek V4 Pro, Gemini 3.6 Flash, GPT-5.6 Terra), with three of eight 95% intervals excluding chance. Specificity was not resolved: no per-model interval excluded chance, and the design cannot yet separate the state values from a generic instruction to adapt. Policy delivery reduced priced cost and output tokens against each model's baseline; these are resource-use changes, not efficiency gains, because correctness non-inferiority was not established. Safety-floor failures were rare (13 of 360 cases), with a non-significant excess under policy delivery. We report the instrument, the frozen results, and the controls a confirmatory study needs.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-from-flow-box-invariants-to-global-conservation-laws-machine-learning-as",
+    "title": "From Flow-Box Invariants to Global Conservation Laws: Machine Learning-Assisted Detection of Singularities and Near-Integrability",
+    "authors": [
+      "Jimmie Adriazola",
+      "Ioannis G. Kevrekidis",
+      "Panayotis G. Kevrekidis",
+      "Wei Zhu"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.23760v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Conservation laws reveal invariant structure in dynamical systems and constrain their evolution to lower-dimensional level sets. Locally, however, per the flow-box theorem, every $d$-dimensional system generically admits $d-1$ functionally independent conservation laws near a regular point even though, generically, only a few such laws persist globally. Data-driven methods typically learn conservation laws on a prescribed region of phase space from which training samples are drawn, leaving their behavior beyond that region unresolved. We formulate this local-to-global continuation problem and develop an {expanding-domain neural deflation} framework that tracks the number of independent conservation laws over nested domains. The method recovers the expected $d-1$ local invariants and detects their successive breakdown as the domain expands, relaxing to the expected global conservation law limit. It distinguishes the local invariants (associated with Frobenius integrability) from persistent global structure and shows that the domain scale over which additional laws survive reflects proximity to Liouville integrability. Pointwise losses can localize isolated obstructions, whereas in more complicated dynamics the breakdown of our loss functions is gradual and spatially diffuse. The framework thus provides a data-driven approach for studying the persistence and breakdown of (so-far-learned) conservation laws across phase space.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-19",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
