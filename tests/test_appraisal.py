@@ -1390,14 +1390,40 @@ class DirectionAndDesignAnchorTests(unittest.TestCase):
                 with self.subTest(set_name, key=key):
                     self.assertNotIn(key, section)
 
-    def test_the_eval_gold_keeps_the_rules_it_was_checked_under(self) -> None:
-        # Eight eval cases read differently under the 1.4.0 definitions.
-        # Until someone decides them, the gold must not claim the new
-        # rules: a blanket restamp would say they were checked.
+    def test_the_eval_gold_moves_case_by_case(self) -> None:
+        # Eight eval cases read differently under the 1.4.0 definitions,
+        # and with the design their derived certainty moves too, so each
+        # is decided on its own. Five reviews are corrected and carry
+        # 1.4.0; three boundary cases wait for the calibration round, and
+        # the rest wait with them. A blanket restamp would claim the open
+        # three were checked.
         gold = json.loads((ROOT / "eval" / "claim_prefill_labeled.json").read_text("utf-8"))
+        stamps: dict[str, int] = {}
         for example in gold["examples"]:
-            with self.subTest(example["id"]):
-                self.assertEqual(example["gold_appraisal"]["appraisal_method"], "1.3.0")
+            method = example["gold_appraisal"]["appraisal_method"]
+            stamps[method] = stamps.get(method, 0) + 1
+        self.assertEqual(stamps, {"1.3.0": 45, "1.4.0": 5})
+        for example in gold["examples"]:
+            block = example["gold_appraisal"]
+            if block["appraisal_method"] == "1.4.0":
+                with self.subTest(example["id"]):
+                    self.assertEqual(block["study_design"], "narrative_review")
+                    self.assertEqual(block["evidence_certainty"], ap.derive_certainty(block)[0])
+
+    def test_no_narrative_review_counts_as_a_systematic_synthesis(self) -> None:
+        # A review that does not say how it found its studies cannot be a
+        # systematic synthesis. The five corrected reviews carried both
+        # labels until they were fixed; nothing may carry them again.
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from common import load_records
+
+        gold = json.loads((ROOT / "eval" / "claim_prefill_labeled.json").read_text("utf-8"))
+        blocks = [(e["id"], e["gold_appraisal"]) for e in gold["examples"]]
+        blocks += [(c["id"], c["appraisal"]) for c in load_records("claims") if c.get("appraisal")]
+        for key, block in blocks:
+            if block.get("study_design") == "narrative_review":
+                with self.subTest(key):
+                    self.assertNotEqual(block.get("replication"), "systematic_synthesis")
 
     def test_the_two_corrected_values_are_recorded(self) -> None:
         # 1.3.0 changed two stored effect_direction values, because the

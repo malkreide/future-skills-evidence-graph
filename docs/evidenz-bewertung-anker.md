@@ -236,19 +236,28 @@ jede Studie wusste: Mehrere stützen sich auf Kontext, der über das
 Abstract hinausgeht, den ein Zweitbewertender also nicht sieht. Die 59
 sind deshalb auf 1.4.0 neu gestempelt.
 
-**Das Eval-Gold bleibt auf 1.3.0.** Acht der fünfzig Fälle fielen unter
-den Definitionen anders aus, keiner davon in der Kalibrierrunde. Fünf
-davon sind Übersichten ohne offengelegte Suche, die `systematic_review`
-tragen, weil es `narrative_review` bei ihrer Bewertung noch nicht gab.
-Die übrigen drei liegen an den Grenzen zwischen `quasi_experimental`,
-`uncontrolled_pre_post` und `unknown`. Ob das Gold angepasst wird, ist eine
-eigene Entscheidung, denn das Design ist dort nicht das einzige Feld, das
-sich bewegt: Bei allen acht ergäbe die Herleitung danach eine andere
-Sicherheit, bei den fünf Übersichten `very_low` statt `moderate` oder
-`low`. Die gespeicherte `evidence_certainty` wäre also mitzuprüfen. Die
-CI-Schwellen berührt das nicht; sie messen die alten Felder unter `gold`.
-Das Eval-Gold unter `gold_appraisal` liest nur die Auswertung der
-Zweitbewertung.
+**Im Eval-Gold fielen acht der fünfzig Fälle unter den Definitionen
+anders aus**, keiner davon in der Kalibrierrunde. Mit dem Design bewegt
+sich dort auch die hergeleitete Sicherheit, deshalb wurde jeder Fall
+einzeln entschieden statt neu gestempelt:
+
+- **Fünf Übersichten ohne offengelegte Suche sind korrigiert.** Sie trugen
+  `systematic_review`, weil es `narrative_review` bei ihrer Bewertung noch
+  nicht gab. Jetzt `narrative_review`, `replication: multiple_studies`
+  statt `systematic_synthesis` und `evidence_certainty: very_low`, wie die
+  Herleitung es ergibt (vorher viermal `moderate`, einmal `low`). Sie
+  tragen 1.4.0.
+- **Drei Grenzfälle sind offen**, zwischen `quasi_experimental`,
+  `uncontrolled_pre_post` und `unknown`. Sie werden nach der
+  Kalibrierrunde entschieden, die genau diese Grenze an zwei eigenen
+  Fällen prüft: Lesen Laien dort anders als die Rubrik, ist zuerst die
+  Rubrik zu schärfen.
+- Die übrigen Fälle passen und bleiben auf 1.3.0, bis die drei
+  entschieden sind; dann werden sie in einem Zug neu gestempelt.
+
+Die CI-Schwellen berührt das nicht; sie messen die alten Felder unter
+`gold`. Das Eval-Gold unter `gold_appraisal` liest nur die Auswertung der
+Zweitbewertung, und die läuft für diese fünfzig noch nicht.
 
 ## Zuerst: Was für eine Aussage ist das?
 
@@ -406,10 +415,15 @@ Set, und er erreicht `strong` nicht.
 `prefill-self-regulation-elementary` (32 Studien, „Heterogeneity across
 studies was high").
 
-**8. Review mit methodisch schwachen Primärstudien.**
-`risk_of_bias: high` → `moderate` −1 = **`low`**. Katalogfall:
-`prefill-mindset-intervention` („Many studies had methodological
-limitations. The authors urge cautious interpretation.").
+**8. Übersicht ohne offengelegte Suche, aus methodisch schwachen
+Primärstudien.** `study_design: narrative_review` → Baseline
+**`very_low`**; `risk_of_bias: high` senkt nicht weiter, tiefer als
+`very_low` geht es nicht. Katalogfall: `prefill-mindset-intervention`
+(„A review of growth-mindset interventions …", „Many studies had
+methodological limitations."). Bis 1.4.0 stand der Fall als
+`systematic_review` mit `low` hier. Die Übersicht sagt aber nicht, wie
+sie ihre Studien gefunden hat; dass sie Studien zusammenfasst, macht sie
+noch nicht systematisch.
 
 **9. Policy Report ohne neue empirische Daten.**
 `study_design: policy_report`, `effect_direction: not_applicable` →
@@ -630,7 +644,7 @@ unter Regeln gelesen zu werden, die ihre Autorin nie gesehen hat.
 | 1.1.0 | `claim_type` mit zweitem Herleitungspfad; `narrative_review` und `psychometric_validation` ergänzt. |
 | 1.2.0 | `claim_supported_by_source` geschärft, nachdem der erste gemessene Zweitdurchgang das Feld bei κ = 0,039 zeigte. Kein zulässiger Wert und keine gespeicherte Stufe ändert sich — geändert hat sich, welche von zwei Lesarten der Anker zulässt. |
 | 1.3.0 | `effect_direction` und `study_design` geschärft: Richtung eines gemessenen Effekts statt Tonfall; Warnung vor den drei Werten, die auch `source_type` kennt. |
-| 1.4.0 | Jedes der zwanzig `study_design` definiert, mit Vorrangregeln für Texte, auf die mehrere Werte passen. Kein zulässiger Wert ändert sich; 59 Katalog-Begutachtungen geprüft und neu gestempelt, das Eval-Gold bleibt auf 1.3.0 (siehe «Warum seit 1.4.0 jedes Design definiert ist»). |
+| 1.4.0 | Jedes der zwanzig `study_design` definiert, mit Vorrangregeln für Texte, auf die mehrere Werte passen. Kein zulässiger Wert ändert sich; 59 Katalog-Begutachtungen geprüft und neu gestempelt; im Eval-Gold fünf Übersichten korrigiert, drei Grenzfälle offen (siehe «Warum seit 1.4.0 jedes Design definiert ist»). |
 
 ### Versionsverlauf der Scoring-Methode (`METHOD_VERSION`)
 

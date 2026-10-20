@@ -35,11 +35,19 @@ nicht hierher — sie werden live aus den Daten ermittelt.
   Übersichten ohne offengelegte Suche, die `systematic_review` tragen,
   weil es `narrative_review` bei ihrer Bewertung noch nicht gab; drei
   liegen an den Grenzen zwischen Vergleich, Vorher-Nachher und
-  unbekanntem Design. Ob das Gold angepasst wird, ist offen: Mit dem
-  Design änderte sich bei allen acht auch die hergeleitete Sicherheit,
-  die gespeicherte wäre also mitzuprüfen. Die CI-Schwellen berührt das
-  nicht, sie messen die alten Felder. Ein Test hält das Gold auf 1.3.0,
-  bis das entschieden ist.
+  unbekanntem Design. **Die fünf Übersichten sind korrigiert**:
+  `narrative_review`, `replication: multiple_studies` statt
+  `systematic_synthesis` und `evidence_certainty: very_low` statt
+  viermal `moderate` und einmal `low`. Die Sicherheit folgt dabei nicht
+  einem Ermessen: Ein bestehender Test verlangt, dass die gespeicherte
+  Sicherheit im Gold der Herleitung entspricht. Die fünf tragen 1.4.0. Das
+  durchgerechnete Beispiel 8 im Anker, das einen der fünf verwendet,
+  rechnet jetzt mit der korrigierten Lesart. **Die drei Grenzfälle sind
+  offen** und werden nach der Kalibrierrunde entschieden, die genau diese
+  Grenze an zwei eigenen Fällen prüft; bis dahin bleibt der Rest des
+  Golds auf 1.3.0. Ein Test hält diesen Stand fest, ein zweiter verbietet
+  jeder `narrative_review`, als systematische Synthese zu gelten. Die
+  CI-Schwellen berührt das nicht, sie messen die alten Felder.
   Der Extraktor-Prompt bleibt `claim-appraisal-v3`; ihn anzupassen
   verlangt eine neue Aufzeichnung. Alle drei leeren Bögen sind neu
   erzeugt. Ein Bogen von 1.3.0, der schon verschickt wurde, ist nicht mehr
