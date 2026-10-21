@@ -12,6 +12,74 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **Jedes Studiendesign ist definiert (`APPRAISAL_VERSION` 1.4.0).** Die
+  Rubrik zählte zwanzig `study_design`-Werte auf und definierte drei. Für
+  die Kalibrierrunde sind Personen ohne Methodenausbildung angefragt, und
+  der Bogen verbietet ihnen das Nachschlagen; zwischen
+  `quasi_experimental` und `matched_comparison` hätten sie raten müssen.
+  Der Anker in `docs/evidenz-bewertung-anker.md` definiert jetzt alle
+  zwanzig, der Bogen liest sie von dort wie die übrigen Anker und zeigt
+  im Blatt «Rubrik» eine Zeile pro Design. Dazu kommen drei Vorrangregeln
+  für Texte, auf die mehrere Werte passen: der Teil, auf dem die Aussage
+  beruht; die Bezeichnung im Text; sonst `unknown`. Drei Festlegungen
+  sind redaktionell und im Anker begründet: `quasi_experimental` ist der
+  Normalfall jedes Vergleichs ohne Zufall; eine Übersicht ist
+  `systematic_review`, wenn sie ihre Auswahl offenlegt; ein
+  `uncontrolled_pre_post` braucht einen Hinweis auf die Messung. Kein
+  zulässiger Wert ändert sich. **Die 59 Katalog-Begutachtungen** sind
+  gegen die Definitionen geprüft und auf 1.4.0 neu gestempelt. **Das
+  Eval-Gold bleibt auf 1.3.0:** Acht der fünfzig Fälle fielen unter den
+  Definitionen anders aus, keiner davon in der Kalibrierrunde. Fünf sind
+  Übersichten ohne offengelegte Suche, die `systematic_review` tragen,
+  weil es `narrative_review` bei ihrer Bewertung noch nicht gab; drei
+  liegen an den Grenzen zwischen Vergleich, Vorher-Nachher und
+  unbekanntem Design. **Die fünf Übersichten sind korrigiert**:
+  `narrative_review`, `replication: multiple_studies` statt
+  `systematic_synthesis` und `evidence_certainty: very_low` statt
+  viermal `moderate` und einmal `low`. Die Sicherheit folgt dabei nicht
+  einem Ermessen: Ein bestehender Test verlangt, dass die gespeicherte
+  Sicherheit im Gold der Herleitung entspricht. Die fünf tragen 1.4.0. Das
+  durchgerechnete Beispiel 8 im Anker, das einen der fünf verwendet,
+  rechnet jetzt mit der korrigierten Lesart. **Die drei Grenzfälle sind
+  offen** und werden nach der Kalibrierrunde entschieden, die genau diese
+  Grenze an zwei eigenen Fällen prüft; bis dahin bleibt der Rest des
+  Golds auf 1.3.0. Ein Test hält diesen Stand fest, ein zweiter verbietet
+  jeder `narrative_review`, als systematische Synthese zu gelten. Die
+  CI-Schwellen berührt das nicht, sie messen die alten Felder.
+  Der Extraktor-Prompt bleibt `claim-appraisal-v3`; ihn anzupassen
+  verlangt eine neue Aufzeichnung. Alle drei leeren Bögen sind neu
+  erzeugt. Ein Bogen von 1.3.0, der schon verschickt wurde, ist nicht mehr
+  zu verwenden; `--between` warnt, wenn Durchgänge verschiedener
+  Regelversionen gemischt werden. Nebenbei: Ein Test ersetzte im
+  versteckten Original fest `"1.3.0"` und wäre mit der neuen Version
+  wirkungslos durchgelaufen; er liest die Version jetzt aus dem Modul und
+  prüft, dass die Änderung greift.
+- **Das erste Blatt des Excel-Bogens erklärt die Aufgabe Schritt für
+  Schritt (Bogenformat 2).** Format 1 setzte voraus, dass man die Aufgabe
+  kennt. Jetzt stehen dort Zweck, «Bearbeitung aktivieren», wo gelesen und
+  wo geantwortet wird, die Zahl der gelben Spalten, «null» heisst leer
+  (mit der Ausnahme `effect_direction`), Unsicherheit ist kein Grund für
+  eine leere Zelle, Fragen zum Inhalt werden notiert statt gestellt, und
+  kein Austausch mit anderen Bewertenden vor der Abgabe. Schritte, die
+  der Bogen nicht betrifft, fallen weg: ohne `effect_direction` keine
+  Ausnahme, ohne ALT-Spalte kein Hinweis darauf. Das Feld «Notizen» sagt
+  ausdrücklich, dass Fragen zum Inhalt nicht dorthin gehören, weil die
+  Notiz als Vorbehalt unter jeder Vergleichszeile erscheint. Im Blatt
+  «Bewertung» sind die fixierten Textspalten schmaler und die Ansicht
+  steht auf 90 %. Auf einem Laptop mit 1366 Pixeln Breite passen damit
+  vier statt zwei Antwortspalten neben den Kalibrierbogen und drei neben
+  den Katalogbogen, wo vorher keine einzige Platz hatte. Das Protokoll steht deshalb weiter unten.
+  **Ein Bogen im Format 1, der schon verschickt wurde, wird weiterhin
+  eingelesen**: Der Import liest das Format aus dem versteckten Blatt.
+  Belegt mit einem echten Format-1-Bogen, aufgenommen vor der Änderung
+  (`tests/fixtures/worksheets/`), der auch seine Regelversion 1.3.0
+  behält. Tests halten fest: Die Schritte enden vor dem Protokoll, und
+  mehr Schritte als Platz bricht den Export ab. Mindestens drei
+  Antwortspalten sind sichtbar, und keine Textzeile stösst an Excels
+  Höhengrenze, an der das Ende eines Abstracts verschwände.
+
 ### Added
 
 - **Vergleich zwischen mehreren Bewertenden** (`eval_agreement.py

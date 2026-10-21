@@ -45,7 +45,11 @@ from typing import Any
 
 import appraisal
 
-FORMAT_VERSION = 1
+# 1: five lines of instructions above the protocol.
+# 2: step-by-step instructions for a rater who has never done this, so the
+#    protocol moved down. A rater given format 1 could not tell what the
+#    task was.
+FORMAT_VERSION = 2
 
 # Which drop-down each rated field gets. Fields not listed here are free
 # text; the only ones today are the two age bands, and they are checked on
@@ -82,7 +86,15 @@ CONTEXT_LABELS = {
     "abstract": "Abstract",
     "source_type": "Publikationstyp",
 }
-CONTEXT_WIDTHS = {"statement": 42, "source_title": 30, "abstract": 70, "source_type": 16}
+# The text columns stay frozen while the rater scrolls through the answers,
+# so their width decides how many answer columns fit beside them. Format 1
+# froze 163 characters on the catalogue sheet: on a laptop that left no
+# room for a single answer column. The abstract keeps enough width that
+# the longest catalogue abstract still fits Excel's maximum row height.
+CONTEXT_WIDTHS = {"statement": 30, "source_title": 20, "abstract": 64, "source_type": 14}
+ANSWER_WIDTH = 18
+AGE_WIDTH = 12
+RATING_ZOOM = 90
 
 SHEET_INSTRUCTIONS = "Anleitung"
 SHEET_RATING = "Bewertung"
@@ -90,14 +102,18 @@ SHEET_RUBRIC = "Rubrik"
 SHEET_LISTS = "Listen"
 SHEET_META = "_meta"
 
-# Where the protocol inputs sit on the instructions sheet. Named once so
-# export and import cannot disagree about a cell address.
-PROTOCOL_CELLS = {
-    "rater": "C12",
-    "labeled_at": "C13",
-    "blind": "C14",
-    "notes": "C15",
+# Where the protocol inputs sit on the instructions sheet, per workbook
+# format. Named once so export and import cannot disagree about a cell
+# address. Import reads the format from the hidden sheet and looks where
+# that format put them, so a workbook already handed out keeps working.
+PROTOCOL_CELLS_BY_FORMAT = {
+    1: {"rater": "C12", "labeled_at": "C13", "blind": "C14", "notes": "C15"},
+    2: {"rater": "C21", "labeled_at": "C22", "blind": "C23", "notes": "C24"},
 }
+PROTOCOL_CELLS = PROTOCOL_CELLS_BY_FORMAT[FORMAT_VERSION]
+PROGRESS_CELL = "C26"
+# The step-by-step text fills these rows and must end before the protocol.
+STEP_ROWS = range(8, 18)
 
 # One cell holds at most 32,767 characters. The catalogue worksheet is
 # ~91,000, so the embedded original is split across a column.
@@ -304,9 +320,10 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
         ws.column_dimensions[_col(3 + offset)].width = CONTEXT_WIDTHS.get(field, 20)
     for offset, field in enumerate(rated):
         ws.column_dimensions[_col(first_rated_col + offset)].width = (
-            22 if field in VOCABULARIES else 14
+            ANSWER_WIDTH if field in VOCABULARIES else AGE_WIDTH
         )
     ws.freeze_panes = ws.cell(row=2, column=first_rated_col)
+    ws.sheet_view.zoomScale = RATING_ZOOM
     ws.protection.sheet = True
     ws.protection.formatColumns = False
     ws.protection.formatRows = False
@@ -337,30 +354,90 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
     rub.protection.formatColumns = False
     rub.protection.formatRows = False
 
-    # --- Instructions sheet: first thing the rater sees.
+    # --- Instructions sheet: first thing the rater sees. Written for
+    # someone who has never rated anything; format 1 assumed the reader
+    # already knew the task.
     ins = wb.create_sheet(SHEET_INSTRUCTIONS, 0)
     kind = "Kalibrierrunde" if protocol.get("calibration_subset") else "Bewertungsdurchgang"
-    ins["A1"] = f"Blinder Zweitbewertungsbogen – {kind}, {n} Fälle"
+    ins["A1"] = f"Bewertungsbogen – {kind}, {n} Fälle"
     ins["A1"].font = title
-    text_rows = [
-        ("A3", "So geht's", bold),
-        ("A4", f"1. Im Blatt «{SHEET_RATING}» jede gelbe Zelle ausfüllen: Wert aus der Auswahlliste wählen.", base),
-        ("A5", "2. Wo der Text keine Antwort hergibt, die Zelle LEER lassen. Das ist eine gültige Antwort, kein Ausweichen.", base),
-        ("A6", f"3. Die Bedeutung jedes Werts steht im Blatt «{SHEET_RUBRIC}». Sie ist vollständig – bitte nichts anderes nachlesen.", base),
-        ("A7", "4. Achtung Verwechslung: «null» in effect_direction heisst «kein Unterschied gefunden». Leer heisst «keine Angabe möglich».", base),
-        ("A8", "5. Unten Name und Datum eintragen, Datei speichern und zurückschicken. Das ist keine Prüfung: gemessen wird die Rubrik, nicht du.", base),
-        ("A10", "Protokoll (gelbe Felder ausfüllen)", bold),
-        ("B12", "Name", base),
-        ("B13", "Datum", base),
-        ("B14", "Blind bewertet?", base),
-        ("B15", "Notizen", base),
-        ("D14", "«nein», falls du vorher Bewertungen aus dem Projekt gesehen hast.", muted),
-        ("D15", "Alles, was die Blindheit einschränkt – auch grob geschätzt. Leer, wenn nichts.", muted),
+    ins["A2"] = "Geprüft werden die Regeln, nicht du. Es gibt keine Note und kein «falsch»."
+    ins["A2"].font = muted
+    ins["A4"] = "Worum es geht"
+    ins["A4"].font = bold
+    ins["A7"] = "So geht's"
+    ins["A7"].font = bold
+
+    def paragraph(row: int, text: str) -> None:
+        # Merged across the sheet and wrapped, so a long line stays on a
+        # narrow screen instead of running off its right edge.
+        ins.merge_cells(f"A{row}:D{row}")
+        ins[f"A{row}"] = text
+        ins[f"A{row}"].font = base
+        ins[f"A{row}"].alignment = wrap_top
+        ins.row_dimensions[row].height = 14 * math.ceil(len(text) / 150) + 2
+
+    paragraph(
+        5,
+        "Mehrere Personen bewerten unabhängig voneinander dieselben Fälle. Verglichen "
+        f"wird, ob die Regeln im Blatt «{SHEET_RUBRIC}» alle zu den gleichen Antworten führen.",
+    )
+    # (text, numbered). An unnumbered line continues the step above it.
+    steps: list[tuple[str, bool]] = [
+        ("Erscheint oben ein gelber Balken «Geschützte Ansicht», zuerst auf «Bearbeitung "
+         "aktivieren» klicken. Sonst lässt sich nichts eintragen.", True),
+        (f"Im Blatt «{SHEET_RATING}» steht pro Zeile ein Fall. Links die Aussage und das "
+         "Abstract lesen (die Texte sind auf Englisch).", True),
+        (f"Rechts davon die gelben Zellen ausfüllen: Zelle anklicken, auf den kleinen Pfeil "
+         f"klicken, Wert wählen. Es sind {len(rated)} gelbe Spalten, nach rechts scrollen.", True),
+        (f"Was die Werte bedeuten, steht im Blatt «{SHEET_RUBRIC}». Sie ist vollständig – bitte "
+         "nichts anderes nachschlagen, auch nicht im Internet.", True),
+        ("Gibt der Text auf eine Frage keine Antwort her, die Zelle LEER lassen. Steht in der "
+         "Rubrik «null», heisst das ebenfalls: leer lassen.", True),
     ]
-    for ref, text, font in text_rows:
-        ins[ref] = text
-        ins[ref].font = font
+    if "effect_direction" in rated:
+        steps.append(("Einzige Ausnahme: In effect_direction ist «null» ein Wert in der Liste "
+                      "und heisst «kein Unterschied gefunden». Leer heisst dort «keine Angabe "
+                      "möglich».", False))
+    steps.append(("Unsicher? Den Wert wählen, der nach der Rubrik am besten passt, und die Nr. "
+                  "des Falls notieren. Leer ist kein Ausweg bei Unsicherheit.", True))
+    steps.append(("Fragen zum Inhalt bitte nicht stellen und nicht mit anderen Bewertenden "
+                  "besprechen, bis alle abgegeben haben. Die notierten Fragen mit der Datei "
+                  "zurückschicken; sie werden danach gemeinsam besprochen.", True))
+    if any(FIELD_HINTS.get(field, "").startswith("ALT:") for field in rated):
+        steps.append(("Die Spalten mit «ALT:» darfst du leer lassen.", True))
+    steps.append(("Unten Name und Datum eintragen, speichern (Format .xlsx behalten) und die "
+                  "Datei zurückschicken.", True))
+    if len(steps) > len(STEP_ROWS):
+        raise ValueError(
+            f"{len(steps)} instruction lines, room for {len(STEP_ROWS)}: they would "
+            "run into the protocol cells"
+        )
+    number = 0
+    for row, (text, numbered) in zip(STEP_ROWS, steps):
+        if numbered:
+            number += 1
+        paragraph(row, f"{number}. {text}" if numbered else f"     {text}")
+
+    protocol_row = int(PROTOCOL_CELLS["rater"][1:])
+    ins[f"A{protocol_row - 2}"] = "Protokoll (gelbe Felder ausfüllen)"
+    ins[f"A{protocol_row - 2}"].font = bold
+    labels = {
+        "rater": ("Name", "Vor- und Nachname."),
+        "labeled_at": ("Datum", "Wie gewohnt eintippen, z. B. 5.11.2026. Excel zeigt es dann als Jahr-Monat-Tag an."),
+        "blind": ("Blind bewertet?", "«nein», falls du vorher Bewertungen aus dem Projekt gesehen hast."),
+        "notes": ("Notizen", "Alles, was die Blindheit einschränkt – auch grob geschätzt. Leer, wenn nichts. "
+                             "Fragen zum Inhalt gehören in die E-Mail, nicht hierher."),
+    }
     for field, ref in PROTOCOL_CELLS.items():
+        row = int(ref[1:])
+        label, hint = labels[field]
+        ins[f"B{row}"] = label
+        ins[f"B{row}"].font = base
+        ins[f"B{row}"].alignment = wrap_top
+        ins[f"D{row}"] = hint
+        ins[f"D{row}"].font = muted
+        ins[f"D{row}"].alignment = wrap_top
         cell = ins[ref]
         cell.fill, cell.border, cell.protection, cell.font = input_fill, box, unlocked, base
         cell.alignment = wrap_top
@@ -369,17 +446,19 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
     blind_dv = DataValidation(type="list", formula1="=lst_blind", allow_blank=False)
     blind_dv.add(PROTOCOL_CELLS["blind"])
     ins.add_data_validation(blind_dv)
-    ins.row_dimensions[15].height = 60
+    ins.row_dimensions[int(PROTOCOL_CELLS["labeled_at"][1:])].height = 28
+    ins.row_dimensions[int(PROTOCOL_CELLS["notes"][1:])].height = 60
 
     # Progress, as a live formula so it counts what is actually filled.
     first_letter = _col(first_rated_col)
     last_letter = _col(first_rated_col + len(rated) - 1)
-    ins["B17"] = "Ausgefüllt"
-    ins["B17"].font = bold
-    ins["C17"] = f"=COUNTA('{SHEET_RATING}'!{first_letter}2:{last_letter}{last_row})"
-    ins["C17"].font = bold
-    ins["D17"] = f"von {n * len(rated)} Zellen (leer lassen ist erlaubt – die Zahl ist nur eine Orientierung)"
-    ins["D17"].font = muted
+    progress_row = int(PROGRESS_CELL[1:])
+    ins[f"B{progress_row}"] = "Ausgefüllt"
+    ins[f"B{progress_row}"].font = bold
+    ins[PROGRESS_CELL] = f"=COUNTA('{SHEET_RATING}'!{first_letter}2:{last_letter}{last_row})"
+    ins[PROGRESS_CELL].font = bold
+    ins[f"D{progress_row}"] = f"von {n * len(rated)} Zellen (leer lassen ist erlaubt – die Zahl ist nur eine Orientierung)"
+    ins[f"D{progress_row}"].font = muted
 
     # Format example. Invented, on a topic none of the rated cases touch,
     # and showing only entries that need no rubric judgement: a design the
@@ -387,8 +466,9 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
     # first draft used a reading programme rated "low" -- one of the ten
     # calibration cases is a reading intervention, so the example would
     # have nudged exactly the answer being measured.
-    ins["A19"] = "Formatbeispiel (erfundener Fall, wird nicht ausgewertet)"
-    ins["A19"].font = bold
+    example_row = progress_row + 2
+    ins[f"A{example_row}"] = "Formatbeispiel (erfundener Fall, wird nicht ausgewertet)"
+    ins[f"A{example_row}"].font = bold
     example = [
         ("Aussage", "In einer randomisierten Studie mit Kindern im Alter von 8 bis 10 "
                     "Jahren verbesserte ein Schwimmkurs die Wassersicherheit.", ""),
@@ -396,18 +476,16 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
         ("age_range_explicit", "8-10", "Text «von-bis», nur wenn das Alter wörtlich im Text steht"),
         ("jedes Feld", "(leer)", "wenn der Text dazu keine Antwort hergibt"),
     ]
-    for offset, (label, value, why) in enumerate(example, start=20):
+    for offset, (label, value, why) in enumerate(example, start=example_row + 1):
         ins.cell(row=offset, column=2, value=label).font = muted
         ins.cell(row=offset, column=3, value=value).font = muted
         ins.cell(row=offset, column=4, value=why).font = muted
         ins.cell(row=offset, column=3).alignment = wrap_top
-    ins.row_dimensions[20].height = 40
+    ins.row_dimensions[example_row + 1].height = 40
     ins.column_dimensions["A"].width = 3
     ins.column_dimensions["B"].width = 20
     ins.column_dimensions["C"].width = 40
     ins.column_dimensions["D"].width = 70
-    for ref in ("A4", "A5", "A6", "A7", "A8"):
-        ins[ref].alignment = Alignment(wrap_text=False, vertical="top")
     ins.protection.sheet = True
 
     # --- Meta (very hidden): the exact worksheet this was made from.
@@ -429,12 +507,16 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
     wb.save(out)
 
 
-def _embedded_original(wb) -> dict[str, Any]:
+def _embedded_original(wb) -> tuple[dict[str, Any], int]:
+    """The worksheet a workbook was made from, and the workbook's format."""
     if SHEET_META not in wb.sheetnames:
         raise WorkbookError([f"no '{SHEET_META}' sheet -- not a workbook this script exported"])
     meta = wb[SHEET_META]
-    if meta["B1"].value != FORMAT_VERSION:
-        raise WorkbookError([f"workbook format {meta['B1'].value!r}, expected {FORMAT_VERSION}"])
+    version = meta["B1"].value
+    if version not in PROTOCOL_CELLS_BY_FORMAT:
+        raise WorkbookError([
+            f"workbook format {version!r}, expected one of {sorted(PROTOCOL_CELLS_BY_FORMAT)}"
+        ])
     count = int(meta["B3"].value or 0)
     text = "".join(str(meta.cell(row=5 + i, column=1).value or "") for i in range(count))
     if _checksum(text) != meta["B2"].value:
@@ -443,7 +525,7 @@ def _embedded_original(wb) -> dict[str, Any]:
             f"'{SHEET_META}' sheet was edited, so the instrument can no longer be "
             "identified. Ask for the original file."
         ])
-    return json.loads(text)
+    return json.loads(text), version
 
 
 def _answer(field: str, raw: Any, where: str, problems: list[str]) -> Any:
@@ -480,7 +562,7 @@ def _answer(field: str, raw: Any, where: str, problems: list[str]) -> Any:
     return value
 
 
-def _protocol_value(field: str, raw: Any, problems: list[str]) -> Any:
+def _protocol_value(field: str, raw: Any, problems: list[str], ref: str) -> Any:
     if field == "labeled_at":
         if isinstance(raw, dt.datetime):
             return raw.date().isoformat()
@@ -489,19 +571,19 @@ def _protocol_value(field: str, raw: Any, problems: list[str]) -> Any:
         text = str(raw or "").strip()
         if not re.match(r"^\d{4}-\d{2}-\d{2}$", text):
             problems.append(
-                f"{SHEET_INSTRUCTIONS}!{PROTOCOL_CELLS['labeled_at']}: Datum fehlt oder ist unlesbar "
+                f"{SHEET_INSTRUCTIONS}!{ref}: Datum fehlt oder ist unlesbar "
                 f"({text!r}). Bitte als Datum eintragen."
             )
         return text
     if field == "blind":
         text = str(raw or "").strip().lower()
         if text not in ("ja", "nein"):
-            problems.append(f"{SHEET_INSTRUCTIONS}!{PROTOCOL_CELLS['blind']}: bitte «ja» oder «nein».")
+            problems.append(f"{SHEET_INSTRUCTIONS}!{ref}: bitte «ja» oder «nein».")
             return True
         return text == "ja"
     text = "" if raw is None else str(raw).strip()
     if field == "rater" and not text:
-        problems.append(f"{SHEET_INSTRUCTIONS}!{PROTOCOL_CELLS['rater']}: Name fehlt.")
+        problems.append(f"{SHEET_INSTRUCTIONS}!{ref}: Name fehlt.")
     return text
 
 
@@ -509,7 +591,7 @@ def import_workbook(path: Path) -> dict[str, Any]:
     """Read a filled workbook back into the worksheet it was made from."""
     openpyxl = _openpyxl()
     wb = openpyxl.load_workbook(path, data_only=True)
-    worksheet = _embedded_original(wb)
+    worksheet, version = _embedded_original(wb)
     context, rated = _layout(worksheet)
     first_rated_col = 3 + len(context)
     problems: list[str] = []
@@ -552,8 +634,8 @@ def import_workbook(path: Path) -> dict[str, Any]:
 
     ins = wb[SHEET_INSTRUCTIONS]
     protocol = {
-        field: _protocol_value(field, ins[ref].value, problems)
-        for field, ref in PROTOCOL_CELLS.items()
+        field: _protocol_value(field, ins[ref].value, problems, ref)
+        for field, ref in PROTOCOL_CELLS_BY_FORMAT[version].items()
     }
     if problems:
         raise WorkbookError(problems)
