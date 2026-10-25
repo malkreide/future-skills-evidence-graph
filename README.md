@@ -37,7 +37,10 @@ review through pull requests.
 - Static dashboard in `site/`
 - GitHub Actions for validation, candidate research import, and GitHub Pages deploy
 - Governance templates for source suggestions, claim corrections, and new skills
-- Lehrplan 21 comparison view with radar chart, cycle filter, coverage table, and gap labels
+- Lehrplan 21 comparison view with a coverage matrix (skills × cycles) or radar chart, cycle filter,
+  coverage table, and gap labels
+- Review funnel: per record type, how many sources and claims were captured, reviewed, accepted,
+  rejected, and how many actually back an active skill (`scripts/review_funnel.py`, computed at build time)
 
 ## Architecture
 

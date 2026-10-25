@@ -10,6 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from common import ROOT, load_records, write_json
+from review_funnel import review_funnel
 from score_context import quality_vs_breadth_note, score_contexts
 from score_evidence import reviewed_claim_scores
 from validate_data import validate_repository
@@ -75,6 +76,9 @@ def build_index() -> dict[str, object]:
         "claims": _slim(claims, _DROPPED_CLAIM_FIELDS),
         "skills": skills,
         "frameworks": load_records("frameworks"),
+        # Derived like score_context: the dashboard's review funnel needs the
+        # stage counts, the records only carry their own status.
+        "review_funnel": review_funnel(sources, claims, skills),
     }
 
 

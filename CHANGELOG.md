@@ -12,6 +12,42 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Added
+
+- **Prüftrichter im Dashboard.** Die Kachel «Claims» zählte alle
+  Aussagen, auch die ungeprüften Kandidaten aus der wöchentlichen Ernte.
+  Wie wenig davon ein Mensch tatsächlich geprüft hat, war nirgends zu
+  sehen. Der neue Abschnitt zeigt für Quellen und Aussagen je vier
+  Stufen: erfasst → geprüft → angenommen → tragen aktive Skills. Jede
+  Stufe zeigt ihren Anteil an der Stufe davor. «Abgelehnt» (der Filter
+  wirkt) und «noch nicht geprüft» (offene Prüfarbeit) stehen getrennt,
+  damit ein Rückstand nicht wie Strenge aussieht und Strenge nicht wie ein
+  Rückstand. Die Zahlen rechnet `scripts/review_funnel.py` beim Build;
+  ein unbekannter Status bricht den Build ab, statt aus der Summe zu
+  fallen.
+- **Abdeckungsmatrix Skills × Lehrplan-21-Zyklen** als Standardansicht des
+  Lehrplan-21-Vergleichs; das Netzdiagramm bleibt per Umschalter
+  (`?view=radar`) erreichbar. Die Kreisfläche zeigt den Abdeckungswert
+  vor einem festen Referenzkreis (Maximum 3), ein Strich «im Zyklus nicht
+  adressiert». Die Anzahl geprüfter Belege steht in einer eigenen Spalte
+  statt als Ring um die Abdeckung, weil zwei unabhängige Skalen in einer
+  Markierung einen Vergleich vortäuschen, den nur die Skalierung erzeugt.
+  Die Legende sagt ausdrücklich, dass der Abdeckungswert pro Skill und
+  nicht pro Zyklus vergeben ist. Die Spalten kommen aus den Optionen des
+  Zyklus-Filters, damit beide nicht auseinanderlaufen können.
+
+### Fixed
+
+- **Kachel «Zukunftslücken» zählt das gespeicherte Label.** Sie zählte
+  Mappings mit `coverage_score < 2` und meldete 8 Lücken, während Tabelle
+  und Matrix 3 Mappings als «Zukunftslücke» auswiesen. Die Schwellen
+  stehen laut `docs/lehrplan21-coverage-methodik.md` ausschliesslich in
+  `common.lp21_coverage_label`; die Kachel zählt jetzt dieses Label.
+- **Schweizer Rechtschreibung in sichtbaren Dashboard-Texten** («blosser»,
+  «Grössen», «grossen PDF», «fliesst», «zu gross», «liess sich»). Die
+  `ß` in den Zeichenklassen von `submit.js` bleiben, weil sie Text aus
+  deutschen PDFs erkennen.
+
 ### Changed
 
 - **Jedes Studiendesign ist definiert (`APPRAISAL_VERSION` 1.4.0).** Die
