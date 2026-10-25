@@ -32,6 +32,8 @@ const els = {
   metricSkills: document.querySelector("#metricSkills"),
   metricClaims: document.querySelector("#metricClaims"),
   metricSources: document.querySelector("#metricSources"),
+  metricClaimsNote: document.querySelector("#metricClaimsNote"),
+  metricSourcesNote: document.querySelector("#metricSourcesNote"),
   metricCandidate: document.querySelector("#metricCandidate"),
   lp21CycleFilter: document.querySelector("#lp21CycleFilter"),
   lp21Radar: document.querySelector("#lp21Radar"),
@@ -545,10 +547,21 @@ function statusCount(status) {
   return status === "all" ? state.skills.length : state.skills.filter((skill) => skill.status === status).length;
 }
 
+// A stock tile counts what the catalogue vouches for: claims and sources that
+// back an active skill. The captured total -- mostly unreviewed candidates from
+// the weekly harvest -- stays visible as context, never as the headline.
+function renderStockTile(valueEl, noteEl, stages) {
+  valueEl.textContent = stages ? formatCount(stages.in_catalog) : "–";
+  if (noteEl) {
+    noteEl.textContent = stages ? `stützen aktive Skills · ${formatCount(stages.captured)} erfasst` : "";
+  }
+}
+
 function renderMetrics() {
+  const funnel = state.reviewFunnel;
   els.metricSkills.textContent = formatCount(state.skills.length);
-  els.metricClaims.textContent = formatCount(state.claims.length);
-  els.metricSources.textContent = formatCount(state.sources.length);
+  renderStockTile(els.metricClaims, els.metricClaimsNote, funnel && funnel.claims);
+  renderStockTile(els.metricSources, els.metricSourcesNote, funnel && funnel.sources);
   els.metricCandidate.textContent = formatCount(statusCount("candidate"));
   for (const button of els.metricFilters) {
     const target = button.dataset.status;
@@ -687,7 +700,7 @@ function renderFunnel() {
   const detail = document.createElement("span");
   detail.className = "funnel-result-detail";
   const parts = [
-    `gestützt auf ${formatCount(funnel.claims.in_catalog)} geprüfte Aussagen ` +
+    `gestützt auf ${formatCount(funnel.claims.in_catalog)} angenommene Aussagen ` +
       `aus ${formatCount(funnel.sources.in_catalog)} Quellen`,
   ];
   if (skills.candidate) parts.push(`${formatCount(skills.candidate)} Skill-Kandidaten in Prüfung`);

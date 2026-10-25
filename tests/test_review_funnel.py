@@ -142,6 +142,21 @@ class FunnelOnCatalogTests(unittest.TestCase):
         self.assertTrue(re.search(r"payload\.review_funnel\b", app_js), "app.js never reads review_funnel")
         self.assertTrue(re.search(r'id="reviewFunnel"', index_html), "no #reviewFunnel in index.html")
 
+    def test_stock_tiles_count_what_backs_active_skills(self) -> None:
+        # The "Claims" tile once showed every claim, 2'502 unreviewed
+        # candidates included, as catalogue stock right above a funnel saying
+        # 59. Headline = in_catalog; the captured total is only the note.
+        app_js = (ROOT / "site" / "assets" / "app.js").read_text(encoding="utf-8")
+        tile = re.search(r"function renderStockTile\(.*?\) \{(.*?)\n\}", app_js, re.DOTALL)
+        self.assertIsNotNone(tile, "renderStockTile not found in app.js")
+        self.assertIn("valueEl.textContent = stages ? formatCount(stages.in_catalog)", tile.group(1))
+        metrics = re.search(r"function renderMetrics\(\) \{(.*?)\n\}", app_js, re.DOTALL)
+        self.assertIsNotNone(metrics, "renderMetrics not found in app.js")
+        for kind in ("claims", "sources"):
+            with self.subTest(kind):
+                self.assertNotIn(f"state.{kind}.length", metrics.group(1))
+                self.assertIn(f"funnel && funnel.{kind}", metrics.group(1))
+
 
 if __name__ == "__main__":
     unittest.main()

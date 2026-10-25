@@ -597,6 +597,13 @@ select {
   margin: 2px 0 0;
 }
 
+.metrics .metric-note {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
 .lp21-comparison,
 .panel-section {
   background: var(--surface);

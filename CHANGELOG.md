@@ -38,6 +38,15 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ### Fixed
 
+- **Bestandskacheln zählen, was der Katalog verbürgt.** «Claims» zeigte
+  2'637 Aussagen als Bestand, davon 2'502 ungeprüfte Kandidaten, direkt
+  über einem Trichter, der 59 nennt. Die Kachel heisst jetzt «Aussagen»
+  und zeigt die Aussagen, die aktive Skills stützen; die erfasste
+  Gesamtzahl steht als Zusatz darunter. Die Kachel «Quellen» hatte
+  denselben Fehler und ist gleich umgestellt, sonst zählten zwei
+  Nachbarkacheln nach verschiedenen Regeln. «Kandidaten» heisst jetzt
+  «Skill-Kandidaten», weil sie nur Skills zählt und neben den Zusätzen
+  sonst wie die Zahl der Aussage-Kandidaten gelesen würde.
 - **Kachel «Zukunftslücken» zählt das gespeicherte Label.** Sie zählte
   Mappings mit `coverage_score < 2` und meldete 8 Lücken, während Tabelle
   und Matrix 3 Mappings als «Zukunftslücke» auswiesen. Die Schwellen
