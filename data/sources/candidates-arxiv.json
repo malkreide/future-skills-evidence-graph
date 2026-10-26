@@ -2405,5 +2405,250 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-the-language-of-instruction-genre-and-generative-ai",
+    "title": "The Language of Instruction: Genre and Generative AI",
+    "authors": [
+      "James E. Dobson"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.32982v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This article argues that instruction-fine-tuned language models should be understood as implementing a genre, what is proposed as the instructional-conversational genre. This genre is an amalgamation of discursive language from prior conversations between generative models and humans recursively run through these massive neural networks. It is instantiated in applications through instruction fine-tuning, the inclusion of a pretext known as a system prompt, and the formalization of inputs in mark-up languages characterized by the use of special tokens and role assignment in turntaking structures.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-tutorial-on-physics-constrained-machine-learning-for-hybrid-modeling-o",
+    "title": "A Tutorial on Physics Constrained Machine Learning for Hybrid Modeling, Optimization, and Control",
+    "authors": [
+      "Rahul Golder",
+      "Bimol Nath Roy",
+      "MM Faruque Hasan"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.32914v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Physics-constrained machine learning (PCML) integrates domain knowledge, first-principles, and physical constraints into AI/ML models. In this work, we present a step-by-step tutorial of a modular PCML framework, KKT-HardNet, and illustrate how it could be used for hybrid modeling, process simulation, optimization and model predictive control in a single platform. KKT-HardNet combines fast inference capabilities of neural networks with guaranteed satisfaction of algebraic constraints through differential projection. It can handle heterogeneous data and enforce both linear and nonlinear equality and inequality constraints. The modular design supports custom neural-network backbones and user-defined projection mechanisms for PCML. To enable efficient end-to-end training, KKT-HardNet exploits implicit function theorem to backpropagate through the projection layer. This avoids computationally expensive automatic differentiation. This work also introduces an exact reduced-order Fischer-Burmeister reformulation and a primal-dual interior-point method as an alternative projection solve strategy. We also provide a diverse set of benchmarking problems for PCML in engineering applications. KKT-HardNet achieves orders of magnitude better performance in terms of both constraint satisfaction and inference time. The KKT-HardNet code and the benchmark datasets are available at https://github.com/souls-tamu/kkt-hardnet .",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-multimodal-generative-ai-assists-comprehensive-echocardiographic-interpr",
+    "title": "Multimodal Generative AI Assists Comprehensive Echocardiographic Interpretation",
+    "authors": [
+      "Yi Qin",
+      "Marawan Elbatel",
+      "Shanshan Song",
+      "Taoran Huang",
+      "Jiarong Guo",
+      "Ningshu Li",
+      "Lehan Wang",
+      "Chenxu Zhao",
+      "Jiexin He",
+      "Machteld J. Boonstra",
+      "Stephan van der Zwaard",
+      "Marielle C. van de Veerdonk",
+      "Pere Lopez-Gutierrez",
+      "Lydia Dux-Santoy",
+      "Andrea Guala",
+      "Enrique Almar-Munoz",
+      "Sebastian Johannes Reinstadler",
+      "Radek Debiec",
+      "Yi-Hang Zhu",
+      "Huiyu Zhou",
+      "Adrian P Cheong",
+      "Yike Guo",
+      "Agnes Mayr",
+      "Karim Lekadir",
+      "Yong Jiang",
+      "Nilesh J. Samani",
+      "Dacheng Tao",
+      "Folkert W. Asselbergs",
+      "Hongwen Fei",
+      "Alex PW Lee",
+      "Xiaomeng Li"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.32880v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Echocardiography is the cornerstone of cardiovascular diagnostics, yet its global utility is constrained by a critical shortage of experienced interpreters. Current artificial intelligence (AI) solutions remain limited, typically operating as opaque \"black boxes\" or focusing on narrow tasks that fail to capture the holistic, guideline-driven reasoning of a clinician. Here we introduce EchoChat, a generative multimodal vision-language model that performs comprehensive echocardiographic analysis to support clinician interpretation. By emulating the cognitive workflow of a cardiologist, EchoChat integrates vast medical knowledge with a chain-of-thought reasoning mechanism to explicitly ground its conclusions in visual evidence. Trained on echocardiography-instruction pairs from 46,358 examinations, our model establishes a new state-of-the-art across diverse cohorts from six international medical centers. It supports the broadest diagnostic scope of 33 cardiac conditions and findings, including 15 newly added conditions for which it achieves an average F1 of 73.7% across available external evaluations. It surpasses existing best-performing foundation models in cardiac condition recognition (improving average recall by 13.54% on shared tasks) and quantification (average R2 score increase of 0.275 on shared tasks). Furthermore, in a source-blinded echocardiographer reader study, echocardiography reports co-generated with EchoChat were rated higher in diagnostic accuracy and completeness by two senior echocardiographers, and improved diagnostic performance from 72.78% to 82.75% in terms of F1 score over routine-reader only reports. These results demonstrate that integrating clinical reasoning into multimodal AI can democratize specialist expertise and transform the standard of cardiovascular care.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-alignment-for-digital-democracy-fairer-voters-representation-against",
+    "title": "AI Alignment for Digital Democracy: Fairer Voters Representation against LLM Biases",
+    "authors": [
+      "Yi Qi",
+      "Srijoni Majumdar",
+      "Evangelos Pournaras"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.32780v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "AI representation is emerging in digital democracy, assisting in voter emulation and decision-making. Large language models (LLMs) behave differently depending on the model, the prompt context, and the voter information they receive, representing some groups more accurately than others and potentially making the emulation unfair to certain groups. We investigate demographic biases in LLM-emulated electorates: how accurately LLMs represent individual votes, whether some voter groups are represented more accurately than others, and whether AI alignment can reduce these disparities without sacrificing overall accuracy. Using three U.S. presidential elections, we compare a closed-source and an open-source LLM across voters' demographic features and test AI alignment strategies toward fairer voter representation. Removing gender from the voter profile reduces the largest group error of the models by 22-42%, and removing education reduces it by 64%, whereas removing self-reported race increases the mean group error by over 40%, all without lowering accuracy. Common alignment strategies, such as repeated queries or fairness instructions, do not reduce these errors and can double them.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-mid-vlm-detecting-and-grounding-global-semantic-misinformation-in-image",
+    "title": "MiD-VLM: Detecting and Grounding Global Semantic Misinformation in Image-Caption Pairs",
+    "authors": [
+      "Tarunya Prasad",
+      "Bharatesh Chakravarthi"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.32967v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Semantic misinformation can arise when an authentic image is paired with a caption that changes or distorts its narrative. Because the image itself may contain no visible signs of manipulation, methods designed to detect pixel-level artifacts can miss these misleading image-caption pairs. We study this problem using DGM4+, a dataset designed to evaluate the detection of global scene and semantic inconsistencies. We propose a multimodal model that combines image-text representations from SigLIP with visual scene features from DINOv2 through a projection MLP, and adapts Qwen2-VL-7B using LoRA. The model jointly predicts whether an image-caption pair is authentic, identifies the manipulation type, and grounds the misleading caption tokens. On the DGM4+ validation split, the model achieves an F1 score of $0.9679$ for binary authenticity classification. These results suggest that parameter-efficient adaptation of vision-language models is promising for detecting semantic inconsistencies, while also motivating further work on precise token-level grounding.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-classical-machine-learning-and-hybrid-solvers-for-partial-differential-e",
+    "title": "Classical, Machine Learning, and Hybrid Solvers for Partial Differential Equations: An Evidence-Weighted Review and Decision Framework",
+    "authors": [
+      "Yingchao Huang",
+      "Xin Wang",
+      "Shanshan Yao",
+      "Fanhua Zeng",
+      "Wei Peng"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.32911v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Machine learning for partial differential equations raises a practical question: when are classical, learned, or hybrid solvers justified? This survey compares the three families in a decision framework organized by data availability, query volume, and certification needs. An amortization law, tested on parametric Darcy flow, shows that surrogates trained on solver-generated data break even only after many queries, beyond thirty thousand for errors below one percent. An evidence ladder, a benchmark reanalysis, and three case studies show that claims of speedup and generalization carry the weakest evidence. Solver choice should follow regime, query volume, and evidence quality, not method novelty.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-poker-a-probability-of-kill-estimation-rate-model-for-air-to-air-missile",
+    "title": "PoKER: A Probability of Kill Estimation Rate Model for Air-to-Air Missiles Using Machine Learning on Stochastic Targets",
+    "authors": [
+      "Joao P. A. Dantas",
+      "Andre N. Costa",
+      "Diego Geraldo",
+      "Marcos R. O. A. Maximo",
+      "Takashi Yoneyama"
+    ],
+    "year": 2026,
+    "doi": "10.1177/15485129241309675",
+    "url": "https://arxiv.org/abs/2610.32864v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This work introduces PoKER, a novel probabilistic model engineered to optimize missile launch effectiveness in air-to-air scenarios, specifically within Beyond Visual Range (BVR) air combat. Unlike conventional Weapon Engagement Zone (WEZ) models that delineate zones based on static distances such as maximum, minimum, and no-escape ranges, PoKER applies machine learning to predict kill probabilities more accurately by integrating the stochastic behaviors of targets and missile miss distances. This model dynamically evaluates target behavior, greatly expanding the predictive capabilities of engagement analysis. By factoring in elements such as warhead lethality, target and shooter orientations, and the specific conditions of engagement, PoKER provides important insights into engagement dynamics and quantifies success probabilities. Consequently, it can potentially be an important tool for BVR air combat pilots, improving operational decision-making within this specialized combat domain.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a",
+    "title": "When disclosure rules are not enough: authorial warrant and judgment in ai-supported scholarship",
+    "authors": [
+      "Marcin Miro\u0144czuk"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s10676-026-09928-8",
+    "url": "https://arxiv.org/abs/2610.32574v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Editorial policies increasingly require authors to disclose substantive uses of generative AI, but such requirements commonly focus on whether, where, and how a model was used. Even function-specific disclosure may locate a model in the research or writing process without showing how its outputs entered scholarly judgment, how they were evaluated, or whether contributors can reconstruct the relevant reasoning and defend resulting claims without treating those outputs as sufficient justification. Drawing on research ethics, AI disclosure policy, human-model interaction, and researcher formation, this article argues that disclosure documents model use, whereas responsible use requires claim-level authorial warrant: a contributor's capacity to understand, justify, and defend claims within their contribution. The article distinguishes cognitive delegation, in which model outputs shape substantive choices, interpretations, or justifications, from routine delegation, which does not ordinarily bear on the substance of judgment. Its conceptual contribution is to link the epistemic role of outputs that shape judgment to the function-appropriate evaluation required to justify decisions and retain warrant for resulting claims. It then repurposes disclosure categories as a claim-sensitive ex ante heuristic, mapping six recurrent research functions to risks, forms of oversight, and formative questions for recognising cognitive delegation and selecting function-appropriate evaluation. The article contributes to the ethics of information technology by clarifying when AI-supported scholarship remains under responsible human judgment and when cognitive delegation threatens the epistemic basis of authorship.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]

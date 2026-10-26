@@ -9130,5 +9130,58 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-teaching-mathematical-proof-in-the-age-of-generative-ai-toward-ai-suppor",
+    "title": "Teaching Mathematical Proof in the Age of Generative AI: Toward AI-Supported Proof Inquiry",
+    "authors": [
+      "Weng Kin Ho"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=ED683102",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "ED683102",
+    "publisher": "Mathematics Education Research Group of Australasia",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "Recent advances in generative artificial intelligence (Gen AI) have enabled students to obtain mathematical solutions and proofs almost instantly, raising important questions about the teaching of proof in school mathematics. Drawing on research on proof in mathematics education, this paper argues that proof learning should extend beyond proof production toward students' abilities to interpret, critique, compare, and explain mathematical reasoning, including AI-generated proofs. The paper proposes AI-Supported Proof Inquiry (ASPI) as a pedagogical framework for supporting inquiry-oriented engagement with proof in AI-rich learning environments.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-effectiveness-of-participatory-near-peer-digital-media-literacy-inte",
+    "title": "The Effectiveness of Participatory Near-Peer Digital Media Literacy Interventions",
+    "authors": [
+      "Kyra Dingle",
+      "Stephanie M. Reich",
+      "Allison Starks",
+      "Taly Harel-Marian"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1080/01443410.2026.2641525",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1520779",
+    "publisher": "Educational Psychology",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The impacts of digital media literacy (DML) interventions are mixed, perhaps due to adult-driven curricula and misalignment with youth's needs. We tested how student-led, developmentally-informed DML education could leverage youth's expertise. Using Youth Participatory Action Research and near-peer mentoring, high school students (n = 31) designed and taught digital literacy interventions in two areas (1) digital communication (i.e. group-chats) and (2) persuasive design (e.g. features such as infinite scroll), resulting in significant increases in knowledge of digital communication conflict prevention and remediation strategies, along with identification and knowledge of persuasive design for 79 middle and 31 high school students. High schoolers also reported more feelings of agency and research knowledge. These findings indicate that making DML interventions developmentally aligned might be key for supporting youth in the digital age.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]

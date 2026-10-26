@@ -50399,5 +50399,290 @@
     "status": "candidate",
     "created_at": "2026-10-19",
     "reviewed_at": null
+  },
+  {
+    "id": "claim-a-tutorial-on-physics-constrained-machine-learning-for-hybrid-modeling-o",
+    "statement": "Physics-constrained machine learning (PCML) integrates domain knowledge, first-principles, and physical constraints into AI/ML models.",
+    "source_ids": [
+      "src-a-tutorial-on-physics-constrained-machine-learning-for-hybrid-modeling-o"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Physics-constrained machine learning (PCML) integrates domain knowledge, first-principles, and physical constraints into AI/ML models.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-multimodal-generative-ai-assists-comprehensive-echocardiographic-interpr",
+    "statement": "Current artificial intelligence (AI) solutions remain limited, typically operating as opaque \"black boxes\" or focusing on narrow tasks that fail to capture the holistic, guideline-driven reasoning of a clinician.",
+    "source_ids": [
+      "src-multimodal-generative-ai-assists-comprehensive-echocardiographic-interpr"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Current artificial intelligence (AI) solutions remain limited, typically operating as opaque \"black boxes\" or focusing on narrow tasks that fail to capture the holistic, guideline-driven reasoning of a clinician.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-alignment-for-digital-democracy-fairer-voters-representation-against",
+    "statement": "Common alignment strategies, such as repeated queries or fairness instructions, do not reduce these errors and can double them.",
+    "source_ids": [
+      "src-ai-alignment-for-digital-democracy-fairer-voters-representation-against"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Common alignment strategies, such as repeated queries or fairness instructions, do not reduce these errors and can double them.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-mid-vlm-detecting-and-grounding-global-semantic-misinformation-in-image",
+    "statement": "Semantic misinformation can arise when an authentic image is paired with a caption that changes or distorts its narrative.",
+    "source_ids": [
+      "src-mid-vlm-detecting-and-grounding-global-semantic-misinformation-in-image"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Semantic misinformation can arise when an authentic image is paired with a caption that changes or distorts its narrative.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-classical-machine-learning-and-hybrid-solvers-for-partial-differential-e",
+    "statement": "Machine learning for partial differential equations raises a practical question: when are classical, learned, or hybrid solvers justified?",
+    "source_ids": [
+      "src-classical-machine-learning-and-hybrid-solvers-for-partial-differential-e"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Machine learning for partial differential equations raises a practical question: when are classical, learned, or hybrid solvers justified?\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-poker-a-probability-of-kill-estimation-rate-model-for-air-to-air-missile",
+    "statement": "Unlike conventional Weapon Engagement Zone (WEZ) models that delineate zones based on static distances such as maximum, minimum, and no-escape ranges, PoKER applies machine learning to predict kill probabilities more accurately by integrating the stochastic behaviors of targets and missile miss distances.",
+    "source_ids": [
+      "src-poker-a-probability-of-kill-estimation-rate-model-for-air-to-air-missile"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Unlike conventional Weapon Engagement Zone (WEZ) models that delineate zones based on static distances such as maximum, minimum, and no-escape ranges, PoKER applies machine learning to predict kill probabilities more accurately by integrating the stochastic behaviors of targets and missile miss distances.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a",
+    "statement": "The article contributes to the ethics of information technology by clarifying when AI-supported scholarship remains under responsible human judgment and when cognitive delegation threatens the epistemic basis of authorship.",
+    "source_ids": [
+      "src-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The article contributes to the ethics of information technology by clarifying when AI-supported scholarship remains under responsible human judgment and when cognitive delegation threatens the epistemic basis of authorship.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a-2",
+    "statement": "Editorial policies increasingly require authors to disclose substantive uses of generative AI, but such requirements commonly focus on whether, where, and how a model was used.",
+    "source_ids": [
+      "src-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Editorial policies increasingly require authors to disclose substantive uses of generative AI, but such requirements commonly focus on whether, where, and how a model was used.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a-3",
+    "statement": "Drawing on research ethics, AI disclosure policy, human-model interaction, and researcher formation, this article argues that disclosure documents model use, whereas responsible use requires claim-level authorial warrant: a contributor's capacity to understand, justify, and defend claims within their contribution.",
+    "source_ids": [
+      "src-when-disclosure-rules-are-not-enough-authorial-warrant-and-judgment-in-a"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Drawing on research ethics, AI disclosure policy, human-model interaction, and researcher formation, this article argues that disclosure documents model use, whereas responsible use requires claim-level authorial warrant: a contributor's capacity to understand, justify, and defend claims within their contribution.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-mathematical-proof-in-the-age-of-generative-ai-toward-ai-suppor",
+    "statement": "Recent advances in generative artificial intelligence (Gen AI) have enabled students to obtain mathematical solutions and proofs almost instantly, raising important questions about the teaching of proof in school mathematics.",
+    "source_ids": [
+      "src-teaching-mathematical-proof-in-the-age-of-generative-ai-toward-ai-suppor"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Recent advances in generative artificial intelligence (Gen AI) have enabled students to obtain mathematical solutions and proofs almost instantly, raising important questions about the teaching of proof in school mathematics.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "policy_synthesis",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-effectiveness-of-participatory-near-peer-digital-media-literacy-inte",
+    "statement": "Using Youth Participatory Action Research and near-peer mentoring, high school students (n = 31) designed and taught digital literacy interventions in two areas (1) digital communication (i.e. group-chats) and (2) persuasive design (e.g. features such as infinite scroll), resulting in significant increases in knowledge of digital communication conflict prevention and remediation strategies, along with identification and knowledge of persuasive design for 79 middle and 31 high school students.",
+    "source_ids": [
+      "src-the-effectiveness-of-participatory-near-peer-digital-media-literacy-inte"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Using Youth Participatory Action Research and near-peer mentoring, high school students (n = 31) designed and taught digital literacy interventions in two areas (1) digital communication (i.e. group-chats) and (2) persuasive design (e.g. features such as infinite scroll), resulting in significant increases in knowledge of digital communication conflict prevention and remediation strategies, along with identification and knowledge of persuasive design for 79 middle and 31 high school students.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-effectiveness-of-participatory-near-peer-digital-media-literacy-inte-2",
+    "statement": "The impacts of digital media literacy (DML) interventions are mixed, perhaps due to adult-driven curricula and misalignment with youth's needs.",
+    "source_ids": [
+      "src-the-effectiveness-of-participatory-near-peer-digital-media-literacy-inte"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The impacts of digital media literacy (DML) interventions are mixed, perhaps due to adult-driven curricula and misalignment with youth's needs.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-data-literacy-in-der-medizin-abstract-s2",
+    "statement": "Data Literacy wird hierbei als eine der f\u00fchrenden Zukunftskompetenzen erachtet, findet jedoch derzeit weder in den implementierten Curricula des Medizinstudiums noch in den aktuell laufenden Reformprozessen (Masterplan Medizinstudium 2020 und Nationaler Kompetenzbasierter Lernzielkatalog) Beachtung.",
+    "source_ids": [
+      "src-data-literacy-in-der-medizin"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Data Literacy wird hierbei als eine der f\u00fchrenden Zukunftskompetenzen erachtet, findet jedoch derzeit weder in den implementierten Curricula des Medizinstudiums noch in den aktuell laufenden Reformprozessen (Masterplan Medizinstudium 2020 und Nationaler Kompetenzbasierter Lernzielkatalog) Beachtung.\"",
+    "context": "Auto-extracted candidate; matched topics: data literacy, future skills. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-data-literacy-in-der-medizin-abstract-s3",
+    "statement": "Der Beitrag m\u00f6chte zum einen die Aspekte beleuchten, die im Begriff der Data Literacy im medizinischen Kontext geb\u00fcndelt werden.",
+    "source_ids": [
+      "src-data-literacy-in-der-medizin"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Der Beitrag m\u00f6chte zum einen die Aspekte beleuchten, die im Begriff der Data Literacy im medizinischen Kontext geb\u00fcndelt werden.\"",
+    "context": "Auto-extracted candidate; matched topics: data literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-data-literacy-in-der-medizin-abstract-s4",
+    "statement": "Zum andern wird ein Lehrkonzept vorgestellt, das Data Literacy im Zeichen der digitalen Transformation erstmals im Medizinstudium abbildet.",
+    "source_ids": [
+      "src-data-literacy-in-der-medizin"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Zum andern wird ein Lehrkonzept vorgestellt, das Data Literacy im Zeichen der digitalen Transformation erstmals im Medizinstudium abbildet.\"",
+    "context": "Auto-extracted candidate; matched topics: data literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null
   }
 ]
