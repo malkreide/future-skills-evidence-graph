@@ -13650,5 +13650,34 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-data-literacy-in-der-medizin",
+    "title": "Data Literacy in der Medizin",
+    "authors": [
+      "Sebastian K\u00fchn",
+      "Dennis Kadioglu",
+      "Kim Deutsch",
+      "Susanne Michl"
+    ],
+    "year": 2018,
+    "doi": "10.1007/s00761-018-0344-9",
+    "url": "https://openalex.org/W2791308888",
+    "openalex_id": "https://openalex.org/W2791308888",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Der Onkologe",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Die digitale Transformation des Gesundheitssystems ver\u00e4ndert den Beruf des Arztes. Data Literacy wird hierbei als eine der f\u00fchrenden Zukunftskompetenzen erachtet, findet jedoch derzeit weder in den implementierten Curricula des Medizinstudiums noch in den aktuell laufenden Reformprozessen (Masterplan Medizinstudium 2020 und Nationaler Kompetenzbasierter Lernzielkatalog) Beachtung. Der Beitrag m\u00f6chte zum einen die Aspekte beleuchten, die im Begriff der Data Literacy im medizinischen Kontext geb\u00fcndelt werden. Zum andern wird ein Lehrkonzept vorgestellt, das Data Literacy im Zeichen der digitalen Transformation erstmals im Medizinstudium abbildet. Das Blended-Learning-Curriculum \u201eMedizin im digitalen Zeitalter\u201c adressiert in 5 Modulen den diversen Transformationsprozess der Medizin von digitaler Kommunikation \u00fcber Smart Devices und medizinische Apps, Telemedizin, virtuelle/augmentierte und robotische Chirurgie bis hin zu individualisierter Medizin und Big Data. Diese Arbeit stellt Konzept und Erfahrungen der erstmaligen Implementierung des 5. Moduls dar, welches transdisziplin\u00e4r und integrativ den Aspekt Data Literacy erl\u00e4utert. Die Evaluation des Kurskonzepts erfolgte sowohl qualitativ als auch quantitativ und demonstriert einen Kompetenzgewinn in den Bereichen Wissen und Fertigkeiten sowie eine differenziertere Haltung nach Kursabschluss. Die curriculare Integration von Data Literacy ist eine transdisziplin\u00e4re und longitudinale Aufgabe. Bei der Entwicklung dieser Curricula sollten die hohe Geschwindigkeit des Ver\u00e4nderungsprozesses der digitalen Transformation beachtet und die curriculare Anpassung im Sinne eines Agility by Design bereits bei der Konzeption adressiert werden.",
+    "topics": [
+      "data literacy",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-10-26",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]
