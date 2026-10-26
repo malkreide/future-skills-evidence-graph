@@ -73,6 +73,18 @@ class FilterVocabularyTests(unittest.TestCase):
         missing = statuses - select_options("statusFilter")
         self.assertEqual(missing, set(), f"status value(s) without a filter option: {missing}")
 
+    def test_every_cycle_in_the_data_has_a_filter_option_and_matrix_column(self) -> None:
+        # The coverage matrix builds its columns from the cycle filter's
+        # options. A cycle the filter lacks would vanish from both, so the
+        # skills addressed only there would show as "nicht adressiert".
+        cycles = {cycle for mapping in lp21_mappings() for cycle in mapping.get("cycles", [])}
+        self.assertTrue(cycles)
+        missing = cycles - select_options("lp21CycleFilter")
+        self.assertEqual(missing, set(), f"cycle(s) without a filter option: {missing}")
+        body = re.search(r"function lp21CycleColumns\(\) \{(.*?)\n\}", APP_JS, re.DOTALL)
+        self.assertIsNotNone(body, "lp21CycleColumns not found in app.js")
+        self.assertIn("els.lp21CycleFilter.options", body.group(1))
+
     def test_claim_count_thresholds_stay_reachable(self) -> None:
         # A threshold no skill can meet is a dead option. The largest offered
         # step must still select something, or the control lies about what the
@@ -115,6 +127,19 @@ class FilterDataShapeTests(unittest.TestCase):
                 # Educators are anchored to the UNESCO framework; the control is
                 # disabled in that view rather than quietly matching nothing.
                 self.assertNotIn(skill["id"], by_skill, skill["id"])
+
+    def test_gap_tile_counts_the_stored_label_not_its_own_threshold(self) -> None:
+        # The label thresholds live only in common.lp21_coverage_label. The
+        # tile once counted coverage_score < 2 and reported 8 gaps next to a
+        # matrix and a table showing 3 "Zukunftslücke" labels.
+        body = re.search(
+            r"function renderLp21Comparison\(\) \{(.*?)\n\}", APP_JS, re.DOTALL
+        )
+        self.assertIsNotNone(body, "renderLp21Comparison not found in app.js")
+        gap_line = re.search(r"const gapCount = (.*?);", body.group(1), re.DOTALL)
+        self.assertIsNotNone(gap_line, "gapCount not found in renderLp21Comparison")
+        self.assertIn('coverage_label === "Zukunftsluecke"', gap_line.group(1))
+        self.assertNotIn("coverage_score", gap_line.group(1))
 
     def test_index_carries_the_fields_the_filters_read(self) -> None:
         import build_site

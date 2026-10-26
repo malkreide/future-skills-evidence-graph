@@ -92,7 +92,7 @@
             <p>
               Ein offener, transparenter Katalog von Future Skills – wie ein wissenschaftlich geprüftes Lexikon
               der Zukunftsfähigkeiten. Jede Kompetenz trägt einen reproduzierbaren Evidenz-Score (0–1) statt
-              bloßer Meinung.
+              blosser Meinung.
             </p>
           </article>
           <article class="intro-card">
@@ -273,17 +273,38 @@
           </button>
           <div class="metric">
             <span id="metricClaims">0</span>
-            <p>Claims</p>
+            <p>Aussagen</p>
+            <small id="metricClaimsNote" class="metric-note"></small>
           </div>
           <div class="metric">
             <span id="metricSources">0</span>
             <p>Quellen</p>
+            <small id="metricSourcesNote" class="metric-note"></small>
           </div>
-          <button type="button" class="metric-filter" data-status="candidate" aria-pressed="false" title="Nur Kandidaten anzeigen">
+          <button type="button" class="metric-filter" data-status="candidate" aria-pressed="false" title="Nur Skill-Kandidaten anzeigen">
             <span id="metricCandidate">0</span>
-            <p>Kandidaten</p>
+            <p>Skill-Kandidaten</p>
           </button>
         </div>
+      </section>
+
+      <section class="panel-section funnel-section" aria-labelledby="funnelTitle">
+        <div class="section-head">
+          <p class="eyebrow">Menschliche Prüfung</p>
+          <h2 id="funnelTitle">Prüftrichter: vom Fund zur Empfehlung</h2>
+          <p class="section-lead">
+            Maschinen erfassen Quellen und Aussagen. In Scores und Empfehlungen zählt nur, was ein Mensch
+            geprüft und angenommen hat. Die Zahlen gelten für den ganzen Katalog, unabhängig von den Filtern oben.
+          </p>
+        </div>
+        <div id="reviewFunnel" class="funnel">
+          <p class="field-hint">Prüfstand wird geladen …</p>
+        </div>
+        <p class="method-note">
+          <strong>Abgelehnt</strong> heisst: geprüft und verworfen, der Qualitätsfilter wirkt.
+          <strong>Noch nicht geprüft</strong> heisst: maschinell erfasst, aber ohne Entscheid. Solche Einträge
+          fliessen in keinen Score ein. Ihre Zahl zeigt die offene Prüfarbeit, nicht die Qualität des Katalogs.
+        </p>
       </section>
 
       <section class="lp21-comparison" aria-label="Lehrplan 21 Vergleich">
@@ -292,19 +313,49 @@
             <p class="eyebrow">Curriculum Mapping</p>
             <h2>Lehrplan 21 Vergleich</h2>
           </div>
-          <label>
-            Zyklus
-            <select id="lp21CycleFilter">
-              <option value="all">Alle Zyklen</option>
-              <option value="Zyklus 1">Zyklus 1 (4–8 J.)</option>
-              <option value="Zyklus 2">Zyklus 2 (8–12 J.)</option>
-              <option value="Zyklus 3">Zyklus 3 (12–15 J.)</option>
-            </select>
-          </label>
+          <div class="comparison-controls">
+            <div class="view-toggle" role="group" aria-label="Darstellung">
+              <span class="view-toggle-label">Darstellung</span>
+              <span class="view-toggle-buttons">
+                <button type="button" data-lp21-view="matrix" aria-pressed="true">Matrix</button>
+                <button type="button" data-lp21-view="radar" aria-pressed="false">Netz</button>
+              </span>
+            </div>
+            <label>
+              Zyklus
+              <select id="lp21CycleFilter">
+                <option value="all">Alle Zyklen</option>
+                <option value="Zyklus 1">Zyklus 1 (4–8 J.)</option>
+                <option value="Zyklus 2">Zyklus 2 (8–12 J.)</option>
+                <option value="Zyklus 3">Zyklus 3 (12–15 J.)</option>
+              </select>
+            </label>
+          </div>
         </div>
 
         <div class="comparison-grid">
-          <figure class="radar-panel" aria-label="Spinnennetz-Diagramm">
+          <figure class="matrix-panel" id="lp21MatrixPanel" aria-labelledby="lp21MatrixCaption">
+            <div class="matrix-wrap">
+              <table class="coverage-matrix">
+                <caption id="lp21MatrixCaption" class="visually-hidden">
+                  Matrix: Lehrplan-21-Abdeckung je Future Skill und Zyklus, dazu die Anzahl geprüfter Belege.
+                </caption>
+                <thead id="lp21MatrixHead"></thead>
+                <tbody id="lp21MatrixBody"></tbody>
+                <tfoot id="lp21MatrixFoot"></tfoot>
+              </table>
+            </div>
+            <figcaption class="legend matrix-legend">
+              <span><i class="legend-bubble" aria-hidden="true"></i> Fläche = LP21-Abdeckung, äusserer Kreis = Maximum 3</span>
+              <span><i class="legend-dash" aria-hidden="true"></i> Im Zyklus nicht adressiert</span>
+              <span><i class="legend-bar" aria-hidden="true"></i> Geprüfte Belege (Anzahl)</span>
+              <span class="legend-note">
+                Die Abdeckung ist ein Urteil pro Skill, nicht pro Zyklus: Sie gilt für alle markierten Zyklen gleich.
+              </span>
+            </figcaption>
+          </figure>
+
+          <figure class="radar-panel" id="lp21RadarPanel" aria-label="Spinnennetz-Diagramm" hidden>
             <div class="radar-stage">
               <canvas
                 id="lp21Radar"
@@ -339,7 +390,7 @@
         </div>
 
         <p class="method-note">
-          Die Abdeckungswerte (0–3) sind redaktionelle Einzelurteile, keine gemessenen Größen – die
+          Die Abdeckungswerte (0–3) sind redaktionelle Einzelurteile, keine gemessenen Grössen – die
           Dezimalstelle suggeriert mehr Präzision, als das Verfahren hergibt.
           <a
             href="https://github.com/malkreide/future-skills-evidence-graph/blob/main/docs/lehrplan21-coverage-methodik.md"

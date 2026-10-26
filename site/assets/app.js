@@ -5,8 +5,10 @@ const state = {
   claims: [],
   skills: [],
   frameworks: [],
+  reviewFunnel: null,
   selectedSkillId: null,
   selectedCycle: "all",
+  lp21View: "matrix",
 };
 
 const els = {
@@ -30,9 +32,18 @@ const els = {
   metricSkills: document.querySelector("#metricSkills"),
   metricClaims: document.querySelector("#metricClaims"),
   metricSources: document.querySelector("#metricSources"),
+  metricClaimsNote: document.querySelector("#metricClaimsNote"),
+  metricSourcesNote: document.querySelector("#metricSourcesNote"),
   metricCandidate: document.querySelector("#metricCandidate"),
   lp21CycleFilter: document.querySelector("#lp21CycleFilter"),
   lp21Radar: document.querySelector("#lp21Radar"),
+  lp21RadarPanel: document.querySelector("#lp21RadarPanel"),
+  lp21MatrixPanel: document.querySelector("#lp21MatrixPanel"),
+  lp21MatrixHead: document.querySelector("#lp21MatrixHead"),
+  lp21MatrixBody: document.querySelector("#lp21MatrixBody"),
+  lp21MatrixFoot: document.querySelector("#lp21MatrixFoot"),
+  lp21ViewButtons: [...document.querySelectorAll("[data-lp21-view]")],
+  reviewFunnel: document.querySelector("#reviewFunnel"),
   radarTooltip: document.querySelector("#radarTooltip"),
   lp21TableBody: document.querySelector("#lp21TableBody"),
   lp21Average: document.querySelector("#lp21Average"),
@@ -268,6 +279,9 @@ function applyStateFromUrl() {
   }
   const skill = params.get("skill");
   if (skill) state.selectedSkillId = skill;
+  // The view is presentation, not a filter: it survives a shared link but is
+  // left alone by "Filter zurücksetzen".
+  if (LP21_VIEWS.includes(params.get("view"))) state.lp21View = params.get("view");
 }
 
 function syncStateToUrl() {
@@ -280,10 +294,14 @@ function syncStateToUrl() {
   if (String(values.score) !== FILTER_DEFAULTS.score) params.set("score", values.score);
   if (values.cycle !== FILTER_DEFAULTS.cycle) params.set("cycle", values.cycle);
   if (state.selectedSkillId) params.set("skill", state.selectedSkillId);
+  if (state.lp21View !== LP21_VIEWS[0]) params.set("view", state.lp21View);
   const query = params.toString();
   const next = query ? `${location.pathname}?${query}` : location.pathname;
   window.history.replaceState(null, "", next);
 }
+
+// First entry is the default view of the Lehrplan-21 comparison.
+const LP21_VIEWS = ["matrix", "radar"];
 
 function lp21Mappings() {
   return state.frameworks.filter((mapping) => mapping.framework_group === "Lehrplan 21");
@@ -529,11 +547,22 @@ function statusCount(status) {
   return status === "all" ? state.skills.length : state.skills.filter((skill) => skill.status === status).length;
 }
 
+// A stock tile counts what the catalogue vouches for: claims and sources that
+// back an active skill. The captured total -- mostly unreviewed candidates from
+// the weekly harvest -- stays visible as context, never as the headline.
+function renderStockTile(valueEl, noteEl, stages) {
+  valueEl.textContent = stages ? formatCount(stages.in_catalog) : "–";
+  if (noteEl) {
+    noteEl.textContent = stages ? `stützen aktive Skills · ${formatCount(stages.captured)} erfasst` : "";
+  }
+}
+
 function renderMetrics() {
-  els.metricSkills.textContent = state.skills.length;
-  els.metricClaims.textContent = state.claims.length;
-  els.metricSources.textContent = state.sources.length;
-  els.metricCandidate.textContent = statusCount("candidate");
+  const funnel = state.reviewFunnel;
+  els.metricSkills.textContent = formatCount(state.skills.length);
+  renderStockTile(els.metricClaims, els.metricClaimsNote, funnel && funnel.claims);
+  renderStockTile(els.metricSources, els.metricSourcesNote, funnel && funnel.sources);
+  els.metricCandidate.textContent = formatCount(statusCount("candidate"));
   for (const button of els.metricFilters) {
     const target = button.dataset.status;
     // "all" is the default, not a narrowing filter, so its tile never reads as
@@ -543,6 +572,143 @@ function renderMetrics() {
     button.setAttribute("aria-pressed", String(active));
     button.disabled = statusCount(target) === 0;
   }
+}
+
+const COUNT_FORMAT = new Intl.NumberFormat("de-CH");
+
+function formatCount(value) {
+  return COUNT_FORMAT.format(Number(value || 0));
+}
+
+// Share of the previous stage, as a 0-1 fraction and as text. Small shares keep
+// one decimal so 2.2 % does not round to a misleading "2 %" or "0 %".
+function stageShare(part, whole) {
+  if (!whole) return { fraction: 0, text: "–" };
+  const percent = (part / whole) * 100;
+  const digits = percent > 0 && percent < 10 ? 1 : 0;
+  return { fraction: part / whole, text: `${percent.toFixed(digits)} %` };
+}
+
+// The review funnel is computed at build time (scripts/review_funnel.py) and
+// covers the whole catalogue, so it ignores the filters below it on purpose:
+// it answers "how much has a person checked", not "what does my filter show".
+const FUNNEL_ROWS = [
+  { key: "sources", label: "Quellen" },
+  { key: "claims", label: "Aussagen" },
+];
+
+function funnelStep(label, value, { share, base, drop } = {}) {
+  const item = document.createElement("li");
+  item.className = "funnel-step";
+  const name = document.createElement("span");
+  name.className = "funnel-step-label";
+  name.textContent = label;
+  const number = document.createElement("strong");
+  number.className = "funnel-step-value";
+  number.textContent = formatCount(value);
+  item.append(name, number);
+
+  if (share) {
+    // The meter only restates the caption next to it, so it stays out of the
+    // accessibility tree; the caption carries the number.
+    const meter = document.createElement("span");
+    meter.className = "funnel-meter";
+    meter.setAttribute("aria-hidden", "true");
+    const fill = document.createElement("span");
+    fill.style.width = `${share.fraction > 0 ? Math.max(share.fraction * 100, 1) : 0}%`;
+    meter.append(fill);
+    const caption = document.createElement("span");
+    caption.className = "funnel-step-share";
+    caption.textContent = `${share.text} ${base}`;
+    item.append(meter, caption);
+  } else {
+    const caption = document.createElement("span");
+    caption.className = "funnel-step-share";
+    caption.textContent = "Ausgangsmenge";
+    item.append(caption);
+  }
+
+  if (drop) {
+    const note = document.createElement("span");
+    note.className = "funnel-step-drop";
+    note.textContent = drop;
+    item.append(note);
+  }
+  return item;
+}
+
+function renderFunnel() {
+  const target = els.reviewFunnel;
+  const funnel = state.reviewFunnel;
+  if (!target) return;
+  target.replaceChildren();
+  if (!funnel) {
+    // An index built before the funnel existed: say so instead of leaving the
+    // loading hint up for good.
+    const note = document.createElement("p");
+    note.className = "field-hint";
+    note.textContent = "Für diesen Datenstand liegt kein Prüfstand vor.";
+    target.append(note);
+    return;
+  }
+
+  for (const row of FUNNEL_ROWS) {
+    const stages = funnel[row.key];
+    if (!stages) continue;
+    const block = document.createElement("div");
+    block.className = "funnel-row";
+    const heading = document.createElement("h3");
+    heading.className = "funnel-row-label";
+    heading.textContent = row.label;
+
+    const steps = document.createElement("ol");
+    steps.className = "funnel-steps";
+    steps.setAttribute("aria-label", `${row.label}: Stufen der Prüfung`);
+    const unlinked = stages.accepted - stages.in_catalog;
+    steps.append(
+      funnelStep("erfasst", stages.captured),
+      funnelStep("geprüft", stages.decided, {
+        share: stageShare(stages.decided, stages.captured),
+        base: "der erfassten",
+        drop: stages.open ? `${formatCount(stages.open)} noch nicht geprüft` : "",
+      }),
+      funnelStep("angenommen", stages.accepted, {
+        share: stageShare(stages.accepted, stages.decided),
+        base: "der geprüften",
+        drop: stages.rejected ? `${formatCount(stages.rejected)} abgelehnt` : "",
+      }),
+      funnelStep("tragen aktive Skills", stages.in_catalog, {
+        share: stageShare(stages.in_catalog, stages.accepted),
+        base: "der angenommenen",
+        drop: unlinked > 0 ? `${formatCount(unlinked)} ohne aktiven Skill` : "",
+      })
+    );
+    block.append(heading, steps);
+    target.append(block);
+  }
+
+  const skills = funnel.skills || {};
+  const result = document.createElement("div");
+  result.className = "funnel-result";
+  const value = document.createElement("strong");
+  value.className = "funnel-result-value";
+  value.textContent = formatCount(skills.active);
+  const text = document.createElement("p");
+  const label = document.createElement("span");
+  label.className = "funnel-result-label";
+  label.textContent = skills.active === 1 ? "aktiver Skill" : "aktive Skills";
+  const detail = document.createElement("span");
+  detail.className = "funnel-result-detail";
+  const parts = [
+    `gestützt auf ${formatCount(funnel.claims.in_catalog)} angenommene Aussagen ` +
+      `aus ${formatCount(funnel.sources.in_catalog)} Quellen`,
+  ];
+  if (skills.candidate) parts.push(`${formatCount(skills.candidate)} Skill-Kandidaten in Prüfung`);
+  if (skills.deprecated) parts.push(`${formatCount(skills.deprecated)} veraltet`);
+  detail.textContent = parts.join(" · ");
+  text.append(label, detail);
+  result.append(value, text);
+  target.append(result);
 }
 
 function updateFilterSummary(shown) {
@@ -802,6 +968,7 @@ function renderLp21Comparison() {
     cell.textContent = "Lehrplan 21 gilt für Lernende; Lehrende sind am UNESCO AI Competency Framework for Teachers verankert.";
     row.append(cell);
     els.lp21TableBody.append(row);
+    renderLp21Matrix([], skillMap, cell.textContent);
     drawRadar([], skillMap);
     return;
   }
@@ -814,7 +981,10 @@ function renderLp21Comparison() {
   const average = mappings.length
     ? mappings.reduce((sum, mapping) => sum + Number(mapping.coverage_score || 0), 0) / mappings.length
     : 0;
-  const gapCount = mappings.filter((mapping) => Number(mapping.coverage_score || 0) < 2).length;
+  // Counted by the stored label: its thresholds live only in
+  // scripts/common.py (lp21_coverage_label). A second cut-off here would make
+  // this tile disagree with the labels shown in the matrix and the table.
+  const gapCount = mappings.filter((mapping) => mapping.coverage_label === "Zukunftsluecke").length;
   els.lp21Average.textContent = average.toFixed(2);
   els.lp21GapCount.textContent = String(gapCount);
   els.lp21MappingCount.textContent = String(mappings.length);
@@ -827,6 +997,7 @@ function renderLp21Comparison() {
     cell.textContent = "Keine Lehrplan-21-Mappings für diesen Filter.";
     row.append(cell);
     els.lp21TableBody.append(row);
+    renderLp21Matrix([], skillMap, cell.textContent);
     drawRadar([], skillMap);
     return;
   }
@@ -876,7 +1047,237 @@ function renderLp21Comparison() {
     els.lp21TableBody.append(row);
   }
 
+  renderLp21Matrix(mappings, skillMap);
   drawRadar(mappings, skillMap);
+}
+
+// The matrix columns come from the cycle filter's own options, so a cycle the
+// filter offers can never be missing from the matrix, or the other way round.
+function lp21CycleColumns() {
+  if (!els.lp21CycleFilter) return [];
+  return [...els.lp21CycleFilter.options]
+    .filter((option) => option.value !== "all")
+    .map((option) => {
+      const ages = option.textContent.match(/\(([^)]+)\)/);
+      return { value: option.value, ages: ages ? ages[1] : "" };
+    });
+}
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const BUBBLE_SIZE = 30;
+const BUBBLE_MAX_R = 13;
+
+function svgEl(name, attributes) {
+  const node = document.createElementNS(SVG_NS, name);
+  for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, value);
+  return node;
+}
+
+// Area, not radius, carries the score: a 2.8 must look twice a 1.4, not four
+// times. The outer ring is the maximum 3, so each bubble reads as a fill level
+// against a fixed reference rather than against its neighbours.
+function coverageBubble(score) {
+  const svg = svgEl("svg", {
+    viewBox: `0 0 ${BUBBLE_SIZE} ${BUBBLE_SIZE}`,
+    width: BUBBLE_SIZE,
+    height: BUBBLE_SIZE,
+    "aria-hidden": "true",
+    focusable: "false",
+  });
+  const center = BUBBLE_SIZE / 2;
+  const radius = BUBBLE_MAX_R * Math.sqrt(Math.min(Math.max(score, 0), 3) / 3);
+  svg.append(
+    svgEl("circle", { class: "matrix-bubble-ref", cx: center, cy: center, r: BUBBLE_MAX_R }),
+    svgEl("circle", { class: "matrix-bubble", cx: center, cy: center, r: radius.toFixed(2) })
+  );
+  return svg;
+}
+
+function notAddressedMark() {
+  const svg = svgEl("svg", {
+    viewBox: `0 0 ${BUBBLE_SIZE} ${BUBBLE_SIZE}`,
+    width: BUBBLE_SIZE,
+    height: BUBBLE_SIZE,
+    "aria-hidden": "true",
+    focusable: "false",
+  });
+  const center = BUBBLE_SIZE / 2;
+  svg.append(svgEl("line", { class: "matrix-dash", x1: center - 5, y1: center, x2: center + 5, y2: center }));
+  return svg;
+}
+
+function hiddenText(text) {
+  const span = document.createElement("span");
+  span.className = "visually-hidden";
+  span.textContent = text;
+  return span;
+}
+
+function matrixMessageRow(text, columns) {
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
+  cell.colSpan = columns;
+  cell.className = "matrix-message";
+  cell.textContent = text;
+  row.append(cell);
+  return row;
+}
+
+function renderLp21Matrix(mappings, skillMap, emptyText = "") {
+  if (!els.lp21MatrixBody) return;
+  const cycles = lp21CycleColumns();
+  const columns = cycles.length + 3;
+
+  const headRow = document.createElement("tr");
+  const skillHead = document.createElement("th");
+  skillHead.scope = "col";
+  skillHead.textContent = "Future Skill";
+  headRow.append(skillHead);
+  for (const cycle of cycles) {
+    const th = document.createElement("th");
+    th.scope = "col";
+    th.className = "matrix-cycle";
+    if (state.selectedCycle === cycle.value) th.classList.add("is-active-cycle");
+    const name = document.createElement("span");
+    name.textContent = cycle.value;
+    const ages = document.createElement("small");
+    ages.textContent = cycle.ages;
+    th.append(name, ages);
+    headRow.append(th);
+  }
+  for (const label of ["Abdeckung", "Geprüfte Belege"]) {
+    const th = document.createElement("th");
+    th.scope = "col";
+    th.textContent = label;
+    headRow.append(th);
+  }
+  els.lp21MatrixHead.replaceChildren(headRow);
+  els.lp21MatrixBody.replaceChildren();
+  els.lp21MatrixFoot.replaceChildren();
+
+  if (!mappings.length) {
+    els.lp21MatrixBody.append(matrixMessageRow(emptyText, columns));
+    return;
+  }
+
+  // One scale for every row and every cycle filter, so a bar keeps its length
+  // when the filter changes instead of stretching to the new maximum.
+  const claimCount = (skill) => Number((skill.score_context || {}).supporting_claims || 0);
+  const maxClaims = Math.max(
+    1,
+    ...lp21Mappings()
+      .map((mapping) => skillMap.get(mapping.skill_id))
+      .filter(Boolean)
+      .map(claimCount)
+  );
+  // A skill the list filters hide cannot be opened in the detail pane, so only
+  // the visible ones become links.
+  const listed = new Set(filteredSkills().map((skill) => skill.id));
+
+  for (const mapping of mappings) {
+    const skill = skillMap.get(mapping.skill_id);
+    const score = Number(mapping.coverage_score || 0);
+    const row = document.createElement("tr");
+    if (skill.id === state.selectedSkillId) row.classList.add("is-selected");
+
+    const nameCell = document.createElement("th");
+    nameCell.scope = "row";
+    let name;
+    if (listed.has(skill.id)) {
+      name = document.createElement("button");
+      name.type = "button";
+      name.className = "matrix-skill-link";
+      name.addEventListener("click", () => openSkillDetail(skill.id));
+    } else {
+      name = document.createElement("span");
+      name.className = "matrix-skill-name";
+      name.title = "Durch die Filter oben ausgeblendet";
+    }
+    name.textContent = skillName(skill);
+    const age = document.createElement("small");
+    age.textContent = `Alter ${skill.age_range}`;
+    nameCell.append(name, age);
+    row.append(nameCell);
+
+    const covered = new Set(mapping.cycles || []);
+    for (const cycle of cycles) {
+      const cell = document.createElement("td");
+      cell.className = "matrix-cycle";
+      if (state.selectedCycle === cycle.value) cell.classList.add("is-active-cycle");
+      if (covered.has(cycle.value)) {
+        cell.append(coverageBubble(score), hiddenText(`adressiert, Abdeckung ${score.toFixed(1)} von 3`));
+      } else {
+        cell.append(notAddressedMark(), hiddenText("nicht adressiert"));
+      }
+      row.append(cell);
+    }
+
+    const coverageCell = document.createElement("td");
+    coverageCell.className = "matrix-coverage";
+    const value = document.createElement("strong");
+    value.textContent = `${score.toFixed(1)} / 3`;
+    const label = document.createElement("small");
+    label.className = gapClass(mapping.coverage_label);
+    label.textContent = coverageLabelText(mapping.coverage_label);
+    coverageCell.append(value, label);
+    row.append(coverageCell);
+
+    const claimsCell = document.createElement("td");
+    claimsCell.className = "matrix-claims";
+    const count = claimCount(skill);
+    const track = document.createElement("span");
+    track.className = "matrix-claims-track";
+    track.setAttribute("aria-hidden", "true");
+    const bar = document.createElement("span");
+    bar.style.width = `${(count / maxClaims) * 100}%`;
+    track.append(bar);
+    const number = document.createElement("strong");
+    number.textContent = String(count);
+    claimsCell.append(track, number);
+    row.append(claimsCell);
+
+    els.lp21MatrixBody.append(row);
+  }
+
+  const footRow = document.createElement("tr");
+  const footHead = document.createElement("th");
+  footHead.scope = "row";
+  footHead.textContent = "Pro Zyklus";
+  footRow.append(footHead);
+  for (const cycle of cycles) {
+    const inCycle = mappings.filter((mapping) => (mapping.cycles || []).includes(cycle.value));
+    const cell = document.createElement("td");
+    cell.className = "matrix-cycle";
+    if (state.selectedCycle === cycle.value) cell.classList.add("is-active-cycle");
+    const count = document.createElement("strong");
+    count.textContent = `${inCycle.length} ${inCycle.length === 1 ? "Skill" : "Skills"}`;
+    const average = document.createElement("small");
+    average.textContent = inCycle.length
+      ? `Ø ${(inCycle.reduce((sum, mapping) => sum + Number(mapping.coverage_score || 0), 0) / inCycle.length).toFixed(1)}`
+      : "–";
+    cell.append(count, average);
+    footRow.append(cell);
+  }
+  const filler = document.createElement("td");
+  filler.colSpan = 2;
+  footRow.append(filler);
+  els.lp21MatrixFoot.append(footRow);
+}
+
+function openSkillDetail(id) {
+  selectSkill(id, { scroll: false });
+  if (els.detailPane) {
+    els.detailPane.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+  }
+}
+
+function setLp21View(view) {
+  state.lp21View = LP21_VIEWS.includes(view) ? view : LP21_VIEWS[0];
+  for (const button of els.lp21ViewButtons) {
+    button.setAttribute("aria-pressed", String(button.dataset.lp21View === state.lp21View));
+  }
+  if (els.lp21MatrixPanel) els.lp21MatrixPanel.hidden = state.lp21View !== "matrix";
+  if (els.lp21RadarPanel) els.lp21RadarPanel.hidden = state.lp21View !== "radar";
 }
 
 function describeRadar(mappings, skillMap) {
@@ -900,6 +1301,13 @@ function drawRadar(mappings, skillMap) {
   const canvas = els.lp21Radar;
   const colors = themeColors();
   canvas.setAttribute("aria-label", describeRadar(mappings, skillMap));
+  // A hidden canvas measures 0 x 0; drawing it would size the bitmap from the
+  // stale attribute values. It is drawn when the view switches back instead.
+  if (els.lp21RadarPanel && els.lp21RadarPanel.hidden) {
+    radarState = null;
+    hideRadarTooltip();
+    return;
+  }
   const context = canvas.getContext("2d");
   const rect = canvas.getBoundingClientRect();
   const width = Math.max(320, Math.floor(rect.width || canvas.width));
@@ -1308,8 +1716,11 @@ function render() {
   }
   updateFilterControls();
   renderMetrics();
-  renderLp21Comparison();
+  renderFunnel();
+  // After the list: the list settles which skill is selected and which are
+  // visible, and the matrix marks and links exactly those.
   renderSkillList();
+  renderLp21Comparison();
   renderDetail();
   syncStateToUrl();
 }
@@ -1365,6 +1776,14 @@ if (els.themeToggle) {
   });
 }
 
+for (const button of els.lp21ViewButtons) {
+  button.addEventListener("click", () => {
+    setLp21View(button.dataset.lp21View);
+    renderLp21Comparison();
+    syncStateToUrl();
+  });
+}
+
 if (els.lp21Radar) {
   els.lp21Radar.addEventListener("mousemove", handleRadarMove);
   els.lp21Radar.addEventListener("mouseleave", handleRadarLeave);
@@ -1375,6 +1794,7 @@ if (els.lp21Radar) {
 window.addEventListener("resize", () => renderLp21Comparison());
 
 applyStateFromUrl();
+setLp21View(state.lp21View);
 
 loadData()
   .then((payload) => {
@@ -1382,6 +1802,7 @@ loadData()
     state.claims = payload.claims || [];
     state.skills = payload.skills || [];
     state.frameworks = payload.frameworks || [];
+    state.reviewFunnel = payload.review_funnel || null;
     invalidateSearchIndex();
     render();
   })

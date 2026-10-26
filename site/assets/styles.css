@@ -597,6 +597,13 @@ select {
   margin: 2px 0 0;
 }
 
+.metrics .metric-note {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
 .lp21-comparison,
 .panel-section {
   background: var(--surface);
@@ -981,6 +988,7 @@ select {
 }
 
 .lp21-summary {
+  align-content: start;
   display: grid;
   gap: 12px;
 }
@@ -1000,6 +1008,377 @@ select {
 .lp21-summary p {
   color: var(--muted);
   margin: 2px 0 0;
+}
+
+/* Matrix | Netz switch for the Lehrplan-21 comparison. */
+.comparison-controls {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.view-toggle {
+  color: var(--muted);
+  display: grid;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 6px;
+}
+
+.view-toggle-buttons {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.view-toggle-buttons button {
+  background: var(--surface);
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 40px;
+  padding: 0 16px;
+}
+
+.view-toggle-buttons button + button {
+  border-left: 1px solid var(--line);
+}
+
+.view-toggle-buttons button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--green) 12%, var(--surface));
+  box-shadow: inset 0 -2px 0 var(--green);
+  color: var(--green);
+}
+
+.matrix-panel[hidden],
+.radar-panel[hidden] {
+  display: none;
+}
+
+/* Coverage matrix: skills x Lehrplan-21 cycles. It is a real table, so the
+   screen-reader view and the visual one are the same structure. */
+.matrix-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 0;
+  min-width: 0;
+  padding: 18px;
+}
+
+/* position: relative makes the scroll box the containing block of the
+   visually-hidden cell texts; without it those absolutely positioned spans
+   escape the scroll box and widen the whole page on a phone. */
+.matrix-wrap {
+  overflow-x: auto;
+  position: relative;
+}
+
+.coverage-matrix {
+  border-collapse: collapse;
+  min-width: 560px;
+  width: 100%;
+}
+
+.coverage-matrix th,
+.coverage-matrix td {
+  border-bottom: 1px solid var(--line);
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.coverage-matrix thead th {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  vertical-align: bottom;
+}
+
+.coverage-matrix thead th small {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.coverage-matrix .matrix-cycle {
+  text-align: center;
+  width: 84px;
+}
+
+.coverage-matrix .matrix-cycle svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.coverage-matrix .is-active-cycle {
+  background: color-mix(in srgb, var(--green) 8%, transparent);
+}
+
+.coverage-matrix tbody th {
+  font-weight: 400;
+}
+
+.coverage-matrix tbody th small {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+}
+
+.coverage-matrix tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.coverage-matrix tbody tr.is-selected th {
+  box-shadow: inset 3px 0 0 var(--green);
+}
+
+.matrix-skill-link,
+.matrix-skill-name {
+  font-weight: 700;
+}
+
+.matrix-skill-link {
+  background: none;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  text-align: left;
+}
+
+.matrix-skill-link:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.matrix-bubble {
+  fill: var(--green);
+}
+
+.matrix-bubble-ref {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.matrix-dash {
+  stroke: var(--muted);
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}
+
+.matrix-coverage strong,
+.matrix-coverage small {
+  display: block;
+  white-space: nowrap;
+}
+
+.matrix-coverage strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix-coverage small {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.matrix-claims {
+  white-space: nowrap;
+}
+
+.matrix-claims-track {
+  background: var(--surface-2);
+  border-radius: 999px;
+  display: inline-block;
+  height: 8px;
+  margin-right: 8px;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 72px;
+}
+
+.matrix-claims-track span {
+  background: var(--blue);
+  border-radius: 999px;
+  display: block;
+  height: 100%;
+}
+
+.matrix-claims strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.coverage-matrix tfoot th,
+.coverage-matrix tfoot td {
+  border-bottom: 0;
+  color: var(--muted);
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.coverage-matrix tfoot strong {
+  color: var(--text);
+  display: block;
+}
+
+.matrix-message {
+  color: var(--muted);
+  padding: 24px 10px;
+  text-align: center;
+}
+
+.matrix-legend {
+  margin-top: 14px;
+}
+
+.legend i.legend-bubble {
+  background: var(--green);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--line);
+}
+
+.legend i.legend-dash {
+  background: var(--muted);
+  border-radius: 1px;
+  height: 2px;
+  width: 12px;
+}
+
+.legend i.legend-bar {
+  background: var(--blue);
+  height: 6px;
+  width: 18px;
+}
+
+.matrix-legend .legend-note {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+/* Review funnel: each record type as stages left to right, each stage's
+   meter showing its share of the stage before it. */
+.section-lead {
+  color: var(--muted);
+  margin: 6px 0 0;
+  max-width: 760px;
+}
+
+.funnel {
+  display: grid;
+  gap: 18px;
+}
+
+.funnel-row {
+  align-items: start;
+  display: grid;
+  gap: 8px 16px;
+  grid-template-columns: 96px minmax(0, 1fr);
+}
+
+.funnel-row-label {
+  font-size: 15px;
+  margin: 14px 0 0;
+}
+
+.funnel-steps {
+  display: grid;
+  gap: 12px 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.funnel-step {
+  align-content: start;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  position: relative;
+}
+
+.funnel-step + .funnel-step::before {
+  color: var(--muted);
+  content: "→";
+  font-weight: 800;
+  left: -21px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.funnel-step-label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.funnel-step-value {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.funnel-meter {
+  background: var(--surface-2);
+  border-radius: 999px;
+  display: block;
+  height: 8px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.funnel-meter span {
+  background: var(--green);
+  display: block;
+  height: 100%;
+}
+
+.funnel-step-share {
+  font-size: 13px;
+}
+
+.funnel-step-drop {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.funnel-result {
+  align-items: center;
+  background: color-mix(in srgb, var(--green) 8%, var(--surface));
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  display: flex;
+  gap: 14px;
+  margin-left: 112px;
+  padding: 12px 16px;
+}
+
+.funnel-result-value {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.funnel-result p {
+  display: grid;
+  margin: 0;
+}
+
+.funnel-result-label {
+  font-weight: 800;
+}
+
+.funnel-result-detail {
+  color: var(--muted);
+  font-size: 13.5px;
 }
 
 .mapping-table-wrap {
@@ -1307,6 +1686,81 @@ select {
   .comparison-header {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .funnel-row {
+    grid-template-columns: 1fr;
+  }
+
+  .funnel-row-label {
+    margin: 0;
+  }
+
+  .funnel-steps {
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .funnel-step + .funnel-step::before {
+    content: none;
+  }
+
+  .funnel-result {
+    margin-left: 0;
+  }
+}
+
+/* On a phone the matrix keeps all three cycles in view: tighter cells, the
+   claim count without its bar (the number carries it), wrapping labels. Any
+   remaining overflow scrolls inside .matrix-wrap, never the page. */
+@media (max-width: 600px) {
+  .matrix-panel {
+    padding: 10px;
+  }
+
+  .coverage-matrix {
+    min-width: 0;
+  }
+
+  .coverage-matrix th,
+  .coverage-matrix td {
+    padding: 6px 4px;
+  }
+
+  .coverage-matrix thead th {
+    font-size: 10.5px;
+  }
+
+  .coverage-matrix .matrix-cycle {
+    width: auto;
+  }
+
+  .matrix-skill-link,
+  .matrix-skill-name {
+    font-size: 13px;
+  }
+
+  /* The name column stays put while the coverage and claim columns scroll in
+     beside it, so a row never loses its label. */
+  .coverage-matrix tr > th:first-child {
+    background: var(--surface);
+    left: 0;
+    min-width: 112px;
+    position: sticky;
+    z-index: 1;
+  }
+
+  .coverage-matrix tbody tr:hover > th:first-child {
+    background: var(--surface-2);
+  }
+
+  .matrix-coverage small {
+    font-size: 11px;
+    white-space: normal;
+  }
+
+  .matrix-claims-track {
+    display: none;
   }
 
   .skill-list {

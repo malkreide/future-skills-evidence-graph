@@ -47,7 +47,7 @@ const VIEWS = {
             "Topic-Suchanfrage findet neue Kandidaten-Quellen, welche die " +
             "schlüssellosen Kataloge nie zeigen. Strategie ist offene Suche mit " +
             "gestuftem Trust – die Trust-Stufe (trusted/watch/open) ist ein Label " +
-            "für die Triage-Reihenfolge, kein Filter, und fließt NICHT in den " +
+            "für die Triage-Reihenfolge, kein Filter, und fliesst NICHT in den " +
             "evidence_score. audit_domains.py leitet die Stufen evidenzbasiert " +
             "aus den Review-Entscheidungen ab.",
           files: [

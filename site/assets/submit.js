@@ -81,7 +81,7 @@
 
   function detectSourceUrl(text, publisher) {
     // Berichte tragen ihre eigene URL/DOI fast immer im Text (Titelseite,
-    // Fußzeile, „verfügbar unter …"). Wir lesen sie aus dem Dokument statt im
+    // Fusszeile, „verfügbar unter …"). Wir lesen sie aus dem Dokument statt im
     // Web zu suchen – das geht offline und ohne Backend. Eine DOI ist am
     // verlässlichsten; sonst die plausibelste http(s)-URL.
     if (!text) return "";
@@ -120,7 +120,7 @@
   }
 
   function guessTitle(text) {
-    // Beste Titel-Vermutung aus dem Fließtext: die längste „titelartige" Zeile
+    // Beste Titel-Vermutung aus dem Fliesstext: die längste „titelartige" Zeile
     // unter den ersten paar Zeilen (Titelseite), ohne Inhaltsverzeichnis-Zeilen
     // (Punktführung, führende Seitenzahlen) und mit überwiegend Buchstaben.
     const lines = text.split("\n").map((line) => line.trim()).filter(Boolean);
@@ -243,7 +243,7 @@
   async function handleFile(file) {
     if (!file) return;
     if (file.size > MAX_FILE_BYTES) {
-      setFileStatus(`Datei zu groß (max. ${MAX_FILE_BYTES / (1024 * 1024)} MB).`, "error");
+      setFileStatus(`Datei zu gross (max. ${MAX_FILE_BYTES / (1024 * 1024)} MB).`, "error");
       return;
     }
     const isPdf = file.type === "application/pdf" || /\.pdf$/i.test(file.name);
@@ -253,7 +253,7 @@
         const { text, title } = await extractPdfText(await file.arrayBuffer());
         if (!text) {
           setFileStatus(
-            "Aus dem PDF ließ sich kein Text lesen (evtl. ein Scan ohne Textebene). " +
+            "Aus dem PDF liess sich kein Text lesen (evtl. ein Scan ohne Textebene). " +
               "Bitte den Text einfügen.",
             "error"
           );
@@ -353,13 +353,13 @@
       );
       return;
     }
-    // Großer Bericht aus einem PDF: der Volltext passt nicht in ein Issue (~64 KB).
+    // Grosser Bericht aus einem PDF: der Volltext passt nicht in ein Issue (~64 KB).
     // Statt der Zwischenablage die Original-PDF auf GitHub anhängen lassen – der
     // Workflow extrahiert sie dann server-seitig.
     if (droppedPdfName) {
       openIssuePage(
         buildIssueUrl({ owner, repo, includeText: false }),
-        `Großer Bericht: häng auf der GitHub-Seite die PDF „${droppedPdfName}“ im Feld ` +
+        `Grosser Bericht: häng auf der GitHub-Seite die PDF „${droppedPdfName}“ im Feld ` +
           "„PDF anhängen“ an und sende ab (der Text passt nicht in ein Issue)."
       );
       return;

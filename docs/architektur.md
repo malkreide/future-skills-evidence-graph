@@ -283,12 +283,15 @@ sequenceDiagram
     CI->>Build: data/index.json erzeugen + site/ kopieren
     Build->>Pages: statische Seite deployen
     User->>Pages: öffnet Dashboard
-    Pages-->>User: app.js lädt index.json,<br/>zeigt Skills, Beweis-Pfade,<br/>Lehrplan-21-Vergleich (Radar)
+    Pages-->>User: app.js lädt index.json,<br/>zeigt Skills, Beweis-Pfade,<br/>Prüftrichter, Lehrplan-21-Vergleich
 ```
 
 Das Dashboard ist rein statisch: `app.js` liest die einzige generierte Datei
 `data/index.json` und rendert daraus alle Ansichten – inkl. des Lehrplan-21-
-Vergleichs mit Radar-Chart, Zyklus-Filter, Abdeckungstabelle und Lücken-Labels.
+Vergleichs (Abdeckungsmatrix Skills × Zyklen oder Netzdiagramm, Zyklus-Filter,
+Abdeckungstabelle und Lücken-Labels) und des Prüftrichters. Die Trichterzahlen
+rechnet `scripts/review_funnel.py` beim Build aus und legt sie als
+`review_funnel` in den Index; gespeichert wird davon nichts.
 
 ---
 
