@@ -162,8 +162,10 @@ function themeColors() {
   const read = (name, fallback) => (styles.getPropertyValue(name).trim() || fallback);
   return {
     line: read("--line", "#d8e0dc"),
-    blue: read("--blue", "#315f9f"),
-    green: read("--green", "#1f7a5d"),
+    // The radar's two series read the chart tokens, not the text tokens:
+    // see --chart-evidence / --chart-lp21 in styles.css.
+    evidence: read("--chart-evidence", "#315f9f"),
+    lp21: read("--chart-lp21", "#1f7a5d"),
     text: read("--text", "#1e2524"),
     muted: read("--muted", "#65706d"),
     surface: read("--surface", "#ffffff"),
@@ -1433,13 +1435,13 @@ function paintRadar() {
     drawRadarLabel(context, axis, center, colors, hot);
   });
 
-  fillRadarPolygon(context, axes.map((a) => a.evidencePoint), colors.blue, withAlpha(colors.blue, 0.16), 2);
-  fillRadarPolygon(context, axes.map((a) => a.lp21Point), colors.green, withAlpha(colors.green, 0.2), 2);
+  fillRadarPolygon(context, axes.map((a) => a.evidencePoint), colors.evidence, withAlpha(colors.evidence, 0.16), 2);
+  fillRadarPolygon(context, axes.map((a) => a.lp21Point), colors.lp21, withAlpha(colors.lp21, 0.2), 2);
 
   axes.forEach((axis) => {
     const hot = axis.index === hovered;
-    drawRadarMarker(context, axis.lp21Point, colors.green, hot, colors);
-    drawRadarMarker(context, axis.evidencePoint, colors.blue, hot, colors);
+    drawRadarMarker(context, axis.lp21Point, colors.lp21, hot, colors);
+    drawRadarMarker(context, axis.evidencePoint, colors.evidence, hot, colors);
   });
 }
 

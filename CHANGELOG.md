@@ -12,6 +12,21 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Netzdiagramm im dunklen Modus: eigene Diagrammfarben.** Das Netz
+  zeichnete «Future Evidence» und «LP21-Abdeckung» mit den Texttokens
+  `--blue`/`--green`. Für Text sind sie richtig (hell genug für Kontrast),
+  für zwei sich überlagernde Flächen nicht: zu hell (OKLCH L 0.71/0.74,
+  Band 0.48–0.67), das Blau zu grau (C 0.092), und das Paar mit ΔE 14.7
+  unter der Schwelle 15, ab der man zwei Farben auch mit normalem
+  Sehvermögen sicher unterscheidet. Neue Tokens `--chart-evidence` und
+  `--chart-lp21` (dunkel `#6992d8`/`#34a981`: L 0.66, C ≥ 0.11, ΔE 17.2
+  normal und 13.9 bei Deuteranopie, Kontrast 5.3–5.6) färben Netz,
+  Matrix und ihre Legenden einheitlich. Texte behalten die Texttokens, der
+  helle Modus bleibt unverändert. `tests/test_chart_palette.py` rechnet die
+  Prüfungen nach und eicht sich zuerst an den Zahlen des Referenzprüfers.
+
 ### Added
 
 - **Prüftrichter im Dashboard.** Die Kachel «Claims» zählte alle
