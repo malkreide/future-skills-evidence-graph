@@ -575,22 +575,30 @@ Selbstkonsistenz (Test-Retest) und ist eine **Obergrenze** für die
    Statement/Abstract/`source_type` — nicht das primäre Label, nicht die
    `note`, nicht die Pipeline-Ausgabe. Der erzeugte Bogen enthält diese
    Felder gar nicht erst.
-2. **Nach den geschriebenen Ankern.** Für `evidence_certainty` gelten die
+2. **Ohne KI-Werkzeuge,** auch nicht zum Übersetzen oder Erklären. Eine
+   Bewertung mit KI-Hilfe misst nicht, ob Menschen die Rubrik gleich
+   lesen, und eine übersetzte Fassung ist ein anderes Instrument als das
+   der übrigen Bewertenden. Ist es trotzdem geschehen, gehört es in
+   `protocol.notes`, mit `protocol.blind: false`, und der Durchgang zählt
+   nicht für die Kalibrierung. Die Regel steht ausdrücklich da, weil
+   «nichts nachschlagen» KI-Werkzeuge nicht nennt: Mit einer KI lässt sich
+   ein Bogen übersetzen und ausfüllen, ohne irgendwo nachzuschlagen.
+3. **Nach den geschriebenen Ankern.** Für `evidence_certainty` gelten die
    Definitionen aus
    [docs/evidenz-bewertung-anker.md](evidenz-bewertung-anker.md). Das
    misst zugleich, ob diese Anker tragen: Wenn zwei Personen mit
    demselben Regeltext auseinanderlaufen, ist der Regeltext das Problem,
    nicht die Person.
-3. **Zweite Person, wenn möglich.** Eine zeitversetzte zweite Runde
+4. **Zweite Person, wenn möglich.** Eine zeitversetzte zweite Runde
    derselben Person misst nur die *Selbst*konsistenz (Test-Retest) und
    ist eine Obergrenze für die Übereinstimmung zwischen Personen. Sie ist
    besser als nichts, muss aber in `protocol.rater` als solche kenntlich
    sein.
-4. **Ehrlich deklarieren.** War das primäre Label sichtbar, gehört
+5. **Ehrlich deklarieren.** War das primäre Label sichtbar, gehört
    `protocol.blind: false` in die Datei. Das Werkzeug meldet den
    Vergleich dann als nicht unabhängig, statt ihn stillschweigend als
    Baseline zu zählen.
-5. Einzelne Felder dürfen `null` bleiben; übersprungene Positionen werden
+6. Einzelne Felder dürfen `null` bleiben; übersprungene Positionen werden
    nicht verglichen.
 
 ### Wie `protocol.notes` zu formulieren ist

@@ -390,8 +390,13 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
          "Abstract lesen (die Texte sind auf Englisch).", True),
         (f"Rechts davon die gelben Zellen ausfüllen: Zelle anklicken, auf den kleinen Pfeil "
          f"klicken, Wert wählen. Es sind {len(rated)} gelbe Spalten, nach rechts scrollen.", True),
+        # AI tools named outright: "nichts nachschlagen" does not cover them,
+        # and an AI can translate and fill in a sheet without looking
+        # anything up. That measures nothing about whether people read the
+        # rubric alike.
         (f"Was die Werte bedeuten, steht im Blatt «{SHEET_RUBRIC}». Sie ist vollständig – bitte "
-         "nichts anderes nachschlagen, auch nicht im Internet.", True),
+         "nichts anderes nachschlagen, auch nicht im Internet. Keine KI-Werkzeuge (z. B. "
+         "ChatGPT, Copilot, Claude), auch nicht zum Übersetzen oder Erklären.", True),
         ("Gibt der Text auf eine Frage keine Antwort her, die Zelle LEER lassen. Steht in der "
          "Rubrik «null», heisst das ebenfalls: leer lassen.", True),
     ]

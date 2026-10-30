@@ -25,10 +25,12 @@ wertvolles Ergebnis.
 1. Datei speichern, mit Excel öffnen, **«Bearbeitung aktivieren»** klicken.
 2. Im Blatt **Bewertung** pro Zeile den Text lesen und rechts die **gelben
    Zellen** ausfüllen: Wert aus der Liste wählen.
-3. Gibt der Text keine Antwort her: Zelle **leer lassen**. Unsicher: Wert
+3. Ohne Hilfsmittel arbeiten: nichts nachschlagen und **keine KI**, auch
+   nicht zum Übersetzen.
+4. Gibt der Text keine Antwort her: Zelle **leer lassen**. Unsicher: Wert
    nach der Rubrik wählen und die Fallnummer notieren.
-4. Im Blatt **Anleitung** Name und Datum eintragen.
-5. Speichern und die Datei zurückschicken.
+5. Im Blatt **Anleitung** Name und Datum eintragen.
+6. Speichern und die Datei zurückschicken.
 
 Die Einzelheiten folgen unten.
 
@@ -38,7 +40,8 @@ Die Einzelheiten folgen unten.
   oder Google Sheets: Dort fehlen die Auswahllisten.
 - Ruhige Zeit am Stück. Rechne mit etwa fünf Minuten pro Fall; wie viele
   Fälle es sind, steht im ersten Blatt ganz oben.
-- Englisch lesen: Die Texte der Fälle sind auf Englisch.
+- Englisch lesen: Die Texte der Fälle sind auf Englisch und werden nicht
+  übersetzt.
 
 ## Schritt 1: Datei speichern und öffnen
 
@@ -80,6 +83,10 @@ Falls:
 Bewerte nur aufgrund dessen, was in der Zeile steht, und mit Hilfe des
 Blatts **Rubrik**. Bitte nichts nachschlagen, weder im Internet noch in
 anderen Unterlagen.
+
+**Keine KI-Werkzeuge**, zum Beispiel ChatGPT, Copilot oder Claude, auch
+nicht zum Übersetzen oder Erklären. Geprüft wird, ob Menschen die Regeln
+gleich verstehen. Eine KI-Hilfe würde genau das überdecken.
 
 ## Schritt 4: Die gelben Zellen ausfüllen
 
@@ -132,9 +139,10 @@ Blatt **Rubrik**. Lies dort nach, so oft du willst.
 - **Fragen zur Bedienung** (Excel, Datei, Liste geht nicht auf) stellst du
   jederzeit der Person, die dir den Bogen geschickt hat.
 - **Fragen zum Inhalt** (Was heisst dieser Begriff? Welcher Wert passt?)
-  bitte **nicht** stellen und nicht nachschlagen. Entscheide nach der
-  Rubrik, so gut es geht. Notiere dir die **Nummer des Falls** (Spalte
-  «Nr») und was unklar war. Diese Notizen schickst du mit der Datei zurück.
+  bitte **nicht** stellen, nicht nachschlagen und keine KI fragen.
+  Entscheide nach der Rubrik, so gut es geht. Notiere dir die **Nummer des
+  Falls** (Spalte «Nr») und was unklar war. Diese Notizen schickst du mit
+  der Datei zurück.
   Genau diese Stellen besprechen wir danach gemeinsam.
 - Tausche dich **nicht mit den anderen Bewertenden** aus, bis alle
   abgegeben haben. Sonst lässt sich nicht mehr erkennen, ob die Regeln
@@ -179,4 +187,5 @@ Originaldatei lässt sich wieder einlesen.
 | Ich sehe keine gelben Zellen. | Im Blatt «Bewertung» nach rechts scrollen. Oder unten rechts im Excel-Fenster die Ansicht verkleinern, z. B. auf 70 %. |
 | Excel meldet «Kein zulässiger Wert». | Einen Wert aus der Liste wählen statt tippen, oder die Zelle leer lassen. |
 | Im Altersfeld steht plötzlich ein Datum. | Zelle mit Entf leeren und mit einem Apostroph davor neu eintippen: `'8-10` |
+| Ich verstehe einen englischen Text nicht. | Nicht übersetzen lassen, auch nicht von einer KI. Den Wert nach bestem Verständnis wählen und die Fallnummer notieren. Ist das Englisch insgesamt zu schwer, melde dich, bevor du weitermachst. |
 | Die Liste geht nicht auf. | Bearbeitung aktivieren (Schritt 1). In Numbers oder Google Sheets gibt es die Listen nicht, bitte Excel verwenden. |

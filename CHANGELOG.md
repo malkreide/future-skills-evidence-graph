@@ -12,6 +12,23 @@ nicht hierher — sie werden live aus den Daten ermittelt.
 
 ## [Unreleased]
 
+### Changed
+
+- **Bewertungsbogen und Anleitung schliessen KI-Werkzeuge ausdrücklich
+  aus**, auch zum Übersetzen oder Erklären. Bisher hiess es nur «nichts
+  nachschlagen», und das deckt KI nicht ab: Mit ihr lässt sich ein Bogen
+  übersetzen und ausfüllen, ohne irgendwo nachzuschlagen. Die Runde misst
+  dann die KI, nicht, ob Menschen die Rubrik gleich lesen, und eine
+  übersetzte Fassung ist ein anderes Instrument als das der übrigen
+  Bewertenden. Die Regel steht im Blatt «Anleitung» (im bestehenden
+  Schritt, damit das Protokoll an seinem Platz bleibt), in der
+  Kurzfassung und im Text der Schritt-für-Schritt-Anleitung und im
+  Protokoll in `docs/eval-baseline.md`; dort steht auch, was gilt, wenn
+  es trotzdem geschehen ist. Die Anleitung sagt neu, was zu tun ist, wenn
+  ein englischer Text zu schwer ist: nicht übersetzen lassen, notieren,
+  und wenn das Englisch insgesamt zu schwer ist, sich melden, bevor man
+  weitermacht.
+
 ### Added
 
 - **Prüftrichter im Dashboard.** Die Kachel «Claims» zählte alle
