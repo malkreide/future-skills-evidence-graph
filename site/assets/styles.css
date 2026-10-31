@@ -12,6 +12,13 @@
   --red: #a43f3f;
   --focus: #315f9f;
   --shadow: 0 16px 40px rgba(24, 45, 38, 0.08);
+  /* Chart marks that tell the two series apart (Future Evidence vs. LP21
+     coverage in the radar, the matrix and their legends). Kept apart from
+     --blue/--green because marks and text need different things: text needs
+     contrast against the surface, a series pair needs a lightness band,
+     chroma and distance between the two -- see the dark values below. */
+  --chart-evidence: #315f9f;
+  --chart-lp21: #1f7a5d;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -29,6 +36,14 @@
   --red: #e58a8a;
   --focus: #86aee6;
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  /* The text tokens above sit too light for marks (OKLCH L 0.71 / 0.74, band
+     0.48-0.67), the blue too gray (C 0.092 < 0.10), and the pair too close
+     for full colour vision (Delta E 14.7 < 15). These keep both hues and pass
+     every check on --surface: L 0.66 / 0.66, C 0.120 / 0.114, Delta E 17.2
+     normal and 13.9 deutan, contrast 5.6 / 5.3. tests/test_chart_palette.py
+     re-runs the checks. */
+  --chart-evidence: #6992d8;
+  --chart-lp21: #34a981;
 }
 
 * {
@@ -980,11 +995,11 @@ select {
 }
 
 .legend-evidence {
-  background: var(--blue);
+  background: var(--chart-evidence);
 }
 
 .legend-lp21 {
-  background: var(--green);
+  background: var(--chart-lp21);
 }
 
 .lp21-summary {
@@ -1158,7 +1173,7 @@ select {
 }
 
 .matrix-bubble {
-  fill: var(--green);
+  fill: var(--chart-lp21);
 }
 
 .matrix-bubble-ref {
@@ -1204,7 +1219,7 @@ select {
 }
 
 .matrix-claims-track span {
-  background: var(--blue);
+  background: var(--chart-evidence);
   border-radius: 999px;
   display: block;
   height: 100%;
@@ -1238,7 +1253,7 @@ select {
 }
 
 .legend i.legend-bubble {
-  background: var(--green);
+  background: var(--chart-lp21);
   box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--line);
 }
 
@@ -1250,7 +1265,7 @@ select {
 }
 
 .legend i.legend-bar {
-  background: var(--blue);
+  background: var(--chart-evidence);
   height: 6px;
   width: 18px;
 }
