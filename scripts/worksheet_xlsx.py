@@ -430,9 +430,12 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
     labels = {
         "rater": ("Name", "Vor- und Nachname."),
         "labeled_at": ("Datum", "Wie gewohnt eintippen, z. B. 5.11.2026. Excel zeigt es dann als Jahr-Monat-Tag an."),
-        "blind": ("Blind bewertet?", "«nein», falls du vorher Bewertungen aus dem Projekt gesehen hast."),
-        "notes": ("Notizen", "Alles, was die Blindheit einschränkt – auch grob geschätzt. Leer, wenn nichts. "
-                             "Fragen zum Inhalt gehören in die E-Mail, nicht hierher."),
+        # AI use counts here too: the protocol says such a pass is declared
+        # and does not count, which only works if the rater is told to say so.
+        "blind": ("Blind bewertet?", "«nein», falls du vorher Bewertungen aus dem Projekt gesehen "
+                                     "oder eine KI benutzt hast."),
+        "notes": ("Notizen", "Alles, was die Blindheit einschränkt, auch KI-Hilfe – auch grob geschätzt. "
+                             "Leer, wenn nichts. Fragen zum Inhalt gehören in die E-Mail, nicht hierher."),
     }
     for field, ref in PROTOCOL_CELLS.items():
         row = int(ref[1:])

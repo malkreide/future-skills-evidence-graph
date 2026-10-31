@@ -159,8 +159,8 @@ Felder:
 | --- | --- |
 | **Name** | Dein Vor- und Nachname. |
 | **Datum** | Das heutige Datum, zum Beispiel 19.10.2026. Excel zeigt es danach als 2026-10-19 an; das ist richtig so. |
-| **Blind bewertet?** | «ja», wenn du vorher **keine** Bewertungen aus diesem Projekt gesehen hast. Sonst «nein». |
-| **Notizen** | Alles, was das einschränkt, auch grob geschätzt, z. B. «etwa 3 Fälle vorher im Dashboard gesehen». Sonst leer. |
+| **Blind bewertet?** | «ja», wenn du vorher **keine** Bewertungen aus diesem Projekt gesehen **und keine KI benutzt** hast. Sonst «nein». |
+| **Notizen** | Alles, was das einschränkt, auch grob geschätzt, z. B. «etwa 3 Fälle vorher im Dashboard gesehen» oder «für zwei Fälle eine KI übersetzen lassen». Sonst leer. Wer ehrlich meldet, hat nichts falsch gemacht. |
 
 Das Feld **Notizen** ist nur dafür da. Deine Fragen zum Inhalt aus Schritt 6
 gehören in die E-Mail.
