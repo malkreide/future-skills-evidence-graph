@@ -390,8 +390,13 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
          "Abstract lesen (die Texte sind auf Englisch).", True),
         (f"Rechts davon die gelben Zellen ausfüllen: Zelle anklicken, auf den kleinen Pfeil "
          f"klicken, Wert wählen. Es sind {len(rated)} gelbe Spalten, nach rechts scrollen.", True),
+        # AI tools named outright: "nichts nachschlagen" does not cover them,
+        # and an AI can translate and fill in a sheet without looking
+        # anything up. That measures nothing about whether people read the
+        # rubric alike.
         (f"Was die Werte bedeuten, steht im Blatt «{SHEET_RUBRIC}». Sie ist vollständig – bitte "
-         "nichts anderes nachschlagen, auch nicht im Internet.", True),
+         "nichts anderes nachschlagen, auch nicht im Internet. Keine KI-Werkzeuge (z. B. "
+         "ChatGPT, Copilot, Claude), auch nicht zum Übersetzen oder Erklären.", True),
         ("Gibt der Text auf eine Frage keine Antwort her, die Zelle LEER lassen. Steht in der "
          "Rubrik «null», heisst das ebenfalls: leer lassen.", True),
     ]
@@ -425,9 +430,12 @@ def export_workbook(worksheet: dict[str, Any], out: Path) -> None:
     labels = {
         "rater": ("Name", "Vor- und Nachname."),
         "labeled_at": ("Datum", "Wie gewohnt eintippen, z. B. 5.11.2026. Excel zeigt es dann als Jahr-Monat-Tag an."),
-        "blind": ("Blind bewertet?", "«nein», falls du vorher Bewertungen aus dem Projekt gesehen hast."),
-        "notes": ("Notizen", "Alles, was die Blindheit einschränkt – auch grob geschätzt. Leer, wenn nichts. "
-                             "Fragen zum Inhalt gehören in die E-Mail, nicht hierher."),
+        # AI use counts here too: the protocol says such a pass is declared
+        # and does not count, which only works if the rater is told to say so.
+        "blind": ("Blind bewertet?", "«nein», falls du vorher Bewertungen aus dem Projekt gesehen "
+                                     "oder eine KI benutzt hast."),
+        "notes": ("Notizen", "Alles, was die Blindheit einschränkt, auch KI-Hilfe – auch grob geschätzt. "
+                             "Leer, wenn nichts. Fragen zum Inhalt gehören in die E-Mail, nicht hierher."),
     }
     for field, ref in PROTOCOL_CELLS.items():
         row = int(ref[1:])

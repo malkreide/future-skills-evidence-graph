@@ -427,6 +427,25 @@ class InstructionsSheetTests(_Workbook):
         self.assertNotIn("effect_direction", text)
         self.assertNotIn("«ALT:»", text)
 
+    def test_ai_tools_are_ruled_out_by_name(self) -> None:
+        # "Nichts nachschlagen" does not cover them: an AI can translate a
+        # sheet and fill it in without looking anything up, and the round
+        # then measures the AI, not whether people read the rubric alike.
+        wb, _ = self.open()
+        text = self._text(wb)
+        self.assertIn("Keine KI-Werkzeuge", text)
+        self.assertIn("auch nicht zum Übersetzen", text)
+
+    def test_the_protocol_asks_for_ai_use_to_be_declared(self) -> None:
+        # The protocol says an AI-assisted pass is declared and does not
+        # count. That only works if the fields the rater fills in ask for it.
+        wb, _ = self.open()
+        ins = wb[wx.SHEET_INSTRUCTIONS]
+        for field in ("blind", "notes"):
+            row = int(wx.PROTOCOL_CELLS[field][1:])
+            with self.subTest(field):
+                self.assertIn("KI", ins[f"D{row}"].value)
+
     def test_content_questions_go_to_the_debrief_not_the_notes(self) -> None:
         # The notes cell is the caveat the report prints under every
         # comparison. A question about a case would land there as one.
@@ -534,6 +553,19 @@ class RaterGuideTests(_Workbook):
         with_null = [f for f, values in wx.VOCABULARIES.items() if "null" in values]
         self.assertEqual(with_null, ["effect_direction"])
         self.assertIn("Einzige Ausnahme ist die Spalte effect_direction", self.guide)
+
+    def test_the_guide_rules_out_ai_help_and_translation(self) -> None:
+        # Same rule as on the sheet, in the short version a rater reads
+        # first and where an English text gets too hard.
+        short = self.guide[self.guide.index("## Das Wichtigste in Kürze"):self.guide.index("## Was du brauchst")]
+        self.assertIn("**keine KI**", short)
+        self.assertIn("**Keine KI-Werkzeuge**", self.guide)
+        self.assertIn("| Ich verstehe einen englischen Text nicht. | Nicht übersetzen lassen", self.guide)
+        # And the protocol rows ask for AI use to be declared.
+        rows = {line.split("|")[1].strip(): line for line in self.guide.splitlines()
+                if line.startswith("| **")}
+        self.assertIn("keine KI benutzt", rows["**Blind bewertet?**"])
+        self.assertIn("KI", rows["**Notizen**"])
 
     def test_the_columns_it_lets_go_are_the_ones_the_rubric_lets_go(self) -> None:
         # "Die Spalten mit «ALT:» darfst du ganz leer lassen" restates the
