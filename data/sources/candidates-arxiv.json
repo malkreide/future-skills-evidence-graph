@@ -2650,5 +2650,198 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "learner"
+  },
+  {
+    "id": "src-autoanalysis-an-automated-self-updating-meta-analysis-of-human-ai-collab",
+    "title": "AutoAnalysis: An automated, self-updating meta-analysis of human-AI collaboration",
+    "authors": [
+      "Michelle Vaccaro",
+      "Abdullah Almaatouq",
+      "Thomas W. Malone"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.42001v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "As generative artificial intelligence (AI) becomes more capable and widely used, understanding when and how humans should work with these systems is becoming increasingly important. However, the empirical evidence in this space offers conflicting recommendations, which leaves individuals and organizations without clear guidance on when to combine human and AI capabilities. Existing meta-analyses can help reconcile these findings, but they require substantial manual effort and cannot readily incorporate new evidence as it emerges. To address this challenge, we introduce AutoAnalysis: an automated, self-updating meta-analysis of when humans and AI work better together, and when they work better alone. AutoAnalysis' most recent run synthesizes 1,955 effect sizes from 420 papers. Across this body of work, we found that, on average, human-AI combinations performed significantly better than humans alone, but they performed significantly worse than the better of humans or AI alone. These findings highlight the important distinction between improving human performance and achieving human-AI synergy and underscore the need to evaluate collaboration against both human and AI performance alone. As new studies emerge, AutoAnalysis will integrate their findings into the meta-analysis, providing cumulative evidence about when humans and AI perform better together and how human-AI performance varies across AI agents, tasks, and processes.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru",
+    "title": "Counting on Dummies: Privacy Amplification with Observable Counts and Truncated Batches",
+    "authors": [
+      "Vitaly Feldman",
+      "Audra McMillan",
+      "Kunal Talwar"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.42139v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "In many practical deployments of Differentially Private Stochastic Gradient Descent (DP-SGD), the server processes data in batches. Randomly sampling these batches allows for better privacy bounds via privacy amplification results. Most sampling schemes with provable privacy amplification, including Poisson sampling and random allocation, result in variable batch sizes. The privacy guarantee of these schemes requires that the batch sizes are not revealed. In distributed settings, the server performing the aggregation or any party observing the communication traffic may learn these batch sizes. Furthermore, in both centralized and distributed settings, memory and computation constraints may require each batch to be of some maximum size $s$, necessitating truncation of the batch when it exceeds this limit. It is known that this truncation can result in a significant increase in privacy loss. In this work, we address both of these challenges via a simple mechanism that uses a random number of \\emph{dummy points} to privatize the batch size and maintain the privacy guarantee even under truncation. We demonstrate that our mechanism is easy to implement in a distributed setting, and provide a general analysis of this mechanism for both Poisson sampling and random allocation. Our analysis is designed to support efficient and relatively tight privacy accounting. It also effectively amplifies the privacy of the count releases by subsampling, making the expected number of dummy points asymptotically smaller than what is needed to directly privatize the (sensitivity-one) batch sizes with non-negative noise. For Poisson sampling with truncated batches, we demonstrate empirically that our mechanism achieves better privacy--efficiency tradeoffs than the direct accounting for truncation recently given by (Ganesh, 2025).",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft",
+    "title": "Fast Privacy Loss Accounting for Random Allocation via Multiscale FFT",
+    "authors": [
+      "Vitaly Feldman",
+      "Moshe Shenfeld"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.42117v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "In the random allocation sampling scheme each user's data is used in $k$ steps chosen randomly and uniformly from a sequence of $t$ steps. This scheme is known to improve on Poisson sampling in private optimization and in communication-efficient aggregation. The existing privacy loss distribution (PLD) accountant for this scheme runs in time quadratic in the inverse of the accuracy parameter $\u03b1$ (Feldman and Shenfeld, 2026). We give an algorithm, \\emph{multiscale FFT}, that represents likelihood ratios on a grid that is uniform within each dyadic interval and computes the exact rounding of every pairwise sum using FFTs within each interval. It keeps the guarantees of the accountant and improves the dependence of its running time on $\u03b1$ from $O(\u03b1^{-2})$ to $O(\u03b1^{-1}\\log(1/\u03b1))$. In addition, we demonstrate that rounding can be performed via the mean-preserving connect-the-dots projection of (Doroshenko et al., 2026). This reduces the errors that rounding introduces in the mean of the privacy loss and in the $\u03c7^2$ divergence of the computed pair from the order of $\u03b1$ to $O(\u03b1^2/\\log(t))$. In our experiments, our algorithm achieves speedups of several orders of magnitude at high accuracy and gives improved privacy bounds for DP-SGD with PREAMBLE.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud",
+    "title": "GESIS Surf: An Open-Source Infrastructure for Privacy-Preserving Longitudinal Web Browsing Data Collection",
+    "authors": [
+      "Mario Alberto Ramirez",
+      "Frank Mangold",
+      "Sebastian Stier"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.41441v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Understanding how people navigate digital media environments requires behavioral data beyond survey self-reports. However, existing infrastructures for collecting such data reproducibly, sustainably, and with strong privacy guarantees remain limited: commercial solutions lack transparency and data governance, while academic tools are typically designed for narrow, short-term use cases and do not support general-purpose academic panel data collections. We address this gap with GESIS Surf, a research infrastructure for large-scale longitudinal collection of web behavioral data in naturalistic environments. The system consists of a browser extension (Chrome and Firefox), a backend with a REST application programming interface (API), and a relational database. It passively captures user interactions, page metadata, and full HTML snapshots of each rendered page, embedding each observation within a hierarchical session model that preserves the structure of browsing behavior. GESIS Surf implements privacy-by-design through strict opt-in participation, per-domain collection rules, and client-side data minimization, ensuring that sensitive data are controlled at the point of collection. The system has been deployed with more than 1,000 participants in a large-scale academic panel infrastructure that includes surveys of participants, and supports reproducible, content-level, and structurally rich analysis of digital behavior. By combining hierarchical session modeling, content-level capture, and integrated privacy enforcement within a unified system, GESIS Surf provides a general-purpose infrastructure for studying digital behavior in a reproducible manner over time.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-satfront-detecting-atmospheric-fronts-with-satellite-data-using-machine",
+    "title": "SATFRONT: Detecting Atmospheric Fronts with Satellite Data using Machine Learning",
+    "authors": [
+      "Ioannis Dravilas",
+      "Miruna Stoicescu",
+      "Roope Tervo",
+      "Carlos Horn",
+      "Oriol Hinojo Comellas",
+      "Sina Montazeri",
+      "Andrea Meraner",
+      "Ana Lucic"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.42111v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Atmospheric fronts are associated with much of the high-impact weather in the mid-latitudes, yet their identification and classification remain largely manual and subjective. Existing deep learning approaches rely primarily on gridded reanalysis or forecast data, limiting their applicability to satellite observations available for time-critical applications. We introduce SATFRONT, a machine learning framework for detecting cold, warm, and occluded fronts over Europe from geostationary satellite observations, with reanalysis data as an optional additional input. The model is trained on frontal analyses from five European national meteorological services and evaluated against UK Met Office analyses for 2024. Using satellite observations alone, SATFRONT achieves a Critical Success Index (CSI) of 0.428 at a 150 km tolerance, within the range of agreement between analyses from different meteorological services (0.277-0.501) and higher than that of an operational rule-based front detector that uses satellite data (0.133). Adding ERA5 reanalysis increases the CSI to 0.591. ERA5 substantially improves the placement of individual fronts, although its effect on their annual spatial distribution varies by front type. These results demonstrate that cold, warm, and occluded fronts can be detected directly from geostationary satellite observations, providing a basis for automated frontal analyses at the high temporal frequency required for time-critical applications.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-rapid-mixing-of-potts-glauber-dynamics-throughout-uniqueness",
+    "title": "Rapid mixing of Potts Glauber dynamics throughout uniqueness",
+    "authors": [
+      "Antonio Blanca",
+      "Reza Gheissari",
+      "Heehyun Park",
+      "Xusheng Zhang"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.42059v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Sampling from the ferromagnetic $q$-state Potts model is a fundamental problem in statistical physics and approximate counting. Although computationally hard in the worst case, sampling is expected to be efficient throughout the high-temperature uniqueness regime of the model using the natural single-site Glauber dynamics. We establish fast mixing bounds for every $q$, in the full high-temperature regimes in the two central graph families on $n$ vertices. (1) For every $\u0394\\ge 3$, the Potts Glauber dynamics mixes in $n\\operatorname{polylog}(n)$ steps with high probability on a uniformly random $\u0394$-regular graph for all $\u03b2<\u03b2_u(q,\\mathbb T_\u0394)$ where $\u03b2_u(q,\\mathbb T_\u0394)$ is the uniqueness threshold on the $\u0394$-regular tree; (2) For every $d\\ge 2$, the Potts Glauber dynamics has inverse spectral gap $n^{1+o(1)}$ on cubes or tori in $\\mathbb Z^d$ for all $\u03b2<\u03b2_c(q,\\mathbb Z^d)$ where $\u03b2_c(q,\\mathbb Z^d)$ is the critical point on $\\mathbb Z^d$. Both temperature thresholds are sharp as the Glauber dynamics slows down exponentially above them. These results overcome the challenge of bounding mixing times without access to correlation decay bounds in the presence of pinnings (i.e., without spectral independence or strong spatial mixing). For this purpose, our proof introduces a new dichotomy principle: throughout the high-temperature regime, any initial spin distribution is either such that its pinnings ensure good correlation decay, or Glauber dynamics escapes from that distribution quickly. We expect this kind of dichotomy to have further applications. As a demonstration, we also develop its analog for random-cluster dynamics and use it to prove that Swendsen-Wang dynamics on random $\u0394$-regular graphs mixes in $O(\\log n)$ time throughout uniqueness. The results in this paper were arrived at with the assistance of ChatGPT 5.6 and 6.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-valid-gmm-inference-with-non-parametrically-generated-discrete-type",
+    "title": "Valid GMM Inference with Non-parametrically Generated Discrete Type",
+    "authors": [
+      "Taegyu Yang"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2610.42052v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The recent progress in machine learning and classification methods has enabled researchers to predict economic discrete attributes that are not observed in standard datasets. These range from missing demographics, such as ethnicity and poverty status, to economic categories, such as innovative firms, metropolitan areas, occupational groups, binary treatment status, and counterfactual status. Although the plug-in procedure is widely used in empirical applications, nonparametric first-stage estimation recovering the labels can introduce regularization bias because of its slow convergence rate. Even if the double/debiased machine learning approach provides a way to correct the regularization bias, the according bias-correction term is not well defined in our problem, because even a small first-stage error can change the type discontinuously. To address this problem, we smooth the discontinuous type indicators using a smooth kernel function and a shrinking tuning parameter $b$. We then construct a well-defined Neyman-orthogonal score and define the appropriate debiased estimator. We show that this debiased estimator satisfies $\\sqrt{Nb}$-consistency and asymptotic normality under regularity conditions. The slower $\\sqrt{Nb}$ convergence rate is the cost of correcting the regularization bias when the nonparametric first-stage learner enters the moment function through discontinuous functions.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
