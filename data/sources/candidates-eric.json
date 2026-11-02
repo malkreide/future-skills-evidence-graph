@@ -9183,5 +9183,30 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "learner"
+  },
+  {
+    "id": "src-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal",
+    "title": "Teaching Skepticism or Nihilism? Critical Thinking Education as a Signal Detection Problem",
+    "authors": [
+      "Anthony J. Bishara"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "http://dx.doi.org/10.1002/acp.70267",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1522593",
+    "publisher": "Applied Cognitive Psychology",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "A central goal of critical thinking courses is to help students distinguish science from pseudoscience, and more generally, warranted from unwarranted claims. Prior studies show that such courses reduce belief in unwarranted claims, but whether this reflects improved discriminability, a response bias shift, or both remains unclear. Two quasi-experimental studies (n = 46 and n = 53) applied signal detection theory to compare a semester-long critical thinking course to a control course. Students in the critical thinking course showed significant increases in both discriminability and response bias; students in the comparison course did not. Belief in warranted claims remained stable regardless of course, whereas belief in unwarranted claims dropped only in the critical thinking course. These findings align with recent applications of signal detection theory to misinformation research and suggest that the same framework can be useful for the evaluation of critical thinking education.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]

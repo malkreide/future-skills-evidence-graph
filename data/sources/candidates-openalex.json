@@ -13679,5 +13679,331 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita",
+    "title": "The Role of Artificial Intelligence in Children's Education for A Digital Future",
+    "authors": [
+      "Siska Puspitaningsih",
+      "Boedy Irhadtanto",
+      "Dian Ratna Puspananda"
+    ],
+    "year": 2022,
+    "doi": "10.18502/kss.v7i19.12483",
+    "url": "https://openalex.org/W4312189572",
+    "openalex_id": "https://openalex.org/W4312189572",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "KnE Social Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Society 5.0 is a plan to generate a human-focused society that focuses on economic and social growth in Japan. The idea emerged as an evolution of Industrial Revolution 4.0, which is thought to have the capacity to revolutionize technology. One of the main features of Society 5.0 is the use of artificial intelligence. Artificial intelligence brings many benefits to various fields. One of them is in the field of education. Many studies claim that artificial intelligence can help ease human work and increase knowledge and skills in the field of education. Artificial intelligence has introduced fundamental challenges to education for students, educators and parents. But they are indirectly forced to use AI to learn. This is a solution, as well as a new problem that the education community must immediately adapt. Artificial intelligence has already become a part of education at high schools and colleges. However, at the kindergarten level, it is rarely used. On average, students at this level already have an AI-powered device at home. This study focuses on the role of artificial intelligence at the kindergarten level. This study recommends the importance of AI education at the kindergarten level to instill Artificial Intelligence skills in children from an early age, prepare them for the future of a digitalized world, and improve their computational and problem-solving abilities with artificial intelligence. Keywords: Artificial intelligence, education, digital future, children, AI literacy",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-influence-of-social-media-on-problem-solving-abilities-through-digit",
+    "title": "The Influence of Social Media on Problem Solving Abilities Through Digital Literacy in Adolescents",
+    "authors": [
+      "Annisa Udtafia Ferawati",
+      "Dewi Liesnoor Setyowati",
+      "Fadly Husain"
+    ],
+    "year": 2025,
+    "doi": "10.15294/jess.v14i2.16018",
+    "url": "https://openalex.org/W7223952609",
+    "openalex_id": "https://openalex.org/W7223952609",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Educational Social Studies",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "In the digital era, social media has become an integral part of teenagers' lives, playing a significant role in shaping their behavior and cognitive abilities, particularly problem-solving skills. Research indicates that social media can have both positive and negative impacts on these abilities, depending on the quality of interactions and digital literacy. Further research is needed to deeply understand how social media use affects problem-solving skills and the role of digital literacy as a mediating variable that strengthens the relationship between social media use and problem-solving abilities in teenagers. This study employed a quantitative method using path analysis. The subjects were teenagers aged 15-18 living in Semarang City, with a sample of 369 students. The results show that social media significantly influences teenagers' digital literacy by 40%, but does not directly affect problem-solving skills. Instead, social media affects problem solving indirectly through digital literacy, with a total effect of 19.2%. Digital literacy itself has a significant impact of 23.1%, aiding teenagers in problem solving through skills in searching, evaluating, and managing digital information. These findings underscore the need to focus on digital literacy to optimize the positive impact of social media on teenagers' problem-solving skills.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-teachers-digital-competence-and-continuous-professional-development-in-t",
+    "title": "Teachers' Digital Competence and Continuous Professional Development in the Age of Digitalisation",
+    "authors": [
+      "Priyabrat Pradhan Priyabrat Pradhan"
+    ],
+    "year": 2026,
+    "doi": "10.55041/ijsrem64754",
+    "url": "https://openalex.org/W7164133459",
+    "openalex_id": "https://openalex.org/W7164133459",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "INTERANTIONAL JOURNAL OF SCIENTIFIC RESEARCH IN ENGINEERING AND MANAGEMENT",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The life of a teacher and teaching has been changing rapidly with the excessive use of modern technology and digital tools. Despite in-depth research on digital competence frameworks and teacher professional development as distinct areas, a detailed conceptual framework that directly links these two fields remains unexplored. This paper argues that digital competence is not merely a technical skill. It is an evolving professional ability. To stay effective, autonomous, and critically reflective in AI-enhanced education, teachers need to develop it through ongoing professional development programs. Exploring secondary sources and policy documents spanning 2015 to 2025, this paper identifies three key issues in the current literature such as, inconsistent definitions of digital competence across frameworks; mismatch between existing professional development models and new AI requirements; and ongoing uncertainty about teacher agency in AI-integrated settings. As a result, this paper proposes a conceptual framework, the Adaptive Digital Professionalism (ADP) model that shows digital competence as a context-sensitive and critically informed dimension of teacher professionalism. The paper concludes by outlining implications for institutional policy, curriculum design for teacher education, and future empirical research directions.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-effects-of-data-literacy-based-sw-convergence-education-on-elementar",
+    "title": "The Effects of Data Literacy-based SW Convergence Education on Elementary School Student\u2019s Computational Thinking",
+    "authors": [
+      "Hyunwoo Moon",
+      "Youngjun Lee"
+    ],
+    "year": 2024,
+    "doi": "10.32431/kace.2024.27.4.019",
+    "url": "https://openalex.org/W4404329313",
+    "openalex_id": "https://openalex.org/W4404329313",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "The Journal of Korean Association of Computer Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "data literacy",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p",
+    "title": "Digital Literacy Education In The Industrial Revolution 4.0 In Alquran Primary School Students",
+    "authors": [
+      "Nofha Rina Mrs",
+      "Jenny Ratna Suminar",
+      "Ninis Agustini Damayani",
+      "Hanny Hafiar"
+    ],
+    "year": 2020,
+    "doi": null,
+    "url": "https://openalex.org/W3004021292",
+    "openalex_id": "https://openalex.org/W3004021292",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Lincoln (University of Nebraska)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The development of the world at this time has entered the era of the industrial revolution 4.0 and has an effect on human life based on information. Elementary school students as alpha generation or internet generation are users who are familiar and very dependent on technology especially with social media. Research on digital literacy is still rare, especially in Indonesia. The subjects of this study are students aged 11-12 years who are active users of social media. This research uses a qualitative approach with a case study method. The informants used as the sample of the study were five people and one key informant from a media literacy expert. The findings in this study indicate the importance of digital literacy education which has a positive impact on knowledge, understanding, and skills in using social mediathatis currently usedasa source of information and entertainment by the public, especially among the alpha generation that can bring about awareness in using social media. In this study, not all participants had the skills to use social media properly. So digital literacy education is a solution that can be done by the government and elements of society and academics who care about the progress of the nation.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-media-in-education-teaching-learning-and-literacy-practices-with",
+    "title": "Digital Media in Education: Teaching, Learning and Literacy Practices with Young Learners",
+    "authors": [
+      "Michelle Cannon"
+    ],
+    "year": 2018,
+    "doi": null,
+    "url": "https://openalex.org/W3110902951",
+    "openalex_id": "https://openalex.org/W3110902951",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "UCL Discovery (University College London)",
+    "source_type": "book",
+    "license": null,
+    "abstract": "This book argues for dynamic and relevant school experiences for primary and early secondary learners that embed digital media production. It proposes a vision of literacy that combines new technologies with multiple modes of meaning-making. Drawing on theories related to cultural studies, media literacy, anthropology, and creativity, the author explores learning strategies with digital media based on an empowering, values-driven framework. The book advances innovative teaching methods, critiquing educational \u2018reforms\u2019 that marginalise media and fail to engage with the complex tensions and textures of modern pedagogy. \\n \\nPositioning film and media-making as vital practices in schools that nurture the skills, dispositions and competencies of modern literacy, the model foregrounds connections between human agency, cognition, and creative practice. This innovative book will appeal to students and scholars of creativity, digital media production, primary education and literacy.",
+    "topics": [
+      "digital competence",
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine",
+    "title": "Analysis of digital competence of educators (DigCompEdu) in teacher trainees: the context of Melilla, Spain",
+    "authors": [
+      "Jos\u00e9 Manuel Garc\u00eda\u2010Vandewalle Garc\u00eda",
+      "Marina Garc\u00eda Carmona",
+      "Juan Manuel Trujillo Torres",
+      "Pablo Moya Fern\u00e1ndez"
+    ],
+    "year": 2021,
+    "doi": "10.1007/s10758-021-09546-x",
+    "url": "https://openalex.org/W3185519847",
+    "openalex_id": "https://openalex.org/W3185519847",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Technology Knowledge and Learning",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Abstract The Spanish autonomous city of Melilla, located in northwest Africa, has one of the highest academic failure and abandonment rates in Europe. An effective way to improve this situation would be to improve students\u2019 digital competence. In order to do so, teachers must have competent digital skills themselves and also be able to teach them. To determine teachers\u2019 level of digital competence, the Spanish adaptation of the European Framework for Digital Competence of Educators was used to analyse the self-assessment responses of teachers in training at the Faculty of Education and Sport Sciences in Melilla, Spain. Several quantitative techniques were used to analyse data collected from a questionnaire based on the items in the framework. Indicators were given to each competence using a factor analysis to contrast differences between undergraduate and postgraduate students. Correlations between some of the students\u2019 characteristics and the competences were estimated using OLS. The results show students\u2019 self-assessment level of digital competence in different areas and differences between the bachelor\u2019s and master\u2019s programmes. Digital competence gaps were also detected in teacher training, especially in security. The conclusions highlight the need to improve digital security and facilitate a higher level of digital skills in line with the framework. Indeed, more hours of training in digital competence are required while taking into account the educational context and the technological, pedagogical and content knowledge needed to teach. Equally, the same skills must be developed by educators in order for them to transmit digital competence to their students and support them in educational centres.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-moral-development-in-students-an-ethical-imperative-in-education",
+    "title": "Moral Development in Students: An Ethical Imperative in Education",
+    "authors": [
+      "Shelly Shelly",
+      "R. Steffi",
+      "Anjali Anjali",
+      "Neetika Saxena",
+      "Tushar Dhiman"
+    ],
+    "year": 2025,
+    "doi": "10.47760/oajmr.2025.v01i05.001",
+    "url": "https://openalex.org/W7128207950",
+    "openalex_id": "https://openalex.org/W7128207950",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OpenAlex",
+    "source_type": "peer_reviewed_article",
+    "license": "other-oa",
+    "abstract": "Moral development is an essential component of holistic education, shaping students\u2019 ethical awareness, empathy, and sense of responsibility alongside academic achievement. This study explores the ethical imperative of fostering moral growth in educational settings, emphasizing the integration of curricular and co-curricular approaches, the pivotal role of educators as moral exemplars, and the influence of digital environments on moral reasoning. A review of literature highlights theoretical foundations from classical developmental models to contemporary approaches incorporating the ethics of care and social domain theory. Key findings underscore that effective moral education requires intentional design, sustained engagement, and multi-stakeholder collaboration involving teachers, families, communities, and policymakers. Challenges such as variability in program design, insufficient teacher preparation, and limited assessment tools persist, yet opportunities exist to leverage digital platforms and experiential learning to enhance moral engagement. The paper proposes a holistic framework for sustainable moral development that balances academic rigor with ethical cultivation, ensuring students graduate as both competent professionals and principled citizens.",
+    "topics": [
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-resilience-and-adaptability-in-students-psychological-insights-for-futur",
+    "title": "Resilience and Adaptability in Students Psychological Insights for Future-Ready Education",
+    "authors": [
+      "Bappaditya Adhikary,  Dharmendra Nath Tiwari, NitaNath,  Ankit Duhan,  Shamin Eabenson, Priya Ahuja"
+    ],
+    "year": 2026,
+    "doi": "10.52710/ijse.5374",
+    "url": "https://openalex.org/W7224993666",
+    "openalex_id": "https://openalex.org/W7224993666",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OpenAlex",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": null,
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-career-adaptability-resilience-and-work-readiness-in-competency-based-co",
+    "title": "Career Adaptability, Resilience, and Work Readiness in Competency-based Cosmetology Education: A Mediation Study among Cosmetology Education Students",
+    "authors": [
+      "Rina Dwijuliani",
+      "Tri Wrahatnolo",
+      "Ratna Suhartini",
+      "Achmad Imam Agung",
+      "Tri Rijanto",
+      "Binar Kurnia Prahani"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7223607848",
+    "openalex_id": "https://openalex.org/W7223607848",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Engineering Education/Journal of engineering education transformations/Journal of engineering education transformation",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Among Indonesian cosmetology education students, this study investigated whether resilience mediates the association between career adaptability and job readiness. The study employed a quantitative cross-sectional design and used partial least squares structural equation modelling to analyze the data. The results demonstrated that resilience and work preparedness were positively correlated with career adaptability, and that work readiness was positively correlated with resilience. Complementary partial mediation was shown by the strong indirect pathway through resilience. These results imply that in competency-based cosmetology education, resilience serves as a crucial mediating mechanism between career adaptability and work preparedness. The study is in favour of including resilience-building, career development, feedback, and reflection into hands-on technical education.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-preparing-the-next-generation-chemistry-students-for-systems-thinking-br",
+    "title": "Preparing the Next-generation Chemistry Students for Systems Thinking: Bridging Secondary and Higher Education",
+    "authors": [
+      "Lieke Pieters",
+      "Talitha Christine Visser",
+      "Albert S. Y. Wong"
+    ],
+    "year": 2026,
+    "doi": "10.1021/acs.jchemed.5c00989",
+    "url": "https://openalex.org/W7167130652",
+    "openalex_id": "https://openalex.org/W7167130652",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Chemical Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "Abstract Systems thinking emphasizes the analysis of the interconnectedness of system components and processes, making it particularly useful for addressing 21st-century challenges. However, the question is When should we prepare the next-generation students for systems thinking skills? This work started with the anticipation that engaging students with societal challenges in secondary education will make their learning experience meaningful and may enhance their motivation toward contributing to solving them. We developed a set of learning materials and investigated if conceptual modeling can be used as a tool to support students in developing systems thinking skills. The research was carried out with 156 students (eighth and ninth grade at the Dutch VWO-4 and VWO-5 levels) of four secondary schools. We used questionnaires and semistructured interviews to demonstrate that the learning materials could indeed support students\u2019 individual development of conceptual models. In addition, both students and teachers praised that the learning materials stimulated a collaborative learning environment for structuring ideas. Our results suggest that systems thinking skills can already be applied in practice, even without specific prior training, as the development of conceptual models implicitly requires systems thinking. Overall, the learning materials developed in this work could be broadly applicable to many educational settings and we envision that they enable the increase in teachers\u2019 involvement in innovating education and students\u2019 engagement in science, preparing the next-generation researchers for systems thinking.",
+    "topics": [
+      "collaboration",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t",
+    "title": "A Review of Research on International Chinese Teachers AI Literacy and Teaching Self-Efficacy",
+    "authors": [
+      "Hanyu Guan"
+    ],
+    "year": 2026,
+    "doi": "10.70088/8daqtv66",
+    "url": "https://openalex.org/W7223709894",
+    "openalex_id": "https://openalex.org/W7223709894",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Education insights.",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This research article examines the AI literacy and teaching self-efficacy of international Chinese teachers, exploring their preparedness to integrate artificial intelligence into educational practices. The study begins with a comprehensive review of the theoretical frameworks surrounding AI literacy and self-efficacy, followed by an empirical investigation into the current state of these competencies among international Chinese educators. Using a mixed-methods approach, the research identifies key factors influencing AI literacy and self-efficacy, including professional training, teaching experience and institutional support. Results reveal significant disparities in AI literacy levels and self-efficacy across different demographic groups, highlighting the need for targeted interventions. The discussion emphasizes the implications of these findings for teacher training programs and policy development. The article concludes by proposing actionable strategies to enhance AI literacy and self-efficacy among international Chinese teachers, fostering their ability to navigate the evolving educational landscape.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
   }
 ]

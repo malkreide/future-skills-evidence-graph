@@ -9886,5 +9886,253 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "educator"
+  },
+  {
+    "id": "src-the-acceptance-and-motivation-of-middle-school-students-extracurricular",
+    "title": "The Acceptance and Motivation of Middle School Students\u2019 Extracurricular Use of Generative AI in English Learning from the Perspective of the Technology Acceptance Model",
+    "authors": [
+      "Su-Xin Shen"
+    ],
+    "year": 2026,
+    "doi": "10.1051/shsconf/202624002009",
+    "url": "https://www.semanticscholar.org/paper/1af9a25fc4bcc722ce485865b80d099ad1909f51",
+    "openalex_id": null,
+    "semantic_scholar_id": "1af9a25fc4bcc722ce485865b80d099ad1909f51",
+    "eric_id": null,
+    "publisher": "SHS Web of Conferences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "With the popularity of generative AI technology among middle school students, the problem of using generative AI to assist English learning after class has been widely concerned. However, there are still deficiencies in the empirical research on how middle school students\u2019 technology acceptance and use motivation affect their use behavior. Based on the theoretical framework of the Technology Acceptance Model (TAM), this paper analyzes the relationship between perceived usefulness, perceived ease of use, use motivation, and use behavior of middle school students\u2019 English learning using generative AI in extracurricular informal learning situations. Perceived usefulness and perceived ease of use both demonstrated positive associations with use behavior, and use motivation functioned as a mediator in these relationships. The AI use motivation of middle school students is dominated by instrumental motivation, and the use behavior is characterized by low frequency, short-term use, and shallow fragmentation. Based on this, this study proposes the following recommendations: In daily teaching, teachers should place greater emphasis on developing students\u2019 ability to evaluate AI output in a discriminative way and students\u2019 ability to apply AI strategically. Schools should emphasize the education of AI ethics.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon",
+    "title": "Latent Profiles of Perceived Learning Usefulness and Perceived Risk Among Korean Middle and High School Students with Experience Using Generative AI: Profile Characteristics and Educational Implications",
+    "authors": [
+      "Yunseong Jo"
+    ],
+    "year": 2026,
+    "doi": "10.15564/jeju.2026.9.28.3.213",
+    "url": "https://www.semanticscholar.org/paper/ddfdc7d57ca93d7067f035f4283dc2a03d15070b",
+    "openalex_id": null,
+    "semantic_scholar_id": "ddfdc7d57ca93d7067f035f4283dc2a03d15070b",
+    "eric_id": null,
+    "publisher": "Research Institute of Education Science, Jeju National University",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study identified profiles based on adolescents\u2019 perceptions of the learning usefulness and risks of generative AI and examined factors associated with profile membership and educational characteristics across profiles. Public-use data from 3,959 Korean middle and high school students with experience using generative AI were analyzed. Latent profile analysis was conducted using perceived learning usefulness and risk perception, followed by R3STEP and BCH analyses. Five profiles emerged: dual-perception, optimistic, cautious, low-perception, and skeptical. Generative AI use time, AI education experience, sex, grade level, and academic achievement were significantly associated with profile membership, whereas household economic status was not. The dual-perception profile showed the highest AI literacy, continuance intention, and AI education needs, while the low-perception profile showed generally low AI literacy and the lowest AI education needs. These findings suggest that AI education should foster students\u2019 ability to consider both the usefulness and risks of generative AI and accommodate diverse patterns of perception.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-work-in-progress-computational-thinking-skills-assessment-in-higher-educ",
+    "title": "Work in Progress: Computational Thinking Skills Assessment in Higher Education",
+    "authors": [
+      "Frances Sheridan",
+      "Paul Stynes",
+      "Pramod Pathak",
+      "Keith Quille"
+    ],
+    "year": 2025,
+    "doi": "10.1109/EDUNINE62377.2025.10981347",
+    "url": "https://www.semanticscholar.org/paper/b868c1189a4011618cb3e6803a47abcaa27fde5a",
+    "openalex_id": null,
+    "semantic_scholar_id": "b868c1189a4011618cb3e6803a47abcaa27fde5a",
+    "eric_id": null,
+    "publisher": "2025 IEEE Engineering Education World Conference (EDUNINE)",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The goal of this research is to identify a tool for use in assessing Computational Thinking Skills in undergraduate Computing students. To measure the effectiveness of interventions for the development of Computational Thinking skills, there is a need for valid and reliable assessment tools. Much of the research to date has been concentrated in primary and secondary education with a shortfall in research for higher education settings. This research aims to try and address this gap and is comprised of three main stages: a literature review; a pre-pilot study; and a pilot study. The literature review identified a validated tool with potential for use with undergraduate Computing students. The pre-pilot and pilot studies invited participants to engage with the tool, but engagement was limited with low participation rates. This paper examines the reasons for this and explores possible ways to move the research forward considering these challenges.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-and-evaluation-of-articulate-storyline-based-interactive-med",
+    "title": "Development and Evaluation of Articulate Storyline-Based Interactive Media: Integration of Socio-Scientific Issues in Hydrocarbon Learning to Enhance Students\u2019 Critical Thinking Skills",
+    "authors": [
+      "Miranda Nora'in",
+      "Arif Sholahuddin",
+      "Norsifa Humaira",
+      "Febry Rosita",
+      "Siti Khadijah",
+      "M. Rezani"
+    ],
+    "year": 2025,
+    "doi": "10.20961/jkpk.v10i2.105973",
+    "url": "https://www.semanticscholar.org/paper/c9d48f5a20bae3ac02066306f9375bbee239d6fd",
+    "openalex_id": null,
+    "semantic_scholar_id": "c9d48f5a20bae3ac02066306f9375bbee239d6fd",
+    "eric_id": null,
+    "publisher": "JKPK (Jurnal Kimia dan Pendidikan Kimia)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Critical thinking enables students to make informed decisions, resist misinformation, and construct deeper disciplinary understanding, yet it remains underdeveloped in many classrooms. This study developed and evaluated an interactive hydrocarbon learning medium created with Articulate Storyline and integrating socioscientific issues (SSI) within the ADDIE framework (Analysis, Design, Development, Implementation, Evaluation). The research was conducted at an Islamic boarding school in Banjarmasin with 61 students (individual try-outs: n = 5; small-group trials: n = 10). Instruments\u2014questionnaires, observation sheets, and tests\u2014were aligned to Facione\u2019s six critical-thinking indicators and used to assess validity, practicality, and effectiveness. Content and media validity were high (expert ratings: 0.89 and 0.88), internal consistency was acceptable (Cronbach\u2019s alpha = 0.86), and practicality was rated very good (mean = 4.59). Effectiveness analyses showed substantial learning gains (normalized gain, n-gain = 0.77 and 0.78) and statistically significant pre- to post-improvements (paired t-tests, p < 0.001), indicating the medium effectively enhances students\u2019 critical thinking in chemistry. Limitations include the focus on a single topic (hydrocarbons), a single site with a modest sample, and no assessment of other skills or long-term retention. Within these bounds, the media demonstrate strong quality and practical classroom value, supporting teachers to design engaging, student-centered instruction that cultivates deeper thinking.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el",
+    "title": "Digital Literacy Questionnaire Instrument: Based on the Integration of Elementary School Students' Characteristics",
+    "authors": [
+      "A. Afandi",
+      "Shirly Rizki Kusumaningrum",
+      "R. S. Dewi",
+      "Riska Pristiani"
+    ],
+    "year": 2024,
+    "doi": "10.23887/ijee.v8i2.76773",
+    "url": "https://www.semanticscholar.org/paper/f070f88cb0ccf4cfb39666e1b9f826652f88e01a",
+    "openalex_id": null,
+    "semantic_scholar_id": "f070f88cb0ccf4cfb39666e1b9f826652f88e01a",
+    "eric_id": null,
+    "publisher": "International Journal of Elementary Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In this era of technological progress, adequate digital literacy skills are needed for elementary school students. The problem that arises is the lack of measuring tools to capture digital literacy skills specifically for elementary school students. Where this measuring instrument can be used as a tool to profile elementary school students' digital literacy abilities. The results of the digital literacy skill profile portrait can be used by teachers to carry out future intervention strategies. Based on this, this research aims to create a questionnaire instrument that can measure digital literacy skills in elementary school students. This research uses seven areas of digital literacy that have been determined by UNESCO (2018). Aspects of the characteristics of elementary school students including cognitive, language, motoric, social-emotional are also taken into consideration. This research applies a 4D model. Data was collected using a validity questionnaire instrument. The test subjects were elementary school teacher education lecturers who had a track record of research related to educational technology. Data were analysis using descriptive analysis techniques to describe the validity of the products that had been developed. The validation results show that the indicators for developing this instrument have been prepared based on the digital literacy theory promoted by UNESCO in 2018, and have also been detailed with the characteristics of elementary school students. According to experts, this instrument can be considered an excellent category and is ready to be used in measuring the digital literacy skills of elementary school students.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-importance-of-financial-literacy-among-elementary-school-students-a",
+    "title": "The Importance of Financial Literacy Among Elementary School Students: A Case Study of Savings Activities in Menur Pumpungan State Elementary School Surabaya",
+    "authors": [
+      "A. Mansur",
+      "G. Lestari",
+      "R. Nugroho"
+    ],
+    "year": 2024,
+    "doi": "10.56707/ijoerar.v2i3.74",
+    "url": "https://www.semanticscholar.org/paper/9c96e9358aee1bba67220720c56947f0ff531a68",
+    "openalex_id": null,
+    "semantic_scholar_id": "9c96e9358aee1bba67220720c56947f0ff531a68",
+    "eric_id": null,
+    "publisher": "International Journal of Emerging Research and Review",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Objective:\u00a0This study aims to investigate the importance of financial literacy among elementary school students and assess the efficacy of savings programs in promoting financial education. Method: Utilizing a qualitative case study approach, data were gathered through observations, interviews, and document analysis. The study focused on a collaborative initiative between elementary schools and Bank Jatim to implement savings activities. Participants included students, teachers, and bank representatives. Results: The findings highlight the significance of financial literacy in elementary education, emphasizing its role in fostering financial management skills and responsible decision-making among students. The savings programs facilitated by Bank Jatim demonstrated a positive impact on students' financial knowledge, behavior, and attitudes. Through regular savings activities, students developed habits of diligence, discipline, independence, and patience. Additionally, the collaboration between schools and the bank provided a practical platform for financial learning, helping students distinguish between wants and needs and relieving financial burdens on parents. Novelty: This research contributes to the literature by providing empirical evidence of the effectiveness of school-based savings programs in enhancing financial literacy among elementary students. By employing a qualitative case study approach, the study offers insights into the implementation and outcomes of such initiatives, highlighting their potential to instill lifelong financial skills and positively impact students' financial well-being.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes",
+    "title": "Perceptions of AI-Driven Teaching Analytics Dashboard for Teacher Professional Development and Their Associations with AI Literacy",
+    "authors": [
+      "Chao Wang",
+      "Xiao Hu",
+      "Hai-Xu Wang",
+      "Hong Wang"
+    ],
+    "year": 2026,
+    "doi": "10.1109/ICALT68022.2026.00059",
+    "url": "https://www.semanticscholar.org/paper/3d4af96f316219b3a6871ce3ecc806e529faa4a1",
+    "openalex_id": null,
+    "semantic_scholar_id": "3d4af96f316219b3a6871ce3ecc806e529faa4a1",
+    "eric_id": null,
+    "publisher": "International Conference on Advanced Learning Technologies",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Evidence is limited on whether teachers find AI-generated feedback in teaching analytics dashboards (TADs) interpretable and actionable for professional development, and why perceptions vary. We surveyed 80 in-service teachers after they reviewed AI-driven TAD reports in a teaching-reflection platform. Perceptions covered visual attraction, ease of use, comprehensibility, perceived usefulness, and behavioral change; AI literacy was measured across five competency facets. Teachers reported high AI literacy and positive TAD perceptions. Total AI literacy strongly correlated with overall TAD perception and each dimension and significantly predicted them in regressions. Due to multicollinearity in the five-facet model, we re-estimated facet models excluding AI foundations and applications. In these models, AI for professional development was the most consistent predictor; ethics of AI and a human-centered mindset predicted selected outcomes, while no facet uniquely predicted ease of use. Findings are correlational and context-bound, informing action-oriented and ethically grounded TAD design and teacher capacity-building.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat",
+    "title": "AI Literacy, Attitudes and Perceived Technological Competence as Correlates of Pre-Service Teachers\u2019 Beliefs About the Professional Relevance of AI: A Latent Mediation Analysis for Sustainable Teacher Education",
+    "authors": [
+      "Mesut Tabuk",
+      "Bar\u0131\u015f \u00c7etin"
+    ],
+    "year": 2026,
+    "doi": "10.3390/su182010454",
+    "url": "https://www.semanticscholar.org/paper/7bd576a88d37347454ccf2ae58233daf4aa0d40a",
+    "openalex_id": null,
+    "semantic_scholar_id": "7bd576a88d37347454ccf2ae58233daf4aa0d40a",
+    "eric_id": null,
+    "publisher": "Sustainability",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Preparing pre-service teachers to use artificial intelligence (AI) critically and equitably is part of the quality-education agenda of Sustainable Development Goal 4. Within a framework informed by the theory of planned behaviour, this study examined how AI literacy is associated with pre-service teachers\u2019 belief that AI will play an important role in the teaching profession, and whether a gender difference in this belief runs through attitudes and perceived technological competence. Data from 493 pre-service teachers at one Turkish faculty were analysed with a latent structural equation model for ordinal indicators. Within this model, the association between self-reported AI literacy competence and the belief ran predominantly through positive attitude (indirect \u03b2 = 0.20) and secondarily through perceived competence (\u03b2 = 0.07). Ethical understanding was associated with stronger concerns about AI (\u03b2 = 0.30). Women held a weaker belief than men (standardised difference = \u22120.28), a difference statistically accounted for mainly by lower positive attitude, with weaker evidence for perceived competence. Coefficients were stable across specifications. Because the design is cross-sectional and single-institution, the associations are not causal and require replication; they suggest that equitable AI preparation may be better targeted at positive experience with AI and perceived competence than at demographic categories.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon",
+    "title": "Design Inquiry for AI Literacy Framework Development: Evidence from Indonesian Pre-service Primary School Teachers in Teaching English to Young Learners",
+    "authors": [
+      "Alpian Husna",
+      "Rika Setyawati",
+      "Audia Mecca"
+    ],
+    "year": 2026,
+    "doi": "10.31004/jerkin.v5i1.7704",
+    "url": "https://www.semanticscholar.org/paper/b852875766b68b8a6f71e996f298ab412f21103a",
+    "openalex_id": null,
+    "semantic_scholar_id": "b852875766b68b8a6f71e996f298ab412f21103a",
+    "eric_id": null,
+    "publisher": "Jurnal Pengabdian Masyarakat dan Riset Pendidikan",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Artificial intelligence (AI) has created new opportunities and challenges for teacher education, requiring pre-service teachers to develop competencies that support the responsible and pedagogically appropriate use of AI in classroom practice. This study identifies the educational needs that should inform the development of an AI literacy framework for Indonesian pre-service primary school teachers preparing to teach English to Young Learners (TEYL). The study employed a mixed-method Design Inquiry, operationalising the Analysis and Exploration phase of Educational Design Research. Quantitative data were collected through a questionnaire based on the UNESCO AI Competency Framework for Teachers (AI CFT); qualitative evidence came from semi-structured interviews, classroom observations, and document analysis. The findings revealed five educational needs: strengthening conceptual AI understanding, developing AI-enhanced pedagogy for TEYL, promoting human-centred and ethical AI practice, supporting continuous professional learning, and strengthening institutional support for AI literacy. These needs were translated into five design requirements, five core AI literacy competencies, and fifteen observable competency indicators, synthesised into an Empirical Design Requirements Matrix (DRM). The DRM is the principal outcome of this study: it links authentic educational evidence directly to design specifications for AI literacy framework development, providing an empirical foundation for constructing and validating a framework responsive to the needs of Indonesian pre-service primary school teachers.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
   }
 ]

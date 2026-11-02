@@ -50684,5 +50684,1354 @@
     "status": "candidate",
     "created_at": "2026-10-26",
     "reviewed_at": null
+  },
+  {
+    "id": "claim-autoanalysis-an-automated-self-updating-meta-analysis-of-human-ai-collab",
+    "statement": "These findings highlight the important distinction between improving human performance and achieving human-AI synergy and underscore the need to evaluate collaboration against both human and AI performance alone.",
+    "source_ids": [
+      "src-autoanalysis-an-automated-self-updating-meta-analysis-of-human-ai-collab"
+    ],
+    "text_anchor": "abstract, sentence 7: \"These findings highlight the important distinction between improving human performance and achieving human-AI synergy and underscore the need to evaluate collaboration against both human and AI performance alone.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-autoanalysis-an-automated-self-updating-meta-analysis-of-human-ai-collab-2",
+    "statement": "As generative artificial intelligence (AI) becomes more capable and widely used, understanding when and how humans should work with these systems is becoming increasingly important.",
+    "source_ids": [
+      "src-autoanalysis-an-automated-self-updating-meta-analysis-of-human-ai-collab"
+    ],
+    "text_anchor": "abstract, sentence 1: \"As generative artificial intelligence (AI) becomes more capable and widely used, understanding when and how humans should work with these systems is becoming increasingly important.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru",
+    "statement": "It is known that this truncation can result in a significant increase in privacy loss.",
+    "source_ids": [
+      "src-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru"
+    ],
+    "text_anchor": "abstract, sentence 7: \"It is known that this truncation can result in a significant increase in privacy loss.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru-2",
+    "statement": "For Poisson sampling with truncated batches, we demonstrate empirically that our mechanism achieves better privacy--efficiency tradeoffs than the direct accounting for truncation recently given by (Ganesh, 2025).",
+    "source_ids": [
+      "src-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru"
+    ],
+    "text_anchor": "abstract, sentence 12: \"For Poisson sampling with truncated batches, we demonstrate empirically that our mechanism achieves better privacy--efficiency tradeoffs than the direct accounting for truncation recently given by (Ganesh, 2025).\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru-3",
+    "statement": "Randomly sampling these batches allows for better privacy bounds via privacy amplification results.",
+    "source_ids": [
+      "src-counting-on-dummies-privacy-amplification-with-observable-counts-and-tru"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Randomly sampling these batches allows for better privacy bounds via privacy amplification results.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft-ab",
+    "statement": "In our experiments, our algorithm achieves speedups of several orders of magnitude at high accuracy and gives improved privacy bounds for DP-SGD with PREAMBLE.",
+    "source_ids": [
+      "src-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft"
+    ],
+    "text_anchor": "abstract, sentence 8: \"In our experiments, our algorithm achieves speedups of several orders of magnitude at high accuracy and gives improved privacy bounds for DP-SGD with PREAMBLE.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft-ab-2",
+    "statement": "The existing privacy loss distribution (PLD) accountant for this scheme runs in time quadratic in the inverse of the accuracy parameter $\u03b1$ (Feldman and Shenfeld, 2026).",
+    "source_ids": [
+      "src-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft"
+    ],
+    "text_anchor": "abstract, sentence 3: \"The existing privacy loss distribution (PLD) accountant for this scheme runs in time quadratic in the inverse of the accuracy parameter $\u03b1$ (Feldman and Shenfeld, 2026).\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft-ab-3",
+    "statement": "This reduces the errors that rounding introduces in the mean of the privacy loss and in the $\u03c7^2$ divergence of the computed pair from the order of $\u03b1$ to $O(\u03b1^2/\\log(t))$.",
+    "source_ids": [
+      "src-fast-privacy-loss-accounting-for-random-allocation-via-multiscale-fft"
+    ],
+    "text_anchor": "abstract, sentence 7: \"This reduces the errors that rounding introduces in the mean of the privacy loss and in the $\u03c7^2$ divergence of the computed pair from the order of $\u03b1$ to $O(\u03b1^2/\\log(t))$.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud",
+    "statement": "However, existing infrastructures for collecting such data reproducibly, sustainably, and with strong privacy guarantees remain limited: commercial solutions lack transparency and data governance, while academic tools are typically designed for narrow, short-term use cases and do not support general-purpose academic panel data collections.",
+    "source_ids": [
+      "src-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud"
+    ],
+    "text_anchor": "abstract, sentence 2: \"However, existing infrastructures for collecting such data reproducibly, sustainably, and with strong privacy guarantees remain limited: commercial solutions lack transparency and data governance, while academic tools are typically designed for narrow, short-term use cases and do not support general-purpose academic panel data collections.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud-2",
+    "statement": "GESIS Surf implements privacy-by-design through strict opt-in participation, per-domain collection rules, and client-side data minimization, ensuring that sensitive data are controlled at the point of collection.",
+    "source_ids": [
+      "src-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud"
+    ],
+    "text_anchor": "abstract, sentence 6: \"GESIS Surf implements privacy-by-design through strict opt-in participation, per-domain collection rules, and client-side data minimization, ensuring that sensitive data are controlled at the point of collection.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud-3",
+    "statement": "By combining hierarchical session modeling, content-level capture, and integrated privacy enforcement within a unified system, GESIS Surf provides a general-purpose infrastructure for studying digital behavior in a reproducible manner over time.",
+    "source_ids": [
+      "src-gesis-surf-an-open-source-infrastructure-for-privacy-preserving-longitud"
+    ],
+    "text_anchor": "abstract, sentence 8: \"By combining hierarchical session modeling, content-level capture, and integrated privacy enforcement within a unified system, GESIS Surf provides a general-purpose infrastructure for studying digital behavior in a reproducible manner over time.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-satfront-detecting-atmospheric-fronts-with-satellite-data-using-machine",
+    "statement": "We introduce SATFRONT, a machine learning framework for detecting cold, warm, and occluded fronts over Europe from geostationary satellite observations, with reanalysis data as an optional additional input.",
+    "source_ids": [
+      "src-satfront-detecting-atmospheric-fronts-with-satellite-data-using-machine"
+    ],
+    "text_anchor": "abstract, sentence 3: \"We introduce SATFRONT, a machine learning framework for detecting cold, warm, and occluded fronts over Europe from geostationary satellite observations, with reanalysis data as an optional additional input.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-valid-gmm-inference-with-non-parametrically-generated-discrete-type-abst",
+    "statement": "The recent progress in machine learning and classification methods has enabled researchers to predict economic discrete attributes that are not observed in standard datasets.",
+    "source_ids": [
+      "src-valid-gmm-inference-with-non-parametrically-generated-discrete-type"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The recent progress in machine learning and classification methods has enabled researchers to predict economic discrete attributes that are not observed in standard datasets.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-valid-gmm-inference-with-non-parametrically-generated-discrete-type-abst-2",
+    "statement": "Even if the double/debiased machine learning approach provides a way to correct the regularization bias, the according bias-correction term is not well defined in our problem, because even a small first-stage error can change the type discontinuously.",
+    "source_ids": [
+      "src-valid-gmm-inference-with-non-parametrically-generated-discrete-type"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Even if the double/debiased machine learning approach provides a way to correct the regularization bias, the according bias-correction term is not well defined in our problem, because even a small first-stage error can change the type discontinuously.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal",
+    "statement": "These findings align with recent applications of signal detection theory to misinformation research and suggest that the same framework can be useful for the evaluation of critical thinking education.",
+    "source_ids": [
+      "src-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal"
+    ],
+    "text_anchor": "abstract, sentence 6: \"These findings align with recent applications of signal detection theory to misinformation research and suggest that the same framework can be useful for the evaluation of critical thinking education.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal-2",
+    "statement": "Students in the critical thinking course showed significant increases in both discriminability and response bias; students in the comparison course did not.",
+    "source_ids": [
+      "src-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Students in the critical thinking course showed significant increases in both discriminability and response bias; students in the comparison course did not.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal-3",
+    "statement": "A central goal of critical thinking courses is to help students distinguish science from pseudoscience, and more generally, warranted from unwarranted claims.",
+    "source_ids": [
+      "src-teaching-skepticism-or-nihilism-critical-thinking-education-as-a-signal"
+    ],
+    "text_anchor": "abstract, sentence 1: \"A central goal of critical thinking courses is to help students distinguish science from pseudoscience, and more generally, warranted from unwarranted claims.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita",
+    "statement": "Many studies claim that artificial intelligence can help ease human work and increase knowledge and skills in the field of education.",
+    "source_ids": [
+      "src-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Many studies claim that artificial intelligence can help ease human work and increase knowledge and skills in the field of education.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita-2",
+    "statement": "Artificial intelligence has introduced fundamental challenges to education for students, educators and parents.",
+    "source_ids": [
+      "src-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Artificial intelligence has introduced fundamental challenges to education for students, educators and parents.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita-3",
+    "statement": "Artificial intelligence has already become a part of education at high schools and colleges.",
+    "source_ids": [
+      "src-the-role-of-artificial-intelligence-in-children-s-education-for-a-digita"
+    ],
+    "text_anchor": "abstract, sentence 10: \"Artificial intelligence has already become a part of education at high schools and colleges.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-influence-of-social-media-on-problem-solving-abilities-through-digit",
+    "statement": "Research indicates that social media can have both positive and negative impacts on these abilities, depending on the quality of interactions and digital literacy.",
+    "source_ids": [
+      "src-the-influence-of-social-media-on-problem-solving-abilities-through-digit"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Research indicates that social media can have both positive and negative impacts on these abilities, depending on the quality of interactions and digital literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-influence-of-social-media-on-problem-solving-abilities-through-digit-2",
+    "statement": "The results show that social media significantly influences teenagers' digital literacy by 40%, but does not directly affect problem-solving skills.",
+    "source_ids": [
+      "src-the-influence-of-social-media-on-problem-solving-abilities-through-digit"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The results show that social media significantly influences teenagers' digital literacy by 40%, but does not directly affect problem-solving skills.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-influence-of-social-media-on-problem-solving-abilities-through-digit-3",
+    "statement": "Digital literacy itself has a significant impact of 23.1%, aiding teenagers in problem solving through skills in searching, evaluating, and managing digital information.",
+    "source_ids": [
+      "src-the-influence-of-social-media-on-problem-solving-abilities-through-digit"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Digital literacy itself has a significant impact of 23.1%, aiding teenagers in problem solving through skills in searching, evaluating, and managing digital information.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teachers-digital-competence-and-continuous-professional-development-in-t",
+    "statement": "Exploring secondary sources and policy documents spanning 2015 to 2025, this paper identifies three key issues in the current literature such as, inconsistent definitions of digital competence across frameworks; mismatch between existing professional development models and new AI requirements; and ongoing uncertainty about teacher agency in AI-integrated settings.",
+    "source_ids": [
+      "src-teachers-digital-competence-and-continuous-professional-development-in-t"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Exploring secondary sources and policy documents spanning 2015 to 2025, this paper identifies three key issues in the current literature such as, inconsistent definitions of digital competence across frameworks; mismatch between existing professional development models and new AI requirements; and ongoing uncertainty about teacher agency in AI-integrated settings.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teachers-digital-competence-and-continuous-professional-development-in-t-2",
+    "statement": "Despite in-depth research on digital competence frameworks and teacher professional development as distinct areas, a detailed conceptual framework that directly links these two fields remains unexplored.",
+    "source_ids": [
+      "src-teachers-digital-competence-and-continuous-professional-development-in-t"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Despite in-depth research on digital competence frameworks and teacher professional development as distinct areas, a detailed conceptual framework that directly links these two fields remains unexplored.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-teachers-digital-competence-and-continuous-professional-development-in-t-3",
+    "statement": "This paper argues that digital competence is not merely a technical skill.",
+    "source_ids": [
+      "src-teachers-digital-competence-and-continuous-professional-development-in-t"
+    ],
+    "text_anchor": "abstract, sentence 3: \"This paper argues that digital competence is not merely a technical skill.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p",
+    "statement": "The findings in this study indicate the importance of digital literacy education which has a positive impact on knowledge, understanding, and skills in using social mediathatis currently usedasa source of information and entertainment by the public, especially among the alpha generation that can bring about awareness in using social media.",
+    "source_ids": [
+      "src-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p"
+    ],
+    "text_anchor": "abstract, sentence 7: \"The findings in this study indicate the importance of digital literacy education which has a positive impact on knowledge, understanding, and skills in using social mediathatis currently usedasa source of information and entertainment by the public, especially among the alpha generation that can bring about awareness in using social media.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p-2",
+    "statement": "So digital literacy education is a solution that can be done by the government and elements of society and academics who care about the progress of the nation.",
+    "source_ids": [
+      "src-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p"
+    ],
+    "text_anchor": "abstract, sentence 9: \"So digital literacy education is a solution that can be done by the government and elements of society and academics who care about the progress of the nation.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p-3",
+    "statement": "Research on digital literacy is still rare, especially in Indonesia.",
+    "source_ids": [
+      "src-digital-literacy-education-in-the-industrial-revolution-4-0-in-alquran-p"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Research on digital literacy is still rare, especially in Indonesia.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-media-in-education-teaching-learning-and-literacy-practices-with",
+    "statement": "Drawing on theories related to cultural studies, media literacy, anthropology, and creativity, the author explores learning strategies with digital media based on an empowering, values-driven framework.",
+    "source_ids": [
+      "src-digital-media-in-education-teaching-learning-and-literacy-practices-with"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Drawing on theories related to cultural studies, media literacy, anthropology, and creativity, the author explores learning strategies with digital media based on an empowering, values-driven framework.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence, creativity. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "conceptual_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-media-in-education-teaching-learning-and-literacy-practices-with-2",
+    "statement": "This innovative book will appeal to students and scholars of creativity, digital media production, primary education and literacy.",
+    "source_ids": [
+      "src-digital-media-in-education-teaching-learning-and-literacy-practices-with"
+    ],
+    "text_anchor": "abstract, sentence 6: \"This innovative book will appeal to students and scholars of creativity, digital media production, primary education and literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: creativity. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "conceptual_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine",
+    "statement": "An effective way to improve this situation would be to improve students\u2019 digital competence.",
+    "source_ids": [
+      "src-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine"
+    ],
+    "text_anchor": "abstract, sentence 2: \"An effective way to improve this situation would be to improve students\u2019 digital competence.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine-2",
+    "statement": "The results show students\u2019 self-assessment level of digital competence in different areas and differences between the bachelor\u2019s and master\u2019s programmes.",
+    "source_ids": [
+      "src-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine"
+    ],
+    "text_anchor": "abstract, sentence 8: \"The results show students\u2019 self-assessment level of digital competence in different areas and differences between the bachelor\u2019s and master\u2019s programmes.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine-3",
+    "statement": "To determine teachers\u2019 level of digital competence, the Spanish adaptation of the European Framework for Digital Competence of Educators was used to analyse the self-assessment responses of teachers in training at the Faculty of Education and Sport Sciences in Melilla, Spain.",
+    "source_ids": [
+      "src-analysis-of-digital-competence-of-educators-digcompedu-in-teacher-traine"
+    ],
+    "text_anchor": "abstract, sentence 4: \"To determine teachers\u2019 level of digital competence, the Spanish adaptation of the European Framework for Digital Competence of Educators was used to analyse the self-assessment responses of teachers in training at the Faculty of Education and Sport Sciences in Melilla, Spain.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-moral-development-in-students-an-ethical-imperative-in-education-abstrac",
+    "statement": "Key findings underscore that effective moral education requires intentional design, sustained engagement, and multi-stakeholder collaboration involving teachers, families, communities, and policymakers.",
+    "source_ids": [
+      "src-moral-development-in-students-an-ethical-imperative-in-education"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Key findings underscore that effective moral education requires intentional design, sustained engagement, and multi-stakeholder collaboration involving teachers, families, communities, and policymakers.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-moral-development-in-students-an-ethical-imperative-in-education-abstrac-2",
+    "statement": "Moral development is an essential component of holistic education, shaping students\u2019 ethical awareness, empathy, and sense of responsibility alongside academic achievement.",
+    "source_ids": [
+      "src-moral-development-in-students-an-ethical-imperative-in-education"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Moral development is an essential component of holistic education, shaping students\u2019 ethical awareness, empathy, and sense of responsibility alongside academic achievement.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-moral-development-in-students-an-ethical-imperative-in-education-abstrac-3",
+    "statement": "A review of literature highlights theoretical foundations from classical developmental models to contemporary approaches incorporating the ethics of care and social domain theory.",
+    "source_ids": [
+      "src-moral-development-in-students-an-ethical-imperative-in-education"
+    ],
+    "text_anchor": "abstract, sentence 3: \"A review of literature highlights theoretical foundations from classical developmental models to contemporary approaches incorporating the ethics of care and social domain theory.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-career-adaptability-resilience-and-work-readiness-in-competency-based-co",
+    "statement": "Among Indonesian cosmetology education students, this study investigated whether resilience mediates the association between career adaptability and job readiness.",
+    "source_ids": [
+      "src-career-adaptability-resilience-and-work-readiness-in-competency-based-co"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Among Indonesian cosmetology education students, this study investigated whether resilience mediates the association between career adaptability and job readiness.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-career-adaptability-resilience-and-work-readiness-in-competency-based-co-2",
+    "statement": "These results imply that in competency-based cosmetology education, resilience serves as a crucial mediating mechanism between career adaptability and work preparedness.",
+    "source_ids": [
+      "src-career-adaptability-resilience-and-work-readiness-in-competency-based-co"
+    ],
+    "text_anchor": "abstract, sentence 5: \"These results imply that in competency-based cosmetology education, resilience serves as a crucial mediating mechanism between career adaptability and work preparedness.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-career-adaptability-resilience-and-work-readiness-in-competency-based-co-3",
+    "statement": "The study is in favour of including resilience-building, career development, feedback, and reflection into hands-on technical education.",
+    "source_ids": [
+      "src-career-adaptability-resilience-and-work-readiness-in-competency-based-co"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The study is in favour of including resilience-building, career development, feedback, and reflection into hands-on technical education.\"",
+    "context": "Auto-extracted candidate; matched topics: resilience. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-preparing-the-next-generation-chemistry-students-for-systems-thinking-br",
+    "statement": "Our results suggest that systems thinking skills can already be applied in practice, even without specific prior training, as the development of conceptual models implicitly requires systems thinking.",
+    "source_ids": [
+      "src-preparing-the-next-generation-chemistry-students-for-systems-thinking-br"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Our results suggest that systems thinking skills can already be applied in practice, even without specific prior training, as the development of conceptual models implicitly requires systems thinking.\"",
+    "context": "Auto-extracted candidate; matched topics: systems thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-preparing-the-next-generation-chemistry-students-for-systems-thinking-br-2",
+    "statement": "Overall, the learning materials developed in this work could be broadly applicable to many educational settings and we envision that they enable the increase in teachers\u2019 involvement in innovating education and students\u2019 engagement in science, preparing the next-generation researchers for systems thinking.",
+    "source_ids": [
+      "src-preparing-the-next-generation-chemistry-students-for-systems-thinking-br"
+    ],
+    "text_anchor": "abstract, sentence 9: \"Overall, the learning materials developed in this work could be broadly applicable to many educational settings and we envision that they enable the increase in teachers\u2019 involvement in innovating education and students\u2019 engagement in science, preparing the next-generation researchers for systems thinking.\"",
+    "context": "Auto-extracted candidate; matched topics: systems thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-preparing-the-next-generation-chemistry-students-for-systems-thinking-br-3",
+    "statement": "Abstract Systems thinking emphasizes the analysis of the interconnectedness of system components and processes, making it particularly useful for addressing 21st-century challenges.",
+    "source_ids": [
+      "src-preparing-the-next-generation-chemistry-students-for-systems-thinking-br"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Abstract Systems thinking emphasizes the analysis of the interconnectedness of system components and processes, making it particularly useful for addressing 21st-century challenges.\"",
+    "context": "Auto-extracted candidate; matched topics: systems thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t",
+    "statement": "Using a mixed-methods approach, the research identifies key factors influencing AI literacy and self-efficacy, including professional training, teaching experience and institutional support.",
+    "source_ids": [
+      "src-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Using a mixed-methods approach, the research identifies key factors influencing AI literacy and self-efficacy, including professional training, teaching experience and institutional support.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t-2",
+    "statement": "Results reveal significant disparities in AI literacy levels and self-efficacy across different demographic groups, highlighting the need for targeted interventions.",
+    "source_ids": [
+      "src-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Results reveal significant disparities in AI literacy levels and self-efficacy across different demographic groups, highlighting the need for targeted interventions.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t-3",
+    "statement": "The article concludes by proposing actionable strategies to enhance AI literacy and self-efficacy among international Chinese teachers, fostering their ability to navigate the evolving educational landscape.",
+    "source_ids": [
+      "src-a-review-of-research-on-international-chinese-teachers-ai-literacy-and-t"
+    ],
+    "text_anchor": "abstract, sentence 6: \"The article concludes by proposing actionable strategies to enhance AI literacy and self-efficacy among international Chinese teachers, fostering their ability to navigate the evolving educational landscape.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-acceptance-and-motivation-of-middle-school-students-extracurricular",
+    "statement": "With the popularity of generative AI technology among middle school students, the problem of using generative AI to assist English learning after class has been widely concerned.",
+    "source_ids": [
+      "src-the-acceptance-and-motivation-of-middle-school-students-extracurricular"
+    ],
+    "text_anchor": "abstract, sentence 1: \"With the popularity of generative AI technology among middle school students, the problem of using generative AI to assist English learning after class has been widely concerned.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-acceptance-and-motivation-of-middle-school-students-extracurricular-2",
+    "statement": "Based on the theoretical framework of the Technology Acceptance Model (TAM), this paper analyzes the relationship between perceived usefulness, perceived ease of use, use motivation, and use behavior of middle school students\u2019 English learning using generative AI in extracurricular informal learning situations.",
+    "source_ids": [
+      "src-the-acceptance-and-motivation-of-middle-school-students-extracurricular"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Based on the theoretical framework of the Technology Acceptance Model (TAM), this paper analyzes the relationship between perceived usefulness, perceived ease of use, use motivation, and use behavior of middle school students\u2019 English learning using generative AI in extracurricular informal learning situations.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-acceptance-and-motivation-of-middle-school-students-extracurricular-3",
+    "statement": "Schools should emphasize the education of AI ethics.",
+    "source_ids": [
+      "src-the-acceptance-and-motivation-of-middle-school-students-extracurricular"
+    ],
+    "text_anchor": "abstract, sentence 7: \"Schools should emphasize the education of AI ethics.\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon",
+    "statement": "Generative AI use time, AI education experience, sex, grade level, and academic achievement were significantly associated with profile membership, whereas household economic status was not.",
+    "source_ids": [
+      "src-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Generative AI use time, AI education experience, sex, grade level, and academic achievement were significantly associated with profile membership, whereas household economic status was not.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon-2",
+    "statement": "These findings suggest that AI education should foster students\u2019 ability to consider both the usefulness and risks of generative AI and accommodate diverse patterns of perception.",
+    "source_ids": [
+      "src-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon"
+    ],
+    "text_anchor": "abstract, sentence 7: \"These findings suggest that AI education should foster students\u2019 ability to consider both the usefulness and risks of generative AI and accommodate diverse patterns of perception.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon-3",
+    "statement": "This study identified profiles based on adolescents\u2019 perceptions of the learning usefulness and risks of generative AI and examined factors associated with profile membership and educational characteristics across profiles.",
+    "source_ids": [
+      "src-latent-profiles-of-perceived-learning-usefulness-and-perceived-risk-amon"
+    ],
+    "text_anchor": "abstract, sentence 1: \"This study identified profiles based on adolescents\u2019 perceptions of the learning usefulness and risks of generative AI and examined factors associated with profile membership and educational characteristics across profiles.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-work-in-progress-computational-thinking-skills-assessment-in-higher-educ",
+    "statement": "The goal of this research is to identify a tool for use in assessing Computational Thinking Skills in undergraduate Computing students.",
+    "source_ids": [
+      "src-work-in-progress-computational-thinking-skills-assessment-in-higher-educ"
+    ],
+    "text_anchor": "abstract, sentence 1: \"The goal of this research is to identify a tool for use in assessing Computational Thinking Skills in undergraduate Computing students.\"",
+    "context": "Auto-extracted candidate; matched topics: systems thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-work-in-progress-computational-thinking-skills-assessment-in-higher-educ-2",
+    "statement": "To measure the effectiveness of interventions for the development of Computational Thinking skills, there is a need for valid and reliable assessment tools.",
+    "source_ids": [
+      "src-work-in-progress-computational-thinking-skills-assessment-in-higher-educ"
+    ],
+    "text_anchor": "abstract, sentence 2: \"To measure the effectiveness of interventions for the development of Computational Thinking skills, there is a need for valid and reliable assessment tools.\"",
+    "context": "Auto-extracted candidate; matched topics: systems thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-development-and-evaluation-of-articulate-storyline-based-interactive-med",
+    "statement": "Effectiveness analyses showed substantial learning gains (normalized gain, n-gain = 0.77 and 0.78) and statistically significant pre- to post-improvements (paired t-tests, p < 0.001), indicating the medium effectively enhances students\u2019 critical thinking in chemistry.",
+    "source_ids": [
+      "src-development-and-evaluation-of-articulate-storyline-based-interactive-med"
+    ],
+    "text_anchor": "abstract, sentence 6: \"Effectiveness analyses showed substantial learning gains (normalized gain, n-gain = 0.77 and 0.78) and statistically significant pre- to post-improvements (paired t-tests, p < 0.001), indicating the medium effectively enhances students\u2019 critical thinking in chemistry.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-development-and-evaluation-of-articulate-storyline-based-interactive-med-2",
+    "statement": "Critical thinking enables students to make informed decisions, resist misinformation, and construct deeper disciplinary understanding, yet it remains underdeveloped in many classrooms.",
+    "source_ids": [
+      "src-development-and-evaluation-of-articulate-storyline-based-interactive-med"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Critical thinking enables students to make informed decisions, resist misinformation, and construct deeper disciplinary understanding, yet it remains underdeveloped in many classrooms.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-development-and-evaluation-of-articulate-storyline-based-interactive-med-3",
+    "statement": "Instruments\u2014questionnaires, observation sheets, and tests\u2014were aligned to Facione\u2019s six critical-thinking indicators and used to assess validity, practicality, and effectiveness.",
+    "source_ids": [
+      "src-development-and-evaluation-of-articulate-storyline-based-interactive-med"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Instruments\u2014questionnaires, observation sheets, and tests\u2014were aligned to Facione\u2019s six critical-thinking indicators and used to assess validity, practicality, and effectiveness.\"",
+    "context": "Auto-extracted candidate; matched topics: critical thinking. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el",
+    "statement": "The validation results show that the indicators for developing this instrument have been prepared based on the digital literacy theory promoted by UNESCO in 2018, and have also been detailed with the characteristics of elementary school students.",
+    "source_ids": [
+      "src-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el"
+    ],
+    "text_anchor": "abstract, sentence 12: \"The validation results show that the indicators for developing this instrument have been prepared based on the digital literacy theory promoted by UNESCO in 2018, and have also been detailed with the characteristics of elementary school students.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el-2",
+    "statement": "In this era of technological progress, adequate digital literacy skills are needed for elementary school students.",
+    "source_ids": [
+      "src-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el"
+    ],
+    "text_anchor": "abstract, sentence 1: \"In this era of technological progress, adequate digital literacy skills are needed for elementary school students.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el-3",
+    "statement": "The problem that arises is the lack of measuring tools to capture digital literacy skills specifically for elementary school students.",
+    "source_ids": [
+      "src-digital-literacy-questionnaire-instrument-based-on-the-integration-of-el"
+    ],
+    "text_anchor": "abstract, sentence 2: \"The problem that arises is the lack of measuring tools to capture digital literacy skills specifically for elementary school students.\"",
+    "context": "Auto-extracted candidate; matched topics: digital competence. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-importance-of-financial-literacy-among-elementary-school-students-a",
+    "statement": "The study focused on a collaborative initiative between elementary schools and Bank Jatim to implement savings activities.",
+    "source_ids": [
+      "src-the-importance-of-financial-literacy-among-elementary-school-students-a"
+    ],
+    "text_anchor": "abstract, sentence 3: \"The study focused on a collaborative initiative between elementary schools and Bank Jatim to implement savings activities.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-the-importance-of-financial-literacy-among-elementary-school-students-a-2",
+    "statement": "Additionally, the collaboration between schools and the bank provided a practical platform for financial learning, helping students distinguish between wants and needs and relieving financial burdens on parents.",
+    "source_ids": [
+      "src-the-importance-of-financial-literacy-among-elementary-school-students-a"
+    ],
+    "text_anchor": "abstract, sentence 8: \"Additionally, the collaboration between schools and the bank provided a practical platform for financial learning, helping students distinguish between wants and needs and relieving financial burdens on parents.\"",
+    "context": "Auto-extracted candidate; matched topics: collaboration. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes",
+    "statement": "Perceptions covered visual attraction, ease of use, comprehensibility, perceived usefulness, and behavioral change; AI literacy was measured across five competency facets.",
+    "source_ids": [
+      "src-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes"
+    ],
+    "text_anchor": "abstract, sentence 3: \"Perceptions covered visual attraction, ease of use, comprehensibility, perceived usefulness, and behavioral change; AI literacy was measured across five competency facets.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes-2",
+    "statement": "Teachers reported high AI literacy and positive TAD perceptions.",
+    "source_ids": [
+      "src-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes"
+    ],
+    "text_anchor": "abstract, sentence 4: \"Teachers reported high AI literacy and positive TAD perceptions.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes-3",
+    "statement": "Total AI literacy strongly correlated with overall TAD perception and each dimension and significantly predicted them in regressions.",
+    "source_ids": [
+      "src-perceptions-of-ai-driven-teaching-analytics-dashboard-for-teacher-profes"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Total AI literacy strongly correlated with overall TAD perception and each dimension and significantly predicted them in regressions.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "systematic_review",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat",
+    "statement": "Within a framework informed by the theory of planned behaviour, this study examined how AI literacy is associated with pre-service teachers\u2019 belief that AI will play an important role in the teaching profession, and whether a gender difference in this belief runs through attitudes and perceived technological competence.",
+    "source_ids": [
+      "src-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat"
+    ],
+    "text_anchor": "abstract, sentence 2: \"Within a framework informed by the theory of planned behaviour, this study examined how AI literacy is associated with pre-service teachers\u2019 belief that AI will play an important role in the teaching profession, and whether a gender difference in this belief runs through attitudes and perceived technological competence.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat-2",
+    "statement": "Ethical understanding was associated with stronger concerns about AI (\u03b2 = 0.30).",
+    "source_ids": [
+      "src-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat"
+    ],
+    "text_anchor": "abstract, sentence 5: \"Ethical understanding was associated with stronger concerns about AI (\u03b2 = 0.30).\"",
+    "context": "Auto-extracted candidate; matched topics: ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat-3",
+    "statement": "Preparing pre-service teachers to use artificial intelligence (AI) critically and equitably is part of the quality-education agenda of Sustainable Development Goal 4.",
+    "source_ids": [
+      "src-ai-literacy-attitudes-and-perceived-technological-competence-as-correlat"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Preparing pre-service teachers to use artificial intelligence (AI) critically and equitably is part of the quality-education agenda of Sustainable Development Goal 4.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon",
+    "statement": "This study identifies the educational needs that should inform the development of an AI literacy framework for Indonesian pre-service primary school teachers preparing to teach English to Young Learners (TEYL).",
+    "source_ids": [
+      "src-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon"
+    ],
+    "text_anchor": "abstract, sentence 2: \"This study identifies the educational needs that should inform the development of an AI literacy framework for Indonesian pre-service primary school teachers preparing to teach English to Young Learners (TEYL).\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon-2",
+    "statement": "The findings revealed five educational needs: strengthening conceptual AI understanding, developing AI-enhanced pedagogy for TEYL, promoting human-centred and ethical AI practice, supporting continuous professional learning, and strengthening institutional support for AI literacy.",
+    "source_ids": [
+      "src-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon"
+    ],
+    "text_anchor": "abstract, sentence 5: \"The findings revealed five educational needs: strengthening conceptual AI understanding, developing AI-enhanced pedagogy for TEYL, promoting human-centred and ethical AI practice, supporting continuous professional learning, and strengthening institutional support for AI literacy.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy, ethics. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
+  },
+  {
+    "id": "claim-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon-3",
+    "statement": "Artificial intelligence (AI) has created new opportunities and challenges for teacher education, requiring pre-service teachers to develop competencies that support the responsible and pedagogically appropriate use of AI in classroom practice.",
+    "source_ids": [
+      "src-design-inquiry-for-ai-literacy-framework-development-evidence-from-indon"
+    ],
+    "text_anchor": "abstract, sentence 1: \"Artificial intelligence (AI) has created new opportunities and challenges for teacher education, requiring pre-service teachers to develop competencies that support the responsible and pedagogically appropriate use of AI in classroom practice.\"",
+    "context": "Auto-extracted candidate; matched topics: ai literacy. Verify during review.",
+    "age_range": "unspecified",
+    "outcome": "Not extracted automatically; describe during review.",
+    "evidence_type": "empirical_study",
+    "evidence_strength": "low",
+    "supports_skill_ids": [],
+    "contradicts_skill_ids": [],
+    "extraction_method": "finding_sentence_extraction_no_llm",
+    "status": "candidate",
+    "created_at": "2026-11-02",
+    "reviewed_at": null
   }
 ]
