@@ -10134,5 +10134,87 @@
     "reviewed_at": null,
     "relevance_score": 0.75,
     "audience": "educator"
+  },
+  {
+    "id": "src-integration-of-artificial-intelligence-competencies-into-a-holistic-digi",
+    "title": "Integration of artificial intelligence competencies into a holistic digital literacy framework for middle school education",
+    "authors": [
+      "Raghda Altamimi",
+      "Anas Abu Al-Haija'a"
+    ],
+    "year": 2026,
+    "doi": "10.1038/s41598-026-47133-1",
+    "url": "https://www.semanticscholar.org/paper/fc992440072ac438edff0d1191514983d4010dd2",
+    "openalex_id": null,
+    "semantic_scholar_id": "fc992440072ac438edff0d1191514983d4010dd2",
+    "eric_id": null,
+    "publisher": "Scientific Reports",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "The rise of artificial intelligence (AI) and its rapidly expanding tools is revolutionizing various sectors, with education standing out as a profoundly affected domain, creating an urgent need to incorporate AI competencies into education. This study proposes an AI-enriched digital Educational Framework (AIEDF) based on a newly developed Holistic Digital Literacy Framework (HDLF), synthesizing competencies from existing frameworks. It investigates the essential AI competencies for preparing young learners, specifically middle-school students, to prosper in an AI-driven world. Middle-school students are targeted due to their developmental readiness for abstract thinking, allowing effective early engagement with foundational AI concepts. Initially, four established digital education frameworks are analyzed and synthesized to create HDLF to be used as the foundation for incorporating AI competencies suitable for the cognitive level of the intended age group. The HDLF contains four core areas (Core Computational Concepts and Skills, Digital Citizenship and Ethical Competence, Impact of Computing on Society, and Digital Competence and Lifelong Learning). A literature review identified AI competencies essential for thriving in the 21st century. Using a systematic integration approach, these competencies were analyzed and mapped to the subtopics of the HDLF. The resulting AIEDF is then aligned with Bloom\u2019s taxonomy, illustrating the progression from fundamental AI understanding (e.g., Machine Learning Basics) to more advanced tasks (e.g., designing simple AI applications). It is designed to support structured AI education, developmentally appropriate, and aligned with international standards, proposing a structured and adaptable foundation that requires empirical validation in future work.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "self-regulation",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-mapping-out-the-structural-relationship-of-middle-school-students-use-of",
+    "title": "Mapping out the structural relationship of middle school students\u2019 use of talk and gestures and group outcomes\u2019 quality in collaborative science problem-solving activities",
+    "authors": [
+      "A. Rachmatullah",
+      "Nonye Alozie",
+      "Hui Yang"
+    ],
+    "year": 2023,
+    "doi": "10.1080/09500693.2023.2289484",
+    "url": "https://www.semanticscholar.org/paper/d975aac4cd64d1deab76f764b88851182b92b083",
+    "openalex_id": null,
+    "semantic_scholar_id": "d975aac4cd64d1deab76f764b88851182b92b083",
+    "eric_id": null,
+    "publisher": "International Journal of Science Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "ABSTRACT The current study explores the connection and affordances of talk and gesture in collaborative science problem-solving activities using an emerging analytical approach. A total of 15 three to five-member groups of middle school students participated in a set of clinical collaborative science problem-solving activities. Six groups (three low- and three high-performing groups) were selected for further analyses. The data consisted of successive statements in student conversations that were coded as different types of talk and gestures. Pearson Phi correlation test and Epistemic Network Analysis were used to analyze the data. We found that certain types of gesture were moderately associated with certain types of talk. In addition, we found high-performing groups were significantly different from low-performing groups in the use of higher cognitive engagement and collaborative regulation talks. We did not find a significant difference in the use of gestures on their own. However, we found that when talk and gestures were combined, high-performing groups tended to use higher cognitive engagement and collaborative regulation talks with representing and pointing gestures. These findings support previous studies on the affordances of talk and gesture in collaborative science activities and provide more evidence for how multimodality is important in science learning.",
+    "topics": [
+      "critical thinking",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-argument-from-epistemic-injustice-for-compulsory-philosophical-educa",
+    "title": "The argument from epistemic injustice for compulsory philosophical education in primary schools",
+    "authors": [
+      "Christos Georgakakis"
+    ],
+    "year": 2026,
+    "doi": "10.1080/00131857.2026.2691553",
+    "url": "https://www.semanticscholar.org/paper/820b16860177e3a8fab102e93447bb26479b34fb",
+    "openalex_id": null,
+    "semantic_scholar_id": "820b16860177e3a8fab102e93447bb26479b34fb",
+    "eric_id": null,
+    "publisher": "Educational Philosophy and Theory",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Abstract In this article, I argue that philosophy must be taught mandatorily in primary education, in light of considerations about epistemic injustice. I maintain that denying primary school students access to philosophical education wrongs them as epistemic agents, by limiting their opportunities to develop intellectual resources required for justified reasoning about norms of belief, action and emotion. I hold that such limitations constitute a direct form of epistemic injustice in a broad sense, understood as damage to epistemically significant capacities. Moreover, I claim that these limitations increase vulnerability to narrower forms of epistemic injustice, including at least testimonial and hermeneutical injustice, by holding back the cultivation of cognitive virtues and critical thinking dispositions that function as safeguards against prejudicial, discriminatory and irrational belief-formation processes. I conclude that since epistemic injustice inflicts significant harm on individuals as epistemic subjects, educational policymakers ought to prevent it where possible and, thus, establish philosophy as a core component of primary school curriculum.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
   }
 ]

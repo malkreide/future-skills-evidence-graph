@@ -2843,5 +2843,198 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-discovering-formally-verified-quantum-programs-with-ai",
+    "title": "Discovering formally verified quantum programs with AI",
+    "authors": [
+      "Sergey Shirobokov",
+      "Ben Jaderberg",
+      "Katerina Hristova",
+      "George Tsoukalas",
+      "Johannes Bausch",
+      "Eric Wieser",
+      "Francisco J. H. Heras",
+      "Nicholas C. Rubin",
+      "Guang Hao Low",
+      "S\u00e9bastien Racani\u00e8re",
+      "Nenad Toma\u0161ev",
+      "Lei M. Zhang",
+      "James Watson",
+      "Tanuj Khattar",
+      "Aws Albarghouthi",
+      "Stavan Jain",
+      "Harun Khan",
+      "Leopoldo Sarra",
+      "Andrew W. Senior",
+      "Michael Broughton",
+      "Hussain Masoom",
+      "Sergio Boixo",
+      "Ryan Babbush",
+      "Swarat Chaudhuri",
+      "Pushmeet Kohli"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.09822v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The timeline by which quantum computers can solve breakthrough problems in science depends on improved quantum algorithms as much as on better hardware. Such algorithmic advances are typically achieved through many years of expert human collaboration. In mathematics and computer science, large language models have accelerated progress through automated discovery loops. However, quantum algorithms can only be evaluated by classical computers on restricted or small instances. Here we demonstrate automated discovery of quantum programs beyond these regimes including order-of-magnitude improvements on scientific applications. To achieve this, we build a quantum program library in the Lean theorem prover in which large language model agents synthesize novel programs against formal problem specifications and verify their correctness and cost. Agent teams collaborate, sharing results and knowledge through wikis and discussing ideas at organized conferences. Our results improve on prior baselines for parallel search (up to 1.4x), quantum arithmetic (290x), and simulations relevant to fusion, photochemistry and drug-metabolism by 11x, 8x and 2.5x respectively. Combining human and artificial intelligence at scale, under the rigor of mathematical proof, lets researchers design algorithms that today's classical and quantum computers cannot test, shortening the path to practical quantum computation.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-what-to-delegate-what-to-preserve-human-preferences-for-agentic-ai-acros",
+    "title": "What to Delegate, What to Preserve: Human Preferences for Agentic AI Across Everyday Life and Work",
+    "authors": [
+      "Sarah Wheeler",
+      "Veronica Rammouz",
+      "Yaoyao Qian",
+      "Zexuan Liu",
+      "Mengyi Wei",
+      "Anthony Rios",
+      "Tianzhi He",
+      "Kyrie Zhou"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.09730v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "AI agents can execute multi-step tasks on users' behalf, yet the boundaries of acceptable delegation remain unclear. We report a scenario-based survey of 289 U.S. adults with prior AI experience covering 45 use cases across nine life domains. Each respondent evaluated one scenario per domain, producing repeated measures of automation preference, trust, collaboration, AI leadership, privacy concern, and willingness to pay. Automation preferences varied substantially across domains. Generalized estimating equation models showed that greater trust in the AI agent, desired AI leadership, prior task-specific AI use, and anticipated financial savings were associated with greater automation preference. In contrast, concerns that automation would reduce personal fulfillment predicted lower automation preference. Open-ended responses further revealed a preference for bounded autonomy, with participants often favoring substantial AI execution while retaining human involvement, oversight, or final authority. We argue that delegation is best understood as a configuration of execution, collaboration, leadership, and authority.",
+    "topics": [
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-on-the-order-of-privacy-and-smoothing-in-functional-mean-estimation",
+    "title": "On the Order of Privacy and Smoothing in Functional Mean Estimation",
+    "authors": [
+      "Haotian Chen",
+      "Yu-Wei Chen",
+      "Qifan Song",
+      "Jordan Awan"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.09799v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Differential privacy (DP) is a leading framework for privacy protection, yet privacy mechanisms tailored to functional data analysis (FDA) remain relatively underexplored. For functional mean estimation, we investigate a fundamental question regarding the ordering of privatization and estimation by comparing two canonical pipelines: Fit-Then-Protect (FTP), which smooths trajectories before privatization, and Protect-Then-Fit (PTF), which privatizes observations at discrete time points before smoothing. When data are observed without error, we prove that FTP achieves strictly smaller mean squared error than PTF asymptotically (as the sample size increases) under the same $\u03bc$-Gaussian differential privacy ($\u03bc$-GDP) budget in both finite-dimensional Hilbert spaces and infinite-dimensional reproducing kernel Hilbert spaces (RKHS). Simulation studies support our theory and explore settings with observation error and fitting constraints, demonstrating that FTP outperforms PTF under small observation noise, whereas PTF can become preferable in high-noise settings. In addition to this comparison, we establish a novel GDP guarantee for Gaussian perturbations taking values in a Banach space, extending existing results beyond the RKHS setting.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-kinematic-reconstruction-of-top-quark-pairs-using-analytical-and-machine",
+    "title": "Kinematic Reconstruction of Top-Quark Pairs Using Analytical and Machine-Learning Methods with CMS Open Data",
+    "authors": [
+      "V. Aushev",
+      "M. Spitsyn",
+      "R. Yermolenko",
+      "O. Zenaiev"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.09797v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The reconstruction of the top-quark-pair ($t\\bar{t}$) kinematics in the dilepton $t\\bar{t}$ decay channel is challenging due to the presence of two undetected neutrinos. In this work, existing kinematic reconstruction methods used by the CMS Collaboration are studied using a Monte Carlo sample with $t\\bar{t}$ events from CMS Open Data at a centre-of-mass energy of 7 TeV. An improved version of the loose kinematic reconstruction, LKRv2, is developed by imposing more stringent requirements on the jet-lepton pairing entering the reconstruction. A further modification, LKRv3, exploits the kinematic similarity between the dilepton and neutrino-pair systems and improves the resolution of the reconstructed $t\\bar{t}$ invariant mass relative to the baseline LKR by $7\\%$, with smaller improvements for the transverse momentum and rapidity of $t\\bar{t}$. In addition, two machine-learning (ML) based approaches are developed using a residual multilayer perceptron and a conditional normalizing flow. Relative to LKRv3, they improve the resolution of the invariant mass, transverse momentum and rapidity by approximately $30\\%$, $20\\%$ and $15\\%$, respectively. In particular, a resolution of 30 GeV is achieved for the reconstructed invariant mass of $t\\bar{t}$ near the production threshold. A dedicated generator-level study and a generator-to-detector transfer test demonstrate that the ML approaches learn a genuine physics-driven correction to the $\u03bd\\bar\u03bd$ approximation, rather than merely exploiting detector-specific effects. These results demonstrate the strong potential of ML-based approaches for improving the reconstruction of dilepton $t\\bar{t}$ events, while identifying the neutrino-pair approximation as an important limitation on the achievable resolution.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-entering-a-new-domain-in-the-era-of-generative-ai-an-autoethnography-of",
+    "title": "Entering a New Domain in the Era of Generative AI: An Autoethnography of Solo Game Development as a Bioinformatics Educator",
+    "authors": [
+      "Hannah Kim"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.09623v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The rapid improvement of generative AI (GenAI) not only increased the efficiency of practice but also empowered individuals with capabilities to explore new domains. However, identity formation in the wake of such empowerment remains understudied. We use an autoethnography to understand identity formation in the context of solo game development as a bioinformatics educator. With the goal of developing a create-your-own-adventure (CYOA) game, we collected data for 73 days through journal entries, interacting with communities of practices. The autoethnographer had continuously reassessed the situation, and closely interacted with communities of practice. Their prior knowledge was used to provide in-game context and to uniquely interpret game development processes. These findings suggest that the autoethnographer made efforts to belong to communities of practice and engaged extensively in sensemaking through the lens of a bioinformatics educator. Although GenAI puts power at hand, attaining a new identity took place at a human pace.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-towards-sustainable-federated-learning-via-carbon-aware-client-selection",
+    "title": "Towards Sustainable Federated Learning via Carbon-Aware Client Selection",
+    "authors": [
+      "Wentao Gao",
+      "Omid Tavallaie",
+      "Albert Y. Zomaya"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.09552v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "The Information/Communication Technology (ICT) industry is severely challenging the global environment due to the sharply rising carbon emissions generated by machine learning (ML) workloads. Federated Learning (FL) is one of the prominent distributed ML systems used in applications with billions of client devices, such as Google Gboard and Apple Siri. Nearly half of the total carbon footprint in FL originates from client-side computation during local training. However, existing client selection strategies in FL primarily focus on minimizing energy consumption rather than carbon emissions, despite the fact that carbon impact depends not only on computational load but also on the underlying carbon intensity of the energy source. In this paper, we address this gap by proposing a carbon-aware fair client selection strategy (CA-FCS) designed to minimize the carbon emissions associated with model training on client devices. In contrast to existing approaches for reducing carbon emissions in FL, we incorporate hourly carbon intensity and a realistic energy consumption model developed using empirical measurements from Google Pixel smartphones to estimate client-side carbon emissions in FL. Since repeatedly selecting low-carbon clients may reduce data diversity and degrade global model performance, particularly under non-independent and identically distributed (non-IID) data settings, CA-FCS incorporates fairness into client selection to mitigate this issue. We conduct extensive experiments under realistic FL settings for mobile devices, where client participation is constrained by device availability conditions, such as charging status and Wi-Fi connectivity. The results demonstrate that our method reduces client-side carbon emissions by up to 46% while maintaining competitive model accuracy.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
