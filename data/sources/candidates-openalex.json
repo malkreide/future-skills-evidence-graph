@@ -14005,5 +14005,260 @@
     "reviewed_at": null,
     "relevance_score": 0.45,
     "audience": "educator"
+  },
+  {
+    "id": "src-chemistry-teachers-research-competence-following-ai-supported-profession",
+    "title": "Chemistry teachers\u2019 research competence following AI-supported professional development: a mixed-methods pre\u2013post study",
+    "authors": [
+      "Ayash Ussenbay",
+      "Perizat Abdurazova",
+      "Yerkebulan Raiymbekov",
+      "Kulyash Kerimbayeva",
+      "Bayan Saparbekovna Ualikhanova",
+      "Asabdek Usmantayev"
+    ],
+    "year": 2026,
+    "doi": "10.3389/feduc.2026.1961742",
+    "url": "https://openalex.org/W7225336977",
+    "openalex_id": "https://openalex.org/W7225336977",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Introduction Developing teachers' research competence is a strategic priority in contemporary education, where artificial intelligence can support educational data analysis and evidence-informed pedagogical decision-making. This study assessed chemistry teachers' research competence, examined their reported practices and perceptions concerning students' social-emotional well-being, and investigated changes following participation in an AI-supported professional development program. Methods A quantitatively driven mixed-methods design with an embedded qualitative component was employed. Data were collected from 105 chemistry teachers using closed-ended questionnaire scales and two open-ended questions administered before and after a six-week professional development program. Descriptive statistics, Pearson's correlation analysis, paired-samples t-tests, Cohen's dz, and qualitative content analysis were used. Results Research competence was positively correlated with social-emotional monitoring practices ( r = .664, p < .01) and readiness to use AI ( r = .622, p < .01). Statistically significant pre-post improvements were observed across all measured dimensions ( p < .001), with Cohen's dz values ranging from 0.47 to 0.63. The qualitative findings indicated a shift in teachers' perceptions of AI from a tool used mainly for information retrieval and writing to one that could support research planning and data-informed decision-making. Discussion The findings indicate that AI-supported professional development can be associated with improvements in teachers' reported research competence, social-emotional monitoring practices, and readiness to use AI. The study proposes an empirically informed conceptual model integrating teacher inquiry, social-emotional monitoring, and potential AI-supported research practices.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "educator"
+  },
+  {
+    "id": "src-artificial-intelligence-competence-self-efficacy-and-attitudes-toward-ai",
+    "title": "Artificial Intelligence Competence Self-Efficacy and Attitudes Toward AI Among T.V.E Teachers as Basis for a Professional Development Plan",
+    "authors": [
+      "John Paolo A. Solis"
+    ],
+    "year": 2026,
+    "doi": "10.65339/ijggsd.v1.i1.39",
+    "url": "https://openalex.org/W7225458052",
+    "openalex_id": "https://openalex.org/W7225458052",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Global Goals and Sustainable Development",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This study examined Artificial Intelligence (AI) Competence Self-Efficacy and Attitudes Toward AI among Technology and Vocational Education (TVE) teachers at Abellana National School as a basis for a proposed Professional Development Plan. Anchored in Social Cognitive Theory, the Technology Acceptance Model, and the Technological Pedagogical Content Knowledge (TPACK) Framework, the study employed a quantitative descriptive-correlational design involving 45 TVE teachers selected through total population sampling. Data were collected using the Teacher Artificial Intelligence Competence Self-Efficacy Scale (TAICS) and the Teachers\u2019 Attitudes Toward Artificial Intelligence in Education (TATAIE) Scale. Descriptive statistics and Pearson Product-Moment Correlation were employed for data analysis. Findings revealed high AI Competence Self-Efficacy across six dimensions, with AI Pedagogy obtaining the highest mean (4.01) and AI Assessment the lowest (3.69). Respondents demonstrated favorable Attitudes Toward AI, particularly its Usefulness for Teachers (M = 4.21), while Usefulness for Learners received the lowest rating (M = 3.62). A strong positive and statistically significant relationship was established between AI Competence Self-Efficacy and Attitudes Toward AI (r = 0.691, p < .001), indicating that greater perceived competence was associated with more favorable attitudes. The study recommended a Professional Development Plan prioritizing AI-supported assessment, learner-centered applications, ethical AI integration, and continuous professional engagement. The research aligns with Sustainable Development Goal 4 (Quality Education), SDG 9 (Industry, Innovation and Infrastructure), and SDG 8 (Decent Work and Economic Growth) through teacher development, technological innovation, and vocational education. Its potential sustainability impact involves strengthening institutional teaching capacity, promoting responsible AI adoption, and supporting continuous improvement in skills-oriented education.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-psychological-impacts-of-ai-use-on-school-students-a-systematic-scoping",
+    "title": "Psychological impacts of AI use on school students: a systematic scoping review of the empirical literature",
+    "authors": [
+      "Arnab Kundu",
+      "Tripti Bej"
+    ],
+    "year": 2024,
+    "doi": "10.58459/rptel.2025.20030",
+    "url": "https://openalex.org/W4403078068",
+    "openalex_id": "https://openalex.org/W4403078068",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Research and Practice in Technology Enhanced Learning",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "This systematic scoping review aimed to collate evidence assessing associations between AI use and psychological outcomes (including cognitive, emotional, and behavioural responses to these intelligent systems) for school students from preschool (age <5 years), primary school (age 5\u201311 years), middle school (age 12\u201314 years), to high school (age 15\u201318 years). Original empirical studies were identified in seven reliable databases (Scopus, Web of Science, PubMed, PsycINFO, ScienceDirect, IEEE, and ERIC), resulting in 189 eligible studies. From these, we have identified 24 relevant studies reporting students\u2019 hands-on experiential learning outcomes on AI use. Findings revealed that the use of AI in schools can have both positive and negative impacts on the psychological well-being of students. Increased engagement, cognitive achievement, self-efficacy, learning autonomy, and decreased frustration are among the benefits of this strategy; nevertheless, over reliance, anxiety, stress, social isolation, unstable mental health, and moral dilemmas including privacy, bias, and justice are among its drawbacks. Overall, the psychological impacts of AI use among school students are multifaceted, context-dependent and across grades. By carefully considering the design, implementation, and ethical decorum of AI in school education, teachers and policymakers can maximise its benefits by mitigating potential risks in practicing technology enhanced learning.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-effect-of-collaborative-problem-solving-strategies-and-cognitive-sty",
+    "title": "The Effect Of Collaborative Problem Solving Strategies And Cognitive Style On Students' Problem Solving Abilities",
+    "authors": [
+      "Agus Setiawan",
+      "I Nyoman Sudana Degeng",
+      "Cholis Sa\u2019dijah",
+      "Henry Praherdhiono"
+    ],
+    "year": 2020,
+    "doi": "10.17478/jegys.812781",
+    "url": "https://openalex.org/W3113467072",
+    "openalex_id": "https://openalex.org/W3113467072",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal for the Education of Gifted Young Scientists",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The purpose of this research was to identify the effect of collaborative problem solving (CPS) on students' problem-solving abilities with different cognitive styles, including field-dependent (FI) and field-independent (FD). This is a quasi-experimental research with a 2x2 factorial design. The study used 109 students of public junior high school 3 Mesuji, Indonesia, as samples. The data of problem-solving abilities were obtained from essay tests, and cognitive style data were obtained from the Group Embeded Figure Test (GEFT). The data is analyzed using two-way analysis of variance (ANOVA). The results of this study show the following, 1) there is a significant difference in problem-solving abilities between students treated with collaborative problem solving strategies and problem-based learning, 2) there are significant differences on problem-solving abilities between students who have field-dependent and field-independent cognitive styles, 3) there is a significant interaction between different instructional strategies (collaborative problem solving and problem-based learning) and cognitive styles (field-dependent and field-independent) on problem-solving abilities.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-toward-calibrated-ai-readiness-in-k-12-school-based-practice-the-roles-o",
+    "title": "Toward calibrated AI readiness in K\u201312 school-based practice: the roles of AI-related epistemic vigilance capacity and governance clarity",
+    "authors": [
+      "Ziheng Song"
+    ],
+    "year": 2026,
+    "doi": "10.3389/feduc.2026.1946896",
+    "url": "https://openalex.org/W7225428395",
+    "openalex_id": "https://openalex.org/W7225428395",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The responsible use of generative artificial intelligence (AI) in K\u201312 schools requires professionals to evaluate AI-generated information while maintaining ethical boundaries and accountability for decisions. This two-phase study examined calibrated AI readiness, defined as self-reported readiness to verify AI outputs, recognize ethical boundaries, and retain responsibility for AI-assisted professional decisions. In Phase 1, 425 school-based professionals completed a survey assessing AI-related epistemic vigilance capacity, autonomous regulatory motivation, governance clarity, and calibrated AI readiness. Structural equation modeling indicated that epistemic vigilance capacity ( \u03b2 = .675, p < .001) and governance clarity ( \u03b2 = .270, p < .001) were positively associated with calibrated AI readiness, whereas autonomous regulatory motivation was not a significant predictor ( \u03b2 = .076, p = .156). An exploratory observed-score analysis found no significant interaction between epistemic vigilance capacity and autonomous regulatory motivation. In Phase 2, 25 school psychologists and school counselors participated in a one-month online pilot training program delivered through Moodle and Zoom. Self-reported calibrated AI readiness, measured using the same nine items as in Phase 1, increased descriptively from a pre-training mean of 4.20 to a post-training mean of 4.84 on a five-point scale. Scenario-based responses showed evidence of verification, privacy protection, contextual evaluation, and human accountability, although performance varied across specific indicators. Changes in self-reported readiness were not significantly associated with the continuous scenario-based reasoning index (Spearman's \u03c1 = \u2212.02, p = .906). Together, the findings suggest that perceived evaluative capacity and clear organizational guidance are important correlates of calibrated AI readiness, while also highlighting the value of combining self-report and applied reasoning assessments. Because Phase 1 was cross-sectional and Phase 2 lacked a comparison group, the results do not establish causal effects.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-evaluating-digital-literacy-and-media-awareness-impacts-on-middle-school",
+    "title": "Evaluating digital literacy and media awareness: Impacts on middle school students\u2019 digital security knowledge in Indonesia",
+    "authors": [
+      "Hendra Hidayat",
+      "Alfaiz Alfaiz",
+      "Zadrian Ardi",
+      "Nur Hidayah",
+      "Umi Anugerah Izzati",
+      "Firman Firman",
+      "Afdal Afdal",
+      "Reza Tririzky",
+      "Suresh Thanakodi"
+    ],
+    "year": 2026,
+    "doi": "10.21831/cp.v45i1.78372",
+    "url": "https://openalex.org/W7126156434",
+    "openalex_id": "https://openalex.org/W7126156434",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Jurnal Cakrawala Pendidikan",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-sa",
+    "abstract": "In an increasingly complex technological landscape, digital literacy is essential for adolescents to navigate digital risks and advancements effectively. This quantitative study investigates the impact of digital literacy and media awareness on middle school students\u2019 understanding of digital security and technological issues in Indonesia. Using a cross-sectional survey of 902 participants, data were analyzed through Partial Least Squares Structural Equation Modeling (PLS-SEM). The results indicate that digital literacy has a significant positive effect on students\u2019 media use, digital security management, and awareness of technological developments. Furthermore, Importance-Performance Map Analysis (IPMA) reveals that digital literacy is the most influential factor among the variables studied. The findings emphasize the importance of integrating digital literacy education into school curricula to foster responsible and secure digital behavior among students.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ethical-use-of-chatgpt-in-education-best-practices-to-combat-ai-induced",
+    "title": "Ethical use of ChatGPT in education\u2014Best practices to combat AI-induced plagiarism",
+    "authors": [
+      "Attila K\u0151v\u00e1ri"
+    ],
+    "year": 2025,
+    "doi": "10.3389/feduc.2024.1465703",
+    "url": "https://openalex.org/W4406191272",
+    "openalex_id": "https://openalex.org/W4406191272",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The emergence of ChatGPT, a high-performance artificial intelligence language model developed by OpenAI, has generated both excitement and concern in academia (Li, 2024). Equipped with advanced natural language processing techniques, ChatGPT is able to generate human-like text that provides coherent and contextually relevant responses to a wide range of queries. This unprecedented capability has raised optimism and concern as it could fundamentally change traditional practices in academia, industry and everyday life (Cambra-Fierro et al., 2024).The basic function of \"ask me anything\" and \"I might have a good answer\" is no longer just a concern in many fields. The scientific knowledge disseminated in journals is already struggling with the role that such technology will play. Questions arise about whether it will be, and can be, coauthored (Tang, 2024). Professors who create knowledge immediately face the challenge of assessing students in the presence of such technology. These are practical and legitimate questions.While ChatGPT has many benefits in terms of increased student engagement, collaboration and accessibility outcomes, it also has very serious academic integrity implications: at its core is plagiarism. This paper offers comprehensive strategies on how educators can help mitigate these risks by promoting ethical use and fairness within the academic use of AI tools.ChatGPT was truly disruptive, which should have surprised no one. It can be seen that these technologies are being adopted very quickly from university labs; ChatGPT reached one million users in its first five days and now has over 180 million (Duarte, 2024). This kind of rapid adoption demonstrates a remarkable property of generative AI: that it persists with coherent and contextually relevant text.One of the main problems with AI models like ChatGPT is the range of threats they pose, including black box algorithms, including black box algorithms, discrimination, biases, vulgarity, copyright infringement -plagiarism -and many others, such as the generation of fake text content or fake media (Sloan, Powis & Tan, 2024). Therefore, organisations need disciplined risk management approaches to effectively address these threats. Considering the continuous evolution of artificial intelligence algorithms due to the rapidity of data sources, the review of heterogeneity and variability bias in periodic risk assessments should also be weighed against ethical considerations (Schwartz et al., 2022).The experience was that the resulting text lacked an obvious logical structure, contained speculative information, did not elaborate on critical data, and did not provide original contributions (Giuggioli & Pellegrini 2023). Any article on the topic would be conventional, lack logic and facts, and would not be critically engaging. In addition, ChatGPT references are generally incorrect; titles and authors, as well as other publication details, are misstated. Such inaccuracies require careful double-checking, especially in professional contexts such as journalism and software development.Inaccuracy, poor logical flow, factual inaccuracies, lack of critical analysis and lack of originality of AI-generated content can result from the current state of technology (Yang, 2024). This is based on deep learning models that are trained using very extensive datasets of prior information that may be outdated or of low quality. Although improvements in training models and data quality may improve the performance of AIs, it is not clear that improvements based on technical level necessarily lead to significant gains in innovation (Dwivedi et al., 2023).The recent applications of generative AI in text, film and music production all indicate that these platforms will at best be partners in the innovation process, complementing rather than replacing human intelligence. In the case of complex activities requiring creativity and emotional intelligence, a well-formulated request alone is not sufficient for AI to produce markedly different and original outputs. Human oversight and collaboration remain essential (Liu, 2024). Research, practice, and urgent policy decisions in an era of rapidly evolving AI technologies require researchers, practitioners, and policymakers to critically engage with these changes. Building on the strengths of AI, while being aware of its limitations and making serious efforts to improve them, will foster an environment in which generative AI tools such as ChatGPT are used responsibly and effectively.Integrating ChatGPT into the scientific environment is not without its challenges. The primary concern is the possibility of plagiarism. Students may get used to using ChatGPT to create essays and assignments, which they then submit as their own work. This undermines the educational process and devalues academic credentials. Another challenge is the potential for inequality. Students who have access to ChatGPT can complete assignments in much less time and possibly better, giving them an unfair advantage over students who do not have ChatGPT. This may further increase existing inequalities in educational outcomes. On the other hand, it is difficult to distinguish content created by students from content created by AI. Because ChatGPT generates human-like, coherent text, the difficulty of distinguishing it from the \"original\" student content makes it difficult for educators to detect AI-assisted plagiarism.While this work focuses on addressing the risks of plagiarism, ChatGPT and other AI tools hold great promise for improving learning outcomes and stimulating creativity. Through adaptive tutoring systems, these tools can improve personalized learning, provide immediate feedback and facilitate deeper interaction with course material. Furthermore, AI-driven creative applications allow students to experiment with problem-solving and critical thinking in new ways, ultimately resulting in a more dynamic and engaging learning environment.The rise of large language models, such as ChatGPT, in education has led many educators and institutions to develop ways to prevent misuse. These approaches aim to protect academic integrity while adapting to the new environment of AI-enhanced learning environments. Different strategies have been introduced in different educational settings with varying degrees of success.This is probably the reason why many educational facilities have started to establish clear policies on how and when to employ AI tools such as ChatGPT. Many of these often tend to explain the emphasis on proper citation or attribution in the case of using generated AI content in a student's work. For example, some universities require students to mention what AI tool they used throughout the assignment, similar to citing sources from academic literature.A number of universities have now implemented high-tech, AI-detecting tools that work within plagiarism-checking programs. Indeed, services such as Turnitin have just this year introduced algorithms which detect AI-generated text by flagging submissions that are out of character for a student and/or contain unnatural patterns of speech. In addition, new software designed to detect AIassisted content is being developed and implemented, further complicating student efforts to misrepresent AI-generated text as their own.Another effective strategy is the design of assessments that increasingly require a high level of originality and creativity on the part of the student, for which AI tools are less effective. For example, assignments of a personal reflective nature, or those which require original research questions or specific local contexts, make it harder for students to fall back on AI-generated content only. This strategy minimizes not only the chances of misuse of AI but also fosters deeper learning and critical thinking skills among students.Some educators have been adopting oral examinations wherein students are made to present and defend ideas, assignments, and research projects. These face-to-face or virtual exchanges permit the instructor to engage directly with the student to determine the depth of understanding of course material. In these oral exams, it will be almost impossible for the students to use AI tools because it involves real-time response and justification.In contexts where group work is fostered, students often have to work in teams on elaborate projects, which already raises noticeable obstacles for AI-generated content to fit smoothly inside the final product. Group-based assignments by their very nature require communication, coordination, and collaboration among team members, aspects that no AI could imitate. Moreover, the mechanisms of peer review make students evaluate the work of their colleagues, thus automatically increasing the chances of identification of inconsistencies or any potential misuse of AI tools.Empirical evidence supports the importance of using adaptive and reflective evaluation to reduce AIrelated plagiarism. Successful pilot programs at highly regarded colleges that incorporate reflective and personalized tasks are highlighted by Moorhouse et al (2023). These programs limit the misuse of AI by requiring individualized responses tailored to students. Furthermore, Dempere et al (2023) provide evidence in favor of technology-based and ethics-based interventions, showing that ethical AI use campaigns in combination with AI recognition technologies greatly improve academic integrity compliance. Taken together, these studies show that integrating educational awareness campaigns and adaptive assessment provides a strong foundation for successful prevention of AIenabled plagiarism.To address the challenges of using generative AI in education, educators can use a number of strategies to prevent ChatGPT plagiarism. Cotton et al (2024) highlight the dual nature of ChatGPT in academia, highlighting the problems associated with scientific integrity and the prospect of increased engagement. They call for proactive institutional measures such as the integration of AIrecognition technologies, education of students on the ethical use of AI, and the creation of explicit policies on the use of AI tools. By implementing these tactics, universities can protect academic integrity and encourage ethical use of AI. Zeb et al (2024) highlight the dual nature of ChatGPT in higher education, pointing to both its potential benefits for student engagement and its risks related to academic integrity. They recommend that institutions implement clear policies, create assessment tasks that require critical thinking, and provide training to guide ethical AI use. By integrating these measures, educators can harness the benefits of AI tools like ChatGPT while minimizing risks of misuse.Strategies for the prevention of plagiarism, taking into account the opinions and suggestions:Technological Solutions\u2022 There are various plagiarism detectors that can find copied content. If there is a possibility to search for texts in student submissions that match existing sources, a possible case of plagiarism is flagged. Educators can also invest in advanced technologies to detect artificial intelligence-generated content through language patterns and stylistic anomalies. \u2022 Use learning analytics to track learner progress and detect unexplained patterns in learner performance. This could include sudden, unexplained improvement or different writing style, which is often a sign of AI-enabled plagiarism. \u2022 Use adaptive testing methods where questions are modified or reformulated based on previous student responses. This will make the AI tools more difficult to work with, as it will be very difficult to generate or predict correct answers when incorporating dynamic approaches.\u2022 Educating students about plagiarism is one of the most effective ways to combat plagiarism through education. Students need to be made aware of what exactly plagiarism is and the damage it does to learning and to the academic integrity built in the name of educational institutions. This can be achieved through teaching materials, classroom discussions, and clear communication of the consequences of plagiarism. \u2022 Include reflective writing exercises in which learners should discuss the learning process, the challenges encountered, and the insights gained. This can help teachers to assess the credibility of students' work and understand their thinking processes. \u2022 Peer assessment should be incorporated, where students are asked to evaluate each other's work. This both raises the quality of the work submitted and allows inconsistencies and possible plagiarism to be detected. \u2022 Encourage projects in which pupils produce individual, creative outputs. Such products could include multimedia presentations that engage users through their senses. This could include podcasts or other digital communication tools that are unlikely to be replicable by AI.\u2022 Design assessments that allow linking to personal experiences, local contexts, or specific curricula. These types of personalized tasks are less effective for general AI tools. \u2022 In addition to the written essay, encourage students to communicate what they have learned through a variety of media, such as slide shows, audio recordings, films, and portfolios. AI has difficulty replicating these alternative assessment methods, which encourage learners to develop more versatile skills.\u2022 Setting clear guidelines for the use of artificial intelligence tools such as ChatGPT is essential. Students need to know how and in what context to use such tools, i.e., proper citation and attribution of AI-generated texts. \u2022 Requiring students to submit an outline of their work can help instructors identify potential AI-generated content early in the process. This approach allows for timely feedback and guidance, reducing the likelihood of students resorting to plagiarism. \u2022 Regularly checking student submissions and work. This could include thorough reading of assignments, oral presentations to check understanding, and the use of detection devices to flag suspicious content.\u2022 Large tasks are broken down into smaller tasks structured by key points, with appropriate deadlines. This approach ensures that students build up their work gradually, making it more difficult to complete a whole project with AI. \u2022 Oral examinations can be a sure test of originality; students have to justify their arguments and even defend their work with oral answers, which in a sense makes it impossible to include AI-generated content in this assessment scenario.To further minimize the risk of AI-assisted plagiarism, educators can design assessments that are less prone to misuse. Some extended ways to minimize AI misuse:Critical Thinking and Problem-Solving Tasks\u2022 Tasks that require highly critical thinking or problem solving are unlikely to be performed satisfactorily by AI. This may include group discussions, project presentations, and interactive activities that require the individual to use their knowledge and skills. \u2022 Designing open-ended tasks that encourage originality and creativity can create conditions in which AI tools are less useful. For example, having students formulate their own research questions or arguments fosters independent thinking. \u2022 Refine tasks to focus on areas where AI tools fall short, such as in-depth critical analysis and personalized responses.\u2022 Demonstrate practical applications: create assessments in which students apply theoretical knowledge to practical, real-world problems. Case studies, simulations, and project-based learning activities are contexts in which AI's ability to generate relevant content is limited. \u2022 Design assessments that replicate real-life tasks and situations in authentic contexts, such as service-learning projects, internships, or community-based research. Such tasks require personal engagement and cannot be easily outsourced to AI. \u2022 Develop role-playing exercises and simulations in which students take on designated roles or characters. This is a great way to increase creativity and critical thinking, elements that are difficult for AI to simulate.\u2022 Create personalized tasks for each student or cohort that include dynamic elements such as current events, specific local problems, or personal reflections. Individualizing tasks minimizes the applicability of general AI responses. \u2022 Providing more personalized feedback and requiring follow-up actions based on that feedback, which fosters deeper engagement with material and reduces reliance on AI. \u2022 In a portfolio-based assessment, the student collects work done over time. Portfolios show progress or improvement in learning, which is challenging for AI to simulate.Collaborative and Peer-Based Learning\u2022 Group projects are those in which learners have to work together to create a final product, ensuring authentic input as collaboration requires communication and coordination that AI cannot replicate. \u2022 Peer-assisted learning activities, where learners tutor or mentor their classmates. This reinforces knowledge and requires explanation and justification, which AI cannot provide.\u2022 Real-time or proctored exams prevent students from using AI in assessments. This approach greatly reduces plagiarism and ensures the work represents each student's abilities. \u2022 Conduct timed assessments, such as in-class essays or timed online tests, to limit students' use of AI tools. This format emphasizes students' ability to think and respond quickly based on their own knowledge.\u2022 Use mixed forms of assessment: written work, presentations, and practical demonstrations.Multimodal assessments require diverse skills, making it difficult for AI alone to handle all elements. \u2022 Interactive and adaptive learning systems, which vary the difficulty and nature of questions based on student performance, provide personalization that challenges AI.\u2022 Frequent, low-level assessments to monitor students' progress on an ongoing basis. This allows for early detection of irregularities and reduces the likelihood of last-minute reliance on AI.Although the above-mentioned tactic offers a sound method for curbing AI-assisted plagiarism, its application may present a number of ethical and practical difficulties.Some universities, especially those with limited resources, may find the high costs of using sophisticated plagiarism detectors and learning analytics Furthermore, the of these technologies on to with rapidly evolving AI further increasing technology including learning analytics and adaptive require the of large of student This raises questions about data and especially when data is The of information that can be and may be limited by the that and other with data student work can be for AI created using detection methods, especially when students use language patterns or have a writing This can lead to that student and require by a a of time and to implementing and measures, such as teaching plagiarism, oral exams, and large tasks into smaller It can be difficult for institutions to provide teachers with the tools and they need to these into their reliance on technology detection can from students' ethical such as plagiarism detectors are a thorough awareness of academic integrity through education key to the AI is strategies need to be modified and their strategies as generative artificial intelligence technology potential as well as ongoing and may be further by this ongoing strategies in this paper with a number of approaches that educators have already to The will out the these methods and make based on their success.This makes education the most effective of plagiarism than awareness of the tools and the consequences of their that are in awareness among students about the ethical use of AI tools and consequences of plagiarism tend to show compliance. In ensuring a of there is a need to have students how their learning and will be by For example, some universities introduced or online that how to use AI tools with in about originality and proper assessments of or personalized in the misuse of AI. the questions based on previous which makes it difficult for AI models to know the correct assessment continuous track the progress of of AI misuse. these approaches are implemented into practice, educators are then in a to students' learning through and less to last-minute AI-generated assessments are the against AI-assisted academic in that written work, oral presentations, and practical together the that students will a range of skills. Moreover, portfolio-based students and present a of work over a a more of the student's and thus have made it more easily to in quality or many institutions have adopted or are detection software for this of AI. data these tools can often flag AI-generated content while the academic integrity as AI improve in learning and The ethical and successful integration of AI into education on addressing these and policy need to the face of ChatGPT and other generative AI This paper in this by strategies for integrating AI tools into the university",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "creativity",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-evaluative-research-on-the-critical-thinking-of-primary-school-students",
+    "title": "Evaluative research on the critical thinking of primary school students",
+    "authors": [
+      "Eduardo Encabo Fern\u00e1ndez",
+      "Domingo Albarrac\u00edn Vivo",
+      "Isabel Jerez Mart\u00ednez"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.ijedro.2023.100249",
+    "url": "https://openalex.org/W4367332484",
+    "openalex_id": "https://openalex.org/W4367332484",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Educational Research Open",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "The critical thinking of primary students might be related to digital media. Based on this premise, the main objectives of this study are to analyse the level of critical thinking shown by Primary School students (Murcia, Spain), as well as to find out about the media elements they handle. A diagnostic investigation is proposed for this purpose with two writing activities that integrate socially relevant problems. The analysis based on the humanistic-interpretative paradigm of the 1272 productions yields results that show low critical levels in students aged 9 to 12. This data contrasts with the large number of media components they refer to in their productions, which generates relevant implications about the challenges education systems must take on in order to respond to today's needs.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-preparing-future-educators-for-ai-enhanced-classrooms-insights-into-ai-l",
+    "title": "Preparing future educators for AI-enhanced classrooms: Insights into AI literacy and integration",
+    "authors": [
+      "Lucas Kohnke",
+      "Di Zou",
+      "Amy Wanyu Ou",
+      "Mingyue Michelle Gu"
+    ],
+    "year": 2025,
+    "doi": "10.1016/j.caeai.2025.100398",
+    "url": "https://openalex.org/W4408490627",
+    "openalex_id": "https://openalex.org/W4408490627",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Computers and Education Artificial Intelligence",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "The rapid transformation of educational practice by artificial intelligence (AI) requires that teacher-education programmes prepare pre-service teachers to integrate AI into their teaching. This qualitative study explores pre-service teachers' perceptions of AI integration in education and identifies the support they need to develop AI literacy. We conducted semi-structured interviews with 15 pre-service teachers and used thematic analysis to interpret the data. Our findings revealed that these future educators recognised AI's potential to enhance personalised learning and increase classroom efficiency but worried about relying on AI too much and losing the human element in teaching. The participants also highlighted significant challenges in developing AI literacy, including insufficient training and a lack of institutional support in their programmes. The need to maintain data privacy and protect against algorithmic bias emerged as critical areas of concern. This study underscored the urgent need for comprehensive AI literacy curricula in teacher education that encompass both technical skills and ethical understanding. We recommend that educational institutions provide practical AI experiences, establish clear ethical guidelines and offer continuous professional development opportunities. By addressing these needs, teacher-education programmes can prepare future educators to leverage AI technologies to enhance educational outcomes.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-09",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
   }
 ]
