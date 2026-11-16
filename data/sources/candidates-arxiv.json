@@ -3036,5 +3036,103 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-mereader-an-offline-privacy-preserving-progress-aware-ai-assistant-for-n",
+    "title": "MeReader: An Offline, Privacy-Preserving, Progress-Aware AI Assistant for Narrative eBook Reading",
+    "authors": [
+      "Mohammed Efaz",
+      "Udo Bub",
+      "Itilekha Podder"
+    ],
+    "year": 2026,
+    "doi": "10.1007/978-3-032-37936-8_22",
+    "url": "https://arxiv.org/abs/2611.18513v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This paper introduces MeReader, a privacy-preserving, offline and progress-aware AI assistant designed to function as a contextual companion for narrative reading on consumer hardware. Unlike conventional Large Language Model (LLM)-based systems that process documents/books online in an all-texts-at-once type of way, thereby risking narrative spoilers, MeReader confines both retrieval and generation to the reader's distinct position in the text. The system integrates a hybrid retrieval architecture, combining vector similarity, BM25, and summary embeddings, to ensure high fidelity to the reader's current context. We evaluate the system across classical English books using both quantitative comprehension metrics and qualitative LLM-based independent judging. The results identify a quality-latency frontier, showing that mid-sized local models (2b-4b) can achieve comprehension parity with larger counterparts (5b+) while maintaining acceptable response quality. Importantly, the proposed progress-aware boundary mechanism is shown to prevent future content leakage without compromising retrieval quality and correctness. These findings suggest that a localized, privacy-centric approach can augment, rather than replace, the digital reading experience, offering a good alternative to cloud-dependent services. Therein, there remains a lack of amalgamate systems which combine progress-aware, privacy-preserving, and narrative eBook reading with AI support. It is in this very gap that the development of MeReader came to be; synthesizing said strands into an offline, book-constrained assistant focused on enhancing comprehension without compromising narrative continuity or user privacy.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-toward-resilient-self-driving-laboratories-through-telerobotic-intervent",
+    "title": "Toward Resilient Self-Driving Laboratories through Telerobotic Interventions",
+    "authors": [
+      "Ziheng Wu",
+      "Adrian Vecina Tercero",
+      "Andre A. Fatehi",
+      "Abhik Sarkar",
+      "Brian Giera",
+      "Eric B. Duoss",
+      "Christopher M. Spadaccini",
+      "Nikhil Deshpande",
+      "Aldair E. Gongora"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.18496v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Self-driving laboratories (SDLs) accelerate scientific research by integrating robotics, automated experimentation, and machine learning to execute experiments autonomously. Biology and chemistry have adopted these systems. However, increasing SDL complexity heightens susceptibility to unexpected faults in automated workflows, highlighting the need for efficient recovery mechanisms. In this study, we investigate telerobotic interventions to enhance SDL resilience against unexpected failures. We developed a teleoperation interface enabling human operators to resolve disruptions during automated tasks. The interface enables precise control of a six-degree-of-freedom (DOF) robotic arm (UR3e) using a 3D mouse (3Dconnexion SpaceMouse Pro). Two velocity-based controller strategies were evaluated: (i) a coupled mode mapping all six DOFs to the 3D mouse's central knob and (ii) a decoupled mode separating translational and rotational motions. To evaluate the framework, teleoperators intervened across three SDL fault scenarios. In the first study, comparative trials showed that the decoupled controller was associated with shorter completion times and reduced rotational motion. In a second study, teleoperators performed an aiming task with and without reference-path guidance. Users were more target-driven and risk-tolerant without guidance but showed behavioral differences under different guidance strategies. These findings suggest that controller configuration and reference-path design influence operator performance during SDL fault recovery, informing teleoperation interface optimization. This work demonstrates the potential feasibility of teleoperation as a human-in-the-loop recovery mechanism for SDL workflows, combining robotic precision with human adaptability and problem-solving. These findings also provide a foundation for future studies in shared autonomy and semi-autonomous intervention.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-voice-based-conversational-agents-as-ai-care-assistants-evaluating-perso",
+    "title": "Voice-Based Conversational Agents as AI Care Assistants: Evaluating Personalization, Intervention Delivery Fidelity, and Privacy Expectations in Older Adults' Care",
+    "authors": [
+      "Thalia Viranda",
+      "Shupeng Wang",
+      "Jia Bo",
+      "Yuchen Yang",
+      "Hongjiao Zhang",
+      "Andrea Cuadra",
+      "Daniel A. Adler",
+      "Walter Boot",
+      "Sara Czaja",
+      "Deborah Estrin",
+      "Tanzeem Choudhury"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.18385v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Generative AI enables voice-based conversational agents to play more active roles in older adults' care, including personalizing support and operating alongside clinicians and care partners. This shift creates two challenges: how to personalize support while faithfully delivering evidence-based interventions, and how to manage personal-data use and sharing across AI and care stakeholders. We designed and evaluated ARC, a voice-based conversational agent that operationalizes multidomain lifestyle intervention through sessions with predefined goals, participant context, and evidence-based components. In a 3-day remote study, 80 older adults completed 473 sessions across six session types (9,183 turns; averaging 19.4 turns and 6 minutes per session). Participants reported favorable usability, acceptability, and use intentions. System-level analyses showed strong domain-level but modest participant-specific contextual reuse, no significant personalization-fidelity association, and fidelity limitations centered on incomplete delivery of intervention components rather than off-protocol drift. Within care relationships, expectations for personal-data use and sharing varied by data type and recipient. Our findings support feasibility of conversational delivery of multidomain lifestyle intervention, offer methods and system-design insights for longitudinal evaluation, and motivate an evaluation agenda for generative AI health interventions: user-experience and outcome measures should be complemented by evidence of whether intended intervention processes were delivered as designed.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
   }
 ]
