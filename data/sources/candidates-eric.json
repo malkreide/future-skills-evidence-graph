@@ -9208,5 +9208,32 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-predicting-teaching-competency-in-the-ai-era-the-comparative-roles-of-ai",
+    "title": "Predicting Teaching Competency in the AI Era: The Comparative Roles of AI Literacy, Digital Practices and Institutional Support",
+    "authors": [
+      "Peiyi Zhong",
+      "Alan Robert White",
+      "Supot Rattanapun"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://eric.ed.gov/?id=EJ1523257",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": "EJ1523257",
+    "publisher": "African Educational Research Journal",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examines the predictive effects of Teacher AI Literacy (TAL), Digital Teaching Practice (DTP), and Institutional Support (IS) on English Teaching Competency (TC) among vocational college teachers in Nanning, Guangxi, China. Data were collected from 303 teachers using a structured questionnaire and analyzed through descriptive statistics, correlation analysis, and multiple regression in SPSS. The results indicate that the model explains 51.2% of the variance in teaching competency. Among the predictors, Digital Teaching Practice demonstrates the strongest effect (\u00df = 0.438), followed by Teacher AI Literacy (\u00df = 0.245) and Institutional Support (\u00df = 0.201). These findings confirm that actual pedagogical implementation plays a more critical role in competency development than technological availability or institutional provisions. The study contributes to the application of Social Cognitive Theory in AI-integrated education by highlighting the dominant role of behavioral factors. Practically, it suggests that vocational institutions should prioritize practice-oriented professional development over infrastructure-focused investment strategies.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
   }
 ]
