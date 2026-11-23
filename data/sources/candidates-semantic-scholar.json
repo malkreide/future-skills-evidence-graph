@@ -10216,5 +10216,118 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "learner"
+  },
+  {
+    "id": "src-ai-literacy-and-competency-in-nursing-education-preparing-students-and-f",
+    "title": "AI literacy and competency in nursing education: preparing students and faculty members for an AI-enabled future-a systematic review and meta-analysis",
+    "authors": [
+      "Majeda M. El-Banna",
+      "M. Sajid",
+      "M. Rizvi",
+      "Waqas Sami",
+      "Angela M. McNelis"
+    ],
+    "year": 2025,
+    "doi": "10.3389/fmed.2025.1681784",
+    "url": "https://www.semanticscholar.org/paper/8df96c9aeff7edd27d705db065c2fc675aa6bce2",
+    "openalex_id": null,
+    "semantic_scholar_id": "8df96c9aeff7edd27d705db065c2fc675aa6bce2",
+    "eric_id": null,
+    "publisher": "Frontiers in Medicine",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Introduction Artificial Intelligence (AI) has made its way into every dimension of human life, and its impact is significant and multifaceted. Specifically, the effect of AI in nursing education has reshaped the healthcare system. However, this technological shift in nursing and the healthcare system still needs to be evaluated in multiple aspects to ensure the effective use of AI and to prepare future professionals. Methods This PROSPERO-registered systematic literature review and meta-analysis explored the integration of AI literacy and competency within nursing curricula and the profession globally from January 2020 to June 2025. The study specifically aimed to: (1) examine the extent of AI integration within nursing curricula; (2) assess the awareness, attitudes, and readiness of nursing students, faculty, and practitioners toward AI; (3) evaluate the effectiveness of educational interventions designed to enhance AI literacy and competency; (4) identify ethical, institutional, and pedagogical challenges associated with AI adoption in nursing education; and (5) provide evidence-based recommendations for standardized and equitable AI education frameworks in nursing. Results The review synthesizes evidence from 111 peer-reviewed articles, including 18 distinct quantitative studies, which have been further analyzed through meta-analytic techniques. PRISMA guidelines were followed to search for relevant articles and extract the required information. Meta-analysis reveals high levels of AI-related awareness (pooled estimate = 73%, 95% CI: 64\u201380%) and positive attitudes (71%, 95% CI: 63\u201378%) among various nursing groups. The implementation of AI-related skills remains highly variable (67%, 95% CI: 55\u201378%), especially in low-resource settings, which needs careful interpretation. Overall, meta-analysis findings highlight significant variations and reflect non-uniformity and disparities across regions, institutions, and nursing groups (students, staff, faculty). Conclusion Thematic synthesis underscores the need for standardized AI education, tailored faculty development, and equitable access to digital tools. Although individual-level awareness and attitudes toward AI are promising, this review reveals a lack of institutional readiness, with many nursing programs lacking standardized curricula, faculty training, and infrastructural support. Moreover, findings emphasize the critical need for broader institutional and policy efforts to match individual enthusiasm with institutional capacity in preparing nurses for an AI-enabled healthcare landscape. Further, this review offers evidence-based recommendations for various stakeholders to ensure inclusive and future-ready nursing education. Systematic review registration https://www.crd.york.ac.uk/prospero/, identifier CRD420251090108.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-integration-of-machine-learning-technology-in-digital-learning-media-to",
+    "title": "INTEGRATION OF MACHINE LEARNING TECHNOLOGY IN DIGITAL LEARNING MEDIA TO IMPROVE ELEMENTARY SCHOOL STUDENTS READING LITERACY",
+    "authors": [
+      "Dovel Pirmanto",
+      "Aisyiah Anggun Purnama"
+    ],
+    "year": 2026,
+    "doi": "10.21154/ibriez.v11i01.818",
+    "url": "https://www.semanticscholar.org/paper/67afa0eef6bd5ae9977a76732330d2d94ed8ad24",
+    "openalex_id": null,
+    "semantic_scholar_id": "67afa0eef6bd5ae9977a76732330d2d94ed8ad24",
+    "eric_id": null,
+    "publisher": "Ibriez: Jurnal Kependidikan Dasar Islam Berbasis Sains",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The development of information technology in the Industrial Revolution 4.0 era has driven innovation in education, including the integration of Machine Learning (ML) into digital learning media. Elementary school students' low reading literacy is a major challenge, considering that this ability is the foundation for cognitive development and academic success. This study aims to analyze the effectiveness of ML-based digital learning media in improving elementary school students' reading literacy. The research used a pretest-posttest control-group design, with 15 students in the experimental class and 15 in the control class. The Decision Tree algorithm was used to analyze initial scores, classify literacy levels, and recommend reading materials based on students' abilities. The results showed a significant increase in the experimental class, with an average literacy score rising from 62.0 to 86.7 (+24.7 points), while the control class increased only from 59.2 to 64.5 (+5.3 points). The results of the paired sample t-test showed significant improvement in both classes (p < 0.05), with greater improvement in the experimental class. The independent sample t-test also showed a significant difference between the two groups (p < 0.05). These findings confirm that integrating ML and digital learning media can enable adaptive, personalized learning and real-time feedback. ML-based digital learning media has proven effective in significantly improving elementary school students' reading literacy.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-of-ai-digital-citizenship-core-competency-framework-and-beha",
+    "title": "Development of AI Digital Citizenship Core Competency Framework and Behavioral Indicators for Students",
+    "authors": [
+      "Ji-Hou Yu",
+      "In-sook Kim"
+    ],
+    "year": 2026,
+    "doi": "10.61765/kafec.2026.4.3.5",
+    "url": "https://www.semanticscholar.org/paper/05f520d248ea6ae38dc41f334bb544f4ddeebdc0",
+    "openalex_id": null,
+    "semantic_scholar_id": "05f520d248ea6ae38dc41f334bb544f4ddeebdc0",
+    "eric_id": null,
+    "publisher": "The Journal of Future and Convergence Education",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "This study aims to develop a core competency framework and behavioral \nindicators of AI digital citizenship for students, enabling them to grow as proactive \nand ethical agents amidst the diffusion of artificial intelligence(AI) technology and \ndigital intensification. Based on the AI digital citizenship framework proposed by Kim \n(2025), preliminary competency definitions were derived and validated through a \ntwo-round Delphi survey with nine experts. \nThe results showed that the expert group largely agreed on the necessity of \ndeveloping a student-specific core competency framework(with a mean score of 3.67 \nor higher), identifying \u2018AI & Digital Ethical Value Judgment and Interpretation \nCompetency' as the most differentiated and critical core competency(4.44). The \nfinalized \ncompetency \nframework \nis \nstructured \ninto \nthree \ndomains\u2014 \nfoundation/understanding, practice/collaboration, and reflection/growth\u2014comprising six \ncore competencies that enhance practical applicability by reflecting students' daily \ncontexts and school lives. \nFurthermore, these competencies were materialized into multidimensional \nbehavioral indicators encompassing knowledge(K), skills(S), and attitudes(A), \nestablishing clear criteria for education and assessment. This study holds significance \nin embodying the policy orientation of the\u300cDigital Inclusion Act\u300dwithin educational \nsettings and providing a systematic educational foundation for cultivating democratic \ncitizens suited for the AI era.",
+    "topics": [
+      "ai literacy",
+      "collaboration",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-developing-a-digital-transformation-based-elementary-education-curriculu",
+    "title": "Developing a Digital Transformation-Based Elementary Education Curriculum to Support Future Learning",
+    "authors": [
+      "Muhammad Hafizin",
+      "I. Suastra",
+      "I. W. Lasmawan"
+    ],
+    "year": 2026,
+    "doi": "10.58218/literasi.v5i3.3825",
+    "url": "https://www.semanticscholar.org/paper/96ab1eaf45205fb05c09af32abed1fe29490975f",
+    "openalex_id": null,
+    "semantic_scholar_id": "96ab1eaf45205fb05c09af32abed1fe29490975f",
+    "eric_id": null,
+    "publisher": "Literasi",
+    "source_type": "systematic_review",
+    "license": null,
+    "abstract": "Digital transformation is reshaping education, including elementary education. This article critically examines the development of a digital transformation-based elementary curriculum as a response to the demands of future learning. A library research approach with a systematic literature review procedure was used to analyze accredited journals, academic books, policy documents, and conference proceedings published over the past decade. The data were analyzed through thematic analysis and critical synthesis. The findings indicate that such a curriculum requires four integrated pillars: (1) strengthening digital literacy and twenty-first-century skills from an early age, (2) restructuring technology-based pedagogy through the Technological Pedagogical Content Knowledge (TPACK) framework, (3) developing teachers\u2019 digital competence continuously, and (4) distributing technological infrastructure equitably. Policies such as the Merdeka Curriculum and the planned introduction of coding and artificial intelligence in elementary schools are progressive steps, but their implementation faces the digital divide, limited teacher readiness, and a lack of standardized curriculum guidelines. The theoretical implications enrich the discourse on curriculum digitalization, and the practical implications offer recommendations for policymakers and practitioners. Future research should develop a digital curriculum evaluation model and conduct cross-country comparisons.",
+    "topics": [
+      "ai literacy",
+      "digital competence",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
   }
 ]

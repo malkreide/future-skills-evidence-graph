@@ -14260,5 +14260,1031 @@
     "reviewed_at": null,
     "relevance_score": 0.6,
     "audience": "educator"
+  },
+  {
+    "id": "src-a-case-study-of-integrating-ai-literacy-education-in-a-biology-class",
+    "title": "A Case Study of Integrating AI Literacy Education in a Biology Class",
+    "authors": [
+      "Shenghua Zha",
+      "Marcy Maulucci Bragdon",
+      "Na Gong",
+      "Jinhui Wang",
+      "Silas J. Leavesley",
+      "Rachel Marie Eaton",
+      "Erin Bosarge"
+    ],
+    "year": 2025,
+    "doi": "10.1007/s40593-025-00476-8",
+    "url": "https://openalex.org/W4409243556",
+    "openalex_id": "https://openalex.org/W4409243556",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Artificial Intelligence in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Artificial intelligence (AI) has gained widespread public interest in recent years. However, as AI literacy remained excluded from the standard academic curricula, AI education in the US was predominantly offered through extra-curricular activities, which limited AI learning exposure to only a select group of students. Given these limitations, the need to integrate AI literacy education into the standard curricula is increasingly evident. This study investigated the integration of AI learning in an advanced biology course. Thirty-seven students participated in four lessons embedding AI learning in biology contexts. The interplay of students\u2019 AI learning and biology knowledge was examined from the quantitative measure of conceptual understanding and qualitative analysis of interdisciplinary reasoning. This concurrent triangulation research design utilized results from both quantitative and qualitative analyses to develop a comprehensive understanding of students\u2019 AI learning in the biology context. The results of the study showed a significant improvement in students\u2019 AI concepts. Students\u2019 biology knowledge had a slight increase, but it was not statistically significant. Both quantitative and qualitative results underscored a close connection between students\u2019 AI learning and their biology knowledge, though the quantitative findings were not conclusive in some lessons. The article concluded with a discussion of the potential reasons for those discrepancies. In addition, suggestions were provided for future research and practitioners who are interested in integrating AI education across curricula.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-effect-of-general-high-school-students-perceived-helpfulness-of-gene",
+    "title": "The Effect of General High School Students' Perceived Helpfulness of Generative AI on Its Drawbacks: The Mediating Effects of Learning Efficacy and Generative AI Literacy",
+    "authors": [
+      "Hyeyoung Jo",
+      "SeWon Oh"
+    ],
+    "year": 2026,
+    "doi": "10.5762/kais.2026.27.10.131",
+    "url": "https://openalex.org/W7225249120",
+    "openalex_id": "https://openalex.org/W7225249120",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of the Korea Academia-Industrial cooperation Society",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "\ubcf8 \uc5f0\uad6c\ub294 \uace0\ub4f1\ud559\uc0dd\uc758 \uc0dd\uc131\ud615 AI\uc5d0 \ub300\ud55c \ub3c4\uc6c0 \uc815\ub3c4\uac00 \uc0dd\uc131\ud615 AI \ubb38\uc81c\uc810\uc5d0 \ubbf8\uce58\ub294 \uc601\ud5a5\uc5d0\uc11c \ud559\uc2b5\ud6a8\ub2a5\uac10\uacfc \uc0dd\uc131\ud615 AI \ub9ac\ud130\ub7ec\uc2dc\uc758 \ub9e4\uac1c\ud6a8\uacfc\ub97c \uc54c\uc544\ubcf4\ub294 \ub370 \ubaa9\uc801\uc774 \uc788\ub2e4. \uc774\ub97c \uc704\ud574 \ud55c\uad6d\uccad\uc18c\ub144\uc815\ucc45\uc5f0\uad6c\uc6d0\uc758 \u300c\uccad\uc18c\ub144\uc758 \uc0dd\uc131\ud615 AI \uc774\uc6a9\uc2e4\ud0dc \ubc0f \ub9ac\ud130\ub7ec\uc2dc \uc99d\uc9c4\ubc29\uc548 \uc5f0\uad6c\u300d\uc758 \uc870\uc0ac \ub370\uc774\ud130\ub97c \uc0ac\uc6a9\ud558\uc600\ub2e4. SPSS 23.0\uacfc AMOS 22.0 \ud504\ub85c\uadf8\ub7a8\uc744 \uc0ac\uc6a9\ud558\uc5ec \ud53c\uc5b4\uc2a8\uc758 \uc0c1\uad00\uad00\uacc4\uc640 \uad6c\uc870\ubc29\uc815\uc2dd\uc73c\ub85c \ubd84\uc11d\ud558\uc600\ub2e4. \uc8fc\uc694 \uc5f0\uad6c\uacb0\uacfc\ub294 \uccab\uc9f8, \uc0dd\uc131\ud615 AI \ubb38\uc81c\uc810\uc740 \ubaa8\ub4e0 \uc5f0\uad6c\ubcc0\uc778\uacfc \uc720\uc758\ubbf8\ud55c \uc815\uc801 \uc0c1\uad00\uad00\uacc4\ub97c \ubcf4\uc600\ub2e4. \ub458\uc9f8, \ubaa8\ub4e0 \uacbd\ub85c\uac00 \ud1b5\uacc4\uc801\uc73c\ub85c \uc720\uc758\ubbf8\ud55c \uc815\uc801 \uc601\ud5a5\uc744 \ubbf8\uce58\ub294 \uac83\uc73c\ub85c \ub098\ud0c0\ub0ac\ub2e4. \uc14b\uc9f8, \uc0dd\uc131\ud615 AI \ub3c4\uc6c0 \uc815\ub3c4\uac00 \uc0dd\uc131\ud615 AI \ubb38\uc81c\uc810\uc5d0 \ubbf8\uce58\ub294 \uc601\ud5a5\uc5d0\uc11c \ud559\uc2b5\ud6a8\ub2a5\uac10\uacfc \uc0dd\uc131\ud615 AI \ub9ac\ud130\ub7ec\uc2dc\uc758 \ubd80\ubd84\ub9e4\uac1c\ud6a8\uacfc\uac00 \uac80\uc99d\ub418\uc5c8\ub2e4. \uc774\ub7ec\ud55c \uc5f0\uad6c\uacb0\uacfc\ub294 \uc0dd\uc131\ud615 AI\uac00 \ubcf4\ud3b8\ud654\ub41c \uad50\uc721 \ud658\uacbd\uc5d0\uc11c \ud559\uc2b5\ud6a8\ub2a5\uac10\uacfc \uc0dd\uc131\ud615 AI \ub9ac\ud130\ub7ec\uc2dc \uc218\uc900\uc774 \ub192\uc744\uc218\ub85d \uc0dd\uc131\ud615 AI \ud65c\uc6a9\uc758 \ubb38\uc81c\uc810\uc744 \ubcf4\ub2e4 \ube44\ud310\uc801\uc73c\ub85c \uc778\uc2dd\ud55c\ub2e4\ub294 \uac83\uc744 \ud655\uc778\ud558\uc600\uc73c\uba70, \uc774\ub294 \uad50\uc721 \ud604\uc7a5\uc5d0\uc11c \ud559\uc2b5\ud6a8\ub2a5\uac10 \uc99d\uc9c4 \ubc0f \uc0dd\uc131\ud615 AI \ub9ac\ud130\ub7ec\uc2dc \uad50\uc721\uc758 \ud544\uc694\uc131\uc744 \uac15\uc870\ud55c\ub2e4. \ubcf8 \uc5f0\uad6c\uc5d0\uc11c\ub294 \uace0\ub4f1\ud559\uc0dd\uc758 \uac74\uac15\ud558\uace0 \ud6a8\uacfc\uc801\uc778 \uc0dd\uc131\ud615 AI \ud65c\uc6a9\uc744 \uc9c0\uc6d0\ud558\uae30 \uc704\ud55c \uad50\uc721\uc801 \uac1c\uc785 \ubc29\uc548\uacfc \uc815\ucc45\uc801 \uc2dc\uc0ac\uc810\uc744 \uc81c\uc2dc\ud558\uc600\ub2e4.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-transfer-of-junior-high-school-students-english-writing-in-the-conte",
+    "title": "The Transfer of Junior High School Students\u2019 English Writing in the Context of Generative AI Feedback and Its Relationship with Feedback Literacy and Self-Regulated Learning",
+    "authors": [
+      "\u6653\u9752 \u76db"
+    ],
+    "year": 2026,
+    "doi": "10.4236/jss.2026.1411010",
+    "url": "https://openalex.org/W7225894106",
+    "openalex_id": "https://openalex.org/W7225894106",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Open Journal of Social Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "To investigate the transfer performance of junior high school students\u2019 English writing under the condition of generative artificial intelligence feedback and its relationship with feedback literacy and self-regulated learning, 82 eighth-grade students were selected as the subjects, and the independent writing performance under the two teaching schemes of generative AI feedback and teacher feedback was compared using the unequal pre-test-post-test-delayed calibration experimental design of two natural classes, and the analysis was carried out in combination with questionnaires, feedback judgment tasks, and revised records. The results show that after controlling for pre-test writing scores, the adjusted average delayed-transfer score in the AI feedback class is 5.99 points higher than in the teacher feedback class (P = 0.002). There is a positive correlation between the change in feedback literacy and delayed transfer performance (r = 0.413, P < 0.001), and there is still a significant positive correlation after controlling the change of writing pre-test and self-regulation learning. The change in self-regulated learning is weakly positively correlated with transfer performance, but it does not reach statistical significance in the multiple regression model. The research shows that in the investigated classroom situation, students under the generative AI feedback scheme show high independent writing transfer performance, and feedback literacy may be an important correlation factor in understanding this phenomenon. Limited by the grouping of natural classes, the research results are not suitable for causal explanation.",
+    "topics": [
+      "ai literacy",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-thought-and-knowledge-an-introduction-to-critical-thinking",
+    "title": "Thought and Knowledge: An Introduction to Critical Thinking",
+    "authors": [
+      "Diane F. Halpern",
+      "Dana S. Dunn"
+    ],
+    "year": 2022,
+    "doi": "10.4324/9781003025412",
+    "url": "https://openalex.org/W4297313082",
+    "openalex_id": "https://openalex.org/W4297313082",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Routledge eBooks",
+    "source_type": "book",
+    "license": null,
+    "abstract": "Thought and Knowledge applies theory and research from the learning sciences to teach students the critical thinking skills that they need to succeed in today\u2019s world. The text identifies, defines, discusses, and deconstructs contemporary challenges to critical thinking, from fake news, alternative facts, and deep fakes, to misinformation, disinformation, post-truth, and more. It guides students through the explosion of content on the internet and social media and enables them to become careful and critical evaluators as well as consumers. The text is grounded in psychological science, especially the cognitive sciences, and brought to life through humorous and engaging language and numerous practical and real-world examples and anecdotes. This edition has been streamlined with thoughtful consideration over what content to keep, what to cut, and how much new and current research to add. Critical thinking skills are presented in every chapter, empowering students to learn more efficiently, research more productively, and present logical, critical, and informed arguments. The skills are reviewed at the end of the chapter, and a complete list of skills with definitions and examples are included in the appendix. The text is supported by a companion website that features a robust set of instructor and student resources: www.routledge.com/cw/halpern. Thought and Knowledge can be used as a core text in critical thinking courses offered in departments of psychology, philosophy, English, or across the humanities and social sciences, or as a supplement in any course where critical thinking is emphasized.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-critical-thinking-skills-for-healthcare-a-student-s-guide",
+    "title": "Critical Thinking Skills for Healthcare: A Student\u2019s Guide",
+    "authors": [
+      "Stephanie McKendry"
+    ],
+    "year": 2025,
+    "doi": "10.4324/9781003520245",
+    "url": "https://openalex.org/W4415997442",
+    "openalex_id": "https://openalex.org/W4415997442",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Routledge eBooks",
+    "source_type": "book",
+    "license": null,
+    "abstract": "The new edition of Critical Thinking Skills for Healthcare is the ideal text to foster this key attribute, supporting students to critically evaluate information and evidence on their journey from healthcare student to healthcare practitioner. Including worked examples throughout, the book encourages readers to recognise that they already think critically in their everyday lives. The next step is to integrate this quality into how they approach their studies, from the resources they select to complete assignments to building a cohesive written argument. In an age of social media, misinformation and generative artificial intelligence (GenAI), the need to think critically is even more important in the healthcare professions. In this context, the book provides an invaluable guide to spotting the flaws in an argument or position, as well as weighing up the strengths and weaknesses of different perspectives. Concise and user\u2011friendly, this is the perfect textbook for students across the healthcare disciplines, including nursing, midwifery and allied health, as well as those returning to practice after a period away.",
+    "topics": [
+      "ai literacy",
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-twenty-first-century-skills-in-the-turkiye-century-education-model-life",
+    "title": "Twenty-First-Century Skills in the T\u00fcrkiye Century Education Model Life Studies Curriculum: A Comparison with International Frameworks",
+    "authors": [
+      "Abdurrahman T\u00dcRKER"
+    ],
+    "year": 2026,
+    "doi": "10.22596/hej.1943040",
+    "url": "https://openalex.org/W7225344850",
+    "openalex_id": "https://openalex.org/W7225344850",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Harran Education Journal",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The approved 2024 Life Studies Curriculum was screened for P21 skills at the level of 66 distinct learning outcomes and their teaching applications. A specified student-performance rule identified 50 matches (75.8%): 13/23 in Grade 1, 20/23 in Grade 2 and 17/20 in Grade 3. One primary P21 category per matched outcome gave 30 learning-and-innovation, 13 life-and-career and seven information-media-technology matches. The 66-row supplement records source-page decisions. Revision-stage AI-assisted coding was followed by author review of the preceding matrix and a documented source-consistency correction. OECD and UNESCO were used for interpretive comparison. Independent second-coder reliability and classroom implementation were not assessed.",
+    "topics": [
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-investigating-the-objectives-of-the-2018-ninth-grade-chemistry-curriculu",
+    "title": "Investigating the Objectives of the 2018 Ninth-Grade Chemistry Curriculum in Terms of Twenty-First-Century Skills",
+    "authors": [
+      "Kimya, MEB Talim ve Terbiye Kurulu Ba\u015fkanl\u0131\u011f\u0131, Ankara,T\u00fcrkiye",
+      "Ebru Demir",
+      "Abdullah AYDIN"
+    ],
+    "year": 2023,
+    "doi": "10.5152/aujkkef.2023.22170",
+    "url": "https://openalex.org/W4391297175",
+    "openalex_id": "https://openalex.org/W4391297175",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Educational Academic Research",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc",
+    "abstract": "21. y\u00fczy\u0131lda k\u00fcreselle\u015fen d\u00fcnyada, \u00e7a\u011f\u0131n gerektirdi\u011fi bilgi ve teknolojinin \u0131\u015f\u0131\u011f\u0131nda her \u00fclkenin e\u011fitim sistemini dolay\u0131s\u0131yla \u00f6\u011fretim programlar\u0131n\u0131 21. y\u00fczy\u0131l becerileri odakl\u0131 d\u00fczenlemesi olduk\u00e7a \u00f6nemli g\u00f6r\u00fclmektedir. Bu ara\u015ft\u0131rmada 2018 y\u0131l\u0131 Orta\u00f6\u011fretim 9. S\u0131n\u0131f Kimya Dersi \u00d6\u011fretim Program\u0131 kazan\u0131mlar\u0131n\u0131n 21. y\u00fczy\u0131l becerileri a\u00e7\u0131s\u0131ndan incelenmesi ve bu becerileri ne \u00f6l\u00e7\u00fcde yans\u0131tt\u0131\u011f\u0131n\u0131n belirlenmesi ama\u00e7lanm\u0131\u015ft\u0131r. Ara\u015ft\u0131rmada nitel ara\u015ft\u0131rma y\u00f6ntemlerinden biri olan dok\u00fcman analizi y\u00f6ntemi kullan\u0131lm\u0131\u015ft\u0131r. Bu ba\u011flamda 2018 y\u0131l\u0131 Orta\u00f6\u011fretim 9. S\u0131n\u0131f Kimya Dersi \u00d6\u011fretim Program\u0131 kazan\u0131mlar\u0131 P21 \u00e7er\u00e7evesinde belirlenen 21. y\u00fczy\u0131l becerileri a\u00e7\u0131s\u0131ndan incelenmi\u015ftir. Ara\u015ft\u0131rman\u0131n verileri, betimsel analiz y\u00f6ntemiyle \u00e7\u00f6z\u00fcmlenmi\u015ftir. Ara\u015ft\u0131rma sonucunda 9. S\u0131n\u0131f Kimya Dersi \u00d6\u011fretim Program\u0131 kazan\u0131mlar\u0131nda 21. y\u00fczy\u0131l becerilerinden en \u00e7ok ele\u015ftirel d\u00fc\u015f\u00fcnme ve problem \u00e7\u00f6zme, ileti\u015fim ve bilgi okuryazarl\u0131\u011f\u0131 becerilerine yer verildi\u011fi; bilgi ve ileti\u015fim teknolojileri (ICT) okuryazarl\u0131\u011f\u0131, giri\u015fimcilik ve \u00f6zy\u00f6netim, \u00fcretkenlik ve sorumluluk ile medya okuryazarl\u0131\u011f\u0131 becerilerine daha az yer verildi\u011fi; en az seviyede ise yarat\u0131c\u0131l\u0131k ve yenilenme, i\u015fbirli\u011fi, esneklik ve uyum, sosyal ve k\u00fclt\u00fcrleraras\u0131 beceriler, liderlik ve sorumluluk becerilerine yer verildi\u011fi belirlenmi\u015ftir. Buradan hareketle 9. S\u0131n\u0131f Kimya Dersi \u00d6\u011fretim Program\u0131 kazan\u0131mlar\u0131nda21. y\u00fczy\u0131l becerilerine yer verildi\u011fi ancak dengeli bir da\u011f\u0131l\u0131m yap\u0131lmad\u0131\u011f\u0131 anla\u015f\u0131lm\u0131\u015ft\u0131r. Elde edilen sonu\u00e7lar do\u011frultusunda \u00f6\u011fretim programlar\u0131n\u0131n haz\u0131rl\u0131k a\u015famas\u0131nda 21. y\u00fczy\u0131l becerilerinin t\u00fcm kazan\u0131mlarda olabildi\u011fince dengeli bir da\u011f\u0131l\u0131m g\u00f6stermesi hususuna dikkat edilmesi \u00f6nerilebilir.",
+    "topics": [
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-generative-ai-and-education-dynamic-personalization-of-pupils-school-lea",
+    "title": "Generative AI and education: dynamic personalization of pupils\u2019 school learning material with ChatGPT",
+    "authors": [
+      "Jussi Sakari Jauhiainen",
+      "Agust\u00edn Garagorry Guerra"
+    ],
+    "year": 2024,
+    "doi": "10.3389/feduc.2024.1288723",
+    "url": "https://openalex.org/W4404509460",
+    "openalex_id": "https://openalex.org/W4404509460",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The widespread use of generative AI tools like ChatGPT has seen significant growth. This rise prompted discussions on integrating these technologies into school education. However, the practical implementation, testing, and assessment of generative AI in primary and secondary education remained largely unexplored. This article examines the application of ChatGPT-3.5 and 4 in primary school education. A study involving 110 students aged 8\u201314 across grades 4\u20136 in two Uruguayan schools was conducted. The focus was on using generative AI for dynamic personalization of educational content during classroom lessons. In these sessions, instructional content followed the curriculum goals, and text, illustrations, and exercises were generated and dynamically adjusted based on generative AI. The findings indicate that generative AI effectively tailors school materials to match varying pupil knowledge levels. Real-time adjustments during lessons cater to individual learning needs, enhancing cognitive ergonomics. This approach not only boosts pupil motivation but also improves their performance, facilitating more effective achievement of the curriculum\u2019s learning objectives. These results suggest a promising avenue for leveraging generative AI to personalize and optimize primary school education.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-examining-teacher-educators-roles-in-developing-preservice-teachers-digi",
+    "title": "Examining Teacher Educators\u2019 Roles in Developing Preservice Teachers\u2019 Digital Competence",
+    "authors": [
+      "Jari Kukkonen",
+      "Sini Kontkanen",
+      "Heikki Kontturi",
+      "Sanna Nenonen",
+      "Mari Parpala",
+      "Ville Tahvanainen",
+      "Teemu Valtonen"
+    ],
+    "year": 2025,
+    "doi": "10.1080/02619768.2025.2505021",
+    "url": "https://openalex.org/W4410438504",
+    "openalex_id": "https://openalex.org/W4410438504",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "European Journal of Teacher Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Teacher education institutions and educators are pivotal in fostering digital competences among teachers. This research focuses on teacher educators\u2019 perceptions of supporting the development of preservice teachers\u2019 digital competences using the synthesis of qualitative data (SQD) key strategies, attitudes towards using educational technology, and technological pedagogical knowledge. The study employed a mixed methods convergence model by collecting and analysing quantitative and qualitative data. The target group consisted of teacher educators (N = 128) from three Finnish teacher education institutions. Findings reveal that the most prevalent strategies include providing authentic learning experiences and serving as role models. Using latent profile analysis, three clusters of teacher educators were identified. These clusters aligned with the results from the qualitative data, both indicating the importance of supporting the development of preservice teachers\u2019 digital competences. The results also emphasised the important role of attitudes; however, challenges in implementing SQD strategies exist.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "educator"
+  },
+  {
+    "id": "src-exploring-student-perceptions-of-generative-ai-therapists-and-their-bene",
+    "title": "Exploring Student Perceptions of Generative AI Therapists and Their Benefits and Challenges in Schools",
+    "authors": [
+      "Cecilia Ka Yuk Chan",
+      "Samson Shu-Ki Tse"
+    ],
+    "year": 2026,
+    "doi": "10.1002/ijop.70207",
+    "url": "https://openalex.org/W7143369259",
+    "openalex_id": "https://openalex.org/W7143369259",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Psychology",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This study investigates secondary school students' perceptions of generative AI (GenAI) as virtual mental health therapists within educational settings. Leveraging data from the written reflections of 69 Hong Kong secondary school students engaged in an AI literacy programme, the study applied inductive thematic analysis to explore perceived potentials and limitations of GenAI therapy chatbots. Students valued the accessibility, anonymity and cost-effectiveness of AI-powered therapy. However, significant concerns arose regarding the technology's lack of genuine empathy, limited understanding of non-verbal cues and potential for inaccurate responses. Ethical issues, such as data privacy and trust, were highlighted, with students expressing warranted distrust regarding personal data handling. The findings emphasised the risk of over-reliance on AI and the therapeutic misconception that AI generates more suitable advice. While students acknowledged GenAI as a supplementary tool for initial support, they underscored the irreplaceable role of human therapists for deep, personalised care. This research calls for comprehensive AI literacy education to help students effectively navigate the strengths and boundaries of AI in mental health support.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-career-adaptability-resilience-and-life-satisfaction-among-italian-and-b",
+    "title": "Career Adaptability, Resilience, and Life Satisfaction Among Italian and Belgian Middle School Students",
+    "authors": [
+      "Sara Santilli",
+      "Silke Grossen",
+      "Laura Nota"
+    ],
+    "year": 2020,
+    "doi": "10.1002/cdq.12231",
+    "url": "https://openalex.org/W3089208745",
+    "openalex_id": "https://openalex.org/W3089208745",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "The Career Development Quarterly",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Youth need help with planning their future, developing positive life trajectories, and coping with socioeconomic conditions. Using a life design approach, we analyzed the relationship between career adaptability, resilience, and life satisfaction among Belgian (N = 158) and Italian (N = 158) middle school students. We hypothesized that career adaptability, directly and indirectly via resilience, would predict life satisfaction. Furthermore, we predicted that the conceptual model would be comparable between countries. Each participant completed self\u2010report measures to assess career adaptability, resilience, and life satisfaction. The results obtained using a two\u2010step approach to structural equation modeling suggest that career adaptability is directly and indirectly, through resilience, related to students' life satisfaction in both Italian and Belgian students. These results have important implications for supporting middle school students in their life design process.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-online-technology-and-self-regulated-learning-ability-as-predictors-of-s",
+    "title": "Online Technology and Self-Regulated Learning Ability as Predictors of Secondary School Students' Academic Achievement in Biology in Aguata Education Zone, Anambra State, Nigeria",
+    "authors": [
+      "Regina Ijeamasi Enebechi"
+    ],
+    "year": 2026,
+    "doi": "10.5281/zenodo.23884459",
+    "url": "https://openalex.org/W7225115753",
+    "openalex_id": "https://openalex.org/W7225115753",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Jurnal Salome : Multidisipliner Keilmuan",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study investigated online technology and self-regulated learning ability as predictors of secondary school students\u2019 academic achievement in Biology in Aguata Education Zone, Anambra State, Nigeria. The study adopted a correlational research design. Three research questions and three null hypotheses guided the study. The population consisted of all Senior Secondary School Two (SS2) Biology students in public secondary schools in the zone, from which a sample of 200 students was selected using multi-stage sampling techniques. Instruments for data collection included the Online Technology Utilization Questionnaire (OTUQ), Self-Regulated Learning Ability Questionnaire (SRLAQ), and Biology Achievement Test (BAT). The instruments were validated by experts, and reliability coefficients of 0.82, 0.85, and 0.79 were obtained respectively. Data were analyzed using simple and multiple regression analysis. Findings revealed that online technology and self-regulated learning ability significantly predict students\u2019 academic achievement in Biology, with self-regulated learning showing a stronger predictive influence. The combined effect of both variables accounted for 52.6% of the variance in academic achievement. It was concluded that effective utilization of online technology, coupled with strong self-regulated learning skills, enhances students\u2019 academic performance in Biology. Recommendations were made for integrating digital tools and self-regulation strategies into Biology instruction.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-navigating-the-landscape-of-ai-literacy-education-insights-from-a-decade",
+    "title": "Navigating the landscape of AI literacy education: insights from a decade of research (2014\u20132024)",
+    "authors": [
+      "Yuqin Yang",
+      "Ying Zhang",
+      "Daner Sun",
+      "Wenmeng He",
+      "Yantao Wei"
+    ],
+    "year": 2025,
+    "doi": "10.1057/s41599-025-04583-8",
+    "url": "https://openalex.org/W4408478651",
+    "openalex_id": "https://openalex.org/W4408478651",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Humanities and Social Sciences Communications",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "As artificial intelligence (AI) becomes increasingly integrated into various fields, the need to enhance learners\u2019 AI literacy is more urgent than ever. Despite its growing importance, a comprehensive review of AI literacy education research has been lacking. This study addresses that gap by mapping the current landscape, tracing its evolution, and identifying key themes through a bibliometric analysis of research from 2014 to 2024, utilizing CiteSpace for data visualization and analysis. This study systematically selected 335 relevant articles from databases, including Web of Science Core Collection, Scopus, and Science Direct, following PRISMA guidelines. Our methodology involved keyword co-occurrence mapping to trace the development paths and thematic evolution within the field. By examining publication trends and thematic clusters, we provide insights into the progression and focal points of AI literacy education research over the past decade. The study reveals three key insights. First, AI literacy education research has shifted from an exploratory phase to rapid growth, with a marked increase in publications. Second, four distinct developmental trajectories have emerged, emphasizing the interdisciplinary nature of the field and its connections to information, digital, and algorithmic literacy. Third, nine prominent research themes have been identified, with data literacy, machine learning, AI literacy, the technology acceptance model, and computational thinking as focal points. These themes highlight AI\u2019s evolving role, particularly in education, and shifts in research priorities. This review provides a comprehensive understanding of AI literacy education\u2019s evolution and its implications for education, ethics, and society. As AI continues to influence modern education and industry, this analysis serves as a valuable resource for researchers, educators, and policymakers navigating the complex intersection of AI and literacy.",
+    "topics": [
+      "ai literacy",
+      "data literacy",
+      "ethics",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-pre-service-early-childhood-teachers-perceptions-and-willingness-to-util",
+    "title": "Pre-Service Early Childhood Teachers\u2018 Perceptions and Willingness to Utilize AI Literacy Education",
+    "authors": [
+      "Suksil Han"
+    ],
+    "year": 2024,
+    "doi": "10.9722/jgte.2024.34.4.501",
+    "url": "https://openalex.org/W4415601000",
+    "openalex_id": "https://openalex.org/W4415601000",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Gifted/Talented Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "As artificial intelligence increasingly becomes an integral part of daily life, interest in AI education is also on the rise. This study aimed to examine the perceptions of pre-service early childhood teachers regarding AI literacy education for young children and their willingness to implement such activities in educational settings. Data were collected through a Google survey targeting 124 pre-service early childhood teachers enrolled in the Early Childhood Education Department at U University and the Child-related Department at A University. The collected data were analyzed using SPSS 25.0 with descriptive statistics and F-tests. The findings revealed that participants strongly recognized the necessity of AI literacy education, considering it a fundamental skill for future society. The primary objective of AI literacy education was identified as fostering appropriate attitudes toward artificial intelligence. Regarding the educational content, \"the social impact of artificial intelligence and information ethics\" was the most preferred topic, while \"interaction with AI media in daily life\" emerged as the most favored teaching method. For evaluation, \"interest in artificial intelligence\" received the highest responses, and for educational support, \"providing an environment conducive to AI education\" was the most frequently mentioned need. Participants indicated that AI literacy education could enrich teaching methods and expressed a strong willingness to utilize AI educational media in their practice. No significant differences were observed across grade levels (1st to 4th year). This study highlights the importance of integrating AI literacy education into early childhood teacher training programs.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "educator"
+  },
+  {
+    "id": "src-artificial-intelligence-literacy-for-technology-education",
+    "title": "Artificial intelligence literacy for technology education",
+    "authors": [
+      "Karin Stolpe",
+      "Jonas H\u00e4llstr\u00f6m"
+    ],
+    "year": 2024,
+    "doi": "10.1016/j.caeo.2024.100159",
+    "url": "https://openalex.org/W4390618356",
+    "openalex_id": "https://openalex.org/W4390618356",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Computers and Education Open",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The interest in artificial intelligence (AI) in education has erupted during the last few years, primarily due to technological advances in AI. It is therefore argued that students should learn about AI, although it is debated exactly how it should be applied in education. AI literacy has been suggested as a way of defining competencies for students to acquire to meet a future everyday- and working life with AI. This study argues that researchers and educators need a framework for integrating AI literacy into technological literacy, where the latter is viewed as a multiliteracy. This study thus aims to critically analyse and discuss different components of AI literacy found in the literature in relation to technological literacy. The data consists of five AI literacy frameworks related to three traditions of technological knowledge: technical skills, technological scientific knowledge, and socio-ethical technical understanding. The results show that AI literacy for technology education emphasises technological scientific knowledge (e.g., knowledge about what AI is, how to recognise AI, and systems thinking) and socio-ethical technical understanding (e.g., AI ethics and the role of humans in AI). Technical skills such as programming competencies also appear but are less emphasised. Implications for technology education are also discussed, and a framework for AI literacy for technology education is suggested.",
+    "topics": [
+      "ai literacy",
+      "ethics",
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
+  },
+  {
+    "id": "src-effects-of-generative-ai-assisted-learning-on-critical-thinking-skills-a",
+    "title": "\"Effects of Generative AI-Assisted Learning on Critical Thinking Skills among Higher Secondary School Students\".",
+    "authors": [
+      "Nazish Andleeb Babar Hussain"
+    ],
+    "year": 2026,
+    "doi": "10.5281/zenodo.24311706",
+    "url": "https://openalex.org/W7235014987",
+    "openalex_id": "https://openalex.org/W7235014987",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Perspectives in Social Sciences",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study examined the effects of Generative AI (GenAI)-assisted learning on the critical thinking skills of higher secondary school students. A quasi-experimental pre-test and post-test design with a non-equivalent control group was used. The sample consisted of 59 Grade XII students of Garrison Academy Kharian Cantt (Army Public School and College), Punjab, Pakistan: 28 girls in the experimental group and 31 boys in the control group. For one month, the experimental group was taught with GenAI tools (Claude and DeepSeek) and the control group was taught with traditional methods. Critical thinking was measured before and after the teaching period with a 30-item Critical Thinking Questionnaire based on Facione's (1990) six skills: interpretation, analysis, evaluation, inference, explanation, and self-regulation. The data were analysed with paired-samples t-tests, independent-samples t-tests on gain scores, and analysis of covariance. The total critical thinking score of the experimental group rose from M = 72.71 (SD = 5.11) to M = 121.25 (SD = 7.79), t(27) = 29.02, p < .001, d = 7.37, and that of the control group rose from M = 68.68 (SD = 7.75) to M = 77.58 (SD = 8.03), t(30) = 8.15, p < .001, d = 1.13. The mean gain of the experimental group (48.54 points) was significantly larger than that of the control group (8.90 points), t(57) = 20.21, p < .001, d = 5.27, and the analysis of covariance, which adjusted for the pre-test score, gave the same result, F(1, 56) = 466.24, p < .001, partial \u03b7\u00b2 = .893. All six skills improved more in the experimental group. For classroom practice, the result suggests that guided GenAI activities, in which students compare AI answers, check them against the textbook, and give their own reasons, are worth adding to regular teaching under the teacher's supervision. The effect sizes were unusually large, the experimental group also started higher than the control group (p = .023), and the pre-test reliability of the questionnaire was low (\u03b1 = .29). The findings should be read with care because the groups were intact classes that also differed in gender. Keywords: Generative AI, Critical Thinking Skills, Higher Secondary Students, Quasi-Experimental Study",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-computational-thinking-in-secondary-education-where-does-it-fit-a-system",
+    "title": "Computational Thinking in Secondary Education: Where does it fit? A systematic literary review",
+    "authors": [
+      "James Lockwood",
+      "Aidan Mooney"
+    ],
+    "year": 2018,
+    "doi": "10.21585/ijcses.v2i1.26",
+    "url": "https://openalex.org/W2791749893",
+    "openalex_id": "https://openalex.org/W2791749893",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Computer Science Education in Schools",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Computational Thinking has been described as an essential skill which everybody should learn. Since Wing popularised the term in 2006 increased focus and attention have been placed on Computational Thinking.The first aim of this systematic literary review is to give second-level educators, who are considering incorporating Computational Thinking into their classrooms, ideas and options about how to achieve this. The hope is also to present reasons as to why it is beneficial to teach Computational Thinking, along with potential issues.Secondly, we aim to present education researchers with an overview of what work has been carried out in the domain, as well as potential gaps that still exist.Thirdly, this is the first stage in a longer-term project to develop a Computational Thinking based curriculum which is taught using Computer Science. It is hoped that the problems and ideas that are presented here will underpin this curriculum.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-computational-thinking-in-secondary-mathematics-education-with-geogebra",
+    "title": "Computational Thinking in Secondary Mathematics Education with GeoGebra: Insights from an Intervention in Calculus Lessons",
+    "authors": [
+      "Christos Chytas",
+      "Sylvia Patricia van Borkulo",
+      "Paul H. M. Drijvers",
+      "Erik Barendsen",
+      "Jos Tolboom"
+    ],
+    "year": 2024,
+    "doi": "10.1007/s40751-024-00141-0",
+    "url": "https://openalex.org/W4394743401",
+    "openalex_id": "https://openalex.org/W4394743401",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Digital Experiences in Mathematics Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Nowadays, mathematics teachers in K\u201312 strive to promote their students\u2018 mathematical knowledge and computational thinking (CT) skills. There is an increasing need for effective CT-embedded mathematics learning material and a better understanding of students\u2019 views toward them. In this work, we present the results of a research study, which included the design of a six-lesson learning activity aimed at fostering 16- to 17-year-old secondary students\u2019 CT skills in calculus lessons using the dynamic mathematics software GeoGebra . Our goal was to investigate how students experienced the CT-embedded calculus lessons with GeoGebra and what challenges they faced during their interaction with the learning material and software. We collected and analyzed data from students\u2019 code in GeoGebra , workbooks, semi-structured interviews, and questionnaires. Our findings suggest that most students mastered using CT concepts in calculus activities to a satisfactory degree and could reason about their computational solutions using GeoGebra and the generated graphs. Students\u2019 understanding of the mathematical content knowledge introduced was essential to complete the lesson series successfully and unnoticed gaps in prior knowledge emerged. Our study shows that students appreciate the CT-embedded calculus lessons and GeoGebra \u2019s exploratory approach to mathematics problems when provided with appropriate support. We conclude that an integrated approach to mathematics education and CT is viable and can contribute not only to fostering CT but also to increasing interest in mathematics.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-state-of-the-field-of-computational-thinking-in-early-childhood-educ",
+    "title": "The state of the field of computational thinking in early childhood education",
+    "authors": [
+      "Marina Umaschi Bers",
+      "Amanda L. Strawhacker",
+      "Amanda Sullivan"
+    ],
+    "year": 2022,
+    "doi": "10.1787/3354387a-en",
+    "url": "https://openalex.org/W4285085466",
+    "openalex_id": "https://openalex.org/W4285085466",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "OECD education working papers",
+    "source_type": "policy_report",
+    "license": null,
+    "abstract": "Computer programming and associated Computational Thinking (CT) skills are essential to thriving in today\u2019s academic and professional world. There has been a growing focus globally on fostering CT skills as well as on introducing computer programming concepts and languages beginning as early as kindergarten and pre-primary school. Tools, curriculum, and frameworks to promote CT in the early years must be designed and implemented in ways that engage children who cannot yet read and write, who learn through play, and who have a short attention span and limited working memory but also strong natural curiosity. This review summarises empirical and theoretical literature on the state of the field of CT as it relates to early learning and development, a time when young children are being introduced to foundational skills, such as literacy and numeracy, which can carefully be complemented by an exploration of CT.",
+    "topics": [
+      "systems thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-moderating-effect-of-digital-literacy-education-and-parental-mediati",
+    "title": "The moderating effect of digital literacy education and parental mediation between adolescent digital media usage and psychological adaptation",
+    "authors": [
+      "Dong Ha Kim"
+    ],
+    "year": 2023,
+    "doi": "10.17854/ffyc.2023.10.76.13",
+    "url": "https://openalex.org/W4388100747",
+    "openalex_id": "https://openalex.org/W4388100747",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Forum For Youth Culture",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "The present study examines the influence of adolescents' digital media usage on their psychological adaptation, specifically regarding life satisfaction and aggression. Additionally, the study examines whether the digital literacy education experience at school and parental media mediation have significant moderating effects on this relationship. To achieve this objective, data from the \"Adolescent Media Use Survey\" conducted in 2020 targeting adolescents in grades 4-6 of elementary schools nationwide, along with their parents, were analyzed. The dataset included responses from 2,454 pairs of students and guardians. The analysis revealed several key findings. First, adolescents' digital media usage negatively influenced their life satisfaction and positively influenced their aggression. Second, the adverse effects of digital media usage on life satisfaction and aggression were mitigated by the presence of digital literacy education experiences in school. Third, parental media mediation did not demonstrate a significant moderating effect on the relationship between adolescents' digital media usage and psychological adaptation. Based on these results, this study provides policy and practical implications regarding the necessity of digital media usage and digital literacy education for adolescents.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-alfabetizacion-mediatica-y-pensamiento-critico-frente-a-la-desinformacio",
+    "title": "Alfabetizaci\u00f3n medi\u00e1tica y pensamiento cr\u00edtico frente a la desinformaci\u00f3n digital en estudiantes de Bachillerato",
+    "authors": [
+      "Paola Carolina Vinueza-Paredes",
+      "Mar\u00eda Gabriela Condoy-Yanang\u00f3mez",
+      "Steven Arturo Torres Burgos"
+    ],
+    "year": 2026,
+    "doi": "10.64905/riceafs.v4i2.e95",
+    "url": "https://openalex.org/W7225862758",
+    "openalex_id": "https://openalex.org/W7225862758",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "RICEAFS Revista de Investigaci\u00f3n en Ciencias de la Educaci\u00f3n Actividad F\u00edsica y Salud",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "Introduction: Digital misinformation poses a challenge to the academic and civic education of students; therefore, media literacy and critical thinking are essential skills for interpreting and evaluating informational content. Objective: Analyze the relationship between media literacy and critical thinking in the face of digital misinformation among high school students. Method: A study was conducted with a quantitative approach, non-experimental design, cross-sectional, and descriptive-correlational level. 80 second-year high school students from the Verbo Divino Educational Unit in the city of Guaranda, Ecuador, participated, selected through intentional non-probabilistic sampling. Instruments were used to assess media literacy and the dimensions of critical thinking. A descriptive statistics analysis and Spearman correlation were conducted. Results: The overall media literacy score was 3.28 \u00b1 0.560, while the critical thinking score was 12.94 \u00b1 3.414 out of 20. A positive, moderate, and statistically significant correlation was found between both variables, \u03c1 = 0.455; p < 0.001. Discussion: The results demonstrate that it is essential to critically understand the language of the media and analyze information to confront misleading digital content. Conclusions: Media literacy is closely related to critical thinking, which supports the appropriateness of a pedagogical strategy focused on source verification, evidence evaluation, and responsible digital communication.",
+    "topics": [
+      "critical thinking",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-mastering-critical-thinking-skills-is-strongly-associated-with-the-abili",
+    "title": "Mastering critical thinking skills is strongly associated with the ability to recognize fakeness and misinformation",
+    "authors": [
+      "Simone Redaelli",
+      "Federico Germani",
+      "Giovanni Spitale",
+      "Nikola Biller\u2010Andorno",
+      "Jessica Brown",
+      "Sophie Gl\u00f6ckler"
+    ],
+    "year": 2025,
+    "doi": "10.3389/feduc.2025.1577692",
+    "url": "https://openalex.org/W4410892516",
+    "openalex_id": "https://openalex.org/W4410892516",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Frontiers in Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Introduction In the current era of digital information overload, individuals are inundated with content of varying quality and truthfulness. Critical evaluation of such content is essential to distinguish between legitimate information and misinformation or fakeness. Despite this need, there is limited empirical evidence on the effectiveness of training in critical thinking skills for enhancing such discernment. Methods This study operationalized critical thinking into six measurable concepts: causation and correlation, independent data and replicates, reproducibility, credibility of sources, experimental control, and statistical significance. A pre-registered randomized controlled trial was conducted involving educational video interventions aimed at improving participants\u2019 understanding and application of these concepts. Participants were evaluated based on their ability to identify fake tweets and misinformation both before and after the intervention. Results A strong correlation was found in the pre-intervention phase between mastery of critical thinking concepts and the ability to identify misinformation and fakeness. However, the video-based intervention did not significantly enhance critical thinking skills nor improve the participants\u2019 accuracy in identifying misinformation compared to the control group. The intervention\u2019s inefficacy was consistent across various demographic and educational backgrounds. Discussion The findings suggest that while mastery of critical thinking is associated with greater resilience against misinformation, current educational interventions\u2014such as short video lectures\u2014are insufficient. There is a pressing need to develop and empirically validate more effective, possibly interactive, training modalities that can foster misinformation-specific critical thinking skills in the general population.",
+    "topics": [
+      "critical thinking",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-generative-artificial-intelligence-in-medical-education-enhancing-critic",
+    "title": "Generative Artificial Intelligence in Medical Education: Enhancing Critical Thinking or Undermining Cognitive Autonomy?",
+    "authors": [
+      "Juan S. Izquierdo\u2010Condoy",
+      "Marlon Arias-Intriago",
+      "Andrea Tello-De-la-Torre",
+      "Felix Busch",
+      "Esteban Ortiz\u2010Prado"
+    ],
+    "year": 2025,
+    "doi": "10.2196/76340",
+    "url": "https://openalex.org/W4414436578",
+    "openalex_id": "https://openalex.org/W4414436578",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Medical Internet Research",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Generative artificial intelligence (GenAI) enables the production of coherent and contextually relevant text by processing large-scale linguistic datasets. Tools such as ChatGPT, Gemini, Claude, and LLaMA are increasingly integrated into medical education, assisting students with a range of tasks, including clinical reasoning, literature review, scientific writing, and formative assessment. Although these tools offer significant advantages in terms of productivity, personalization, and cognitive support, their impact on critical thinking-a cornerstone of medical education-remains uncertain. The aim of this viewpoint paper is to critically assess the influence of GenAI on critical thinking within medical training, examining both its potential to enhance cognitive skills and the risks it poses to cognitive autonomy. Users have reported increased efficiency and improved linguistic output; however, concerns have also been raised regarding the risk of cognitive overreliance. Current evidence presents a mixed picture, indicating both improvements in learner engagement and potential drawbacks such as passivity or susceptibility to misinformation. Without curricular integration that prioritizes ethical use, prompt engineering, and critical evaluation, GenAI may compromise the cognitive autonomy of medical students. Conversely, when thoughtfully embedded into pedagogical frameworks, these tools can act as cognitive enhancers-supporting, rather than replacing, clinical reasoning. Medical education must adapt to ensure that future physicians engage with GenAI in a critical, ethical, and context-aware manner, especially in complex decision-making scenarios. This transformation demands not only technological fluency but also reflective practice and sustained oversight by faculty and academic institutions.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 1.0,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-importance-of-integrating-mathematical-literacy-in-the-primary-educa",
+    "title": "THE IMPORTANCE OF INTEGRATING MATHEMATICAL LITERACY IN THE PRIMARY EDUCATION CURRICULUM: A LITERATURE REVIEW",
+    "authors": [
+      "Joni Wilson Sitopu",
+      "Majidah Khairani",
+      "Melia Roza",
+      "Loso Judijanto",
+      "Aslan Aslan"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7221248227",
+    "openalex_id": "https://openalex.org/W7221248227",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Teaching and Learning",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-sa",
+    "abstract": "This comprehensive literature review investigates the critical importance of integrating mathematical literacy into the primary education curriculum. Mathematical literacy, a holistic concept that involves the complete understanding, practical application, and thoughtful analysis of mathematical information across diverse contexts, is a transformative force in molding the foundational skills of young learners. This review extensively explores the myriad benefits arising from the intentional inclusion of mathematical literacy, emphasizing its pivotal role in fostering logical thinking, aligning with the demands of 21st-century skills, and augmenting global competitiveness among learners. Despite acknowledged challenges in implementation, the long-term advantages for individual students and society are resoundingly underscored, positioning mathematical literacy not only as a pedagogical necessity but as a strategic investment in the future of education and national progress. Furthermore, this literature review goes beyond surveying existing research and academic journals; it represents a nuanced synthesis of diverse perspectives and findings. Drawing insights from pertinent publications delves into the practical implications and real- world applications of integrating mathematical literacy. The review is valuable for educators, policymakers, and curriculum developers, offering actionable insights to inform decision-making processes. Through meticulously examining the literature, this review advocates for acknowledging mathematical literacy and its intentional and meaningful incorporation into primary education curricula. It contributes substantively to ongoing conversations in the educational landscape, promoting a paradigm shift towards a more holistic and impactful approach to mathematical education.",
+    "topics": [
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-development-of-a-twenty-first-century-skills-scale-for-agri-varsities",
+    "title": "Development of a twenty-first century skills scale for agri varsities",
+    "authors": [
+      "Muhammad Sabih Javed",
+      "Muhammad Razzaq Athar",
+      "Abdul Saboor"
+    ],
+    "year": 2019,
+    "doi": "10.1080/23311975.2019.1692485",
+    "url": "https://openalex.org/W2986225659",
+    "openalex_id": "https://openalex.org/W2986225659",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Cogent Business & Management",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "A new twenty-first century skills framework and a 19-item scale was developed to bridge the gap between science and practice. A self-reporting 19-item scale was developed to measure twenty-first century skills of faculty and non-faculty staff of agri varsities. A total of 49 items were generated using deduction approach for four skills: communication and collaboration, leadership and responsibility, problem-solving and decision-making, and creativity and innovation. Two content validity techniques were used that reduced the number of items to 29. Exploratory factor analysis was conducted in Mplus and items with poor loadings and cross-loadings were removed in each round. After five rounds of EFA, a promising 19-item scale was identified that fit the data well based on multiple model fit indices. Confirmatory factor analysis further confirmed the construct validity of the items and a four construct scale was identified where creativity was the only skill that failed to load. The reliability of the scale was measured using Cronbach\u2019s alpha which was above 0.70 for all the factors. Convergent and discriminant validity was analyzed using AVE, shared variance, and factor loadings. The implication and limitations of the scale were discussed.",
+    "topics": [
+      "creativity",
+      "collaboration",
+      "future skills"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-ai-literacy-education-for-high-school-students-to-support-critical-and-i",
+    "title": "AI Literacy Education for High School Students to Support Critical and Independent Learning",
+    "authors": [
+      "El-Roi Rizsaldie Madubun",
+      "Vitalona Crysantini paays",
+      "Indah Cahyani"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://openalex.org/W7236538058",
+    "openalex_id": "https://openalex.org/W7236538058",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Jurnal Penelitian dan Pengabdian kepada Masyarakat",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "This community engagement activity aimed to strengthen artificial intelligence (AI) literacy among high school students, particularly their ability to use generative AI as a learning aid without replacing independent thinking, source verification, and academic responsibility. The activity was designed as an educational socialization and workshop addressing the nature of AI and generative AI, appropriate and inappropriate uses in learning, risks of AI dependence, critical thinking, information verification, and ethical and responsible use. Thirty students participated in a pre-test and post-test consisting of ten multiple-choice items aligned with the learning objectives. Descriptive analysis was used to compare participants\u2019 scores before and after the intervention. The mean pre-test score was 64.67, while the mean post-test score reached 84.67, representing an increase of 20 points or 30.93% relative to the pre-test mean. Before the activity, 2 students (6.67%) were categorized as very good, 14 (46.67%) as good, 13 (43.33%) as fair, and 1 (3.33%) as poor. After the activity, 11 students (36.67%) were categorized as very good and 19 (63.33%) as good, with no participants in the fair, poor, or very poor categories. The findings indicate an improvement in measured understanding of responsible AI use, including verification, independent reasoning, recognition of AI dependence, and positioning AI as a learning aid. The activity contributes a practical school-based model of AI literacy that combines conceptual explanation, ethical reflection, and scenario-based assessment. Because the evaluation used a single-group pre-test\u2013post-test design, the results should be interpreted as evidence of improved measured understanding rather than definitive causal evidence of long-term behavioral change.",
+    "topics": [
+      "ai literacy",
+      "critical thinking",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-problem-solving-ability-in-school-education-a-review-of-empirical-studie",
+    "title": "PROBLEM SOLVING ABILITY IN SCHOOL EDUCATION: A REVIEW OF EMPIRICAL STUDIES",
+    "authors": [
+      "Renu Sharma",
+      "Shelly"
+    ],
+    "year": 2026,
+    "doi": "10.55248/gengpi.07.1126.36053",
+    "url": "https://openalex.org/W7235160717",
+    "openalex_id": "https://openalex.org/W7235160717",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "International Journal of Research Publication and Reviews",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "A problem solving skill plays a vital role in successful education as it helps learners utilize information, understand new problems, analyze options for resolution purposes. This paper is a research article that summarizes some national and international studies on developing skills for solving problems by children at schools. The review considers empirical studies, theoretical contributions, intervention research, meta-analyses, and large-scale educational assessments. Problem solving is an integral part of education which involves developing skills such as critical thinking, reasoning abilities, self-regulation strategies for effective learning through reading comprehension and writing proficiency while also being influenced by motivation levels among students' attitudes towards schoolwork. Research on Indian students' problem solving abilities is related to their academic performance level of parents education history cognition behavior patterns gender environment factors within schools but results vary among them. International research provides comparatively strong evidence for the effectiveness of metacognitive instruction, schema-based approaches, collaborative problem-solving, problem-posing activities, and structured interventions for mathematical word problems. This paper also highlights an issue regarding lack of authenticity and novelty to problems faced by students at schools within India; there is a requirement for better contextualized tests as well as more effective interventions studies. In general, problem solving is an inter-disciplinary subject that can be taught like any other discipline instead of being limited by its mathematical nature. Problem solving skills of students; Metacognitive abilities among pupils for mathematics problems based on problem-solving strategies; Higher order thinking through education intervention programs.",
+    "topics": [
+      "critical thinking",
+      "collaboration",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-collaborative-problem-solving-focused-on-grounded-theory",
+    "title": "Collaborative problem solving: focused on grounded theory",
+    "authors": [
+      "Suhyoung Hong",
+      "Byung-il Yang"
+    ],
+    "year": 2020,
+    "doi": "10.37561/sse.2020.12.59.4.1",
+    "url": "https://openalex.org/W3127819411",
+    "openalex_id": "https://openalex.org/W3127819411",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "sahoekwakyoyuk(social studies education)",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "In this study, we collected data using \u201cthink aloud\u201d to understand how elementary-school students think about geography when doing collaborative problem solving, and analyzed them as a grounded theory (Strauss & Corbin, 1998). We derived 11 categories by open coding. The analysis was based on the paradigm model considering the properties and dimensions of these categories; hence we could deduce that how elementary-school students think about geography when doing collaborative problem solving consists of problem recognition, problem analysis, personal opinion presentation, exchange of opinions, and cooperative conclusions. Given this analysis, the core category of how elementary-school students think about geography when doing collaborative problem solving was set as \u2018various cooperative interactions to solve a given problem.\u2019 In addition, the types of geographic thinking by elementary-school students were classified as active participation, passive opinion presentation, feedback dependence, and non-participation, and the characteristics of each type were presented. The implications that we derived through this study are as follows. First, efforts to create an environment for students to carry out collaborative activities in geography as part of social-studies education are needed. Second, it is necessary to develop more controversial geographic issues that students can participate in. Third, it is necessary to actively explore the factors that influence the cooperative problem-solving process conducted in a geography class in social-studies education.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-relationship-between-statistical-literacy-and-mathematical-representatio",
+    "title": "RELATIONSHIP BETWEEN STATISTICAL LITERACY AND MATHEMATICAL REPRESENTATION OF STUDENTS THROUGH COLLABORATIVE PROBLEM SOLVING MODEL",
+    "authors": [
+      "Johannis Takaria\u202c",
+      "Wahyudin Wahyudin",
+      "Jozua Sabandar",
+      "Jarnawi Afgani Dahlan"
+    ],
+    "year": 2020,
+    "doi": "10.22460/infinity.v9i2.p183-196",
+    "url": "https://openalex.org/W3085472594",
+    "openalex_id": "https://openalex.org/W3085472594",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Infinity Journal",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-sa",
+    "abstract": "The purpose of this study was to find out the relationship between statistical literacy and mathematical representation of students as pre-service elementary school teachers through the Collaborative Problem Solving (CPS) model. The relationship between statistical literacy and mathematical representation was analyzed by using a product-moment correlation with a sample of 35 students of Elementary School Teacher Education Study Program at one of the state universities in Ambon City. The results showed that there was a positive and strong relationship between statistical literacy and mathematical representation with a correlation value of 0.66. This relationship means that if students have good mathematical representation abilities, statistical literacy abilities are also getting better. Exploration of statistical literacy and mathematical representation abilities can be facilitated by using The CPS learning model. The CPS learning model can facilitate student learning as a structure in mathematical thinking so that statistical literacy and mathematical representation abilities of students can be explored through the transformation of ideas among students. The CPS learning model aspects were implemented in high and very high categories while the indicators were at rating-2 and rating-3.",
+    "topics": [
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "educator"
+  },
+  {
+    "id": "src-the-effect-of-sustainable-development-education-based-design-classes-on",
+    "title": "The Effect of Sustainable Development Education-based Design Classes on Creative Problem-Solving Skills of 3rd Grade Middle School Students",
+    "authors": [
+      "Kyung Yun Kim",
+      "Hyo Jung Kim"
+    ],
+    "year": 2023,
+    "doi": "10.31152/jb.2023.10.8.5.25",
+    "url": "https://openalex.org/W4388770504",
+    "openalex_id": "https://openalex.org/W4388770504",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Journal of Business Convergence",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "Sustainable development, a global paradigm for providing a better world for future generations, plays a significant role in societal change that begins with education. This study aimed to examine the impact of design lessons based on sustainable development education (ESD) on the creative problem-solving abilities of third-year middle school students, reflecting the curriculum revision by the Ministry of Education. A total of 106 third-year students from S Middle School in Seoul were selected as a single group for the study. Based on literature review, a six-lesson research course on ESD was proposed. Pre and post-tests of Creative Problem Solving Profile (CPSPI) were collected and analyzed. Furthermore, to verify the effectiveness of the lessons, qualitative analyses were conducted on the class outputs, satisfaction levels, and student interviews. The analysis revealed that design lessons rooted in ESD positively influenced the students\" creative problem-solving abilities and enhanced their awareness of sustainable development. These findings confirm that students underwent positive changes in their perceptions, practical abilities regarding sustainable development, and problem-solving skills. Based on the insights from this study, it is hoped that more programs rooted in ESD will be developed and widely disseminated in the field of art education.",
+    "topics": [
+      "creativity"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-effect-of-challenge-and-safety-orientation-on-creative-problem-solvi",
+    "title": "The Effect of Challenge and Safety Orientation on Creative Problem-Solving Ability : Focusing on Game Creation SW Education of Elementary School Student",
+    "authors": [
+      "Seonmin Lee",
+      "Jaehyoun Kim"
+    ],
+    "year": 2026,
+    "doi": "10.32431/kace.2026.29.2.008",
+    "url": "https://openalex.org/W7140688580",
+    "openalex_id": "https://openalex.org/W7140688580",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "The Journal of Korean Association of Computer Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study investigated the effects of motivational orientation (challenge and safety orientation) on creative problem-solving ability among upper elementary school students through a game-based software education program. It also examined the sequential mediating effects of communication competence and digital literacy on this relationship. Data from 105 students were analyzed using SPSS 22.0 and PROCESS Macro 4.2, with gender controlled. The results showed that challenge orientation had a significant direct effect on creative problem-solving ability, and that communication competence and digital literacy partially and sequentially mediated this relationship. In contrast, safety orientation had no significant direct or mediating effects. These findings highlight the importance of personalized instructional design based on students' motivational traits and interactional competencies, and suggest that fostering challenge orientation and integrating collaborative communication and digital literacy into project-based software education can effectively enhance students\u2019 creative problem-solving abilities.",
+    "topics": [
+      "digital competence",
+      "creativity",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-influence-of-digital-literacy-and-learning-media-utilization-on-stud",
+    "title": "The Influence of Digital Literacy and Learning Media Utilization on Student Learning Motivation",
+    "authors": [
+      "Kholid Kholid",
+      "Didit Darmawan"
+    ],
+    "year": 2023,
+    "doi": "10.53802/fitrah.v4i2.622",
+    "url": "https://openalex.org/W4393648443",
+    "openalex_id": "https://openalex.org/W4393648443",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Fitrah Journal of Islamic Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-sa",
+    "abstract": "This study investigates the effect of digital literacy and learning media utilization on student learning motivation at State Junior High School 01 Tanjungbumi Bangkalan Madura. The era of globalization emphasizes the need for education that involves digital literacy and utilization of learning media to improve the quality of student learning. Learning motivation, as the key to student success, is influenced by both factors. Digital literacy affects students' access to online learning resources and plays a role in improving their learning motivation. Learning media utilization involves technology in delivering information, creating a more engaging and interactive learning experience. In this study, digital literacy and learning media utilization are identified as factors that significantly influence students' learning motivation at State Junior High School 01 Tanjungbumi Bangkalan Madura. By identifying the influence of each factor, this study provides in-depth insight into the importance of integrating digital literacy and learning media to improve students' learning motivation in the digital era. This research has implications for increasing student learning motivation.",
+    "topics": [
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-innovating-responsibly-ethical-considerations-for-ai-in-early-childhood",
+    "title": "Innovating responsibly: ethical considerations for AI in early childhood education",
+    "authors": [
+      "Ilene R. Berson",
+      "Michael J. Berson",
+      "Wenwei Luo"
+    ],
+    "year": 2025,
+    "doi": "10.1007/s44436-025-00003-5",
+    "url": "https://openalex.org/W4408132665",
+    "openalex_id": "https://openalex.org/W4408132665",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "AI Brain and Child",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "The rapid integration of artificial intelligence (AI) into early childhood education (ECE) presents transformative possibilities but raises urgent ethical challenges that demand immediate attention. This scoping review examines 42 studies to explore key ethical concerns in four interconnected areas: data privacy, impacts on child development, algorithmic bias, and regulatory frameworks. Findings reveal significant gaps in safeguarding children\u2019s sensitive data, with inadequate protections against breaches, profiling, and misuse. Emotional AI tools, such as social robots and emotion-recognition technologies, offer novel learning opportunities but risk undermining relational learning and fostering overreliance, manipulation, or loss of autonomy. The lack of developmentally appropriate design in AI systems further exacerbates these risks, failing to align technological solutions with the unique needs of young learners. Algorithmic bias, driven by non-representative datasets, perpetuates systemic inequities, disproportionately affecting marginalized communities and eroding fairness. Regulatory frameworks are fragmented and inconsistent, often lacking provisions tailored to the vulnerabilities of children or mechanisms for global enforcement. To address these challenges, this study highlights the urgency of establishing global frameworks that prioritize transparency, data minimization, and cultural inclusivity. Engaging educators, parents, and children in participatory governance is essential to align AI design with developmental needs and uphold children\u2019s rights. These findings underscore the need for immediate and sustained efforts to ensure that AI systems in ECE foster equitable and ethical learning environments, safeguarding the well-being of young learners while advancing innovation responsibly.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.75,
+    "audience": "learner"
+  },
+  {
+    "id": "src-bioethics-education-on-medical-students-opinions-about-ethical-dilemmas",
+    "title": "Bioethics Education on Medical Students: Opinions About Ethical Dilemmas",
+    "authors": [
+      "Vera Martins",
+      "Cristina Santos",
+      "Miguel Ricou",
+      "Patr\u00edcia Unger Raphael Bataglia",
+      "Ivone Duarte"
+    ],
+    "year": 2021,
+    "doi": "10.1177/21582440211057118",
+    "url": "https://openalex.org/W3216391829",
+    "openalex_id": "https://openalex.org/W3216391829",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "SAGE Open",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Medical education aims to train professionals who are capable of making extremely complex decisions. As part of the medical curriculum, bioethics education could have an important role in promoting moral development and decision-making in medical students. This study aims to determine if, after a Bioethics and Professional Deontology course, medical students would present a change of opinion on three ethical dilemmas. A quantitative and longitudinal study was developed by applying the MCTxt (Moral Competence Test extended), composed of three ethical dilemmas (Worker, doctor, and judge dilemmas), to a sample of 70, fourth year medical students, from a Portuguese medical school. The questionnaire was applied at the beginning and end of a bioethics course, with a 3 month time interval. For this study the opinion scores were analyzed and described using the mean and standard deviation. The comparison of these scores, at both times, were performed using t-tests for paired samples. A significance level of 5% was used. For students who were neutral in the first application, the majority went on to agree or disagree with the performance of the dilemma character, ultimately showing less indecision at the end of bioethics course. The results suggest that, after the bioethics course, students have lower indecision, however the changes were very tenuous. Bioethics education is important to promote more opportunities for reflection and discussion, to stimulate critical judgment, and the ability to make decisions by medical students. Further research could help to better understand this subject.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-development-and-effect-analysis-of-a-generative-ai-based-media-literacy",
+    "title": "Development and Effect Analysis of a Generative AI-Based Media Literacy Education Program",
+    "authors": [
+      "Mingyo Cho",
+      "Youngho Lee"
+    ],
+    "year": 2026,
+    "doi": "10.32431/kace.2026.29.7.010",
+    "url": "https://openalex.org/W7203596696",
+    "openalex_id": "https://openalex.org/W7203596696",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "The Journal of Korean Association of Computer Education",
+    "source_type": "peer_reviewed_article",
+    "license": null,
+    "abstract": "This study aims to develop a fake news education program utilizing generative artificial intelligence (AI) for elementary school students and to examine its educational effectiveness. The program was designed and implemented as a 12-session curriculum based on the AAECA model (Access\u2013Analysis\u2013Evaluation\u2013Creation\u2013Action). To verify its effectiveness, data were collected through pre- and post-tests, as well as students\u2019 learning artifacts and reflection journals, and were analyzed comprehensively. The results indicated that the program had a statistically significant effect on improving students\u2019 media literacy and critical attitudes. This study is meaningful in that it presents an empirical educational model that proactively reflects changes in the media environment in the era of generative AI and demonstrates the practical applicability of generative AI-based media literacy education in elementary education settings.",
+    "topics": [
+      "ai literacy",
+      "digital competence"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "learner"
+  },
+  {
+    "id": "src-overview-of-resilience-in-high-school-students",
+    "title": "Overview of Resilience in High School Students",
+    "authors": [
+      "Iyus Yosep",
+      "Ai Mardhiyah",
+      "Indra Maulana",
+      "Mamat Lukman",
+      "Rohman Hikmat"
+    ],
+    "year": 2024,
+    "doi": "10.33755/jkk.v10i5.764",
+    "url": "https://openalex.org/W4404118388",
+    "openalex_id": "https://openalex.org/W4404118388",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Jurnal Keperawatan Komprehensif",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by",
+    "abstract": "Aim: This study aims to determine the description of resilience in students at Bandung High School. Method: This study used a descriptive design with purposive sampling technique, involving 100 respondents consisting of students from grades X to XII aged 12 to 19 years. Data were collected using the Connor-Davidson Resilience Scale (CD-RISC), which consists of 25 statements with a score range of 0-100. The results of the validity and reliability tests showed that the instruments used were valid and reliable. Results: The results showed that 30% of respondents had a high level of resilience (30 students), 42% were at a moderate level of resilience (42 students), and 28% had low resilience (28 students). The average resilience score was 60.94, with a score range between 35 and 100. These findings indicate the need for special attention to students with low resilience, who are at risk for psychological problems such as anxiety and depression. Social support, coping skills, and specially designed intervention programs can help improve resilience among students. Conclusion: This study underscores the importance of understanding high school students\u2019 resilience levels to support their mental and academic well-being. More effective support programs for students with low resilience are needed, as well as further research to explore factors that influence resilience.",
+    "topics": [
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-fostering-creative-thinking-through-self-regulated-learning-for-secondar",
+    "title": "Fostering creative thinking through self-regulated learning for secondary school students in Indonesian mathematics education",
+    "authors": [
+      "Flavia Aurelia Hidajat",
+      "Anny Sovia",
+      "Mimi Nur Hajizah",
+      "Cholis Sa\u2019dijah",
+      "Muhammad Irfan",
+      "Helga Graciani Hidajat"
+    ],
+    "year": 2026,
+    "doi": "10.1007/s44217-026-02353-5",
+    "url": "https://openalex.org/W7236259700",
+    "openalex_id": "https://openalex.org/W7236259700",
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "Discover Education",
+    "source_type": "peer_reviewed_article",
+    "license": "cc-by-nc-nd",
+    "abstract": "Creative thinking is a crucial competency in mathematics education and learning, as students are required to independently generate flexible and original solutions. However, students\u2019 creative thinking skills remain low, and they need self-regulated learning (SRL) skills to explore new ideas independently. Although SRL is recognised as important in mathematics education, there remains a research gap regarding how the integration of SRL strategies fosters creative thinking among secondary school students. Therefore, this study aims to examine the role of SRL in cultivating students\u2019 mathematical creative thinking abilities. The mixed-methods approach was employed, comprising a qualitative phase using a case study design and a quantitative phase using a correlational-predictive design. The participants consisted of 87 secondary school students from a public school in Probolinggo, Indonesia. Data collection was conducted in the odd semester of the 2020/2021 academic year. Qualitative data were collected through interviews and the analysis of student work, while quantitative data were obtained via tests and questionnaires. Quantitatively, regression analysis revealed that SRL positively and significantly predicts mathematical creative thinking ( r = 0.898; p = 0.00 < 0.05), accounting for 80.6% of the variance; students with higher levels of self-regulation tended to demonstrate mathematical creative thinking abilities characterised by greater flexibility, originality, and elaboration. Qualitative findings complemented these statistical results by revealing that the task strategy and self-evaluation phases of SRL are key factors in fostering students\u2019 creative thinking to produce original and accurate solutions. Six effective stages in the students\u2019 creative thinking process were identified: preparation, deadlock, incubation, synthesis, illumination, and verification. Theoretically, this study extends the SRL model into the domain of mathematical creative thinking, while pedagogically, the findings provide practical guidance for educators to design mathematics instruction that enhances students\u2019 innovative thinking.",
+    "topics": [
+      "creativity",
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.9,
+    "audience": "educator"
   }
 ]

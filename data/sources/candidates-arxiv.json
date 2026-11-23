@@ -3036,5 +3036,344 @@
     "reviewed_at": null,
     "relevance_score": 0.3,
     "audience": "learner"
+  },
+  {
+    "id": "src-mereader-an-offline-privacy-preserving-progress-aware-ai-assistant-for-n",
+    "title": "MeReader: An Offline, Privacy-Preserving, Progress-Aware AI Assistant for Narrative eBook Reading",
+    "authors": [
+      "Mohammed Efaz",
+      "Udo Bub",
+      "Itilekha Podder"
+    ],
+    "year": 2026,
+    "doi": "10.1007/978-3-032-37936-8_22",
+    "url": "https://arxiv.org/abs/2611.18513v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "This paper introduces MeReader, a privacy-preserving, offline and progress-aware AI assistant designed to function as a contextual companion for narrative reading on consumer hardware. Unlike conventional Large Language Model (LLM)-based systems that process documents/books online in an all-texts-at-once type of way, thereby risking narrative spoilers, MeReader confines both retrieval and generation to the reader's distinct position in the text. The system integrates a hybrid retrieval architecture, combining vector similarity, BM25, and summary embeddings, to ensure high fidelity to the reader's current context. We evaluate the system across classical English books using both quantitative comprehension metrics and qualitative LLM-based independent judging. The results identify a quality-latency frontier, showing that mid-sized local models (2b-4b) can achieve comprehension parity with larger counterparts (5b+) while maintaining acceptable response quality. Importantly, the proposed progress-aware boundary mechanism is shown to prevent future content leakage without compromising retrieval quality and correctness. These findings suggest that a localized, privacy-centric approach can augment, rather than replace, the digital reading experience, offering a good alternative to cloud-dependent services. Therein, there remains a lack of amalgamate systems which combine progress-aware, privacy-preserving, and narrative eBook reading with AI support. It is in this very gap that the development of MeReader came to be; synthesizing said strands into an offline, book-constrained assistant focused on enhancing comprehension without compromising narrative continuity or user privacy.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-toward-resilient-self-driving-laboratories-through-telerobotic-intervent",
+    "title": "Toward Resilient Self-Driving Laboratories through Telerobotic Interventions",
+    "authors": [
+      "Ziheng Wu",
+      "Adrian Vecina Tercero",
+      "Andre A. Fatehi",
+      "Abhik Sarkar",
+      "Brian Giera",
+      "Eric B. Duoss",
+      "Christopher M. Spadaccini",
+      "Nikhil Deshpande",
+      "Aldair E. Gongora"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.18496v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Self-driving laboratories (SDLs) accelerate scientific research by integrating robotics, automated experimentation, and machine learning to execute experiments autonomously. Biology and chemistry have adopted these systems. However, increasing SDL complexity heightens susceptibility to unexpected faults in automated workflows, highlighting the need for efficient recovery mechanisms. In this study, we investigate telerobotic interventions to enhance SDL resilience against unexpected failures. We developed a teleoperation interface enabling human operators to resolve disruptions during automated tasks. The interface enables precise control of a six-degree-of-freedom (DOF) robotic arm (UR3e) using a 3D mouse (3Dconnexion SpaceMouse Pro). Two velocity-based controller strategies were evaluated: (i) a coupled mode mapping all six DOFs to the 3D mouse's central knob and (ii) a decoupled mode separating translational and rotational motions. To evaluate the framework, teleoperators intervened across three SDL fault scenarios. In the first study, comparative trials showed that the decoupled controller was associated with shorter completion times and reduced rotational motion. In a second study, teleoperators performed an aiming task with and without reference-path guidance. Users were more target-driven and risk-tolerant without guidance but showed behavioral differences under different guidance strategies. These findings suggest that controller configuration and reference-path design influence operator performance during SDL fault recovery, informing teleoperation interface optimization. This work demonstrates the potential feasibility of teleoperation as a human-in-the-loop recovery mechanism for SDL workflows, combining robotic precision with human adaptability and problem-solving. These findings also provide a foundation for future studies in shared autonomy and semi-autonomous intervention.",
+    "topics": [
+      "ai literacy",
+      "resilience"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-voice-based-conversational-agents-as-ai-care-assistants-evaluating-perso",
+    "title": "Voice-Based Conversational Agents as AI Care Assistants: Evaluating Personalization, Intervention Delivery Fidelity, and Privacy Expectations in Older Adults' Care",
+    "authors": [
+      "Thalia Viranda",
+      "Shupeng Wang",
+      "Jia Bo",
+      "Yuchen Yang",
+      "Hongjiao Zhang",
+      "Andrea Cuadra",
+      "Daniel A. Adler",
+      "Walter Boot",
+      "Sara Czaja",
+      "Deborah Estrin",
+      "Tanzeem Choudhury"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.18385v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Generative AI enables voice-based conversational agents to play more active roles in older adults' care, including personalizing support and operating alongside clinicians and care partners. This shift creates two challenges: how to personalize support while faithfully delivering evidence-based interventions, and how to manage personal-data use and sharing across AI and care stakeholders. We designed and evaluated ARC, a voice-based conversational agent that operationalizes multidomain lifestyle intervention through sessions with predefined goals, participant context, and evidence-based components. In a 3-day remote study, 80 older adults completed 473 sessions across six session types (9,183 turns; averaging 19.4 turns and 6 minutes per session). Participants reported favorable usability, acceptability, and use intentions. System-level analyses showed strong domain-level but modest participant-specific contextual reuse, no significant personalization-fidelity association, and fidelity limitations centered on incomplete delivery of intervention components rather than off-protocol drift. Within care relationships, expectations for personal-data use and sharing varied by data type and recipient. Our findings support feasibility of conversational delivery of multidomain lifestyle intervention, offer methods and system-design insights for longitudinal evaluation, and motivate an evaluation agenda for generative AI health interventions: user-experience and outcome measures should be complemented by evidence of whether intended intervention processes were delivered as designed.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-16",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-integrating-generative-artificial-intelligence-with-learning-style-model",
+    "title": "Integrating Generative Artificial Intelligence with Learning Style Models: Opportunities, Challenges, and Future Directions",
+    "authors": [
+      "Malithi Nawarathne",
+      "Prasanna Haddela",
+      "Nuwan Kodagoda"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27868v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Generative Artificial Intelligence (Generative AI) has emerged as a powerful tool for transforming learning. This review examines how Generative AI can be integrated with established learning style models (VARK, Kolb, Felder-Silverman, and Honey & Mumford) to support student engagement in large online classes. Following PRISMA 2020 guidelines, we searched Scopus, IEEE Xplore, and Google Scholar (2015 to 2026) and included 41 studies that met the eligibility criteria. The review maps Generative AI capabilities to learning style preferences, synthesizes existing implementations, highlights benefits and challenges, and proposes pathways for future research and practice. Despite ongoing debates regarding the empirical validity of learning styles, Generative AI enables flexible, multimodal, and real-time adaptation. This study offers practical insights for educators and developers seeking to build more effective, learner centered learning systems",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-childai-gov-an-evidence-linked-ai-system-for-assessing-edtech-policies-a",
+    "title": "ChildAI-Gov: An Evidence-Linked AI System for Assessing EdTech Policies Against Children's Digital Rights",
+    "authors": [
+      "Naveen Sigalapalli",
+      "Huizhi Liang",
+      "Clara Crivellaro"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27799v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "We present ChildAI-Gov, an explainable AI system for assessing whether education-technology (EdTech) policies respect children's digital rights. Generative AI is reaching children's education faster than its governance can keep pace, yet checking a tool against children's rights remains manual, expert-dependent, and slow. We propose the Child Rights Impact Score (CRIS), an evidence-linked measure across five dimensions: safety, privacy, transparency, autonomy, and non-discrimination. ChildAI-Gov reads an EdTech tool's privacy or AI policy and scores each dimension by combining a large-language-model judgement (gpt-4o-mini) with a deterministic rule check. A retrieval-augmented generation (RAG) component grounds every score in the governing provisions, retrieved from a curated knowledge base of children's rights frameworks (the EU AI Act, UNICEF guidance, and others), so each score is tied to the evidence behind it and an auditor can trace which provision it rests on. We also construct AIPolicy-EdTech, a dataset of 57 real EdTech policies. On it, the five dimensions cohered as a single measure (Cronbach's alpha = 0.79), and grounding made scoring stricter while preserving rankings; an ungrounded baseline was far more lenient, passing nearly half the policies where ChildAI-Gov passed none. It offers evidence-linked decision support on documented commitments, not observation of real-world behaviour or determinations of legal compliance.",
+    "topics": [
+      "ai literacy",
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.6,
+    "audience": "learner"
+  },
+  {
+    "id": "src-recovering-buoyancy-glitch-parameters-in-low-luminosity-red-giants-from",
+    "title": "Recovering buoyancy-glitch parameters in low-luminosity red giants from global stellar properties with machine learning",
+    "authors": [
+      "Jiang Chen"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27954v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Buoyancy glitches in red giants provide localized information on the interior structure near the base of the convective envelope, but their properties are typically inferred from dedicated seismic modelling rather than global properties, limiting large-sample applications. We investigate whether the buoyancy-glitch amplitude ($A_g$), location ($W_{\\rm g}^{\\star}$), and width ($D_g$) can be recovered from global stellar properties using gradient-boosted tree regressors (XGBoost and LightGBM). The models were trained on a grid of 12580 synthetic stellar models of low-luminosity red giants, with target parameters derived from fits to the local buoyancy frequency profile. We find that $W_{\\rm g}^{\\star}$ and $D_g$ exhibit excellent recoverability, achieving test-set $\\mathcal{R}^2$ values of 0.98 and 0.97, respectively. In contrast, $A_g$ shows moderate recoverability overall ($\\mathcal{R}^2=0.68$). This reduced recoverability of $A_g$ is concentrated in the large frequency separation range $\u0394\u03bd= 4.6$--$18.9\\,\u03bc$Hz, where the glitch resides in the evanescent-zone transition between the convective envelope and the gravity-mode cavity, increasing intrinsic scatter. SHAP analysis shows that $\u03bd_{\\rm max}$ and $T_{\\rm eff}$ dominate the predictions across all targets, indicating that the regressors rely primarily on evolutionary state. While $W_{\\rm g}^{\\star}$ and $D_g$ are tightly constrained by global evolutionary trends, the lower recoverability of $A_g$ reflects localized structural complexity associated with red-giant evolution. Overall, for the synthetic grid adopted here, these results indicate that global properties provide a direct estimate of the buoyancy-glitch parameters and a way to prioritise dedicated mixed-mode inversions for large asteroseismic samples such as Kepler and PLATO.",
+    "topics": [
+      "ai literacy"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-smsd-a-semantic-misinformation-spreader-detection-approach",
+    "title": "SMSD: A Semantic Misinformation Spreader Detection Approach",
+    "authors": [
+      "Zeeshan Bin Siddique",
+      "Michael Bewong",
+      "Md Geaur Rahman",
+      "Sajal Halder",
+      "Selasi Kwashie"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27661v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Misinformation spreaders on social media significantly amplify false narratives, making early detection critical to mitigate their spread. Existing approaches often overlook evolving user behavior, introduce semantic noise by ignoring user stance, and fail to handle newly emerging users effectively. To address these limitations, we propose a \\underline{S}emantic \\underline{M}isinformation \\underline{S}preader \\underline{D}etection approach (SMSD) that models misinformation propagation as a temporal, user-centric, and behavior-driven learning problem. SMSD adopts a multimodal architecture that incorporates three categories of features: user-level, network-level, and conversation propagation. A stance-aware labeling strategy is also introduced to differentiate supportive, opposing, questioning, and neutral users towards misinformation claims. Additionally, a monthly quantile analysis is introduced to simulate realistic, evolving user participation. Initial experimental results on the FibVid COVID-19 benchmark dataset demonstrate that SMSD improves recall by 45.0\\%, F1 by 49.5\\%, and MCC by 74.6\\% under stance-aware labeling and by 17.7\\%, 7.4\\%, and 11.4\\%, respectively, under threshold-based labeling. It consistently outperforms all baselines in both settings.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-beyond-self-critique-epistemic-convergence-control-for-multi-agent-resea",
+    "title": "Beyond Self-Critique: Epistemic Convergence Control for Multi-Agent Research Verification",
+    "authors": [
+      "Chrisantus Eze"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27839v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Multi-agent systems for scientific claim verification increasingly rely on role-structured LLM debate to pressure-test hypotheses. However, when debating agents are instantiated from the same underlying base model, they share identical latent representations, making self-critique bias structurally inevitable. Static fixed-iteration protocols compound this by either halting prematurely before evidence stabilizes or wasting inference compute after convergence. We present \\sys{}, a multi-agent research verification framework that addresses both failure modes. First, we introduce an asymmetric role architecture comprising an Advocate, Skeptic, and Arbitrator with opposing epistemic directives, producing significantly lower role-embedding similarity (0.852 vs.\\ 0.918 for symmetric Multi-Agent Debate [MAD], $p = 5.82 \\times 10^{-8}$) and surfacing more contested claims (22.0\\% vs.\\ 15.4\\%). Second, we propose the Belief-Delta ($\\DB$) convergence criterion, an evidence-grounded stopping rule that eliminates over-iteration (0.0\\% vs.\\ 62.5\\% for Fixed-$3$) while cutting LLM calls by 2.4$\\times$. Third, each supported claim is anchored to a verbatim literature snippet audited by an independent NLI classifier, achieving a 21.7\\% hallucination rate (comparable to 25.9\\% for a Self-Refine critic, $p = 0.61$) while establishing auditable evidence grounding. Across 200 runs on 40 research hypotheses evaluated with DeepSeek-R1-32B, \\sys{} balances compute efficiency with rigorous epistemic verification.",
+    "topics": [
+      "critical thinking"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-fairitr-fairness-aware-learning-of-multicategory-individualized-treatmen",
+    "title": "FairITR: Fairness-Aware Learning of Multicategory Individualized Treatment Rules",
+    "authors": [
+      "Zeyu Chen",
+      "Wei Qian",
+      "Bintong Chen"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27894v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Individualized treatment rules (ITRs) recommend treatment decisions based on individual characteristics and can improve treatment outcomes beyond traditional one-size-fits-all strategies. However, similar to other commonly used algorithmic decision-making methods, ITRs without considering model fairness may result in unfair decisions across groups defined by sensitive attributes, such as race or gender. Although extensive methods have been developed for ITR estimation, most focus solely on optimizing treatment outcomes, while research on fairness-aware ITRs remains limited. Moreover, the practical scenario of multicategory treatments is rarely considered in existing fair ITR studies. To address these gaps, we introduce a fairness notion for multicategory ITRs that requires treatment decisions to be independent of sensitive attributes, and then formulate the corresponding problem of estimating fair ITRs. To solve this problem, we further propose FairITR, a fairness-aware learning framework that jointly optimizes treatment outcomes and fairness. FairITR builds on angle-based classification for multicategory ITR learning and integrates adversarial learning with covariance-based regularization to mitigate unfairness in treatment decisions. A theoretical justification for the fairness properties induced by the adversarial debiasing mechanism is also provided. Extensive experiments on real-world datasets show that FairITR substantially reduces unfairness in ITRs while maintaining competitive treatment values relative to existing baselines.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
+  },
+  {
+    "id": "src-the-four-step-action-loop-with-feedback-a-teachable-perception-action-fr",
+    "title": "The Four-Step Action Loop with Feedback: A teachable perception-action framework for everyday self-regulation",
+    "authors": [
+      "Sundeep Kapila"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27795v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Everyday stress is largely a learned pattern: a familiar cue, a fast reading of threat, an automatic reaction and a body that stays activated. Body-based practices such as mindfulness, interoceptive training, Somatic Experiencing and yoga target these patterns, but they are usually taught as techniques without a map of the mechanism they act on. Pain neuroscience education suggests that understanding such a mechanism can itself change experience. No comparable model exists for everyday self-regulation. This paper proposes the Four-Step Action Loop with Feedback, developed over six cohorts of a workshop for non-clinical adults. The loop describes any action as four steps: Sense (exteroception, proprioception and interoception), Process (perception as inference, weighted by context and safety), Choose (habitual reaction or goal-directed response after a pause) and Execute (autonomic and somatic output). Feedback from each outcome acts beneath all four steps, through synaptic plasticity, habit formation and allostatic load. The paper integrates the perception-action cycle, information-processing stages of choice, interoceptive inference, the autonomic space model and the defence cascade. It places a set of practices on the loop: full sensory awareness, grounding, orientation, resourcing, the pause, reduced stimulus and choice, slow movement and relaxation, each with a proposed mechanism and an assessment of the evidence. It also describes the model's translation into four practitioner skills. Seven testable propositions are derived for future evaluation. The model is offered as a teachable framework for wellbeing, not a treatment.",
+    "topics": [
+      "self-regulation"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-efficient-inference-for-fairness-constrained-sequential-decision-policie",
+    "title": "Efficient inference for fairness-constrained sequential decision policies",
+    "authors": [
+      "Yi-Hui Zhou"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27714v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Adaptive decision systems in education and health choose interventions sequentially and are often required not to leave a protected group too far behind. We study the fairness-constrained optimal value: the largest population value attainable by a policy in a smooth parametric class subject to constraints that are smooth functions of group specific counterfactual functionals, such as value gaps, floors, max-min welfare and budgets. For multi-stage, non-Markov data under sequential ignorability, a sensitivity analysis of the Karush-Kuhn-Tucker system shows that this value is pathwise differentiable, with efficient influence function equal to the Lagrangian combination of the influence functions of the group values. The same analysis gives the influence functions of the optimal policy, the multiplier and the group values it delivers. A cross-fitted doubly robust estimator is efficient despite its data-dependent feasible set and yields confidence intervals for the constrained value and the price of fairness. When the constraint binds, any plug-in fair policy violates the population constraint, by a margin that vanishes as the sample grows, with probability tending to one half; tightening the estimated constraint by a one sided confidence margin certifies fairness at a small cost in value. Exact checks, simulations and a synthetic case study illustrate the theory.",
+    "topics": [
+      "ethics"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.45,
+    "audience": "learner"
+  },
+  {
+    "id": "src-learning-in-symbiosis-heterogeneous-federated-learning-with-anns-and-snn",
+    "title": "Learning in Symbiosis: Heterogeneous Federated Learning with ANNs and SNNs",
+    "authors": [
+      "Manh V. Nguyen",
+      "Liang Zhao",
+      "Bobin Deng",
+      "Xinyue Zhang",
+      "Shaoen Wu"
+    ],
+    "year": 2026,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.27686v1",
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "eric_id": null,
+    "publisher": "arXiv",
+    "source_type": "working_paper",
+    "license": null,
+    "abstract": "Spiking Neural Networks (SNNs), widely regarded as the third generation of neural networks, represent a promising neuromorphic computing paradigm with the potential to reduce the energy footprint of Artificial Intelligence (AI). Their en-ergy efficiency makes SNNs particularly attractive for resource-constrained Edge AI devices, motivating growing research interest in Federated Learning (FL) with SNNs. Despite these advantages, integrating SNNs into existing FL systems remains challenging, as replacing all conventional Artificial Neural Network (ANN) devices with SNN-based alternatives is impractical. Instead, we envision a gradual transition toward neuromorphic Edge AI, where ANN and SNN devices coexist and collaboratively participate in FL. To facilitate this transition, we propose Hybrid Neuromorphic Federated Learning (HNFL), a framework that enables joint training of heterogeneous ANN and SNN devices within an FL environment. Through experiments on CIFAR-10 using both VGG9 and ResNet architectures, we demonstrate the mutual benefits of collaborative ANN-SNN training. Specifically, HNFL achieves an average improvement of 16.85% when incorporating SNN devices into ANN-based FL and 8.02% when incorporating ANN devices into SNN-based FL. Furthermore, HNFL produces sparser spiking activity in the trained SNN models, with reductions of 12.4% for SResNet and 22.4% for SVGG9. To the best of our knowledge, this is the first work to demonstrate that ANNs and SNNs can coexist and mutually benefit from collaborative training in FL, providing a practical path toward the gradual integration of neuromorphic computing into existing Edge AI systems.",
+    "topics": [
+      "ai literacy",
+      "collaboration"
+    ],
+    "status": "candidate",
+    "created_at": "2026-11-23",
+    "reviewed_at": null,
+    "relevance_score": 0.3,
+    "audience": "learner"
   }
 ]
